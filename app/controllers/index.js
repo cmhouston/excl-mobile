@@ -90,13 +90,20 @@ function retrieveJson(jsonURL) {
 	dataRetriever.fetchDataFromUrl(jsonURL, function(returnedData) {
 		if (returnedData) {
 			json = returnedData;
-			var museums = Alloy.Collections.instance('museum');
-			var museumModel = Alloy.createModel('museum');
-			var page_info = json.data.museum.info;
-			museumModel.set({
-				'info' : museums.info,
-			});
-			museums.add(museumModel);	
+			var museum = json.data.museum;
+
+			var jsonExhibitsLabel = museum.homepage_exhibits_label;
+			if(jsonExhibitsLabel) $.exhibitsLabel.text = jsonExhibitsLabel;
+			
+			var jsonMapLabel = museum.homepage_map_label;
+			if(jsonMapLabel) $.mapLabel.text = jsonMapLabel;
+			
+			var jsonInfoLabel = museum.homepage_info_label;
+			if(jsonInfoLabel) $.infoLabel.text = jsonInfoLabel;
+			
+			var jsonIconUrl = museum.homepage_icon;
+			if(jsonIconUrl) $.iconLink.image = jsonIconUrl;
+			
 			doneLoading = true;
 		}
 	});
