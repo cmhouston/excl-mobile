@@ -16,7 +16,7 @@
 					<Label id="infoLabel" class="homepageLabel" text="Info"></Label>
 				</View>
 					
-				<ImageView id="iconLink" image="/images/unused images/app_image_transparent.png"></ImageView>	
+				<ImageView id="iconLink"></ImageView>	
 			</View>
 		</View>
 	</Window>
