@@ -215,12 +215,12 @@ function refreshPage() {
 
 function setMuseumJSONWithLanguageDialog() {
 	var url = Alloy.Globals.rootWebServiceUrl;
-	if (!dataRetriever.checkIfDataRetrieverNull(returnedData)) {
-		retriever.fetchDataFromUrl(url, function(response) {
+	retriever.fetchDataFromUrl(url, function(response) {
+		if (!retriever.checkIfDataRetrieverNull(response)) {
 			Alloy.Globals.museumJSON = response;
 			createInternationalizationMessageDialog();
-		});
-	}
+		}
+	});
 }
 
 function createInternationalizationMessageDialog() {

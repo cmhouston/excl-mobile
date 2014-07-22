@@ -2,6 +2,8 @@ var args = arguments[0] || {};
 
 var url = Alloy.Globals.rootWebServiceUrl;
 
+var json = args[0];
+
 var analyticsPageTitle = "Info";
 var analyticsPageLevel = "Information";
 
@@ -16,6 +18,14 @@ var setAnalyticsPageLevel = function(level) {
 };
 var getAnalyticsPageLevel = function() {
 	return analyticsPageLevel;
+};
+
+$.onEnterKioskMode = function() {
+	$.navBar.onEnterKioskMode();
+};
+
+$.onExitKioskMode = function() {
+	$.navBar.onExitKioskMode();
 };
 
 $.navBar.setPageTitle("Info");

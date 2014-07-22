@@ -21,7 +21,6 @@ var component = args[0];
 var componentID = component.get('id');
 var url = Alloy.Globals.rootWebServiceUrl + "/component/" + componentID;
 
-
 /**
  * Analytics Specific Information
  */
@@ -45,6 +44,14 @@ exports.getAnalyticsPageTitle = getAnalyticsPageTitle;
 exports.setAnalyticsPageLevel = setAnalyticsPageLevel;
 exports.getAnalyticsPageLevel = getAnalyticsPageLevel;
 //--------------------------------------------------
+
+$.onEnterKioskMode = function() {
+	$.navBar.onEnterKioskMode();
+};
+
+$.onExitKioskMode = function() {
+	$.navBar.onExitKioskMode();
+};
 
 Alloy.Models.app.on("change:customizeLearningEnabled", detectEventEnabled);
 Alloy.Models.app.on("change:customizeLearningSet", detectEventSet);
@@ -136,7 +143,8 @@ function changeTitleOfThePage(name, color) {
 
 function goToPostLandingPage(e) {
 	var post = fetchPostById(e.source.itemId);
-	var analyticsTitle = component.getScreenName() + '/' + post.name;
+	var analyticsTitle = getAnalyticsPageTitle() + '/' + post.name;
+	Ti.API.info("---000---\r\n"+analyticsTitle);
 	var analyticsLevel = "Post Landing";
 	//currentTabGroup.remove();
 	var controller = Alloy.createController('postLanding', post);

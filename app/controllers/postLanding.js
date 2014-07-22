@@ -8,6 +8,11 @@ buttonService = new buttonService();
 var labelService = setPathForLibDirectory("customCalls/labelService");
 labelService = new labelService();
 
+var loadingSpinner = Alloy.Globals.setPathForLibDirectory('loadingSpinner/loadingSpinner');
+var spinnerLib = new loadingSpinner();
+var spinner = spinnerLib.getSpinner();
+var loadingSpinnerView = Ti.UI.createView();
+
 var imageFilePathAndroid = "/images/icons_android/";
 var imageFilePathIOS = "/images/icons_ios/";
 
@@ -42,6 +47,13 @@ function setPathForLibDirectory(libFile) {
 		lib = require(libFile);
 	}
 	return lib;
+
+$.onEnterKioskMode = function() {
+	$.navBar.onEnterKioskMode();
+};
+
+$.onExitKioskMode = function() {
+	$.navBar.onExitKioskMode();
 };
 
 /**
@@ -54,6 +66,7 @@ function createPlainRowWithHeight(rowHeight) {
 		top : '15dip',
 		backgroundColor : '#FFFFFF'
 	});
+	
 	return row;
 }
 
@@ -519,7 +532,19 @@ function compileErrorMessage(errorMessage, errorMessageParts) {
 	return errorMessage;
 }
 
+function addSpinner(){
+	loadingSpinnerView.add(spinner);
+	spinner.show();
+	$.postLanding.add(loadingSpinnerView);
+}
+
+function hideSpinner(){
+	spinner.hide();
+	$.postLanding.remove(loadingSpinnerView);
+}
+
 function sendComment(commentButton) {
+	addSpinner();
 	var url = Alloy.Globals.rootWebServiceUrl + "/posts/" + post_content.id + "/comments";
 	var jsonToSend = ( {
 		"name" : $.insertName.value,
@@ -532,11 +557,14 @@ function sendComment(commentButton) {
 			$.whiteCommentBox.height = "50%";
 			$.whiteCommentBox.width = "50%";
 		}
+		hideSpinner();
 	});
 	setCommentIconReady(commentButton);
+	
 }
 
 function setCommentSubmittedMessage() {
+	
 	$.submitCommentFormView.visible = false;
 	$.thankYouMessageView.visible = true;
 	$.submitYourCommentLabel.text = "Comment Submitted";
