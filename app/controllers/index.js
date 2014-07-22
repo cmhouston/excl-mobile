@@ -5,7 +5,8 @@ var doneLoading = false;
 
 var url = Alloy.Globals.rootWebServiceUrl;
 var dataRetriever = setPathForLibDirectory('dataRetriever/dataRetriever');
-
+var loadingSpinner = setPathForLibDirectory('loadingSpinner/loadingSpinner');
+var spinner = new loadingSpinner();
 /**
  * Analytics Specific Data
  */
@@ -44,6 +45,7 @@ function setPathForLibDirectory(libFile) {
 };
 
 function openExhibits() {
+	addSpinner();
 	if(doneLoading){
 		var controller = Alloy.createController("exhibitLanding", eval([json]));
 		controller.setAnalyticsPageTitle("Exhibit Landing");
@@ -52,6 +54,16 @@ function openExhibits() {
 	{
 		alert("Not Done Loading");
 	}
+	hideSpinner();
+}
+
+function addSpinner(){
+	spinner.addTo($.index);
+	spinner.show();
+}
+
+function hideSpinner(){
+	spinner.hide();
 }
 
 function openMap() {
@@ -78,13 +90,20 @@ function retrieveJson(jsonURL) {
 	dataRetriever.fetchDataFromUrl(jsonURL, function(returnedData) {
 		if (returnedData) {
 			json = returnedData;
-			var museums = Alloy.Collections.instance('museum');
-			var museumModel = Alloy.createModel('museum');
-			var page_info = json.data.museum.info;
-			museumModel.set({
-				'info' : museums.info,
-			});
-			museums.add(museumModel);	
+			var museum = json.data.museum;
+
+			var jsonExhibitsLabel = museum.homepage_exhibits_label;
+			if(jsonExhibitsLabel) $.exhibitsLabel.text = jsonExhibitsLabel;
+			
+			var jsonMapLabel = museum.homepage_map_label;
+			if(jsonMapLabel) $.mapLabel.text = jsonMapLabel;
+			
+			var jsonInfoLabel = museum.homepage_info_label;
+			if(jsonInfoLabel) $.infoLabel.text = jsonInfoLabel;
+			
+			var jsonIconUrl = museum.homepage_icon;
+			if(jsonIconUrl) $.iconLink.image = jsonIconUrl;
+			
 			doneLoading = true;
 		}
 	});

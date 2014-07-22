@@ -12,3 +12,5 @@ coverage
 app/assets/images/icons_ios/expander_collapse.xcf
 app/assets/images/icons_ios/expander_expand.xcf
 .project
+plugins/ti.alloy/hooks/alloy.js
+plugins/ti.alloy/plugin.py

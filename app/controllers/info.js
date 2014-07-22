@@ -2,6 +2,8 @@ var args = arguments[0] || {};
 
 var url = Alloy.Globals.rootWebServiceUrl;
 
+var json = args[0];
+
 var analyticsPageTitle = "Info";
 var analyticsPageLevel = "Information";
 
@@ -29,6 +31,7 @@ $.onExitKioskMode = function() {
 $.navBar.setPageTitle("Info");
 
 Ti.API.info(JSON.stringify(args[0]));
+Ti.API.info(json.data.museum.info);
 
 // function insertInfoPicture() {
 // 

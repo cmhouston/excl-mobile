@@ -143,7 +143,8 @@ function changeTitleOfThePage(name, color) {
 
 function goToPostLandingPage(e) {
 	var post = fetchPostById(e.source.itemId);
-	var analyticsTitle = component.getScreenName() + '/' + post.name;
+	var analyticsTitle = getAnalyticsPageTitle() + '/' + post.name;
+	Ti.API.info("---000---\r\n"+analyticsTitle);
 	var analyticsLevel = "Post Landing";
 	//currentTabGroup.remove();
 	var controller = Alloy.createController('postLanding', post);

@@ -14,7 +14,8 @@
 "#tableView":{
 	top: "0",
 	height: Ti.UI.AUTO,
-	selectionStyle: Titanium.UI.iPhone.TableViewCellSelectionStyle.NONE
+	selectionStyle: Titanium.UI.iPhone.TableViewCellSelectionStyle.NONE,
+	separatorColor: "transparent"
 }
 
 "#addNewCommentContainer":{

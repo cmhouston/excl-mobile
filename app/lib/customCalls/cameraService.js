@@ -11,7 +11,7 @@ function cameraService() {
 	intentService = setPathForLibDirectory('customCalls/intentService');
 	intentService = new intentService();
 	loadingSpinner = setPathForLibDirectory('loadingSpinner/loadingSpinner');
-	loadingSpinner = new loadingSpinner();
+	this.spinner = new loadingSpinner();
 };
 
 cameraService.prototype.takePicture = function(postTags, shareImageButton, instagramAnchor) {
@@ -21,20 +21,12 @@ cameraService.prototype.takePicture = function(postTags, shareImageButton, insta
 		options : ['Camera', 'Photo Gallery', 'Cancel'],
 		cancel : 2
 	});
+	var self = this;
 	dialog.addEventListener("click", function(e) {
 		if (OS_IOS) {
 			var selectedIndex = e.index;
 		} else if (OS_ANDROID) {
 			var selectedIndex = dialog.selectedIndex;
-		}
-		if (OS_ANDROID) {
-			var win = Titanium.UI.currentWindow;
-			var view = Ti.UI.createView({
-				backgroundColor : "black"
-			});
-			win.add(view);
-			loadingSpinner.addTo(view);
-			loadingSpinner.show();
 		}
 		if (selectedIndex == 0) {
 			Titanium.Media.showCamera({
@@ -43,14 +35,14 @@ cameraService.prototype.takePicture = function(postTags, shareImageButton, insta
 				saveToPhotoGallery : true,
 				mediaTypes : Titanium.Media.MEDIA_TYPE_PHOTO,
 				success : function(event) {
+					self.spinner.addTo(instagramAnchor);
+					self.spinner.show();
 					var fileName = 'excl' + new Date().getTime() + '.jpg';
 					var imageFile = Ti.Filesystem.getFile('file:///sdcard/').exists() ? Ti.Filesystem.getFile('file:///sdcard/', fileName) : Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, fileName);
 					imageFile.write(event.media);
 					if (event.mediaType == Ti.Media.MEDIA_TYPE_PHOTO) {
 						imageFilePath = imageFile.nativePath;
 						if (OS_ANDROID) {
-							loadingSpinner.hide();
-							view.hide();
 							intentService.sendIntentImageAndroid(postTags, imageFilePath);
 						} else if (OS_IOS) {
 							fileNameInstagram = "excl" + new Date().getTime() + "_temp.ig";
@@ -59,6 +51,7 @@ cameraService.prototype.takePicture = function(postTags, shareImageButton, insta
 							intentService.sendIntentImageiOS(postTags, imageFilePath, imageFileInstagram.getNativePath(), instagramAnchor);
 						}
 					}
+					self.spinner.hide();
 				},
 				cancel : function() {
 				},
@@ -75,6 +68,7 @@ cameraService.prototype.takePicture = function(postTags, shareImageButton, insta
 				}
 			});
 		}
+		
 		if (selectedIndex == 1) {
 			Titanium.Media.openPhotoGallery({
 				success : function(event) {
@@ -102,10 +96,11 @@ cameraService.prototype.takePicture = function(postTags, shareImageButton, insta
 					errorMessage.setMessage('Unexpected error: ' + error.code);
 					errorMessage.show();
 				}
-			});
+			});	
 		} else {
 			//cancel was tapped
 		}
+		
 	});
 	dialog.show();
 };

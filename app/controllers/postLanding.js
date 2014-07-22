@@ -4,6 +4,10 @@ var post_content = post.get('rawJson');
 var tableData = [];
 var dataRetriever = Alloy.Globals.setPathForLibDirectory('dataRetriever/dataRetriever');
 
+var loadingSpinner = Alloy.Globals.setPathForLibDirectory('loadingSpinner/loadingSpinner');
+var spinnerLib = new loadingSpinner();
+var spinner = spinnerLib.getSpinner();
+
 var imageFilePathAndroid = "/images/icons_android/";
 var imageFilePathIOS = "/images/icons_ios/";
 
@@ -496,22 +500,45 @@ function compileErrorMessage(errorMessage, errorMessageParts) {
 	return errorMessage;
 }
 
+function addSpinner(){
+	var win = Ti.UI.createView();
+	win.add(spinner);
+	spinner.show();
+	$.postLanding.add(win);
+	return win;
+}
+
+function hideSpinner(win){
+	spinner.hide();
+	$.postLanding.remove(win);
+}
+
 function sendComment(commentButton) {
+	var win = addSpinner();
 	var url = Alloy.Globals.rootWebServiceUrl + "/posts/" + post_content.id + "/comments";
 	var jsonToSend = ( {
 		"name" : $.insertName.value,
 		"email" : $.insertEmail.value,
 		"comment_body" : $.insertComment.value
 	});
-	dataRetriever.sendJsonToUrl(url, jsonToSend, function(returnedData) {
-		$.submitCommentFormView.visible = false;
-		$.thankYouMessageView.visible = true;
-		$.whiteCommentBox.height = "50%";
-		$.whiteCommentBox.width = "50%";
-		$.submitYourCommentLabel.text = "Comment Submitted";
-		$.thankYouMessageComment.text = "Thank you.\nYour comment has been submitted and will be visible upon approval.\n\n\nClick the box to close it.";
+	dataRetriever.sendJsonToUrl(url, jsonToSend, function(returnedData, win) {
+		setCommentSubmittedMessage();
+		if (Titanium.Platform.osname == "ipad") {
+			$.whiteCommentBox.height = "50%";
+			$.whiteCommentBox.width = "50%";
+		}
+		hideSpinner(win);
 	});
 	setCommentIconReady(commentButton);
+	
+}
+
+function setCommentSubmittedMessage() {
+	
+	$.submitCommentFormView.visible = false;
+	$.thankYouMessageView.visible = true;
+	$.submitYourCommentLabel.text = "Comment Submitted";
+	$.thankYouMessageComment.text = "Thank you.\nYour comment has been submitted and will be visible upon approval.\n\n\nClick the box to close it.";
 }
 
 function initializePage() {
