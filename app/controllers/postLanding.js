@@ -2,7 +2,11 @@ var post = arguments[0] || {};
 var post_content = post.get('rawJson');
 
 var tableData = [];
-var dataRetriever = Alloy.Globals.setPathForLibDirectory('dataRetriever/dataRetriever');
+var dataRetriever = setPathForLibDirectory('dataRetriever/dataRetriever');
+var buttonService = setPathForLibDirectory("customCalls/buttonService");
+buttonService = new buttonService();
+var labelService = setPathForLibDirectory("customCalls/labelService");
+labelService = new labelService();
 
 var imageFilePathAndroid = "/images/icons_android/";
 var imageFilePathIOS = "/images/icons_ios/";
@@ -30,6 +34,15 @@ exports.getAnalyticsPageTitle = getAnalyticsPageTitle;
 exports.setAnalyticsPageLevel = setAnalyticsPageLevel;
 exports.getAnalyticsPageLevel = getAnalyticsPageLevel;
 //----------------------------------------------------
+
+function setPathForLibDirectory(libFile) {
+	if ( typeof Titanium == 'undefined') {
+		lib = require("../../lib/" + libFile);
+	} else {
+		lib = require(libFile);
+	}
+	return lib;
+};
 
 /**
  * Controller Functions
@@ -64,60 +77,78 @@ function setPageTitle(name) {
 function displaySocialMediaButtons(json) {
 	//Create anchor for instagram viewer
 	var row = createPlainRowWithHeight('auto');
-	if (!Alloy.Globals.navController.kioskMode) {
-		if (json.text_sharing) {
-			var shareTextButton = sharingTextService.initiateTextShareButton(json);
-			shareTextButton.left = "80%";
-			row.add(shareTextButton);
-		}
-		if (json.image_sharing) {
-			var shareImageButton = sharingImageService.initiateImageShareButton(json, $.postLanding);
-			shareImageButton.left = "60%";
-			row.add(shareImageButton);
-		}
-		if (json.commenting) {
-			var commentButton = Ti.UI.createButton({
-				height : "55dip",
-				width : "55dip",
-				left : "40%",
-				top : "0",
-				backgroundImage : "/images/icons_android/comment.png"
-			});
-			setCommentIconReady(commentButton);
-			commentButton.addEventListener('click', function(e) {
-				setCommentIconBusy(commentButton);
-				$.addNewCommentContainer.visible = ($.addNewCommentContainer.visible) ? false : true;
-				$.whiteCommentBox.visible = ($.whiteCommentBox.visible) ? false : true;
-				$.submitCommentFormView.visible = true;
-				$.insertName.value = $.insertEmail.value = $.insertComment.value = "";
-				$.thankYouMessageView.visible = false;
-			});
-
-			$.thankYouMessageView.addEventListener('click', function(e) {
-				$.whiteCommentBox.visible = false;
-				$.addNewCommentContainer.visible = false;
-				setCommentIconReady(commentButton);
-			});
-
-			$.cancelCommentButton.addEventListener('click', function(e) {
-				setCommentIconReady(commentButton);
-				$.insertName.blur();
-				$.insertEmail.blur();
-				$.insertComment.blur();
-				$.addNewCommentContainer.visible = ($.addNewCommentContainer.visible) ? false : true;
-				$.whiteCommentBox.visible = ($.whiteCommentBox.visible) ? false : true;
-				$.scroller.scrollTo(0, 0);
-			});
-
-			$.submitButton.addEventListener('click', function(e) {
-				verifyData(commentButton);
-				$.scroller.scrollTo(0, 0);
-			});
-
-			row.add(commentButton);
-		}
-	}
+	var iconList = [];
+	addCommentingButton(json, row, iconList);
+	addTextSharingButton(json, row, iconList);
+	addImageSharingButton(json, row, iconList);
+	spaceIconsAccordingToNumberAdded(iconList);
 	return row;
+}
+
+function addCommentingButton(json, row, iconList) {
+	if (json.commenting) {
+		var commentButton = buttonService.createButton("commentButton", "Comment");
+		setCommentIconReady(commentButton);
+		commentButton.addEventListener('click', function(e) {
+			setCommentIconBusy(commentButton);
+			$.addNewCommentContainer.visible = ($.addNewCommentContainer.visible) ? false : true;
+			$.whiteCommentBox.visible = ($.whiteCommentBox.visible) ? false : true;
+			$.submitCommentFormView.visible = true;
+			$.insertName.value = $.insertEmail.value = $.insertComment.value = "";
+			$.thankYouMessageView.visible = false;
+		});
+
+		$.thankYouMessageView.addEventListener('click', function(e) {
+			$.whiteCommentBox.visible = false;
+			$.addNewCommentContainer.visible = false;
+			setCommentIconReady(commentButton);
+		});
+
+		$.cancelCommentButton.addEventListener('click', function(e) {
+			setCommentIconReady(commentButton);
+			$.insertName.blur();
+			$.insertEmail.blur();
+			$.insertComment.blur();
+			$.addNewCommentContainer.visible = ($.addNewCommentContainer.visible) ? false : true;
+			$.whiteCommentBox.visible = ($.whiteCommentBox.visible) ? false : true;
+			$.scroller.scrollTo(0, 0);
+		});
+
+		$.submitButton.addEventListener('click', function(e) {
+			verifyData(commentButton);
+			$.scroller.scrollTo(0, 0);
+		});
+		iconList.push(commentButton);
+		row.add(commentButton);
+	}
+}
+
+function addTextSharingButton(json, row, iconList) {
+	if (json.text_sharing && !Alloy.Globals.adminModeController.isInKioskMode()) {
+		var shareTextButton = sharingTextService.initiateTextShareButton(json);
+		iconList.push(shareTextButton);
+		row.add(shareTextButton);
+	}
+}
+
+function addImageSharingButton(json, row, iconList) {
+	if (json.image_sharing && !Alloy.Globals.adminModeController.isInKioskMode()) {
+		var shareImageButton = sharingImageService.initiateImageShareButton(json, $.postLanding);
+		iconList.push(shareImageButton);
+		row.add(shareImageButton);
+	}
+}
+
+function spaceIconsAccordingToNumberAdded(iconList) {
+	var listLength = iconList.length;
+	var maxLeftSpacingAsPercent = 90;
+	var distanceBetweenIcons = maxLeftSpacingAsPercent / (listLength + 1);
+
+	Ti.API.info("between: " + distanceBetweenIcons);
+
+	for (var i = 0; i < listLength; i++) {
+		iconList[i].left = distanceBetweenIcons * (i + 1) + "%";
+	}
 }
 
 function setCommentIconReady(button) {
