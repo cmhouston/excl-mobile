@@ -1,0 +1,11 @@
+<Alloy>
+	<Window id="container" class="container" backgroundColor='#34495E'>
+		<View layout="vertical" id="topBar" contentWidth="100%" height="50dip" top="0dip">
+			<Widget src="navigationBar" id="navBar"/>
+		</View>
+		<View id="mainView">
+			<TextField id="insertText" top="10%" />
+			<Button id="submitButton" onClick="textSubmitted" top="20%" title="Submit" />
+		</View>
+	</Window>
+</Alloy>
