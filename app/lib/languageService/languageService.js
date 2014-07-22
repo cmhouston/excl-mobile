@@ -1,42 +1,59 @@
 function languageService(){
 };
 
-languageService.prototype.getLanguageOptionsTwoLetterCodeFromJSON = function(){
-	var languageOptionsTwoLetter = new Array();
-	languageOptionsTwoLetter = this.cloneLanguageOptions();
-	Ti.API.info("Language options: " + languageOptionsTwoLetter.toString());
-	return languageOptionsTwoLetter;
+languageService.prototype.getLanguageOptionsFourLetterCodeFromJSON = function(){
+	var languageOptionsFourLetter = new Array();
+	languageOptionsFourLetter = this.cloneLanguageOptions();
+	Ti.API.info("Language options: " + languageOptionsFourLetter.toString());
+	return languageOptionsFourLetter;
 };
 
 languageService.prototype.cloneLanguageOptions = function(){
 	clonedLanguageOptions = new Array();
-	for (index in Alloy.Globals.museumJSON.data.museum.lang_options){
-		clonedLanguageOptions[index] = Alloy.Globals.museumJSON.data.museum.lang_options[index];
+	languageOptions = Alloy.Globals.museumJSON.data.museum.lang_options;
+	if (languageOptions instanceof Array){
+		for (index in Alloy.Globals.museumJSON.data.museum.lang_options){
+			clonedLanguageOptions[index] = Alloy.Globals.museumJSON.data.museum.lang_options[index];
+		}
 	}
+	else{
+		Ti.API.info("Not an array- single language");
+		clonedLanguageOptions.push(languageOptions);
+	}
+	
 	return clonedLanguageOptions;
 };
 
-languageService.prototype.twoLetterToFullWord = function(twoLetter){
+languageService.prototype.getLanguageOptionsFullWord = function(languageOptionsFourLetter){
+	var languageOptionsFullWord = [];
+	for (index in languageOptionsFourLetter){
+		languageOptionsFullWord[index] = this.switchFormOfLanguageCode(languageOptionsFourLetter[index], 'fullWord');
+	}
+	return languageOptionsFullWord;
+};
+
+languageService.prototype.switchFormOfLanguageCode = function(fourLetter, desiredForm){
+	index = desiredForm == 'twoLetter'? 0 : 2;
 	var toReturn = "";
 	var length = this.languageLibrary.length;
 	for (i = 0; i<length; i++){
-		if (this.languageLibrary[i][1] == twoLetter){
-			return this.languageLibrary[i][2];
+		if (this.languageLibrary[i][1] == fourLetter){
+			return this.languageLibrary[i][index];
 		}
 	}
 	return ""; //TODO: Accommodate language not found
 };
 
-languageService.prototype.getLanguageOptionsFullWord = function(languageOptionsTwoLetter){
-	var languageOptionsFullWord = [];
-	for (index in languageOptionsTwoLetter){
-		languageOptionsFullWord[index] = this.twoLetterToFullWord(languageOptionsTwoLetter[index]);
+languageService.prototype.getLanguageOptionsTwoLetterCode = function(languageOptionsFourLetter){
+	var languageOptionsTwoLetter = [];
+	for (index in languageOptionsFourLetter){
+		languageOptionsTwoLetter[index] = this.switchFormOfLanguageCode(languageOptionsFourLetter[index], 'twoLetter');
 	}
-	return languageOptionsFullWord;
+	return languageOptionsTwoLetter;
 };
 
-languageService.prototype.configureCancel = function(languageOptionsTwoLetter, languageOptionsFullWord){
-	languageOptionsTwoLetter.push('CANCEL');
+languageService.prototype.configureCancel = function(languageOptionsFourLetter, languageOptionsFullWord){
+	languageOptionsFourLetter.push('CANCEL');
 	if (OS_IOS){
 		languageOptionsFullWord.push('Cancel');
 	}
@@ -45,26 +62,36 @@ languageService.prototype.configureCancel = function(languageOptionsTwoLetter, l
 };
 
 languageService.prototype.displayDialog = function(){
-	languageOptionsTwoLetterCode = this.getLanguageOptionsTwoLetterCodeFromJSON();
-	languageOptionsFullWord = this.getLanguageOptionsFullWord(languageOptionsTwoLetterCode);
-	cancelIndex = this.configureCancel(languageOptionsTwoLetterCode, languageOptionsFullWord);
+	languageOptionsFourLetterCode = this.getLanguageOptionsFourLetterCodeFromJSON();
+	languageOptionsFullWord = this.getLanguageOptionsFullWord(languageOptionsFourLetterCode);
+	languageOptionsTwoLetterCode = this.getLanguageOptionsTwoLetterCode(languageOptionsFourLetterCode);
+	
+	cancelIndex = this.configureCancel(languageOptionsFourLetterCode, languageOptionsFullWord);
+	selectedIndex = languageOptionsFourLetterCode.indexOf(Alloy.Models.app.get('currentLanguage'));
+	if (selectedIndex == -1){
+		selectedIndex = languageOptionsTwoLetterCode.indexOf(Alloy.Models.app.get('currentLanguage'));
+		//If currentLanguage was pulled from device, it will be in two-letter form. Must check for this to set proper default choice
+	}
 	
 	var languageDialog = Titanium.UI.createOptionDialog({
 		options : languageOptionsFullWord,	
 		cancel : cancelIndex,
-		selectedIndex : languageOptionsTwoLetterCode.indexOf(Alloy.Models.app.get('currentLanguage'))
+		selectedIndex : selectedIndex
 	});
 	languageDialog.addEventListener("click", function(e){
-		languageService.prototype.languageDialogClickListener(e, languageOptionsTwoLetterCode);
+		languageService.prototype.languageDialogClickListener(e, languageOptionsFourLetterCode);
 	});
 	
 	languageDialog.show();
 };
 
-languageService.prototype.languageDialogClickListener = function(e, languageOptionsTwoLetterCode){
-	var newLanguage = languageOptionsTwoLetterCode[e.index];	
-	if (newLanguage != 'CANCEL' && newLanguage !=  Alloy.Models.app.get('currentLanguage')){
+languageService.prototype.languageDialogClickListener = function(e, languageOptionsFourLetterCode){
+	var newLanguage = languageOptionsFourLetterCode[e.index];	
+	if (newLanguage != 'CANCEL' && newLanguage.substr(0,1) !=  Alloy.Models.app.get('currentLanguage').substr(0,1)){
 		Alloy.Models.app.set('currentLanguage', newLanguage);
+	}
+	else{
+		Alloy.Globals.navController.closeMenuWithoutAnimation();
 	}
 };		
 

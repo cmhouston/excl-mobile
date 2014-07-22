@@ -5,7 +5,8 @@ var doneLoading = false;
 
 var url = Alloy.Globals.rootWebServiceUrl;
 var dataRetriever = setPathForLibDirectory('dataRetriever/dataRetriever');
-
+var loadingSpinner = setPathForLibDirectory('loadingSpinner/loadingSpinner');
+var spinner = new loadingSpinner();
 /**
  * Analytics Specific Data
  */
@@ -44,6 +45,7 @@ function setPathForLibDirectory(libFile) {
 };
 
 function openExhibits() {
+	addSpinner();
 	if(doneLoading){
 		var controller = Alloy.createController("exhibitLanding", eval([json]));
 		controller.setAnalyticsPageTitle("Exhibit Landing");
@@ -52,6 +54,16 @@ function openExhibits() {
 	{
 		alert("Not Done Loading");
 	}
+	hideSpinner();
+}
+
+function addSpinner(){
+	spinner.addTo($.index);
+	spinner.show();
+}
+
+function hideSpinner(){
+	spinner.hide();
 }
 
 function openMap() {
