@@ -41,6 +41,7 @@ function createPlainRowWithHeight(rowHeight) {
 		top : '15dip',
 		backgroundColor : '#FFFFFF'
 	});
+	
 	return row;
 }
 

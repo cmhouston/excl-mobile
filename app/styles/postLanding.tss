@@ -14,6 +14,7 @@
 "#tableView":{
 	top: "0",
 	height: Ti.UI.AUTO,
+	separatorStyle: "white",
 	selectionStyle: Titanium.UI.iPhone.TableViewCellSelectionStyle.NONE
 }
 
