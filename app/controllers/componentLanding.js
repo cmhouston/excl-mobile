@@ -36,6 +36,14 @@ exports.setAnalyticsPageLevel = setAnalyticsPageLevel;
 exports.getAnalyticsPageLevel = getAnalyticsPageLevel;
 // ----------------------------------------------------
 
+$.onEnterKioskMode = function() {
+	$.navBar.onEnterKioskMode();
+};
+
+$.onExitKioskMode = function() {
+	$.navBar.onExitKioskMode();
+};
+
 function setPageTitle(name) {
 	$.navBar.setPageTitle(name);
 }
