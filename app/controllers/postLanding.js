@@ -7,7 +7,10 @@ var buttonService = setPathForLibDirectory("customCalls/buttonService");
 buttonService = new buttonService();
 var labelService = setPathForLibDirectory("customCalls/labelService");
 labelService = new labelService();
-
+sharingTextService = Alloy.Globals.setPathForLibDirectory('sharing/sharingTextService');
+var sharingTextService = new sharingTextService();
+sharingImageService = Alloy.Globals.setPathForLibDirectory('sharing/sharingImageService');
+var sharingImageService = new sharingImageService();
 var loadingSpinner = Alloy.Globals.setPathForLibDirectory('loadingSpinner/loadingSpinner');
 var spinnerLib = new loadingSpinner();
 var spinner = spinnerLib.getSpinner();
@@ -274,7 +277,7 @@ function getVideoRowFromPartiOS(part) {
 
 function getTextRowFromPart(part) {
 	var row = createPlainRowWithHeight('auto');
-	var textBody = Ti.UI.createLabel({
+	var objectArgs = {
 		width : '94%',
 		right : '3%',
 		left : '3%',
@@ -285,7 +288,8 @@ function getTextRowFromPart(part) {
 			fontWeight : 'normal',
 		},
 		text : part.get('body'),
-	});
+	};
+	var textBody = labelService.createCustomLabel(objectArgs);
 	row.add(textBody);
 	return row;
 }
@@ -326,9 +330,8 @@ function creatingCommentTextHeading() {
 	} else {
 		row.height = "50dip";
 	}
-
-	var commentHeading = Ti.UI.createLabel({
-		top : 20,
+	var objectArgs = {
+		top : "20dip",
 		width : '94%',
 		right : '3%',
 		left : '3%',
@@ -341,8 +344,9 @@ function creatingCommentTextHeading() {
 		text : "Add Comment",
 		textAlign : 'center',
 		borderWidth : '1',
-		borderColor : '#aaa',
-	});
+		borderColor : '#aaa'
+	};
+	var commentHeading = labelService.createCustomLabel(objectArgs);
 	row.addEventListener('click', function(e) {
 		$.addNewCommentContainer.visible = ($.addNewCommentContainer.visible) ? false : true;
 		$.whiteCommentBox.visible = ($.whiteCommentBox.visible) ? false : true;
@@ -350,15 +354,14 @@ function creatingCommentTextHeading() {
 		$.insertName.value = $.insertEmail.value = $.insertComment.value = "";
 		$.thankYouMessageView.visible = false;
 	});
-	//row.bottom = '10%';
 	row.add(commentHeading);
 	tableData.push(row);
 }
 
 function displayThereAreNoCommentsToDisplayText() {
 	var row = createPlainRowWithHeight('auto');
-	var commentHeading = Ti.UI.createLabel({
-		top : 10,
+	var objectArgs = {
+		top : "10dip",
 		width : '94%',
 		right : '3%',
 		left : '3%',
@@ -369,18 +372,25 @@ function displayThereAreNoCommentsToDisplayText() {
 			fontWeight : 'normal',
 		},
 		text : "There are no comments for this post"
-	});
+	};
+	var commentHeading = labelService.createCustomLabel(objectArgs);
 	row.add(commentHeading);
 	tableData.push(row);
 }
 
 function addCommentToView(commentText, commentDate) {
+	createCommentText(commentText);
+	createCommentDate(commentDate);
+	fixPageSpacing();
+}
+
+function createCommentText(commentText) {
 	var row = createPlainRowWithHeight('auto');
 	if (OS_ANDROID) {
 		row.top = "10%";
 	}
-	var text = Ti.UI.createLabel({
-		top : 10,
+	var objectArgs = {
+		top : "10dip",
 		width : '94%',
 		right : '3%',
 		left : '3%',
@@ -390,14 +400,16 @@ function addCommentToView(commentText, commentDate) {
 			fontSize : '13dp',
 			fontWeight : 'normal',
 		},
-		text : commentText,
-		// textAlign : 'left',
-	});
+		text : commentText
+	};
+	var text = labelService.createCustomLabel(objectArgs);
 	row.add(text);
 	tableData.push(row);
+}
 
+function createCommentDate(commentDate) {
 	var row = createPlainRowWithHeight('auto');
-	var date = Ti.UI.createLabel({
+	var objectArgs = {
 		width : '94%',
 		right : '3%',
 		left : '3%',
@@ -407,12 +419,11 @@ function addCommentToView(commentText, commentDate) {
 			fontSize : '8dp',
 			fontWeight : 'normal',
 		},
-		text : commentDate,
-		// textAlign : 'left',
-	});
+		text : commentDate
+	};
+	var date = labelService.createCustomLabel(objectArgs);
 	row.add(date);
 	tableData.push(row);
-	fixPageSpacing();
 }
 
 function displayComments(comments) {
@@ -428,7 +439,7 @@ function displayComments(comments) {
 
 	if (comments.length > commentsLengthLimit) {
 		var row = createPlainRowWithHeight('auto');
-		var text = Ti.UI.createLabel({
+		var objectArgs = {
 			top : "10dip",
 			width : '94%',
 			right : '3%',
@@ -440,8 +451,9 @@ function displayComments(comments) {
 				fontWeight : 'normal',
 			},
 			text : "Show more comments",
-			textAlign : 'center',
-		});
+			textAlign : 'center'
+		};
+		var text = labelService.createCustomLabel(objectArgs);
 		row.add(text);
 
 		// if clicked, hide it and show the other comments
@@ -513,7 +525,6 @@ function validateComment(comment) {
 	} else {
 		return true;
 	}
-
 }
 
 function compileErrorMessage(errorMessage, errorMessageParts) {
@@ -599,16 +610,6 @@ function initializePage() {
 	addTableDataToTheView(tableData);
 	fixPageSpacing();
 }
-
-/*
-* Run startup commands
-*/
-//establish connection to sharing functions
-sharingTextService = Alloy.Globals.setPathForLibDirectory('sharing/sharingTextService');
-var sharingTextService = new sharingTextService();
-
-sharingImageService = Alloy.Globals.setPathForLibDirectory('sharing/sharingImageService');
-var sharingImageService = new sharingImageService();
 
 function getRowFromPart(part) {
 	switch (part.get('type')) {
