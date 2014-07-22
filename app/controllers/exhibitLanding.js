@@ -91,7 +91,6 @@ function getAnalyticsPageLevel() {
 
 function initializeWithJSON(json) {
 	Alloy.Globals.analyticsController.setTrackerID(json.data.museum.tracking_id);
-	Alloy.Globals.analyticsController.trackEvent("Landing Pages", "Open Page", "Exhibit Landing", 1);
 	populateWindow(json);
 }
 
@@ -403,7 +402,6 @@ function openComponent(e, componentImageUrl) {
 	controller.setAnalyticsPageTitle(analyticsTitle);
 	controller.setAnalyticsPageLevel(analyticsLevel);
 	Alloy.Globals.navController.open(controller);
-	Alloy.Globals.analyticsController.trackEvent("Landing Pages", "Open Page", analyticsLevel, 1);
 }
 
 function createLabeledPicView(item, type) {
