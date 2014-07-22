@@ -2,6 +2,8 @@ var args = arguments[0] || {};
 
 var url = Alloy.Globals.rootWebServiceUrl;
 
+var json = args[0];
+
 var analyticsPageTitle = "Info";
 var analyticsPageLevel = "Information";
 
