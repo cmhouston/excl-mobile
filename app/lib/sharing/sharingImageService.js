@@ -17,8 +17,8 @@ function sharingImageService(){
 	cameraService = new cameraService();
 }
 
-sharingImageService.prototype.initiateImageShareButton = function(json, instagramAnchor) {
-	var shareImageButton = buttonService.createButton('shareImageButton', 'Image');
+sharingImageService.prototype.initiateImageShareButton = function(json, objectArgs) {
+	var shareImageButton = buttonService.createCustomButton(objectArgs);
 	sharingImageService.prototype.setIconReady(shareImageButton);
 
 	shareImageButton.addEventListener('click', function(e) {

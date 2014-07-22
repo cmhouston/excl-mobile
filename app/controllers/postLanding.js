@@ -95,16 +95,21 @@ function displaySocialMediaButtons(json) {
 	//Create anchor for instagram viewer
 	var row = createPlainRowWithHeight('auto');
 	var iconList = [];
-	addCommentingButton(json, row, iconList);
-	addTextSharingButton(json, row, iconList);
-	addImageSharingButton(json, row, iconList);
+	var objectArgs = {
+		height : "40dip",
+		width : "40dip",
+		top : "2%"
+	};
+	addCommentingButton(json, row, iconList, objectArgs);
+	addTextSharingButton(json, row, iconList, objectArgs);
+	addImageSharingButton(json, row, iconList, objectArgs);
 	spaceIconsAccordingToNumberAdded(iconList);
 	return row;
 }
 
-function addCommentingButton(json, row, iconList) {
+function addCommentingButton(json, row, iconList, objectArgs) {
 	if (json.commenting) {
-		var commentButton = buttonService.createButton("commentButton", "Comment");
+		var commentButton = buttonService.createCustomButton(objectArgs);
 		setCommentIconReady(commentButton);
 		commentButton.addEventListener('click', function(e) {
 			setCommentIconBusy(commentButton);
@@ -140,17 +145,17 @@ function addCommentingButton(json, row, iconList) {
 	}
 }
 
-function addTextSharingButton(json, row, iconList) {
+function addTextSharingButton(json, row, iconList, objectArgs) {
 	if (json.text_sharing && !Alloy.Globals.adminModeController.isInKioskMode()) {
-		var shareTextButton = sharingTextService.initiateTextShareButton(json);
+		var shareTextButton = sharingTextService.initiateTextShareButton(json, objectArgs);
 		iconList.push(shareTextButton);
 		row.add(shareTextButton);
 	}
 }
 
-function addImageSharingButton(json, row, iconList) {
+function addImageSharingButton(json, row, iconList, objectArgs) {
 	if (json.image_sharing && !Alloy.Globals.adminModeController.isInKioskMode()) {
-		var shareImageButton = sharingImageService.initiateImageShareButton(json, $.postLanding);
+		var shareImageButton = sharingImageService.initiateImageShareButton(json, objectArgs, $.postLanding);
 		iconList.push(shareImageButton);
 		row.add(shareImageButton);
 	}

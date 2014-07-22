@@ -28,8 +28,8 @@ sharingTextService.prototype.setPathForLibDirectory = function(libFile){
 	return lib;
 };
 
-sharingTextService.prototype.initiateTextShareButton = function(json) {
-	var shareTextButton = buttonService.createButton('shareTextButton', 'Text');
+sharingTextService.prototype.initiateTextShareButton = function(json, objectArgs) {
+	var shareTextButton = buttonService.createCustomButton(objectArgs);
 	sharingTextService.prototype.setIconReady(shareTextButton);
 
 	sharingTextService.prototype.setClickListener(shareTextButton, json);
