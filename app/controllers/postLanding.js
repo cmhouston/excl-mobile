@@ -47,6 +47,7 @@ function setPathForLibDirectory(libFile) {
 		lib = require(libFile);
 	}
 	return lib;
+}
 
 $.onEnterKioskMode = function() {
 	$.navBar.onEnterKioskMode();
@@ -66,7 +67,7 @@ function createPlainRowWithHeight(rowHeight) {
 		top : '15dip',
 		backgroundColor : '#FFFFFF'
 	});
-	
+
 	return row;
 }
 
@@ -532,13 +533,13 @@ function compileErrorMessage(errorMessage, errorMessageParts) {
 	return errorMessage;
 }
 
-function addSpinner(){
+function addSpinner() {
 	loadingSpinnerView.add(spinner);
 	spinner.show();
 	$.postLanding.add(loadingSpinnerView);
 }
 
-function hideSpinner(){
+function hideSpinner() {
 	spinner.hide();
 	$.postLanding.remove(loadingSpinnerView);
 }
@@ -560,11 +561,11 @@ function sendComment(commentButton) {
 		hideSpinner();
 	});
 	setCommentIconReady(commentButton);
-	
+
 }
 
 function setCommentSubmittedMessage() {
-	
+
 	$.submitCommentFormView.visible = false;
 	$.thankYouMessageView.visible = true;
 	$.submitYourCommentLabel.text = "Comment Submitted";
