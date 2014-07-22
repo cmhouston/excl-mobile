@@ -6,7 +6,7 @@ function LoadingSpinner() {
 	  style = Ti.UI.iPhone.ActivityIndicatorStyle.DARK;
 	}
 	else if (OS_ANDROID) {
-	  style = Ti.UI.ActivityIndicatorStyle.DARK;
+	  style = Ti.UI.ActivityIndicatorStyle.BIG_DARK;
 	}
 	this.spinner = Ti.UI.createActivityIndicator({
 	  style: style,

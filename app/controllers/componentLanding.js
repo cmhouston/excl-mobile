@@ -134,8 +134,10 @@ function displaySectionList(orderedSectionList, rawJson) {
 
 function addEvent(view, title, rawJson) {
 	view.addEventListener("click", function() {
+		addSpinner();
 		var controller = Alloy.createController('sectionLanding', eval([args[0], rawJson["posts"], title, view.backgroundColor]));
 		Alloy.Globals.navController.open(controller);
+		hideSpinner();
 	});
 }
 
