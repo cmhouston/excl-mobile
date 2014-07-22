@@ -20,6 +20,14 @@ var getAnalyticsPageLevel = function() {
 	return analyticsPageLevel;
 };
 
+$.onEnterKioskMode = function() {
+	$.navBar.onEnterKioskMode();
+};
+
+$.onExitKioskMode = function() {
+	$.navBar.onExitKioskMode();
+};
+
 $.navBar.setPageTitle("Info");
 
 Ti.API.info(JSON.stringify(args[0]));
