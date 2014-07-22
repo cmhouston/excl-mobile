@@ -460,7 +460,7 @@ function displayComments(comments) {
 }
 
 function verifyData(commentButton) {
-	var errorMessage = "We found an error in you: ";
+	var errorMessage = "We found an error in your: ";
 	var errorMessageParts = [];
 	var errorDetected = false;
 
