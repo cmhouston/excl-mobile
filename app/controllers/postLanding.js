@@ -7,10 +7,11 @@ var dataRetriever = Alloy.Globals.setPathForLibDirectory('dataRetriever/dataRetr
 var imageFilePathAndroid = "/images/icons_android/";
 var imageFilePathIOS = "/images/icons_ios/";
 
+
 /**
  * Analytics specific information
  */
-var analyticsPageTitle = "Post Landing";
+var analyticsPageTitle = "";
 var analyticsPageLevel = "Post Landing";
 
 var setAnalyticsPageTitle = function(title) {
@@ -64,58 +65,55 @@ function setPageTitle(name) {
 function displaySocialMediaButtons(json) {
 	//Create anchor for instagram viewer
 	var row = createPlainRowWithHeight('auto');
-	if (!Alloy.Globals.navController.kioskMode) {
-		if (json.text_sharing) {
-			var shareTextButton = sharingTextService.initiateTextShareButton(json);
-			shareTextButton.left = "80%";
-			row.add(shareTextButton);
-		}
-		if (json.image_sharing) {
-			var shareImageButton = sharingImageService.initiateImageShareButton(json, $.postLanding);
-			shareImageButton.left = "60%";
-			row.add(shareImageButton);
-		}
-		if (json.commenting) {
-			var commentButton = Ti.UI.createButton({
-				height : "55dip",
-				width : "55dip",
-				left : "40%",
-				top : "0",
-				backgroundImage : "/images/icons_android/comment.png"
-			});
-			setCommentIconReady(commentButton);
-			commentButton.addEventListener('click', function(e) {
-				setCommentIconBusy(commentButton);
-				$.addNewCommentContainer.visible = ($.addNewCommentContainer.visible) ? false : true;
-				$.whiteCommentBox.visible = ($.whiteCommentBox.visible) ? false : true;
-				$.submitCommentFormView.visible = true;
-				$.insertName.value = $.insertEmail.value = $.insertComment.value = "";
-				$.thankYouMessageView.visible = false;
-			});
+	if (json.text_sharing && !Alloy.Globals.navController.kioskMode) {
+		var shareTextButton = sharingTextService.initiateTextShareButton(json);
+		shareTextButton.left = "80%";
+		row.add(shareTextButton);
+	}
+	if (json.image_sharing && !Alloy.Globals.navController.kioskMode) {
+		var shareImageButton = sharingImageService.initiateImageShareButton(json, $.postLanding);
+		shareImageButton.left = "60%";
+		row.add(shareImageButton);
+	}
+	if (json.commenting && !Alloy.Globals.navController.kioskMode) {
+		var commentButton = Ti.UI.createButton({
+			height : "55dip",
+			width : "55dip",
+			left : "40%",
+			top : "0",
+			backgroundImage : "/images/icons_android/comment.png"
+		});
+		setCommentIconReady (commentButton);
+		commentButton.addEventListener('click', function(e) {
+			setCommentIconBusy(commentButton);
+			$.addNewCommentContainer.visible = ($.addNewCommentContainer.visible) ? false : true;
+			$.whiteCommentBox.visible = ($.whiteCommentBox.visible) ? false : true;
+			$.submitCommentFormView.visible = true;
+			$.insertName.value = $.insertEmail.value = $.insertComment.value = "";
+			$.thankYouMessageView.visible = false;
+		});
 
-			$.thankYouMessageView.addEventListener('click', function(e) {
-				$.whiteCommentBox.visible = false;
-				$.addNewCommentContainer.visible = false;
-				setCommentIconReady(commentButton);
-			});
+		 $.thankYouMessageView.addEventListener('click', function(e) {
+			$.whiteCommentBox.visible = false;
+			$.addNewCommentContainer.visible = false;
+			setCommentIconReady (commentButton);
+		 });
 
-			$.cancelCommentButton.addEventListener('click', function(e) {
-				setCommentIconReady(commentButton);
-				$.insertName.blur();
-				$.insertEmail.blur();
-				$.insertComment.blur();
-				$.addNewCommentContainer.visible = ($.addNewCommentContainer.visible) ? false : true;
-				$.whiteCommentBox.visible = ($.whiteCommentBox.visible) ? false : true;
-				$.scroller.scrollTo(0, 0);
-			});
+		$.cancelCommentButton.addEventListener('click', function(e) {
+			setCommentIconReady (commentButton);
+			$.insertName.blur();
+			$.insertEmail.blur();
+			$.insertComment.blur();
+			$.addNewCommentContainer.visible = ($.addNewCommentContainer.visible) ? false : true;
+			$.whiteCommentBox.visible = ($.whiteCommentBox.visible) ? false : true;
+			$.scroller.scrollTo(0,0);
+		});
+		
+		$.submitButton.addEventListener('click', function(e){
+			verifyAndValidateData(commentButton);
+		});
 
-			$.submitButton.addEventListener('click', function(e) {
-				verifyData(commentButton);
-				$.scroller.scrollTo(0, 0);
-			});
-
-			row.add(commentButton);
-		}
+		row.add(commentButton);
 	}
 	return row;
 }
@@ -140,7 +138,7 @@ function setCommentIconBusy(button) {
 
 function getImageRowFromPart(part) {
 	var row = createPlainRowWithHeight('200dip');
-	if (Titanium.Platform.osname == "ipad") {
+	if (Titanium.Platform.osname == "ipad"){
 		row.height = "40%";
 	}
 	imageView = Ti.UI.createImageView({
@@ -212,7 +210,7 @@ function getVideoThumbnailViewFromPartAndroid(part) {
 
 function getVideoRowFromPartiOS(part) {
 	var row = createPlainRowWithHeight('200dip');
-	if (Titanium.Platform.osname == "ipad") {
+	if (Titanium.Platform.osname == "ipad"){
 		row.height = "40%";
 	}
 	var video = Titanium.Media.createVideoPlayer({
@@ -240,6 +238,7 @@ function getTextRowFromPart(part) {
 			fontWeight : 'normal',
 		},
 		text : part.get('body'),
+		// textAlign : 'left',
 	});
 	row.add(textBody);
 	return row;
@@ -250,11 +249,13 @@ function getRichTextRowFromPart(part) {
 	var richText = part.get("rich");
 	if (richText) {
 		var webView = Ti.UI.createWebView({
-			html : part.get('rich'),
-			width : "100%",
-			showScrollbars : false,
-			disableBounce : true,
-			height : Ti.UI.SIZE
+			html: part.get('rich'),
+			width: "100%",
+			//willHandleTouches: false,
+			showScrollbars: false,
+			disableBounce: true,
+			//touchEnabled: false,
+			height: Ti.UI.SIZE
 		});
 		row.add(webView);
 	}
@@ -275,13 +276,13 @@ function addTableDataToTheView(tableData) {
 
 function creatingCommentTextHeading() {
 	var row = createPlainRowWithHeight('10%');
-	if (OS_IOS) {
+	if (OS_IOS){
 		row.bottom = "48dip";
 		row.height = "10%";
 	} else {
 		row.height = "50dip";
 	}
-
+	
 	var commentHeading = Ti.UI.createLabel({
 		top : 20,
 		width : '94%',
@@ -331,7 +332,7 @@ function displayThereAreNoCommentsToDisplayText() {
 
 function addCommentToView(commentText, commentDate) {
 	var row = createPlainRowWithHeight('auto');
-	if (OS_ANDROID) {
+	if (OS_ANDROID){
 		row.top = "10%";
 	}
 	var text = Ti.UI.createLabel({
@@ -412,98 +413,69 @@ function displayComments(comments) {
 		tableData.push(row);
 
 	}
+
+	// var row = createPlainRowWithHeight('auto');
+	// var text = Ti.UI.createLabel({
+	// top : 10,
+	// width : '94%',
+	// right : '3%',
+	// left : '3%',
+	// color : '#005ab3',
+	// font : {
+	// fontFamily : 'Helvetica Neue',
+	// fontSize : '13dp',
+	// fontWeight : 'normal',
+	// },
+	// text : "Show more comments",
+	// textAlign : 'center',
+	// });
+	// row.add(text);
+	//
+	// var arr = [row];
+	// $.seeMoreCommentsTableView.data = arr;
+	//
+	// // if clicked, hide it and show the other comments
+	// $.seeMoreCommentsView.addEventListener('click', function(e) {
+	// Ti.API.info("The view is clicked!!");
+	// $.seeMoreCommentsView.animate({
+	// top : "100%",
+	// curve : Ti.UI.ANIMATION_CURVE_EASE_OUT,
+	// duration : 300
+	// });
+	// // view.hide();
+	// });
+
 }
 
-function verifyData(commentButton) {
-	var errorMessage = "We found an error in you: ";
-	var errorMessageParts = [];
-	var errorDetected = false;
+function verifyAndValidateData(commentButton) {
+	// This function should verify that the data exists in the form fields
+	// Once verified, it should send the data to the WP DB
+	// And display a 'message sent' message
 
-	if (!validateName($.insertName.value)) {
-		errorDetected = true;
-		errorMessageParts.push("Name");
-	}
+	Ti.API.info($.insertName.value);
+	Ti.API.info($.insertEmail.value);
+	Ti.API.info($.insertComment.value);
 
-	if (!validateEmail($.insertEmail.value)) {
-		errorDetected = true;
-		errorMessageParts.push("Email");
-	}
+	// Email validations?			<=======
 
-	if (!validateComment($.insertComment.value)) {
-		errorDetected = true;
-		errorMessageParts.push("Comment");
-	}
-
-	errorMessage = compileErrorMessage(errorMessage, errorMessageParts);
-
-	if (errorDetected) {
-		alert(errorMessage);
+	if (!$.insertComment.value) {
+		alert("Please enter a comment. It's clearly NOT optional...");
 	} else {
-		sendComment(commentButton);
+		var url = Alloy.Globals.rootWebServiceUrl + "/posts/" + post_content.id + "/comments";
+
+		var jsonToSend = ( {
+			"name" : $.insertName.value,
+			"email" : $.insertEmail.value,
+			"comment_body" : $.insertComment.value
+		});
+
+		dataRetriever.sendJsonToUrl(url, jsonToSend, function(returnedData) {
+			$.submitCommentFormView.visible = false;
+			$.thankYouMessageView.visible = true;									
+		});
+		setCommentIconReady(commentButton);
 	}
-}
-
-function validateName(name) {
-	if (name) {
-		for (var i = 0; i < name.length; i++) {
-			if (!Alloy.Globals.isAlpha(name[i])) {
-				return false;
-			}
-		}
-	}
-	return true;
-}
-
-function validateEmail(email) {
-	if (email) {
-		var emailFormat = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-		return emailFormat.test(email);
-	}
-	return true;
-}
-
-function validateComment(comment) {
-	if (!comment) {
-		return false;
-	} else {
-		return true;
-	}
-
-}
-
-function compileErrorMessage(errorMessage, errorMessageParts) {
-	for (var i = 0; i < errorMessageParts.length; i++) {
-		if (i == 0) {
-			errorMessage += errorMessageParts[i];
-		} else if (i == errorMessageParts.length - 1 && errorMessageParts.length != 1) {
-			if (errorMessageParts.length == 2) {
-				errorMessage += (" and " + errorMessageParts[i]);
-			} else {
-				errorMessage += (", and " + errorMessageParts[i]);
-			}
-		} else {
-			errorMessage += (", " + errorMessageParts[i]);
-		}
-	}
-	return errorMessage;
-}
-
-function sendComment(commentButton) {
-	var url = Alloy.Globals.rootWebServiceUrl + "/posts/" + post_content.id + "/comments";
-	var jsonToSend = ( {
-		"name" : $.insertName.value,
-		"email" : $.insertEmail.value,
-		"comment_body" : $.insertComment.value
-	});
-	dataRetriever.sendJsonToUrl(url, jsonToSend, function(returnedData) {
-		$.submitCommentFormView.visible = false;
-		$.thankYouMessageView.visible = true;
-		$.whiteCommentBox.height = "50%";
-		$.whiteCommentBox.width = "50%";
-		$.submitYourCommentLabel.text = "Comment Submitted";
-		$.thankYouMessageComment.text = "Thank you.\nYour comment has been submitted and will be visible upon approval.\n\n\nClick the box to close it.";
-	});
-	setCommentIconReady(commentButton);
+	$.scroller.scrollTo(0,0);
 }
 
 function initializePage() {
@@ -546,21 +518,21 @@ var sharingImageService = new sharingImageService();
 
 function getRowFromPart(part) {
 	switch (part.get('type')) {
-	case 'image':
-		return getImageRowFromPart(part);
-		break;
-	case 'text':
-		return getTextRowFromPart(part);
-		break;
-	case 'video':
-		return getVideoRowFromPart(part);
-		break;
-	case 'rich':
-		return getRichTextRowFromPart(part);
-		break;
-	default:
-		return null;
-		break;
+		case 'image':
+			return getImageRowFromPart(part);
+			break;
+		case 'text':
+			return getTextRowFromPart(part);
+			break;
+		case 'video':
+			return getVideoRowFromPart(part);
+			break;
+		case 'rich':
+			return getRichTextRowFromPart(part);
+			break;
+		default:
+			return null;
+			break;
 	}
 }
 

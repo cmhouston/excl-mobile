@@ -26,6 +26,7 @@ AnalyticsController.prototype.getTracker = function() {
 };
 
 AnalyticsController.prototype.validateTrackerID = function(trackerID) {
+	apiCalls.info("Tracker ID: "+trackerID);
 	return /(UA|YT|MO)-\d+-\d+/i.test(trackerID);
 };
 
@@ -62,7 +63,6 @@ AnalyticsController.prototype.trackScreen = function(screenName, pageLevel, kios
 AnalyticsController.prototype.trackEvent = function(category, action, label, value) {
 	var tracker = this.getTracker();
 	if (!tracker) {return false;}
-	
 	
 	if(Alloy.Globals.isInDefaultWordpressEnviroment()){
 		Ti.API.info("Now tracking event with category: " + category + ", action: " + action + ", label: " + label + ", value: " + value);
