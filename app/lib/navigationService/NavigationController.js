@@ -25,7 +25,6 @@ NavigationController.prototype.enterKioskMode = function(){
 		var window = this.windowStack[this.windowStack.length - 1];
 	    this.setLocked();
  		this.menu.closeMenu();
- 		
 		window.onEnterKioskMode(window);	
 };
 

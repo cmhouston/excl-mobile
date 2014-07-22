@@ -21,7 +21,6 @@ var component = args[0];
 var componentID = component.get('id');
 var url = Alloy.Globals.rootWebServiceUrl + "/component/" + componentID;
 
-
 /**
  * Analytics Specific Information
  */
@@ -45,6 +44,14 @@ exports.getAnalyticsPageTitle = getAnalyticsPageTitle;
 exports.setAnalyticsPageLevel = setAnalyticsPageLevel;
 exports.getAnalyticsPageLevel = getAnalyticsPageLevel;
 //--------------------------------------------------
+
+$.onEnterKioskMode = function() {
+	$.navBar.onEnterKioskMode();
+};
+
+$.onExitKioskMode = function() {
+	$.navBar.onExitKioskMode();
+};
 
 Alloy.Models.app.on("change:customizeLearningEnabled", detectEventEnabled);
 Alloy.Models.app.on("change:customizeLearningSet", detectEventSet);
