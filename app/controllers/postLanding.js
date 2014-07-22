@@ -496,14 +496,20 @@ function sendComment(commentButton) {
 		"comment_body" : $.insertComment.value
 	});
 	dataRetriever.sendJsonToUrl(url, jsonToSend, function(returnedData) {
-		$.submitCommentFormView.visible = false;
-		$.thankYouMessageView.visible = true;
-		$.whiteCommentBox.height = "50%";
-		$.whiteCommentBox.width = "50%";
-		$.submitYourCommentLabel.text = "Comment Submitted";
-		$.thankYouMessageComment.text = "Thank you.\nYour comment has been submitted and will be visible upon approval.\n\n\nClick the box to close it.";
+		setCommentSubmittedMessage();
+		if (Titanium.Platform.osname == "ipad") {
+			$.whiteCommentBox.height = "50%";
+			$.whiteCommentBox.width = "50%";
+		}
 	});
 	setCommentIconReady(commentButton);
+}
+
+function setCommentSubmittedMessage() {
+	$.submitCommentFormView.visible = false;
+	$.thankYouMessageView.visible = true;
+	$.submitYourCommentLabel.text = "Comment Submitted";
+	$.thankYouMessageComment.text = "Thank you.\nYour comment has been submitted and will be visible upon approval.\n\n\nClick the box to close it.";
 }
 
 function initializePage() {
