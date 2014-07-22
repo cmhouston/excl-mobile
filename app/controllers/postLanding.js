@@ -7,6 +7,7 @@ var dataRetriever = Alloy.Globals.setPathForLibDirectory('dataRetriever/dataRetr
 var loadingSpinner = Alloy.Globals.setPathForLibDirectory('loadingSpinner/loadingSpinner');
 var spinnerLib = new loadingSpinner();
 var spinner = spinnerLib.getSpinner();
+var loadingSpinnerView = Ti.UI.createView();
 
 var imageFilePathAndroid = "/images/icons_android/";
 var imageFilePathIOS = "/images/icons_ios/";
@@ -493,33 +494,31 @@ function compileErrorMessage(errorMessage, errorMessageParts) {
 }
 
 function addSpinner(){
-	var win = Ti.UI.createView();
-	win.add(spinner);
+	loadingSpinnerView.add(spinner);
 	spinner.show();
-	$.postLanding.add(win);
-	return win;
+	$.postLanding.add(loadingSpinnerView);
 }
 
-function hideSpinner(win){
+function hideSpinner(){
 	spinner.hide();
-	$.postLanding.remove(win);
+	$.postLanding.remove(loadingSpinnerView);
 }
 
 function sendComment(commentButton) {
-	var win = addSpinner();
+	addSpinner();
 	var url = Alloy.Globals.rootWebServiceUrl + "/posts/" + post_content.id + "/comments";
 	var jsonToSend = ( {
 		"name" : $.insertName.value,
 		"email" : $.insertEmail.value,
 		"comment_body" : $.insertComment.value
 	});
-	dataRetriever.sendJsonToUrl(url, jsonToSend, function(returnedData, win) {
+	dataRetriever.sendJsonToUrl(url, jsonToSend, function(returnedData) {
 		setCommentSubmittedMessage();
 		if (Titanium.Platform.osname == "ipad") {
 			$.whiteCommentBox.height = "50%";
 			$.whiteCommentBox.width = "50%";
 		}
-		hideSpinner(win);
+		hideSpinner();
 	});
 	setCommentIconReady(commentButton);
 	
