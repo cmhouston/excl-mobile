@@ -32,6 +32,7 @@ $.navBar.setPageTitle("Info");
 
 Ti.API.info(JSON.stringify(args[0]));
 Ti.API.info(json.data.museum.info);
+$.InfoText.html = json.data.museum.info;
 
 // function insertInfoPicture() {
 // 
