@@ -1,0 +1,23 @@
+<Alloy>
+	<Window class="container">
+		<View id="mainView">
+			<View id="homeContent">
+				<ImageView id="homeImage"></ImageView>
+				
+				<View id="exhibitsLink" >
+					<Label id="exhibitsLabel" class="homepageLabel" text="Exhibits"></Label>
+				</View>
+				
+				<View id="mapLink">
+					<Label id="mapLabel" class="homepageLabel" text="Map"></Label>
+				</View>
+				
+				<View id="infoLink"  >
+					<Label id="infoLabel" class="homepageLabel" text="Info"></Label>
+				</View>
+					
+				<ImageView id="iconLink" image="/images/unused images/app_image_transparent.png"></ImageView>	
+			</View>
+		</View>
+	</Window>
+</Alloy>

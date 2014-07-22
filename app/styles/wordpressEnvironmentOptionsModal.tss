@@ -1,0 +1,18 @@
+
+".container" : {
+  
+}
+
+".verticalContainer": {
+	layout: "vertical"
+}
+
+".environmentOption": {
+	width: "70%"
+}
+
+".horizontalContainer": {
+	layout: "horizontal",
+	width: Ti.UI.SIZE
+}
+

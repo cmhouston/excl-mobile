@@ -1,0 +1,43 @@
+"#navBar": {
+	backgroundColor: "#253342"
+}
+
+".flyoutIcon":{
+	top: "20%",
+	right: "10%",
+	width: "25dip",
+	height: "25dip"
+}
+
+".backIcon":{
+	top: "20%",
+	left: "10%",
+	width: "25dip",
+	height: "25dip"
+}
+
+".flyoutView":{
+	width: "40%",
+	right: "0",
+	zindex: "99"
+}
+
+".backView":{
+	width: "40%",
+	left: "0",
+	zindex: "99"
+}
+
+//iPhone
+".pageTitleStyle":{
+	color: "#FFF",
+	font: {
+		fontSize: '20dip',
+		fontWeight: 'bold',
+		fontFamily: 'Helvetica Neue'
+	},
+	textAlign: 'center',
+	height: Ti.UI.SIZE,
+	width: "75%",
+	zindex: "0"
+}

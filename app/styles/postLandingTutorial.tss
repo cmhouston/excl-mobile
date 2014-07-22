@@ -1,0 +1,175 @@
+// Every tutorial styles
+".fullScreenWindow": {
+  fullscreen: true,
+  navBarHidden: true,
+  backgroundColor: "transparent",
+  opacity: "1",
+  height: Titanium.UI.FILL,
+  width: Titanium.UI.FILL
+}
+".fullScreenOverlay": {
+	backgroundColor: "black",
+	opacity: ".75",
+}
+".fullScreenOverlayText": {
+	color: "white",
+	shadowColor: '#000',
+	shadowOffset: {x:3, y:3},
+	shadowRadius: 5,
+	font: {
+		textStyle: Titanium.UI.TEXT_STYLE_HEADLINE,
+		fontWeight: "bold",
+		fontSize: "24dp"
+	}
+}
+".fullScreenOverlayText[formFactor=tablet]": {
+	font: {
+		fontWeight: "bold",
+		fontSize: "35dip"
+	}
+}
+".tutorialButton": {
+	backgroundColor: "#ED1C24",
+	width: "50%",
+	height: "50dip",
+	borderColor: "white",
+	borderRadius: "7dip",
+	borderWidth: "1dip",
+	color: "#fff",
+	font: {
+		fontSize: "24dp"
+	}
+}
+".tutorialButton[platform=ios]": {
+	borderWidth: "0dip",
+	backgroundColor: null,
+	backgroundGradient: {
+		type: 'linear',
+		startPoint: {
+			x: '50%',
+			y: '0%'
+		},
+		endPoint: {
+			x: '50%',
+			y: '100%'
+		},
+		colors: [
+			{
+				color: '#FF5B37',
+				offset: 0.0
+			},
+			{
+				color: '#FB2B69',
+				offset: 1.0
+			}
+		]
+	}
+}
+
+// Post landing tutorial styles
+
+"#sharingText": {
+	top: "120dip",
+	width: Ti.UI.FILL,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+}
+"#sharingText[formFactor=handheld]": {
+	top: "90dip"
+}
+
+"#commentingText": {
+	top: "305dip",
+	width: Ti.UI.FILL,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+}
+
+"#commentingText[formFactor=tablet]": {
+	top: "640dip",
+	width: Ti.UI.FILL,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+}
+
+"#ExitButton": {
+	//bottom: "150dip"
+	bottom: "20dip"
+}
+
+"#NextButton": {
+	//bottom: "150dip"
+	bottom: "80dip"
+}
+
+"#iconHighlight": {
+	width: "60%",
+	top: "160dip",
+	height: Ti.UI.SIZE
+}
+
+"#iconHighlight[formFactor=handheld]": {
+	width: "80%",
+	top: "140dip"
+}
+
+".sharingIcon[formFactor=handheld]": {
+	width: "40dip",
+	height: "40dip"
+}
+
+"#highlightBackground": {
+	image: "/images/tutorial/highlight.png"
+}
+
+"#commentIcon[platform=android]": {
+	image: "/images/icons_android/comment_ready.png",
+	center: {
+		x: "27%"
+	},
+	height: "55dip",
+	width: "55dip"
+}
+
+"#photoIcon[platform=android]": {
+	image: "/images/icons_android/camera_ready.png",
+	center: {
+		x: "50%"
+	}
+}
+
+"#shareIcon[platform=android]": {
+	image: "/images/icons_android/share_ready.png",
+	center: {
+		x: "72%"
+	}
+}
+
+"#commentIcon[platform=ios]": {
+	image: "/images/icons_ios/comment_ready.png",
+	center: {
+		x: "27%"
+	},
+	height: "55dip",
+	width: "55dip"
+}
+
+"#commentIcon[platform=ios formFactor=tablet]": {
+	image: "/images/icons_ios/comment_ready.png",
+	center: {
+		x: "27%"
+	},
+	height: "85dip",
+	width: "85dip"
+}
+
+"#photoIcon[platform=ios]": {
+	image: "/images/icons_ios/camera_ready.png",
+	center: {
+		x: "50%"
+	}
+}
+
+"#shareIcon[platform=ios]": {
+	image: "/images/icons_ios/share_ready.png",
+	center: {
+		x: "72%"
+	}
+}

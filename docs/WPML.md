@@ -1,0 +1,1 @@
+[Setup Guide](http://senlinonline.com/services/wpml-implementation/wpml-setup-guide/)

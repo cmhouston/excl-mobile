@@ -1,0 +1,66 @@
+"#menuView":{
+	layout: 'horizontal',
+	opacity: "1",
+	width: "100%",
+	left: "100%",
+	top: "50dip"
+},
+"#menuContainer":{
+	separatorStyle: 'NONE',
+	separatorColor: 'transparent',
+	backgroundColor: '#F2F2F2',
+	width: "50%",
+	layout: "vertical"
+	//left: "50%"
+},
+
+// Delete if unneeded
+".viewRow":{
+	height: '50dip',
+	//layout: 'horizontal'
+},
+
+".rowContainer": {
+	layout: 'horizontal',
+	height: Ti.UI.FILL
+}
+
+"#viewRowCollapsible":{
+	height: '0'
+},
+
+".viewRowIndented":{
+	left: '10%',
+	height: "0"
+}
+".rowIcon":{
+	left: '10%',
+	top: "7dip",
+	width: "20dip",
+	height: "20dip"
+},
+
+".clearPageProtecterView": {
+	left: 0,
+	width: "50%",
+}
+
+".rowLabel":{
+	top: "6dip",
+	left: '12dp',
+	height: "20dip",
+	font:{
+		fontSize: "15dip"
+	},
+	color: "#000"
+},
+
+".rowLabelIndented":{
+	top: "6dip",
+	left: "12dip",
+	height: "20dip",
+	font:{
+		fontSize: "15dip"
+	},
+	color: "#000"
+}

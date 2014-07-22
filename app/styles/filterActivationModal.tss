@@ -1,0 +1,51 @@
+".container": {
+	layout: "vertical",
+	top: "10%",
+	width: "90%",
+	borderColor: "#000000",
+	borderRadius: "20",
+	borderWidth: "3dip",
+	backgroundColor: "#000000",
+}
+
+".win": {
+	navBarHidden:true,
+	fullscreen: true
+}
+
+".title": {
+	color: '#FFFFFF',
+	font: {
+		fontFamily: 'Helvetica Neue',
+		fontSize: '22dp',
+		fontWeight: 'bold'
+	},
+	left: "10dip",
+	height: Ti.UI.FILL
+}
+
+".titleBar": {
+	height: "35dip",
+	backgroundColor: "black"
+}
+".hint":{
+	textAlign: "left",
+	backgroundColor: "black",
+	left: "10dip",
+	width: "98%"
+}
+".closeButton":{
+	right: "5%"
+}
+".toggleButton":{
+	height: "30dip",
+	width: "30dip",
+	borderColor: "white",
+	borderWidth: "3",
+	borderRadius: "10"
+}
+".horizontalView":{
+	layout: "horizontal",
+	height: "40dip",
+	backgroundColor: "black"
+}

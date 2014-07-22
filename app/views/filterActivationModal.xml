@@ -1,0 +1,17 @@
+<Alloy>
+	<Window id="win" class="win">
+		<View id="container" class="container">
+			<View id="titleBar" class="titleBar">
+				<Label class="title">Filter My Content!</Label>
+				<Button id="close" onClick="closeWindow" class="closeButton">Done</Button>
+			</View>
+			<Label id="hint" class="hint" >Check off the ages of your group members to filter the component's content by age.</Label>
+			<View class="horizontalView">
+				<Button id="toggleAllOn" class="toggleButton"></Button>
+				<Button id="toggleAllOff" class="toggleButton"></Button>
+			</View>
+			<TableView id="filterTable"/>
+		</View>
+	</Window>
+</Alloy>
+<!--jly-->

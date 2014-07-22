@@ -1,0 +1,32 @@
+// Global styles
+
+".full-view": {
+	width: "auto",
+	height: "auto",
+	backgroundColor: "#FFF",
+	fullscreen: true
+}
+
+".windowHeader": {
+	width: Ti.UI.FILL,
+	height: "50dip",
+	backgroundColor: '#232226',
+}
+
+".headingRow": {
+	backgroundColor: "#3a4754",
+	width: Ti.UI.FILL,
+	height: '50dip'
+}
+
+".headingText": {
+	color: 'white',
+	font: {
+		fontFamily: 'Helvetica Neue',
+		fontSize: '22dip',
+		fontWeight: 'bold'
+	},
+	textAlign: 'center'
+}
+
+

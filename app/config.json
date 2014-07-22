@@ -1,0 +1,14 @@
+{
+    "global": {},
+    "env:development": {},
+    "env:test": {},
+    "env:production": {},
+    "os:android": {},
+    "os:blackberry": {},
+    "os:ios": {},
+    "os:mobileweb": {},
+    "dependencies": {
+        "excl.platform-logo": "1.0",
+        "navigationBar": "1.0"
+    }
+}

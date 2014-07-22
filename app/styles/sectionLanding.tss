@@ -1,0 +1,20 @@
+
+"#container": {
+	navBarHidden: true,
+	fullscreen: true,
+	backgroundColor: '#FFFFFF'
+}
+
+"#topBar":{
+	contentWidth: "100%",
+	height: "50dip",
+	top: "0dip",
+	layout: "vertical"
+}
+
+"#scrollView":{
+	layout: "vertical",
+	contentWidth: "100%",
+	height: Ti.UI.SIZE,
+	top: "50dip"
+}

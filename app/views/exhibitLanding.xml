@@ -1,0 +1,27 @@
+<Alloy>
+	<Window class="container">
+		<View id="mainView">
+			<Widget id="navBar" src="navigationBar"/>
+			<ScrollableView id="exhibitsCarousel">
+				<View id="placeholder"></View>
+			</ScrollableView>
+			<View id="headingLabelView">
+				<Label id="headingLabel"></Label>
+			</View>
+			<ScrollView id="exhibitInfoScrollView">
+				<View id="collapsibleComponentView" >
+					<ScrollView id="componentScrollView"></ScrollView>
+				</View>
+				<View id="exhibitInfoView">
+					<Label id="exhibitInfoLabel"></Label>
+				</View>
+			</ScrollView>
+		</View>
+		<View id="bottomButtonContainer">
+			<View id="exhibitInfoGradient"></View>
+			<View id="exhibitSelect">
+				<Label id="exhibitSelectLabel" class="headingText">Explore This Exhibition!</Label>
+			</View>
+		</View>
+	</Window>
+</Alloy>

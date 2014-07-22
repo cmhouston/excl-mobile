@@ -1,0 +1,13 @@
+<Alloy>
+	<View id="exhibitTutorialPage" class="fullScreenWindow" zIndex="100" autoStyle="true">
+		<View class="fullScreenOverlay" autoStyle="true" />
+		<Label id="flyoutMenuText" class="fullScreenOverlayText">Menu and options here!</Label>
+		<Label id="ComponentsText" class="fullScreenOverlayText">Click This Button to View and Choose Stations in the Exhibition!</Label>
+		<Label id="ScrollText" class="fullScreenOverlayText">Scroll Through Exhibitions</Label>
+		<ImageView id="flyoutMenuArrow" image="/images/tutorial/long-arrow.png"></ImageView>
+		<ImageView id="ComponentsArrow" image="/images/tutorial/long-arrow.png"></ImageView>
+		<ImageView id="fingerSwipe" image="/images/tutorial/swipe_right.png"></ImageView>
+		<Button id="ExitButton" onClick="tutorialExit" class="tutorialButton">End Tutorial</Button>
+		<Button id="NextButton" onClick="gotIt" class="GotItButton">Got it!</Button>
+	</View>
+</Alloy>

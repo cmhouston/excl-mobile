@@ -1,0 +1,158 @@
+".fullScreenWindow": {
+  fullscreen: true,
+  navBarHidden: true,
+  backgroundColor: "transparent",
+  opacity: "1",
+  height: Titanium.UI.FILL,
+  width: Titanium.UI.FILL
+}
+".fullScreenOverlay": {
+	backgroundColor: "black",
+	opacity: ".75",
+}
+".fullScreenOverlayText": {
+	color: "white",
+	shadowColor: '#000',
+	shadowOffset: {x:3, y:3},
+	shadowRadius: 5,
+	font: {
+		textStyle: Titanium.UI.TEXT_STYLE_HEADLINE,
+		fontWeight: "bold",
+		fontSize: "24dp"
+	}
+}
+".fullScreenOverlayText[formFactor=tablet]": {
+	font: {
+		fontWeight: "bold",
+		fontSize: "35dip"
+	}
+}
+".GotItButton": {
+	backgroundColor: "green",
+	width: "200dip",
+	height: "50dip",
+	borderColor: "white",
+	borderRadius: "7dip",
+	borderWidth: "1dip",
+	color: "black",
+	font: {
+		textStyle: Titanium.UI.TEXT_STYLE_HEADLINE,
+		fontSize: "24dp"
+	}
+}
+
+".tutorialButton": {
+	backgroundColor: "#ED1C24",
+	width: "200dip",
+	height: "50dip",
+	borderColor: "white",
+	borderRadius: "7dip",
+	borderWidth: "1dip",
+	color: "#fff",
+	font: {
+		textStyle: Titanium.UI.TEXT_STYLE_HEADLINE,
+		fontSize: "24dp"
+	}
+}
+"#flyoutMenuArrow": {
+	top: "37dip",
+	right: "30dip",
+	//height: "110dip"
+	height: "70dip"
+}
+
+"#flyoutMenuArrow[formFactor=tablet]": {
+	right: "75dip",
+	height: "130dip",
+	top: "45dip"
+}
+
+"#ComponentsArrow": {
+	// transform: Alloy.Globals.rotate180,
+	// height: "140dip",
+	// right: "35dip",
+	// bottom: "20dip"
+	transform: Alloy.Globals.rotate180,
+	height: "70dip",
+	right: "35dip",
+	bottom: "20dip"
+}
+"#ComponentsArrow[formFactor=tablet]": {
+	bottom: "75dip",
+	right: "100dip"
+}
+
+"#flyoutMenuText": {
+	top: "105dip",
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_RIGHT
+}
+"#flyoutMenuText[formFactor=handheld]": {
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+}
+"#flyoutMenuText[formFactor=tablet]": {
+	top: "173dip",
+	right: "160dip"
+}
+
+"#ScrollText": {
+	top: "210dip",
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+}
+
+"#ScrollText[formFactor=tablet]": {
+	top: "320dip",
+	right: "100dip"
+}
+
+"#ComponentsText": {
+	bottom: "75dip",
+}
+"#ComponentsText[formFactor=handheld]": {
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+}
+"#ComponentsText[formFactor=tablet]": {
+	top: null,
+	bottom: "160dip",
+	width: "80%",
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+}
+
+"#fingerSwipe[formFactor=handheld]": {
+	top: "150dip",
+	height: "50dip"
+}
+
+"#fingerSwipe[formFactor=tablet]": {
+	center: {
+		x: "25%",
+		y: "320dip"
+	}
+}
+
+"#ExitButton": {
+	bottom: "130dip",
+	width: "50%"
+}
+"#ExitButton[formFactor=tablet]": {
+	bottom: "330dip"
+}
+"#ExitButton[formFactor=handheld platform=android]": {
+	bottom: "140dip"
+}
+
+"#NextButton": {
+	bottom: "190dip",
+	width: "50%"
+}
+"#NextButton[formFactor=tablet]": {
+	top: null,
+	bottom: "390dip"
+}
+"#NextButton[formFactor=handheld platform=android]": {
+	bottom: "200dip"
+}
+
+
+
+
+

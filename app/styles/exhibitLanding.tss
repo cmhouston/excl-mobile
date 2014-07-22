@@ -1,0 +1,173 @@
+".container": {
+	navBarHidden: true,
+	fullscreen: true,
+	backgroundColor: "#FFF"
+}
+
+"#mainView": {
+	layout: "vertical",
+	bottom: "20dip"
+}
+
+"#placeholder":{
+	height: '180dip'
+}
+
+"#exhibitsCarousel": {
+	backgroundColor: "#253342",
+	width: Ti.UI.FILL,
+	height: Ti.UI.SIZE,
+	showPagingControl: true,
+	overlayEnabled: true,
+	pagingControlAlpha: "0.8",
+	pagingControlTimeout: 0,
+	pagingControlHeight: "25dip"
+}
+
+"#exhibitsCarousel[platform=android]": {
+	// This is an android hack
+	// This should probably be calculated based on ... something
+	height: '205dip'
+}
+
+"#collapsibleInfoLabel": {
+	horizontalWrap: true,
+	color: '#232226',
+	font: {
+		fontFamily: 'Helvetica Neue',
+		fontWeight: 'normal'
+	},
+	left: "3%",
+	right: "3%",
+	top: "1%",
+	bottom: "1%",
+	height: Ti.UI.SIZE
+}
+
+"#collapsibleComponentView":{
+	layout: "vertical",
+	height: "0"
+}
+
+"#collapsibleInfoLabel[platform=android]": {
+	font: {
+		fontSize: '15dip'
+	}
+}
+
+"#collapsibleInfoLabel[platform=ios formFactor=handheld]": {
+	font: {
+		fontSize: '14dip'
+	}
+}
+
+"#collapsibleInfoLabel[platform=ios formFactor=tablet]": {
+	font: {
+		fontSize: '20dip'
+	}
+}
+
+"#bottomButtonContainer":{
+	height: '80dip',
+	bottom: 0,
+	backgroundColor: 'transparent'
+}
+
+"#exhibitInfoGradient": {
+	top: 0,
+	height: "30dip",
+	backgroundColor: "transparent"
+}
+
+"#exhibitSelect": {
+	bottom: 0,
+	height: "50dip",
+	backgroundColor: 'white'
+}
+
+"#exhibitSelectLabel": {
+	bottom: "5dip",
+	height: "40dip",
+	borderRadius: "20dip",
+	backgroundColor: "#253342",
+	width: "70%",
+	left: "15%",
+	borderWidth: '0',
+	backgroundGradient: {
+		type: 'linear',
+		startPoint: {
+			x: '50%',
+			y: '0%'
+		},
+		endPoint: {
+			x: '50%',
+			y: '100%'
+		},
+		colors: [
+			{
+				color: '#5ea08a',
+				offset: 0.0
+			},
+			{
+				color: '#48748f',
+				offset: 1.0
+			}
+		]
+	}
+}
+
+".headingText": {
+	color: 'white',
+	font: {
+		fontFamily: 'Helvetica Neue',
+		fontSize: '22dip',
+		fontWeight: 'bold'
+	},
+	textAlign: 'center'
+}
+
+"#componentScrollView": {
+	layout: 'horizontal',
+	//pagingControlTimeout : 0, // Set to less than or equal to 0 to disable timeout, to keep controls displayed.
+	showHorizontalScrollIndicator: true,
+	width: '100%',
+	height: '159dip',
+	contentHeight: 'auto',
+	contentWidth: 'auto',
+	scrollType: 'horizontal',
+	horizontalWrap: false,
+	top: "3dip",
+	bottom: "3dip"
+}
+
+"#headingLabelView":{
+	height: "50dip"
+}
+
+"#headingLabel":{
+	color: "#232226",
+	font: {
+		fontFamily: 'Helvetica Neue',
+		fontSize: '22dip',
+		fontWeight: 'bold'
+	}
+}
+
+"#exhibitInfoView": {
+	bottom: "50dip"
+}
+
+"#exhibitInfoLabel": {
+	color: '#000',
+	font: {
+		fontSize: 18
+	},
+	width: "90%"
+}
+
+"#exhibitInfoScrollView": {
+	scrollType: "vertical",
+	layout: "vertical",
+	contentWidth: "100%",
+	contentHeight: Ti.UI.SIZE
+}

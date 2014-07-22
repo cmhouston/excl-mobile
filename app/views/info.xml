@@ -1,0 +1,8 @@
+<Alloy>
+	<Window class="container">
+		<View id="mainView">
+			<Widget id="navBar" src="navigationBar"/>	
+		</View>
+		<ScrollView layout="vertical" id="scrollView" contentWidth="100%" height="100%" top="50dip"></ScrollView>
+	</Window>
+</Alloy>

@@ -1,0 +1,14 @@
+<Alloy>
+	<View id="postTutorialPage" class="fullScreenWindow">
+		<View class="fullScreenOverlay" />
+		<View id="iconHighlight">
+			<ImageView id="highlightBackground" />
+			<ImageView id="commentIcon" class="sharingIcon" />
+			<ImageView id="photoIcon" class="sharingIcon" />
+			<ImageView id="shareIcon" class="sharingIcon" />
+		</View>
+		<Label id="sharingText" class="fullScreenOverlayText">Share what you learned up top</Label>
+		<Label id="commentingText" class="fullScreenOverlayText">See what others have commented below</Label>
+		<Button id="ExitButton" onClick="tutorialExit" class="tutorialButton">End Tutorial</Button>
+	</View>
+</Alloy>

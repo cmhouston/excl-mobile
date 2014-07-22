@@ -1,0 +1,70 @@
+<Alloy>
+	<View id="menuView">
+		<View class="clearPageProtecterView" onClick="closeMenu"/>
+		<View id="menuContainer" >
+			
+			<View class="viewRow" onClick="openHomePage">
+				<View class="rowContainer">
+					<ImageView id="rowExhibit" backgroundImage= "/flyoutMenuIcons/home.png" class="rowIcon" />
+					<Label id="homeLabel" class="rowLabel">Home</Label>
+				</View>
+			</View>
+			
+			<View class="viewRow" onClick="openExhibitsPage">
+				<View class="rowContainer">
+					<View backgroundImage= "/flyoutMenuIcons/exhibit.png" class="rowIcon"/>
+					<Label id="exhibitLabel" class="rowLabel">Exhibits</Label>
+				</View>
+			</View>
+			
+			<View class="viewRow" onClick="openMapPage">
+				<View class="rowContainer">
+					<View backgroundImage= "/flyoutMenuIcons/map.png" class="rowIcon"/>
+					<Label id="mapLabel" class="rowLabel">Map</Label>
+				</View>
+			</View>
+			
+			<View class="viewRow" onClick="openInfoPage">
+				<View class="rowContainer">	
+					<View backgroundImage="/flyoutMenuIcons/info.png" class="rowIcon"/>
+					<Label id="museumInfoLabel" class="rowLabel">Info</Label>
+				</View>
+			</View>
+			
+			<View id="customLearnRow" class="viewRow" onClick="rowFilterEventListener">
+				<View class="rowContainer">
+					<View backgroundImage="/flyoutMenuIcons/ages.png" class="rowIcon"/>
+					<Label id="agesLabel" class="rowLabel">Filter by Age</Label>	
+				</View>
+			</View>
+			
+			<View class="viewRowIndented" id="viewRowCollapsible" onClick="setCustomLearn">
+				<View class="rowContainer" id="toggleView">
+					<View backgroundImage="/flyoutMenuIcons/edit.png" class="rowIcon"/>
+					<Label class="rowLabelIndented" id="toggleLabel">Edit Filter</Label>		
+				</View>
+			</View>
+			
+			<!-- <View class="viewRow">
+				<View class="rowContainer">
+					<View backgroundImage="/flyoutMenuIcons/favorites.png" class="rowIcon"/>
+					<Label id="favoritesLabel" color="#C0C0C0" class="rowLabel">My Favorites</Label>
+				</View>
+			</View>
+			 -->
+			<View class="viewRow" onClick="tutorialToggler">
+				<View class="rowContainer">
+					<View backgroundImage="/flyoutMenuIcons/tutorial.png" class="rowIcon"/>
+					<Label id="tutorialLabel" class="rowLabel">Tutorial is On</Label>
+				</View>
+			</View>
+			
+			<View class="viewRow" onClick="languageHandler">
+				<View class="rowContainer">
+					<View backgroundImage="/flyoutMenuIcons/settingsGear.png" class="rowIcon"/>
+					<Label id="settingsLabel" class="rowLabel">Language</Label>
+				</View>
+			</View>
+		</View>
+	</View>
+</Alloy>

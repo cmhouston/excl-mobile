@@ -1,0 +1,9 @@
+<Alloy>
+	<Window id="container" >
+		<View id="topBar">
+			<Widget src="navigationBar" id="navBar"/>
+		</View>
+			<ScrollView id="scrollView" ></ScrollView>
+	</Window>
+
+</Alloy>

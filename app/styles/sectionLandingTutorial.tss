@@ -1,0 +1,85 @@
+".fullScreenWindow": {
+  fullscreen: true,
+  navBarHidden: true,
+  backgroundColor: "transparent",
+  opacity: "1",
+  height: Titanium.UI.FILL,
+  width: Titanium.UI.FILL
+}
+".fullScreenOverlay": {
+	backgroundColor: "black",
+	opacity: ".75",
+}
+".fullScreenOverlayText": {
+	color: "white",
+	shadowColor: '#000',
+	shadowOffset: {x:3, y:3},
+	shadowRadius: 5,
+	font: {
+		textStyle: Titanium.UI.TEXT_STYLE_HEADLINE,
+		fontWeight: "bold",
+		fontSize: "24dp"
+	}
+}
+".GotItButton": {
+	backgroundColor: "green",
+	width: "200dip",
+	height: "50dip",
+	borderColor: "white",
+	borderRadius: "7dip",
+	borderWidth: "1dip",
+	color: "#fff",
+	font: {
+		textStyle: Titanium.UI.TEXT_STYLE_HEADLINE,
+		fontSize: "24dp"
+	}
+}
+
+".tutorialButton": {
+	backgroundColor: "#ED1C24",
+	width: "200dip",
+	height: "50dip",
+	borderColor: "white",
+	borderRadius: "7dip",
+	borderWidth: "1dip",
+	color: "#fff",
+	font: {
+		textStyle: Titanium.UI.TEXT_STYLE_HEADLINE,
+		fontSize: "24dp"
+	}
+}
+
+"#flyoutMenuArrow": {
+	top: "37dip",
+	right: "30dip",
+	//height: "110dip"
+	height: "70dip"
+}
+
+"#ComponentsArrow": {
+	transform: Alloy.Globals.rotate180,
+	height: "70dip"
+}
+
+"#flyoutMenuText": {
+	//top: "150dip",
+	top: "105dip",
+	right: "75dip",
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_RIGHT
+}
+
+"#ComponentsText": {
+	top: "220dip",
+	right: "75dip",
+	textAlign: Titanium.UI.TEXT_AlIGNMENT_RIGHT
+}
+
+"#ExitButton": {
+	//bottom: "150dip"
+	bottom: "20dip"
+}
+
+"#NextButton": {
+	//bottom: "150dip"
+	bottom: "80dip"
+}

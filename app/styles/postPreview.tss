@@ -1,0 +1,32 @@
+
+"#backgroundContainer": {
+	layout: "vertical"
+}
+
+"#placeholderContainer": {
+	layout: "vertical"
+}
+
+"#previewContainer": {
+	layout: "horizonal"
+}
+
+"#header":{
+	height: "50dip",
+	width: "100%"
+}
+
+"#headerText":{
+	color: "black",
+	text: "Post Title",
+	textAlign: "center"
+}
+
+"#placeholderImage":{
+	left: "0",
+	width: "40%"
+}
+
+"#placeholderLabel":{
+	left: "40%"
+}

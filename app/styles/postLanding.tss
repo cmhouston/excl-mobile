@@ -1,0 +1,208 @@
+
+".container": {
+	navBarHidden: true,
+	fullscreen: true,
+	height: '100%'
+}
+
+"#scroller": {
+	height: '100%',
+	contentHeight: 'auto',
+	bottom: '48dip'
+}
+
+"#tableView":{
+	top: "0",
+	height: Ti.UI.AUTO,
+	selectionStyle: Titanium.UI.iPhone.TableViewCellSelectionStyle.NONE
+}
+
+"#addNewCommentContainer":{
+	backgroundColor: 'black',
+	opacity: '0.75',
+	height: '100%',
+	width: '100%',
+	top: 0,
+	left: 0,
+	visible: false,
+	// zOrder: 1
+}
+
+"#whiteCommentBox":{
+	backgroundColor: 'white',
+	height:'90%',
+	width:'90%',
+	opacity: '1.0',
+	visible: false,
+	backgroundGradient: {
+        type: 'linear',
+        startPoint: { x: '50%', y: '0%' },
+        endPoint: { x: '50%', y: '100%' },
+        colors: [ 	{ color: '#EEEEEE', offset: 0.0}, 
+        			{ color: '#FFFFFF', offset: 1.0 }],
+    }
+}
+
+"#submitYourCommentLabel":{
+	opacity: '1.0',
+	color: 'black',
+	font: {
+		fontFamily: 'Helvetica Neue',
+		fontSize: '21dp',
+		fontWeight: 'bold'
+	},
+	top: '4%',
+	textAlign: 'center',
+}
+
+"#insertName":{
+	hintText: 'Name',
+	keyboardType: Titanium.UI.KEYBOARD_DEFAULT,
+	opacity: '1.0',
+	font: {
+		fontFamily: 'Helvetica Neue',
+		fontSize: '18dp',
+		fontWeight: 'normal'
+	},
+	color: 'black',
+	top: '17%',
+	left: '7%',
+	width: '85%',
+	height: '10%',
+	backgroundColor: '#f2f2f2',
+	borderWidth: '1',
+	borderColor: 'black',
+	clearOnEdit: true,
+	paddingLeft: "5dip"
+}
+
+"#insertNameDisclaimer":{
+	font: {
+		fontFamily: 'Helvetica Neue',
+		fontSize: '15dip',
+		fontWeight: 'normal'
+	},
+	color: 'black',
+	top: '28%',
+	left: '7%',
+}
+
+"#insertEmail":{
+	hintText: 'Email',
+	keyboardType: Titanium.UI.KEYBOARD_DEFAULT,
+	opacity: '1.0',
+	font: {
+		fontFamily: 'Helvetica Neue',
+		fontSize: '18dp',
+		fontWeight: 'normal'
+	},
+	color: 'black',
+	top: '34%',
+	left: '7%',
+	width: '85%',
+	height: '10%',
+	backgroundColor: '#f2f2f2',
+	borderWidth: '1',
+	borderColor: 'black',
+	clearOnEdit: true,
+	paddingLeft: "5dip"
+}
+
+"#insertEmailDisclaimer":{
+	font: {
+		fontFamily: 'Helvetica Neue',
+		fontSize: '15dip',
+		fontWeight: 'normal'
+	},
+	color: 'black',
+	top: '45%',
+	left: '7%',
+}
+
+
+"#insertComment":{
+	hintText: 'Comment',
+	keyboardType: Titanium.UI.KEYBOARD_DEFAULT,
+	opacity: '1.0',
+	font: {
+		fontFamily: 'Helvetica Neue',
+		fontSize: '18dp',
+		fontWeight: 'normal'
+	},
+	color: 'black',
+	backgroundColor: '#f2f2f2',
+	top: '52%',
+	left: '7%',
+	width: '85%',
+	height: '20%',
+	borderWidth: '1',
+	borderColor: 'black',
+	clearOnEdit: true,
+	paddingLeft: "5dip"
+}
+
+"#submitButton":{
+	title: 'Submit',
+	opacity: '1.0',
+	font: {
+		fontFamily: 'Helvetica Neue',
+		fontSize: '16dp',
+		fontWeight: 'bold'
+	},
+	borderRadius:'5',
+	bottom: '5%',
+	left: '7%',
+	width: '40%',
+	height: '10%',
+	color: 'black',
+	borderWidth: '1',
+	borderColor: '#2D6C1E',
+	backgroundGradient: {
+	    type: 'linear',
+	    startPoint: { x: '50%', y: '0%' },
+	    endPoint: { x: '50%', y: '100%' },
+	    colors: [ 	{ color: '#2D6C1E', offset: 0.0}, 
+	    			{ color: '#C0D860', offset: 1.0 }],
+   }
+}
+
+"#cancelCommentButton":{
+	title: 'Cancel',
+	opacity: '1.0',
+	font: {
+		fontFamily: 'Helvetica Neue',
+		fontSize: '16dp',
+		fontWeight: 'bold'
+	},
+	borderRadius:'5',
+	bottom: '5%',
+	right: '7%',
+	width: '40%',
+	height: '10%',
+	color: 'black',
+	borderWidth: '1',
+	borderColor: '#F20000',
+	backgroundGradient: {
+	    type: 'linear',
+	    startPoint: { x: '50%', y: '0%' },
+	    endPoint: { x: '50%', y: '100%' },
+	    colors: [ 	{ color: '#F20000', offset: 0.0}, 
+	    			{ color: '#FF9999', offset: 1.0 }],
+   }
+}
+
+".thankYouMessageComment":{
+	opacity: '1.0',
+	font: {
+		fontFamily: 'Helvetica Neue',
+		fontSize: '20dp',
+		fontWeight: 'normal'
+	},
+	textAlign: 'center',
+	color: 'black',
+	top: '35%',
+	left: '7%',
+	width: '85%',
+	height: 'auto',
+}
+
