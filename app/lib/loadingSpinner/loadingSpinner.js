@@ -27,4 +27,8 @@ LoadingSpinner.prototype.hide = function(){
 	this.spinner.hide();
 };
 
+LoadingSpinner.prototype.getSpinner = function(){
+	return this.spinner;
+};
+
 module.exports = LoadingSpinner;
