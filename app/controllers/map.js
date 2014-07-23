@@ -30,8 +30,8 @@ $.navBar.setPageTitle("Map");
 	var image = Ti.UI.createImageView({
 		image : json.data.museum.map,
 		backgroundColor:'transparent', 
-		width : 'auto',
-		height : 'auto'
+		width : Ti.UI.FILL,
+		height : Ti.UI.FILL
 	});
 
 	$.mapView.add(image);

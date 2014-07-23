@@ -205,7 +205,7 @@ function fixBottomSpacing() {
 		//$.scrollView.bottom = "48dip";
 		//$.scrollView.top = "0";
 	}
-	$.scrollView.height = "auto";
+	$.scrollView.height = Ti.UI.FILL;
 
 }
 
