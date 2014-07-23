@@ -1,6 +1,6 @@
 var args = arguments[0] || {};
 var APICalls = setPathForLibDirectory("customCalls/apiCalls");
-
+var json = Alloy.Globals.museumJSON;
 var ageFilterOn = Alloy.Models.app.get("customizeLearningEnabled");
 var ageFilterSet = Alloy.Models.app.get("customizeLearningSet");
 var viewService = setPathForLibDirectory('customCalls/viewService');
@@ -75,13 +75,22 @@ function openExhibitsPage(e) {
 }
 
 function openMapPage(e) {
-	Alloy.Globals.navController.open(Alloy.createController("map"));
-	closeMenu();
+	// Alloy.Globals.navController.open(Alloy.createController("map", eval([json])));
+	// closeMenu();
+	//if(doneLoading){
+		var controller = Alloy.createController("map", eval([json]));
+		Alloy.Globals.navController.open(controller);
+	//}else
+	//{
+	//	alert("Not Done Loading");
+	//}
 }
 
 function openInfoPage(e) {
-	Alloy.Globals.navController.open(Alloy.createController("info"));
-	closeMenu();
+	//Alloy.Globals.navController.open(Alloy.createController("info", eval([json])));
+	//closeMenu();
+	var controller = Alloy.createController("info", eval([json]));
+	Alloy.Globals.navController.open(controller);
 }
 
 function setCustomLearn(e) {
