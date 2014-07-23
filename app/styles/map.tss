@@ -11,6 +11,7 @@
 }
 
 "#mapScrollView":{
+	scrollType: "horizontal",
 	top: "50dip",
 	width: Ti.UI.SIZE,
 	showHorizontalScrollIndicator : true
