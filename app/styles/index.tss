@@ -30,14 +30,14 @@
 	bottom: "0dip",
 	left: "0dip",
 	width: "50%",
-	height: "50%"
+	height: "55%"
 }
 
 "#mapLink": {
 	bottom: "0dip",
 	right: "0dip",
 	width: "50%",
-	height: "50%"
+	height: "55%"
 }
 
 "#iconLink":{
