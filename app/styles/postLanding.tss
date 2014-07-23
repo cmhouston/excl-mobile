@@ -53,6 +53,7 @@
 "#insertName":{
 	hintText: 'Name',
 	keyboardType: Titanium.UI.KEYBOARD_DEFAULT,
+	returnKeyType:Titanium.UI.RETURNKEY_NEXT,
 	opacity: '1.0',
 	font: {
 		fontFamily: 'Helvetica Neue',
@@ -83,7 +84,8 @@
 
 "#insertEmail":{
 	hintText: 'Email',
-	keyboardType: Titanium.UI.KEYBOARD_DEFAULT,
+	keyboardType: Titanium.UI.KEYBOARD_EMAIL,
+	returnKeyType:Titanium.UI.RETURNKEY_NEXT,
 	opacity: '1.0',
 	font: {
 		fontFamily: 'Helvetica Neue',
@@ -119,6 +121,7 @@
 "#insertComment":{
 	hintText: 'Comment',
 	keyboardType: Titanium.UI.KEYBOARD_DEFAULT,
+	returnKeyType:Titanium.UI.RETURNKEY_DONE,
 	opacity: '1.0',
 	font: {
 		fontFamily: 'Helvetica Neue',
