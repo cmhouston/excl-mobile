@@ -4,7 +4,7 @@
 			<Widget src="navigationBar" id="navBar"/>
 		</View>
 		<View id="mainView">
-			<TextField id="insertText" top="10%" />
+			<TextField id="insertText" top="10%" backgroundColor="#4F6F8F" width="20%" />
 			<Button id="submitButton" onClick="textSubmitted" top="20%" title="Submit" />
 		</View>
 	</Window>

@@ -111,9 +111,10 @@ NavigationController.prototype.openWindow = function(windowToOpen) {
 	return windowToOpen;
 };
 
+
 NavigationController.prototype.prepWindowsWithFlyout = function(windowToOpen) {
-	windowToOpen.add(this.menu.getMenu());
-	removeMenuFromWindow(this.windowStack, this.menu);
+	windowToOpen.add(this.menu.getNewMenu());
+	//removeMenuFromWindow(this.windowStack, this.menu);
 };
 
 NavigationController.prototype.openHomeScreen = function(windowToOpen) {
@@ -164,7 +165,7 @@ NavigationController.prototype.addCloseEventListenersToWindow = function(windowT
 	var lastPushed = windowToOpen;
 	windowToOpen.addEventListener('close', function() {
 		Ti.API.info("In the close event listener for window: ", windowToOpen.toString());
-		self.menu.closeMenuWithoutAnimation();
+		
 		if (self.windowStack.length > 0) // don't pop the last Window, which is the base one
 		{
 			Ti.API.info("close event listener: window stack greater than 0");
@@ -225,12 +226,11 @@ NavigationController.prototype.home = function() {
 	removeMenuFromWindow(this.windowStack, this.menu);
 	this.closeMenuWithoutAnimation();
 	if (this.windowStack.length > 1 && this.windowStack[this.windowStack.length - 1] != this.lockedPage) {
-		// setup chain reaction by setting up the flags on all the windows
-		for (var i = this.windowStack.length - 1; this.windowStack[i-1] != this.lockedPage; i--) {
+		// setup chain reaction by setting up the flags on all the windows 	
+   		for (var i = this.windowStack.length - 1; this.windowStack[i-1] != this.lockedPage; i--) {
 			// set dependent window
 			this.windowStack[i].fireEvent('set.to.close', {win: this.windowStack[i - 1]});
        	}
-       	
         // start chain reaction, close first window
 		(this.navGroup) ? this.navGroup.closeWindow(this.windowStack[this.windowStack.length - 1], {animated : false}) : this.windowStack[this.windowStack.length - 1].close({animated : false});
 		this.analyticsTrackWindowScreen(this.windowStack[0]);
@@ -278,13 +278,13 @@ NavigationController.prototype.openTutorial = function(windowToOpen) {
 
 function addMenuToHomeWindow(windowStack, menu){
 	if(windowStack.length>0){
-		windowStack[0].add(menu.getMenu());
+		windowStack[0].add(menu.getNewMenu());
 	}
 }
 
 function addMenuToNextWindow(windowStack, menu){
 	if(windowStack.length>1){
-		windowStack[windowStack.length-2].add(menu.getMenu());
+		windowStack[windowStack.length-2].add(menu.getNewMenu());
 	}
 }
 

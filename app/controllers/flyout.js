@@ -20,7 +20,7 @@
 
 var args = arguments[0] || {};
 var APICalls = setPathForLibDirectory("customCalls/apiCalls");
-
+var json = Alloy.Globals.museumJSON;
 var ageFilterOn = Alloy.Models.app.get("customizeLearningEnabled");
 var ageFilterSet = Alloy.Models.app.get("customizeLearningSet");
 var viewService = setPathForLibDirectory('customCalls/viewService');
@@ -95,12 +95,15 @@ function openExhibitsPage(e) {
 }
 
 function openMapPage(e) {
-	Alloy.Globals.navController.open(Alloy.createController("map"));
-	closeMenu();
+		var controller = Alloy.createController("map", eval([json]));
+		Alloy.Globals.navController.open(controller);
+		closeMenu();
 }
 
 function openInfoPage(e) {
-	Alloy.Globals.navController.open(Alloy.createController("info"));
+
+	var controller = Alloy.createController("info", eval([json]));
+	Alloy.Globals.navController.open(controller);
 	closeMenu();
 }
 
@@ -162,10 +165,6 @@ function rowFilterEventListener() {
 }
 
 function tutorialToggler(e) {
-	//closeMenu(e);
-	//Alloy.Globals.navController.open(Alloy.createController("tutorialToggler"));
-	//Alloy.createController('tutorialToggler').getView().open();
-	//closeMenu(e);
 	if (!Alloy.Models.app.get("tutorialOn")) {
 		tutorialService.resetTutorialMode();
 		Alloy.Models.app.set("tutorialOn", true);

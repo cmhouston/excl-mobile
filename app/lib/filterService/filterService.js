@@ -26,6 +26,7 @@ viewService = new viewService();
 var allInclusiveFilter;
 var errorNoContent = "Sorry!\n\nLooks like we're still in the process of adding content here.\n\nCheck here later for new and exciting activities!";
 var errorFilterSelectionHasNoResults = "Your selected filters aren't returning any activities! Try selected some different ones.";
+var sectionScreenName = "";
 
 function setPathForLibDirectory(libFile) {
 	if ( typeof Titanium == 'undefined') {
@@ -290,14 +291,16 @@ filterService.prototype.addPostsToViewAccordingToSection = function(section, dic
 	if (section == allInclusiveFilter) {
 		if (JSON.stringify(collectionOfPosts) != "[]") {
 			postData = {
-				posts : collectionOfPosts
+				posts : collectionOfPosts,
+				parentScreenName: sectionScreenName		// TODO
 			};
 			filterService.prototype.addPostPreview(postData, parentObject);
 		}
 	} else {
 		if (JSON.stringify(collectionOfPosts) != "[]") {
 			postData = {
-				posts : collectionOfPosts
+				posts : collectionOfPosts,
+				parentScreenName: sectionScreenName		// TODO
 			};
 			filterService.prototype.addPostPreview(postData, parentObject);
 		} else {
@@ -310,6 +313,10 @@ filterService.prototype.addPostPreview = function(postData, parentObject) {
 	var postPreview = Alloy.createController('postPreview', postData);
 	var view = postPreview.getView();
 	parentObject.add(view);
+};
+
+filterService.prototype.setSectionScreenName = function(name){
+	sectionScreenName = name;
 };
 
 module.exports = filterService;

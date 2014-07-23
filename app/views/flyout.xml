@@ -10,7 +10,7 @@
 				</View>
 			</View>
 			
-			<View class="viewRow" onClick="openExhibitsPage">
+			<!-- <View class="viewRow" onClick="openExhibitsPage">
 				<View class="rowContainer">
 					<View backgroundImage= "/flyoutMenuIcons/exhibit.png" class="rowIcon"/>
 					<Label id="exhibitLabel" class="rowLabel">Exhibits</Label>
@@ -29,7 +29,7 @@
 					<View backgroundImage="/flyoutMenuIcons/info.png" class="rowIcon"/>
 					<Label id="museumInfoLabel" class="rowLabel">Info</Label>
 				</View>
-			</View>
+			</View> -->
 			
 			<!--View id="customLearnRow" class="viewRow" onClick="rowFilterEventListener" visible="false">
 				<View class="rowContainer">

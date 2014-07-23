@@ -22,7 +22,7 @@ var args = arguments[0] || {};
 
 var url = Alloy.Globals.rootWebServiceUrl;
 
-var json = args[0];
+var json = Alloy.Globals.museumJSON;
 
 var analyticsPageTitle = "Info";
 var analyticsPageLevel = "Information";

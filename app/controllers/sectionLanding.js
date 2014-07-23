@@ -23,12 +23,16 @@ var args = arguments[0] || {};
 var allPosts = eval(args[1]);
 var selectedSection = args[2];
 var sectionColor = args[3];
+var sectionScreenName = args[4];	
 
 var dataRetriever = setPathForLibDirectory('dataRetriever/dataRetriever');
 var loadingSpinner = setPathForLibDirectory('loadingSpinner/loadingSpinner');
 var spinner = new loadingSpinner();
 var filterService = setPathForLibDirectory('filterService/filterService');
 var filter = new filterService();
+
+// this line is use
+filter.setSectionScreenName(sectionScreenName);
 
 var dictOrderedPostsBySection = {};
 var dictOrderedPostsByFilter = {};

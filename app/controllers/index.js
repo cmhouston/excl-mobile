@@ -65,16 +65,31 @@ function setPathForLibDirectory(libFile) {
 };
 
 function openExhibits() {
-	addSpinner();
 	if(doneLoading){
+		addSpinner();
 		var controller = Alloy.createController("exhibitLanding", eval([json]));
 		controller.setAnalyticsPageTitle("Exhibit Landing");
 		Alloy.Globals.navController.open(controller);
-	}else
-	{
-		alert("Not Done Loading");
+		hideSpinner();
+	}		
+}
+
+function openMap() {
+	if(doneLoading){
+		addSpinner();
+		var controller = Alloy.createController("map", eval([json]));
+		Alloy.Globals.navController.open(controller);
+		hideSpinner();
 	}
-	hideSpinner();
+}
+
+function openInfo() {
+	if(doneLoading){
+		addSpinner();
+		var controller = Alloy.createController("info", eval([json]));
+		Alloy.Globals.navController.open(controller);
+		hideSpinner();
+	}
 }
 
 function addSpinner(){
@@ -86,27 +101,8 @@ function hideSpinner(){
 	spinner.hide();
 }
 
-function openMap() {
-	if(doneLoading){
-		var controller = Alloy.createController("map", eval([json]));
-		Alloy.Globals.navController.open(controller);
-	}else
-	{
-		alert("Not Done Loading");
-	}
-}
-
-function openInfo() {
-	if(doneLoading){
-		var controller = Alloy.createController("info", eval([json]));
-		Alloy.Globals.navController.open(controller);
-	}else
-	{
-		alert("Not Done Loading");
-	}
-}
-
 function retrieveJson(jsonURL) {
+	addSpinner();
 	dataRetriever.fetchDataFromUrl(jsonURL, function(returnedData) {
 		if (returnedData) {
 			json = returnedData;
@@ -125,6 +121,7 @@ function retrieveJson(jsonURL) {
 			if(jsonIconUrl) $.iconLink.image = jsonIconUrl;
 			
 			doneLoading = true;
+			hideSpinner();
 		}
 	});
 }
