@@ -29,6 +29,9 @@ ModeController.prototype.addAdminModeListener = function(element) {
 	var self = this;
 	var handleAdminModeEntry = function(e){
 		Titanium.Media.vibrate([0,200]);
+		var colorBackUp = element.backgroundColor;
+		element.backgroundColor = 'white';
+		setTimeout(function(){element.backgroundColor = colorBackUp;}, 25);
 		count += 100;
 		if (count === 100) {
 			setTimeout(function(){count = 0;}, 3000);
