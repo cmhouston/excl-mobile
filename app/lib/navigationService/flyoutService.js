@@ -3,13 +3,20 @@ var flyoutMenu;
 var time = 0;
 
 var flyoutService = {
-	getMenu: function(){
+	getNewMenu: function(){
 		Ti.API.info("Creating flyout menu");
-		if(!flyoutMenu){
-			flyoutMenu = Alloy.createController('flyout').getView();
-			flyoutMenu.zindex = 1;
-			time = 100;
+
+		if(flyoutMenu){
+//			flyoutMenu.close();
 		}
+		
+		flyoutMenu = Alloy.createController('flyout').getView();
+		flyoutMenu.zindex = 1;
+		time = 100;
+		
+		return flyoutMenu;
+	},	
+	getMenu: function(){
 		return flyoutMenu;
 	},
 	getOpenAnimation: function(){
@@ -19,6 +26,7 @@ var flyoutService = {
 			duration: time
 		};
 	},
+	
 	getCloseAnimation: function(){
 		return {
 			left: "100%",
@@ -28,18 +36,18 @@ var flyoutService = {
 	},
 	openMenu: function(){
 		if(this.isEnabled()){
-			this.getMenu().animate(this.getOpenAnimation());
+			flyoutMenu.animate(this.getOpenAnimation());
 			visible = true;
 		}
 		return visible;
 	},
 	closeMenu: function(){
-		this.getMenu().animate(this.getCloseAnimation());
+		flyoutMenu.animate(this.getCloseAnimation());
 		visible = false;
 		return visible;
 	},
 	closeMenuWithoutAnimation: function(){
-		this.getMenu().left = '100%';
+		flyoutMenu.left = '100%';
 		visible = false;
 		return visible;
 	},

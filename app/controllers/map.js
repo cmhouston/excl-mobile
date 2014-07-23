@@ -5,7 +5,8 @@ var analyticsPageLevel = "Information";
 
 var url = Alloy.Globals.rootWebServiceUrl;
 
-var json = args[0];
+//var json = args[0];
+var json = Alloy.Globals.museumJSON;
 
 var setAnalyticsPageTitle = function(title) {
 	analyticsPageTitle = title;
