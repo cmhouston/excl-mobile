@@ -1,6 +1,8 @@
 var args = arguments[0] || {};
 
 var json = args[0];
+Ti.API.info( 'Exhibit landing initialized with: ' + json );
+
 var loadingSpinner = setPathForLibDirectory('loadingSpinner/loadingSpinner');
 var spinner = new loadingSpinner();
 
