@@ -124,6 +124,8 @@ function addCommentingButton(json, row, iconList, objectArgs) {
 			$.thankYouMessageView.visible = false;
 			$.scroller.scrollTo(0, 0);
 			$.scroller.scrollingEnabled = false;
+			$.submitYourCommentLabel.text = "Submit Your Comment";
+			formatCommentBoxForIpad();
 		});
 
 		$.thankYouMessageView.addEventListener('click', function(e) {
@@ -610,10 +612,6 @@ function sendComment(commentButton) {
 	});
 	dataRetriever.sendJsonToUrl(url, jsonToSend, function(returnedData) {
 		setCommentSubmittedMessage();
-		if (Titanium.Platform.osname == "ipad") {
-			$.whiteCommentBox.height = "50%";
-			$.whiteCommentBox.width = "50%";
-		}
 		hideSpinner();
 	});
 	setCommentIconReady(commentButton);

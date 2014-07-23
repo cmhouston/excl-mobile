@@ -69,7 +69,8 @@
 	borderWidth: '1',
 	borderColor: 'black',
 	clearOnEdit: false,
-	paddingLeft: "5dip"
+	paddingLeft: "5dip",
+	tintColor: "black"
 }
 
 "#insertNameDisclaimer":{
@@ -101,7 +102,8 @@
 	borderColor: 'black',
 	clearOnEdit: false,
 	paddingLeft: "5dip",
-	top: '3%'
+	top: '3%',
+	tintColor: "black"
 }
 
 "#insertEmailDisclaimer":{
@@ -137,7 +139,8 @@
 	borderColor: 'black',
 	clearOnEdit: false,
 	paddingLeft: "5dip",
-	top: '3%'
+	top: '3%',
+	tintColor: "black"
 }
 
 "#submitButton":{
