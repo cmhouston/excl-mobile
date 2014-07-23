@@ -165,9 +165,9 @@ function addEvent(view, title, rawJson) {
 }
 
 function openSection(view, title, rawJson) {
-	var controller = Alloy.createController('sectionLanding', eval([args[0], rawJson["posts"], title, view.backgroundColor]));
 	var analyticsTitle = getAnalyticsPageTitle() + '/' + title;
 	var analyticsLevel = "Section Landing";
+	var controller = Alloy.createController('sectionLanding', eval([args[0], rawJson["posts"], title, view.backgroundColor, analyticsTitle]));
 	controller.setAnalyticsPageTitle(analyticsTitle);
 	controller.setAnalyticsPageLevel(analyticsLevel);
 	Alloy.Globals.navController.open(controller);
