@@ -371,6 +371,8 @@ function creatingCommentTextHeading() {
 		$.submitCommentFormView.visible = true;
 		$.insertName.value = $.insertEmail.value = $.insertComment.value = "";
 		$.thankYouMessageView.visible = false;
+		$.scroller.scrollTo(0, 0);
+		$.scroller.scrollingEnabled = false;
 	});
 	row.add(commentHeading);
 	tableData.push(row);
@@ -488,10 +490,10 @@ function displayComments(comments) {
 		};
 		var text = labelService.createCustomLabel(objectArgs);
 		if (Titanium.Platform.osname == "ipad") {
-		text.font = {
-			fontSize : "20dip"
-		};
-	}
+			text.font = {
+				fontSize : "20dip"
+			};
+		}
 		row.add(text);
 
 		// if clicked, hide it and show the other comments
@@ -651,21 +653,21 @@ function initializePage() {
 
 function getRowFromPart(part) {
 	switch (part.get('type')) {
-	case 'image':
-		return getImageRowFromPart(part);
-		break;
-	case 'text':
-		return getTextRowFromPart(part);
-		break;
-	case 'video':
-		return getVideoRowFromPart(part);
-		break;
-	case 'rich':
-		return getRichTextRowFromPart(part);
-		break;
-	default:
-		return null;
-		break;
+		case 'image':
+			return getImageRowFromPart(part);
+			break;
+		case 'text':
+			return getTextRowFromPart(part);
+			break;
+		case 'video':
+			return getVideoRowFromPart(part);
+			break;
+		case 'rich':
+			return getRichTextRowFromPart(part);
+			break;
+		default:
+			return null;
+			break;
 	}
 }
 
