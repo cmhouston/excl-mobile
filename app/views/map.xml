@@ -4,8 +4,8 @@
 			<Widget id="navBar" src="navigationBar"/>
 		</View>
 		<ScrollView id = "mapScrollView">
-			<WebView id="mapView">
-			</WebView>
+			<!-- <WebView id="mapView">
+			</WebView> -->
 		</ScrollView>
 	</Window>
 </Alloy>
