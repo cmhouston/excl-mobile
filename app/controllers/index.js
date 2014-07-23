@@ -120,17 +120,19 @@ function enableMenuButtons() {
 
 function formatObjectSizes() {
 	var font = {
-		"fontFamily" : 'KGSummerSunshineShadow'
+		//"fontFamily" : 'KGSummerSunshineShadow'
+		fontWeight : "bold"
 	};
+	
 
 	if (Titanium.Platform.osname == "ipad"){		
-		font["fontSize"] = "70dp";
+		font["fontSize"] = "85dp";
 		$.exhibitsLabel.font = font;
 		$.mapLabel.font = font;
 		$.infoLabel.font = font;
 
 	} else {
-		font["fontSize"] = "35dp";
+		font["fontSize"] = "45dp";
 		$.exhibitsLabel.font = font;
 		$.mapLabel.font = font;
 		$.infoLabel.font = font;
