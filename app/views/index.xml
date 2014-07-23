@@ -2,21 +2,17 @@
 	<Window class="container">
 		<View id="mainView">
 			<View id="homeContent">
-				<ImageView id="homeImage"></ImageView>
-				
-				<View id="exhibitsLink" >
-					<Label id="exhibitsLabel" class="homepageLabel"></Label>
+				<ImageView id="homeImage"/>
+				<View id="exhibitsLink">
+					<Label id="exhibitsLabel" class="homepageLabel"/>
 				</View>
-				
 				<View id="mapLink">
-					<Label id="mapLabel" class="homepageLabel"></Label>
+					<Label id="mapLabel" class="homepageLabel"/>
 				</View>
-				
-				<View id="infoLink"  >
-					<Label id="infoLabel" class="homepageLabel"></Label>
+				<View id="infoLink">
+					<Label id="infoLabel" class="homepageLabel"/>
 				</View>
-					
-				<ImageView id="iconLink"></ImageView>	
+				<ImageView id="iconLink"/>
 			</View>
 		</View>
 	</Window>
