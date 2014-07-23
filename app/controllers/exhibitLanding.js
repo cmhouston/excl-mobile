@@ -17,9 +17,10 @@ var componentsInExhibit = [];
 var currExhibitId;
 var expanderButton;
 
-/**
- * Analytics Specific Information
- */
+var defaultComponentHeight = "210dip";
+var ipadComponentHeight = "375dip";
+
+//Analytics Specific Information -------------------
 var analyticsPageTitle = "Exhibit Landing";
 var analyticsPageLevel = "Exhibit Landing";
 
@@ -69,7 +70,10 @@ function hideSpinner() {
 
 function fixIpadSpacing() {
 	if (Titanium.Platform.osname == 'ipad') {
-		$.bottomButtonContainer.bottom = "48dip";
+		$.exhibitSelect.bottom = "30dip";
+		$.exhibitSelectLabel.font = {
+			fontSize : "25dip"
+		};
 	}
 }
 
@@ -127,7 +131,6 @@ function populateWindow(json) {
 
 function createExhibitsCarousel(exhibits) {
 	$.exhibitsCarousel.removeView($.placeholder);
-	// This is an android hack
 	for ( i = 0; i < exhibits.length; i++) {
 		exhibitText[i] = exhibits[i].long_description;
 		var exhibitView;
@@ -247,16 +250,13 @@ function createExhibitTitleLabel(name, pageXofYtext) {
 	return titleLabelView;
 }
 
-function createTitleLabel(name, type, pageXofYtext) {
+function createTitleLabel(name, textSize, pageXofYtext) {
 	var titleLabel = Ti.UI.createView({
 		backgroundColor : 'black',
 		opacity : 0.6,
 		height : '15%',
 		top : 0
 	});
-	if (Titanium.Platform.osname == "ipad") {
-		titleLabel.height = "20%";
-	}
 
 	var label = Ti.UI.createLabel({
 		text : name,
@@ -265,14 +265,16 @@ function createTitleLabel(name, type, pageXofYtext) {
 		color : 'white',
 		font : {
 			fontFamily : 'Arial',
-			fontSize : type,
+			fontSize : textSize,
 			fontWeight : 'bold'
 		}
 	});
 	if (Titanium.Platform.osname == "ipad") {
 		label.font = {
-			fontSize : "25dip"
+			fontSize : "27dip",
+			fontWeight : "bold"
 		};
+		titleLabel.height = Ti.UI.SIZE;
 	}
 	titleLabel.add(label);
 
@@ -309,6 +311,7 @@ function createcollapsibleComponentView() {
 }
 
 function onExhibitsClick(exhibits) {
+	$.exhibitInfoScrollView.scrollTo(0,0);
 	if ($.collapsibleComponentView.hidden == true) {
 		$.collapsibleComponentView.hidden = false;
 		var pageIndex = $.exhibitsCarousel.currentPage;
@@ -322,7 +325,7 @@ function onExhibitsClick(exhibits) {
 				fontSize : "25dip"
 			};
 		}
-		$.headingLabel.text = "Select an Activity!";
+		$.headingLabel.text = "Select an Activity from Below!";
 		if (Titanium.Platform.osname == "ipad") {
 			$.headingLabel.font = {
 				fontSize : "30dip",
@@ -330,35 +333,41 @@ function onExhibitsClick(exhibits) {
 			};
 		}
 
-		$.exhibitInfoView.animate({
+		$.exhibitInfoScrollView.animate({
 			opacity : 0,
 			duration : 300
 		});
 
 		var slideOut = Ti.UI.createAnimation({
-			height : '210dip',
+			height : defaultComponentHeight,
 			duration : 300,
 			curve : Titanium.UI.ANIMATION_CURVE_EASE_IN_OUT
 		});
+		if (Titanium.Platform.osname == "ipad") {
+			slideOut.height = ipadComponentHeight;
+		}
 
 		setTimeout(function() {
-			$.exhibitInfoView.height = 0;
+			$.exhibitInfoScrollView.height = 0;
 		}, 300);
 
-		$.collapsibleComponentView.height = '210dip';
+		$.collapsibleComponentView.height = defaultComponentHeight;
+		if (Titanium.Platform.osname == "ipad") {
+			$.collapsibleComponentView.height = ipadComponentHeight;
+		}
 		$.collapsibleComponentView.animate(slideOut);
 	} else {
 		$.collapsibleComponentView.hidden = true;
 		$.headingLabel.text = exhibits[$.exhibitsCarousel.currentPage].name;
 		$.exhibitSelectLabel.text = "Explore This Exhibition!";
-		$.exhibitInfoView.animate({
+		$.exhibitInfoScrollView.animate({
 			opacity : 1,
 			duration : 300
 		});
 
-		$.exhibitInfoView.height = Ti.UI.SIZE;
+		$.exhibitInfoScrollView.height = Ti.UI.SIZE;
 		setTimeout(function() {
-			$.exhibitInfoView.height = Ti.UI.SIZE;
+			$.exhibitInfoScrollView.height = Ti.UI.SIZE;
 		}, 300);
 
 		var slideIn = Ti.UI.createAnimation({
@@ -379,10 +388,10 @@ function onExhibitsScroll(e, exhibits) {
 	$.headingLabel.text = exhibits[index].name;
 	$.exhibitInfoLabel.text = exhibits[index].long_description;
 	$.exhibitSelectLabel.text = "Explore This Exhibition!";
-	$.exhibitInfoView.height = Ti.UI.SIZE;
-	$.exhibitInfoView.animate({
-		opacity : 1,
-		duration : 150
+	$.exhibitInfoScrollView.animate({
+		opacity : "1",
+		duration : "150",
+		height: Ti.UI.FILL
 	});
 
 	$.collapsibleComponentView.animate({
@@ -391,6 +400,8 @@ function onExhibitsScroll(e, exhibits) {
 		curve : Titanium.UI.ANIMATION_CURVE_EASE_IN_OUT
 	});
 	$.collapsibleComponentView.hidden = true;
+	$.exhibitInfoScrollView.height = Ti.UI.FILL;
+	$.exhibitInfoScrollView.scrollTo(0,0);
 }
 
 function createComponentsScrollView(exhibits) {
@@ -400,16 +411,20 @@ function createComponentsScrollView(exhibits) {
 		componentsInExhibit[exhibits[i].id] = Ti.UI.createView({
 			layout : 'horizontal',
 			horizontalWrap : false,
-			width : Ti.UI.SIZE
+			width : Ti.UI.SIZE,
+			height : defaultComponentHeight
 		});
-
+		if (Titanium.Platform.osname == "ipad") {
+			componentsInExhibit[exhibits[i].id].height = ipadComponentHeight;
+		}
 		for (var j = 0; j < exhibits[i].components.length; j++) {
-			var component = createLabeledPicView(exhibits[i].components[j], '15dip');
-
-			component.left = 3;
+			var component = createLabeledPicView(exhibits[i].components[j], '20dip');
+			component.left = "3dip";
 			component.width = '300dip';
+			if (Titanium.Platform.osname == "ipad") {
+				component.width = "550dip";
+			}
 			component.id = exhibits[i].components[j].id;
-			var myCustomVar = "Hey";
 			component.addEventListener('click', (function(image) {
 				return function(e) {
 					return openComponent(e, image);
@@ -435,7 +450,7 @@ function openComponent(e, componentImageUrl) {
 	Alloy.Globals.navController.open(controller);
 }
 
-function createLabeledPicView(item, type) {
+function createLabeledPicView(item, textSize) {
 	var itemContainer = Ti.UI.createView();
 	var image = Ti.UI.createImageView({
 		height : '100%',
@@ -447,7 +462,7 @@ function createLabeledPicView(item, type) {
 	image.image = item.image;
 
 	itemContainer.add(image);
-	itemContainer.add(createTitleLabel(item.name, type));
+	itemContainer.add(createTitleLabel(item.name, textSize));
 	itemContainer.add(clickCatcher);
 	return itemContainer;
 }
