@@ -53,18 +53,17 @@
 
 "#exhibitSelect": {
 	bottom: 0,
-	height: Ti.UI.SIZE,
+	height: "35dip",
 	backgroundColor: 'white'
 }
 
 "#exhibitSelectLabel": {
 	top: "5dip",
 	bottom: "5dip",
-	height: Ti.UI.SIZE,
-	borderRadius: "20dip",
+	height: "25dip",
 	backgroundColor: "#253342",
-	width: "70%",
-	left: "15%",
+	width: "80%",
+	left: "10%",
 	borderWidth: '0',
 	backgroundGradient: {
 		type: 'linear',
