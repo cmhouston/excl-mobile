@@ -49,7 +49,6 @@ $.onExitKioskMode = function() {
 	$.navBar.onExitKioskMode();
 };
 
-
 function setPathForLibDirectory(libFile) {
 	if ( typeof Titanium == 'undefined') {
 		lib = require("../../lib/" + libFile);
@@ -224,6 +223,11 @@ function createExhibitTitleLabel(name, pageXofYtext) {
 			fontWeight : 'bold'
 		}
 	});
+	if (Titanium.Platform.osname == "ipad") {
+		label.font = {
+			fontSize : "30dip"
+		};
+	}
 	titleLabelView.add(label);
 
 	if (pageXofYtext) {
@@ -252,7 +256,11 @@ function createTitleLabel(name, type, pageXofYtext) {
 		height : '15%',
 		top : 0
 	});
-	//$.addClass(exhibitImages[i], "exhibitTitleShadow");
+	if (Titanium.Platform.osname == "ipad") {
+		titleLabel.font = {
+			fontSize : "30dip"
+		};
+	}
 
 	var label = Ti.UI.createLabel({
 		text : name,
@@ -265,7 +273,11 @@ function createTitleLabel(name, type, pageXofYtext) {
 			fontWeight : 'bold'
 		}
 	});
-	//$.addClass(label, "myLabel");
+	if (Titanium.Platform.osname == "ipad") {
+		titleLabel.font = {
+			fontSize : "25dip"
+		};
+	}
 	titleLabel.add(label);
 
 	if (pageXofYtext) {
@@ -305,8 +317,19 @@ function onExhibitsClick(exhibits) {
 		$.collapsibleComponentView.hidden = false;
 		var pageIndex = $.exhibitsCarousel.currentPage;
 		$.exhibitSelectLabel.text = "Back to Description";
+
 		$.exhibitInfoLabel.text = exhibits[pageIndex].long_description;
+		if (Titanium.Platform.osname == "ipad") {
+			$.exhibitInfoLabel.font = {
+				fontSize : "25dip"
+			};
+		}
 		$.headingLabel.text = "Select an Activity!";
+		if (Titanium.Platform.osname == "ipad") {
+			$.headingLabel.font = {
+				fontSize : "30dip"
+			};
+		}
 
 		$.exhibitInfoView.animate({
 			opacity : 0,
@@ -345,7 +368,7 @@ function onExhibitsClick(exhibits) {
 			curve : Titanium.UI.ANIMATION_CURVE_EASE_IN_OUT
 		});
 		$.collapsibleComponentView.animate(slideIn);
-		
+
 	}
 }
 

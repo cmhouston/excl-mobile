@@ -295,6 +295,11 @@ function getTextRowFromPart(part) {
 		text : part.get('body'),
 	};
 	var textBody = labelService.createCustomLabel(objectArgs);
+	if (Titanium.Platform.osname == "ipad") {
+		textBody.font = {
+			fontSize : "25dip"
+		};
+	}
 	row.add(textBody);
 	return row;
 }
@@ -352,6 +357,11 @@ function creatingCommentTextHeading() {
 		borderColor : '#aaa'
 	};
 	var commentHeading = labelService.createCustomLabel(objectArgs);
+	if (Titanium.Platform.osname == "ipad") {
+		commentHeading.font = {
+			fontSize : "30dip"
+		};
+	}
 	row.addEventListener('click', function(e) {
 		$.addNewCommentContainer.visible = ($.addNewCommentContainer.visible) ? false : true;
 		$.whiteCommentBox.visible = ($.whiteCommentBox.visible) ? false : true;
@@ -378,8 +388,13 @@ function displayThereAreNoCommentsToDisplayText() {
 		},
 		text : "There are no comments for this post"
 	};
-	var commentHeading = labelService.createCustomLabel(objectArgs);
-	row.add(commentHeading);
+	var noCommentText = labelService.createCustomLabel(objectArgs);
+	if (Titanium.Platform.osname == "ipad") {
+		noCommentText.font = {
+			fontSize : "25dip"
+		};
+	}
+	row.add(noCommentText);
 	tableData.push(row);
 }
 
@@ -408,6 +423,11 @@ function createCommentText(commentText) {
 		text : commentText
 	};
 	var text = labelService.createCustomLabel(objectArgs);
+	if (Titanium.Platform.osname == "ipad") {
+		text.font = {
+			fontSize : "25dip"
+		};
+	}
 	row.add(text);
 	tableData.push(row);
 }
@@ -427,6 +447,11 @@ function createCommentDate(commentDate) {
 		text : commentDate
 	};
 	var date = labelService.createCustomLabel(objectArgs);
+	if (Titanium.Platform.osname == "ipad") {
+		date.font = {
+			fontSize : "17dip"
+		};
+	}
 	row.add(date);
 	tableData.push(row);
 }
@@ -459,6 +484,11 @@ function displayComments(comments) {
 			textAlign : 'center'
 		};
 		var text = labelService.createCustomLabel(objectArgs);
+		if (Titanium.Platform.osname == "ipad") {
+		text.font = {
+			fontSize : "20dip"
+		};
+	}
 		row.add(text);
 
 		// if clicked, hide it and show the other comments

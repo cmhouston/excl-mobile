@@ -89,6 +89,11 @@ function createPostView(post) {
 		}
 	};
 	var headerText = labelService.createCustomLabel(args);
+	if (Titanium.Platform.osname == "ipad") {
+		headerText.font = {
+			fontSize : "30dip"
+		};
+	}
 
 	args = {
 		layout : "horizonal",
@@ -130,11 +135,6 @@ function createPostView(post) {
 	if (!postImage.image){
 		iconService.setIcon(postImage, "placeholder.png");
 	}
-	// if (Titanium.Platform.osname == "ipad") {
-		// postImage.height = "240dip";
-	// } else {
-		// postImage.height = "165dip";
-	// }
 
 	args = {
 		left : "46%",
@@ -144,8 +144,15 @@ function createPostView(post) {
 			fontSize : "16dip",
 			color : "#000000"
 		},
+		top: "10%",
+		height: "70%"
 	};
 	var postText = labelService.createCustomLabel(args);
+	if (Titanium.Platform.osname == "ipad") {
+		postText.font = {
+			fontSize : "25dip"
+		};
+	}
 	if (!postText.text){
 		postText.text = "Click here to dive in to this activity!";
 	}

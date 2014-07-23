@@ -75,7 +75,7 @@ function detectEventSet() {
 function detectEventEnabled() {
 	filterOn = Alloy.Models.app.get("customizeLearningEnabled");
 	//Ti.API.info("Filter Status 2: " + JSON.stringify(Alloy.Collections.filter));
-	Ti.API.info("Filter Detected (Comp): set: " + filterSet + ", on: " + filterOn);
+	//Ti.API.info("Filter Detected (Comp): set: " + filterSet + ", on: " + filterOn);
 	retrieveComponentData();
 	changeTitleOfThePage(selectedSection, sectionColor);
 }
