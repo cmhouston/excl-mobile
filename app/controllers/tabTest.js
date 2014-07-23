@@ -6,6 +6,8 @@ var colorArrayCounter = 0;
 
 function textSubmitted() {
 	Ti.API.info($.insertText.value);
+	colorArrayCounter = 0;
+	$.insertText.blur();
 	insertXNumberOfButtons(parseInt($.insertText.value));
 }
 
