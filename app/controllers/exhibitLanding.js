@@ -19,7 +19,7 @@ var componentsInExhibit = [];
 var currExhibitId;
 var expanderButton;
 
-var defaultComponentHeight = "210dip";
+var defaultComponentHeight = "190dip";
 var ipadComponentHeight = "375dip";
 
 //Analytics Specific Information -------------------
@@ -422,9 +422,9 @@ function createComponentsScrollView(exhibits) {
 		for (var j = 0; j < exhibits[i].components.length; j++) {
 			var component = createLabeledPicView(exhibits[i].components[j], '20dip');
 			component.left = "3dip";
-			component.width = '300dip';
+			component.width = '275dip';
 			if (Titanium.Platform.osname == "ipad") {
-				component.width = "550dip";
+				component.width = "500dip";
 			}
 			component.id = exhibits[i].components[j].id;
 			component.addEventListener('click', (function(image) {
