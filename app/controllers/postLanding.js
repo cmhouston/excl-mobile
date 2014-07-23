@@ -77,6 +77,8 @@ function createPlainRowWithHeight(rowHeight) {
 function fixPageSpacing() {
 	if (OS_IOS) {
 		$.tableView.bottom = "48dip";
+	} else {
+		$.tableView.bottom = "10dip";
 	}
 }
 
@@ -332,11 +334,6 @@ function getRichTextRowFromPart(part) {
 
 function addTableDataToTheView(tableData) {
 	$.tableView.height = Ti.UI.FILL;
-	if (OS_IOS) {
-		//Accounts for bounce buffer
-		$.tableView.bottom = "48dip";
-	}
-	$.tableView.bottom = "10dip";
 	// some extra margin after comments are displayed
 	$.tableView.data = tableData;
 	fixPageSpacing();
@@ -432,8 +429,7 @@ function createCommentText(commentText) {
 			fontSize : '13dp',
 			fontWeight : 'normal',
 		},
-		text : commentText,
-		backgroundColor : "red"
+		text : commentText
 	};
 	var text = labelService.createCustomLabel(objectArgs);
 	if (Titanium.Platform.osname == "ipad") {
@@ -652,7 +648,6 @@ function initializePage() {
 	}
 	addTableDataToTheView(tableData);
 	formatCommentBoxForIpad();
-	fixPageSpacing();
 }
 
 function formatCommentBoxForIpad() {

@@ -15,16 +15,20 @@
 
 ".boldLabel":{
 	left: "5%",
+	color: "#000000",
 	font:
 	{
-		fontWeight: "bold"
+		fontWeight: "bold",
+		color: "#000000"
 	}
 }
 
 "#currentEnvironLabel":{
 	left: "5%",
+	color: "#000000",
 	font: {
-		fontSize: "15dip"
+		fontSize: "15dip",
+		color: "#000000"
 	}
 }
 
@@ -41,10 +45,12 @@
 ".title":{
 	top: "5%",
 	bottom: "5%",
+	color: "#000000",
 	font:
 	{
 		fontSize: "15dip",
-		fontWeight: "bold"
+		fontWeight: "bold",
+		color: "#000000"
 	},
 	height: Ti.UI.SIZE
 }
