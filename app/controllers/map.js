@@ -26,19 +26,19 @@ exports.getAnalyticsPageLevel = getAnalyticsPageLevel;
 
 $.navBar.setPageTitle("Map");
 
-function insertInfoPicture() {
+// function insertMapPicture() {
 
-	var view = Titanium.UI.createView({
-		height : '100%',
-		left : '6dip',
-		right : '6dip',
-		top : '10dip',
-		bottom : '20dip',
-		layout : 'vertical'
-	});
+	// var view = Titanium.UI.createView({
+		// height : '100%',
+		// left : '6dip',
+		// right : '6dip',
+		// top : '10dip',
+		// bottom : '20dip',
+		// layout : 'vertical'
+	// });
 
 	var image = Ti.UI.createImageView({
-		image : "http://excl.dreamhosters.com/dev/wp-content/uploads/2014/06/cmhmap.png",
+		image : json.data.museum.map,
 		backgroundColor:'transparent', 
 		width : '100%',
 		height : '100%'
@@ -49,14 +49,14 @@ function insertInfoPicture() {
 		// image.transform = t; 
 		// });
 
-	view.add(image);
+	//view.add(image);
 
 	$.mapView.add(image);
 	//$.mapView.height = "auto";
 
-}
-
-insertInfoPicture();
+// }
+// 
+// insertMapPicture();
 
 //$.mapImage.html = json.data.museum.map;
 
