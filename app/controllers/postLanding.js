@@ -95,7 +95,6 @@ function setPageTitle(name) {
  * Adds sharing buttons
  */
 function displaySocialMediaButtons(json) {
-	var row = createPlainRowWithHeight('auto');
 	var row = createPlainRowWithHeight(Ti.UI.FILL);
 	var iconList = [];
 	var objectArgs = {
@@ -294,7 +293,7 @@ function getVideoRowFromPartiOS(part) {
 }
 
 function getTextRowFromPart(part) {
-	var row = createPlainRowWithHeight(Ti.UI.FILL);
+	var row = createPlainRowWithHeight(Ti.UI.SIZE);
 	var objectArgs = {
 		width : '94%',
 		right : '3%',
@@ -318,7 +317,7 @@ function getTextRowFromPart(part) {
 }
 
 function getRichTextRowFromPart(part) {
-	var row = createPlainRowWithHeight(Ti.UI.FILL);
+	var row = createPlainRowWithHeight(Ti.UI.SIZE);
 	var richText = part.get("rich");
 	if (richText) {
 		var webView = Ti.UI.createWebView({
@@ -384,7 +383,7 @@ function creatingCommentTextHeading() {
 }
 
 function displayThereAreNoCommentsToDisplayText() {
-	var row = createPlainRowWithHeight(Ti.UI.FILL);
+	var row = createPlainRowWithHeight(Ti.UI.SIZE);
 	var objectArgs = {
 		top : "10dip",
 		width : '94%',
@@ -415,7 +414,7 @@ function addCommentToView(commentText, commentDate) {
 }
 
 function createCommentText(commentText) {
-	var row = createPlainRowWithHeight(Ti.UI.FILL);
+	var row = createPlainRowWithHeight(Ti.UI.SIZE);
 	if (OS_ANDROID) {
 		row.top = "10%";
 	}
@@ -443,7 +442,7 @@ function createCommentText(commentText) {
 }
 
 function createCommentDate(commentDate) {
-	var row = createPlainRowWithHeight(Ti.UI.FILL);
+	var row = createPlainRowWithHeight(Ti.UI.SIZE);
 	var objectArgs = {
 		width : '94%',
 		right : '3%',

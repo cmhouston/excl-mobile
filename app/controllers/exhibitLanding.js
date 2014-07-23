@@ -1,7 +1,7 @@
 var args = arguments[0] || {};
 
 var json = Alloy.Globals.museumJSON;
-Ti.API.info( 'Exhibit landing initialized with: ' + json );
+Ti.API.info('Exhibit landing initialized with: ' + json);
 
 var loadingSpinner = setPathForLibDirectory('loadingSpinner/loadingSpinner');
 var addLoadingMessage = false;
@@ -322,7 +322,7 @@ function createcollapsibleComponentView() {
 }
 
 function onExhibitsClick(exhibits) {
-	$.exhibitInfoScrollView.scrollTo(0,0);
+	$.exhibitInfoScrollView.scrollTo(0, 0);
 	if ($.collapsibleComponentView.hidden == true) {
 		$.collapsibleComponentView.hidden = false;
 		var pageIndex = $.exhibitsCarousel.currentPage;
@@ -375,7 +375,6 @@ function onExhibitsClick(exhibits) {
 			opacity : 1,
 			duration : 300
 		});
-
 		$.exhibitInfoScrollView.height = Ti.UI.SIZE;
 		setTimeout(function() {
 			$.exhibitInfoScrollView.height = Ti.UI.SIZE;
@@ -387,32 +386,35 @@ function onExhibitsClick(exhibits) {
 			curve : Titanium.UI.ANIMATION_CURVE_EASE_IN_OUT
 		});
 		$.collapsibleComponentView.animate(slideIn);
-
 	}
 }
 
 function onExhibitsScroll(e, exhibits) {
 	componentsInExhibit[currExhibitId].width = 0;
 	componentsInExhibit[e.view.itemId].width = Ti.UI.SIZE;
+	$.collapsibleComponentView.hidden = true;
+	$.exhibitSelectLabel.text = "Explore This Exhibition!";
 	currExhibitId = e.view.itemId;
 	var index = $.exhibitsCarousel.currentPage;
 	$.headingLabel.text = exhibits[index].name;
 	$.exhibitInfoLabel.text = exhibits[index].long_description;
-	$.exhibitSelectLabel.text = "Explore This Exhibition!";
 	$.exhibitInfoScrollView.animate({
-		opacity : "1",
-		duration : "150",
-		height: Ti.UI.FILL
+		opacity : 1,
+		duration : 300
 	});
+	$.exhibitInfoScrollView.height = Ti.UI.SIZE;
+	setTimeout(function() {
+		$.exhibitInfoScrollView.height = Ti.UI.SIZE;
+	}, 300);
 
-	$.collapsibleComponentView.animate({
-		height : 0,
-		duration : 150,
+	var slideIn = Ti.UI.createAnimation({
+		height : '0dip',
+		duration : 300,
 		curve : Titanium.UI.ANIMATION_CURVE_EASE_IN_OUT
 	});
-	$.collapsibleComponentView.hidden = true;
-	$.exhibitInfoScrollView.height = Ti.UI.FILL;
-	$.exhibitInfoScrollView.scrollTo(0,0);
+	$.collapsibleComponentView.animate(slideIn);
+
+	$.exhibitInfoScrollView.scrollTo(0, 0);
 }
 
 function createComponentsScrollView(exhibits) {
