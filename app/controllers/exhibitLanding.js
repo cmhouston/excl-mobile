@@ -1,6 +1,6 @@
 var args = arguments[0] || {};
 
-var json = args[0];
+var json = Alloy.Globals.museumJSON;
 Ti.API.info( 'Exhibit landing initialized with: ' + json );
 
 var loadingSpinner = setPathForLibDirectory('loadingSpinner/loadingSpinner');

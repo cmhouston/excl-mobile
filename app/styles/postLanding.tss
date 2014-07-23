@@ -30,7 +30,7 @@
 
 "#whiteCommentBox":{
 	backgroundColor: 'white',
-	height:'390dip',
+	height:'430dip',
 	width:'260dip',
 	top: '5%',
 	opacity: '1.0',
@@ -60,7 +60,7 @@
 		fontWeight: 'normal'
 	},
 	color: 'black',
-	top: '17%',
+	top: '15%',
 	left: '7%',
 	width: '85%',
 	height: '10%',
@@ -74,7 +74,7 @@
 "#insertNameDisclaimer":{
 	font: {
 		fontFamily: 'Helvetica Neue',
-		fontSize: '16dip',
+		fontSize: '12dip',
 		fontWeight: 'normal'
 	},
 	color: 'black',
@@ -98,13 +98,14 @@
 	borderWidth: '1',
 	borderColor: 'black',
 	clearOnEdit: false,
-	paddingLeft: "5dip"
+	paddingLeft: "5dip",
+	top: '3%'
 }
 
 "#insertEmailDisclaimer":{
 	font: {
 		fontFamily: 'Helvetica Neue',
-		fontSize: '16dip',
+		fontSize: '12dip',
 		fontWeight: 'normal'
 	},
 	color: 'black',
@@ -128,11 +129,12 @@
 	backgroundColor: '#f2f2f2',
 	left: '7%',
 	width: '85%',
-	height: '40%',
+	height: '35%',
 	borderWidth: '1',
 	borderColor: 'black',
 	clearOnEdit: false,
-	paddingLeft: "5dip"
+	paddingLeft: "5dip",
+	top: '3%'
 }
 
 "#submitButton":{
@@ -167,7 +169,7 @@
 
 "#buttonView":{
 	layout: "horizontal",
-	top: "2%",
+	top: "3%",
 	height: "10%",
 	width: "85%"
 }
