@@ -2,21 +2,15 @@
 	<Window id="postLanding" class="container" backgroundColor='#FFFFFF'>
 		<View id="postLandingView" layout="vertical">
 			<Widget src="navigationBar" id="navBar"/>
-			<ScrollView id="scroller">
-				<TableView id="tableView" >
-				</TableView>
-				<View id="addNewCommentContainer">
-				</View>
+			<ScrollView id="scroller" backgroundColo = "red">
+				<TableView id="tableView"/>
+				<View id="addNewCommentContainer"></View>
 				<View id="whiteCommentBox">
 					<View id="submitCommentFormView">
 						<TextField id="insertName" />
-						<Label id="insertNameDisclaimer">
-							Name is optional and won't be shared
-						</Label>
+						<Label id="insertNameDisclaimer">*Optional and won't be shared</Label>
 						<TextField id="insertEmail" />
-						<Label id="insertEmailDisclaimer">
-							Email is optional and won't be shared
-						</Label>
+						<Label id="insertEmailDisclaimer">*Optional and won't be shared</Label>
 						<TextArea id="insertComment"/>
 						<View id="buttonView">
 							<Button id="submitButton" />
@@ -26,9 +20,7 @@
 					<View id="thankYouMessageView">
 						<Label id = "thankYouMessageComment" class="thankYouMessageComment" top="30%"/>
 					</View>
-					<Label id="submitYourCommentLabel">
-						Submit your comment
-					</Label>
+					<Label id="submitYourCommentLabel">Submit Your Comment</Label>
 				</View>
 			</ScrollView>
 		</View>

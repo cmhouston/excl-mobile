@@ -30,9 +30,9 @@
 
 "#whiteCommentBox":{
 	backgroundColor: 'white',
-	height:'350dip',
-	width:'250dip',
-	top: '5%',
+	height:'430dip',
+	width:'260dip',
+	top: '0%',
 	opacity: '1.0',
 	visible: false,
 	backgroundColor: '#FFFFFF',
@@ -53,6 +53,7 @@
 "#insertName":{
 	hintText: 'Name',
 	keyboardType: Titanium.UI.KEYBOARD_DEFAULT,
+	returnKeyType:Titanium.UI.RETURNKEY_NEXT,
 	opacity: '1.0',
 	font: {
 		fontFamily: 'Helvetica Neue',
@@ -60,7 +61,7 @@
 		fontWeight: 'normal'
 	},
 	color: 'black',
-	top: '17%',
+	top: '15%',
 	left: '7%',
 	width: '85%',
 	height: '10%',
@@ -68,23 +69,24 @@
 	borderWidth: '1',
 	borderColor: 'black',
 	clearOnEdit: false,
-	paddingLeft: "5dip"
+	paddingLeft: "5dip",
+	tintColor: "black"
 }
 
 "#insertNameDisclaimer":{
 	font: {
 		fontFamily: 'Helvetica Neue',
-		fontSize: '10dip',
+		fontSize: '12dip',
 		fontWeight: 'normal'
 	},
 	color: 'black',
-	//top: '28%',
 	left: '7%',
 }
 
 "#insertEmail":{
 	hintText: 'Email',
-	keyboardType: Titanium.UI.KEYBOARD_DEFAULT,
+	keyboardType: Titanium.UI.KEYBOARD_EMAIL,
+	returnKeyType:Titanium.UI.RETURNKEY_NEXT,
 	opacity: '1.0',
 	font: {
 		fontFamily: 'Helvetica Neue',
@@ -92,7 +94,6 @@
 		fontWeight: 'normal'
 	},
 	color: 'black',
-	//top: '36%',
 	left: '7%',
 	width: '85%',
 	height: '10%',
@@ -100,17 +101,18 @@
 	borderWidth: '1',
 	borderColor: 'black',
 	clearOnEdit: false,
-	paddingLeft: "5dip"
+	paddingLeft: "5dip",
+	top: '3%',
+	tintColor: "black"
 }
 
 "#insertEmailDisclaimer":{
 	font: {
 		fontFamily: 'Helvetica Neue',
-		fontSize: '10dip',
+		fontSize: '12dip',
 		fontWeight: 'normal'
 	},
 	color: 'black',
-	//top: '47%',
 	left: '7%',
 }
 
@@ -121,6 +123,7 @@
 "#insertComment":{
 	hintText: 'Comment',
 	keyboardType: Titanium.UI.KEYBOARD_DEFAULT,
+	returnKeyType:Titanium.UI.RETURNKEY_DONE,
 	opacity: '1.0',
 	font: {
 		fontFamily: 'Helvetica Neue',
@@ -129,14 +132,15 @@
 	},
 	color: 'black',
 	backgroundColor: '#f2f2f2',
-	//top: '56%',
 	left: '7%',
 	width: '85%',
-	height: '40%',
+	height: '35%',
 	borderWidth: '1',
 	borderColor: 'black',
 	clearOnEdit: false,
-	paddingLeft: "5dip"
+	paddingLeft: "5dip",
+	top: '3%',
+	tintColor: "black"
 }
 
 "#submitButton":{
@@ -144,11 +148,11 @@
 	opacity: '1.0',
 	font: {
 		fontFamily: 'Helvetica Neue',
-		fontSize: '16dp',
+		fontSize: '18dp',
 		fontWeight: 'bold'
 	},
 	left: '0',
-	width: '40%',
+	width: '49%',
 	height: '100%',
 	color: '#FFFFFF',
 	backgroundColor: '#2ECC71'
@@ -162,8 +166,8 @@
 		fontSize: '16dp',
 		fontWeight: 'bold'
 	},
-	left: '20%',
-	width: '40%',
+	left: "2%",
+	width: '49%',
 	height: '100%',
 	color: '#FFFFFF',
 	backgroundColor: '#E74C3C'
@@ -171,7 +175,7 @@
 
 "#buttonView":{
 	layout: "horizontal",
-	top: "2%",
+	top: "3%",
 	height: "10%",
 	width: "85%"
 }

@@ -124,13 +124,8 @@ function displaySectionList(orderedSectionList, rawJson) {
 
 		var label = Titanium.UI.createLabel({
 			color : 'white',
-			// verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
 			textAlign : 'center',
 			height : Ti.UI.FILL,
-			font : {
-				fontSize : "26dip",
-				fontWeight : 'bold'
-			},
 			text : orderedSectionList[i].key,
 			left : "5%"
 		});
@@ -139,6 +134,23 @@ function displaySectionList(orderedSectionList, rawJson) {
 				fontSize : "35dip",
 				fontWeight : "bold"
 			};
+		} else {
+			if (label.text.length > 25) {
+				label.font = {
+					fontSize : "18dip",
+					fontWeight : 'bold'
+				};
+			} else if (label.text.length > 20) {
+				label.font = {
+					fontSize : "22dip",
+					fontWeight : 'bold'
+				};
+			} else {
+				label.font = {
+					fontSize : "26dip",
+					fontWeight : 'bold'
+				};
+			}
 		}
 		view.add(label);
 		gradientColorsCount++;

@@ -127,7 +127,8 @@ function createPostView(post) {
 	args = {
 		left : "0",
 		width : "45%",
-		top : "12%",
+		top : "10%",
+		bottom: "10%",
 		image : post.get("image"),
 		height: "70%"
 	};

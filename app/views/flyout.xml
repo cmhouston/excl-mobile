@@ -31,14 +31,14 @@
 				</View>
 			</View>
 			
-			<View id="customLearnRow" class="viewRow" onClick="rowFilterEventListener">
+			<!--View id="customLearnRow" class="viewRow" onClick="rowFilterEventListener" visible="false">
 				<View class="rowContainer">
 					<View backgroundImage="/flyoutMenuIcons/ages.png" class="rowIcon"/>
 					<Label id="agesLabel" class="rowLabel">Filter by Age</Label>	
 				</View>
 			</View>
 			
-			<View class="viewRowIndented" id="viewRowCollapsible" onClick="setCustomLearn">
+			<View class="viewRowIndented" id="viewRowCollapsible" onClick="setCustomLearn" visible="false">
 				<View class="rowContainer" id="toggleView">
 					<View backgroundImage="/flyoutMenuIcons/edit.png" class="rowIcon"/>
 					<Label class="rowLabelIndented" id="toggleLabel">Edit Filter</Label>		

@@ -5,15 +5,15 @@
 				<ImageView id="homeImage"></ImageView>
 				
 				<View id="exhibitsLink" >
-					<Label id="exhibitsLabel" class="homepageLabel" text="Exhibits"></Label>
+					<Label id="exhibitsLabel" class="homepageLabel"></Label>
 				</View>
 				
 				<View id="mapLink">
-					<Label id="mapLabel" class="homepageLabel" text="Map"></Label>
+					<Label id="mapLabel" class="homepageLabel"></Label>
 				</View>
 				
 				<View id="infoLink"  >
-					<Label id="infoLabel" class="homepageLabel" text="Info"></Label>
+					<Label id="infoLabel" class="homepageLabel"></Label>
 				</View>
 					
 				<ImageView id="iconLink"></ImageView>	

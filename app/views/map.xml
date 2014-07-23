@@ -2,9 +2,7 @@
 	<Window class="container">
 		<View id="mainView">
 			<Widget id="navBar" src="navigationBar"/>
-			<View id="homeContent">
-				<Label>Map</Label>
-			</View>
+			<WebView id="mapView"></WebView>
 		</View>
 	</Window>
 </Alloy>

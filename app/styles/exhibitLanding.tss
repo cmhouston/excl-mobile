@@ -6,7 +6,8 @@
 
 "#mainView": {
 	layout: "vertical",
-	bottom: "20dip"
+	top:"0",
+	bottom: "10dip",
 }
 
 "#placeholder":{
@@ -46,52 +47,23 @@
 
 "#collapsibleComponentView":{
 	layout: "vertical",
-	height: "0"
-}
-
-"#collapsibleInfoLabel[platform=android]": {
-	font: {
-		fontSize: '15dip'
-	}
-}
-
-"#collapsibleInfoLabel[platform=ios formFactor=handheld]": {
-	font: {
-		fontSize: '14dip'
-	}
-}
-
-"#collapsibleInfoLabel[platform=ios formFactor=tablet]": {
-	font: {
-		fontSize: '20dip'
-	}
-}
-
-"#bottomButtonContainer":{
-	height: '80dip',
-	bottom: 0,
-	backgroundColor: 'transparent'
-}
-
-"#exhibitInfoGradient": {
-	top: 0,
-	height: "30dip",
-	backgroundColor: "transparent"
+	height: "0",
+	top:"0"
 }
 
 "#exhibitSelect": {
 	bottom: 0,
-	height: "50dip",
+	height: "35dip",
 	backgroundColor: 'white'
 }
 
 "#exhibitSelectLabel": {
+	top: "5dip",
 	bottom: "5dip",
-	height: Ti.UI.SIZE,
-	borderRadius: "20dip",
+	height: "25dip",
 	backgroundColor: "#253342",
-	width: "70%",
-	left: "15%",
+	width: "80%",
+	left: "10%",
 	borderWidth: '0',
 	backgroundGradient: {
 		type: 'linear',
@@ -125,16 +97,13 @@
 
 "#componentScrollView": {
 	layout: 'horizontal',
-	//pagingControlTimeout : 0, // Set to less than or equal to 0 to disable timeout, to keep controls displayed.
 	showHorizontalScrollIndicator: true,
 	width: '100%',
-	height: '159dip',
-	contentHeight: 'auto',
-	contentWidth: 'auto',
 	scrollType: 'horizontal',
 	horizontalWrap: false,
 	top: "3dip",
-	bottom: "3dip"
+	bottom: "3dip",
+	height: Ti.UI.SIZE
 }
 
 "#headingLabelView":{
@@ -145,12 +114,15 @@
 	color: "#232226",
 	font: {
 		fontFamily: 'Helvetica Neue',
-		fontWeight: 'bold'
+		fontWeight: 'bold',
+		fontSize: "20dip"
 	}
 }
 
 "#exhibitInfoView": {
-	bottom: "50dip"
+	bottom: "50dip",
+	height: "45%",
+	layout: "vetical"
 }
 
 "#exhibitInfoLabel": {
@@ -159,8 +131,8 @@
 }
 
 "#exhibitInfoScrollView": {
-	scrollType: "vertical",
 	layout: "vertical",
-	contentWidth: "100%",
-	contentHeight: Ti.UI.SIZE
+	showVerticalScrollIndicator : true,
+	top:"0",
+	height: Ti.UI.FILL
 }

@@ -3,10 +3,10 @@
 	<id>com.parivedasolutions.excl</id>
 	<name>ExCL</name>
 	<version>1.0.0</version>
-	<publisher>ryan.henderson</publisher>
+	<publisher>Children's Museum of Houston and the Regents of the University of California</publisher>
 	<url>http://</url>
 	<description>not specified</description>
-	<copyright>2014 by ryan.henderson</copyright>
+	<copyright>2014 by Children's Museum of Houston and the Regents of the University of California</copyright>
 	<icon>appicon.png</icon>
 	<fullscreen>false</fullscreen>
 	<navbar-hidden>false</navbar-hidden>
