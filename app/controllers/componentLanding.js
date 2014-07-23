@@ -135,14 +135,19 @@ function displaySectionList(orderedSectionList, rawJson) {
 				fontWeight : "bold"
 			};
 		} else {
-			if (label.length > 20) {
+			if (label.text.length > 25) {
 				label.font = {
-					fontSize : "26dip",
+					fontSize : "18dip",
+					fontWeight : 'bold'
+				};
+			} else if (label.text.length > 20) {
+				label.font = {
+					fontSize : "22dip",
 					fontWeight : 'bold'
 				};
 			} else {
 				label.font = {
-					fontSize : "22dip",
+					fontSize : "26dip",
 					fontWeight : 'bold'
 				};
 			}
