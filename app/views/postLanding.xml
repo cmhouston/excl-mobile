@@ -16,7 +16,7 @@
 						<Button id="cancelCommentButton" />
 					</View>
 					<View id="thankYouMessageView">
-						<Label id = "thankYouMessageComment" class="thankYouMessageComment" top="35%"/>
+						<Label id = "thankYouMessageComment" class="thankYouMessageComment" top="30%"/>
 					</View>
 					<Label id="submitYourCommentLabel">Submit your comment</Label>
 				</View>

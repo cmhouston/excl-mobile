@@ -173,7 +173,7 @@
 	opacity: '1.0',
 	font: {
 		fontFamily: 'Helvetica Neue',
-		fontSize: '20dp',
+		fontSize: '16dp',
 		fontWeight: 'normal'
 	},
 	textAlign: 'center',
