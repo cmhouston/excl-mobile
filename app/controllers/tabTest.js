@@ -6,6 +6,8 @@ var colorArrayCounter = 0;
 
 function textSubmitted() {
 	Ti.API.info($.insertText.value);
+	colorArrayCounter = 0;
+	$.insertText.blur();
 	insertXNumberOfButtons(parseInt($.insertText.value));
 }
 
@@ -20,7 +22,7 @@ function insertXNumberOfButtons(numberOfButtons) {
 		id : 'buttonHolderView'
 	});
 
-	var each_button_width = 100 / numberOfButtons;
+	var each_button_width = Math.floor(100 / numberOfButtons);
 	each_button_width += '%';
 
 	for (var i = 0; i < numberOfButtons; i++) {

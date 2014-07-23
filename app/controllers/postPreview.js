@@ -40,7 +40,7 @@ function createPostView(post) {
 	};
 	var container = viewService.createCustomView(args);
 	if (Titanium.Platform.osname == "ipad") {
-		container.top = "3%";
+		container.top = "50dip";
 		container.height = "300dip";
 	} else {
 		container.top = "30dip";

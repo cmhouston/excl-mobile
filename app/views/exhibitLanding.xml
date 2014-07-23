@@ -1,6 +1,6 @@
 <Alloy>
 	<Window class="container">
-		<View id="mainView" >
+		<View id="mainView">
 			<Widget id="navBar" src="navigationBar"/>
 			<ScrollableView id="exhibitsCarousel">
 				<View id="placeholder"/>
