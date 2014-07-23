@@ -2,8 +2,8 @@
 	<Window id="postLanding" class="container" backgroundColor='#FFFFFF'>
 		<View id="postLandingView" layout="vertical">
 			<Widget src="navigationBar" id="navBar"/>
-			<ScrollView id="scroller">
-				<TableView id="tableView" ></TableView>
+			<ScrollView id="scroller" backgroundColo = "red">
+				<TableView id="tableView"/>
 				<View id="addNewCommentContainer"></View>
 				<View id="whiteCommentBox">
 					<View id="submitCommentFormView">

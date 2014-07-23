@@ -93,7 +93,7 @@ function setPageTitle(name) {
  */
 function displaySocialMediaButtons(json) {
 	//Create anchor for instagram viewer
-	var row = createPlainRowWithHeight('auto');
+	var row = createPlainRowWithHeight(Ti.UI.FILL);
 	var iconList = [];
 	var objectArgs = {
 		height : "30dip",
@@ -291,7 +291,7 @@ function getVideoRowFromPartiOS(part) {
 }
 
 function getTextRowFromPart(part) {
-	var row = createPlainRowWithHeight('auto');
+	var row = createPlainRowWithHeight(Ti.UI.FILL);
 	var objectArgs = {
 		width : '94%',
 		right : '3%',
@@ -315,7 +315,7 @@ function getTextRowFromPart(part) {
 }
 
 function getRichTextRowFromPart(part) {
-	var row = createPlainRowWithHeight('auto');
+	var row = createPlainRowWithHeight(Ti.UI.FILL);
 	var richText = part.get("rich");
 	if (richText) {
 		var webView = Ti.UI.createWebView({
@@ -331,7 +331,7 @@ function getRichTextRowFromPart(part) {
 }
 
 function addTableDataToTheView(tableData) {
-	$.tableView.height = 'auto';
+	$.tableView.height = Ti.UI.FILL;
 	if (OS_IOS) {
 		//Accounts for bounce buffer
 		$.tableView.bottom = "48dip";
@@ -386,7 +386,7 @@ function creatingCommentTextHeading() {
 }
 
 function displayThereAreNoCommentsToDisplayText() {
-	var row = createPlainRowWithHeight('auto');
+	var row = createPlainRowWithHeight(Ti.UI.FILL);
 	var objectArgs = {
 		top : "10dip",
 		width : '94%',
@@ -417,7 +417,7 @@ function addCommentToView(commentText, commentDate) {
 }
 
 function createCommentText(commentText) {
-	var row = createPlainRowWithHeight('auto');
+	var row = createPlainRowWithHeight(Ti.UI.FILL);
 	if (OS_ANDROID) {
 		row.top = "10%";
 	}
@@ -432,7 +432,8 @@ function createCommentText(commentText) {
 			fontSize : '13dp',
 			fontWeight : 'normal',
 		},
-		text : commentText
+		text : commentText,
+		backgroundColor : "red"
 	};
 	var text = labelService.createCustomLabel(objectArgs);
 	if (Titanium.Platform.osname == "ipad") {
@@ -445,7 +446,7 @@ function createCommentText(commentText) {
 }
 
 function createCommentDate(commentDate) {
-	var row = createPlainRowWithHeight('auto');
+	var row = createPlainRowWithHeight(Ti.UI.FILL);
 	var objectArgs = {
 		width : '94%',
 		right : '3%',
@@ -480,7 +481,7 @@ function displayComments(comments) {
 	}
 
 	if (comments.length > commentsLengthLimit) {
-		var row = createPlainRowWithHeight('auto');
+		var row = createPlainRowWithHeight(Ti.UI.FILL);
 		var objectArgs = {
 			top : "10dip",
 			width : '94%',
