@@ -32,7 +32,7 @@
 	backgroundColor: 'white',
 	height:'430dip',
 	width:'260dip',
-	top: '5%',
+	top: '0%',
 	opacity: '1.0',
 	visible: false,
 	backgroundColor: '#FFFFFF',
