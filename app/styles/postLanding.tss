@@ -31,17 +31,12 @@
 
 "#whiteCommentBox":{
 	backgroundColor: 'white',
-	height:'90%',
-	width:'90%',
+	height:'350dip',
+	width:'250dip',
+	top: '100dip',
 	opacity: '1.0',
 	visible: false,
-	backgroundGradient: {
-        type: 'linear',
-        startPoint: { x: '50%', y: '0%' },
-        endPoint: { x: '50%', y: '100%' },
-        colors: [ 	{ color: '#EEEEEE', offset: 0.0}, 
-        			{ color: '#FFFFFF', offset: 1.0 }],
-    }
+	backgroundColor: '#FFFFFF',
 }
 
 "#submitYourCommentLabel":{
@@ -80,7 +75,7 @@
 "#insertNameDisclaimer":{
 	font: {
 		fontFamily: 'Helvetica Neue',
-		fontSize: '15dip',
+		fontSize: '10dip',
 		fontWeight: 'normal'
 	},
 	color: 'black',
@@ -112,7 +107,7 @@
 "#insertEmailDisclaimer":{
 	font: {
 		fontFamily: 'Helvetica Neue',
-		fontSize: '15dip',
+		fontSize: '10dip',
 		fontWeight: 'normal'
 	},
 	color: 'black',
@@ -150,7 +145,6 @@
 		fontSize: '16dp',
 		fontWeight: 'bold'
 	},
-	borderRadius:'5',
 	bottom: '5%',
 	left: '7%',
 	width: '40%',
@@ -167,7 +161,6 @@
 		fontSize: '16dp',
 		fontWeight: 'bold'
 	},
-	borderRadius:'5',
 	bottom: '5%',
 	right: '7%',
 	width: '40%',
