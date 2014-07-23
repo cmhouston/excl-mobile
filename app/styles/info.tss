@@ -7,5 +7,9 @@
 
 "#mainView": {
 	layout: "vertical",
-	bottom: "20dip"
+	bottom: "20dip",
+}
+
+"#InfoText":{
+	//backgroundColor: '#FFFF00'
 }
