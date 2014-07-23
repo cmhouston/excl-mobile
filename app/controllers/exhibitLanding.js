@@ -72,10 +72,14 @@ function hideSpinner() {
 
 function fixIpadSpacing() {
 	if (Titanium.Platform.osname == 'ipad') {
-		$.exhibitSelect.bottom = "30dip";
+		$.exhibitSelect.bottom = "20dip";
+		$.exhibitSelect.height = "70dip";
 		$.exhibitSelectLabel.font = {
 			fontSize : "25dip"
 		};
+		$.exhibitSelectLabel.width = "60%";
+		$.exhibitSelectLabel.left = "20%";
+		$.exhibitSelectLabel.height = "50dip";
 	}
 }
 
