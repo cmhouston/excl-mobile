@@ -118,11 +118,13 @@ function addCommentingButton(json, row, iconList, objectArgs) {
 			$.submitCommentFormView.visible = true;
 			$.insertName.value = $.insertEmail.value = $.insertComment.value = "";
 			$.thankYouMessageView.visible = false;
+			$.scroller.scrollingEnabled = false;
 		});
 
 		$.thankYouMessageView.addEventListener('click', function(e) {
 			$.whiteCommentBox.visible = false;
 			$.addNewCommentContainer.visible = false;
+			$.scroller.scrollingEnabled = false;
 			setCommentIconReady(commentButton);
 		});
 
@@ -134,6 +136,7 @@ function addCommentingButton(json, row, iconList, objectArgs) {
 			$.addNewCommentContainer.visible = ($.addNewCommentContainer.visible) ? false : true;
 			$.whiteCommentBox.visible = ($.whiteCommentBox.visible) ? false : true;
 			$.scroller.scrollTo(0, 0);
+			$.scroller.scrollingEnabled = true;
 		});
 
 		$.submitButton.addEventListener('click', function(e) {

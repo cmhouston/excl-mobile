@@ -93,7 +93,7 @@
 		fontWeight: 'normal'
 	},
 	color: 'black',
-	top: '34%',
+	top: '36%',
 	left: '7%',
 	width: '85%',
 	height: '10%',
@@ -111,7 +111,7 @@
 		fontWeight: 'normal'
 	},
 	color: 'black',
-	top: '45%',
+	top: '47%',
 	left: '7%',
 }
 
@@ -127,7 +127,7 @@
 	},
 	color: 'black',
 	backgroundColor: '#f2f2f2',
-	top: '52%',
+	top: '56%',
 	left: '7%',
 	width: '85%',
 	height: '20%',
@@ -150,7 +150,7 @@
 	width: '40%',
 	height: '10%',
 	color: '#FFFFFF',
-	backgroundColor: '#E74C3C'
+	backgroundColor: '#2ECC71'
 }
 
 "#cancelCommentButton":{
@@ -166,7 +166,7 @@
 	width: '40%',
 	height: '10%',
 	color: '#FFFFFF',
-	backgroundColor: '#2ECC71'
+	backgroundColor: '#E74C3C'
 }
 
 ".thankYouMessageComment":{
