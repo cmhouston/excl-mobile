@@ -617,7 +617,6 @@ function sendComment(commentButton) {
 }
 
 function setCommentSubmittedMessage() {
-
 	$.submitCommentFormView.visible = false;
 	$.thankYouMessageView.visible = true;
 	$.submitYourCommentLabel.text = "Comment Submitted";
@@ -649,26 +648,54 @@ function initializePage() {
 		displayThereAreNoCommentsToDisplayText();
 	}
 	addTableDataToTheView(tableData);
+	formatCommentBoxForIpad();
 	fixPageSpacing();
+}
+
+function formatCommentBoxForIpad() {
+	if (Titanium.Platform.osname == "ipad") {
+		$.whiteCommentBox.height = "700dip";
+		$.whiteCommentBox.width = "500dip";
+		$.buttonView.height = "75dip";
+		$.insertNameDisclaimer.font = {
+			fontSize : "15dip"
+		};
+		$.insertEmailDisclaimer.font = {
+			fontSize : "15dip"
+		};
+		$.insertName.height = "50dip";
+		$.insertEmail.height = "50dip";
+		$.insertComment.height = "300dip";
+		$.cancelCommentButton.font = {
+			fontFamily : 'Helvetica Neue',
+			fontSize : '25dp',
+			fontWeight : 'bold'
+		};
+		$.submitButton.font = {
+			fontFamily : 'Helvetica Neue',
+			fontSize : '25dp',
+			fontWeight : 'bold'
+		};
+	}
 }
 
 function getRowFromPart(part) {
 	switch (part.get('type')) {
-		case 'image':
-			return getImageRowFromPart(part);
-			break;
-		case 'text':
-			return getTextRowFromPart(part);
-			break;
-		case 'video':
-			return getVideoRowFromPart(part);
-			break;
-		case 'rich':
-			return getRichTextRowFromPart(part);
-			break;
-		default:
-			return null;
-			break;
+	case 'image':
+		return getImageRowFromPart(part);
+		break;
+	case 'text':
+		return getTextRowFromPart(part);
+		break;
+	case 'video':
+		return getVideoRowFromPart(part);
+		break;
+	case 'rich':
+		return getRichTextRowFromPart(part);
+		break;
+	default:
+		return null;
+		break;
 	}
 }
 

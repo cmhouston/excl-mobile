@@ -134,6 +134,12 @@ function displaySectionList(orderedSectionList, rawJson) {
 			text : orderedSectionList[i].key,
 			left : "5%"
 		});
+		if (Titanium.Platform.osname == "ipad") {
+			label.font = {
+				fontSize : "35dip",
+				fontWeight : "bold"
+			};
+		}
 		view.add(label);
 		gradientColorsCount++;
 		$.scrollView.add(view);
@@ -142,11 +148,11 @@ function displaySectionList(orderedSectionList, rawJson) {
 
 function addEvent(view, title, rawJson) {
 	view.addEventListener("click", function() {
-		openSection(view,title,rawJson);		
+		openSection(view, title, rawJson);
 	});
 }
 
-function openSection(view, title, rawJson){
+function openSection(view, title, rawJson) {
 	var controller = Alloy.createController('sectionLanding', eval([args[0], rawJson["posts"], title, view.backgroundColor]));
 	var analyticsTitle = getAnalyticsPageTitle() + '/' + title;
 	var analyticsLevel = "Section Landing";
@@ -155,19 +161,19 @@ function openSection(view, title, rawJson){
 	Alloy.Globals.navController.open(controller);
 }
 
-function addSpinner(){
+function addSpinner() {
 	spinner.addTo($.container);
 	spinner.show();
 }
 
-function hideSpinner(){
+function hideSpinner() {
 	spinner.hide();
 }
 
 function jackOfAllTrades() {
 	addSpinner();
 	dataRetriever.fetchDataFromUrl(url, function(returnedData) {
-		
+
 		if (!dataRetriever.checkIfDataRetrieverNull(returnedData)) {
 			var rawJson = eval(returnedData.data.component);
 			setPageTitle(rawJson["name"]);

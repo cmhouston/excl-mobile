@@ -128,8 +128,6 @@ function populateWindow(json) {
 function createExhibitsCarousel(exhibits) {
 	$.exhibitsCarousel.removeView($.placeholder);
 	// This is an android hack
-	var firstViewHit = false;
-	var firstView;
 	for ( i = 0; i < exhibits.length; i++) {
 		exhibitText[i] = exhibits[i].long_description;
 		var exhibitView;
@@ -143,18 +141,18 @@ function createExhibitsCarousel(exhibits) {
 			});
 		}
 		$.exhibitsCarousel.addView(exhibitView);
-
-		//if (!firstViewHit) {
-		//	firstViewHit = true;
-		//	firstView = exhibitView;
-		//}
 	}
-
-	//firstViewHit = false;
-	//showScrollableViewArrows($.exhibitsCarousel);
-	$.exhibitsCarousel.scrollToView(firstView);
 	$.headingLabel.text = exhibits[0].name;
 	$.exhibitInfoLabel.text = exhibits[0].long_description;
+	if (Titanium.Platform.osname == "ipad") {
+		$.headingLabel.font = {
+			fontSize : "30dip",
+			fontWeight: 'bold'
+		};
+		$.exhibitInfoLabel.font = {
+			fontSize : "25dip"
+		};
+	}
 
 	if (OS_IOS) {
 		//Android doesn't respond to singletap event, so the Android event listener is added above
@@ -257,9 +255,7 @@ function createTitleLabel(name, type, pageXofYtext) {
 		top : 0
 	});
 	if (Titanium.Platform.osname == "ipad") {
-		titleLabel.font = {
-			fontSize : "30dip"
-		};
+		titleLabel.height = "20%";
 	}
 
 	var label = Ti.UI.createLabel({
@@ -274,7 +270,7 @@ function createTitleLabel(name, type, pageXofYtext) {
 		}
 	});
 	if (Titanium.Platform.osname == "ipad") {
-		titleLabel.font = {
+		label.font = {
 			fontSize : "25dip"
 		};
 	}
@@ -327,7 +323,8 @@ function onExhibitsClick(exhibits) {
 		$.headingLabel.text = "Select an Activity!";
 		if (Titanium.Platform.osname == "ipad") {
 			$.headingLabel.font = {
-				fontSize : "30dip"
+				fontSize : "30dip",
+				fontWeight: 'bold'
 			};
 		}
 

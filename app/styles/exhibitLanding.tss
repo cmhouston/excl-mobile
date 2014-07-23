@@ -148,7 +148,6 @@
 	color: "#232226",
 	font: {
 		fontFamily: 'Helvetica Neue',
-		fontSize: '22dip',
 		fontWeight: 'bold'
 	}
 }
@@ -159,9 +158,6 @@
 
 "#exhibitInfoLabel": {
 	color: '#000',
-	font: {
-		fontSize: 18
-	},
 	width: "90%"
 }
 
