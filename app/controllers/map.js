@@ -26,39 +26,14 @@ exports.getAnalyticsPageLevel = getAnalyticsPageLevel;
 
 $.navBar.setPageTitle("Map");
 
-// function insertMapPicture() {
-
-	// var view = Titanium.UI.createView({
-		// height : '100%',
-		// left : '6dip',
-		// right : '6dip',
-		// top : '10dip',
-		// bottom : '20dip',
-		// layout : 'vertical'
-	// });
-
 	var image = Ti.UI.createImageView({
 		image : json.data.museum.map,
 		backgroundColor:'transparent', 
 		//width : 'auto',
 		//height : 'auto'
 	});
-	
-	// image.addEventListener('pinch', function(e) { 
-		// var t = Ti.UI.create2DMatrix().scale(e.scale); 
-		// image.transform = t; 
-		// });
-
-	//view.add(image);
 
 	$.mapView.add(image);
-	//$.mapView.height = "auto";
-
-// }
-// 
-// insertMapPicture();
-
-//$.mapImage.html = json.data.museum.map;
 
 $.onEnterKioskMode = function() {
 	$.navBar.onEnterKioskMode();
