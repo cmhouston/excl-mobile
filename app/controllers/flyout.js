@@ -80,6 +80,7 @@ function openMapPage(e) {
 	//if(doneLoading){
 		var controller = Alloy.createController("map", eval([json]));
 		Alloy.Globals.navController.open(controller);
+		closeMenu();
 	//}else
 	//{
 	//	alert("Not Done Loading");
@@ -91,6 +92,7 @@ function openInfoPage(e) {
 	//closeMenu();
 	var controller = Alloy.createController("info", eval([json]));
 	Alloy.Globals.navController.open(controller);
+	closeMenu();
 }
 
 function setCustomLearn(e) {
