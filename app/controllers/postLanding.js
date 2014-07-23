@@ -96,10 +96,14 @@ function displaySocialMediaButtons(json) {
 	var row = createPlainRowWithHeight('auto');
 	var iconList = [];
 	var objectArgs = {
-		height : "40dip",
-		width : "40dip",
+		height : "30dip",
+		width : "30dip",
 		top : "2%"
 	};
+	if (Titanium.Platform.osname == "ipad") {
+		objectArgs["height"] = "40dip";
+		objectArgs["width"] = "40dip";
+	}
 	addCommentingButton(json, row, iconList, objectArgs);
 	addTextSharingButton(json, row, iconList, objectArgs);
 	addImageSharingButton(json, row, iconList, objectArgs);

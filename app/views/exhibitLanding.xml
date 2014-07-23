@@ -20,7 +20,7 @@
 		<View id="bottomButtonContainer">
 			<View id="exhibitInfoGradient"></View>
 			<View id="exhibitSelect">
-				<Label id="exhibitSelectLabel" class="headingText">Explore This Exhibition!</Label>
+				<Label id="exhibitSelectLabel">Explore This Exhibition!</Label>
 			</View>
 		</View>
 	</Window>

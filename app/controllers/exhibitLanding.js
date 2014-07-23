@@ -147,7 +147,7 @@ function createExhibitsCarousel(exhibits) {
 	if (Titanium.Platform.osname == "ipad") {
 		$.headingLabel.font = {
 			fontSize : "30dip",
-			fontWeight: 'bold'
+			fontWeight : 'bold'
 		};
 		$.exhibitInfoLabel.font = {
 			fontSize : "25dip"
@@ -313,10 +313,12 @@ function onExhibitsClick(exhibits) {
 		$.collapsibleComponentView.hidden = false;
 		var pageIndex = $.exhibitsCarousel.currentPage;
 		$.exhibitSelectLabel.text = "Back to Description";
-
 		$.exhibitInfoLabel.text = exhibits[pageIndex].long_description;
 		if (Titanium.Platform.osname == "ipad") {
 			$.exhibitInfoLabel.font = {
+				fontSize : "25dip"
+			};
+			$.exhibitSelectLabel.font = {
 				fontSize : "25dip"
 			};
 		}
@@ -324,7 +326,7 @@ function onExhibitsClick(exhibits) {
 		if (Titanium.Platform.osname == "ipad") {
 			$.headingLabel.font = {
 				fontSize : "30dip",
-				fontWeight: 'bold'
+				fontWeight : 'bold'
 			};
 		}
 

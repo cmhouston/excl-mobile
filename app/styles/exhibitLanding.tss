@@ -87,7 +87,7 @@
 
 "#exhibitSelectLabel": {
 	bottom: "5dip",
-	height: "40dip",
+	height: Ti.UI.SIZE,
 	borderRadius: "20dip",
 	backgroundColor: "#253342",
 	width: "70%",
@@ -113,14 +113,11 @@
 				offset: 1.0
 			}
 		]
-	}
-}
-
-".headingText": {
+	},
 	color: 'white',
 	font: {
 		fontFamily: 'Helvetica Neue',
-		fontSize: '22dip',
+		fontSize: '18dip',
 		fontWeight: 'bold'
 	},
 	textAlign: 'center'
