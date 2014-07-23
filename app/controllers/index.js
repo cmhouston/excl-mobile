@@ -154,7 +154,7 @@ var reload = function(){
 
 init();
 
-// This is how you export functions/members form index
+// This is how you export functions/members from index
 this.reload = reload;
 
 Alloy.Globals.navController.open(this);

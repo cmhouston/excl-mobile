@@ -19,6 +19,7 @@ var setAnalyticsPageLevel = function(level) {
 var getAnalyticsPageLevel = function() {
 	return analyticsPageLevel;
 };
+
 exports.setAnalyticsPageTitle = setAnalyticsPageTitle;
 exports.getAnalyticsPageTitle = getAnalyticsPageTitle;
 exports.setAnalyticsPageLevel = setAnalyticsPageLevel;
@@ -29,12 +30,12 @@ $.navBar.setPageTitle("Map");
 	var image = Ti.UI.createImageView({
 		image : json.data.museum.map,
 		backgroundColor:'transparent', 
-		//width : 'auto',
-		//height : 'auto'
+		width : 'auto',
+		height : 'auto'
 	});
 
 	$.mapView.add(image);
-
+	
 $.onEnterKioskMode = function() {
 	$.navBar.onEnterKioskMode();
 };
