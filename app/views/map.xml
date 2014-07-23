@@ -1,8 +1,11 @@
 <Alloy>
 	<Window class="container">
-		<View id="mainView">
+		<View id="navBarView">
 			<Widget id="navBar" src="navigationBar"/>
-			<WebView id="mapView"></WebView>
 		</View>
+		<ScrollView id = "mapScrollView">
+			<!-- <WebView id="mapView">
+			</WebView> -->
+		</ScrollView>
 	</Window>
 </Alloy>
