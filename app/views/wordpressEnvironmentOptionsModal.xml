@@ -1,13 +1,32 @@
 <Alloy>
 	<Window class="container">
-		<View class="verticalContainer">
-			<Label class="title">Choose your Wordpress Environment</Label>		
-			<Button class="environmentOption" onClick="enterProductionMode">Production</Button>		
-			<Button class="environmentOption" onClick="enterQualityAssuranceMode">Quality Assurance</Button>
-			<Button class="environmentOption" onClick="enterDevelopmentMode">Development</Button>
-			<Button class="environmentOption" onClick="enterOtherMode">Other</Button>
+		<View class="verticalContainer" >
+			<Label class="title">
+				Choose your Wordpress Environment
+			</Label>
 			<View class="horizontalContainer">
-				<Label>Toggle Unpublished Posts</Label>
+				<Label class = "boldLabel">
+					Current Environment:
+				</Label>
+				<Label id="currentEnvironLabel">
+				</Label>
+			</View>
+			<Button class="environmentOption" onClick="enterProductionMode">
+				Production (prod)
+			</Button>
+			<Button class="environmentOption" onClick="enterQualityAssuranceMode">
+				Quality Assurance (qa)
+			</Button>
+			<Button class="environmentOption" onClick="enterDevelopmentMode">
+				Development (dev)
+			</Button>
+			<Button class="environmentOption" onClick="enterOtherMode">
+				Other
+			</Button>
+			<View class="horizontalContainer" >
+				<Label class = "boldLabel">
+					Show Unpublished Posts
+				</Label>
 				<Switch id="toggleUnpublishedPostsSwitch"/>
 			</View>
 		</View>

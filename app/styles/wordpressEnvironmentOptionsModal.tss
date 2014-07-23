@@ -1,18 +1,45 @@
 
-".container" : {
-  
-}
+".container": {}
 
 ".verticalContainer": {
-	layout: "vertical"
+	layout: "vertical",
+	backgroundColor: "white"
 }
 
 ".environmentOption": {
-	width: "70%"
+	width: "70%",
+	font: {
+		fontSize: "20dip"
+	}
+}
+
+".boldLabel":{
+	left: "5%",
+	font:
+	{
+		fontWeight: "bold"
+	}
+}
+
+"#currentEnvironLabel":{
+	left: "5%"
+}
+
+"#toggleUnpublishedPostsSwitch":{
+	left: "5%"
 }
 
 ".horizontalContainer": {
+	top: "5%",
 	layout: "horizontal",
-	width: Ti.UI.SIZE
+	height: Ti.UI.SIZE
 }
 
+".title":{
+	top: "5%",
+	font:
+	{
+		fontSize: "30dip",
+		fontWeight: "bold"
+	}
+}

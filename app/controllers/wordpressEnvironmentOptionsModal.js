@@ -114,6 +114,7 @@ function init(){
 	toggleUnpublishedPosts = false;
 	$.toggleUnpublishedPostsSwitch.value = Alloy.Globals.adminModeController.viewUnpublishedPostsIsEnabled();
 	$.toggleUnpublishedPostsSwitch.addEventListener('change', switchPush);
+	$.currentEnvironLabel.text = Alloy.Globals.storageService.getStringProperty("rootWebServiceURL");
 }
 init();
 
