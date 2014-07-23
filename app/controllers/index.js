@@ -68,7 +68,7 @@ function hideSpinner(){
 
 function openMap() {
 	if(doneLoading){
-		var controller = Alloy.createController("map");
+		var controller = Alloy.createController("map", eval([json]));
 		Alloy.Globals.navController.open(controller);
 	}else
 	{

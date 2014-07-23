@@ -2,9 +2,9 @@
 	<Window class="container">
 		<View id="mainView">
 			<Widget id="navBar" src="navigationBar"/>
-			<View id="homeContent">
-				<Label>Map</Label>
-			</View>
+			<!-- <WebView id="mapImage" class="image"></WebView> -->
+			<!-- <ScrollView layout="vertical" id="scrollView" contentWidth="100%" height="100%" top="50dip"></ScrollView> -->
+			<WebView id="mapView"></WebView>
 		</View>
 	</Window>
 </Alloy>
