@@ -1,5 +1,29 @@
-// NavigationController
-// This version works for Android and iOS for Titanium 3.2.0. 
+//======================================================================
+// ExCL is an open source mobile platform for museums that feature basic 
+// museum information and extends visitor engagement with museum exhibits. 
+// Copyright (C) 2014  Children's Museum of Houston and the Regents of the 
+// University of California.
+// 
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+// GNU General Public License for more details.
+// 
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//=====================================================================
+
+//=====================================================================
+// The ExCL NavigationController is a heavily adapted version of Vui Nguyen's
+// project, NavController (https://github.com/vuinguyen/NavController), which
+// was itself a 2013 update on the Ti-Navigation-Controller, originally written
+// by Kevin Whinnery, with multiple other contributors. 
+//=====================================================================
 
 var rootPath = (typeof Titanium == 'undefined')? '../../lib/' : '';
 
