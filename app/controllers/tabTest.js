@@ -42,31 +42,14 @@ function insertXNumberOfButtons(numberOfButtons) {
 }
 
 function showRespectiveView(buttonSource) {
-	// Ti.API.info(JSON.stringify(buttonSource.viewAssociatedId));
-	// Ti.API.info("===========");
-	// var mainViewJson = JSON.stringify($.mainView);
-	// var mainViewJsonParsed = JSON.parse(mainViewJson);
-	// Ti.API.info(mainViewJsonParsed.children);
-	// for(var i=0; i<mainViewJsonParsed.children.length; i++){
-	// // Ti.API.info(mainViewJsonParsed.children[i].id);
-	// if (buttonSource.viewAssociatedId == mainViewJsonParsed.children[i].id){
-	// Ti.API.info("````````````````````");
-	// Ti.API.info(buttonSource.viewAssociatedId);
-	// Ti.API.info(JSON.stringify(mainViewJsonParsed.children[i]));
-	// Ti.API.info(mainViewJsonParsed.children[i].visible);
-	// Ti.API.info($.mainView.children);
-	// Ti.API.info("````````````````````");
-	// mainViewJsonParsed.children[i].visible = false;
-	// }
-	// }
-	
-	for(var child in $.mainView.children){
-		// Ti.API.info(child.id);
-		Ti.API.info($.mainView.children[child].id);
-		if($.mainView.children[child].id){
-			if (buttonSource.viewAssociatedId == $.mainView.children[child].id){
-				Ti.API.info("Found " + buttonSource.viewAssociatedId);
+	for (var child in $.mainView.children) {
+		if ($.mainView.children[child].id) {
+			if (buttonSource.viewAssociatedId == $.mainView.children[child].id) {
+				if (lastSelectedView) {
+					$.mainView.children[lastSelectedView].visible = false;
+				}
 				$.mainView.children[child].visible = true;
+				lastSelectedView = child;
 			}
 		}
 	}
