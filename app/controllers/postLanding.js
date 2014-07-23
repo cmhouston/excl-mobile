@@ -118,6 +118,7 @@ function addCommentingButton(json, row, iconList, objectArgs) {
 			$.submitCommentFormView.visible = true;
 			$.insertName.value = $.insertEmail.value = $.insertComment.value = "";
 			$.thankYouMessageView.visible = false;
+			$.scroller.scrollTo(0, 0);
 			$.scroller.scrollingEnabled = false;
 		});
 
