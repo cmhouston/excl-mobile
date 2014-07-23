@@ -211,7 +211,7 @@ NavigationController.prototype.home = function() {
 		(this.navGroup) ? this.navGroup.closeWindow(this.windowStack[this.windowStack.length - 1], {animated : false}) : this.windowStack[this.windowStack.length - 1].close({animated : false});
 		this.analyticsTrackWindowScreen(this.windowStack[0]);
 	}
-	addMenuToHomeWindow(this.windowStack, this.menu);
+	// addMenuToHomeWindow(this.windowStack, this.menu);
 	//addMenuToNextWindow(this.windowStack, this.menu);
 };
 
