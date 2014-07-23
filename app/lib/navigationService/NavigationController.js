@@ -87,9 +87,10 @@ NavigationController.prototype.openWindow = function(windowToOpen) {
 	return windowToOpen;
 };
 
+
 NavigationController.prototype.prepWindowsWithFlyout = function(windowToOpen) {
-	windowToOpen.add(this.menu.getMenu());
-	removeMenuFromWindow(this.windowStack, this.menu);
+	windowToOpen.add(this.menu.getNewMenu());
+	//removeMenuFromWindow(this.windowStack, this.menu);
 };
 
 NavigationController.prototype.openHomeScreen = function(windowToOpen) {
@@ -254,13 +255,13 @@ NavigationController.prototype.openTutorial = function(windowToOpen) {
 
 function addMenuToHomeWindow(windowStack, menu){
 	if(windowStack.length>0){
-		windowStack[0].add(menu.getMenu());
+		windowStack[0].add(menu.getNewMenu());
 	}
 }
 
 function addMenuToNextWindow(windowStack, menu){
 	if(windowStack.length>1){
-		windowStack[windowStack.length-2].add(menu.getMenu());
+		windowStack[windowStack.length-2].add(menu.getNewMenu());
 	}
 }
 
