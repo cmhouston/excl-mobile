@@ -2,7 +2,10 @@ var args = arguments[0] || {};
 
 var json = args[0];
 var loadingSpinner = setPathForLibDirectory('loadingSpinner/loadingSpinner');
-var spinner = new loadingSpinner();
+var addLoadingMessage = false;
+var loadingSpinnerLib = new loadingSpinner(addLoadingMessage);
+var spinner = loadingSpinnerLib.getSpinner();
+var loadingSpinnerView = Ti.UI.createView();
 
 var iconService = setPathForLibDirectory('customCalls/iconService');
 var iconService = new iconService();
@@ -59,12 +62,14 @@ function setPathForLibDirectory(libFile) {
 };
 
 function addSpinner() {
-	spinner.addTo($.exhibitsCarousel);
+	loadingSpinnerView.add(spinner);
 	spinner.show();
+	$.exhibitLanding.add(loadingSpinnerView);
 }
 
 function hideSpinner() {
 	spinner.hide();
+	$.exhibitLanding.remove(loadingSpinnerView);
 }
 
 function fixIpadSpacing() {
@@ -425,6 +430,7 @@ function createComponentsScrollView(exhibits) {
 }
 
 function openComponent(e, componentImageUrl) {
+	addSpinner();
 	var components = Alloy.Collections.instance('component');
 	var component = components.where({"id": e.source.itemId})[0];
 	var controller = Alloy.createController('componentLanding', [component, componentImageUrl]);
@@ -433,6 +439,7 @@ function openComponent(e, componentImageUrl) {
 	controller.setAnalyticsPageTitle(analyticsTitle);
 	controller.setAnalyticsPageLevel(analyticsLevel);
 	Alloy.Globals.navController.open(controller);
+	hideSpinner();
 }
 
 function createLabeledPicView(item, type) {

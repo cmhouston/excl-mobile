@@ -11,6 +11,7 @@ sharingTextService = Alloy.Globals.setPathForLibDirectory('sharing/sharingTextSe
 var sharingTextService = new sharingTextService();
 sharingImageService = Alloy.Globals.setPathForLibDirectory('sharing/sharingImageService');
 var sharingImageService = new sharingImageService();
+
 var loadingSpinner = Alloy.Globals.setPathForLibDirectory('loadingSpinner/loadingSpinner');
 var spinnerLib = new loadingSpinner();
 var spinner = spinnerLib.getSpinner();
@@ -92,7 +93,6 @@ function setPageTitle(name) {
  * Adds sharing buttons
  */
 function displaySocialMediaButtons(json) {
-	//Create anchor for instagram viewer
 	var row = createPlainRowWithHeight('auto');
 	var iconList = [];
 	var objectArgs = {
@@ -590,6 +590,8 @@ function compileErrorMessage(errorMessage, errorMessageParts) {
 }
 
 function addSpinner() {
+	spinnerLib.makeDark();
+	spinnerLib.setTop("50%");
 	loadingSpinnerView.add(spinner);
 	spinner.show();
 	$.postLanding.add(loadingSpinnerView);
@@ -642,15 +644,18 @@ function initializePage() {
 				tableData.push(displaySocialMediaButtons(post_content));
 			}
 		}
+		if (post_content.commenting){
+			creatingCommentTextHeading();
+			var comments = post.getAllComments();
+			if (comments != false) {
+				displayComments(comments);
+			} else {
+				displayThereAreNoCommentsToDisplayText();
+			}
+		}
 	}
 
-	creatingCommentTextHeading();
-	var comments = post.getAllComments();
-	if (comments != false) {
-		displayComments(comments);
-	} else {
-		displayThereAreNoCommentsToDisplayText();
-	}
+
 	addTableDataToTheView(tableData);
 	formatCommentBoxForIpad();
 	fixPageSpacing();
