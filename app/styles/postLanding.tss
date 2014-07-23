@@ -30,8 +30,8 @@
 
 "#whiteCommentBox":{
 	backgroundColor: 'white',
-	height:'350dip',
-	width:'250dip',
+	height:'390dip',
+	width:'260dip',
 	top: '5%',
 	opacity: '1.0',
 	visible: false,
@@ -74,11 +74,10 @@
 "#insertNameDisclaimer":{
 	font: {
 		fontFamily: 'Helvetica Neue',
-		fontSize: '10dip',
+		fontSize: '16dip',
 		fontWeight: 'normal'
 	},
 	color: 'black',
-	//top: '28%',
 	left: '7%',
 }
 
@@ -92,7 +91,6 @@
 		fontWeight: 'normal'
 	},
 	color: 'black',
-	//top: '36%',
 	left: '7%',
 	width: '85%',
 	height: '10%',
@@ -106,11 +104,10 @@
 "#insertEmailDisclaimer":{
 	font: {
 		fontFamily: 'Helvetica Neue',
-		fontSize: '10dip',
+		fontSize: '16dip',
 		fontWeight: 'normal'
 	},
 	color: 'black',
-	//top: '47%',
 	left: '7%',
 }
 
@@ -129,7 +126,6 @@
 	},
 	color: 'black',
 	backgroundColor: '#f2f2f2',
-	//top: '56%',
 	left: '7%',
 	width: '85%',
 	height: '40%',
@@ -144,11 +140,11 @@
 	opacity: '1.0',
 	font: {
 		fontFamily: 'Helvetica Neue',
-		fontSize: '16dp',
+		fontSize: '18dp',
 		fontWeight: 'bold'
 	},
 	left: '0',
-	width: '40%',
+	width: '49%',
 	height: '100%',
 	color: '#FFFFFF',
 	backgroundColor: '#2ECC71'
@@ -162,8 +158,8 @@
 		fontSize: '16dp',
 		fontWeight: 'bold'
 	},
-	left: '20%',
-	width: '40%',
+	left: "2%",
+	width: '49%',
 	height: '100%',
 	color: '#FFFFFF',
 	backgroundColor: '#E74C3C'
