@@ -22,7 +22,10 @@
 }
 
 "#currentEnvironLabel":{
-	left: "5%"
+	left: "5%",
+	font: {
+		fontSize: "15dip"
+	}
 }
 
 "#toggleUnpublishedPostsSwitch":{
@@ -37,9 +40,11 @@
 
 ".title":{
 	top: "5%",
+	bottom: "5%",
 	font:
 	{
-		fontSize: "30dip",
+		fontSize: "15dip",
 		fontWeight: "bold"
-	}
+	},
+	height: Ti.UI.SIZE
 }

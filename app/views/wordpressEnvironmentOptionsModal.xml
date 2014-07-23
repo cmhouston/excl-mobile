@@ -1,16 +1,14 @@
 <Alloy>
 	<Window class="container">
 		<View class="verticalContainer" >
-			<Label class="title">
+			<Label id="title" class="title">
 				Choose your Wordpress Environment
 			</Label>
-			<View class="horizontalContainer">
-				<Label class = "boldLabel">
-					Current Environment:
-				</Label>
-				<Label id="currentEnvironLabel">
-				</Label>
-			</View>
+			<Label class = "boldLabel">
+				Current Environment:
+			</Label>
+			<Label id="currentEnvironLabel">
+			</Label>
 			<Button class="environmentOption" onClick="enterProductionMode">
 				Production (prod)
 			</Button>
