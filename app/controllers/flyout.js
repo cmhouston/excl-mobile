@@ -75,21 +75,13 @@ function openExhibitsPage(e) {
 }
 
 function openMapPage(e) {
-	// Alloy.Globals.navController.open(Alloy.createController("map", eval([json])));
-	// closeMenu();
-	//if(doneLoading){
 		var controller = Alloy.createController("map", eval([json]));
 		Alloy.Globals.navController.open(controller);
 		closeMenu();
-	//}else
-	//{
-	//	alert("Not Done Loading");
-	//}
 }
 
 function openInfoPage(e) {
-	//Alloy.Globals.navController.open(Alloy.createController("info", eval([json])));
-	//closeMenu();
+
 	var controller = Alloy.createController("info", eval([json]));
 	Alloy.Globals.navController.open(controller);
 	closeMenu();
@@ -153,10 +145,6 @@ function rowFilterEventListener() {
 }
 
 function tutorialToggler(e) {
-	//closeMenu(e);
-	//Alloy.Globals.navController.open(Alloy.createController("tutorialToggler"));
-	//Alloy.createController('tutorialToggler').getView().open();
-	//closeMenu(e);
 	if (!Alloy.Models.app.get("tutorialOn")) {
 		tutorialService.resetTutorialMode();
 		Alloy.Models.app.set("tutorialOn", true);
