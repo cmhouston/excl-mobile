@@ -5,7 +5,13 @@
 	backgroundColor: "#FFF"
 }
 
-"#mainView": {
+"#navBarView": {
 	layout: "vertical",
-	bottom: "20dip"
+	top: 0
+}
+
+"#mapScrollView":{
+	top: "50dip",
+	width: Ti.UI.SIZE,
+	showHorizontalScrollIndicator : true
 }
