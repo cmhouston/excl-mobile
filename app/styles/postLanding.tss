@@ -155,16 +155,8 @@
 	left: '7%',
 	width: '40%',
 	height: '10%',
-	color: 'black',
-	borderWidth: '1',
-	borderColor: '#2D6C1E',
-	backgroundGradient: {
-	    type: 'linear',
-	    startPoint: { x: '50%', y: '0%' },
-	    endPoint: { x: '50%', y: '100%' },
-	    colors: [ 	{ color: '#2D6C1E', offset: 0.0}, 
-	    			{ color: '#C0D860', offset: 1.0 }],
-   }
+	color: '#FFFFFF',
+	backgroundColor: '#E74C3C'
 }
 
 "#cancelCommentButton":{
@@ -180,16 +172,8 @@
 	right: '7%',
 	width: '40%',
 	height: '10%',
-	color: 'black',
-	borderWidth: '1',
-	borderColor: '#F20000',
-	backgroundGradient: {
-	    type: 'linear',
-	    startPoint: { x: '50%', y: '0%' },
-	    endPoint: { x: '50%', y: '100%' },
-	    colors: [ 	{ color: '#F20000', offset: 0.0}, 
-	    			{ color: '#FF9999', offset: 1.0 }],
-   }
+	color: '#FFFFFF',
+	backgroundColor: '#2ECC71'
 }
 
 ".thankYouMessageComment":{
