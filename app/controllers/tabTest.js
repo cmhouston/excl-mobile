@@ -1,5 +1,8 @@
 var args = arguments[0] || {};
 var lastSelectedButton;
+var lastSelectedView;
+var colorArray = ['#ECD078', '#D95B43', '#C02942', '#542437', '#53777A'];
+var colorArrayCounter = 0;
 
 function textSubmitted() {
 	Ti.API.info($.insertText.value);
@@ -23,7 +26,8 @@ function insertXNumberOfButtons(numberOfButtons) {
 	for (var i = 0; i < numberOfButtons; i++) {
 		var button = createButtonWithGivenWidth(each_button_width, i, "viewOfButton" + i);
 
-		var view = createNewView('black', "viewOfButton" + i);
+		var view = createNewView(colorArray[colorArrayCounter], "viewOfButton" + i);
+		colorArrayCounter++;
 		$.mainView.add(view);
 
 		button.addEventListener('click', function(e) {
@@ -38,15 +42,32 @@ function insertXNumberOfButtons(numberOfButtons) {
 }
 
 function showRespectiveView(buttonSource) {
-	JSON.stringify(buttonSource.viewAssociatedId);
-	Ti.API.info("===========");
-	var mainViewJson = JSON.stringify($.mainView);
-	var mainViewJsonParsed = JSON.parse(mainViewJson);
-	Ti.API.info(mainViewJsonParsed.children);
-	for(var i=0; i<mainViewJsonParsed.children.length; i++){
-		Ti.API.info(mainViewJsonParsed.children[i].id);
-		if (buttonSource.viewAssociatedId == mainViewJsonParsed.children[i].id){
-			Ti.API.info("````` " + buttonSource.viewAssociatedId +"````` " );
+	// Ti.API.info(JSON.stringify(buttonSource.viewAssociatedId));
+	// Ti.API.info("===========");
+	// var mainViewJson = JSON.stringify($.mainView);
+	// var mainViewJsonParsed = JSON.parse(mainViewJson);
+	// Ti.API.info(mainViewJsonParsed.children);
+	// for(var i=0; i<mainViewJsonParsed.children.length; i++){
+	// // Ti.API.info(mainViewJsonParsed.children[i].id);
+	// if (buttonSource.viewAssociatedId == mainViewJsonParsed.children[i].id){
+	// Ti.API.info("````````````````````");
+	// Ti.API.info(buttonSource.viewAssociatedId);
+	// Ti.API.info(JSON.stringify(mainViewJsonParsed.children[i]));
+	// Ti.API.info(mainViewJsonParsed.children[i].visible);
+	// Ti.API.info($.mainView.children);
+	// Ti.API.info("````````````````````");
+	// mainViewJsonParsed.children[i].visible = false;
+	// }
+	// }
+	
+	for(var child in $.mainView.children){
+		// Ti.API.info(child.id);
+		Ti.API.info($.mainView.children[child].id);
+		if($.mainView.children[child].id){
+			if (buttonSource.viewAssociatedId == $.mainView.children[child].id){
+				Ti.API.info("Found " + buttonSource.viewAssociatedId);
+				$.mainView.children[child].visible = true;
+			}
 		}
 	}
 }
@@ -74,7 +95,7 @@ function createNewView(backgroundColorOfView, viewId) {
 		backgroundColor : backgroundColorOfView,
 		width : '100%',
 		height : '100%',
-		top : '60%',
+		top : '50%',
 		visible : false,
 		id : viewId
 	});
