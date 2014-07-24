@@ -68,6 +68,12 @@ function setPageTitle(name) {
 	$.navBar.setPageTitle(name);
 }
 
+function hideMenuBtnIfKioskMode(){
+	if (Alloy.Globals.adminModeController.isInKioskMode()){
+		$.navBar.hideMenuBtn();
+	}
+}
+
 function insertComponentPicture(imageUrl) {
 	Ti.API.info("Picture to insert ===> " + imageUrl.toString());
 
@@ -209,6 +215,7 @@ function jackOfAllTrades() {
 		if (!dataRetriever.checkIfDataRetrieverNull(returnedData)) {
 			var rawJson = eval(returnedData.data.component);
 			setPageTitle(rawJson["name"]);
+			hideMenuBtnIfKioskMode();
 			insertComponentPicture(args[1]);
 			var unorderedSectionNames = extractSectionNamesAndOrder(rawJson["posts"]);
 			var orderedSectionList = orderSectionNameBySectionOrder(unorderedSectionNames);

@@ -111,6 +111,12 @@ function setPageTitle(name) {
 	}
 }
 
+function hideMenuBtnIfKioskMode(){
+	if (Alloy.Globals.adminModeController.isInKioskMode()){
+		$.navBar.hideMenuBtn();
+	}
+}
+
 /*
  * Adds sharing buttons
  */
@@ -646,6 +652,7 @@ function setCommentSubmittedMessage() {
 
 function initializePage() {
 	setPageTitle(post_content.name);
+	hideMenuBtnIfKioskMode();
 	if (post_content.parts) {
 		// var tableData = [];
 
