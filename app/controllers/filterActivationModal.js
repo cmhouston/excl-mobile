@@ -72,7 +72,7 @@ function createFilterView(filter, allChecked) {
 	var args = {
 		color : color,
 		font : {
-			fontFamily : 'Helvetica Neue',
+			
 			fontSize : '22dp',
 			fontWeight : 'bold'
 		},
