@@ -184,7 +184,7 @@ function tutorialToggler(e) {
 		var activityIndicator = Ti.UI.createActivityIndicator({
 			color : 'green',
 			font : {
-				fontFamily : 'Helvetica Neue',
+				
 				fontSize : 26,
 				fontWeight : 'bold'
 			},

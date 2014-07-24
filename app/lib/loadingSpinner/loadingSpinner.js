@@ -18,10 +18,13 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //=====================================================================
 
-var loadingMessages = ["Cooking up some fun...", "Activities are on their way!", "Get excited!", "Firing up!", "Turning on the engines...", "Finding some fun...", "Sounding the horn!"];
+
 
 function LoadingSpinner(addMessage) {
 	addMessage = addMessage || false;
+	
+	this.loadingMessages = ["Cooking up some fun...", "Activities are on their way!", "Get excited!", "Firing up!", "Turning on the engines...", "Finding some fun...", "Sounding the horn!", "Getting pumped...", "Diving in...", "Preparing to launch..." ];
+	
 	var style;
 	var message;
 	var color;
@@ -29,7 +32,7 @@ function LoadingSpinner(addMessage) {
 	if (OS_IOS) {
 		style = Ti.UI.iPhone.ActivityIndicatorStyle.BIG;
 		if (addMessage) {
-			message = loadingMessages[Math.floor(Math.random() * (loadingMessages.length))];
+			message = this.loadingMessages[Math.floor(Math.random() * (this.loadingMessages.length))];
 		}
 		color = '#FFFFFF'; //Text color
 		top = "30%";
@@ -58,11 +61,20 @@ LoadingSpinner.prototype.setTop = function(top){
 	this.spinner.setTop(top);
 };
 
+LoadingSpinner.prototype.scrambleMessage = function(){
+	var message = this.loadingMessages[Math.floor(Math.random() * (this.loadingMessages.length))];
+	this.spinner.setMessage(message);
+};
+
 LoadingSpinner.prototype.addTo = function(element) {
 	element.add(this.spinner);
 };
 
-LoadingSpinner.prototype.show = function() {
+LoadingSpinner.prototype.show = function(addMessage) {
+	addMessage = addMessage || false;
+	if (addMessage && OS_IOS){	
+		LoadingSpinner.prototype.scrambleMessage();
+	}
 	this.spinner.show();
 };
 

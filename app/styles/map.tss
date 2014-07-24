@@ -2,17 +2,6 @@
 ".container" : {
 	navBarHidden: true,
 	fullscreen: true,
-	backgroundColor: "#FFF"
-}
-
-"#navBarView": {
-	layout: "vertical",
-	top: 0
-}
-
-"#mapScrollView":{
-	scrollType: "horizontal",
-	top: "50dip",
-	width: Ti.UI.SIZE,
-	showHorizontalScrollIndicator : true
+	backgroundColor: "#FFF",
+	layout: "vertical"
 }

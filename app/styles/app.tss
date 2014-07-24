@@ -22,7 +22,7 @@
 ".headingText": {
 	color: 'white',
 	font: {
-		fontFamily: 'Helvetica Neue',
+		
 		fontSize: '22dip',
 		fontWeight: 'bold'
 	},

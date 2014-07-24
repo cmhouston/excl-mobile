@@ -27,12 +27,14 @@ var buttonService = setPathForLibDirectory("customCalls/buttonService");
 buttonService = new buttonService();
 var labelService = setPathForLibDirectory("customCalls/labelService");
 labelService = new labelService();
-sharingTextService = Alloy.Globals.setPathForLibDirectory('sharing/sharingTextService');
+sharingTextService = setPathForLibDirectory('sharing/sharingTextService');
 var sharingTextService = new sharingTextService();
-sharingImageService = Alloy.Globals.setPathForLibDirectory('sharing/sharingImageService');
+sharingImageService = setPathForLibDirectory('sharing/sharingImageService');
 var sharingImageService = new sharingImageService();
 
-var loadingSpinner = Alloy.Globals.setPathForLibDirectory('loadingSpinner/loadingSpinner');
+var detectDevice = setPathForLibDirectory('customCalls/deviceDetectionService');
+detectDevice = new detectDevice();
+var loadingSpinner = setPathForLibDirectory('loadingSpinner/loadingSpinner');
 var spinnerLib = new loadingSpinner();
 var spinner = spinnerLib.getSpinner();
 var loadingSpinnerView = Ti.UI.createView();
@@ -111,18 +113,25 @@ function setPageTitle(name) {
 	}
 }
 
+function hideMenuBtnIfKioskMode(){
+	if (Alloy.Globals.adminModeController.isInKioskMode()){
+		$.navBar.hideMenuBtn();
+	}
+}
+
 /*
  * Adds sharing buttons
  */
 function displaySocialMediaButtons(json) {
-	var row = createPlainRowWithHeight(Ti.UI.FILL);
+	var row = createPlainRowWithHeight(Ti.UI.SIZE);
+	
 	var iconList = [];
 	var objectArgs = {
 		height : "30dip",
 		width : "30dip",
 		top : "2%"
 	};
-	if (Titanium.Platform.osname == "ipad") {
+	if (detectDevice.isTablet()) {
 		objectArgs["height"] = "40dip";
 		objectArgs["width"] = "40dip";
 	}
@@ -130,6 +139,7 @@ function displaySocialMediaButtons(json) {
 	addTextSharingButton(json, row, iconList, objectArgs);
 	addImageSharingButton(json, row, iconList, objectArgs);
 	spaceIconsAccordingToNumberAdded(iconList);
+	
 	return row;
 }
 
@@ -225,7 +235,7 @@ function setCommentIconBusy(button) {
 
 function getImageRowFromPart(part) {
 	var row = createPlainRowWithHeight('200dip');
-	if (Titanium.Platform.osname == "ipad") {
+	if (detectDevice.isTablet()) {
 		row.height = "40%";
 	}
 	imageView = Ti.UI.createImageView({
@@ -297,7 +307,7 @@ function getVideoThumbnailViewFromPartAndroid(part) {
 
 function getVideoRowFromPartiOS(part) {
 	var row = createPlainRowWithHeight('200dip');
-	if (Titanium.Platform.osname == "ipad") {
+	if (detectDevice.isTablet()) {
 		row.height = "40%";
 	}
 	var video = Titanium.Media.createVideoPlayer({
@@ -320,15 +330,16 @@ function getTextRowFromPart(part) {
 		left : '3%',
 		color : '#232226',
 		font : {
-			fontFamily : 'Helvetica Neue',
-			fontSize : '15dp',
+			
+			fontSize : '15dip',
 			fontWeight : 'normal',
 		},
 		text : part.get('body'),
 	};
 	var textBody = labelService.createCustomLabel(objectArgs);
-	if (Titanium.Platform.osname == "ipad") {
+	if (detectDevice.isTablet()) {
 		textBody.font = {
+			
 			fontSize : "25dip"
 		};
 	}
@@ -374,8 +385,8 @@ function creatingCommentTextHeading() {
 		left : '3%',
 		color : '#232226',
 		font : {
-			fontFamily : 'Helvetica Neue',
-			fontSize : '16dp',
+			
+			fontSize : '16dip',
 			fontWeight : 'bold',
 		},
 		text : "Add Comment",
@@ -384,8 +395,9 @@ function creatingCommentTextHeading() {
 		borderColor : '#aaa'
 	};
 	var commentHeading = labelService.createCustomLabel(objectArgs);
-	if (Titanium.Platform.osname == "ipad") {
+	if (detectDevice.isTablet()) {
 		commentHeading.font = {
+			
 			fontSize : "30dip"
 		};
 	}
@@ -411,15 +423,16 @@ function displayThereAreNoCommentsToDisplayText() {
 		left : '3%',
 		color : '#48464e',
 		font : {
-			fontFamily : 'Helvetica Neue',
-			fontSize : '13dp',
+			
+			fontSize : '13dip',
 			fontWeight : 'normal',
 		},
 		text : "There are no comments for this post"
 	};
 	var noCommentText = labelService.createCustomLabel(objectArgs);
-	if (Titanium.Platform.osname == "ipad") {
+	if (detectDevice.isTablet()) {
 		noCommentText.font = {
+			
 			fontSize : "25dip"
 		};
 	}
@@ -445,15 +458,16 @@ function createCommentText(commentText) {
 		left : '3%',
 		color : '#232226',
 		font : {
-			fontFamily : 'Helvetica Neue',
-			fontSize : '13dp',
+			
+			fontSize : '13dip',
 			fontWeight : 'normal',
 		},
 		text : commentText
 	};
 	var text = labelService.createCustomLabel(objectArgs);
-	if (Titanium.Platform.osname == "ipad") {
+	if (detectDevice.isTablet()) {
 		text.font = {
+			
 			fontSize : "25dip"
 		};
 	}
@@ -469,15 +483,16 @@ function createCommentDate(commentDate) {
 		left : '3%',
 		color : '#48464e',
 		font : {
-			fontFamily : 'Helvetica Neue',
-			fontSize : '8dp',
+			
+			fontSize : '8dip',
 			fontWeight : 'normal',
 		},
 		text : commentDate
 	};
 	var date = labelService.createCustomLabel(objectArgs);
-	if (Titanium.Platform.osname == "ipad") {
+	if (detectDevice.isTablet()) {
 		date.font = {
+			
 			fontSize : "17dip"
 		};
 	}
@@ -505,16 +520,17 @@ function displayComments(comments) {
 			left : '3%',
 			color : '#005ab3',
 			font : {
-				fontFamily : 'Helvetica Neue',
-				fontSize : '13dp',
+				
+				fontSize : '13dip',
 				fontWeight : 'normal',
 			},
 			text : "Show more comments",
 			textAlign : 'center'
 		};
 		var text = labelService.createCustomLabel(objectArgs);
-		if (Titanium.Platform.osname == "ipad") {
+		if (detectDevice.isTablet()) {
 			text.font = {
+				
 				fontSize : "20dip"
 			};
 		}
@@ -646,6 +662,7 @@ function setCommentSubmittedMessage() {
 
 function initializePage() {
 	setPageTitle(post_content.name);
+	hideMenuBtnIfKioskMode();
 	if (post_content.parts) {
 		// var tableData = [];
 
@@ -676,27 +693,29 @@ function initializePage() {
 }
 
 function formatCommentBoxForIpad() {
-	if (Titanium.Platform.osname == "ipad") {
+	if (detectDevice.isTablet()) {
 		$.whiteCommentBox.height = "700dip";
 		$.whiteCommentBox.width = "500dip";
 		$.buttonView.height = "75dip";
 		$.insertNameDisclaimer.font = {
+			
 			fontSize : "15dip"
 		};
 		$.insertEmailDisclaimer.font = {
+			
 			fontSize : "15dip"
 		};
 		$.insertName.height = "50dip";
 		$.insertEmail.height = "50dip";
 		$.insertComment.height = "300dip";
 		$.cancelCommentButton.font = {
-			fontFamily : 'Helvetica Neue',
-			fontSize : '25dp',
+			
+			fontSize : '25dip',
 			fontWeight : 'bold'
 		};
 		$.submitButton.font = {
-			fontFamily : 'Helvetica Neue',
-			fontSize : '25dp',
+			
+			fontSize : '25dip',
 			fontWeight : 'bold'
 		};
 	}

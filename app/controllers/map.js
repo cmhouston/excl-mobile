@@ -54,8 +54,7 @@ $.navBar.setPageTitle("Map");
 		height : Ti.UI.FILL
 	});
 
-	$.mapScrollView.add(image);
-	//$.mapView.add(image);
+$.Map.url=json.data.museum.map;
 	
 $.onEnterKioskMode = function() {
 	$.navBar.onEnterKioskMode();

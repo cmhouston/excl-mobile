@@ -1,19 +1,19 @@
 //======================================================================
-// ExCL is an open source mobile platform for museums that feature basic 
-// museum information and extends visitor engagement with museum exhibits. 
-// Copyright (C) 2014  Children's Museum of Houston and the Regents of the 
+// ExCL is an open source mobile platform for museums that feature basic
+// museum information and extends visitor engagement with museum exhibits.
+// Copyright (C) 2014  Children's Museum of Houston and the Regents of the
 // University of California.
-// 
+//
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
-// 
+//
 // This program is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //=====================================================================
@@ -23,17 +23,25 @@ var args = arguments[0] || {};
 var json = Alloy.Globals.museumJSON;
 Ti.API.info('Exhibit landing initialized with: ' + json);
 
+var iconService = setPathForLibDirectory('customCalls/iconService');
+iconService = new iconService();
+var viewService = setPathForLibDirectory('customCalls/viewService');
+viewService = new viewService();
+var buttonService = setPathForLibDirectory('customCalls/buttonService');
+buttonService = new buttonService();
+var detectDevice = setPathForLibDirectory('customCalls/deviceDetectionService');
+detectDevice = new detectDevice();
+
 var loadingSpinner = setPathForLibDirectory('loadingSpinner/loadingSpinner');
-var addLoadingMessage = false;
+var addLoadingMessage = true;
 var loadingSpinnerLib = new loadingSpinner(addLoadingMessage);
 var spinner = loadingSpinnerLib.getSpinner();
-var loadingSpinnerView = Ti.UI.createView();
-
-var iconService = setPathForLibDirectory('customCalls/iconService');
-var iconService = new iconService();
-
-var buttonService = setPathForLibDirectory('customCalls/buttonService');
-var buttonService = new buttonService();
+var loadingSpinnerView = viewService.createCustomView("");
+var loadingSpinnerDarkView = viewService.createCustomView({
+	backgroundColor : "#000000",
+	opacity : 0.3
+});
+loadingSpinnerView.add(loadingSpinnerDarkView);
 
 var url = Alloy.Globals.rootWebServiceUrl;
 
@@ -86,6 +94,9 @@ function setPathForLibDirectory(libFile) {
 
 function addSpinner() {
 	loadingSpinnerView.add(spinner);
+	if (addLoadingMessage && OS_IOS){
+		loadingSpinnerLib.scrambleMessage();
+	}
 	spinner.show();
 	$.exhibitLanding.add(loadingSpinnerView);
 }
@@ -96,7 +107,7 @@ function hideSpinner() {
 }
 
 function fixIpadSpacing() {
-	if (Titanium.Platform.osname == 'ipad') {
+	if (detectDevice.isTablet()) {
 		$.exhibitSelect.bottom = "20dip";
 		$.exhibitSelect.height = "70dip";
 		$.exhibitSelectLabel.font = {
@@ -167,9 +178,9 @@ function createExhibitsCarousel(exhibits) {
 		var exhibitView;
 
 		if (OS_IOS) {
-			exhibitView = createExhibitsImageIOS(exhibits[i], (i + 1 + " of " + exhibits.length));
+			exhibitView = createExhibitsImageIOS(exhibits[i]);
 		} else if (OS_ANDROID) {
-			exhibitView = createExhibitsImageAndroid(exhibits[i], (i + 1 + " of " + exhibits.length));
+			exhibitView = createExhibitsImageAndroid(exhibits[i]);
 			exhibitView.addEventListener("click", function(e) {
 				onExhibitsClick(exhibits);
 			});
@@ -178,12 +189,14 @@ function createExhibitsCarousel(exhibits) {
 	}
 	$.headingLabel.text = exhibits[0].name;
 	$.exhibitInfoLabel.text = exhibits[0].long_description;
-	if (Titanium.Platform.osname == "ipad") {
+	if (detectDevice.isTablet()) {
 		$.headingLabel.font = {
+
 			fontSize : "30dip",
 			fontWeight : 'bold'
 		};
 		$.exhibitInfoLabel.font = {
+
 			fontSize : "25dip"
 		};
 	}
@@ -200,7 +213,8 @@ function createExhibitsCarousel(exhibits) {
 	});
 }
 
-function createExhibitsImageIOS(exhibit, pageXofYtext) {
+function createExhibitsImageIOS(exhibit) {
+	
 	var viewConfig = {
 		backgroundColor : "#253342",
 		width : Ti.UI.FILL,
@@ -213,12 +227,34 @@ function createExhibitsImageIOS(exhibit, pageXofYtext) {
 	var exhibitView = Ti.UI.createImageView(viewConfig);
 	// exhibitView.add(createExhibitTitleLabel(exhibit.name, pageXofYtext));
 	return exhibitView;
+	
+	/*
+	var viewConfig = {
+		backgroundColor : "#253342",
+		width : Ti.UI.FILL,
+		image : '/images/700x400.png',
+		itemId : exhibit.id
+	};
+	if (exhibit.exhibit_image) {
+		viewConfig.image = exhibit.exhibit_image;
+	}
+	var exhibitViewWithTitle = Ti.UI.createView({
+		layout: "vertical"
+	});
+	var exhibitTitleBar = createExhibitTitleLabel(exhibit.name);
+	exhibitViewWithTitle.add(exhibitTitleBar);
+	
+	var exhibitView = Ti.UI.createImageView(viewConfig);
+	exhibitViewWithTitle.add(exhibitView);
+	return exhibitView;
+	*/
 }
 
-function createExhibitsImageAndroid(exhibit, pageXofYtext) {
+function createExhibitsImageAndroid(exhibit) {
 
 	var itemContainer = Ti.UI.createView({
-		itemId : exhibit.id
+		itemId : exhibit.id,
+		layout : "vertical"
 	});
 	var image = Ti.UI.createImageView({
 		backgroundColor : "#253342",
@@ -228,56 +264,38 @@ function createExhibitsImageAndroid(exhibit, pageXofYtext) {
 	var clickCatcher = Ti.UI.createView({
 		itemId : exhibit.id
 	});
+	
+	itemContainer.add(createExhibitTitleLabel(exhibit.name));
 	image.image = exhibit.exhibit_image;
-
 	itemContainer.add(image);
-	// itemContainer.add(createTitleLabel(exhibit.name, '25dip', pageXofYtext));
 	itemContainer.add(clickCatcher);
 	return itemContainer;
 }
 
-function createExhibitTitleLabel(name, pageXofYtext) {
+function createExhibitTitleLabel(name) {
 	var titleLabelView = Ti.UI.createView({
 		top : 0,
-		height : Ti.UI.SIZE,
 		backgroundColor : '#000',
-		opacity : 0.6
+		height: "34dip"
 	});
 	var label = Ti.UI.createLabel({
 		top : 0,
 		left : "3%",
 		text : name,
-		color : 'white',
+		color : '#FFFFFF',
 		horizontalWrap : false,
 		font : {
-			fontFamily : 'Arial',
 			fontSize : '24dip',
 			fontWeight : 'bold'
 		}
 	});
-	if (Titanium.Platform.osname == "ipad") {
+	if (detectDevice.isTablet()) {
 		label.font = {
 			fontSize : "30dip"
 		};
+		titleLabelView.height = "40dip";
 	}
 	titleLabelView.add(label);
-
-	if (pageXofYtext) {
-		var pageXofYtextLabel = Ti.UI.createLabel({
-			top : "10%",
-			right : "3%",
-			text : pageXofYtext,
-			color : 'white',
-			horizontalWrap : false,
-			font : {
-				fontFamily : 'Arial',
-				fontSize : '18dip',
-				fontWeight : 'normal'
-			}
-		});
-		titleLabelView.add(pageXofYtextLabel);
-	}
-
 	return titleLabelView;
 }
 
@@ -295,13 +313,14 @@ function createTitleLabel(name, textSize, pageXofYtext) {
 		left : 10,
 		color : 'white',
 		font : {
-			fontFamily : 'Arial',
+
 			fontSize : textSize,
 			fontWeight : 'bold'
 		}
 	});
-	if (Titanium.Platform.osname == "ipad") {
+	if (detectDevice.isTablet()) {
 		label.font = {
+
 			fontSize : "27dip",
 			fontWeight : "bold"
 		};
@@ -317,7 +336,7 @@ function createTitleLabel(name, textSize, pageXofYtext) {
 			color : 'white',
 			horizontalWrap : false,
 			font : {
-				fontFamily : 'Arial',
+
 				fontSize : '18dip',
 				fontWeight : 'normal'
 			}
@@ -348,17 +367,20 @@ function onExhibitsClick(exhibits) {
 		var pageIndex = $.exhibitsCarousel.currentPage;
 		$.exhibitSelectLabel.text = "Back to Description";
 		$.exhibitInfoLabel.text = exhibits[pageIndex].long_description;
-		if (Titanium.Platform.osname == "ipad") {
+		if (detectDevice.isTablet()) {
 			$.exhibitInfoLabel.font = {
+
 				fontSize : "25dip"
 			};
 			$.exhibitSelectLabel.font = {
+
 				fontSize : "25dip"
 			};
 		}
 		$.headingLabel.text = "Select an Activity from Below!";
-		if (Titanium.Platform.osname == "ipad") {
+		if (detectDevice.isTablet()) {
 			$.headingLabel.font = {
+
 				fontSize : "30dip",
 				fontWeight : 'bold'
 			};
@@ -374,7 +396,7 @@ function onExhibitsClick(exhibits) {
 			duration : 300,
 			curve : Titanium.UI.ANIMATION_CURVE_EASE_IN_OUT
 		});
-		if (Titanium.Platform.osname == "ipad") {
+		if (detectDevice.isTablet()) {
 			slideOut.height = ipadComponentHeight;
 		}
 
@@ -383,7 +405,7 @@ function onExhibitsClick(exhibits) {
 		}, 300);
 
 		$.collapsibleComponentView.height = defaultComponentHeight;
-		if (Titanium.Platform.osname == "ipad") {
+		if (detectDevice.isTablet()) {
 			$.collapsibleComponentView.height = ipadComponentHeight;
 		}
 		$.collapsibleComponentView.animate(slideOut);
@@ -447,14 +469,14 @@ function createComponentsScrollView(exhibits) {
 			width : Ti.UI.SIZE,
 			height : defaultComponentHeight
 		});
-		if (Titanium.Platform.osname == "ipad") {
+		if (detectDevice.isTablet()) {
 			componentsInExhibit[exhibits[i].id].height = ipadComponentHeight;
 		}
 		for (var j = 0; j < exhibits[i].components.length; j++) {
 			var component = createLabeledPicView(exhibits[i].components[j], '20dip');
 			component.left = "3dip";
 			component.width = '275dip';
-			if (Titanium.Platform.osname == "ipad") {
+			if (detectDevice.isTablet()) {
 				component.width = "500dip";
 			}
 			component.id = exhibits[i].components[j].id;

@@ -33,6 +33,8 @@ var loadingSpinner = require(rootDirPath + 'loadingSpinner/loadingSpinner');
 var spinner = new loadingSpinner();
 var labelService = require(rootDirPath + 'customCalls/labelService');
 labelService = new labelService();
+var detectDevice = require(rootDirPath + 'customCalls/deviceDetectionService');
+detectDevice = new detectDevice();
 
 /**
  * Analytics specific information
@@ -68,6 +70,12 @@ $.onExitKioskMode = function() {
 
 function setPageTitle(name) {
 	$.navBar.setPageTitle(name);
+}
+
+function hideMenuBtnIfKioskMode(){
+	if (Alloy.Globals.adminModeController.isInKioskMode()){
+		$.navBar.hideMenuBtn();
+	}
 }
 
 function insertComponentPicture(imageUrl) {
@@ -153,13 +161,15 @@ function displaySectionList(orderedSectionList, rawJson) {
 			text : orderedSectionList[i].key,
 			left : "5%",
 			font : {
+				
 				fontSize : labelService.countCharInTitleAndReturnFontSize(orderedSectionList[i].key, 26, 20, 5, 3),
 				fontWeight : "bold"
 			}
 		};
 		var label = labelService.createCustomLabel(objectArgs);
-		if (Titanium.Platform.osname == "ipad") {
+		if (detectDevice.isTablet()) {
 			label.font = {
+				
 				fontSize : labelService.countCharInTitleAndReturnFontSize(orderedSectionList[i].key, 35, 30, 5, 3),
 				fontWeight : "bold"
 			};
@@ -201,6 +211,7 @@ function jackOfAllTrades() {
 		if (!dataRetriever.checkIfDataRetrieverNull(returnedData)) {
 			var rawJson = eval(returnedData.data.component);
 			setPageTitle(rawJson["name"]);
+			hideMenuBtnIfKioskMode();
 			insertComponentPicture(args[1]);
 			var unorderedSectionNames = extractSectionNamesAndOrder(rawJson["posts"]);
 			var orderedSectionList = orderSectionNameBySectionOrder(unorderedSectionNames);

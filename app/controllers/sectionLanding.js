@@ -102,6 +102,7 @@ function detectEventEnabled() {
 	//Ti.API.info("Filter Detected (Comp): set: " + filterSet + ", on: " + filterOn);
 	retrieveComponentData();
 	changeTitleOfThePage(selectedSection, sectionColor);
+	hideMenuBtnIfKioskMode();
 }
 
 function retrieveComponentData() {
@@ -163,6 +164,12 @@ function organizeByFilter(allPosts) {
 function changeTitleOfThePage(name, color) {
 	$.navBar.setPageTitle(name);
 	$.navBar.setBackgroundColor(color);
+}
+
+function hideMenuBtnIfKioskMode(){
+	if (Alloy.Globals.adminModeController.isInKioskMode()){
+		$.navBar.hideMenuBtn();
+	}
 }
 
 function goToPostLandingPage(e) {
