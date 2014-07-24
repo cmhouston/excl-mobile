@@ -1,19 +1,19 @@
 //======================================================================
-// ExCL is an open source mobile platform for museums that feature basic 
-// museum information and extends visitor engagement with museum exhibits. 
-// Copyright (C) 2014  Children's Museum of Houston and the Regents of the 
+// ExCL is an open source mobile platform for museums that feature basic
+// museum information and extends visitor engagement with museum exhibits.
+// Copyright (C) 2014  Children's Museum of Houston and the Regents of the
 // University of California.
-// 
+//
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
-// 
+//
 // This program is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //=====================================================================
@@ -183,21 +183,28 @@ filterService.prototype.replaceStringWithFilterHeading = function(st) {
 	return newSt;
 };
 
-filterService.prototype.sortPostsIntoSections = function(dict, parentObject) {
+filterService.prototype.sortPostsIntoSections = function(dict, parentObjectArray) {
 	var dictKeys = filterService.prototype.returnDictKeys(dict);
 	var dictLength = dictKeys.length;
-	var bolEmpty;
-	if (dictLength == 0) {
-		//No content found. Throw Error
-		parentObject.add(filterService.prototype.generateErrorMessage(errorNoContent));
-	} else if (dictLength == 1 && dict[allInclusiveFilter] == "") {
-		//Only all inclusive category thrown and its empty. Throw Error
-		parentObject.add(filterService.prototype.generateErrorMessage(errorFilterSelectionHasNoResults));
+	//parentObjectArray will always have scroll view as first object
+	var iterableObject;
+	if (parentObjectArray.length > 1) {
+		iterableObject = parentObjectArray[0];
 	} else {
-		//Content found. Build the posts. Cycle through sections (dictKeys)
+		iterableObject = parentObjectArray[i];
+	}
+
+	if (dictLength == 0) {
+		//No content found (no content that matches all filters). Throw Error.
+		parentObjectArray[1].add(filterService.prototype.generateErrorMessage(errorNoContent));
+	} else if (dictLength == 1 && dict[allInclusiveFilter] == "") {
+		//Only all inclusive category thrown and its empty. Throw Error.
+		parentObjectArray[1].add(filterService.prototype.generateErrorMessage(errorFilterSelectionHasNoResults));
+	} else {
+		//Content found. Build the posts. Cycle through the sections/dictKeys and the tab onto which it is added.
 		for (var i = 0; i < dictLength; i++) {
 			var postCollection = filterService.prototype.retrievePostDetails(dict, dictKeys[i]);
-			filterService.prototype.addPostsToViewAccordingToSection(dictKeys[i], dict, parentObject, postCollection);
+			filterService.prototype.addPostsToViewAccordingToSection(dictKeys[i], dict, parentObjectArray[i], postCollection);
 		}
 	}
 };
@@ -213,7 +220,7 @@ filterService.prototype.generateErrorMessage = function(msg) {
 filterService.prototype.retrievePostDetails = function(dict, sections) {
 	var postCollection = Alloy.createCollection('post');
 	filterService.prototype.exploreListOfPosts(dict, sections, postCollection);
-	//Ti.API.info("Section: " + JSON.stringify(sections) + ", Post(s): " + JSON.stringify(postCollection));
+	Ti.API.info("Section: " + JSON.stringify(sections) + ", Post(s): " + JSON.stringify(postCollection));
 	return postCollection;
 };
 
@@ -292,7 +299,7 @@ filterService.prototype.addPostsToViewAccordingToSection = function(section, dic
 		if (JSON.stringify(collectionOfPosts) != "[]") {
 			postData = {
 				posts : collectionOfPosts,
-				parentScreenName: sectionScreenName		// TODO
+				parentScreenName : sectionScreenName	// TODO
 			};
 			filterService.prototype.addPostPreview(postData, parentObject);
 		}
@@ -300,7 +307,7 @@ filterService.prototype.addPostsToViewAccordingToSection = function(section, dic
 		if (JSON.stringify(collectionOfPosts) != "[]") {
 			postData = {
 				posts : collectionOfPosts,
-				parentScreenName: sectionScreenName		// TODO
+				parentScreenName : sectionScreenName	// TODO
 			};
 			filterService.prototype.addPostPreview(postData, parentObject);
 		} else {
@@ -315,7 +322,7 @@ filterService.prototype.addPostPreview = function(postData, parentObject) {
 	parentObject.add(view);
 };
 
-filterService.prototype.setSectionScreenName = function(name){
+filterService.prototype.setSectionScreenName = function(name) {
 	sectionScreenName = name;
 };
 
