@@ -24,10 +24,12 @@ var json = Alloy.Globals.museumJSON;
 Ti.API.info('Exhibit landing initialized with: ' + json);
 
 var loadingSpinner = setPathForLibDirectory('loadingSpinner/loadingSpinner');
-var addLoadingMessage = false;
+var addLoadingMessage = true;
 var loadingSpinnerLib = new loadingSpinner(addLoadingMessage);
 var spinner = loadingSpinnerLib.getSpinner();
 var loadingSpinnerView = Ti.UI.createView();
+var loadingSpinnerDarkView = Ti.UI.createView({ backgroundColor: "#000000", opacity: 0.3 });
+loadingSpinnerView.add(loadingSpinnerDarkView);
 
 var iconService = setPathForLibDirectory('customCalls/iconService');
 var iconService = new iconService();
@@ -86,6 +88,9 @@ function setPathForLibDirectory(libFile) {
 
 function addSpinner() {
 	loadingSpinnerView.add(spinner);
+	if (addLoadingMessage){
+		loadingSpinnerLib.scrambleMessage();
+	}
 	spinner.show();
 	$.exhibitLanding.add(loadingSpinnerView);
 }
