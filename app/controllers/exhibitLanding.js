@@ -178,9 +178,9 @@ function createExhibitsCarousel(exhibits) {
 		var exhibitView;
 
 		if (OS_IOS) {
-			exhibitView = createExhibitsImageIOS(exhibits[i], (i + 1 + " of " + exhibits.length));
+			exhibitView = createExhibitsImageIOS(exhibits[i]);
 		} else if (OS_ANDROID) {
-			exhibitView = createExhibitsImageAndroid(exhibits[i], (i + 1 + " of " + exhibits.length));
+			exhibitView = createExhibitsImageAndroid(exhibits[i]);
 			exhibitView.addEventListener("click", function(e) {
 				onExhibitsClick(exhibits);
 			});
@@ -214,6 +214,21 @@ function createExhibitsCarousel(exhibits) {
 }
 
 function createExhibitsImageIOS(exhibit) {
+	
+	var viewConfig = {
+		backgroundColor : "#253342",
+		width : Ti.UI.FILL,
+		image : '/images/700x400.png',
+		itemId : exhibit.id
+	};
+	if (exhibit.exhibit_image) {
+		viewConfig.image = exhibit.exhibit_image;
+	}
+	var exhibitView = Ti.UI.createImageView(viewConfig);
+	// exhibitView.add(createExhibitTitleLabel(exhibit.name, pageXofYtext));
+	return exhibitView;
+	
+	/*
 	var viewConfig = {
 		backgroundColor : "#253342",
 		width : Ti.UI.FILL,
@@ -232,6 +247,7 @@ function createExhibitsImageIOS(exhibit) {
 	var exhibitView = Ti.UI.createImageView(viewConfig);
 	exhibitViewWithTitle.add(exhibitView);
 	return exhibitView;
+	*/
 }
 
 function createExhibitsImageAndroid(exhibit) {
