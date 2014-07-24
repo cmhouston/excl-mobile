@@ -4,9 +4,5 @@
 			<Widget id="navBar" src="navigationBar"/>
 		</View>
 		<WebView id="Map"></WebView>
-		<!-- <WebView id="Map" url="http://excl.dreamhosters.com/dev/wp-content/uploads/2014/06/cmhmap1.png"></WebView> -->
-		<!-- <ScrollView id = "mapScrollView">
-			<WebView id="mapView"/>
-		</ScrollView> -->
 	</Window>
 </Alloy>
