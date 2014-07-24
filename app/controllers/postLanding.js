@@ -223,13 +223,13 @@ function setCommentIconBusy(button) {
 	}
 }
 
-function getImageRowFromURL(url) {
+function getImageRowFromPart(part) {
 	var row = createPlainRowWithHeight('200dip');
 	if (Titanium.Platform.osname == "ipad") {
 		row.height = "40%";
 	}
 	imageView = Ti.UI.createImageView({
-		image : url,
+		image : part.get('image'),
 		width : "90%",
 		height : Ti.UI.SIZE
 	});
@@ -646,7 +646,6 @@ function setCommentSubmittedMessage() {
 
 function initializePage() {
 	setPageTitle(post_content.name);
-	tableData.push()
 	if (post_content.parts) {
 		// var tableData = [];
 
@@ -706,7 +705,7 @@ function formatCommentBoxForIpad() {
 function getRowFromPart(part) {
 	switch (part.get('type')) {
 	case 'image':
-		return getImageRowFromURL(part.get("image"));
+		return getImageRowFromPart(part);
 		break;
 	case 'text':
 		return getTextRowFromPart(part);
