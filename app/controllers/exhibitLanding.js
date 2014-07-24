@@ -213,7 +213,7 @@ function createExhibitsCarousel(exhibits) {
 	});
 }
 
-function createExhibitsImageIOS(exhibit, pageXofYtext) {
+function createExhibitsImageIOS(exhibit) {
 	var viewConfig = {
 		backgroundColor : "#253342",
 		width : Ti.UI.FILL,
@@ -223,15 +223,22 @@ function createExhibitsImageIOS(exhibit, pageXofYtext) {
 	if (exhibit.exhibit_image) {
 		viewConfig.image = exhibit.exhibit_image;
 	}
+	var exhibitViewWithTitle = Ti.UI.createView({
+		layout: "vertical"
+	});
+	var exhibitTitleBar = createExhibitTitleLabel(exhibit.name);
+	exhibitViewWithTitle.add(exhibitTitleBar);
+	
 	var exhibitView = Ti.UI.createImageView(viewConfig);
-	// exhibitView.add(createExhibitTitleLabel(exhibit.name, pageXofYtext));
+	exhibitViewWithTitle.add(exhibitView);
 	return exhibitView;
 }
 
-function createExhibitsImageAndroid(exhibit, pageXofYtext) {
+function createExhibitsImageAndroid(exhibit) {
 
 	var itemContainer = Ti.UI.createView({
-		itemId : exhibit.id
+		itemId : exhibit.id,
+		layout : "vertical"
 	});
 	var image = Ti.UI.createImageView({
 		backgroundColor : "#253342",
@@ -241,57 +248,38 @@ function createExhibitsImageAndroid(exhibit, pageXofYtext) {
 	var clickCatcher = Ti.UI.createView({
 		itemId : exhibit.id
 	});
+	
+	itemContainer.add(createExhibitTitleLabel(exhibit.name));
 	image.image = exhibit.exhibit_image;
-
 	itemContainer.add(image);
-	// itemContainer.add(createTitleLabel(exhibit.name, '25dip', pageXofYtext));
 	itemContainer.add(clickCatcher);
 	return itemContainer;
 }
 
-function createExhibitTitleLabel(name, pageXofYtext) {
+function createExhibitTitleLabel(name) {
 	var titleLabelView = Ti.UI.createView({
 		top : 0,
-		height : Ti.UI.SIZE,
 		backgroundColor : '#000',
-		opacity : 0.6
+		height: "34dip"
 	});
 	var label = Ti.UI.createLabel({
 		top : 0,
 		left : "3%",
 		text : name,
-		color : 'white',
+		color : '#FFFFFF',
 		horizontalWrap : false,
 		font : {
-
 			fontSize : '24dip',
 			fontWeight : 'bold'
 		}
 	});
 	if (detectDevice.isTablet()) {
 		label.font = {
-
 			fontSize : "30dip"
 		};
+		titleLabelView.height = "40dip";
 	}
 	titleLabelView.add(label);
-
-	if (pageXofYtext) {
-		var pageXofYtextLabel = Ti.UI.createLabel({
-			top : "10%",
-			right : "3%",
-			text : pageXofYtext,
-			color : 'white',
-			horizontalWrap : false,
-			font : {
-
-				fontSize : '18dip',
-				fontWeight : 'normal'
-			}
-		});
-		titleLabelView.add(pageXofYtextLabel);
-	}
-
 	return titleLabelView;
 }
 
