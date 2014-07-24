@@ -111,6 +111,12 @@ function setPageTitle(name) {
 	}
 }
 
+function hideMenuBtnIfKioskMode(){
+	if (Alloy.Globals.adminModeController.isInKioskMode()){
+		$.navBar.hideMenuBtn();
+	}
+}
+
 /*
  * Adds sharing buttons
  */
@@ -321,7 +327,7 @@ function getTextRowFromPart(part) {
 		color : '#232226',
 		font : {
 			fontFamily : 'Helvetica Neue',
-			fontSize : '15dp',
+			fontSize : '15dip',
 			fontWeight : 'normal',
 		},
 		text : part.get('body'),
@@ -329,6 +335,7 @@ function getTextRowFromPart(part) {
 	var textBody = labelService.createCustomLabel(objectArgs);
 	if (Titanium.Platform.osname == "ipad") {
 		textBody.font = {
+			fontFamily : 'Helvetica Neue',
 			fontSize : "25dip"
 		};
 	}
@@ -375,7 +382,7 @@ function creatingCommentTextHeading() {
 		color : '#232226',
 		font : {
 			fontFamily : 'Helvetica Neue',
-			fontSize : '16dp',
+			fontSize : '16dip',
 			fontWeight : 'bold',
 		},
 		text : "Add Comment",
@@ -386,6 +393,7 @@ function creatingCommentTextHeading() {
 	var commentHeading = labelService.createCustomLabel(objectArgs);
 	if (Titanium.Platform.osname == "ipad") {
 		commentHeading.font = {
+			fontFamily : 'Helvetica Neue',
 			fontSize : "30dip"
 		};
 	}
@@ -412,7 +420,7 @@ function displayThereAreNoCommentsToDisplayText() {
 		color : '#48464e',
 		font : {
 			fontFamily : 'Helvetica Neue',
-			fontSize : '13dp',
+			fontSize : '13dip',
 			fontWeight : 'normal',
 		},
 		text : "There are no comments for this post"
@@ -420,6 +428,7 @@ function displayThereAreNoCommentsToDisplayText() {
 	var noCommentText = labelService.createCustomLabel(objectArgs);
 	if (Titanium.Platform.osname == "ipad") {
 		noCommentText.font = {
+			fontFamily : 'Helvetica Neue',
 			fontSize : "25dip"
 		};
 	}
@@ -446,7 +455,7 @@ function createCommentText(commentText) {
 		color : '#232226',
 		font : {
 			fontFamily : 'Helvetica Neue',
-			fontSize : '13dp',
+			fontSize : '13dip',
 			fontWeight : 'normal',
 		},
 		text : commentText
@@ -454,6 +463,7 @@ function createCommentText(commentText) {
 	var text = labelService.createCustomLabel(objectArgs);
 	if (Titanium.Platform.osname == "ipad") {
 		text.font = {
+			fontFamily : 'Helvetica Neue',
 			fontSize : "25dip"
 		};
 	}
@@ -470,7 +480,7 @@ function createCommentDate(commentDate) {
 		color : '#48464e',
 		font : {
 			fontFamily : 'Helvetica Neue',
-			fontSize : '8dp',
+			fontSize : '8dip',
 			fontWeight : 'normal',
 		},
 		text : commentDate
@@ -478,6 +488,7 @@ function createCommentDate(commentDate) {
 	var date = labelService.createCustomLabel(objectArgs);
 	if (Titanium.Platform.osname == "ipad") {
 		date.font = {
+			fontFamily : 'Helvetica Neue',
 			fontSize : "17dip"
 		};
 	}
@@ -506,7 +517,7 @@ function displayComments(comments) {
 			color : '#005ab3',
 			font : {
 				fontFamily : 'Helvetica Neue',
-				fontSize : '13dp',
+				fontSize : '13dip',
 				fontWeight : 'normal',
 			},
 			text : "Show more comments",
@@ -515,6 +526,7 @@ function displayComments(comments) {
 		var text = labelService.createCustomLabel(objectArgs);
 		if (Titanium.Platform.osname == "ipad") {
 			text.font = {
+				fontFamily : 'Helvetica Neue',
 				fontSize : "20dip"
 			};
 		}
@@ -646,6 +658,7 @@ function setCommentSubmittedMessage() {
 
 function initializePage() {
 	setPageTitle(post_content.name);
+	hideMenuBtnIfKioskMode();
 	if (post_content.parts) {
 		// var tableData = [];
 
@@ -681,9 +694,11 @@ function formatCommentBoxForIpad() {
 		$.whiteCommentBox.width = "500dip";
 		$.buttonView.height = "75dip";
 		$.insertNameDisclaimer.font = {
+			fontFamily : 'Helvetica Neue',
 			fontSize : "15dip"
 		};
 		$.insertEmailDisclaimer.font = {
+			fontFamily : 'Helvetica Neue',
 			fontSize : "15dip"
 		};
 		$.insertName.height = "50dip";
@@ -691,12 +706,12 @@ function formatCommentBoxForIpad() {
 		$.insertComment.height = "300dip";
 		$.cancelCommentButton.font = {
 			fontFamily : 'Helvetica Neue',
-			fontSize : '25dp',
+			fontSize : '25dip',
 			fontWeight : 'bold'
 		};
 		$.submitButton.font = {
 			fontFamily : 'Helvetica Neue',
-			fontSize : '25dp',
+			fontSize : '25dip',
 			fontWeight : 'bold'
 		};
 	}
