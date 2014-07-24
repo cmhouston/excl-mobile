@@ -27,6 +27,8 @@ var url = Alloy.Globals.rootWebServiceUrl;
 var dataRetriever = setPathForLibDirectory('dataRetriever/dataRetriever');
 var loadingSpinner = setPathForLibDirectory('loadingSpinner/loadingSpinner');
 var spinner = new loadingSpinner();
+var detectDevice = setPathForLibDirectory('customCalls/deviceDetectionService');
+detectDevice = new detectDevice();
 /**
  * Analytics Specific Data
  */
@@ -145,7 +147,7 @@ function formatObjectSizes() {
 	};
 	
 
-	if (Titanium.Platform.osname == "ipad"){		
+	if (detectDevice.isTablet()){		
 		font["fontSize"] = "85dp";
 		$.exhibitsLabel.font = font;
 		$.mapLabel.font = font;

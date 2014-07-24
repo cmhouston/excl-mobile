@@ -33,6 +33,8 @@ var loadingSpinner = require(rootDirPath + 'loadingSpinner/loadingSpinner');
 var spinner = new loadingSpinner();
 var labelService = require(rootDirPath + 'customCalls/labelService');
 labelService = new labelService();
+var detectDevice = require(rootDirPath + 'customCalls/deviceDetectionService');
+detectDevice = new detectDevice();
 
 /**
  * Analytics specific information
@@ -165,7 +167,7 @@ function displaySectionList(orderedSectionList, rawJson) {
 			}
 		};
 		var label = labelService.createCustomLabel(objectArgs);
-		if (Titanium.Platform.osname == "ipad") {
+		if (detectDevice.isTablet()) {
 			label.font = {
 				
 				fontSize : labelService.countCharInTitleAndReturnFontSize(orderedSectionList[i].key, 35, 30, 5, 3),

@@ -19,6 +19,8 @@
 //=====================================================================
 var args = arguments[0] || {};
 var networkCalls = setPathForLibDirectory('customCalls/networkCalls');
+var detectDevice = setPathForLibDirectory('customCalls/deviceDetectionService');
+detectDevice = new detectDevice();
 var toggleUnpublishedPosts;
 
 var onSuccess = function() {
@@ -131,7 +133,7 @@ function addUnpublishedPostsFunctionality() {
 }
 
 function formatObjects() {
-	if (Titanium.Platform.osname == "ipad") {
+	if (detectDevice.isTablet()) {
 		$.title.font = {
 			fontSize : "30dip",
 			fontWeight : "bold"
