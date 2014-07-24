@@ -54,8 +54,13 @@ $.navBar.setPageTitle("Map");
 		height : Ti.UI.FILL
 	});
 
+//$.Map.loadUrl("http://excl.dreamhosters.com/dev/wp-content/uploads/2014/06/cmhmap1.png");
+//$.Map.url="http://excl.dreamhosters.com/dev/wp-content/uploads/2014/06/cmhmap1.png";
+$.Map.url=json.data.museum.map;
 	//$.mapScrollView.add(image);
 	//$.mapView.add(image);
+	
+Ti.API.info(json.data.museum.map);
 	
 $.onEnterKioskMode = function() {
 	$.navBar.onEnterKioskMode();
