@@ -1,19 +1,19 @@
 //======================================================================
-// ExCL is an open source mobile platform for museums that feature basic
-// museum information and extends visitor engagement with museum exhibits.
-// Copyright (C) 2014  Children's Museum of Houston and the Regents of the
+// ExCL is an open source mobile platform for museums that feature basic 
+// museum information and extends visitor engagement with museum exhibits. 
+// Copyright (C) 2014  Children's Museum of Houston and the Regents of the 
 // University of California.
-//
+// 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
-//
+// 
 // This program is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU General Public License for more details.
-//
+// 
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //=====================================================================
@@ -65,17 +65,17 @@ function setPathForLibDirectory(libFile) {
 };
 
 function openExhibits() {
-	if (doneLoading) {
+	if(doneLoading){
 		addSpinner();
 		var controller = Alloy.createController("exhibitLanding", eval([json]));
 		controller.setAnalyticsPageTitle("Exhibit Landing");
 		Alloy.Globals.navController.open(controller);
 		hideSpinner();
-	}
+	}		
 }
 
 function openMap() {
-	if (doneLoading) {
+	if(doneLoading){
 		addSpinner();
 		var controller = Alloy.createController("map", eval([json]));
 		Alloy.Globals.navController.open(controller);
@@ -84,7 +84,7 @@ function openMap() {
 }
 
 function openInfo() {
-	if (doneLoading) {
+	if(doneLoading){
 		addSpinner();
 		var controller = Alloy.createController("info", eval([json]));
 		Alloy.Globals.navController.open(controller);
@@ -92,12 +92,12 @@ function openInfo() {
 	}
 }
 
-function addSpinner() {
+function addSpinner(){
 	spinner.addTo($.index);
 	spinner.show();
 }
 
-function hideSpinner() {
+function hideSpinner(){
 	spinner.hide();
 }
 
@@ -108,28 +108,18 @@ function retrieveJson(jsonURL) {
 			json = returnedData;
 			var museum = json.data.museum;
 
-			var jsonIconUrl = museum.homepage_icon;
-			if (jsonIconUrl) {
-				$.iconLink.image = jsonIconUrl;
-				$.iconLink.width = Ti.UI.SIZE;
-				$.iconLink.height = "30%";
-			}
-
 			var jsonExhibitsLabel = museum.homepage_exhibits_label;
-			if (jsonExhibitsLabel) {
-				$.exhibitsLabel.text = jsonExhibitsLabel;
-			}
-
+			if(jsonExhibitsLabel) $.exhibitsLabel.text = jsonExhibitsLabel;
+			
 			var jsonMapLabel = museum.homepage_map_label;
-			if (jsonMapLabel) {
-				$.mapLabel.text = jsonMapLabel;
-			}
-
+			if(jsonMapLabel) $.mapLabel.text = jsonMapLabel;
+			
 			var jsonInfoLabel = museum.homepage_info_label;
-			if (jsonInfoLabel) {
-				$.infoLabel.text = jsonInfoLabel;
-			}
-
+			if(jsonInfoLabel) $.infoLabel.text = jsonInfoLabel;
+			
+			var jsonIconUrl = museum.homepage_icon;
+			if(jsonIconUrl) $.iconLink.image = jsonIconUrl;
+			
 			doneLoading = true;
 			hideSpinner();
 		}
@@ -150,30 +140,32 @@ function enableMenuButtons() {
 
 function formatObjectSizes() {
 	var font = {
-		"fontFamily" : 'KGSummerSunshineShadow'
+		//"fontFamily" : 'KGSummerSunshineShadow'
+		fontWeight : "bold"
 	};
+	
 
-	if (Titanium.Platform.osname == "ipad") {
-		font["fontSize"] = "70dp";
+	if (Titanium.Platform.osname == "ipad"){		
+		font["fontSize"] = "85dp";
 		$.exhibitsLabel.font = font;
 		$.mapLabel.font = font;
 		$.infoLabel.font = font;
 
 	} else {
-		font["fontSize"] = "35dp";
+		font["fontSize"] = "45dp";
 		$.exhibitsLabel.font = font;
 		$.mapLabel.font = font;
 		$.infoLabel.font = font;
 	}
 }
 
-function init() {
+function init(){
 	retrieveJson(url);
 	formatObjectSizes();
-	enableMenuButtons();
+	enableMenuButtons(); 
 }
 
-var reload = function() {
+var reload = function(){
 	doneLoading = false;
 	url = Alloy.Globals.rootWebServiceUrl;
 	retrieveJson(url);
