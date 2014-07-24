@@ -321,7 +321,7 @@ function getTextRowFromPart(part) {
 		color : '#232226',
 		font : {
 			fontFamily : 'Helvetica Neue',
-			fontSize : '13dp',
+			fontSize : '15dp',
 			fontWeight : 'normal',
 		},
 		text : part.get('body'),
