@@ -34,7 +34,7 @@ function cameraService() {
 	this.spinner = new loadingSpinner();
 };
 
-cameraService.prototype.takePicture = function(postTags, shareImageButton, instagramAnchor) {
+cameraService.prototype.takePicture = function(postTags, shareImageButton, anchor) {
 	var imageFilePath;
 	var dialog = Titanium.UI.createOptionDialog({
 		title : 'Choose an image source...',
@@ -55,7 +55,7 @@ cameraService.prototype.takePicture = function(postTags, shareImageButton, insta
 				saveToPhotoGallery : true,
 				mediaTypes : Titanium.Media.MEDIA_TYPE_PHOTO,
 				success : function(event) {
-					self.spinner.addTo(instagramAnchor);
+					self.spinner.addTo(anchor);
 					self.spinner.show();
 					var fileName = 'excl' + new Date().getTime() + '.jpg';
 					var imageFile = Ti.Filesystem.getFile('file:///sdcard/').exists() ? Ti.Filesystem.getFile('file:///sdcard/', fileName) : Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, fileName);
@@ -65,17 +65,14 @@ cameraService.prototype.takePicture = function(postTags, shareImageButton, insta
 						if (OS_ANDROID) {
 							intentService.sendIntentImageAndroid(postTags, imageFilePath);
 						} else if (OS_IOS) {
-							fileNameInstagram = "excl" + new Date().getTime() + "_temp.ig";
-							imageFileInstagram = Ti.Filesystem.getFile(Ti.Filesystem.tempDirectory, fileNameInstagram);
-							imageFileInstagram.write(event.media);
-							intentService.sendIntentImageiOS(postTags, imageFilePath, imageFileInstagram.getNativePath(), instagramAnchor);
+							intentService.sendIntentImageiOS(postTags, imageFilePath, anchor);
 						}
 					}
 					self.spinner.hide();
 				},
 				cancel : function() {
 				},
-				error : function(Error) {
+				error : function(error) {
 					var errorMessage = Titanium.UI.createAlertDialog({
 						title : 'Camera'
 					});

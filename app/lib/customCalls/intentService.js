@@ -35,7 +35,6 @@ intentService.prototype.sendIntentTextiOS = function(postTags){
 	//Use TiSocial.Framework module to share text
 	var Social = require('dk.napp.social');
 
-	
 	if (Social.isActivityViewSupported()) {
 		Social.activityView({
 			text : postTags
@@ -56,9 +55,8 @@ intentService.prototype.sendIntentImageAndroid = function(postTags, imageFilePat
 	Ti.Android.currentActivity.startActivity(Ti.Android.createIntentChooser(intentImage, "Share photo via"));
 };
 
-intentService.prototype.sendIntentImageiOS = function(postTags, imageFilePath, imageFilePathInstagram, instagramAnchor){
+intentService.prototype.sendIntentImageiOS = function(postTags, imageFilePath, instagramAnchor){
 	//Use TiSocial.Framework module to send image to other apps
-
 	var Social = require('dk.napp.social');
 	if (Social.isActivityViewSupported()) {
 		Social.activityView({
@@ -68,12 +66,6 @@ intentService.prototype.sendIntentImageiOS = function(postTags, imageFilePath, i
 	} else {
 		alert("Photo sharing is not available on this device");
 	}
-};
-
-intentService.prototype.openInstagram = function(imageFilePathInstagram, instagramAnchor){
-	var docViewer = Ti.UI.iOS.createDocumentViewer({ "url": imageFilePathInstagram });
-	docViewer.UTI = "com.instagram.exclusivegram";
-	docViewer.show({ "view": instagramAnchor, "animated": true });
 };
 
 module.exports = intentService;
