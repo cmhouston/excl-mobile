@@ -159,7 +159,7 @@ function displaySectionList(orderedSectionList, rawJson) {
 			text : orderedSectionList[i].key,
 			left : "5%",
 			font : {
-				fontFamily : 'Helvetica Neue',
+				
 				fontSize : labelService.countCharInTitleAndReturnFontSize(orderedSectionList[i].key, 26, 20, 5, 3),
 				fontWeight : "bold"
 			}
@@ -167,7 +167,7 @@ function displaySectionList(orderedSectionList, rawJson) {
 		var label = labelService.createCustomLabel(objectArgs);
 		if (Titanium.Platform.osname == "ipad") {
 			label.font = {
-				fontFamily : 'Helvetica Neue',
+				
 				fontSize : labelService.countCharInTitleAndReturnFontSize(orderedSectionList[i].key, 35, 30, 5, 3),
 				fontWeight : "bold"
 			};

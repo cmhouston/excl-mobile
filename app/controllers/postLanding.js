@@ -326,7 +326,7 @@ function getTextRowFromPart(part) {
 		left : '3%',
 		color : '#232226',
 		font : {
-			fontFamily : 'Helvetica Neue',
+			
 			fontSize : '15dip',
 			fontWeight : 'normal',
 		},
@@ -335,7 +335,7 @@ function getTextRowFromPart(part) {
 	var textBody = labelService.createCustomLabel(objectArgs);
 	if (Titanium.Platform.osname == "ipad") {
 		textBody.font = {
-			fontFamily : 'Helvetica Neue',
+			
 			fontSize : "25dip"
 		};
 	}
@@ -381,7 +381,7 @@ function creatingCommentTextHeading() {
 		left : '3%',
 		color : '#232226',
 		font : {
-			fontFamily : 'Helvetica Neue',
+			
 			fontSize : '16dip',
 			fontWeight : 'bold',
 		},
@@ -393,7 +393,7 @@ function creatingCommentTextHeading() {
 	var commentHeading = labelService.createCustomLabel(objectArgs);
 	if (Titanium.Platform.osname == "ipad") {
 		commentHeading.font = {
-			fontFamily : 'Helvetica Neue',
+			
 			fontSize : "30dip"
 		};
 	}
@@ -419,7 +419,7 @@ function displayThereAreNoCommentsToDisplayText() {
 		left : '3%',
 		color : '#48464e',
 		font : {
-			fontFamily : 'Helvetica Neue',
+			
 			fontSize : '13dip',
 			fontWeight : 'normal',
 		},
@@ -428,7 +428,7 @@ function displayThereAreNoCommentsToDisplayText() {
 	var noCommentText = labelService.createCustomLabel(objectArgs);
 	if (Titanium.Platform.osname == "ipad") {
 		noCommentText.font = {
-			fontFamily : 'Helvetica Neue',
+			
 			fontSize : "25dip"
 		};
 	}
@@ -454,7 +454,7 @@ function createCommentText(commentText) {
 		left : '3%',
 		color : '#232226',
 		font : {
-			fontFamily : 'Helvetica Neue',
+			
 			fontSize : '13dip',
 			fontWeight : 'normal',
 		},
@@ -463,7 +463,7 @@ function createCommentText(commentText) {
 	var text = labelService.createCustomLabel(objectArgs);
 	if (Titanium.Platform.osname == "ipad") {
 		text.font = {
-			fontFamily : 'Helvetica Neue',
+			
 			fontSize : "25dip"
 		};
 	}
@@ -479,7 +479,7 @@ function createCommentDate(commentDate) {
 		left : '3%',
 		color : '#48464e',
 		font : {
-			fontFamily : 'Helvetica Neue',
+			
 			fontSize : '8dip',
 			fontWeight : 'normal',
 		},
@@ -488,7 +488,7 @@ function createCommentDate(commentDate) {
 	var date = labelService.createCustomLabel(objectArgs);
 	if (Titanium.Platform.osname == "ipad") {
 		date.font = {
-			fontFamily : 'Helvetica Neue',
+			
 			fontSize : "17dip"
 		};
 	}
@@ -516,7 +516,7 @@ function displayComments(comments) {
 			left : '3%',
 			color : '#005ab3',
 			font : {
-				fontFamily : 'Helvetica Neue',
+				
 				fontSize : '13dip',
 				fontWeight : 'normal',
 			},
@@ -526,7 +526,7 @@ function displayComments(comments) {
 		var text = labelService.createCustomLabel(objectArgs);
 		if (Titanium.Platform.osname == "ipad") {
 			text.font = {
-				fontFamily : 'Helvetica Neue',
+				
 				fontSize : "20dip"
 			};
 		}
@@ -694,23 +694,23 @@ function formatCommentBoxForIpad() {
 		$.whiteCommentBox.width = "500dip";
 		$.buttonView.height = "75dip";
 		$.insertNameDisclaimer.font = {
-			fontFamily : 'Helvetica Neue',
+			
 			fontSize : "15dip"
 		};
 		$.insertEmailDisclaimer.font = {
-			fontFamily : 'Helvetica Neue',
+			
 			fontSize : "15dip"
 		};
 		$.insertName.height = "50dip";
 		$.insertEmail.height = "50dip";
 		$.insertComment.height = "300dip";
 		$.cancelCommentButton.font = {
-			fontFamily : 'Helvetica Neue',
+			
 			fontSize : '25dip',
 			fontWeight : 'bold'
 		};
 		$.submitButton.font = {
-			fontFamily : 'Helvetica Neue',
+			
 			fontSize : '25dip',
 			fontWeight : 'bold'
 		};
