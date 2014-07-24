@@ -1,19 +1,19 @@
 //======================================================================
-// ExCL is an open source mobile platform for museums that feature basic 
-// museum information and extends visitor engagement with museum exhibits. 
-// Copyright (C) 2014  Children's Museum of Houston and the Regents of the 
+// ExCL is an open source mobile platform for museums that feature basic
+// museum information and extends visitor engagement with museum exhibits.
+// Copyright (C) 2014  Children's Museum of Houston and the Regents of the
 // University of California.
-// 
+//
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
-// 
+//
 // This program is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //=====================================================================
@@ -92,28 +92,24 @@ function createPostView(post) {
 		width : "99%",
 		backgroundColor : "#D8D8D8",
 		top : "1%",
-		bottom : "1%"
+		bottom : "1%",
+		left: "1%"
 	};
 	var headerWrap = viewService.createCustomView(args);
-	if (Titanium.Platform.osname == "ipad") {
-		headerWrap.left = "4%";
-	} else {
-		headerWrap.left = "1%";
-	}
 
 	args = {
 		color : "#000000",
 		text : post.get("name"),
-		textAlign : "left",
+		textAlign : "center",
 		font : {
-			fontSize : "19dip",
+			fontSize : labelService.countCharInTitleAndReturnFontSize(post.get("name"), 20, 30, 5, 1),
 			fontWeight : 'bold'
 		}
 	};
 	var headerText = labelService.createCustomLabel(args);
 	if (Titanium.Platform.osname == "ipad") {
 		headerText.font = {
-			fontSize : "30dip"
+			fontSize : labelService.countCharInTitleAndReturnFontSize(headerText.text, 30, 40, 10, 2)
 		};
 	}
 
@@ -132,7 +128,7 @@ function createPostView(post) {
 	}
 
 	args = {
-		top: "60%"
+		top : "60%"
 	};
 	var navArrow = buttonService.createCustomButton(args);
 	iconService.setIcon(navArrow, "postNavArrow.png");
@@ -150,12 +146,12 @@ function createPostView(post) {
 		left : "0",
 		width : "45%",
 		top : "10%",
-		bottom: "10%",
+		bottom : "10%",
 		image : post.get("image"),
-		height: "70%"
+		height : "70%"
 	};
 	var postImage = viewService.createCustomImageView(args);
-	if (!postImage.image){
+	if (!postImage.image) {
 		iconService.setIcon(postImage, "placeholder.png");
 	}
 
@@ -167,8 +163,8 @@ function createPostView(post) {
 			fontSize : "16dip",
 			color : "#000000"
 		},
-		top: "10%",
-		height: "70%"
+		top : "10%",
+		height : "70%"
 	};
 	var postText = labelService.createCustomLabel(args);
 	if (Titanium.Platform.osname == "ipad") {
@@ -176,7 +172,7 @@ function createPostView(post) {
 			fontSize : "25dip"
 		};
 	}
-	if (!postText.text){
+	if (!postText.text) {
 		postText.text = "Click here to dive in to this activity!";
 	}
 
@@ -196,7 +192,7 @@ function createPostView(post) {
 	container.addEventListener('click', function(e) {
 		var args = post;
 		postController = Alloy.createController('postLanding', args);
-		postController.setAnalyticsPageTitle( parentScreenName +'/'+post.get("name"));
+		postController.setAnalyticsPageTitle(parentScreenName + '/' + post.get("name"));
 		postController.setAnalyticsPageLevel("Post Landing");
 		Alloy.Globals.navController.open(postController);
 	});

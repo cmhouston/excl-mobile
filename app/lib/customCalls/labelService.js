@@ -32,3 +32,18 @@ labelService.prototype.createCustomLabel = function(args) {
 };
 
 module.exports = labelService;
+
+labelService.prototype.countCharInTitleAndReturnFontSize = function(title, maxDip, maxCharAtMaxDip, charIncrement, fontSizeIncrement) {
+	length = title.length;
+	if (length > maxCharAtMaxDip + (2 * charIncrement)) {
+		return maxDip - (3 * fontSizeIncrement) + "dip";
+	} else if (length > maxCharAtMaxDip + (charIncrement)) {
+		return maxDip - (2 * fontSizeIncrement) + "dip";
+	} else if (length > maxCharAtMaxDip) {
+		return maxDip - (fontSizeIncrement) + "dip";
+	} else if (length < maxCharAtMaxDip + (2 * charIncrement)) {
+		return maxDip + "dip";
+	} else {
+		return maxDip - (4 * fontSizeIncrement) + "dip";
+	}
+};

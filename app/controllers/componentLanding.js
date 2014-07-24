@@ -1,19 +1,19 @@
 //======================================================================
-// ExCL is an open source mobile platform for museums that feature basic 
-// museum information and extends visitor engagement with museum exhibits. 
-// Copyright (C) 2014  Children's Museum of Houston and the Regents of the 
+// ExCL is an open source mobile platform for museums that feature basic
+// museum information and extends visitor engagement with museum exhibits.
+// Copyright (C) 2014  Children's Museum of Houston and the Regents of the
 // University of California.
-// 
+//
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
-// 
+//
 // This program is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //=====================================================================
@@ -31,6 +31,8 @@ var dataRetriever = require(rootDirPath + 'dataRetriever/dataRetriever');
 
 var loadingSpinner = require(rootDirPath + 'loadingSpinner/loadingSpinner');
 var spinner = new loadingSpinner();
+var labelService = require(rootDirPath + 'customCalls/labelService');
+labelService = new labelService();
 
 /**
  * Analytics specific information
@@ -131,6 +133,8 @@ function covertHashMapIntoArrayOfObject(hashMap) {
 
 function displaySectionList(orderedSectionList, rawJson) {
 	for (var i = 0; i < orderedSectionList.length; i++) {
+		var objectArgs;
+
 		var view = Titanium.UI.createView({
 			height : '10%',
 			left : '12dip',
@@ -142,35 +146,23 @@ function displaySectionList(orderedSectionList, rawJson) {
 		});
 		addEvent(view, orderedSectionList[i].key, rawJson);
 
-		var label = Titanium.UI.createLabel({
+		objectArgs = {
 			color : 'white',
 			textAlign : 'center',
 			height : Ti.UI.FILL,
 			text : orderedSectionList[i].key,
-			left : "5%"
-		});
+			left : "5%",
+			font : {
+				fontSize : labelService.countCharInTitleAndReturnFontSize(orderedSectionList[i].key, 26, 20, 5, 3),
+				fontWeight : "bold"
+			}
+		};
+		var label = labelService.createCustomLabel(objectArgs);
 		if (Titanium.Platform.osname == "ipad") {
 			label.font = {
-				fontSize : "35dip",
+				fontSize : labelService.countCharInTitleAndReturnFontSize(orderedSectionList[i].key, 35, 30, 5, 3),
 				fontWeight : "bold"
 			};
-		} else {
-			if (label.text.length > 25) {
-				label.font = {
-					fontSize : "18dip",
-					fontWeight : 'bold'
-				};
-			} else if (label.text.length > 20) {
-				label.font = {
-					fontSize : "22dip",
-					fontWeight : 'bold'
-				};
-			} else {
-				label.font = {
-					fontSize : "26dip",
-					fontWeight : 'bold'
-				};
-			}
 		}
 		view.add(label);
 		gradientColorsCount++;
