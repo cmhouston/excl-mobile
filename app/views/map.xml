@@ -3,8 +3,9 @@
 		<View id="navBarView">
 			<Widget id="navBar" src="navigationBar"/>
 		</View>
-		<ScrollView id = "mapScrollView">
+		<WebView url="http://excl.dreamhosters.com/dev/wp-content/uploads/2014/06/cmhmap1.png"></WebView>
+		<!-- <ScrollView id = "mapScrollView">
 			<WebView id="mapView"/>
-		</ScrollView>
+		</ScrollView> -->
 	</Window>
 </Alloy>

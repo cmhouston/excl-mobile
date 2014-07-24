@@ -32,6 +32,9 @@ var loadingSpinnerView = Ti.UI.createView();
 var loadingSpinnerDarkView = Ti.UI.createView({ backgroundColor: "#000000", opacity: 0.3 });
 loadingSpinnerView.add(loadingSpinnerDarkView);
 
+var detectDevice = setPathForLibDirectory('customCalls/deviceDetectionService');
+detectDevice = new detectDevice();
+
 /**
  * Analytics Specific Data
  */
@@ -152,7 +155,7 @@ function formatObjectSizes() {
 	};
 	
 
-	if (Titanium.Platform.osname == "ipad"){		
+	if (detectDevice.isTablet()){		
 		font["fontSize"] = "85dp";
 		$.exhibitsLabel.font = font;
 		$.mapLabel.font = font;

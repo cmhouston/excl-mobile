@@ -54,7 +54,7 @@ $.navBar.setPageTitle("Map");
 		height : Ti.UI.FILL
 	});
 
-	$.mapScrollView.add(image);
+	//$.mapScrollView.add(image);
 	//$.mapView.add(image);
 	
 $.onEnterKioskMode = function() {
