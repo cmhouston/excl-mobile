@@ -27,12 +27,14 @@ var buttonService = setPathForLibDirectory("customCalls/buttonService");
 buttonService = new buttonService();
 var labelService = setPathForLibDirectory("customCalls/labelService");
 labelService = new labelService();
-sharingTextService = Alloy.Globals.setPathForLibDirectory('sharing/sharingTextService');
+sharingTextService = setPathForLibDirectory('sharing/sharingTextService');
 var sharingTextService = new sharingTextService();
-sharingImageService = Alloy.Globals.setPathForLibDirectory('sharing/sharingImageService');
+sharingImageService = setPathForLibDirectory('sharing/sharingImageService');
 var sharingImageService = new sharingImageService();
 
-var loadingSpinner = Alloy.Globals.setPathForLibDirectory('loadingSpinner/loadingSpinner');
+var detectDevice = setPathForLibDirectory('customCalls/deviceDetectionService');
+detectDevice = new detectDevice();
+var loadingSpinner = setPathForLibDirectory('loadingSpinner/loadingSpinner');
 var spinnerLib = new loadingSpinner();
 var spinner = spinnerLib.getSpinner();
 var loadingSpinnerView = Ti.UI.createView();
@@ -128,7 +130,7 @@ function displaySocialMediaButtons(json) {
 		width : "30dip",
 		top : "2%"
 	};
-	if (Titanium.Platform.osname == "ipad") {
+	if (detectDevice.isTablet()) {
 		objectArgs["height"] = "40dip";
 		objectArgs["width"] = "40dip";
 	}
@@ -231,7 +233,7 @@ function setCommentIconBusy(button) {
 
 function getImageRowFromPart(part) {
 	var row = createPlainRowWithHeight('200dip');
-	if (Titanium.Platform.osname == "ipad") {
+	if (detectDevice.isTablet()) {
 		row.height = "40%";
 	}
 	imageView = Ti.UI.createImageView({
@@ -303,7 +305,7 @@ function getVideoThumbnailViewFromPartAndroid(part) {
 
 function getVideoRowFromPartiOS(part) {
 	var row = createPlainRowWithHeight('200dip');
-	if (Titanium.Platform.osname == "ipad") {
+	if (detectDevice.isTablet()) {
 		row.height = "40%";
 	}
 	var video = Titanium.Media.createVideoPlayer({
@@ -333,7 +335,7 @@ function getTextRowFromPart(part) {
 		text : part.get('body'),
 	};
 	var textBody = labelService.createCustomLabel(objectArgs);
-	if (Titanium.Platform.osname == "ipad") {
+	if (detectDevice.isTablet()) {
 		textBody.font = {
 			
 			fontSize : "25dip"
@@ -391,7 +393,7 @@ function creatingCommentTextHeading() {
 		borderColor : '#aaa'
 	};
 	var commentHeading = labelService.createCustomLabel(objectArgs);
-	if (Titanium.Platform.osname == "ipad") {
+	if (detectDevice.isTablet()) {
 		commentHeading.font = {
 			
 			fontSize : "30dip"
@@ -426,7 +428,7 @@ function displayThereAreNoCommentsToDisplayText() {
 		text : "There are no comments for this post"
 	};
 	var noCommentText = labelService.createCustomLabel(objectArgs);
-	if (Titanium.Platform.osname == "ipad") {
+	if (detectDevice.isTablet()) {
 		noCommentText.font = {
 			
 			fontSize : "25dip"
@@ -461,7 +463,7 @@ function createCommentText(commentText) {
 		text : commentText
 	};
 	var text = labelService.createCustomLabel(objectArgs);
-	if (Titanium.Platform.osname == "ipad") {
+	if (detectDevice.isTablet()) {
 		text.font = {
 			
 			fontSize : "25dip"
@@ -486,7 +488,7 @@ function createCommentDate(commentDate) {
 		text : commentDate
 	};
 	var date = labelService.createCustomLabel(objectArgs);
-	if (Titanium.Platform.osname == "ipad") {
+	if (detectDevice.isTablet()) {
 		date.font = {
 			
 			fontSize : "17dip"
@@ -524,7 +526,7 @@ function displayComments(comments) {
 			textAlign : 'center'
 		};
 		var text = labelService.createCustomLabel(objectArgs);
-		if (Titanium.Platform.osname == "ipad") {
+		if (detectDevice.isTablet()) {
 			text.font = {
 				
 				fontSize : "20dip"
@@ -689,7 +691,7 @@ function initializePage() {
 }
 
 function formatCommentBoxForIpad() {
-	if (Titanium.Platform.osname == "ipad") {
+	if (detectDevice.isTablet()) {
 		$.whiteCommentBox.height = "700dip";
 		$.whiteCommentBox.width = "500dip";
 		$.buttonView.height = "75dip";

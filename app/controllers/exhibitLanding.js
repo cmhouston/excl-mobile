@@ -1,19 +1,19 @@
 //======================================================================
-// ExCL is an open source mobile platform for museums that feature basic 
-// museum information and extends visitor engagement with museum exhibits. 
-// Copyright (C) 2014  Children's Museum of Houston and the Regents of the 
+// ExCL is an open source mobile platform for museums that feature basic
+// museum information and extends visitor engagement with museum exhibits.
+// Copyright (C) 2014  Children's Museum of Houston and the Regents of the
 // University of California.
-// 
+//
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
-// 
+//
 // This program is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //=====================================================================
@@ -23,19 +23,25 @@ var args = arguments[0] || {};
 var json = Alloy.Globals.museumJSON;
 Ti.API.info('Exhibit landing initialized with: ' + json);
 
+var iconService = setPathForLibDirectory('customCalls/iconService');
+iconService = new iconService();
+var viewService = setPathForLibDirectory('customCalls/viewService');
+viewService = new viewService();
+var buttonService = setPathForLibDirectory('customCalls/buttonService');
+buttonService = new buttonService();
+var detectDevice = setPathForLibDirectory('customCalls/deviceDetectionService');
+detectDevice = new detectDevice();
+
 var loadingSpinner = setPathForLibDirectory('loadingSpinner/loadingSpinner');
 var addLoadingMessage = true;
 var loadingSpinnerLib = new loadingSpinner(addLoadingMessage);
 var spinner = loadingSpinnerLib.getSpinner();
-var loadingSpinnerView = Ti.UI.createView();
-var loadingSpinnerDarkView = Ti.UI.createView({ backgroundColor: "#000000", opacity: 0.3 });
+var loadingSpinnerView = viewService.createCustomView("");
+var loadingSpinnerDarkView = viewService.createCustomView({
+	backgroundColor : "#000000",
+	opacity : 0.3
+});
 loadingSpinnerView.add(loadingSpinnerDarkView);
-
-var iconService = setPathForLibDirectory('customCalls/iconService');
-var iconService = new iconService();
-
-var buttonService = setPathForLibDirectory('customCalls/buttonService');
-var buttonService = new buttonService();
 
 var url = Alloy.Globals.rootWebServiceUrl;
 
@@ -88,7 +94,7 @@ function setPathForLibDirectory(libFile) {
 
 function addSpinner() {
 	loadingSpinnerView.add(spinner);
-	if (addLoadingMessage){
+	if (addLoadingMessage) {
 		loadingSpinnerLib.scrambleMessage();
 	}
 	spinner.show();
@@ -101,11 +107,10 @@ function hideSpinner() {
 }
 
 function fixIpadSpacing() {
-	if (Titanium.Platform.osname == 'ipad') {
+	if (detectDevice.isTablet()) {
 		$.exhibitSelect.bottom = "20dip";
 		$.exhibitSelect.height = "70dip";
 		$.exhibitSelectLabel.font = {
-			
 			fontSize : "25dip"
 		};
 		$.exhibitSelectLabel.width = "60%";
@@ -184,14 +189,14 @@ function createExhibitsCarousel(exhibits) {
 	}
 	$.headingLabel.text = exhibits[0].name;
 	$.exhibitInfoLabel.text = exhibits[0].long_description;
-	if (Titanium.Platform.osname == "ipad") {
+	if (detectDevice.isTablet()) {
 		$.headingLabel.font = {
-			
+
 			fontSize : "30dip",
 			fontWeight : 'bold'
 		};
 		$.exhibitInfoLabel.font = {
-			
+
 			fontSize : "25dip"
 		};
 	}
@@ -258,14 +263,14 @@ function createExhibitTitleLabel(name, pageXofYtext) {
 		color : 'white',
 		horizontalWrap : false,
 		font : {
-			
+
 			fontSize : '24dip',
 			fontWeight : 'bold'
 		}
 	});
-	if (Titanium.Platform.osname == "ipad") {
+	if (detectDevice.isTablet()) {
 		label.font = {
-			
+
 			fontSize : "30dip"
 		};
 	}
@@ -279,7 +284,7 @@ function createExhibitTitleLabel(name, pageXofYtext) {
 			color : 'white',
 			horizontalWrap : false,
 			font : {
-				
+
 				fontSize : '18dip',
 				fontWeight : 'normal'
 			}
@@ -304,14 +309,14 @@ function createTitleLabel(name, textSize, pageXofYtext) {
 		left : 10,
 		color : 'white',
 		font : {
-			
+
 			fontSize : textSize,
 			fontWeight : 'bold'
 		}
 	});
-	if (Titanium.Platform.osname == "ipad") {
+	if (detectDevice.isTablet()) {
 		label.font = {
-			
+
 			fontSize : "27dip",
 			fontWeight : "bold"
 		};
@@ -358,20 +363,20 @@ function onExhibitsClick(exhibits) {
 		var pageIndex = $.exhibitsCarousel.currentPage;
 		$.exhibitSelectLabel.text = "Back to Description";
 		$.exhibitInfoLabel.text = exhibits[pageIndex].long_description;
-		if (Titanium.Platform.osname == "ipad") {
+		if (detectDevice.isTablet()) {
 			$.exhibitInfoLabel.font = {
-				
+
 				fontSize : "25dip"
 			};
 			$.exhibitSelectLabel.font = {
-				
+
 				fontSize : "25dip"
 			};
 		}
 		$.headingLabel.text = "Select an Activity from Below!";
-		if (Titanium.Platform.osname == "ipad") {
+		if (detectDevice.isTablet()) {
 			$.headingLabel.font = {
-				
+
 				fontSize : "30dip",
 				fontWeight : 'bold'
 			};
@@ -387,7 +392,7 @@ function onExhibitsClick(exhibits) {
 			duration : 300,
 			curve : Titanium.UI.ANIMATION_CURVE_EASE_IN_OUT
 		});
-		if (Titanium.Platform.osname == "ipad") {
+		if (detectDevice.isTablet()) {
 			slideOut.height = ipadComponentHeight;
 		}
 
@@ -396,7 +401,7 @@ function onExhibitsClick(exhibits) {
 		}, 300);
 
 		$.collapsibleComponentView.height = defaultComponentHeight;
-		if (Titanium.Platform.osname == "ipad") {
+		if (detectDevice.isTablet()) {
 			$.collapsibleComponentView.height = ipadComponentHeight;
 		}
 		$.collapsibleComponentView.animate(slideOut);
@@ -460,14 +465,14 @@ function createComponentsScrollView(exhibits) {
 			width : Ti.UI.SIZE,
 			height : defaultComponentHeight
 		});
-		if (Titanium.Platform.osname == "ipad") {
+		if (detectDevice.isTablet()) {
 			componentsInExhibit[exhibits[i].id].height = ipadComponentHeight;
 		}
 		for (var j = 0; j < exhibits[i].components.length; j++) {
 			var component = createLabeledPicView(exhibits[i].components[j], '20dip');
 			component.left = "3dip";
 			component.width = '275dip';
-			if (Titanium.Platform.osname == "ipad") {
+			if (detectDevice.isTablet()) {
 				component.width = "500dip";
 			}
 			component.id = exhibits[i].components[j].id;

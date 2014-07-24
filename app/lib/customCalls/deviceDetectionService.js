@@ -19,10 +19,12 @@
 //=====================================================================
 
 function deviceDetectionSerice() {
-	var androidTabletScreenDiagInches = 8;
 };
 
 deviceDetectionSerice.prototype.isTablet = function(diagonalInches) {
+	//Somewhat arbitrary cutoff where formatting changes in android devices
+	var androidTabletScreenDiagInches = 8;
+	////
 	var tabletDiag = diagonalInches | androidTabletScreenDiagInches;
 	var osname = Ti.Platform.osname;
 	switch(osname) {

@@ -30,6 +30,8 @@ var iconService = setPathForLibDirectory("customCalls/iconService");
 iconService = new iconService();
 var buttonService = setPathForLibDirectory("customCalls/buttonService");
 buttonService = new buttonService();
+var detectDevice = setPathForLibDirectory('customCalls/deviceDetectionService');
+detectDevice = new detectDevice();
 
 function setPathForLibDirectory(libFile) {
 	if ( typeof Titanium == 'undefined') {
@@ -59,7 +61,7 @@ function createPostView(post) {
 		backgroundColor : "white",
 	};
 	var container = viewService.createCustomView(args);
-	if (Titanium.Platform.osname == "ipad") {
+	if (detectDevice.isTablet()) {
 		container.top = "50dip";
 		container.height = "300dip";
 	} else {
@@ -74,7 +76,7 @@ function createPostView(post) {
 		left : "2%"
 	};
 	var postContainer = viewService.createCustomView(args);
-	if (Titanium.Platform.osname == "ipad") {
+	if (detectDevice.isTablet()) {
 		postContainer.height = "300dip";
 	} else {
 		postContainer.height = "200dip";
@@ -103,12 +105,12 @@ function createPostView(post) {
 		textAlign : "center",
 		font : {
 			
-			fontSize : labelService.countCharInTitleAndReturnFontSize(post.get("name"), 20, 30, 5, 1),
+			fontSize : labelService.countCharInTitleAndReturnFontSize(post.get("name"), 20, 30, 5, 2),
 			fontWeight : 'bold'
 		}
 	};
 	var headerText = labelService.createCustomLabel(args);
-	if (Titanium.Platform.osname == "ipad") {
+	if (detectDevice.isTablet()) {
 		headerText.font = {
 			
 			fontSize : labelService.countCharInTitleAndReturnFontSize(headerText.text, 30, 40, 10, 2)
@@ -123,7 +125,7 @@ function createPostView(post) {
 		bottom : "10%"
 	};
 	var previewContainer = viewService.createCustomView(args);
-	if (Titanium.Platform.osname == "ipad") {
+	if (detectDevice.isTablet()) {
 		previewContainer.height = "250dip";
 	} else {
 		previewContainer.height = "150dip";
@@ -135,8 +137,8 @@ function createPostView(post) {
 	var navArrow = buttonService.createCustomButton(args);
 	iconService.setIcon(navArrow, "postNavArrow.png");
 
-	if (Titanium.Platform.osname == "ipad") {
-		navArrow.right = "18dip";
+	if (detectDevice.isTablet()) {
+		navArrow.right = "12dip";
 		navArrow.height = "25dip";
 		navArrow.width = "25dip";
 	} else {
@@ -170,7 +172,7 @@ function createPostView(post) {
 		height : "70%"
 	};
 	var postText = labelService.createCustomLabel(args);
-	if (Titanium.Platform.osname == "ipad") {
+	if (detectDevice.isTablet()) {
 		postText.font = {
 			
 			fontSize : "25dip"
