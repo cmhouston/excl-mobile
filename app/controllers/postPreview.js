@@ -102,6 +102,7 @@ function createPostView(post) {
 		text : post.get("name"),
 		textAlign : "center",
 		font : {
+			fontFamily : 'Helvetica Neue',
 			fontSize : labelService.countCharInTitleAndReturnFontSize(post.get("name"), 20, 30, 5, 1),
 			fontWeight : 'bold'
 		}
@@ -109,6 +110,7 @@ function createPostView(post) {
 	var headerText = labelService.createCustomLabel(args);
 	if (Titanium.Platform.osname == "ipad") {
 		headerText.font = {
+			fontFamily : 'Helvetica Neue',
 			fontSize : labelService.countCharInTitleAndReturnFontSize(headerText.text, 30, 40, 10, 2)
 		};
 	}
@@ -160,6 +162,7 @@ function createPostView(post) {
 		text : post.get("text"),
 		color : "#000000",
 		font : {
+			fontFamily : 'Helvetica Neue',
 			fontSize : "16dip",
 			color : "#000000"
 		},
@@ -169,6 +172,7 @@ function createPostView(post) {
 	var postText = labelService.createCustomLabel(args);
 	if (Titanium.Platform.osname == "ipad") {
 		postText.font = {
+			fontFamily : 'Helvetica Neue',
 			fontSize : "25dip"
 		};
 	}

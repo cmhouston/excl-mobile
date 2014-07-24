@@ -133,6 +133,7 @@ function addUnpublishedPostsFunctionality() {
 function formatObjects() {
 	if (Titanium.Platform.osname == "ipad") {
 		$.title.font = {
+			fontFamily : 'Helvetica Neue',
 			fontSize : "30dip",
 			fontWeight : "bold"
 		};

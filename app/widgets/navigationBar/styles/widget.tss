@@ -28,7 +28,6 @@
 	zindex: "99"
 }
 
-//iPhone
 ".pageTitleStyle":{
 	color: "#FFF",
 	font: {

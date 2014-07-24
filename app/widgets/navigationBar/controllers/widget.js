@@ -48,6 +48,7 @@ exports.setPageTitle = function(title) {
 	$.pageTitle.text = title;
 	if (Titanium.Platform.osname == "ipad") {
 		$.pageTitle.font = {
+			fontFamily : 'Helvetica Neue',
 			fontSize : "30dip"
 		};
 	}
