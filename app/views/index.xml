@@ -3,6 +3,7 @@
 		<View id="mainView">
 			<View id="homeContent">
 				<ImageView id="homeImage"/>
+				<ImageView id="iconLink"/>
 				<View id="exhibitsLink">
 					<Label id="exhibitsLabel" class="homepageLabel"/>
 				</View>
@@ -11,8 +12,7 @@
 				</View>
 				<View id="infoLink">
 					<Label id="infoLabel" class="homepageLabel"/>
-				</View>
-				<ImageView id="iconLink"/>
+				</View>			
 			</View>
 		</View>
 	</Window>
