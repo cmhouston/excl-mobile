@@ -100,6 +100,7 @@ function fixIpadSpacing() {
 		$.exhibitSelect.bottom = "20dip";
 		$.exhibitSelect.height = "70dip";
 		$.exhibitSelectLabel.font = {
+			fontFamily : 'Helvetica Neue',
 			fontSize : "25dip"
 		};
 		$.exhibitSelectLabel.width = "60%";
@@ -180,10 +181,12 @@ function createExhibitsCarousel(exhibits) {
 	$.exhibitInfoLabel.text = exhibits[0].long_description;
 	if (Titanium.Platform.osname == "ipad") {
 		$.headingLabel.font = {
+			fontFamily : 'Helvetica Neue',
 			fontSize : "30dip",
 			fontWeight : 'bold'
 		};
 		$.exhibitInfoLabel.font = {
+			fontFamily : 'Helvetica Neue',
 			fontSize : "25dip"
 		};
 	}
@@ -250,13 +253,14 @@ function createExhibitTitleLabel(name, pageXofYtext) {
 		color : 'white',
 		horizontalWrap : false,
 		font : {
-			fontFamily : 'Arial',
+			fontFamily : 'Helvetica Neue',
 			fontSize : '24dip',
 			fontWeight : 'bold'
 		}
 	});
 	if (Titanium.Platform.osname == "ipad") {
 		label.font = {
+			fontFamily : 'Helvetica Neue',
 			fontSize : "30dip"
 		};
 	}
@@ -270,7 +274,7 @@ function createExhibitTitleLabel(name, pageXofYtext) {
 			color : 'white',
 			horizontalWrap : false,
 			font : {
-				fontFamily : 'Arial',
+				fontFamily : 'Helvetica Neue',
 				fontSize : '18dip',
 				fontWeight : 'normal'
 			}
@@ -295,13 +299,14 @@ function createTitleLabel(name, textSize, pageXofYtext) {
 		left : 10,
 		color : 'white',
 		font : {
-			fontFamily : 'Arial',
+			fontFamily : 'Helvetica Neue',
 			fontSize : textSize,
 			fontWeight : 'bold'
 		}
 	});
 	if (Titanium.Platform.osname == "ipad") {
 		label.font = {
+			fontFamily : 'Helvetica Neue',
 			fontSize : "27dip",
 			fontWeight : "bold"
 		};
@@ -317,7 +322,7 @@ function createTitleLabel(name, textSize, pageXofYtext) {
 			color : 'white',
 			horizontalWrap : false,
 			font : {
-				fontFamily : 'Arial',
+fontFamily : 'Helvetica Neue',
 				fontSize : '18dip',
 				fontWeight : 'normal'
 			}
@@ -350,15 +355,18 @@ function onExhibitsClick(exhibits) {
 		$.exhibitInfoLabel.text = exhibits[pageIndex].long_description;
 		if (Titanium.Platform.osname == "ipad") {
 			$.exhibitInfoLabel.font = {
+				fontFamily : 'Helvetica Neue',
 				fontSize : "25dip"
 			};
 			$.exhibitSelectLabel.font = {
+				fontFamily : 'Helvetica Neue',
 				fontSize : "25dip"
 			};
 		}
 		$.headingLabel.text = "Select an Activity from Below!";
 		if (Titanium.Platform.osname == "ipad") {
 			$.headingLabel.font = {
+				fontFamily : 'Helvetica Neue',
 				fontSize : "30dip",
 				fontWeight : 'bold'
 			};
