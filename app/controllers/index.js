@@ -26,7 +26,12 @@ var doneLoading = false;
 var url = Alloy.Globals.rootWebServiceUrl;
 var dataRetriever = setPathForLibDirectory('dataRetriever/dataRetriever');
 var loadingSpinner = setPathForLibDirectory('loadingSpinner/loadingSpinner');
-var spinner = new loadingSpinner();
+var spinnerLib = new loadingSpinner();
+var spinner = spinnerLib.getSpinner();
+var loadingSpinnerView = Ti.UI.createView();
+var loadingSpinnerDarkView = Ti.UI.createView({ backgroundColor: "#000000", opacity: 0.3 });
+loadingSpinnerView.add(loadingSpinnerDarkView);
+
 /**
  * Analytics Specific Data
  */
@@ -93,12 +98,14 @@ function openInfo() {
 }
 
 function addSpinner(){
-	spinner.addTo($.index);
+	loadingSpinnerView.add(spinner);
 	spinner.show();
+	$.index.add(loadingSpinnerView);
 }
 
 function hideSpinner(){
 	spinner.hide();
+	$.index.remove(loadingSpinnerView);
 }
 
 function retrieveJson(jsonURL) {

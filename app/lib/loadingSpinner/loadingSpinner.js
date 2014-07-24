@@ -72,7 +72,7 @@ LoadingSpinner.prototype.addTo = function(element) {
 
 LoadingSpinner.prototype.show = function(addMessage) {
 	addMessage = addMessage || false;
-	if (addMessage){	
+	if (addMessage && OS_IOS){	
 		LoadingSpinner.prototype.scrambleMessage();
 	}
 	this.spinner.show();

@@ -88,7 +88,7 @@ function setPathForLibDirectory(libFile) {
 
 function addSpinner() {
 	loadingSpinnerView.add(spinner);
-	if (addLoadingMessage){
+	if (addLoadingMessage && OS_IOS){
 		loadingSpinnerLib.scrambleMessage();
 	}
 	spinner.show();
