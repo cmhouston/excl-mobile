@@ -121,7 +121,8 @@ function hideMenuBtnIfKioskMode(){
  * Adds sharing buttons
  */
 function displaySocialMediaButtons(json) {
-	var row = createPlainRowWithHeight(Ti.UI.FILL);
+	var row = createPlainRowWithHeight(Ti.UI.SIZE);
+	
 	var iconList = [];
 	var objectArgs = {
 		height : "30dip",
@@ -136,6 +137,7 @@ function displaySocialMediaButtons(json) {
 	addTextSharingButton(json, row, iconList, objectArgs);
 	addImageSharingButton(json, row, iconList, objectArgs);
 	spaceIconsAccordingToNumberAdded(iconList);
+	
 	return row;
 }
 
