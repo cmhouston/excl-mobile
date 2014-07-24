@@ -42,7 +42,7 @@
 	opacity: '1.0',
 	color: 'black',
 	font: {
-		fontFamily: 'Helvetica Neue',
+		
 		fontSize: '21dp',
 		fontWeight: 'bold'
 	},
@@ -56,7 +56,7 @@
 	returnKeyType:Titanium.UI.RETURNKEY_NEXT,
 	opacity: '1.0',
 	font: {
-		fontFamily: 'Helvetica Neue',
+		
 		fontSize: '18dp',
 		fontWeight: 'normal'
 	},
@@ -75,7 +75,7 @@
 
 "#insertNameDisclaimer":{
 	font: {
-		fontFamily: 'Helvetica Neue',
+		
 		fontSize: '12dip',
 		fontWeight: 'normal'
 	},
@@ -89,7 +89,7 @@
 	returnKeyType:Titanium.UI.RETURNKEY_NEXT,
 	opacity: '1.0',
 	font: {
-		fontFamily: 'Helvetica Neue',
+		
 		fontSize: '18dp',
 		fontWeight: 'normal'
 	},
@@ -108,7 +108,7 @@
 
 "#insertEmailDisclaimer":{
 	font: {
-		fontFamily: 'Helvetica Neue',
+		
 		fontSize: '12dip',
 		fontWeight: 'normal'
 	},
@@ -126,7 +126,7 @@
 	returnKeyType:Titanium.UI.RETURNKEY_DONE,
 	opacity: '1.0',
 	font: {
-		fontFamily: 'Helvetica Neue',
+		
 		fontSize: '18dp',
 		fontWeight: 'normal'
 	},
@@ -147,7 +147,7 @@
 	title: 'Submit',
 	opacity: '1.0',
 	font: {
-		fontFamily: 'Helvetica Neue',
+		
 		fontSize: '18dp',
 		fontWeight: 'bold'
 	},
@@ -162,7 +162,7 @@
 	title: 'Cancel',
 	opacity: '1.0',
 	font: {
-		fontFamily: 'Helvetica Neue',
+		
 		fontSize: '16dp',
 		fontWeight: 'bold'
 	},
@@ -183,7 +183,7 @@
 ".thankYouMessageComment":{
 	opacity: '1.0',
 	font: {
-		fontFamily: 'Helvetica Neue',
+		
 		fontSize: '16dp',
 		fontWeight: 'normal'
 	},

@@ -24,10 +24,12 @@ var json = Alloy.Globals.museumJSON;
 Ti.API.info('Exhibit landing initialized with: ' + json);
 
 var loadingSpinner = setPathForLibDirectory('loadingSpinner/loadingSpinner');
-var addLoadingMessage = false;
+var addLoadingMessage = true;
 var loadingSpinnerLib = new loadingSpinner(addLoadingMessage);
 var spinner = loadingSpinnerLib.getSpinner();
 var loadingSpinnerView = Ti.UI.createView();
+var loadingSpinnerDarkView = Ti.UI.createView({ backgroundColor: "#000000", opacity: 0.3 });
+loadingSpinnerView.add(loadingSpinnerDarkView);
 
 var iconService = setPathForLibDirectory('customCalls/iconService');
 var iconService = new iconService();
@@ -86,6 +88,9 @@ function setPathForLibDirectory(libFile) {
 
 function addSpinner() {
 	loadingSpinnerView.add(spinner);
+	if (addLoadingMessage){
+		loadingSpinnerLib.scrambleMessage();
+	}
 	spinner.show();
 	$.exhibitLanding.add(loadingSpinnerView);
 }
@@ -100,7 +105,7 @@ function fixIpadSpacing() {
 		$.exhibitSelect.bottom = "20dip";
 		$.exhibitSelect.height = "70dip";
 		$.exhibitSelectLabel.font = {
-			fontFamily : 'Helvetica Neue',
+			
 			fontSize : "25dip"
 		};
 		$.exhibitSelectLabel.width = "60%";
@@ -181,12 +186,12 @@ function createExhibitsCarousel(exhibits) {
 	$.exhibitInfoLabel.text = exhibits[0].long_description;
 	if (Titanium.Platform.osname == "ipad") {
 		$.headingLabel.font = {
-			fontFamily : 'Helvetica Neue',
+			
 			fontSize : "30dip",
 			fontWeight : 'bold'
 		};
 		$.exhibitInfoLabel.font = {
-			fontFamily : 'Helvetica Neue',
+			
 			fontSize : "25dip"
 		};
 	}
@@ -253,14 +258,14 @@ function createExhibitTitleLabel(name, pageXofYtext) {
 		color : 'white',
 		horizontalWrap : false,
 		font : {
-			fontFamily : 'Helvetica Neue',
+			
 			fontSize : '24dip',
 			fontWeight : 'bold'
 		}
 	});
 	if (Titanium.Platform.osname == "ipad") {
 		label.font = {
-			fontFamily : 'Helvetica Neue',
+			
 			fontSize : "30dip"
 		};
 	}
@@ -274,7 +279,7 @@ function createExhibitTitleLabel(name, pageXofYtext) {
 			color : 'white',
 			horizontalWrap : false,
 			font : {
-				fontFamily : 'Helvetica Neue',
+				
 				fontSize : '18dip',
 				fontWeight : 'normal'
 			}
@@ -299,14 +304,14 @@ function createTitleLabel(name, textSize, pageXofYtext) {
 		left : 10,
 		color : 'white',
 		font : {
-			fontFamily : 'Helvetica Neue',
+			
 			fontSize : textSize,
 			fontWeight : 'bold'
 		}
 	});
 	if (Titanium.Platform.osname == "ipad") {
 		label.font = {
-			fontFamily : 'Helvetica Neue',
+			
 			fontSize : "27dip",
 			fontWeight : "bold"
 		};
@@ -322,7 +327,7 @@ function createTitleLabel(name, textSize, pageXofYtext) {
 			color : 'white',
 			horizontalWrap : false,
 			font : {
-fontFamily : 'Helvetica Neue',
+
 				fontSize : '18dip',
 				fontWeight : 'normal'
 			}
@@ -355,18 +360,18 @@ function onExhibitsClick(exhibits) {
 		$.exhibitInfoLabel.text = exhibits[pageIndex].long_description;
 		if (Titanium.Platform.osname == "ipad") {
 			$.exhibitInfoLabel.font = {
-				fontFamily : 'Helvetica Neue',
+				
 				fontSize : "25dip"
 			};
 			$.exhibitSelectLabel.font = {
-				fontFamily : 'Helvetica Neue',
+				
 				fontSize : "25dip"
 			};
 		}
 		$.headingLabel.text = "Select an Activity from Below!";
 		if (Titanium.Platform.osname == "ipad") {
 			$.headingLabel.font = {
-				fontFamily : 'Helvetica Neue',
+				
 				fontSize : "30dip",
 				fontWeight : 'bold'
 			};

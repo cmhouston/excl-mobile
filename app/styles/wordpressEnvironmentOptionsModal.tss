@@ -9,7 +9,7 @@
 ".environmentOption": {
 	width: "70%",
 	font: {
-		fontFamily : 'Helvetica Neue',
+		
 		fontSize: "20dip"
 	}
 }
@@ -19,7 +19,7 @@
 	color: "#000000",
 	font:
 	{
-		fontFamily : 'Helvetica Neue',
+		
 		fontWeight: "bold",
 		color: "#000000"
 	}
@@ -29,7 +29,7 @@
 	left: "5%",
 	color: "#000000",
 	font: {
-		fontFamily : 'Helvetica Neue',
+		
 		fontSize: "15dip",
 		color: "#000000"
 	}
@@ -51,7 +51,7 @@
 	color: "#000000",
 	font:
 	{
-		fontFamily : 'Helvetica Neue',
+		
 		fontSize: "15dip",
 		fontWeight: "bold",
 		color: "#000000"
