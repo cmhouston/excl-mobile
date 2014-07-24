@@ -12,4 +12,6 @@
 
 "#InfoText":{
 	//backgroundColor: '#FFFF00'
+	//height: 'auto',
+	//width: 'auto'
 }
