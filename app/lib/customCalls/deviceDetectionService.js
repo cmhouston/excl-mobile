@@ -1,0 +1,48 @@
+//======================================================================
+// ExCL is an open source mobile platform for museums that feature basic
+// museum information and extends visitor engagement with museum exhibits.
+// Copyright (C) 2014  Children's Museum of Houston and the Regents of the
+// University of California.
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//=====================================================================
+
+function deviceDetectionSerice() {
+	var androidTabletScreenDiagInches = 8;
+};
+
+deviceDetectionSerice.prototype.isTablet = function(diagonalInches) {
+	var tabletDiag = diagonalInches | androidTabletScreenDiagInches;
+	var osname = Ti.Platform.osname;
+	switch(osname) {
+	case 'ipad':
+		return true;
+	case 'android':
+		return (deviceDetectionSerice.prototype.deviceDiag() >= tabletDiag) ? true : false;
+	default:
+		return false;
+	}
+};
+
+deviceDetectionSerice.prototype.deviceDiag = function() {
+	/*
+	 Returns the DIAGONAL screen size in inches
+	 */
+	var dpi = Ti.Platform.displayCaps.dpi;
+	var screenWidth = Ti.Platform.displayCaps.platformWidth / dpi;
+	var screenHeight = Ti.Platform.displayCaps.platformHeight / dpi;
+	return Math.sqrt(screenWidth * screenWidth + screenHeight * screenHeight);
+};
+
+module.exports = deviceDetectionSerice; 
