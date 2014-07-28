@@ -1,7 +1,10 @@
-
 ".container" : {
 	navBarHidden: true,
 	fullscreen: true,
-	backgroundColor: "#FFF",
-	layout: "vertical"
+	backgroundColor: "#FFF"
+}
+
+"#mainView": {
+	layout: "vertical",
+	bottom: "20dip",
 }
