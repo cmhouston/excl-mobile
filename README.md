@@ -12,8 +12,8 @@
 
 * [Navigation Controller](./NavigationController.md)
 
-* [Custom Calls API](./CustomCalls.md)
+* [Custom Calls API](CustomCalls.md)
 
-* [Installing Unit Testing & Code Coverage Tools](./installingUnitTestingAndCodeCoverageTools.md)
+* [Installing Unit Testing & Code Coverage Tools](installingUnitTestingAndCodeCoverageTools.md)
 
-* [How to Debug on Genymotion](./debuggingOnGenymotion.md)
+* [How to Debug on Genymotion](debuggingOnGenymotion.md)
