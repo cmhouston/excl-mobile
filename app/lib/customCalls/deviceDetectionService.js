@@ -31,7 +31,7 @@ deviceDetectionService.prototype.isTablet = function(diagonalInches) {
 	case 'ipad':
 		return true;
 	case 'android':
-		return (deviceDetectionSerice.prototype.deviceDiag() >= tabletDiag) ? true : false;
+		return (deviceDetectionService.prototype.deviceDiag() >= tabletDiag) ? true : false;
 	default:
 		return false;
 	}
