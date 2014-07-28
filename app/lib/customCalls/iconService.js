@@ -32,4 +32,14 @@ iconService.prototype.setIcon = function(button, filename){
 	}
 };
 
+iconService.prototype.getImageFilename = function(filename){
+	if (OS_ANDROID){
+		imageFilename = iconRootAndroid + filename;
+	}
+	else if (OS_IOS){
+		imageFilename = iconRootIos + filename;
+	}
+	return imageFilename;
+};
+
 module.exports = iconService;
