@@ -275,6 +275,8 @@ filterService.prototype.formatActiveFiltersIntoArray = function(ary) {
 	Ti.API.info("Attempting Parse: " + JSON.stringify(ary));
 	Ti.API.info("Ary len: " + ary.length);
 	Ti.API.info("Filter 0: " + JSON.stringify(ary[0]));
+	Ti.API.info("Type: " + typeof ary);
+	Ti.API.info("array? " + Array.isArray(ary));
 
 	Ti.API.info("----------------------------");
 	var temp = ary.toJSON();
