@@ -17,7 +17,7 @@
 "#exhibitsCarousel": {
 	backgroundColor: "#253342",
 	width: Ti.UI.FILL,
-	height: Ti.UI.SIZE,
+	height: Ti.UI.SIZE, //See below for Android adjustment
 	showPagingControl: true,
 	overlayEnabled: true,
 	pagingControlAlpha: "0.8",
@@ -28,7 +28,7 @@
 "#exhibitsCarousel[platform=android]": {
 	// This is an android hack
 	// This should probably be calculated based on ... something
-	height: '205dip'
+	height: '240dip'
 }
 
 "#collapsibleInfoLabel": {
