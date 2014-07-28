@@ -1,9 +1,8 @@
 <Alloy>
-	<Window id="container" >
+	<Window id="container" backgroundColor="red">
 		<View id="topBar">
 			<Widget src="navigationBar" id="navBar"/>
 		</View>
-			<ScrollView id="scrollView" ></ScrollView>
+		<ScrollView id="scrollView" backgroundColor = "yellow"/>
 	</Window>
-
 </Alloy>
