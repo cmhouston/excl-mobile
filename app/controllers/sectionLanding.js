@@ -107,6 +107,7 @@ var colorArray = ['#ECD078', '#D95B43', '#C02942', '#542437', '#53777A'];
 var colorArrayCounter = 0;
 
 function insertXNumberOfButtons(numberOfButtons) {
+	parentObjs = [];
 	var objectArgs;
 	objectArgs = {
 		borderRadius : 0,
@@ -165,8 +166,6 @@ function insertXNumberOfButtons(numberOfButtons) {
 function showRespectiveView(buttonSource) {
 	for (var child in $.scrollView.children) {
 		if ($.scrollView.children[child].id) {
-
-			Ti.API.info("Button: " + buttonSource.viewAssociatedId + ", child id: " + $.scrollView.children[child].id);
 			if (buttonSource.viewAssociatedId == $.scrollView.children[child].id) {
 				if (lastSelectedView) {
 					$.scrollView.children[lastSelectedView].visible = false;
@@ -266,6 +265,10 @@ function organizeBySection(allPosts) {
 	insertXNumberOfButtons(1);
 	//insertXNumberOfButtons(filterTabIds.length);
 
+	for (var i = 0; i < parentObjects.length; i++) {
+		Ti.API.info(JSON.stringify(parentObjects[i].id));
+	}
+
 	openFirstView(firstView);
 	dictOrderedPostsBySection = {};
 	for (var i = 0; i < allPosts.length; i++) {
@@ -289,8 +292,10 @@ function organizeByFilter(allPosts) {
 	insertXNumberOfButtons(filterTabIds.length);
 	//insertXNumberOfButtons(2);
 
-	Ti.API.info("Parent objs: " + JSON.stringify(parentObjects));
-
+	for (var i = 0; i < parentObjects.length; i++) {
+		Ti.API.info(JSON.stringify(parentObjects[i].id));
+	}
+	
 	filter.sortPostsIntoSections(dictOrderedPostsByFilter, parentObjects);
 
 	$.scrollView.height = Ti.UI.SIZE;
