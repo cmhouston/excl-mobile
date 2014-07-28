@@ -180,11 +180,12 @@ filterService.prototype.sortPostsIntoSections = function(dict, parentObjectArray
 	} else {
 		//Content found. Build the posts. Cycle through the sections/dictKeys and the tab onto which it is added.
 		
-		Ti.API.info("Parent obj ary: " + JSON.stringify(parentObjectArray));
+		Ti.API.info("All Sections: " + JSON.stringify(dictKeys));
 		
 		for (var i = 0; i < dictLength; i++) {
 
-			Ti.API.info("Iterable Parent: " + i + ", " + JSON.stringify(parentObjectArray[i]));
+			Ti.API.info("Parent obj: " + JSON.stringify(parentObjectArray[i].id));
+			Ti.API.info("Section: " + JSON.stringify(dictKeys[i]));
 
 			var postCollection = filterService.prototype.retrievePostDetails(dict, dictKeys[i]);
 			filterService.prototype.addPostsToViewAccordingToSection(dictKeys[i], dict, parentObjectArray[i], postCollection);
@@ -257,9 +258,9 @@ filterService.prototype.retrieveTextPart = function(partsList) {
 filterService.prototype.formatActiveFiltersIntoArray = function(ary) {
 	var newAry = [];
 	ary = ary.toJSON();
-	
+
 	Ti.API.info("Format this: " + JSON.stringify(ary));
-	
+
 	for (var i = 0; i < ary.length; i++) {
 		if (ary[i].active == true) {
 			newAry.push(ary[i].name);
