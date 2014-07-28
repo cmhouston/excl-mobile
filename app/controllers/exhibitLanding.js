@@ -121,7 +121,8 @@ function fixIpadSpacing() {
 
 function init() {
 	addSpinner();
-	$.navBar.setPageTitle("Exhibitions");
+	//$.navBar.setPageTitle("Exhibitions");
+	$.navBar.setPageTitle(json.data.museum.exhibit_label_plural);
 	initializeWithJSON(json);
 	fixIpadSpacing();
 	hideSpinner();
@@ -468,7 +469,8 @@ function onExhibitsClick(exhibits) {
 	} else {
 		$.collapsibleComponentView.hidden = true;
 		$.headingLabel.text = exhibits[$.exhibitsCarousel.currentPage].name;
-		$.exhibitSelectLabel.text = "Explore This Exhibition!";
+		//$.exhibitSelectLabel.text = "Explore This Exhibition!";
+		$.exhibitSelectLabel.text = "Explore This" + json.data.museum.exhibit_label;
 		$.exhibitInfoScrollView.animate({
 			opacity : 1,
 			duration : 300
