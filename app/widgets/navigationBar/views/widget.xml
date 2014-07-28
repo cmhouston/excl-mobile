@@ -4,10 +4,10 @@
 			<ImageView class="backIcon" image="/images/icons_android/back_arrow.png" platform="android"></ImageView>
 			<ImageView class="backIcon" image="/images/icons_ios/back_arrow.png" platform="ios"></ImageView>
 		</View>
-		<Label id="pageTitle" class="pageTitleStyle"></Label>
 		<View id="flyoutBtn" onClick="menu" class="flyoutView">
 			<ImageView class="flyoutIcon" image="/images/icons_android/drawer.png" platform="android"></ImageView>
 			<ImageView class="flyoutIcon" image="/images/icons_ios/drawer.png" platform="ios"></ImageView>
 		</View>
+		<Label id="pageTitle" class="pageTitleStyle"></Label>
 	</View>
 </Alloy>
