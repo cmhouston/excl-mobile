@@ -16,4 +16,4 @@
 
 * [Installing Unit Testing & Code Coverage Tools](installingUnitTestingAndCodeCoverageTools.md)
 
-* [How to Debug on Genymotion](debuggingOnGenymotion.md)
+* [How to Debug on Genymotion](/debuggingOnGenymotion.md)
