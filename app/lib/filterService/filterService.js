@@ -269,29 +269,10 @@ filterService.prototype.retrieveTextPart = function(partsList) {
 
 filterService.prototype.formatActiveFiltersIntoArray = function(ary) {
 	var newAry = ["0"];
-
-	//ary = [ary];
-
-	Ti.API.info("Attempting Parse: " + JSON.stringify(ary));
-	Ti.API.info("Ary len: " + ary.length);
-	Ti.API.info("Filter 0: " + JSON.stringify(ary[0]));
-	Ti.API.info("Type: " + typeof ary);
-	Ti.API.info("array? " + Array.isArray(ary));
-
-	Ti.API.info("----------------------------");
-	var temp = ary.toJSON();
-	// Ti.API.info(temp);
-	// Ti.API.info(temp.length);
-	// Ti.API.info(temp[0]);
-	Ti.API.info(temp[0].name);
-	Ti.API.info("----------------------------");
-
-	ary = JSON.parse(ary);
-	Ti.API.info("Passed Parse");
+	ary = ary.toJSON();
 	for (var i = 0; i < ary.length; i++) {
-		var dict = ary[i];
-		if (dict["active"].toString() == "true") {
-			newAry.push(dict["name"]);
+		if (ary[i].active == "true") {
+			newAry.push(ary[i].name);
 		}
 	}
 	Ti.API.info("Sending ary: " + newAry);
