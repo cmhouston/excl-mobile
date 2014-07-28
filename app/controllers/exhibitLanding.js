@@ -236,9 +236,9 @@ function createExhibitsImageIOS(exhibit, exhibitNumber, numOfExhibits) {
 	exhibitViewWithTitle.add(exhibitTitleBar);
 	
 	var exhibitView = Ti.UI.createImageView(viewConfig);
+	exhibitView.add(createPagingArrows(exhibitNumber, numOfExhibits));
 	exhibitViewWithTitle.add(exhibitView);
 	return exhibitViewWithTitle;
-	//*/
 }
 
 function createExhibitsImageAndroid(exhibit, exhibitNumber, numOfExhibits) {
@@ -247,6 +247,9 @@ function createExhibitsImageAndroid(exhibit, exhibitNumber, numOfExhibits) {
 		itemId : exhibit.id,
 		layout : 'vertical'
 	});
+	
+	var imageContainer = Ti.UI.createView();
+	
 	var image = Ti.UI.createImageView({
 		backgroundColor : "#253342",
 		width : Ti.UI.FILL,
@@ -258,8 +261,9 @@ function createExhibitsImageAndroid(exhibit, exhibitNumber, numOfExhibits) {
 	image.image = exhibit.exhibit_image;
 
 	itemContainer.add(createExhibitTitleLabel(exhibit.name));
-	itemContainer.add(image);
-	itemContainer.add(createPagingArrows(exhibitNumber, numOfExhibits));
+	imageContainer.add(image);
+	imageContainer.add(createPagingArrows(exhibitNumber, numOfExhibits));
+	itemContainer.add(imageContainer);
 	itemContainer.add(clickCatcher);
 	return itemContainer;
 }
@@ -387,14 +391,6 @@ function createTitleLabel(name, textSize, pageXofYtext) {
 	}
 
 	return titleLabel;
-}
-
-function showScrollableViewArrows(scroller) {
-
-	if (scroller.getViews().length > 0) {
-		scroller.setCurrentPage(1);
-	}
-	//scroller.setCurrentPage(0);
 }
 
 function createcollapsibleComponentView() {
