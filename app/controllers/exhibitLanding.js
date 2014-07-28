@@ -121,7 +121,8 @@ function fixIpadSpacing() {
 
 function init() {
 	addSpinner();
-	$.navBar.setPageTitle("Exhibitions");
+	//$.navBar.setPageTitle("Exhibitions");
+	$.navBar.setPageTitle(json.data.museum.exhibit_label_plural);
 	initializeWithJSON(json);
 	fixIpadSpacing();
 	hideSpinner();
@@ -450,7 +451,8 @@ function onExhibitsClick(exhibits) {
 	} else {
 		$.collapsibleComponentView.hidden = true;
 		$.headingLabel.text = exhibits[$.exhibitsCarousel.currentPage].name;
-		$.exhibitSelectLabel.text = "Explore This Exhibition!";
+		//$.exhibitSelectLabel.text = "Explore This Exhibition!";
+		$.exhibitSelectLabel.text = "Explore This " + json.data.museum.exhibit_label;
 		$.exhibitInfoScrollView.animate({
 			opacity : 1,
 			duration : 300
@@ -473,7 +475,8 @@ function onExhibitsScroll(e, exhibits) {
 	componentsInExhibit[currExhibitId].width = 0;
 	componentsInExhibit[e.view.itemId].width = Ti.UI.SIZE;
 	$.collapsibleComponentView.hidden = true;
-	$.exhibitSelectLabel.text = "Explore This Exhibition!";
+	//$.exhibitSelectLabel.text = "Explore This Exhibition!";
+	$.exhibitSelectLabel.text = "Explore This " + json.data.museum.exhibit_label;
 	currExhibitId = e.view.itemId;
 	var index = $.exhibitsCarousel.currentPage;
 	$.headingLabel.text = exhibits[index].name;
