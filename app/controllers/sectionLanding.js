@@ -24,8 +24,9 @@ var allPosts = eval(args[1]);
 var selectedSection = args[2];
 var sectionColor = args[3];
 var sectionScreenName = args[4];
-var filterTabIds = [$.scrollView, "thing1", "thing2", "thing3", "thing4", "thing5"];
-var parentObjectIds = [];
+var filterTabIds = ["thing1", "thing2", "thing3"];
+var parentObjects = [];
+var firstView;
 
 var dataRetriever = setPathForLibDirectory('dataRetriever/dataRetriever');
 var loadingSpinner = setPathForLibDirectory('loadingSpinner/loadingSpinner');
@@ -113,11 +114,11 @@ function insertXNumberOfButtons(numberOfButtons) {
 		width : '100%',
 		top : "0",
 		height : "50dip",
-		bottom: "50dip",
 		layout : 'horizontal',
 		id : 'buttonHolderView'
 	};
 	var buttonHolderView = viewService.createCustomView(objectArgs);
+	$.scrollView.add(buttonHolderView);
 
 	var each_button_width = Math.floor(100 / numberOfButtons);
 	each_button_width += '%';
@@ -132,7 +133,7 @@ function insertXNumberOfButtons(numberOfButtons) {
 			backgroundColor : '#1ABC9C',
 			color : '#ECF0F1',
 			id : "button" + i,
-			viewAssociatedId : filterTabIds[i + 1]
+			viewAssociatedId : filterTabIds[i]
 		};
 		var button = buttonService.createCustomButton(objectArgs);
 
@@ -143,9 +144,11 @@ function insertXNumberOfButtons(numberOfButtons) {
 			height : '0',
 			visible : false,
 			layout : "vertical",
-			id : filterTabIds[i + 1]
+			id : filterTabIds[i]
 		};
 		var view = viewService.createCustomView(objectArgs);
+		keepFirstViewOpen(view, button, i);
+		parentObjects.push(view);
 		colorArrayCounter++;
 		$.scrollView.add(view);
 
@@ -156,35 +159,58 @@ function insertXNumberOfButtons(numberOfButtons) {
 		});
 		buttonHolderView.add(button);
 	}
-
-	$.scrollView.add(buttonHolderView);
+	hideButtonViewIfOnlyOneButton(buttonHolderView, numberOfButtons);
 }
 
 function showRespectiveView(buttonSource) {
 	for (var child in $.scrollView.children) {
 		if ($.scrollView.children[child].id) {
+
+			Ti.API.info("Button: " + buttonSource.viewAssociatedId + ", child id: " + $.scrollView.children[child].id);
 			if (buttonSource.viewAssociatedId == $.scrollView.children[child].id) {
 				if (lastSelectedView) {
 					$.scrollView.children[lastSelectedView].visible = false;
 					$.scrollView.children[lastSelectedView].height = "0";
 				}
 				$.scrollView.children[child].visible = true;
-				$.scrollView.children[child].height = "100%";
+				$.scrollView.children[child].height = Ti.UI.SIZE;
 				lastSelectedView = child;
 			}
 		}
 	}
 }
 
+function keepFirstViewOpen(view, button, i) {
+	if (i == 0) {
+		openFirstView(view);
+		button.backgroundColor = '#ECF0F1';
+		button.color = '#1ABC9C';
+		lastSelectedButton = button;
+		firstView = view;
+		lastSelectedView = 1;
+	}
+}
+
+function openFirstView(view) {
+	view.visible = true;
+	view.height = Ti.UI.SIZE;
+}
+
 function changeButtonColor(buttonId) {
 	if (lastSelectedButton) {
-		// if lastSelectedButton exists then this will be executed
 		lastSelectedButton.backgroundColor = '#1ABC9C';
 		lastSelectedButton.color = '#ECF0F1';
 	}
 	buttonId.backgroundColor = '#ECF0F1';
 	buttonId.color = '#1ABC9C';
 	lastSelectedButton = buttonId;
+}
+
+function hideButtonViewIfOnlyOneButton(buttonHolderView, numberOfButtons) {
+	if (numberOfButtons == 1) {
+		buttonHolderView.height = "0";
+		buttonHolderView.visible = false;
+	}
 }
 
 /////////////////////////////////////////// End TabTest Logic
@@ -231,27 +257,23 @@ function checkIfFilterOn(allPosts) {
 	Ti.API.info("Organizing content by section");
 	organizeBySection(allPosts);
 	if (filterOn) {
-		//Ti.API.info("Adding tabs");
 		organizeByFilter(allPosts);
 	}
 }
 
 function organizeBySection(allPosts) {
 
-	insertXNumberOfButtons(3);
+	insertXNumberOfButtons(1);
+	//insertXNumberOfButtons(filterTabIds.length);
 
+	openFirstView(firstView);
 	dictOrderedPostsBySection = {};
 	for (var i = 0; i < allPosts.length; i++) {
 		filter.compileDictOfSections(allPosts[i], dictOrderedPostsBySection, selectedSection);
 	}
 	$.scrollView.removeAllChildren();
 
-	parentObjectIds = [$.scrollView];
-	// for (var child in $.scrollView.children) {
-	// parentObjectIds.push($.scrollView.children[child].id);
-	// }
-
-	filter.sortPostsIntoSections(dictOrderedPostsBySection, parentObjectIds);
+	filter.sortPostsIntoSections(dictOrderedPostsBySection, parentObjects);
 	Ti.API.info("Finished Organizing by Section");
 }
 
@@ -265,15 +287,11 @@ function organizeByFilter(allPosts) {
 	// tabs will be using filter names, not user friendly ones// dictOrderedPostsByFilter = filter.replaceDictKeysWithFilterHeadings(dictOrderedPostsByFilter);
 
 	insertXNumberOfButtons(filterTabIds.length);
+	//insertXNumberOfButtons(2);
 
-	parentObjectIds = [$.scrollView];
+	Ti.API.info("Parent objs: " + JSON.stringify(parentObjects));
 
-	for (var child in $.scrollView.children) {
-		parentObjectIds.push($.scrollView.children[child]);
-		Ti.API.info("child: " + $.scrollView.children[child]);
-	}
-
-	filter.sortPostsIntoSections(dictOrderedPostsByFilter, parentObjectIds);
+	filter.sortPostsIntoSections(dictOrderedPostsByFilter, parentObjects);
 
 	$.scrollView.height = Ti.UI.SIZE;
 	Ti.API.info("Finished Filtering");

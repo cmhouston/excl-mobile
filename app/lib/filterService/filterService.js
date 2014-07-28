@@ -186,19 +186,19 @@ filterService.prototype.replaceStringWithFilterHeading = function(st) {
 filterService.prototype.sortPostsIntoSections = function(dict, parentObjectArray) {
 	var dictKeys = filterService.prototype.returnDictKeys(dict);
 	var dictLength = dictKeys.length;
-	//parentObjectArray will always have scroll view as first object
 
 	if (dictLength == 0) {
 		//No content found (no content that matches all filters). Throw Error.
-		parentObjectArray[1].add(filterService.prototype.generateErrorMessage(errorNoContent));
+		parentObjectArray[0].add(filterService.prototype.generateErrorMessage(errorNoContent));
 	} else if (dictLength == 1 && dict[allInclusiveFilter] == "") {
 		//Only all inclusive category thrown and its empty. Throw Error.
-		parentObjectArray[1].add(filterService.prototype.generateErrorMessage(errorFilterSelectionHasNoResults));
+		parentObjectArray[0].add(filterService.prototype.generateErrorMessage(errorFilterSelectionHasNoResults));
 	} else {
 		//Content found. Build the posts. Cycle through the sections/dictKeys and the tab onto which it is added.
+	Ti.API.info("Objs sent to sort: " + JSON.stringify(parentObjectArray));
 		for (var i = 0; i < dictLength; i++) {
 
-			Ti.API.info("Iterable Parent: " + JSON.stringify(parentObjectArray[i].id));
+			Ti.API.info("Iterable Parent: " + i + ", " + JSON.stringify(parentObjectArray[i]));
 
 			var postCollection = filterService.prototype.retrievePostDetails(dict, dictKeys[i]);
 			filterService.prototype.addPostsToViewAccordingToSection(dictKeys[i], dict, parentObjectArray[i], postCollection);
@@ -320,9 +320,9 @@ filterService.prototype.addPostsToViewAccordingToSection = function(section, dic
 };
 
 filterService.prototype.addPostPreview = function(postData, parentObject) {
-	
+
 	Ti.API.info("Adding to: " + parentObject.id);
-	
+
 	var postPreview = Alloy.createController('postPreview', postData);
 	var view = postPreview.getView();
 	parentObject.add(view);
