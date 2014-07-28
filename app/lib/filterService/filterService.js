@@ -188,11 +188,14 @@ filterService.prototype.sortPostsIntoSections = function(dict, parentObjectArray
 	var dictLength = dictKeys.length;
 	//parentObjectArray will always have scroll view as first object
 	var iterableObject;
-	if (parentObjectArray.length > 1) {
-		iterableObject = parentObjectArray[0];
-	} else {
-		iterableObject = parentObjectArray[i];
-	}
+	// if (parentObjectArray.length > 1) {
+		// iterableObject = parentObjectArray[0].id;
+	// } else {
+		// iterableObject = parentObjectArray[i].id;
+	// }
+	
+	Ti.API.info("Parent: " + JSON.stringify(parentObjectArray));
+	
 
 	if (dictLength == 0) {
 		//No content found (no content that matches all filters). Throw Error.
@@ -203,6 +206,9 @@ filterService.prototype.sortPostsIntoSections = function(dict, parentObjectArray
 	} else {
 		//Content found. Build the posts. Cycle through the sections/dictKeys and the tab onto which it is added.
 		for (var i = 0; i < dictLength; i++) {
+			
+			Ti.API.info("Iterable Parent: " + JSON.stringify(parentObjectArray[i]));
+			
 			var postCollection = filterService.prototype.retrievePostDetails(dict, dictKeys[i]);
 			filterService.prototype.addPostsToViewAccordingToSection(dictKeys[i], dict, parentObjectArray[i], postCollection);
 		}
