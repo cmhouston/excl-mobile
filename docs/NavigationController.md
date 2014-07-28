@@ -4,8 +4,8 @@ Using the NavigationController
 * Instantiate singleton controller in alloy.js with: 
 
 	```html
-		var NavigationController = require('NavigationController');
-		Alloy.Globals.navController = new NavigationController();
+	var NavigationController = require('NavigationController');
+	Alloy.Globals.navController = new NavigationController();
 	```
 	
 	
