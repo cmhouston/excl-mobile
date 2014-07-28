@@ -24,8 +24,8 @@ var allPosts = eval(args[1]);
 var selectedSection = args[2];
 var sectionColor = args[3];
 var sectionScreenName = args[4];
-var filterTabIds = [$.scrollView, "thing1", "thing2", "thing3", "thing4", "thing5"];
-var parentObjectIds = [];
+var filterTabIds = ["thing1", "thing2", "thing3"];
+var parentObjects = [];
 
 var dataRetriever = setPathForLibDirectory('dataRetriever/dataRetriever');
 var loadingSpinner = setPathForLibDirectory('loadingSpinner/loadingSpinner');
@@ -113,11 +113,11 @@ function insertXNumberOfButtons(numberOfButtons) {
 		width : '100%',
 		top : "0",
 		height : "50dip",
-		bottom: "50dip",
 		layout : 'horizontal',
 		id : 'buttonHolderView'
 	};
 	var buttonHolderView = viewService.createCustomView(objectArgs);
+	$.scrollView.add(buttonHolderView);
 
 	var each_button_width = Math.floor(100 / numberOfButtons);
 	each_button_width += '%';
@@ -132,7 +132,7 @@ function insertXNumberOfButtons(numberOfButtons) {
 			backgroundColor : '#1ABC9C',
 			color : '#ECF0F1',
 			id : "button" + i,
-			viewAssociatedId : filterTabIds[i + 1]
+			viewAssociatedId : filterTabIds[i]
 		};
 		var button = buttonService.createCustomButton(objectArgs);
 
@@ -143,9 +143,11 @@ function insertXNumberOfButtons(numberOfButtons) {
 			height : '0',
 			visible : false,
 			layout : "vertical",
-			id : filterTabIds[i + 1]
+			id : filterTabIds[i]
 		};
 		var view = viewService.createCustomView(objectArgs);
+		keepFirstViewOpen(view, button, i);
+		parentObjects.push(view);
 		colorArrayCounter++;
 		$.scrollView.add(view);
 
@@ -155,9 +157,8 @@ function insertXNumberOfButtons(numberOfButtons) {
 			showRespectiveView(e.source);
 		});
 		buttonHolderView.add(button);
+		hideButtonViewIfOnlyOneButton(buttonHolderView);
 	}
-
-	$.scrollView.add(buttonHolderView);
 }
 
 function showRespectiveView(buttonSource) {
@@ -169,22 +170,37 @@ function showRespectiveView(buttonSource) {
 					$.scrollView.children[lastSelectedView].height = "0";
 				}
 				$.scrollView.children[child].visible = true;
-				$.scrollView.children[child].height = "100%";
+				$.scrollView.children[child].height = Ti.UI.SIZE;
 				lastSelectedView = child;
+				Ti.API.info("last selected view: " + JSON.stringify(lastSelectedView));
 			}
 		}
 	}
 }
 
+function keepFirstViewOpen(view, button, i) {
+	if (i == 0) {
+		view.visible = true;
+		view.height = Ti.UI.SIZE;
+		button.backgroundColor = '#ECF0F1';
+		button.color = '#1ABC9C';
+		lastSelectedButton = button;
+	}
+}
+
 function changeButtonColor(buttonId) {
 	if (lastSelectedButton) {
-		// if lastSelectedButton exists then this will be executed
 		lastSelectedButton.backgroundColor = '#1ABC9C';
 		lastSelectedButton.color = '#ECF0F1';
 	}
 	buttonId.backgroundColor = '#ECF0F1';
 	buttonId.color = '#1ABC9C';
 	lastSelectedButton = buttonId;
+}
+
+function hideButtonViewIfOnlyOneButton(buttonHolderView) {
+	buttonHolderView.height = "0";
+	buttonHolderView.visible = false;
 }
 
 /////////////////////////////////////////// End TabTest Logic
@@ -238,7 +254,8 @@ function checkIfFilterOn(allPosts) {
 
 function organizeBySection(allPosts) {
 
-	insertXNumberOfButtons(3);
+	insertXNumberOfButtons(1);
+	//insertXNumberOfButtons(filterTabIds.length);
 
 	dictOrderedPostsBySection = {};
 	for (var i = 0; i < allPosts.length; i++) {
@@ -246,12 +263,7 @@ function organizeBySection(allPosts) {
 	}
 	$.scrollView.removeAllChildren();
 
-	parentObjectIds = [$.scrollView];
-	// for (var child in $.scrollView.children) {
-	// parentObjectIds.push($.scrollView.children[child].id);
-	// }
-
-	filter.sortPostsIntoSections(dictOrderedPostsBySection, parentObjectIds);
+	filter.sortPostsIntoSections(dictOrderedPostsBySection, parentObjects);
 	Ti.API.info("Finished Organizing by Section");
 }
 
@@ -266,14 +278,7 @@ function organizeByFilter(allPosts) {
 
 	insertXNumberOfButtons(filterTabIds.length);
 
-	parentObjectIds = [$.scrollView];
-
-	for (var child in $.scrollView.children) {
-		parentObjectIds.push($.scrollView.children[child]);
-		Ti.API.info("child: " + $.scrollView.children[child]);
-	}
-
-	filter.sortPostsIntoSections(dictOrderedPostsByFilter, parentObjectIds);
+	filter.sortPostsIntoSections(dictOrderedPostsByFilter, parentObjects);
 
 	$.scrollView.height = Ti.UI.SIZE;
 	Ti.API.info("Finished Filtering");
