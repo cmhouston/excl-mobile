@@ -12,4 +12,4 @@ Before pushing a commit, perform the following actions:
 
 6.  Smoke test on Android device.
 
-After pushing, go to the #intern-2014-hou-code channel on Slack or https://buildbox.io/cmh-mobile-test/cmh-mobile-test and login.  Verify the continuous integration build and integration tests succeeded.
+7.  Verify that continuous integration build and integration tests succeed.
