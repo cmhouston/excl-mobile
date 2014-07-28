@@ -6,14 +6,14 @@
 2. Open up Titanium Studio and Import the existing project into your workspace
 3. Develop
 
-[Push Checklist](./Checkin%20Checklist.md)
+[Push Checklist](/docs/Checkin%20Checklist.md)
 
 ### Lib Docs ###
 
-* [Navigation Controller](./NavigationController.md)
+* [Navigation Controller](/docs/NavigationController.md)
 
-* [Custom Calls API](CustomCalls.md)
+* [Custom Calls API](/docs/CustomCalls.md)
 
-* [Installing Unit Testing & Code Coverage Tools](installingUnitTestingAndCodeCoverageTools.md)
+* [Installing Unit Testing & Code Coverage Tools](/docs/installingUnitTestingAndCodeCoverageTools.md)
 
 * [How to Debug on Genymotion](/docs/debuggingOnGenymotion.md)
