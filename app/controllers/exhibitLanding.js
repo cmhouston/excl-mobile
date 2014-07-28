@@ -212,7 +212,7 @@ function createExhibitsCarousel(exhibits) {
 }
 
 function createExhibitsImageIOS(exhibit, exhibitNumber, numOfExhibits) {
-	
+	/*
 	var viewConfig = {
 		backgroundColor : "#253342",
 		width : Ti.UI.FILL,
@@ -223,11 +223,12 @@ function createExhibitsImageIOS(exhibit, exhibitNumber, numOfExhibits) {
 		viewConfig.image = exhibit.exhibit_image;
 	}
 	var exhibitView = Ti.UI.createImageView(viewConfig);
-	// exhibitView.add(createExhibitTitleLabel(exhibit.name, pageXofYtext));
+	//exhibitView.add(createPagingArrows(exhibitNumber, numOfExhibits));
 	return exhibitView;
+	*/
 	
 	
-	/*
+	
 	var viewConfig = {
 		backgroundColor : "#253342",
 		width : Ti.UI.FILL,
@@ -251,17 +252,13 @@ function createExhibitsImageIOS(exhibit, exhibitNumber, numOfExhibits) {
 	var exhibitView = Ti.UI.createImageView(viewConfig);
 	exhibitViewWithTitle.add(exhibitView);
 	return exhibitViewWithTitle;
-	*/
-
-	var exhibitView = Ti.UI.createImageView(viewConfig);
-	//exhibitView.add(createPagingArrows(exhibitNumber, numOfExhibits));
-	return exhibitView;
 }
 
 function createExhibitsImageAndroid(exhibit, exhibitNumber, numOfExhibits) {
 
 	var itemContainer = Ti.UI.createView({
-		itemId : exhibit.id
+		itemId : exhibit.id,
+		layout : 'vertical'
 	});
 	var image = Ti.UI.createImageView({
 		backgroundColor : "#253342",
@@ -273,6 +270,7 @@ function createExhibitsImageAndroid(exhibit, exhibitNumber, numOfExhibits) {
 	});
 	image.image = exhibit.exhibit_image;
 
+	itemContainer.add(createExhibitTitleLabel(exhibit.name));
 	itemContainer.add(image);
 	itemContainer.add(createPagingArrows(exhibitNumber, numOfExhibits));
 	itemContainer.add(clickCatcher);
@@ -315,13 +313,13 @@ function createExhibitTitleLabel(name, pageXofYtext) {
 		top : 0,
 		height : Ti.UI.SIZE,
 		backgroundColor : '#000',
-		opacity : 0.6
+		height: "34dip"
 	});
 	var label = Ti.UI.createLabel({
 		top : 0,
 		left : "3%",
 		text : name,
-		color : 'white',
+		color : '#FFFFFF',
 		horizontalWrap : false,
 		font : {
 
