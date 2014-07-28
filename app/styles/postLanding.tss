@@ -2,23 +2,59 @@
 ".container": {
 	navBarHidden: true,
 	fullscreen: true,
-	height: '100%'
+	backgroundColor: "#ffffff"
+}
+
+"#postLandingView": {
+	height: Ti.UI.FILL,
+	width: Ti.UI.FILL,
+	layout: "vertical"
 }
 
 "#scroller": {
-	height: '100%',
-	contentHeight: 'auto',
-	bottom: '48dip'
+	height: Ti.UI.FILL,
+	width: Ti.UI.FILL,
+	scrollType: 'vertical',
+	layout: "vertical",
 }
 
 "#tableView":{
-	top: "0",
-	height: Ti.UI.AUTO,
+	height: Ti.UI.FILL,
 	separatorColor: "transparent"
 }
 
 "#tableView[platform=ios]":{
 	selectionStyle: Titanium.UI.iPhone.TableViewCellSelectionStyle.NONE
+}
+
+".postTableViewRow": {
+	height : Ti.UI.SIZE
+}
+
+"#headerRow": {
+	height: "200dip"
+}
+
+"#headerRow[formFactor=tablet]": {
+	height: "300dip"
+}
+
+".headerImage": {
+	height: Ti.UI.SIZE
+}
+
+".postWebView": {
+	height: Ti.UI.SIZE,
+	showScrollbars : false,
+	disableBounce : true
+}
+
+".postWebView[platform=ios]": {
+	scalesPageToFit: true
+}
+
+".postWebView[platform=android]": {
+	scalesPageToFit: true
 }
 
 "#addNewCommentContainer":{
