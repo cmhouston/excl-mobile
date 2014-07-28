@@ -187,6 +187,9 @@ function createExhibitsCarousel(exhibits) {
 		}
 		$.exhibitsCarousel.addView(exhibitView);
 	}
+	
+	$.exhibitsCarousel.setCurrentPage(0);
+	
 	$.headingLabel.text = exhibits[0].name;
 	$.exhibitInfoLabel.text = exhibits[0].long_description;
 	if (detectDevice.isTablet()) {
@@ -222,27 +225,10 @@ function createExhibitsImageIOS(exhibit, exhibitNumber, numOfExhibits) {
 	if (exhibit.exhibit_image) {
 		viewConfig.image = exhibit.exhibit_image;
 	}
-	var exhibitView = Ti.UI.createImageView(viewConfig);
-	//exhibitView.add(createPagingArrows(exhibitNumber, numOfExhibits));
-	return exhibitView;
-	
-	
-	
-	/*
-	var viewConfig = {
-		backgroundColor : "#253342",
-		width : Ti.UI.FILL,
-		image : '/images/700x400.png',
-		itemId : exhibit.id
-	};
-	if (exhibit.exhibit_image) {
-		viewConfig.image = exhibit.exhibit_image;
-	}
 
 	var exhibitViewWithTitle = Ti.UI.createView({
 		layout: "vertical",
 		height: Ti.UI.SIZE,
-		image: '/images/700x400.png',
 		itemId : exhibit.id,
 		width: Ti.UI.FILL
 	});
@@ -252,7 +238,7 @@ function createExhibitsImageIOS(exhibit, exhibitNumber, numOfExhibits) {
 	var exhibitView = Ti.UI.createImageView(viewConfig);
 	exhibitViewWithTitle.add(exhibitView);
 	return exhibitViewWithTitle;
-	*/
+	//*/
 }
 
 function createExhibitsImageAndroid(exhibit, exhibitNumber, numOfExhibits) {
