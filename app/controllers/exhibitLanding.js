@@ -121,7 +121,8 @@ function fixIpadSpacing() {
 
 function init() {
 	addSpinner();
-	$.navBar.setPageTitle("Exhibitions");
+	//$.navBar.setPageTitle("Exhibitions");
+	$.navBar.setPageTitle(json.data.museum.exhibit_label_plural);
 	initializeWithJSON(json);
 	fixIpadSpacing();
 	hideSpinner();
@@ -187,6 +188,9 @@ function createExhibitsCarousel(exhibits) {
 		}
 		$.exhibitsCarousel.addView(exhibitView);
 	}
+	
+	$.exhibitsCarousel.setCurrentPage(0);
+	
 	$.headingLabel.text = exhibits[0].name;
 	$.exhibitInfoLabel.text = exhibits[0].long_description;
 	if (detectDevice.isTablet()) {
@@ -222,26 +226,10 @@ function createExhibitsImageIOS(exhibit, exhibitNumber, numOfExhibits) {
 	if (exhibit.exhibit_image) {
 		viewConfig.image = exhibit.exhibit_image;
 	}
-	var exhibitView = Ti.UI.createImageView(viewConfig);
-	// exhibitView.add(createExhibitTitleLabel(exhibit.name, pageXofYtext));
-	return exhibitView;
-	
-	
-	/*
-	var viewConfig = {
-		backgroundColor : "#253342",
-		width : Ti.UI.FILL,
-		image : '/images/700x400.png',
-		itemId : exhibit.id
-	};
-	if (exhibit.exhibit_image) {
-		viewConfig.image = exhibit.exhibit_image;
-	}
 
 	var exhibitViewWithTitle = Ti.UI.createView({
 		layout: "vertical",
 		height: Ti.UI.SIZE,
-		image: '/images/700x400.png',
 		itemId : exhibit.id,
 		width: Ti.UI.FILL
 	});
@@ -249,20 +237,20 @@ function createExhibitsImageIOS(exhibit, exhibitNumber, numOfExhibits) {
 	exhibitViewWithTitle.add(exhibitTitleBar);
 	
 	var exhibitView = Ti.UI.createImageView(viewConfig);
+	exhibitView.add(createPagingArrows(exhibitNumber, numOfExhibits));
 	exhibitViewWithTitle.add(exhibitView);
 	return exhibitViewWithTitle;
-	*/
-
-	var exhibitView = Ti.UI.createImageView(viewConfig);
-	//exhibitView.add(createPagingArrows(exhibitNumber, numOfExhibits));
-	return exhibitView;
 }
 
 function createExhibitsImageAndroid(exhibit, exhibitNumber, numOfExhibits) {
 
 	var itemContainer = Ti.UI.createView({
-		itemId : exhibit.id
+		itemId : exhibit.id,
+		layout : 'vertical'
 	});
+	
+	var imageContainer = Ti.UI.createView();
+	
 	var image = Ti.UI.createImageView({
 		backgroundColor : "#253342",
 		width : Ti.UI.FILL,
@@ -273,8 +261,10 @@ function createExhibitsImageAndroid(exhibit, exhibitNumber, numOfExhibits) {
 	});
 	image.image = exhibit.exhibit_image;
 
-	itemContainer.add(image);
-	itemContainer.add(createPagingArrows(exhibitNumber, numOfExhibits));
+	itemContainer.add(createExhibitTitleLabel(exhibit.name));
+	imageContainer.add(image);
+	imageContainer.add(createPagingArrows(exhibitNumber, numOfExhibits));
+	itemContainer.add(imageContainer);
 	itemContainer.add(clickCatcher);
 	return itemContainer;
 }
@@ -315,13 +305,13 @@ function createExhibitTitleLabel(name, pageXofYtext) {
 		top : 0,
 		height : Ti.UI.SIZE,
 		backgroundColor : '#000',
-		opacity : 0.6
+		height: "34dip"
 	});
 	var label = Ti.UI.createLabel({
 		top : 0,
 		left : "3%",
 		text : name,
-		color : 'white',
+		color : '#FFFFFF',
 		horizontalWrap : false,
 		font : {
 
@@ -404,14 +394,6 @@ function createTitleLabel(name, textSize, pageXofYtext) {
 	return titleLabel;
 }
 
-function showScrollableViewArrows(scroller) {
-
-	if (scroller.getViews().length > 0) {
-		scroller.setCurrentPage(1);
-	}
-	//scroller.setCurrentPage(0);
-}
-
 function createcollapsibleComponentView() {
 	$.collapsibleComponentView.hidden = true;
 	$.collapsibleComponentView.height = 0;
@@ -469,7 +451,8 @@ function onExhibitsClick(exhibits) {
 	} else {
 		$.collapsibleComponentView.hidden = true;
 		$.headingLabel.text = exhibits[$.exhibitsCarousel.currentPage].name;
-		$.exhibitSelectLabel.text = "Explore This Exhibition!";
+		//$.exhibitSelectLabel.text = "Explore This Exhibition!";
+		$.exhibitSelectLabel.text = "Explore This " + json.data.museum.exhibit_label;
 		$.exhibitInfoScrollView.animate({
 			opacity : 1,
 			duration : 300
@@ -492,7 +475,8 @@ function onExhibitsScroll(e, exhibits) {
 	componentsInExhibit[currExhibitId].width = 0;
 	componentsInExhibit[e.view.itemId].width = Ti.UI.SIZE;
 	$.collapsibleComponentView.hidden = true;
-	$.exhibitSelectLabel.text = "Explore This Exhibition!";
+	//$.exhibitSelectLabel.text = "Explore This Exhibition!";
+	$.exhibitSelectLabel.text = "Explore This " + json.data.museum.exhibit_label;
 	currExhibitId = e.view.itemId;
 	var index = $.exhibitsCarousel.currentPage;
 	$.headingLabel.text = exhibits[index].name;

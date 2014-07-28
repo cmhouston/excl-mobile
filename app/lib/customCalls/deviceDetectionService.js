@@ -18,10 +18,10 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //=====================================================================
 
-function deviceDetectionSerice() {
+function deviceDetectionService() {
 };
 
-deviceDetectionSerice.prototype.isTablet = function(diagonalInches) {
+deviceDetectionService.prototype.isTablet = function(diagonalInches) {
 	//Somewhat arbitrary cutoff where formatting changes in android devices
 	var androidTabletScreenDiagInches = 8;
 	////
@@ -37,7 +37,7 @@ deviceDetectionSerice.prototype.isTablet = function(diagonalInches) {
 	}
 };
 
-deviceDetectionSerice.prototype.deviceDiag = function() {
+deviceDetectionService.prototype.deviceDiag = function() {
 	/*
 	 Returns the DIAGONAL screen size in inches
 	 */
@@ -47,4 +47,12 @@ deviceDetectionSerice.prototype.deviceDiag = function() {
 	return Math.sqrt(screenWidth * screenWidth + screenHeight * screenHeight);
 };
 
-module.exports = deviceDetectionSerice; 
+deviceDetectionService.prototype.getHeight = function() {
+	return Ti.Platform.displayCaps.platformHeight;
+};
+
+deviceDetectionService.prototype.getWidth = function() {
+	return Ti.Platform.displayCaps.platformWidth;
+};
+
+module.exports = deviceDetectionService; 
