@@ -178,7 +178,7 @@ function createExhibitsCarousel(exhibits) {
 		var exhibitView;
 
 		if (OS_IOS) {
-			exhibitView = createExhibitsImageIOS(exhibits[i], (i + 1 + " of " + exhibits.length));
+			exhibitView = createExhibitsImageIOS(exhibits[i], i, exhibits.length);
 		} else if (OS_ANDROID) {
 			exhibitView = createExhibitsImageAndroid(exhibits[i], i, exhibits.length);
 			exhibitView.addEventListener("click", function(e) {
@@ -213,7 +213,7 @@ function createExhibitsCarousel(exhibits) {
 	});
 }
 
-function createExhibitsImageIOS(exhibit, pageXofYtext) {
+function createExhibitsImageIOS(exhibit, exhibitNumber, numOfExhibits) {
 	var viewConfig = {
 		backgroundColor : "#253342",
 		width : Ti.UI.FILL,
@@ -224,7 +224,7 @@ function createExhibitsImageIOS(exhibit, pageXofYtext) {
 		viewConfig.image = exhibit.exhibit_image;
 	}
 	var exhibitView = Ti.UI.createImageView(viewConfig);
-	exhibitView.add(createExhibitTitleLabel(exhibit.name, pageXofYtext));
+	//exhibitView.add(createPagingArrows(exhibitNumber, numOfExhibits));
 	return exhibitView;
 }
 
@@ -251,7 +251,8 @@ function createExhibitsImageAndroid(exhibit, exhibitNumber, numOfExhibits) {
 
 function createPagingArrows(pageNum, numOfPages){
 	var view = Ti.UI.createView({
-		backgroundColor: "transparent"
+		backgroundColor: "transparent",
+		height: Ti.UI.FILL
 	});
 	
 	if(pageNum != 0 && numOfPages != 1){
