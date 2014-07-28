@@ -1,9 +1,13 @@
 <Alloy>
-	<Window id="postLanding" class="container" backgroundColor='#FFFFFF'>
-		<View id="postLandingView" layout="vertical">
+	<Window class="container">
+		<View id="postLandingView">
 			<Widget src="navigationBar" id="navBar"/>
-			<ScrollView id="scroller" backgroundColo = "red">
-				<TableView id="tableView"/>
+			<ScrollView id="scroller">
+				<TableView id="tableView">
+					<TableViewRow id="headerRow" class="postTableViewRow"></TableViewRow>
+					<TableViewRow id="socialMediaButtonsRow" class="postTableViewRow"></TableViewRow>
+					<TableViewRow id="postBodyRow" class="postTableViewRow"></TableViewRow>
+				</TableView>
 				<View id="addNewCommentContainer"></View>
 				<View id="whiteCommentBox">
 					<View id="submitCommentFormView">
