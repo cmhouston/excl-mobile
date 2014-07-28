@@ -184,13 +184,9 @@ function createExhibitsCarousel(exhibits) {
 		var exhibitView;
 
 		if (OS_IOS) {
-			exhibitView = createExhibitsImageIOS(exhibits[i], i, exhibits.length);
+			exhibitView = createExhibitsImageIOS(exhibits, i);
 		} else if (OS_ANDROID) {
-			exhibitView = createExhibitsImageAndroid(exhibits[i], i, exhibits.length);
-			exhibitView.addEventListener("click", function(e) {
-				onExhibitsClick(exhibits);
-			});
-			
+			exhibitView = createExhibitsImageAndroid(exhibits, i);
 		}
 		$.exhibitsCarousel.addView(exhibitView);
 	}
@@ -208,13 +204,13 @@ function createExhibitsCarousel(exhibits) {
 			fontSize : "25dip"
 		};
 	}
-
+/*
 	if (OS_IOS) {
 		//Android doesn't respond to singletap event, so the Android event listener is added above
 		$.exhibitsCarousel.addEventListener("singletap", function(e) {
 			onExhibitsClick(exhibits);
 		});
-	}
+	}//*/
 	
 	if(OS_ANDROID){
 		resizeExhibitCarouselAndroid();
@@ -225,7 +221,9 @@ function createExhibitsCarousel(exhibits) {
 	});
 }
 
-function createExhibitsImageIOS(exhibit, exhibitNumber, numOfExhibits) {
+function createExhibitsImageIOS(exhibits, index) {
+	var exhibit = exhibits[index];
+	var numOfExhibits = exhibits.length;
 	
 	var	viewConfig ={
 		backgroundColor : "#253342",
@@ -250,12 +248,22 @@ function createExhibitsImageIOS(exhibit, exhibitNumber, numOfExhibits) {
 	exhibitViewWithTitle.add(exhibitTitleBar);
 	
 	var exhibitView = Ti.UI.createImageView(viewConfig);
-	exhibitView.add(createPagingArrows(exhibitNumber, numOfExhibits));
+	
+	exhibitView.addEventListener('click', function(e){		
+		if(e.source.id != "rightArrow" && e.source.id != "leftArrow"){
+			onExhibitsClick(exhibits);
+		}
+	});
+	
+	addPagingArrowsToView(exhibitView, index, numOfExhibits);
 	exhibitViewWithTitle.add(exhibitView);
 	return exhibitViewWithTitle;
 }
 
-function createExhibitsImageAndroid(exhibit, exhibitNumber, numOfExhibits) {
+function createExhibitsImageAndroid(exhibits, index) {
+	
+	var exhibit = exhibits[index];
+	var numOfExhibits = exhibits.length;
 	
 	var	viewConfig = {
 		backgroundColor : "#253342",
@@ -272,19 +280,65 @@ function createExhibitsImageAndroid(exhibit, exhibitNumber, numOfExhibits) {
 	imageContainer.height = getExhibitImageHeight();
 	
 	var image = Ti.UI.createImageView(viewConfig);
+	
 	var clickCatcher = Ti.UI.createView({
 		itemId : exhibit.id,
-		//height: getExhibitImageHeight()
 	});
+	clickCatcher.addEventListener("click", function(e) {
+		if(e.source.id != "rightArrow" && e.source.id != "leftArrow"){
+			onExhibitsClick(exhibits);
+		}
+	});
+	
+	addPagingArrowsToView(clickCatcher, index, numOfExhibits);
 	image.image = exhibit.exhibit_image;
 
 	itemContainer.add(createExhibitTitleLabel(exhibit.name));
 	imageContainer.add(image);
-	imageContainer.add(createPagingArrows(exhibitNumber, numOfExhibits));
 	imageContainer.add(clickCatcher);
 	itemContainer.add(imageContainer);
 	
 	return itemContainer;
+}
+function addPagingArrowsToView(view, pageNum, numOfPages){
+	if(pageNum != 0 && numOfPages != 1){
+		var leftArrow = Ti.UI.createImageView({
+			id: "leftArrow",
+			left: 0,
+			bottom: "10%",
+			height: "20%",
+			width: "15%",
+			backgroundColor: "white",
+			image: iconService.getImageFilename("exhibit_next.png")
+		});
+		
+		leftArrow.addEventListener('click', function(e){
+			$.exhibitsCarousel.scrollToView($.exhibitsCarousel.getCurrentPage() -1 );
+		});
+		
+		view.add(leftArrow);
+	}
+
+	if(pageNum != numOfPages-1){
+		
+		var rightArrow = Ti.UI.createImageView({
+			id: "rightArrow",
+			right: 0,
+			top: "10%",
+			height: "20%",
+			width: "15%",
+			backgroundColor: "white",
+			image: iconService.getImageFilename("exhibit_previous.png")
+		});
+		
+		rightArrow.addEventListener('click', function(e){
+			$.exhibitsCarousel.scrollToView($.exhibitsCarousel.getCurrentPage() + 1 );
+		});
+		
+		view.add(rightArrow);
+	}
+	
+	return view;
 }
 
 function createPagingArrows(pageNum, numOfPages){
@@ -300,7 +354,7 @@ function createPagingArrows(pageNum, numOfPages){
 			height: "20%",
 			width: "15%",
 			backgroundColor: "white",
-			image: iconService.getImageFilename("postNavArrow.png")
+			image: iconService.getImageFilename("exhibit_next.png")
 		});
 		
 		view.add(leftArrow);
@@ -314,8 +368,7 @@ function createPagingArrows(pageNum, numOfPages){
 			height: "20%",
 			width: "15%",
 			backgroundColor: "white",
-			image: iconService.getImageFilename("postNavArrow.png"),
-			transform: Ti.UI.create2DMatrix().rotate(180)
+			image: iconService.getImageFilename("exhibit_previous.png")
 		});
 		
 		view.add(rightArrow);
