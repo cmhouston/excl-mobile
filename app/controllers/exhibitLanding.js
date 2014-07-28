@@ -32,7 +32,7 @@ buttonService = new buttonService();
 var detectDevice = setPathForLibDirectory('customCalls/deviceDetectionService');
 detectDevice = new detectDevice();
 
-var iconService = setPathForDirectory('customCalls/iconService');
+var iconService = setPathForLibDirectory('customCalls/iconService');
 iconService = new iconService();
 
 var loadingSpinner = setPathForLibDirectory('loadingSpinner/loadingSpinner');
@@ -298,20 +298,24 @@ function createPagingArrows(pageNum, numOfPages){
 			left: 0,
 			bottom: "10%",
 			height: "20%",
-			width: "20%",
-			backgroundColor: "white"
+			width: "15%",
+			backgroundColor: "white",
+			image: iconService.getImageFilename("postNavArrow.png")
 		});
 		
 		view.add(leftArrow);
 	}
 
 	if(pageNum != numOfPages-1){
+		
 		var rightArrow = Ti.UI.createImageView({
 			right: 0,
 			top: "10%",
 			height: "20%",
-			width: "20%",
-			image: ""
+			width: "15%",
+			backgroundColor: "white",
+			image: iconService.getImageFilename("postNavArrow.png"),
+			transform: Ti.UI.create2DMatrix().rotate(180)
 		});
 		
 		view.add(rightArrow);

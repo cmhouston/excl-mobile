@@ -37,7 +37,7 @@ iconService.prototype.getImageFilename = function(filename){
 		imageFilename = iconRootAndroid + filename;
 	}
 	else if (OS_IOS){
-		imageFilename = iconRootiOS + filename;
+		imageFilename = iconRootIos + filename;
 	}
 	return imageFilename;
 };
