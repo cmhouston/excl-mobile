@@ -11,25 +11,14 @@
 }
 
 "#placeholder":{
-	height: '180dip'
+	height: '10dip'
 }
 
 "#exhibitsCarousel": {
 	backgroundColor: "#253342",
-	height: "39%", //See below for Android adjustment
-	//showPagingControl: true,
+	height: Ti.UI.SIZE, 
 	overlayEnabled: true,
-	pagingControlAlpha: "0.8",
-	pagingControlTimeout: 0,
-	pagingControlHeight: "25dip"
 }
-
-/*
-"#exhibitsCarousel[platform=android]": {
-	// This is an android hack
-	// This should probably be calculated based on ... something
-	height: '240dip'
-}//*/
 
 "#collapsibleInfoLabel": {
 	horizontalWrap: true,

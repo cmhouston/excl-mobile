@@ -32,6 +32,9 @@ buttonService = new buttonService();
 var detectDevice = setPathForLibDirectory('customCalls/deviceDetectionService');
 detectDevice = new detectDevice();
 
+var iconService = setPathForDirectory('customCalls/iconService');
+iconService = new iconService();
+
 var loadingSpinner = setPathForLibDirectory('loadingSpinner/loadingSpinner');
 var addLoadingMessage = true;
 var loadingSpinnerLib = new loadingSpinner(addLoadingMessage);
@@ -173,7 +176,9 @@ function populateWindow(json) {
 }
 
 function createExhibitsCarousel(exhibits) {
+	
 	$.exhibitsCarousel.removeView($.placeholder);
+	
 	for ( i = 0; i < exhibits.length; i++) {
 		exhibitText[i] = exhibits[i].long_description;
 		var exhibitView;
@@ -185,6 +190,7 @@ function createExhibitsCarousel(exhibits) {
 			exhibitView.addEventListener("click", function(e) {
 				onExhibitsClick(exhibits);
 			});
+			
 		}
 		$.exhibitsCarousel.addView(exhibitView);
 	}
@@ -209,7 +215,11 @@ function createExhibitsCarousel(exhibits) {
 			onExhibitsClick(exhibits);
 		});
 	}
-
+	
+	if(OS_ANDROID){
+		resizeExhibitCarouselAndroid();
+	}//*/
+	
 	$.exhibitsCarousel.addEventListener("scrollend", function(e) {
 		onExhibitsScroll(e, exhibits);
 	});
@@ -217,12 +227,15 @@ function createExhibitsCarousel(exhibits) {
 
 function createExhibitsImageIOS(exhibit, exhibitNumber, numOfExhibits) {
 	
-	var viewConfig = {
+	var	viewConfig ={
 		backgroundColor : "#253342",
 		width : Ti.UI.FILL,
 		image : '/images/700x400.png',
 		itemId : exhibit.id
 	};
+	
+	viewConfig.height = getExhibitImageHeight();
+	
 	if (exhibit.exhibit_image) {
 		viewConfig.image = exhibit.exhibit_image;
 	}
@@ -243,29 +256,34 @@ function createExhibitsImageIOS(exhibit, exhibitNumber, numOfExhibits) {
 }
 
 function createExhibitsImageAndroid(exhibit, exhibitNumber, numOfExhibits) {
-
-	var itemContainer = Ti.UI.createView({
-		itemId : exhibit.id,
-		layout : 'vertical'
-	});
 	
-	var imageContainer = Ti.UI.createView();
-	
-	var image = Ti.UI.createImageView({
+	var	viewConfig = {
 		backgroundColor : "#253342",
 		width : Ti.UI.FILL,
 		image : '/images/700x400.png',
-	});
-	var clickCatcher = Ti.UI.createView({
 		itemId : exhibit.id
+	};
+	var itemContainer = Ti.UI.createView({
+		itemId : exhibit.id,
+		layout : 'vertical',
+	});
+	
+	var imageContainer = Ti.UI.createView();
+	imageContainer.height = getExhibitImageHeight();
+	
+	var image = Ti.UI.createImageView(viewConfig);
+	var clickCatcher = Ti.UI.createView({
+		itemId : exhibit.id,
+		//height: getExhibitImageHeight()
 	});
 	image.image = exhibit.exhibit_image;
 
 	itemContainer.add(createExhibitTitleLabel(exhibit.name));
 	imageContainer.add(image);
 	imageContainer.add(createPagingArrows(exhibitNumber, numOfExhibits));
+	imageContainer.add(clickCatcher);
 	itemContainer.add(imageContainer);
-	itemContainer.add(clickCatcher);
+	
 	return itemContainer;
 }
 
@@ -276,36 +294,38 @@ function createPagingArrows(pageNum, numOfPages){
 	});
 	
 	if(pageNum != 0 && numOfPages != 1){
-		var leftArrow = Ti.UI.createView({
+		var leftArrow = Ti.UI.createImageView({
 			left: 0,
 			bottom: "10%",
 			height: "20%",
 			width: "20%",
-			backgroundColor: "green"
+			backgroundColor: "white"
 		});
+		
 		view.add(leftArrow);
 	}
 
 	if(pageNum != numOfPages-1){
-		var rightArrow = Ti.UI.createView({
+		var rightArrow = Ti.UI.createImageView({
 			right: 0,
 			top: "10%",
 			height: "20%",
 			width: "20%",
-			backgroundColor: "green"
+			image: ""
 		});
+		
 		view.add(rightArrow);
 	}
 	
 	return view;
 }
 
-function createExhibitTitleLabel(name, pageXofYtext) {
+function createExhibitTitleLabel(name) {
 	var titleLabelView = Ti.UI.createView({
 		top : 0,
 		height : Ti.UI.SIZE,
 		backgroundColor : '#000',
-		height: "34dip"
+		height: getExhibitTitleLabelHeight()
 	});
 	var label = Ti.UI.createLabel({
 		top : 0,
@@ -327,26 +347,47 @@ function createExhibitTitleLabel(name, pageXofYtext) {
 	}
 	titleLabelView.add(label);
 
-	if (pageXofYtext) {
-		var pageXofYtextLabel = Ti.UI.createLabel({
-			top : "10%",
-			right : "3%",
-			text : pageXofYtext,
-			color : 'white',
-			horizontalWrap : false,
-			font : {
-
-				fontSize : '18dip',
-				fontWeight : 'normal'
-			}
-		});
-		titleLabelView.add(pageXofYtextLabel);
-	}
-
 	return titleLabelView;
 }
 
-function createTitleLabel(name, textSize, pageXofYtext) {
+function getExhibitTitleLabelHeight(){
+	if(detectDevice.isTablet())
+	{
+		return 40;
+	}
+	return 34;
+}
+
+function createExhibitImageViewConfig(exhibit){
+	
+	var imageHeight = detectDevice.getWidth() * 4 / 7;
+	return {
+		backgroundColor : "#253342",
+		width : Ti.UI.FILL,
+		height: imageHeight,
+		image : '/images/700x400.png',
+		itemId : exhibit.id
+	};
+}
+
+function getExhibitImageHeight(){
+	var aspectRatio = 4/7;
+	return detectDevice.getWidth() * aspectRatio;
+}
+
+function resizeExhibitCarouselAndroid(){
+	var exhibitTitleHeightInPx = dipToPx(getExhibitTitleLabelHeight());
+	var carouselHeight = getExhibitImageHeight() + exhibitTitleHeightInPx;
+	$.exhibitsCarousel.height = carouselHeight;
+}
+
+function dipToPx(dipSize){
+	var pxSize = dipSize * (detectDevice.getDpi() / 160);
+	return pxSize;
+}
+
+
+function createComponentTitleLabel(name, textSize, pageXofYtext) {
 	var titleLabel = Ti.UI.createView({
 		backgroundColor : 'black',
 		opacity : 0.6,
@@ -560,7 +601,7 @@ function createLabeledPicView(item, textSize) {
 	image.image = item.image;
 
 	itemContainer.add(image);
-	itemContainer.add(createTitleLabel(item.name, textSize));
+	itemContainer.add(createComponentTitleLabel(item.name, textSize));
 	itemContainer.add(clickCatcher);
 	return itemContainer;
 }
