@@ -20,6 +20,11 @@
 	overlayEnabled: true,
 }
 
+"#exhibitsCarousel[platform=ios]": {
+	showPagingControl: true,
+	pagingControlAlpha: 0.6
+}
+
 "#collapsibleInfoLabel": {
 	horizontalWrap: true,
 	color: '#232226',
