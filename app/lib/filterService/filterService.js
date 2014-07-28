@@ -270,8 +270,11 @@ filterService.prototype.retrieveTextPart = function(partsList) {
 filterService.prototype.formatActiveFiltersIntoArray = function(ary) {
 	var newAry = ["0"];
 	ary = ary.toJSON();
+	
+	Ti.API.info("Format this: " + JSON.stringify(ary));
+	
 	for (var i = 0; i < ary.length; i++) {
-		if (ary[i].active == "true") {
+		if (ary[i].active == true) {
 			newAry.push(ary[i].name);
 		}
 	}
