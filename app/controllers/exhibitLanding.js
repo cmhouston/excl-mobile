@@ -181,10 +181,10 @@ function createExhibitsCarousel(exhibits) {
 			exhibitView = createExhibitsImageIOS(exhibits[i]);
 		} else if (OS_ANDROID) {
 			exhibitView = createExhibitsImageAndroid(exhibits[i]);
+			exhibitView.addEventListener("click", function(e) {
+				onExhibitsClick(exhibits);
+			});
 		}
-		exhibitView.addEventListener("click", function(e) {
-			onExhibitsClick(exhibits);
-		});
 		$.exhibitsCarousel.addView(exhibitView);
 	}
 	$.headingLabel.text = exhibits[0].name;
@@ -199,14 +199,12 @@ function createExhibitsCarousel(exhibits) {
 		};
 	}
 
-	/*
 	if (OS_IOS) {
 		//Android doesn't respond to singletap event, so the Android event listener is added above
 		$.exhibitsCarousel.addEventListener("singletap", function(e) {
 			onExhibitsClick(exhibits);
 		});
 	}
-	*/
 
 	$.exhibitsCarousel.addEventListener("scrollend", function(e) {
 		onExhibitsScroll(e, exhibits);
