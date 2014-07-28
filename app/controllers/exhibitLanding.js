@@ -178,7 +178,7 @@ function createExhibitsCarousel(exhibits) {
 		var exhibitView;
 
 		if (OS_IOS) {
-			exhibitView = createExhibitsImageIOS(exhibits[i], (i + 1 + " of " + exhibits.length));
+			exhibitView = createExhibitsImageIOS(exhibits[i], i, exhibits.length);
 		} else if (OS_ANDROID) {
 			exhibitView = createExhibitsImageAndroid(exhibits[i], i, exhibits.length);
 			exhibitView.addEventListener("click", function(e) {
@@ -191,12 +191,10 @@ function createExhibitsCarousel(exhibits) {
 	$.exhibitInfoLabel.text = exhibits[0].long_description;
 	if (detectDevice.isTablet()) {
 		$.headingLabel.font = {
-
 			fontSize : "30dip",
 			fontWeight : 'bold'
 		};
 		$.exhibitInfoLabel.font = {
-
 			fontSize : "25dip"
 		};
 	}
@@ -213,7 +211,8 @@ function createExhibitsCarousel(exhibits) {
 	});
 }
 
-function createExhibitsImageIOS(exhibit, pageXofYtext) {
+function createExhibitsImageIOS(exhibit, exhibitNumber, numOfExhibits) {
+	
 	var viewConfig = {
 		backgroundColor : "#253342",
 		width : Ti.UI.FILL,
@@ -224,7 +223,38 @@ function createExhibitsImageIOS(exhibit, pageXofYtext) {
 		viewConfig.image = exhibit.exhibit_image;
 	}
 	var exhibitView = Ti.UI.createImageView(viewConfig);
-	exhibitView.add(createExhibitTitleLabel(exhibit.name, pageXofYtext));
+	// exhibitView.add(createExhibitTitleLabel(exhibit.name, pageXofYtext));
+	return exhibitView;
+	
+	
+	/*
+	var viewConfig = {
+		backgroundColor : "#253342",
+		width : Ti.UI.FILL,
+		image : '/images/700x400.png',
+		itemId : exhibit.id
+	};
+	if (exhibit.exhibit_image) {
+		viewConfig.image = exhibit.exhibit_image;
+	}
+
+	var exhibitViewWithTitle = Ti.UI.createView({
+		layout: "vertical",
+		height: Ti.UI.SIZE,
+		image: '/images/700x400.png',
+		itemId : exhibit.id,
+		width: Ti.UI.FILL
+	});
+	var exhibitTitleBar = createExhibitTitleLabel(exhibit.name);
+	exhibitViewWithTitle.add(exhibitTitleBar);
+	
+	var exhibitView = Ti.UI.createImageView(viewConfig);
+	exhibitViewWithTitle.add(exhibitView);
+	return exhibitViewWithTitle;
+	*/
+
+	var exhibitView = Ti.UI.createImageView(viewConfig);
+	//exhibitView.add(createPagingArrows(exhibitNumber, numOfExhibits));
 	return exhibitView;
 }
 
@@ -251,7 +281,8 @@ function createExhibitsImageAndroid(exhibit, exhibitNumber, numOfExhibits) {
 
 function createPagingArrows(pageNum, numOfPages){
 	var view = Ti.UI.createView({
-		backgroundColor: "transparent"
+		backgroundColor: "transparent",
+		height: Ti.UI.FILL
 	});
 	
 	if(pageNum != 0 && numOfPages != 1){
