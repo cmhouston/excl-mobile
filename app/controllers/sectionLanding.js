@@ -26,6 +26,7 @@ var sectionColor = args[3];
 var sectionScreenName = args[4];
 var filterTabIds = ["thing1", "thing2", "thing3"];
 var parentObjects = [];
+var firstView;
 
 var dataRetriever = setPathForLibDirectory('dataRetriever/dataRetriever');
 var loadingSpinner = setPathForLibDirectory('loadingSpinner/loadingSpinner');
@@ -157,13 +158,15 @@ function insertXNumberOfButtons(numberOfButtons) {
 			showRespectiveView(e.source);
 		});
 		buttonHolderView.add(button);
-		hideButtonViewIfOnlyOneButton(buttonHolderView);
 	}
+	hideButtonViewIfOnlyOneButton(buttonHolderView, numberOfButtons);
 }
 
 function showRespectiveView(buttonSource) {
 	for (var child in $.scrollView.children) {
 		if ($.scrollView.children[child].id) {
+
+			Ti.API.info("Button: " + buttonSource.viewAssociatedId + ", child id: " + $.scrollView.children[child].id);
 			if (buttonSource.viewAssociatedId == $.scrollView.children[child].id) {
 				if (lastSelectedView) {
 					$.scrollView.children[lastSelectedView].visible = false;
@@ -172,7 +175,6 @@ function showRespectiveView(buttonSource) {
 				$.scrollView.children[child].visible = true;
 				$.scrollView.children[child].height = Ti.UI.SIZE;
 				lastSelectedView = child;
-				Ti.API.info("last selected view: " + JSON.stringify(lastSelectedView));
 			}
 		}
 	}
@@ -180,12 +182,18 @@ function showRespectiveView(buttonSource) {
 
 function keepFirstViewOpen(view, button, i) {
 	if (i == 0) {
-		view.visible = true;
-		view.height = Ti.UI.SIZE;
+		openFirstView(view);
 		button.backgroundColor = '#ECF0F1';
 		button.color = '#1ABC9C';
 		lastSelectedButton = button;
+		firstView = view;
+		lastSelectedView = 1;
 	}
+}
+
+function openFirstView(view) {
+	view.visible = true;
+	view.height = Ti.UI.SIZE;
 }
 
 function changeButtonColor(buttonId) {
@@ -198,9 +206,11 @@ function changeButtonColor(buttonId) {
 	lastSelectedButton = buttonId;
 }
 
-function hideButtonViewIfOnlyOneButton(buttonHolderView) {
-	buttonHolderView.height = "0";
-	buttonHolderView.visible = false;
+function hideButtonViewIfOnlyOneButton(buttonHolderView, numberOfButtons) {
+	if (numberOfButtons == 1) {
+		buttonHolderView.height = "0";
+		buttonHolderView.visible = false;
+	}
 }
 
 /////////////////////////////////////////// End TabTest Logic
@@ -247,7 +257,6 @@ function checkIfFilterOn(allPosts) {
 	Ti.API.info("Organizing content by section");
 	organizeBySection(allPosts);
 	if (filterOn) {
-		//Ti.API.info("Adding tabs");
 		organizeByFilter(allPosts);
 	}
 }
@@ -257,6 +266,7 @@ function organizeBySection(allPosts) {
 	insertXNumberOfButtons(1);
 	//insertXNumberOfButtons(filterTabIds.length);
 
+	openFirstView(firstView);
 	dictOrderedPostsBySection = {};
 	for (var i = 0; i < allPosts.length; i++) {
 		filter.compileDictOfSections(allPosts[i], dictOrderedPostsBySection, selectedSection);
@@ -277,6 +287,9 @@ function organizeByFilter(allPosts) {
 	// tabs will be using filter names, not user friendly ones// dictOrderedPostsByFilter = filter.replaceDictKeysWithFilterHeadings(dictOrderedPostsByFilter);
 
 	insertXNumberOfButtons(filterTabIds.length);
+	//insertXNumberOfButtons(2);
+
+	Ti.API.info("Parent objs: " + JSON.stringify(parentObjects));
 
 	filter.sortPostsIntoSections(dictOrderedPostsByFilter, parentObjects);
 
