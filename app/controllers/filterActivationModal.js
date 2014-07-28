@@ -50,7 +50,7 @@ function setPathForLibDirectory(libFile) {
 function createFilterView(filter, allChecked) {
 	var name = filter.get('name');
 	
-	Ti.API.info("name: " + name);
+	//Ti.API.info("name: " + name);
 	
 	var active;
 

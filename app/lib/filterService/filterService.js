@@ -167,22 +167,6 @@ filterService.prototype.returnDictKeys = function(dict) {
 	return listKeys;
 };
 
-filterService.prototype.replaceStringWithFilterHeading = function(st) {
-	var newSt = "";
-	if (st == "0") {
-		newSt = allInclusiveFilter;
-	} else if (st.toLowerCase() == "adult") {
-		newSt = "For " + st + "s";
-	} else if (!Alloy.Globals.isNumber(st[0])) {
-		newSt = "For " + st;
-	} else if (Alloy.Globals.isNumber(st[0])) {
-		newSt = "For my " + st + " year old";
-	} else {
-		newSt = st;
-	}
-	return newSt;
-};
-
 filterService.prototype.sortPostsIntoSections = function(dict, parentObjectArray) {
 	var dictKeys = filterService.prototype.returnDictKeys(dict);
 	var dictLength = dictKeys.length;
@@ -195,6 +179,9 @@ filterService.prototype.sortPostsIntoSections = function(dict, parentObjectArray
 		parentObjectArray[0].add(filterService.prototype.generateErrorMessage(errorFilterSelectionHasNoResults));
 	} else {
 		//Content found. Build the posts. Cycle through the sections/dictKeys and the tab onto which it is added.
+		
+		Ti.API.info("Parent obj ary: " + JSON.stringify(parentObjectArray));
+		
 		for (var i = 0; i < dictLength; i++) {
 
 			Ti.API.info("Iterable Parent: " + i + ", " + JSON.stringify(parentObjectArray[i]));
@@ -268,7 +255,7 @@ filterService.prototype.retrieveTextPart = function(partsList) {
 };
 
 filterService.prototype.formatActiveFiltersIntoArray = function(ary) {
-	var newAry = ["0"];
+	var newAry = [];
 	ary = ary.toJSON();
 	
 	Ti.API.info("Format this: " + JSON.stringify(ary));
