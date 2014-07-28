@@ -18,6 +18,21 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //=====================================================================
 
-var home = Alloy.createController('home');
-Alloy.Globals.navController.open(home);
+var rootDirPath = ( typeof Titanium == 'undefined') ? '../../lib/' : '';
+
+var loadingSpinner = require(rootDirPath + 'loadingSpinner/loadingSpinner');
+var spinner = new loadingSpinner(true);
+
+spinner.addTo($.index);
+spinner.show();
+
+$.index.open();
+
+setTimeout(startApp, 1000);
+
+function startApp() {
+	var home = Alloy.createController('home');
+	Alloy.Globals.navController.open(home);
+}
+
 
