@@ -207,11 +207,11 @@ filterService.prototype.sortPostsIntoSections = function(dict, parentObjectArray
 
 filterService.prototype.generateErrorMessage = function(msg) {
 	var objectArgs = {
-		text: msg
+		text : msg
 	};
 	var error = labelService.createCustomLabel(msg);
 	objectArgs = {
-		top: "0"
+		top : "0"
 	};
 	var errorView = viewService.createCustomView(objectArgs);
 	errorView.add(error);
@@ -269,7 +269,13 @@ filterService.prototype.retrieveTextPart = function(partsList) {
 
 filterService.prototype.formatActiveFiltersIntoArray = function(ary) {
 	var newAry = ["0"];
+
+	//ary = [ary];
+
 	Ti.API.info("Attempting Parse: " + JSON.stringify(ary));
+	Ti.API.info("Ary len: " + ary.length);
+	Ti.API.info("Filter 0: " + JSON.stringify(ary[0]));
+
 	ary = JSON.parse(ary);
 	Ti.API.info("Passed Parse");
 	for (var i = 0; i < ary.length; i++) {
@@ -278,6 +284,7 @@ filterService.prototype.formatActiveFiltersIntoArray = function(ary) {
 			newAry.push(dict["name"]);
 		}
 	}
+	Ti.API.info("Sending ary: " + newAry);
 	return newAry;
 };
 

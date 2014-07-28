@@ -234,12 +234,12 @@ function detectEventEnabled() {
 }
 
 function udpateFilterIdArray(){
-	var filters = filter.formatActiveFiltersIntoArray(Alloy.Collections.filter.toString());
+	var filters = filter.formatActiveFiltersIntoArray(Alloy.Collections.filter);
 	Ti.API.info("Filters: " + JSON.stringify(filters));
 	// Ti.API.info("Filters len: " + filters.length);
 	// Ti.API.info("Filter 0: " + JSON.stringify(filters[0]));
 // 	
-	filterTabIds = ["Sections"];
+	filterTabIds = ["sections"];
 	for (var i = 0; i < filters.length; i++){
 		var item = filters[i];
 		Ti.API.info("Active: " + JSON.stringify(item));
