@@ -298,7 +298,7 @@ function organizeBySection(allPosts) {
 
 function organizeByFilter(allPosts) {
 	dictOrderedPostsByFilter = {};
-	selectedFilters = filter.formatActiveFiltersIntoArray(JSON.stringify(Alloy.Collections.filter));
+	selectedFilters = filter.formatActiveFiltersIntoArray(Alloy.Collections.filter);
 	Ti.API.info("Filter: " + JSON.stringify(selectedFilters));
 	for (var i = 0; i < allPosts.length; i++) {
 		filter.sortFilteredContentIntoDict(selectedFilters, dictOrderedPostsByFilter, allPosts[i]);
