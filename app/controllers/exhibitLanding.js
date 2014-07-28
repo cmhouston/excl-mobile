@@ -212,7 +212,7 @@ function createExhibitsCarousel(exhibits) {
 }
 
 function createExhibitsImageIOS(exhibit, exhibitNumber, numOfExhibits) {
-	/*
+	
 	var viewConfig = {
 		backgroundColor : "#253342",
 		width : Ti.UI.FILL,
@@ -225,10 +225,10 @@ function createExhibitsImageIOS(exhibit, exhibitNumber, numOfExhibits) {
 	var exhibitView = Ti.UI.createImageView(viewConfig);
 	//exhibitView.add(createPagingArrows(exhibitNumber, numOfExhibits));
 	return exhibitView;
-	*/
 	
 	
 	
+	/*
 	var viewConfig = {
 		backgroundColor : "#253342",
 		width : Ti.UI.FILL,
@@ -252,6 +252,7 @@ function createExhibitsImageIOS(exhibit, exhibitNumber, numOfExhibits) {
 	var exhibitView = Ti.UI.createImageView(viewConfig);
 	exhibitViewWithTitle.add(exhibitView);
 	return exhibitViewWithTitle;
+	*/
 }
 
 function createExhibitsImageAndroid(exhibit, exhibitNumber, numOfExhibits) {
