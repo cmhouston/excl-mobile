@@ -278,6 +278,14 @@ filterService.prototype.formatActiveFiltersIntoArray = function(ary) {
 	Ti.API.info("Type: " + typeof ary);
 	Ti.API.info("array? " + Array.isArray(ary));
 
+	Ti.API.info("----------------------------");
+	var temp = ary.toJSON();
+	// Ti.API.info(temp);
+	// Ti.API.info(temp.length);
+	// Ti.API.info(temp[0]);
+	Ti.API.info(temp[0].name);
+	Ti.API.info("----------------------------");
+
 	ary = JSON.parse(ary);
 	Ti.API.info("Passed Parse");
 	for (var i = 0; i < ary.length; i++) {
