@@ -141,32 +141,6 @@ function addCommentingButton(json, row, iconList, objectArgs) {
 	}
 }
 
-function addTextSharingButton(json, row, iconList, objectArgs) {
-	if (json.text_sharing && !Alloy.Globals.adminModeController.isInKioskMode()) {
-		var shareTextButton = sharingTextService.initiateTextShareButton(json, objectArgs);
-		iconList.push(shareTextButton);
-		row.add(shareTextButton);
-	}
-}
-
-function addImageSharingButton(json, row, iconList, objectArgs) {
-	if (json.image_sharing && !Alloy.Globals.adminModeController.isInKioskMode()) {
-		var shareImageButton = sharingImageService.initiateImageShareButton(json, objectArgs, $.postLanding);
-		iconList.push(shareImageButton);
-		row.add(shareImageButton);
-	}
-}
-
-function spaceIconsAccordingToNumberAdded(iconList) {
-	var listLength = iconList.length;
-	var maxLeftSpacingAsPercent = 90;
-	var distanceBetweenIcons = maxLeftSpacingAsPercent / (listLength + 1);
-
-	for (var i = 0; i < listLength; i++) {
-		iconList[i].left = distanceBetweenIcons * (i + 1) + "%";
-	}
-}
-
 function setCommentIconReady(button) {
 	buttonIcon = "comment_ready.png";
 	if (OS_IOS) {
@@ -217,8 +191,8 @@ function creatingCommentTextHeading() {
 		};
 	}
 	row.addEventListener('click', function(e) {
-		$.addNewCommentContainer.visible = ($.addNewCommentContainer.visible) ? false : true;
-		$.whiteCommentBox.visible = ($.whiteCommentBox.visible) ? false : true;
+		$.addNewCommentContainer.visible = true;
+		$.whiteCommentBox.visible = true;
 		$.submitCommentFormView.visible = true;
 		$.insertName.value = $.insertEmail.value = $.insertComment.value = "";
 		$.thankYouMessageView.visible = false;
@@ -464,7 +438,6 @@ function sendComment(commentButton) {
 		hideSpinner();
 	});
 	setCommentIconReady(commentButton);
-
 }
 
 function setCommentSubmittedMessage() {
@@ -489,25 +462,50 @@ function initializePage() {
 			break;
 	}
 	
-	displaySocialMediaButtonsInRow(post_content, $.socialMediaButtonsRow);
-	
 	if (post_content.post_body) {
 		$.postBodyRow.add(getRowContentsForRichText(post_content.post_body));
 	}
 	
 
-	//if (post_content.commenting) {
-	//	creatingCommentTextHeading();
-	//	var comments = post.getAllComments();
-	//	if (comments != false) {
-	//		displayComments(comments);
-	//	} else {
-	//		displayThereAreNoCommentsToDisplayText();
-	//	}
-	//}
+	// if (post_content.commenting) {
+		// creatingCommentTextHeading();
+		// var comments = post.getAllComments();
+		// if (comments != false) {
+			// displayComments(comments);
+		// } else {
+			// displayThereAreNoCommentsToDisplayText();
+		// }
+	// }
+// 
+	// formatCommentBoxForIpad(); 
 
-	//formatCommentBoxForIpad(); 
+}
 
+function comment(e) {
+	Ti.API.info("clicked comment button");
+	setCommentIconBusy(e.source);
+	$.addNewCommentContainer.visible = true;
+	$.whiteCommentBox.visible = true;
+	$.submitCommentFormView.visible = true;
+	$.insertName.value = $.insertEmail.value = $.insertComment.value = "";
+	$.thankYouMessageView.visible = false;
+	$.scroller.scrollTo(0, 0);
+	$.scroller.scrollingEnabled = false;
+	$.submitYourCommentLabel.text = "Submit Your Comment";
+	formatCommentBoxForIpad();
+}
+
+function shareText(e) {
+	sharingTextService.setIconBusy(e.source);
+	postTags = sharingTextService.getPostTags(post_content);
+	sharingTextService.initiateIntentText(postTags, e.source);
+}
+
+function sharePhoto(e) {
+	sharingImageService.setIconBusy(e.source);
+	postTags = sharingImageService.getPostTags(post_content);
+	cameraService.takePicture(postTags, e.source, $.postLanding);
+	sharingImageService.setIconReady(e.source);
 }
 
 function getRowContentsForVideo(url) {
@@ -571,24 +569,6 @@ function getRowContentsForVideoiOS(url) {
 		//Alloy.Globals.analyticsController.trackEvent("Videos", "Play", part.get('name'), 1);
 	});
 	return video;
-}
-
-function displaySocialMediaButtonsInRow(json, row) {
-	var iconList = [];
-	var objectArgs = {
-		height : "30dip",
-		width : "30dip",
-		top : "2%"
-	};
-	if (detectDevice.isTablet()) {
-		objectArgs["height"] = "40dip";
-		objectArgs["width"] = "40dip";
-	}
-	//addCommentingButton(json, row, iconList, objectArgs);
-	addTextSharingButton(json, row, iconList, objectArgs);
-	addImageSharingButton(json, row, iconList, objectArgs);
-	spaceIconsAccordingToNumberAdded(iconList);
-	return row;
 }
 
 function getRowContentsForImage(url) {
