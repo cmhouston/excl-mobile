@@ -1,0 +1,55 @@
+".container" : {
+	navBarHidden: true,
+	fullscreen: true
+}
+
+"#mainView": {
+	layout: "vertical",
+	width: Ti.UI.FILL
+}
+
+"#homeContent": {
+	width: Ti.UI.FILL
+}
+
+"#homeImage": {
+	backgroundColor: "white",
+	width: Ti.UI.FILL,
+	height: Ti.UI.FILL,
+	image: "/images/HomePageDesign4.png"
+}
+
+"#exhibitsLink": {
+	top: "0dip",
+	left: "0dip",
+	width: Ti.UI.FILL,
+	height: "45%"
+}
+
+"#infoLink": {
+	bottom: "0dip",
+	left: "0dip",
+	width: "50%",
+	height: "55%"
+}
+
+"#mapLink": {
+	bottom: "0dip",
+	right: "0dip",
+	width: "50%",
+	height: "55%"
+}
+
+"#iconLink":{
+	height: "30%"
+}
+
+".homepageLabel": {
+	font: {
+		fontWeight: 'bold'
+	},
+	color: 'white',
+	width: Ti.UI.FILL,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+}
+
