@@ -108,7 +108,7 @@ var colorArrayCounter = 0;
 
 function insertXNumberOfButtons(numberOfButtons) {
 	parentObjects = [];
-	
+
 	var objectArgs;
 	objectArgs = {
 		borderRadius : 0,
@@ -127,7 +127,7 @@ function insertXNumberOfButtons(numberOfButtons) {
 
 	for (var i = 0; i < numberOfButtons; i++) {
 		objectArgs = {
-			title : "btn " + i,
+			title : filterTabIds[i],
 			width : each_button_width,
 			height : "50dip",
 			borderColor : '#E74C3C',
@@ -138,6 +138,9 @@ function insertXNumberOfButtons(numberOfButtons) {
 			viewAssociatedId : filterTabIds[i]
 		};
 		var button = buttonService.createCustomButton(objectArgs);
+		if (button.title=="0"){
+			button.title = titleForAllInclusiveFilterSection;
+		}
 
 		objectArgs = {
 			borderRadius : "30dip",
@@ -162,7 +165,7 @@ function insertXNumberOfButtons(numberOfButtons) {
 		buttonHolderView.add(button);
 	}
 	hideButtonViewIfOnlyOneButton(buttonHolderView, numberOfButtons);
-	
+
 	for (var i = 0; i < parentObjects.length; i++) {
 		Ti.API.info("100 Parent Obj (" + i + ") " + JSON.stringify(parentObjects[i].id));
 	}
@@ -233,19 +236,13 @@ function detectEventEnabled() {
 	hideMenuBtnIfKioskMode();
 }
 
-function udpateFilterIdArray(){
+function updateFilterIdArray() {
 	var filters = filter.formatActiveFiltersIntoArray(Alloy.Collections.filter);
 	Ti.API.info("Filters: " + JSON.stringify(filters));
-	// Ti.API.info("Filters len: " + filters.length);
-	// Ti.API.info("Filter 0: " + JSON.stringify(filters[0]));
-// 	
+
 	filterTabIds = ["sections"];
-	for (var i = 0; i < filters.length; i++){
-		var item = filters[i];
-		Ti.API.info("Active: " + JSON.stringify(item));
-		if(item["active"] == true){
-			filterTabIds.push(item["name"]);
-		}
+	for (var i = 0; i < filters.length; i++) {
+		filterTabIds.push(filters[i]);
 	}
 	Ti.API.info("All tab ids: " + filterTabIds);
 }
@@ -278,7 +275,7 @@ function checkIfFilterOn(allPosts) {
 	Ti.API.info("Organizing content by section");
 	organizeBySection(allPosts);
 	if (filterOn) {
-		udpateFilterIdArray();
+		updateFilterIdArray();
 		organizeByFilter(allPosts);
 	}
 }
@@ -300,7 +297,7 @@ function organizeBySection(allPosts) {
 
 function organizeByFilter(allPosts) {
 	dictOrderedPostsByFilter = {};
-	selectedFilters = filter.formatActiveFiltersIntoArray(JSON.stringify(Alloy.Collections.filter));
+	selectedFilters = filter.formatActiveFiltersIntoArray(Alloy.Collections.filter);
 	Ti.API.info("Filter: " + JSON.stringify(selectedFilters));
 	for (var i = 0; i < allPosts.length; i++) {
 		filter.sortFilteredContentIntoDict(selectedFilters, dictOrderedPostsByFilter, allPosts[i]);
