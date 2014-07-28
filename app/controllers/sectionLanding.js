@@ -24,7 +24,7 @@ var allPosts = eval(args[1]);
 var selectedSection = args[2];
 var sectionColor = args[3];
 var sectionScreenName = args[4];
-var filterTabIds = ["thing1", "thing2", "thing3"];
+var filterTabIds = ["sections"];
 var parentObjects = [];
 var firstView;
 
@@ -107,7 +107,8 @@ var colorArray = ['#ECD078', '#D95B43', '#C02942', '#542437', '#53777A'];
 var colorArrayCounter = 0;
 
 function insertXNumberOfButtons(numberOfButtons) {
-	parentObjs = [];
+	parentObjects = [];
+	
 	var objectArgs;
 	objectArgs = {
 		borderRadius : 0,
@@ -161,6 +162,10 @@ function insertXNumberOfButtons(numberOfButtons) {
 		buttonHolderView.add(button);
 	}
 	hideButtonViewIfOnlyOneButton(buttonHolderView, numberOfButtons);
+	
+	for (var i = 0; i < parentObjects.length; i++) {
+		Ti.API.info("100 Parent Obj (" + i + ") " + JSON.stringify(parentObjects[i].id));
+	}
 }
 
 function showRespectiveView(buttonSource) {
@@ -228,6 +233,23 @@ function detectEventEnabled() {
 	hideMenuBtnIfKioskMode();
 }
 
+function udpateFilterIdArray(){
+	var filters = filter.formatActiveFiltersIntoArray(Alloy.Collections.filter.toString());
+	Ti.API.info("Filters: " + JSON.stringify(filters));
+	// Ti.API.info("Filters len: " + filters.length);
+	// Ti.API.info("Filter 0: " + JSON.stringify(filters[0]));
+// 	
+	filterTabIds = ["Sections"];
+	for (var i = 0; i < filters.length; i++){
+		var item = filters[i];
+		Ti.API.info("Active: " + JSON.stringify(item));
+		if(item["active"] == true){
+			filterTabIds.push(item["name"]);
+		}
+	}
+	Ti.API.info("All tab ids: " + filterTabIds);
+}
+
 function retrieveComponentData() {
 	filter.setAllInclusiveFilter(titleForAllInclusiveFilterSection);
 	clearOrderedPostDicts();
@@ -256,18 +278,14 @@ function checkIfFilterOn(allPosts) {
 	Ti.API.info("Organizing content by section");
 	organizeBySection(allPosts);
 	if (filterOn) {
+		udpateFilterIdArray();
 		organizeByFilter(allPosts);
 	}
 }
 
 function organizeBySection(allPosts) {
-
 	insertXNumberOfButtons(1);
 	//insertXNumberOfButtons(filterTabIds.length);
-
-	for (var i = 0; i < parentObjects.length; i++) {
-		Ti.API.info(JSON.stringify(parentObjects[i].id));
-	}
 
 	openFirstView(firstView);
 	dictOrderedPostsBySection = {};
@@ -292,10 +310,6 @@ function organizeByFilter(allPosts) {
 	insertXNumberOfButtons(filterTabIds.length);
 	//insertXNumberOfButtons(2);
 
-	for (var i = 0; i < parentObjects.length; i++) {
-		Ti.API.info(JSON.stringify(parentObjects[i].id));
-	}
-	
 	filter.sortPostsIntoSections(dictOrderedPostsByFilter, parentObjects);
 
 	$.scrollView.height = Ti.UI.SIZE;

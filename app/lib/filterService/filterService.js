@@ -195,7 +195,6 @@ filterService.prototype.sortPostsIntoSections = function(dict, parentObjectArray
 		parentObjectArray[0].add(filterService.prototype.generateErrorMessage(errorFilterSelectionHasNoResults));
 	} else {
 		//Content found. Build the posts. Cycle through the sections/dictKeys and the tab onto which it is added.
-	Ti.API.info("Objs sent to sort: " + JSON.stringify(parentObjectArray));
 		for (var i = 0; i < dictLength; i++) {
 
 			Ti.API.info("Iterable Parent: " + i + ", " + JSON.stringify(parentObjectArray[i]));
@@ -207,9 +206,14 @@ filterService.prototype.sortPostsIntoSections = function(dict, parentObjectArray
 };
 
 filterService.prototype.generateErrorMessage = function(msg) {
-	var error = labelService.createLabel(msg);
-	error.top = "0";
-	var errorView = viewService.createView();
+	var objectArgs = {
+		text: msg
+	};
+	var error = labelService.createCustomLabel(msg);
+	objectArgs = {
+		top: "0"
+	};
+	var errorView = viewService.createCustomView(objectArgs);
 	errorView.add(error);
 	return errorView;
 };
@@ -265,7 +269,9 @@ filterService.prototype.retrieveTextPart = function(partsList) {
 
 filterService.prototype.formatActiveFiltersIntoArray = function(ary) {
 	var newAry = ["0"];
+	Ti.API.info("Attempting Parse: " + JSON.stringify(ary));
 	ary = JSON.parse(ary);
+	Ti.API.info("Passed Parse");
 	for (var i = 0; i < ary.length; i++) {
 		var dict = ary[i];
 		if (dict["active"].toString() == "true") {
@@ -320,9 +326,6 @@ filterService.prototype.addPostsToViewAccordingToSection = function(section, dic
 };
 
 filterService.prototype.addPostPreview = function(postData, parentObject) {
-
-	Ti.API.info("Adding to: " + parentObject.id);
-
 	var postPreview = Alloy.createController('postPreview', postData);
 	var view = postPreview.getView();
 	parentObject.add(view);
