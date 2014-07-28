@@ -187,15 +187,6 @@ filterService.prototype.sortPostsIntoSections = function(dict, parentObjectArray
 	var dictKeys = filterService.prototype.returnDictKeys(dict);
 	var dictLength = dictKeys.length;
 	//parentObjectArray will always have scroll view as first object
-	var iterableObject;
-	// if (parentObjectArray.length > 1) {
-		// iterableObject = parentObjectArray[0].id;
-	// } else {
-		// iterableObject = parentObjectArray[i].id;
-	// }
-	
-	Ti.API.info("Parent: " + JSON.stringify(parentObjectArray));
-	
 
 	if (dictLength == 0) {
 		//No content found (no content that matches all filters). Throw Error.
@@ -206,9 +197,9 @@ filterService.prototype.sortPostsIntoSections = function(dict, parentObjectArray
 	} else {
 		//Content found. Build the posts. Cycle through the sections/dictKeys and the tab onto which it is added.
 		for (var i = 0; i < dictLength; i++) {
-			
-			Ti.API.info("Iterable Parent: " + JSON.stringify(parentObjectArray[i]));
-			
+
+			Ti.API.info("Iterable Parent: " + JSON.stringify(parentObjectArray[i].id));
+
 			var postCollection = filterService.prototype.retrievePostDetails(dict, dictKeys[i]);
 			filterService.prototype.addPostsToViewAccordingToSection(dictKeys[i], dict, parentObjectArray[i], postCollection);
 		}
@@ -226,7 +217,7 @@ filterService.prototype.generateErrorMessage = function(msg) {
 filterService.prototype.retrievePostDetails = function(dict, sections) {
 	var postCollection = Alloy.createCollection('post');
 	filterService.prototype.exploreListOfPosts(dict, sections, postCollection);
-	Ti.API.info("Section: " + JSON.stringify(sections) + ", Post(s): " + JSON.stringify(postCollection));
+	//Ti.API.info("Section: " + JSON.stringify(sections) + ", Post(s): " + JSON.stringify(postCollection));
 	return postCollection;
 };
 
@@ -287,15 +278,21 @@ filterService.prototype.formatActiveFiltersIntoArray = function(ary) {
 filterService.prototype.sortFilteredContentIntoDict = function(selectedFilters, dictOrderedPostsByFilter, post) {
 	var postFilterCategories = filterService.prototype.replaceEmptyArrayWithZero(post.age_range);
 	postFilterCategories = filterService.prototype.parseStringIntoArray(String(postFilterCategories), ", ");
-	if (filterService.prototype.checkIfArrayInArray(selectedFilters, postFilterCategories) && selectedFilters.length != 2) {
-		filterService.prototype.addItemArrayToDict("0", post, dictOrderedPostsByFilter);
-	} else if (filterService.prototype.checkIfArrayHasOnlyZero(postFilterCategories) && selectedFilters.length != 2) {
+	if (filterService.prototype.checkIfSelectedFiltersContainedInPostFilters(selectedFilters, postFilterCategories)) {
 		filterService.prototype.addItemArrayToDict("0", post, dictOrderedPostsByFilter);
 	} else {
 		for (var i = 0; i < selectedFilters.length; i++) {
 			var itemArray = filterService.prototype.sortPostIntoApplicableSection(postFilterCategories, selectedFilters[i], post);
 			filterService.prototype.addItemArrayToDict(selectedFilters[i], itemArray, dictOrderedPostsByFilter);
 		}
+	}
+};
+
+filterService.prototype.checkIfSelectedFiltersContainedInPostFilters = function(selectedFilters, postFilterCategories) {
+	if ((filterService.prototype.checkIfArrayInArray(selectedFilters, postFilterCategories) || filterService.prototype.checkIfArrayHasOnlyZero(postFilterCategories)) && selectedFilters.length != 2) {
+		return true;
+	} else {
+		return false;
 	}
 };
 
@@ -323,6 +320,9 @@ filterService.prototype.addPostsToViewAccordingToSection = function(section, dic
 };
 
 filterService.prototype.addPostPreview = function(postData, parentObject) {
+	
+	Ti.API.info("Adding to: " + parentObject.id);
+	
 	var postPreview = Alloy.createController('postPreview', postData);
 	var view = postPreview.getView();
 	parentObject.add(view);

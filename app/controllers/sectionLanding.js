@@ -111,8 +111,9 @@ function insertXNumberOfButtons(numberOfButtons) {
 		borderRadius : 0,
 		backgroundColor : '#E74C3C',
 		width : '100%',
-		height : 50,
-		top : '40%',
+		top : "0",
+		height : "50dip",
+		bottom: "50dip",
 		layout : 'horizontal',
 		id : 'buttonHolderView'
 	};
@@ -123,11 +124,11 @@ function insertXNumberOfButtons(numberOfButtons) {
 
 	for (var i = 0; i < numberOfButtons; i++) {
 		objectArgs = {
-			title : "Number " + i,
+			title : "btn " + i,
 			width : each_button_width,
-			height : 50,
+			height : "50dip",
 			borderColor : '#E74C3C',
-			borderRadius : 10,
+			borderRadius : "10dip",
 			backgroundColor : '#1ABC9C',
 			color : '#ECF0F1',
 			id : "button" + i,
@@ -136,22 +137,20 @@ function insertXNumberOfButtons(numberOfButtons) {
 		var button = buttonService.createCustomButton(objectArgs);
 
 		objectArgs = {
-			borderRadius : 30,
+			borderRadius : "30dip",
 			backgroundColor : colorArray[colorArrayCounter],
 			width : '100%',
-			height : '100%',
-			top : '50%',
+			height : '0',
 			visible : false,
+			layout : "vertical",
 			id : filterTabIds[i + 1]
 		};
 		var view = viewService.createCustomView(objectArgs);
 		colorArrayCounter++;
 		$.scrollView.add(view);
 
-		alert("STOP");
-
 		button.addEventListener('click', function(e) {
-			Ti.API.info(JSON.stringify(e.source));
+			Ti.API.info("Visible view: " + JSON.stringify(e.source.viewAssociatedId));
 			changeButtonColor(e.source);
 			showRespectiveView(e.source);
 		});
@@ -159,8 +158,6 @@ function insertXNumberOfButtons(numberOfButtons) {
 	}
 
 	$.scrollView.add(buttonHolderView);
-
-	alert("STOP AGAIN");
 }
 
 function showRespectiveView(buttonSource) {
@@ -169,8 +166,10 @@ function showRespectiveView(buttonSource) {
 			if (buttonSource.viewAssociatedId == $.scrollView.children[child].id) {
 				if (lastSelectedView) {
 					$.scrollView.children[lastSelectedView].visible = false;
+					$.scrollView.children[lastSelectedView].height = "0";
 				}
 				$.scrollView.children[child].visible = true;
+				$.scrollView.children[child].height = "100%";
 				lastSelectedView = child;
 			}
 		}
@@ -238,6 +237,9 @@ function checkIfFilterOn(allPosts) {
 }
 
 function organizeBySection(allPosts) {
+
+	insertXNumberOfButtons(3);
+
 	dictOrderedPostsBySection = {};
 	for (var i = 0; i < allPosts.length; i++) {
 		filter.compileDictOfSections(allPosts[i], dictOrderedPostsBySection, selectedSection);
@@ -264,14 +266,12 @@ function organizeByFilter(allPosts) {
 
 	insertXNumberOfButtons(filterTabIds.length);
 
-	Ti.API.info("101");
-
 	parentObjectIds = [$.scrollView];
-	for (var child in $.scrollView.children) {
-		parentObjectIds.push($.scrollView.children[child].id);
-	}
 
-	Ti.API.info("102: All Parent IDs: " + JSON.stringify(parentObjectIds));
+	for (var child in $.scrollView.children) {
+		parentObjectIds.push($.scrollView.children[child]);
+		Ti.API.info("child: " + $.scrollView.children[child]);
+	}
 
 	filter.sortPostsIntoSections(dictOrderedPostsByFilter, parentObjectIds);
 
