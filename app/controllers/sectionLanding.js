@@ -106,9 +106,10 @@ function openFilterModal(e) {
 
 ///////////////////////////////////////////Begin TabTest Logic
 
-var
-lastSelectedButton;
+var lastSelectedButton;
 var lastSelectedView;
+var buttonLimit = 3;
+var buttonMaxWidth = '95dip';
 
 function insertXNumberOfButtons(numberOfButtons) {
 	parentObjects = [];
@@ -116,18 +117,25 @@ function insertXNumberOfButtons(numberOfButtons) {
 	var objectArgs;
 	objectArgs = {
 		borderRadius : 0,
-		backgroundColor : '#5a5a5a ',
+		backgroundColor : '#343434 ',
 		width : '100%',
 		top : "0",
 		height : "50dip",
 		layout : 'horizontal',
 		id : 'buttonHolderView'
 	};
-	var buttonHolderView = viewService.createCustomView(objectArgs);
+	var buttonHolderView = viewService.createCustomScrollView(objectArgs);
 	$.scrollView.add(buttonHolderView);
 
-	var each_button_width = (Math.floor(100 / numberOfButtons) - 1);
-	each_button_width += '%';
+	
+	if (numberOfButtons <= buttonLimit) {
+		var each_button_width = (Math.floor(100 / numberOfButtons) - 1);
+		each_button_width += '%';
+	}
+	else{
+		each_button_width = buttonMaxWidth;
+	}
+
 
 	for (var i = 0; i < numberOfButtons; i++) {
 		objectArgs = {

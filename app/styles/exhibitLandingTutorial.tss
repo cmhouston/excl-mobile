@@ -75,11 +75,13 @@
 	transform: Alloy.Globals.rotate180,
 	height: "70dip",
 	right: "35dip",
-	bottom: "20dip"
+	bottom: "20dip",
+	visible: false
 }
 "#ComponentsArrow[formFactor=tablet]": {
 	bottom: "75dip",
-	right: "100dip"
+	right: "100dip",
+	visible: false
 }
 
 "#flyoutMenuText": {
@@ -105,16 +107,13 @@
 }
 
 "#ComponentsText": {
-	bottom: "75dip",
-}
-"#ComponentsText[formFactor=handheld]": {
+	top: "250dip",
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
 }
+
 "#ComponentsText[formFactor=tablet]": {
-	top: null,
-	bottom: "160dip",
+	top: "450dip",
 	width: "80%",
-	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
 }
 
 "#fingerSwipe[formFactor=handheld]": {
@@ -130,26 +129,26 @@
 }
 
 "#ExitButton": {
-	bottom: "130dip",
+	bottom: "40dip",
 	width: "50%"
 }
 "#ExitButton[formFactor=tablet]": {
-	bottom: "330dip"
+	bottom: "150dip"
 }
 "#ExitButton[formFactor=handheld platform=android]": {
-	bottom: "140dip"
+	bottom: "50dip"
 }
 
 "#NextButton": {
-	bottom: "190dip",
+	bottom: "100dip",
 	width: "50%"
 }
 "#NextButton[formFactor=tablet]": {
 	top: null,
-	bottom: "390dip"
+	bottom: "210dip"
 }
 "#NextButton[formFactor=handheld platform=android]": {
-	bottom: "200dip"
+	bottom: "110dip"
 }
 
 

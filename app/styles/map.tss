@@ -1,10 +1,14 @@
 ".container" : {
 	navBarHidden: true,
 	fullscreen: true,
-	backgroundColor: "#FFF"
+	backgroundColor: "#000"
 }
 
 "#mainView": {
 	layout: "vertical",
-	bottom: "20dip",
+}
+
+"#Map": {
+	top: "80dip",
+	backgroundColor: "#000"
 }
