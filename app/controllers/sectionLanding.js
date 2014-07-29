@@ -226,13 +226,12 @@ function hideButtonViewIfOnlyOneButton(buttonHolderView, numberOfButtons) {
 
 function detectEventEnabled() {
 	filterOn = Alloy.Models.app.get("customizeLearningEnabled");
-	Ti.API.info("Filter On => ", filterOn);
-	retrieveComponentData();
+	setUpPage();
 	changeTitleOfThePage(selectedSection, sectionColor);
 	hideMenuBtnIfKioskMode();
 }
 
-function retrieveComponentData() {
+function setUpPage() {
 	filter.setAllInclusiveFilter(titleForAllInclusiveFilterSection);
 	resetPage();
 	organizePosts(allPosts);
@@ -248,18 +247,15 @@ function organizePosts(allPosts) {
 	updateFilterIdArray();
 	
 	if (filterOn) {
-		selectedFilters = filter.formatActiveFiltersIntoArray(Alloy.Collections.filter);
-		Ti.API.info("Filter list: " + JSON.stringify(selectedFilters));
-		for (var i = 0; i < allPosts.length; i++) {
-			filter.sortFilteredContentIntoDict(selectedFilters, dictOrderedPosts, allPosts[i]);
-		}
+		// selectedFilters = filter.formatActiveFiltersIntoArray(Alloy.Collections.filter);
+		// Ti.API.info("Filter list: " + JSON.stringify(selectedFilters));
+		// for (var i = 0; i < allPosts.length; i++) {
+			// filter.sortFilteredContentIntoDict(selectedFilters, dictOrderedPosts, allPosts[i]);
+		// }
 	}
 	$.scrollView.removeAllChildren;
 	insertXNumberOfButtons(filterTabIds.length);
 	openFirstView(firstView);
-	
-	Ti.API.info("Dict of Posts 1 (only if filter on): " + JSON.stringify(dictOrderedPosts));
-
 	for (var i = 0; i < allPosts.length; i++) {
 		filter.compileDictOfSections(allPosts[i], dictOrderedPosts, selectedSection);
 	}

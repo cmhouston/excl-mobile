@@ -185,15 +185,27 @@ filterService.prototype.sortPostsIntoSections = function(dict, parentObjectArray
 	// } else {
 	//Content found. Build the posts. Cycle through the sections/dictKeys and the tab onto which it is added.
 
-	Ti.API.info("All Sections: " + JSON.stringify(dictKeys));
+	Ti.API.info("All Sections 1: " + JSON.stringify(dictKeys));
 
-	for (var i = 0; i < dictLength; i++) {
+	// Ti.API.info("parentObjectArray: " + JSON.stringify(parentObjectArray));
+// 
+	// if (dictKeys.indexOf("0") != -1 && dictKeys.length > 1) {
+		// var tempAry = [];
+		// for (var i = 1; i < dictKeys.length; i++) {
+			// tempAry.push(dictKeys[i]);
+		// }
+		// dictKeys = tempAry;
+	// }
+	// Ti.API.info("All Sections 2: " + JSON.stringify(dictKeys));
+	//Ti.API.info("parentObjectArray 2 (no 0): " + JSON.stringify(parentObjectArray));
 
-		Ti.API.info("Parent obj: " + JSON.stringify(parentObjectArray[i]));
-		Ti.API.info("Section: " + JSON.stringify(dictKeys[i]));
+	for (var i = 0; i < parentObjectArray.length; i++) {
+
+		Ti.API.info(">> Section: " + JSON.stringify(dictKeys[i]) + ", Parent obj: " + JSON.stringify(parentObjectArray[i].id));
 
 		var postCollection = filterService.prototype.retrievePostDetails(dict, dictKeys[i]);
-		filterService.prototype.addPostsToViewAccordingToSection(dictKeys[i], dict, parentObjectArray[i], postCollection);
+		//filterService.prototype.addPostsToViewAccordingToSection(dictKeys[i], dict, parentObjectArray[i], postCollection);
+		filterService.prototype.addPostsToViewAccordingToSection(dictKeys[0], dict, parentObjectArray[i], postCollection);
 	}
 	//}
 };
