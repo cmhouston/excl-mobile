@@ -62,7 +62,7 @@ exports.definition = {
 				
 				for(var i = 0; i < filters.size(); ++i) {
 					filters.at(i).on('change:active', function(e) {
-						this.trigger('change:customizeLearningEnabled');
+						Alloy.Models.app.trigger('change:customizeLearningEnabled');
 					});
 				};
 				Alloy.Collections.filter.ready = true;
