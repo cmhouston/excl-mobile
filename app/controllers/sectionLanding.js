@@ -101,8 +101,6 @@ function setPathForLibDirectory(libFile) {
 var
 lastSelectedButton;
 var lastSelectedView;
-var colorArray = ['#ECD078', '#D95B43', '#C02942', '#542437', '#53777A'];
-var colorArrayCounter = 0;
 
 function insertXNumberOfButtons(numberOfButtons) {
 	parentObjects = [];
@@ -110,7 +108,7 @@ function insertXNumberOfButtons(numberOfButtons) {
 	var objectArgs;
 	objectArgs = {
 		borderRadius : 0,
-		backgroundColor : '#E74C3C',
+		backgroundColor : '#5a5a5a ',
 		width : '100%',
 		top : "0",
 		height : "50dip",
@@ -120,7 +118,7 @@ function insertXNumberOfButtons(numberOfButtons) {
 	var buttonHolderView = viewService.createCustomView(objectArgs);
 	$.scrollView.add(buttonHolderView);
 
-	var each_button_width = Math.floor(100 / numberOfButtons);
+	var each_button_width = (Math.floor(100 / numberOfButtons)-1);
 	each_button_width += '%';
 
 	for (var i = 0; i < numberOfButtons; i++) {
@@ -128,14 +126,16 @@ function insertXNumberOfButtons(numberOfButtons) {
 			title : filterTabIds[i],
 			width : each_button_width,
 			height : "50dip",
-			borderColor : '#E74C3C',
-			borderRadius : "10dip",
-			backgroundColor : '#1ABC9C',
-			color : '#ECF0F1',
+			borderColor : '#5a5a5a',
+			// borderRadius : "10dip",
+			backgroundColor : '#747474',
+			color : '#FFFFFF',
 			id : "button" + i,
+			left: '1%',
 			viewAssociatedId : filterTabIds[i]
 		};
 		var button = buttonService.createCustomButton(objectArgs);
+		
 		Ti.API.info(JSON.stringify(button));
 		if (button.title == "0") {
 			button.title = titleForAllInclusiveFilterSection;
@@ -143,8 +143,8 @@ function insertXNumberOfButtons(numberOfButtons) {
 		Ti.API.info(JSON.stringify(button));
 
 		objectArgs = {
-			borderRadius : "30dip",
-			backgroundColor : colorArray[colorArrayCounter],
+			// borderRadius : "30dip",
+			backgroundColor : '#FFFFFF',
 			width : '100%',
 			height : '0',
 			visible : false,
@@ -153,10 +153,9 @@ function insertXNumberOfButtons(numberOfButtons) {
 		};
 		var view = viewService.createCustomView(objectArgs);
 		Ti.API.info(JSON.stringify(view));
-		
+
 		keepFirstViewOpen(view, button, i);
 		parentObjects.push(view);
-		colorArrayCounter++;
 		$.scrollView.add(view);
 
 		button.addEventListener('click', function(e) {
@@ -166,7 +165,7 @@ function insertXNumberOfButtons(numberOfButtons) {
 		});
 		buttonHolderView.add(button);
 	}
-	//hideButtonViewIfOnlyOneButton(buttonHolderView, numberOfButtons);
+	hideButtonViewIfOnlyOneButton(buttonHolderView, numberOfButtons);
 
 	for (var i = 0; i < parentObjects.length; i++) {
 		Ti.API.info("Added View ID (" + i + ") " + JSON.stringify(parentObjects[i].id));
@@ -192,8 +191,8 @@ function showRespectiveView(buttonSource) {
 function keepFirstViewOpen(view, button, i) {
 	if (i == 0) {
 		openFirstView(view);
-		button.backgroundColor = '#ECF0F1';
-		button.color = '#1ABC9C';
+		button.backgroundColor = '#FFFFFF';
+		button.color = '#747474';
 		lastSelectedButton = button;
 		firstView = view;
 		lastSelectedView = 1;
@@ -207,11 +206,11 @@ function openFirstView(view) {
 
 function changeButtonColor(buttonId) {
 	if (lastSelectedButton) {
-		lastSelectedButton.backgroundColor = '#1ABC9C';
-		lastSelectedButton.color = '#ECF0F1';
+		lastSelectedButton.backgroundColor = '#747474';
+		lastSelectedButton.color = '#FFFFFF';
 	}
-	buttonId.backgroundColor = '#ECF0F1';
-	buttonId.color = '#1ABC9C';
+	buttonId.backgroundColor = '#FFFFFF';
+	buttonId.color = '#747474';
 	lastSelectedButton = buttonId;
 }
 
@@ -245,7 +244,7 @@ function resetPage() {
 
 function organizePosts(allPosts) {
 	updateFilterIdArray();
-	
+
 	if (filterOn) {
 		selectedFilters = filter.formatActiveFiltersIntoArray(Alloy.Collections.filter);
 		Ti.API.info("Filter list: " + JSON.stringify(selectedFilters));
@@ -253,16 +252,16 @@ function organizePosts(allPosts) {
 			filter.sortFilteredContentIntoDict(selectedFilters, dictOrderedPosts, allPosts[i]);
 		}
 	}
-	$.scrollView.removeAllChildren;
+	$.scrollView.removeAllChildren
 	insertXNumberOfButtons(filterTabIds.length);
 	openFirstView(firstView);
 	for (var i = 0; i < allPosts.length; i++) {
 		filter.compileDictOfSections(allPosts[i], dictOrderedPosts, selectedSection);
 	}
-	
+
 	Ti.API.info("Dict of Posts 2: " + JSON.stringify(dictOrderedPosts));
 	Ti.API.info("Parents 1: " + JSON.stringify(parentObjects));
-	
+
 	filter.sortPostsIntoSections(dictOrderedPosts, parentObjects);
 	$.scrollView.height = "100%";
 	Ti.API.info("Finished Sorting");
@@ -275,7 +274,6 @@ function updateFilterIdArray() {
 	}
 	Ti.API.info("All tab ids: " + filterTabIds);
 }
-
 
 function changeTitleOfThePage(name, color) {
 	$.navBar.setPageTitle(name);
