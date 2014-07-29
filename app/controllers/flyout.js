@@ -101,7 +101,6 @@ function openMapPage(e) {
 }
 
 function openInfoPage(e) {
-
 	var controller = Alloy.createController("info", eval([json]));
 	Alloy.Globals.navController.open(controller);
 	closeMenu();
@@ -161,7 +160,7 @@ function rowFilterEventListener() {
 	}
 	ageFilterSet = Alloy.Models.app.get('customizeLearningSet');
 	ageFilterOn = Alloy.Models.app.get('customizeLearningEnabled');
-	//Ti.API.info("Filter Fired (fly): set: " + ageFilterSet + ", on: " + ageFilterOn);
+	Ti.API.info("Filter Fired (fly): set: " + ageFilterSet + ", on: " + ageFilterOn);
 }
 
 function tutorialToggler(e) {

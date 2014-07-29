@@ -6,11 +6,11 @@
 				<ScrollView id="scroller">
 					<TableView id="tableView">
 						<TableViewRow id="headerRow" class="postTableViewRow"></TableViewRow>
-						<TableViewRow id="socialMediaButtonsRow" class="postTableViewRow">
-							<View class="centeredButtons">
-								<Button id="commentingButton" class="socialMediaButtonShown" onClick="comment"></Button>
-								<Button id="shareTextButton" class="socialMediaButtonShown" onClick="shareText"></Button>
-								<Button id="sharePhotoButton" class="socialMediaButtonShown" onClick="sharePhoto"></Button>
+						<TableViewRow id="socialMediaButtonsRow" class="postTableViewRow" autoStyle="true">
+							<View id="centeredButtons" class="centeredButtons">
+								<Button id="commentingButton" class="socialMediaButtonHidden" onClick="comment" autoStyle="true"></Button>
+								<Button id="shareTextButton" class="socialMediaButtonHidden" onClick="shareText" autoStyle="true"></Button>
+								<Button id="sharePhotoButton" class="socialMediaButtonHidden" onClick="sharePhoto" autoStyle="true"></Button>
 							</View>
 						</TableViewRow>
 						<TableViewRow id="postBodyRow" class="postTableViewRow"></TableViewRow>

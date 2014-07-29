@@ -35,6 +35,39 @@ exports.definition = {
 		_.extend(Model.prototype, {
 			// extended functions and properties go here
 			
+			forceOpenHome: function() {
+				var NavigationController = Alloy.Globals.setPathForLibDirectory('navigationService/NavigationController');
+				Alloy.Globals.navController = new NavigationController();
+				
+				var home = Alloy.createController('home');
+				Alloy.Globals.navController.open(home);
+			},
+			
+			parseFiltersFromJson: function(json) {
+				Alloy.Collections.filter.reset();
+				Alloy.Collections.filter.ready = false;
+				
+				var filters = json.data.museum.tailored_content_categories;
+				filters = filters.split('|');
+				
+				for(var i = 0; i < filters.length; i++) {
+					var filterName = filters[i];
+					filter = {
+						name: filterName,
+						active: false
+					};
+					Alloy.Collections.filter.add(filter);
+				}
+				filters = Alloy.Collections.filter;
+				
+				for(var i = 0; i < filters.size(); ++i) {
+					filters.at(i).on('change:active', function(e) {
+						Alloy.Models.app.trigger('change:customizeLearningEnabled');
+					});
+				};
+				Alloy.Collections.filter.ready = true;
+			},
+			
 			retrieveMuseumData: function() {
 				var retriever = Alloy.Globals.setPathForLibDirectory('dataRetriever/dataRetriever');
 				var url = Alloy.Globals.rootWebServiceUrl;
@@ -42,30 +75,15 @@ exports.definition = {
 				retriever.fetchDataFromUrl(url, function(response) {
 					if(response) {
 						Alloy.Globals.museumJSON = response;
+						Alloy.Models.app.trigger('museumJsonRetrieved');
+												
+						Alloy.Models.app.parseFiltersFromJson(response);
 						
-						var filters = response.data.museum.tailored_content_categories;
-						filters = filters.split('|');
-						
-						for(var i = 0; i < filters.length; i++) {
-							var filterName = filters[i];
-							filter = {
-								name: filterName,
-								active: false
-							};
-							Alloy.Collections.filter.add(filter);
-						}
-						filters = Alloy.Collections.filter;
-						
-						for(var i = 0; i < filters.size(); ++i) {
-							filters.at(i).on('change:active', function(e) {
-								Alloy.Models.app.trigger('change:customizeLearningEnabled');
-							});
-						};
-						Alloy.Collections.filter.ready = true;
+						Alloy.Models.app.forceOpenHome();
 					}
 				});
-			},
-			
+			}
+
 			// more app member functions go here
 		});
 

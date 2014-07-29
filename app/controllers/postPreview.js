@@ -44,6 +44,7 @@ function setPathForLibDirectory(libFile) {
 
 function init() {
 	if (postArgs) {
+		Ti.API.info("Valid post args found. Adding preview.");
 		for (var i = 0; i < postArgs.length; i++) {
 			post = createPostView(eval(postArgs.at(i)));
 			$.backgroundContainer.add(post);
@@ -51,8 +52,85 @@ function init() {
 		$.backgroundContainer.height = Ti.UI.SIZE;
 		$.placeholderContainer.height = "0";
 	} else {
-		$.placeholderLabel.text = "There's no content specific for this age. Check above or change your filter!";
+		Ti.API.info("Invalid post args found. Throwing Error.");
+		post = createErrorView("There's no content specific for this age. Check above or change your filter!");
+		$.backgroundContainer.add(post);
+		$.backgroundContainer.height = Ti.UI.SIZE;
+		$.placeholderContainer.height = "0";
 	}
+
+}
+
+function createErrorView(msg) {
+	args = {
+		width : "100%",
+		backgroundColor : "white",
+	};
+	var container = viewService.createCustomView(args);
+	if (detectDevice.isTablet()) {
+		container.top = "50dip";
+		container.height = "300dip";
+	} else {
+		container.top = "30dip";
+		container.height = "200dip";
+	}
+
+	args = {
+		layout : "vertical",
+		width : "95%",
+		backgroundColor : "#F8F8F8",
+		left : "2%"
+	};
+	var postContainer = viewService.createCustomView(args);
+	if (detectDevice.isTablet()) {
+		postContainer.height = "300dip";
+	} else {
+		postContainer.height = "200dip";
+	}
+
+	args = {
+		height : "50dip",
+		width : "100%",
+		backgroundColor : "#D8D8D8"
+	};
+	var header = viewService.createCustomView(args);
+
+	args = {
+		height : "50dip",
+		width : "99%",
+		backgroundColor : "#D8D8D8",
+		top : "1%",
+		bottom : "1%",
+		left : "1%"
+	};
+	var headerWrap = viewService.createCustomView(args);
+
+	args = {
+		color : "#000000",
+		text : msg,
+		textAlign : "center",
+		font : {
+
+			fontSize : labelService.countCharInTitleAndReturnFontSize(msg, 20, 30, 5, 2),
+			fontWeight : 'bold'
+		}
+	};
+	var headerText = labelService.createCustomLabel(args);
+	if (detectDevice.isTablet()) {
+		headerText.font = {
+			fontSize : labelService.countCharInTitleAndReturnFontSize(headerText.text, 30, 40, 10, 2)
+		};
+	}
+
+	postContainer.add(header);
+	header.add(headerWrap);
+	headerWrap.add(headerText);
+	container.add(postContainer);
+
+	if (OS_IOS) {
+		$.backgroundContainer.bottom = "48dip";
+	}
+	return container;
 }
 
 function createPostView(post) {
@@ -95,7 +173,7 @@ function createPostView(post) {
 		backgroundColor : "#D8D8D8",
 		top : "1%",
 		bottom : "1%",
-		left: "1%"
+		left : "1%"
 	};
 	var headerWrap = viewService.createCustomView(args);
 
@@ -104,7 +182,7 @@ function createPostView(post) {
 		text : post.get("name"),
 		textAlign : "center",
 		font : {
-			
+
 			fontSize : labelService.countCharInTitleAndReturnFontSize(post.get("name"), 20, 30, 5, 2),
 			fontWeight : 'bold'
 		}
@@ -112,7 +190,7 @@ function createPostView(post) {
 	var headerText = labelService.createCustomLabel(args);
 	if (detectDevice.isTablet()) {
 		headerText.font = {
-			
+
 			fontSize : labelService.countCharInTitleAndReturnFontSize(headerText.text, 30, 40, 10, 2)
 		};
 	}
@@ -164,7 +242,7 @@ function createPostView(post) {
 		text : post.get("text"),
 		color : "#000000",
 		font : {
-			
+
 			fontSize : "16dip",
 			color : "#000000"
 		},
@@ -174,7 +252,7 @@ function createPostView(post) {
 	var postText = labelService.createCustomLabel(args);
 	if (detectDevice.isTablet()) {
 		postText.font = {
-			
+
 			fontSize : "25dip"
 		};
 	}
