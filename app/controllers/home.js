@@ -128,7 +128,11 @@ function retrieveJson(jsonURL) {
 			if(jsonInfoLabel) $.infoLabel.text = jsonInfoLabel;
 			
 			var jsonIconUrl = museum.homepage_icon;
-			if(jsonIconUrl) $.iconLink.image = jsonIconUrl;
+			if(jsonIconUrl){
+				$.iconLink.image = jsonIconUrl;
+			}else{
+				$.iconLink.image = "Images/development.jpg";
+			}
 			
 			doneLoading = true;
 			hideSpinner();

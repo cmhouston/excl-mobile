@@ -17,10 +17,5 @@
 				</ScrollView>
 			</View>
 		</View>
-		<View id="exhibitSelect">
-			<Label id="exhibitSelectLabel">
-				Explore This Exhibition!
-			</Label>
-		</View>
 	</Window>
 </Alloy>

@@ -109,25 +109,11 @@ function hideSpinner() {
 	$.exhibitLanding.remove(loadingSpinnerView);
 }
 
-function fixIpadSpacing() {
-	if (detectDevice.isTablet()) {
-		$.exhibitSelect.bottom = "20dip";
-		$.exhibitSelect.height = "70dip";
-		$.exhibitSelectLabel.font = {
-			fontSize : "25dip"
-		};
-		$.exhibitSelectLabel.width = "60%";
-		$.exhibitSelectLabel.left = "20%";
-		$.exhibitSelectLabel.height = "50dip";
-	}
-}
-
 function init() {
 	addSpinner();
 	//$.navBar.setPageTitle("Exhibitions");
 	$.navBar.setPageTitle(json.data.museum.exhibit_label_plural);
 	initializeWithJSON(json);
-	fixIpadSpacing();
 	hideSpinner();
 }
 
@@ -170,7 +156,6 @@ function populateWindow(json) {
 		}
 	}
 	createExhibitsCarousel(json.data.museum.exhibits);
-	createExhibitSelect(json.data.museum.exhibits);
 	createcollapsibleComponentView();
 	createComponentsScrollView(json.data.museum.exhibits);
 }
@@ -193,7 +178,7 @@ function createExhibitsCarousel(exhibits) {
 	
 	$.exhibitsCarousel.setCurrentPage(0);
 	
-	$.headingLabel.text = exhibits[0].name;
+	$.headingLabel.text = "Explore This " + json.data.museum.exhibit_label;
 	$.exhibitInfoLabel.text = exhibits[0].long_description;
 	if (detectDevice.isTablet()) {
 		$.headingLabel.font = {
@@ -444,7 +429,7 @@ function dipToPx(dipSize){
 }
 
 
-function createComponentTitleLabel(name, textSize, pageXofYtext) {
+function createComponentTitleLabel(name, textSize) {
 	var titleLabel = Ti.UI.createView({
 		backgroundColor : 'black',
 		opacity : 0.6,
@@ -473,22 +458,6 @@ function createComponentTitleLabel(name, textSize, pageXofYtext) {
 	}
 	titleLabel.add(label);
 
-	if (pageXofYtext) {
-		var pageXofYtextLabel = Ti.UI.createLabel({
-			top : "10%",
-			right : "3%",
-			text : pageXofYtext,
-			color : 'white',
-			horizontalWrap : false,
-			font : {
-
-				fontSize : '18dip',
-				fontWeight : 'normal'
-			}
-		});
-		titleLabel.add(pageXofYtextLabel);
-	}
-
 	return titleLabel;
 }
 
@@ -502,19 +471,14 @@ function onExhibitsClick(exhibits) {
 	if ($.collapsibleComponentView.hidden == true) {
 		$.collapsibleComponentView.hidden = false;
 		var pageIndex = $.exhibitsCarousel.currentPage;
-		$.exhibitSelectLabel.text = "Back to Description";
 		$.exhibitInfoLabel.text = exhibits[pageIndex].long_description;
 		if (detectDevice.isTablet()) {
 			$.exhibitInfoLabel.font = {
 
 				fontSize : "25dip"
 			};
-			$.exhibitSelectLabel.font = {
-
-				fontSize : "25dip"
-			};
 		}
-		$.headingLabel.text = "Select an Activity from Below!";
+		$.headingLabel.text = "Explore This " + json.data.museum.exhibit_label;
 		if (detectDevice.isTablet()) {
 			$.headingLabel.font = {
 
@@ -549,8 +513,6 @@ function onExhibitsClick(exhibits) {
 	} else {
 		$.collapsibleComponentView.hidden = true;
 		$.headingLabel.text = exhibits[$.exhibitsCarousel.currentPage].name;
-		//$.exhibitSelectLabel.text = "Explore This Exhibition!";
-		$.exhibitSelectLabel.text = "Explore This " + json.data.museum.exhibit_label;
 		$.exhibitInfoScrollView.animate({
 			opacity : 1,
 			duration : 300
@@ -573,8 +535,6 @@ function onExhibitsScroll(e, exhibits) {
 	componentsInExhibit[currExhibitId].width = 0;
 	componentsInExhibit[e.view.itemId].width = Ti.UI.SIZE;
 	$.collapsibleComponentView.hidden = true;
-	//$.exhibitSelectLabel.text = "Explore This Exhibition!";
-	$.exhibitSelectLabel.text = "Explore This " + json.data.museum.exhibit_label;
 	currExhibitId = e.view.itemId;
 	var index = $.exhibitsCarousel.currentPage;
 	$.headingLabel.text = exhibits[index].name;
@@ -663,10 +623,5 @@ function createLabeledPicView(item, textSize) {
 	return itemContainer;
 }
 
-function createExhibitSelect(exhibits) {
-	$.exhibitSelect.addEventListener('click', function(e) {
-		onExhibitsClick(exhibits);
-	});
-}
 
 init();
