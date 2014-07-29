@@ -118,7 +118,7 @@ function insertXNumberOfButtons(numberOfButtons) {
 	var buttonHolderView = viewService.createCustomView(objectArgs);
 	$.scrollView.add(buttonHolderView);
 
-	var each_button_width = (Math.floor(100 / numberOfButtons)-1);
+	var each_button_width = (Math.floor(100 / numberOfButtons) - 1);
 	each_button_width += '%';
 
 	for (var i = 0; i < numberOfButtons; i++) {
@@ -131,7 +131,7 @@ function insertXNumberOfButtons(numberOfButtons) {
 			backgroundColor : '#747474',
 			color : '#FFFFFF',
 			id : "button" + i,
-			left: '1%',
+			left : '1%',
 			viewAssociatedId : filterTabIds[i]
 		};
 		var button = buttonService.createCustomButton(objectArgs);
@@ -247,23 +247,15 @@ function organizePosts(allPosts) {
 			filter.sortFilteredContentIntoDict(selectedFilters, dictOrderedPosts, allPosts[i]);
 		}
 	}
-	$.scrollView.removeAllChildren
+	$.scrollView.removeAllChildren();
 	insertXNumberOfButtons(filterTabIds.length);
 	openFirstView(firstView);
 	for (var i = 0; i < allPosts.length; i++) {
 		filter.compileDictOfSections(allPosts[i], dictOrderedPosts, selectedSection);
 	}
-<<<<<<< HEAD
-	
 	Ti.API.info("Dict of Posts: " + JSON.stringify(dictOrderedPosts));
 	Ti.API.info("Parents: " + JSON.stringify(parentObjects));
-	
-=======
 
-	Ti.API.info("Dict of Posts 2: " + JSON.stringify(dictOrderedPosts));
-	Ti.API.info("Parents 1: " + JSON.stringify(parentObjects));
-
->>>>>>> 0889a885b57c012b32283e08668f89b3e7f560b1
 	filter.sortPostsIntoSections(dictOrderedPosts, parentObjects);
 	$.scrollView.height = Ti.UI.SIZE;
 	Ti.API.info("Finished Sorting");
