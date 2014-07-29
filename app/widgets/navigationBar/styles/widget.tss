@@ -1,7 +1,3 @@
-"#navBar": {
-	backgroundColor: "#253342"
-}
-
 ".flyoutIcon":{
 	top: "20%",
 	right: "10%",

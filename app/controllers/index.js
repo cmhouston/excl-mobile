@@ -21,18 +21,10 @@
 var rootDirPath = ( typeof Titanium == 'undefined') ? '../../lib/' : '';
 
 var loadingSpinner = require(rootDirPath + 'loadingSpinner/loadingSpinner');
-var spinner = new loadingSpinner(true);
+var spinner = new loadingSpinner();
 
 spinner.addTo($.index);
 spinner.show();
 
-$.index.open();
-
-setTimeout(startApp, 1000);
-
-function startApp() {
-	var home = Alloy.createController('home');
-	Alloy.Globals.navController.open(home);
-}
-
+// $.index.show();
 

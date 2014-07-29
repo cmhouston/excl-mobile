@@ -5,19 +5,21 @@
 			<ScrollableView id="exhibitsCarousel">
 				<View id="placeholder"/>
 			</ScrollableView>
-			<View id="bottomView">
-				<View id="componentScrollViewHeading">
-					<Label id="componentScrollViewLabel"/>
+			<View id="infoView">
+				<View id="bottomView">
+					<View id="componentScrollViewHeading" class="headingRow">
+						<Label id="componentScrollViewLabel"/>
+					</View>
+					<ScrollView id="componentScrollView"/>
 				</View>
-				<ScrollView id="componentScrollView"/>
-			</View>
-			<View id="topView">
-				<View id="headingLabelView">
-					<Label id="headingLabel"/>
+				<View id="topView">
+					<View id="headingLabelView" class="headingRow">
+						<Label id="headingLabel"/>
+					</View>
+					<ScrollView id="exhibitInfoScrollView">
+						<Label id="exhibitInfoLabel"/>
+					</ScrollView>
 				</View>
-				<ScrollView id="exhibitInfoScrollView">
-					<Label id="exhibitInfoLabel"/>
-				</ScrollView>
 			</View>
 		</View>
 	</Window>
