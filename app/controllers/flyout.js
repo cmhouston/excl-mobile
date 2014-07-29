@@ -101,7 +101,6 @@ function openMapPage(e) {
 }
 
 function openInfoPage(e) {
-
 	var controller = Alloy.createController("info", eval([json]));
 	Alloy.Globals.navController.open(controller);
 	closeMenu();
