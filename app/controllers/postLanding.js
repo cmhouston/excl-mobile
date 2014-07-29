@@ -77,10 +77,13 @@ function setPathForLibDirectory(libFile) {
 
 $.onEnterKioskMode = function() {
 	$.navBar.onEnterKioskMode();
+	hideAllSharingButtons();
 };
 
 $.onExitKioskMode = function() {
 	$.navBar.onExitKioskMode();
+	showAllSharingButtons();
+	turnOffAppropriateSharingButtons();
 };
 
 function setPageTitle(name) {
@@ -139,7 +142,6 @@ function creatingCommentTextHeading() {
 		left : '3%',
 		color : '#232226',
 		font : {
-			
 			fontSize : '16dip',
 			fontWeight : 'bold',
 		},
@@ -151,7 +153,6 @@ function creatingCommentTextHeading() {
 	var commentHeading = labelService.createCustomLabel(objectArgs);
 	if (detectDevice.isTablet()) {
 		commentHeading.font = {
-			
 			fontSize : "30dip"
 		};
 	}
@@ -185,7 +186,6 @@ function displayThereAreNoCommentsToDisplayText() {
 	var noCommentText = labelService.createCustomLabel(objectArgs);
 	if (detectDevice.isTablet()) {
 		noCommentText.font = {
-			
 			fontSize : "25dip"
 		};
 	}
@@ -210,7 +210,6 @@ function createCommentText(commentText) {
 		left : '3%',
 		color : '#232226',
 		font : {
-			
 			fontSize : '13dip',
 			fontWeight : 'normal',
 		},
@@ -235,7 +234,6 @@ function createCommentDate(commentDate) {
 		left : '3%',
 		color : '#48464e',
 		font : {
-			
 			fontSize : '8dip',
 			fontWeight : 'normal',
 		},
@@ -244,7 +242,6 @@ function createCommentDate(commentDate) {
 	var date = labelService.createCustomLabel(objectArgs);
 	if (detectDevice.isTablet()) {
 		date.font = {
-			
 			fontSize : "17dip"
 		};
 	}
@@ -272,7 +269,6 @@ function displayComments(comments) {
 			left : '3%',
 			color : '#005ab3',
 			font : {
-				
 				fontSize : '13dip',
 				fontWeight : 'normal',
 			},
@@ -297,7 +293,6 @@ function displayComments(comments) {
 		});
 
 		$.tableView.appendRow(row);
-
 	}
 }
 
@@ -433,21 +428,49 @@ function initializePage() {
 		$.postBodyRow.add(getRowContentsForRichText(post_content.post_body));
 	}
 
+	showAllSharingButtons();
+	turnOffAppropriateSharingButtons();
+
 	if (post_content.commenting) {
-		Ti.API.info("commenting is enabled");
 		creatingCommentTextHeading();
 		var comments = post.getAllComments();
 		if (comments != false) {
-			Ti.API.info('Displaying comments...');
 			displayComments(comments);
 		} else {
-			Ti.API.info('No comments to display.');
 			displayThereAreNoCommentsToDisplayText();
 		}
 	}
 
 	formatCommentBoxForIpad(); 
+}
 
+function turnOffAppropriateSharingButtons() {
+	if (!post_content.commenting) {
+		$.resetClass($.commentingButton, "socialMediaButtonHidden");
+	}
+	if (!post_content.text_sharing) {
+		$.resetClass($.shareTextButton, "socialMediaButtonHidden");
+	}
+	if (!post_content.image_sharing) {
+		$.resetClass($.sharePhotoButton, "socialMediaButtonHidden");
+	}
+	if ((!post_content.commenting && !post_content.text_sharing && !post_content.image_sharing) || Alloy.Globals.adminModeController.isInKioskMode()) {
+		hideAllSharingButtons();
+	}
+}
+
+function hideAllSharingButtons() {
+	$.resetClass($.socialMediaButtonsRow, "hidden");
+	$.resetClass($.commentingButton, "socialMediaButtonHidden");
+	$.resetClass($.shareTextButton, "socialMediaButtonHidden");
+	$.resetClass($.sharePhotoButton, "socialMediaButtonHidden");
+}
+
+function showAllSharingButtons() {
+	$.resetClass($.socialMediaButtonsRow, "hidden");
+	$.resetClass($.commentingButton, "socialMediaButtonShown");
+	$.resetClass($.shareTextButton, "socialMediaButtonShown");
+	$.resetClass($.sharePhotoButton, "socialMediaButtonShown");
 }
 
 function clickThankYouMessage(e) {
@@ -492,14 +515,14 @@ function comment(e) {
 function shareText(e) {
 	sharingTextService.setIconBusy($.shareTextButton);
 	postTags = sharingTextService.getPostTags(post_content);
-	sharingTextService.initiateIntentText(postTags, e.source);
+	sharingTextService.initiateIntentText(postTags, $.shareTextButton);
 }
 
 function sharePhoto(e) {
 	sharingImageService.setIconBusy($.sharePhotoButton);
 	postTags = sharingImageService.getPostTags(post_content);
 	cameraService.takePicture(postTags, e.source, $.postLanding);
-	sharingImageService.setIconReady(e.source);
+	sharingImageService.setIconReady($.sharePhotoButton);
 }
 
 function getRowContentsForVideo(url) {
