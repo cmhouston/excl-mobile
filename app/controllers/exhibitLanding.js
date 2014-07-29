@@ -93,7 +93,7 @@ function setPathForLibDirectory(libFile) {
 		lib = require(libFile);
 	}
 	return lib;
-};
+}
 
 function addSpinner() {
 	loadingSpinnerView.add(spinner);
@@ -597,7 +597,6 @@ function getComponentImageHeight(){
 		componentScrollViewHeadingHeight = detectDevice.dipToPx(componentScrollViewHeadingHeight);
 	}
 	
-	Ti.API.info("---000---\r\n"+(infoViewHeight - headingLabelViewHeight - componentScrollViewHeadingHeight - 6));
 	return (infoViewHeight - headingLabelViewHeight - componentScrollViewHeadingHeight - 6);
 }
 

@@ -32,12 +32,12 @@
 }
 
 "#componentScrollViewHeading":{
-	backgroundColor: '#ECD078'
+	backgroundColor: "AAF200"
 }
 
 "#componentScrollViewLabel":{
 	text: "Select an Activity!",
-	color: "#232226",
+	color: "white",
 	font: {
 		
 		fontWeight: 'bold',
