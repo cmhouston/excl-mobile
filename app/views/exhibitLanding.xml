@@ -5,12 +5,15 @@
 			<ScrollableView id="exhibitsCarousel">
 				<View id="placeholder"/>
 			</ScrollableView>
-			<View id="headingLabelView">
-				<Label id="headingLabel"/>
+			<View id="bottomView">
+				<View id="componentScrollViewHeading">
+					<Label id="componentScrollViewLabel"/>
+				</View>
+				<ScrollView id="componentScrollView"/>
 			</View>
-			<View id="exhibitInfoView" >
-				<View id="collapsibleComponentView">
-					<ScrollView id="componentScrollView"/>
+			<View id="topView">
+				<View id="headingLabelView">
+					<Label id="headingLabel"/>
 				</View>
 				<ScrollView id="exhibitInfoScrollView">
 					<Label id="exhibitInfoLabel"/>

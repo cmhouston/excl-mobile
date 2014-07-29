@@ -19,13 +19,13 @@
 ".flyoutView":{
 	width: "40%",
 	right: "0",
-	zindex: "99"
+	zIndex: "99"
 }
 
 ".backView":{
 	width: "40%",
 	left: "0",
-	zindex: "99"
+	zIndex: "99"
 }
 
 ".pageTitleStyle":{
@@ -38,5 +38,5 @@
 	textAlign: 'center',
 	height: Ti.UI.SIZE,
 	width: "75%",
-	zindex: "0"
+	zIndex: "0"
 }

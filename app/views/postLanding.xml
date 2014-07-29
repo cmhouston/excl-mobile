@@ -2,37 +2,39 @@
 	<Window class="container">
 		<View id="postLandingView">
 			<Widget src="navigationBar" id="navBar"/>
-			<View id="whiteCommentBox">
-				<View id="submitCommentFormView">
-					<TextField id="insertName" />
-					<Label id="insertNameDisclaimer">*Optional and won't be shared</Label>
-					<TextField id="insertEmail" />
-					<Label id="insertEmailDisclaimer">*Optional and won't be shared</Label>
-					<TextArea id="insertComment"/>
-					<View id="buttonView">
-						<Button id="submitButton" />
-						<Button id="cancelCommentButton" />
-					</View>
-				</View>
-				<View id="thankYouMessageView">
-					<Label id = "thankYouMessageComment" class="thankYouMessageComment" top="30%"/>
-				</View>
-				<Label id="submitYourCommentLabel">Submit Your Comment</Label>
-			</View>
-			<ScrollView id="scroller">
-				<TableView id="tableView">
-					<TableViewRow id="headerRow" class="postTableViewRow"></TableViewRow>
-					<TableViewRow id="socialMediaButtonsRow" class="postTableViewRow">
-						<View class="centeredButtons">
-							<Button id="commentingButton" class="socialMediaButtonShown" onClick="comment"></Button>
-							<Button id="shareTextButton" class="socialMediaButtonShown" onClick="shareText"></Button>
-							<Button id="sharePhotoButton" class="socialMediaButtonShown" onClick="sharePhoto"></Button>
-						</View>
-					</TableViewRow>
-					<TableViewRow id="postBodyRow" class="postTableViewRow"></TableViewRow>
-				</TableView>
+			<View id="postLandingViewBody">
+				<ScrollView id="scroller">
+					<TableView id="tableView">
+						<TableViewRow id="headerRow" class="postTableViewRow"></TableViewRow>
+						<TableViewRow id="socialMediaButtonsRow" class="postTableViewRow">
+							<View class="centeredButtons">
+								<Button id="commentingButton" class="socialMediaButtonShown" onClick="comment"></Button>
+								<Button id="shareTextButton" class="socialMediaButtonShown" onClick="shareText"></Button>
+								<Button id="sharePhotoButton" class="socialMediaButtonShown" onClick="sharePhoto"></Button>
+							</View>
+						</TableViewRow>
+						<TableViewRow id="postBodyRow" class="postTableViewRow"></TableViewRow>
+					</TableView>
+				</ScrollView>
 				<View id="addNewCommentContainer"></View>
-			</ScrollView>
+				<View id="whiteCommentBox">
+					<View id="submitCommentFormView">
+						<TextField id="insertName" />
+						<Label id="insertNameDisclaimer">*Optional and won't be shared</Label>
+						<TextField id="insertEmail" />
+						<Label id="insertEmailDisclaimer">*Optional and won't be shared</Label>
+						<TextArea id="insertComment"/>
+						<View id="buttonView">
+							<Button id="submitButton" />
+							<Button id="cancelCommentButton" />
+						</View>
+					</View>
+					<View id="thankYouMessageView">
+						<Label id = "thankYouMessageComment" class="thankYouMessageComment" top="30%"/>
+					</View>
+					<Label id="submitYourCommentLabel">Submit Your Comment</Label>
+				</View>
+			</View>
 		</View>
 	</Window>
 </Alloy>

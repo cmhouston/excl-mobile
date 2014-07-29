@@ -25,68 +25,25 @@
 	pagingControlAlpha: 0.6
 }
 
-"#collapsibleInfoLabel": {
-	horizontalWrap: true,
-	color: '#232226',
-	font: {
-		
-		fontWeight: 'normal'
-	},
-	left: "3%",
-	right: "3%",
-	top: "1%",
-	bottom: "1%",
-	height: Ti.UI.SIZE
-}
-
-"#collapsibleComponentView":{
+"#bottomView":{
 	layout: "vertical",
 	height: "0",
 	top:"0"
 }
 
-"#exhibitSelect": {
-	bottom: 0,
-	height: "35dip",
-	backgroundColor: 'white'
+"#componentScrollViewHeading":{
+	height: "50dip",
+	backgroundColor: '#ECD078'
 }
 
-"#exhibitSelectLabel": {
-	top: "5dip",
-	bottom: "5dip",
-	height: "25dip",
-	backgroundColor: "#253342",
-	width: "80%",
-	left: "10%",
-	borderWidth: '0',
-	backgroundGradient: {
-		type: 'linear',
-		startPoint: {
-			x: '50%',
-			y: '0%'
-		},
-		endPoint: {
-			x: '50%',
-			y: '100%'
-		},
-		colors: [
-			{
-				color: '#5ea08a',
-				offset: 0.0
-			},
-			{
-				color: '#48748f',
-				offset: 1.0
-			}
-		]
-	},
-	color: 'white',
+"#componentScrollViewLabel":{
+	text: "Select an Activity!",
+	color: "#232226",
 	font: {
 		
-		fontSize: '18dip',
-		fontWeight: 'bold'
-	},
-	textAlign: 'center'
+		fontWeight: 'bold',
+		fontSize: "20dip"
+	}
 }
 
 "#componentScrollView": {
@@ -100,8 +57,13 @@
 	height: Ti.UI.SIZE
 }
 
+"#topView": {
+	layout: "vertical"
+}
+
 "#headingLabelView":{
-	height: "50dip"
+	height: "50dip",
+	backgroundColor: '#ECD078'
 }
 
 "#headingLabel":{
@@ -111,12 +73,6 @@
 		fontWeight: 'bold',
 		fontSize: "20dip"
 	}
-}
-
-"#exhibitInfoView": {
-	bottom: "50dip",
-	height: "45%",
-	layout: "vetical"
 }
 
 "#exhibitInfoLabel": {

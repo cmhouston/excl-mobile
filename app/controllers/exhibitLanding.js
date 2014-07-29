@@ -156,7 +156,7 @@ function populateWindow(json) {
 		}
 	}
 	createExhibitsCarousel(json.data.museum.exhibits);
-	createcollapsibleComponentView();
+	createBottomView();
 	createComponentsScrollView(json.data.museum.exhibits);
 }
 
@@ -461,15 +461,15 @@ function createComponentTitleLabel(name, textSize) {
 	return titleLabel;
 }
 
-function createcollapsibleComponentView() {
-	$.collapsibleComponentView.hidden = true;
-	$.collapsibleComponentView.height = 0;
+function createBottomView() {
+	$.bottomView.hidden = true;
+	$.bottomView.height = 0;
 }
 
 function onExhibitsClick(exhibits) {
 	$.exhibitInfoScrollView.scrollTo(0, 0);
-	if ($.collapsibleComponentView.hidden == true) {
-		$.collapsibleComponentView.hidden = false;
+	if ($.bottomView.hidden == true) {
+		$.bottomView.hidden = false;
 		var pageIndex = $.exhibitsCarousel.currentPage;
 		$.exhibitInfoLabel.text = exhibits[pageIndex].long_description;
 		if (detectDevice.isTablet()) {
@@ -487,7 +487,7 @@ function onExhibitsClick(exhibits) {
 			};
 		}
 
-		$.exhibitInfoScrollView.animate({
+		$.topView.animate({
 			opacity : 0,
 			duration : 300
 		});
@@ -501,59 +501,49 @@ function onExhibitsClick(exhibits) {
 			slideOut.height = ipadComponentHeight;
 		}
 
-		setTimeout(function() {
-			$.exhibitInfoScrollView.height = 0;
-		}, 300);
-
-		$.collapsibleComponentView.height = defaultComponentHeight;
+		$.bottomView.height = defaultComponentHeight;
 		if (detectDevice.isTablet()) {
-			$.collapsibleComponentView.height = ipadComponentHeight;
+			$.bottomView.height = ipadComponentHeight;
 		}
-		$.collapsibleComponentView.animate(slideOut);
+		$.bottomView.animate(slideOut);
 	} else {
-		$.collapsibleComponentView.hidden = true;
+		$.bottomView.hidden = true;
 		$.headingLabel.text = exhibits[$.exhibitsCarousel.currentPage].name;
-		$.exhibitInfoScrollView.animate({
+		$.topView.animate({
 			opacity : 1,
 			duration : 300
 		});
-		$.exhibitInfoScrollView.height = Ti.UI.SIZE;
-		setTimeout(function() {
-			$.exhibitInfoScrollView.height = Ti.UI.SIZE;
-		}, 300);
+		$.topView.height = Ti.UI.SIZE;
 
 		var slideIn = Ti.UI.createAnimation({
 			height : '0dip',
 			duration : 300,
 			curve : Titanium.UI.ANIMATION_CURVE_EASE_IN_OUT
 		});
-		$.collapsibleComponentView.animate(slideIn);
+		$.bottomView.animate(slideIn);
 	}
 }
 
 function onExhibitsScroll(e, exhibits) {
 	componentsInExhibit[currExhibitId].width = 0;
 	componentsInExhibit[e.view.itemId].width = Ti.UI.SIZE;
-	$.collapsibleComponentView.hidden = true;
+	$.bottomView.hidden = true;
 	currExhibitId = e.view.itemId;
 	var index = $.exhibitsCarousel.currentPage;
 	$.headingLabel.text = exhibits[index].name;
 	$.exhibitInfoLabel.text = exhibits[index].long_description;
-	$.exhibitInfoScrollView.animate({
+	$.topView.animate({
 		opacity : 1,
 		duration : 300
 	});
-	$.exhibitInfoScrollView.height = Ti.UI.SIZE;
-	setTimeout(function() {
-		$.exhibitInfoScrollView.height = Ti.UI.SIZE;
-	}, 300);
+	$.topView.height = Ti.UI.SIZE;
 
 	var slideIn = Ti.UI.createAnimation({
 		height : '0dip',
 		duration : 300,
 		curve : Titanium.UI.ANIMATION_CURVE_EASE_IN_OUT
 	});
-	$.collapsibleComponentView.animate(slideIn);
+	$.bottomView.animate(slideIn);
 
 	$.exhibitInfoScrollView.scrollTo(0, 0);
 }
