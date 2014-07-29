@@ -6,12 +6,9 @@
 
 "#mainView": {
 	layout: "vertical",
-	//bottom: "20dip",
-	
 }
 
 "#Map": {
-	//center: {x: "50%", y:"50%"}
 	top: "80dip",
 	backgroundColor: "#000"
 }

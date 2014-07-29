@@ -18,12 +18,9 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //=====================================================================
 var args = arguments[0] || {};
-
 var analyticsPageTitle = "Map";
 var analyticsPageLevel = "Information";
-
 var url = Alloy.Globals.rootWebServiceUrl;
-
 var json = Alloy.Globals.museumJSON;
 
 var setAnalyticsPageTitle = function(title) {
