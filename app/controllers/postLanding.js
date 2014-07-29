@@ -91,10 +91,8 @@ function setPageTitle(name) {
 	}
 }
 
-function hideMenuBtnIfKioskMode(){
-	if (Alloy.Globals.adminModeController.isInKioskMode()){
+function hideMenuBtn(){
 		$.navBar.hideMenuBtn();
-	}
 }
 
 function setCommentIconReady(button) {
@@ -413,7 +411,12 @@ function setCommentSubmittedMessage() {
 
 function initializePage() {
 	setPageTitle(post_content.name);
-	hideMenuBtnIfKioskMode();
+	if (Alloy.Globals.adminModeController.isInKioskMode()){
+		hideMenuBtn();
+		$.shareTextButton.visible = false;
+		$.sharePhotoButton.visible = false;
+	}
+	
 
 	switch (post_content.post_header_type) {
 		case "image":
@@ -429,7 +432,6 @@ function initializePage() {
 	if (post_content.post_body) {
 		$.postBodyRow.add(getRowContentsForRichText(post_content.post_body));
 	}
-	
 
 	if (post_content.commenting) {
 		Ti.API.info("commenting is enabled");
