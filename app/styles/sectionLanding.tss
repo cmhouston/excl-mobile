@@ -18,3 +18,9 @@
 	height: Ti.UI.SIZE,
 	top: "50dip"
 }
+
+"#noContentView":{
+	visible : false,
+	height: "0",
+	top: "0"
+}

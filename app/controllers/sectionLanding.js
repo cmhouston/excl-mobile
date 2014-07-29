@@ -37,6 +37,8 @@ var viewService = setPathForLibDirectory('customCalls/viewService');
 viewService = new viewService();
 var buttonService = setPathForLibDirectory('customCalls/buttonService');
 buttonService = new buttonService();
+var labelService = setPathForLibDirectory('customCalls/labelService');
+labelService = new labelService();
 
 // this line is use
 filter.setSectionScreenName(sectionScreenName);
@@ -95,6 +97,12 @@ function setPathForLibDirectory(libFile) {
 	}
 	return lib;
 };
+
+function openFilterModal(e) {
+	Alloy.Models.app.set('customizeLearningSet', true);
+	Alloy.createController('filterActivationModal').getView().open();
+	Alloy.Globals.navController.toggleMenu(false);
+}
 
 ///////////////////////////////////////////Begin TabTest Logic
 
@@ -243,26 +251,52 @@ function organizePosts(allPosts) {
 		updateFilterIdArray();
 		selectedFilters = filter.formatActiveFiltersIntoArray(Alloy.Collections.filter);
 		Ti.API.info("Filter list: " + JSON.stringify(selectedFilters));
+
+		Ti.API.info(">>>Sort before filter: " + JSON.stringify(dictOrderedPosts));
+
 		for (var i = 0; i < allPosts.length; i++) {
 			filter.sortFilteredContentIntoDict(selectedFilters, dictOrderedPosts, allPosts[i]);
 		}
+		if (JSON.stringify(dictOrderedPosts) == "{}") {
+			showDefaultError();
+		}
+		Ti.API.info(">>>Sort after filter: " + JSON.stringify(dictOrderedPosts));
 	} else {
-		Ti.API.info("Filter status: " + filterOn);
+		dictOrderedPosts["0"] = allPosts;
 	}
-	$.scrollView.removeAllChildren();
-	Ti.API.info("Cleared Page");
-
 	insertXNumberOfButtons(filterTabIds.length);
 	openFirstView(firstView);
-	for (var i = 0; i < allPosts.length; i++) {
-		filter.compileDictOfSections(allPosts[i], dictOrderedPosts, selectedSection);
-	}
+
 	Ti.API.info("Dict of Posts: " + JSON.stringify(dictOrderedPosts));
-	Ti.API.info("Parents: " + JSON.stringify(parentObjects));
+	Ti.API.info("Parents: " + JSON.stringify(filterTabIds));
 
 	filter.sortPostsIntoSections(dictOrderedPosts, parentObjects);
 	$.scrollView.height = Ti.UI.SIZE;
 	Ti.API.info("Finished Sorting");
+}
+
+function showDefaultError() {
+	Ti.API.info("Adding error");
+	var objectArgs = {
+		top : "0",
+		height : "250dip",
+		layout : "horizontal"
+	};
+	var view = viewService.createCustomView(objectArgs);
+	objectArgs = {
+		text : "To reconsider your life choices, "
+	};
+	var label = labelService.createCustomLabel(objectArgs);
+	objectArgs = {
+		title : "click here"
+	};
+	var button = buttonService.createCustomButton(objectArgs);
+	button.addEventListener("click", function(e) {
+		openFilterModal(e);
+	});
+	view.add(label);
+	view.add(button);
+	$.scrollView.add(view);
 }
 
 function updateFilterIdArray() {

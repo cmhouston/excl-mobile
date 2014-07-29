@@ -44,20 +44,6 @@ filterService.prototype.setAllInclusiveFilter = function(st) {
 	var allInclusiveFilter = st;
 };
 
-filterService.prototype.compileDictOfSections = function(post, dict, selectedSection) {
-	if (post.section) {
-		sectionArray = filterService.prototype.parseStringIntoArray(post.section, ", ");
-		for (var i = 0; i < sectionArray.length; i++) {
-			//Accounts for multiple sections per post
-			//Ti.API.info("Current section: " + sectionArray[i] + ", compared to: " + selectedSection + ", match: " + (sectionArray[i] == selectedSection));
-			if (sectionArray[i] == selectedSection) {
-				filterService.prototype.addItemArrayToDict(sectionArray[i], post, dict);
-			}
-		}
-		return dict;
-	}
-};
-
 filterService.prototype.parseStringIntoArray = function(st, deliniator) {
 	var output;
 	if (deliniator.length >= String(st).length) {
@@ -74,9 +60,6 @@ filterService.prototype.parseStringIntoArray = function(st, deliniator) {
 
 filterService.prototype.addItemArrayToDict = function(key, itemArray, dict) {
 	if (JSON.stringify(itemArray) != ["0"]) {
-
-		Ti.API.info("Section Name: " + key);
-
 		if (dict[key]) {
 			dict[key] = dict[key].concat(itemArray);
 		} else {
@@ -200,7 +183,7 @@ filterService.prototype.sortPostsIntoSections = function(dict, parentObjectArray
 						var postCollection = filterService.prototype.retrievePostDetails(dict, dictKeys[i]);
 						Ti.API.info("--Section and object id match.");
 						filterService.prototype.addPostsToViewAccordingToSection(dictKeys[i], dict, parentObjectArray[j], postCollection);
-						break;
+						i = dictLength;
 					} else if (i == dictLength - 1) {
 						var postCollection = filterService.prototype.retrievePostDetails(dict, dictKeys[i]);
 						Ti.API.info("--Section and object id do not match for all pairs. Add to 0.");
