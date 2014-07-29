@@ -72,8 +72,8 @@ function setPageTitle(name) {
 	$.navBar.setPageTitle(name);
 }
 
-function hideMenuBtnIfKioskMode(){
-	if (Alloy.Globals.adminModeController.isInKioskMode()){
+function hideMenuBtnIfKioskMode() {
+	if (Alloy.Globals.adminModeController.isInKioskMode()) {
 		$.navBar.hideMenuBtn();
 	}
 }
@@ -161,7 +161,7 @@ function displaySectionList(orderedSectionList, rawJson) {
 			text : orderedSectionList[i].key,
 			left : "5%",
 			font : {
-				
+
 				fontSize : labelService.countCharInTitleAndReturnFontSize(orderedSectionList[i].key, 26, 20, 5, 3),
 				fontWeight : "bold"
 			}
@@ -169,7 +169,7 @@ function displaySectionList(orderedSectionList, rawJson) {
 		var label = labelService.createCustomLabel(objectArgs);
 		if (detectDevice.isTablet()) {
 			label.font = {
-				
+
 				fontSize : labelService.countCharInTitleAndReturnFontSize(orderedSectionList[i].key, 35, 30, 5, 3),
 				fontWeight : "bold"
 			};
@@ -189,10 +189,21 @@ function addEvent(view, title, rawJson) {
 function openSection(view, title, rawJson) {
 	var analyticsTitle = getAnalyticsPageTitle() + '/' + title;
 	var analyticsLevel = "Section Landing";
-	var controller = Alloy.createController('sectionLanding', eval([args[0], rawJson["posts"], title, view.backgroundColor, analyticsTitle]));
+	var sectionPosts = getAllPostsForGivenSectionName(title, rawJson);
+	var controller = Alloy.createController('sectionLanding', eval([args[0], sectionPosts, title, view.backgroundColor, analyticsTitle]));
 	controller.setAnalyticsPageTitle(analyticsTitle);
 	controller.setAnalyticsPageLevel(analyticsLevel);
 	Alloy.Globals.navController.open(controller);
+}
+
+function getAllPostsForGivenSectionName(sectionName, rawJson) {
+	var jsonToReturn = [];
+	for (var i = 0; i < rawJson.posts.length; i++) {
+		if (rawJson.posts[i].section == sectionName){
+			jsonToReturn.push(rawJson.posts[i]);
+		}
+	}
+	return jsonToReturn;
 }
 
 function addSpinner() {

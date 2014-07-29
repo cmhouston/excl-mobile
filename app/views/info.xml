@@ -2,8 +2,7 @@
 	<Window class="container">
 		<View id="mainView">
 			<Widget id="navBar" src="navigationBar"/>	
-			<WebView id="InfoText"></WebView>
+			<WebView id="InfoText"></WebView> <!-- May need to switch to Scrollview -->
 		</View>
-		<!-- <ScrollView layout="vertical" id="scrollView" contentWidth="100%" height="100%" top="50dip"></ScrollView> -->
 	</Window>
 </Alloy>
