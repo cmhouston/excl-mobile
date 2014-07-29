@@ -43,11 +43,8 @@ function setPathForLibDirectory(libFile) {
 };
 
 function init() {
-	
-	Ti.API.info("Args: " + JSON.stringify(args));
-	
 	if (postArgs) {
-		Ti.API.info("Valid postargs found. Adding preview.");
+		Ti.API.info("Valid post args found. Adding preview.");
 		for (var i = 0; i < postArgs.length; i++) {
 			post = createPostView(eval(postArgs.at(i)));
 			$.backgroundContainer.add(post);
@@ -55,7 +52,7 @@ function init() {
 		$.backgroundContainer.height = Ti.UI.SIZE;
 		$.placeholderContainer.height = "0";
 	} else {
-		Ti.API.info("Invalid postargs found. Throwing Error.");
+		Ti.API.info("Invalid post args found. Throwing Error.");
 		post = createErrorView("There's no content specific for this age. Check above or change your filter!");
 		$.backgroundContainer.add(post);
 		$.backgroundContainer.height = Ti.UI.SIZE;

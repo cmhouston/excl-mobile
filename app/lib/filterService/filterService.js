@@ -192,14 +192,17 @@ filterService.prototype.sortPostsIntoSections = function(dict, parentObjectArray
 
 		for (var i = 0; i < parentObjectArray.length; i++) {
 			Ti.API.info(">> Section: " + JSON.stringify(dictKeys[i]) + ", Parent obj: " + JSON.stringify(parentObjectArray[i].id));
-			
-			var postCollection = filterService.prototype.retrievePostDetails(dict, dictKeys[i]);
-			if (parentObjectArray[i].id == dictKeys[i]) {	
-				Ti.API.info("Section and object id match.");
-				filterService.prototype.addPostsToViewAccordingToSection(dictKeys[i], dict, parentObjectArray[i], postCollection);
+			if (dictKeys[i]) {
+				var postCollection = filterService.prototype.retrievePostDetails(dict, dictKeys[i]);
+				if (parentObjectArray[i].id == dictKeys[i]) {
+					Ti.API.info("Section and object id match.");
+					filterService.prototype.addPostsToViewAccordingToSection(dictKeys[i], dict, parentObjectArray[i], postCollection);
+				} else {
+					Ti.API.info("Section and object id do not match. Add to 0.");
+					filterService.prototype.addPostsToViewAccordingToSection(dictKeys[i], dict, parentObjectArray[0], postCollection);
+				}
 			} else {
-				Ti.API.info("Section and object id do not match. Add to 0.");
-				filterService.prototype.addPostsToViewAccordingToSection(dictKeys[i], dict, parentObjectArray[0], postCollection);
+				Ti.API.info("Error: section is undefined.");
 			}
 		}
 	}
@@ -328,9 +331,6 @@ filterService.prototype.addPostsToViewAccordingToSection = function(section, dic
 };
 
 filterService.prototype.addPostPreview = function(postData, parentObject) {
-
-	Ti.API.info("postData added: " + JSON.stringify(postData) + ", Parent: " + JSON.stringify(parentObject));
-
 	var postPreview = Alloy.createController('postPreview', postData);
 	var view = postPreview.getView();
 	parentObject.add(view);
