@@ -1,9 +1,21 @@
 <Alloy>
-	<Window id="postLanding" class="container" backgroundColor='#FFFFFF'>
-		<View id="postLandingView" layout="vertical">
+	<Window class="container">
+		<View id="postLandingView">
 			<Widget src="navigationBar" id="navBar"/>
-			<ScrollView id="scroller" backgroundColo = "red">
-				<TableView id="tableView"/>
+			<View id="postLandingViewBody">
+				<ScrollView id="scroller">
+					<TableView id="tableView">
+						<TableViewRow id="headerRow" class="postTableViewRow"></TableViewRow>
+						<TableViewRow id="socialMediaButtonsRow" class="postTableViewRow" autoStyle="true">
+							<View id="centeredButtons" class="centeredButtons">
+								<Button id="commentingButton" class="socialMediaButtonHidden" onClick="comment" autoStyle="true"></Button>
+								<Button id="shareTextButton" class="socialMediaButtonHidden" onClick="shareText" autoStyle="true"></Button>
+								<Button id="sharePhotoButton" class="socialMediaButtonHidden" onClick="sharePhoto" autoStyle="true"></Button>
+							</View>
+						</TableViewRow>
+						<TableViewRow id="postBodyRow" class="postTableViewRow"></TableViewRow>
+					</TableView>
+				</ScrollView>
 				<View id="addNewCommentContainer"></View>
 				<View id="whiteCommentBox">
 					<View id="submitCommentFormView">
@@ -13,16 +25,16 @@
 						<Label id="insertEmailDisclaimer">*Optional and won't be shared</Label>
 						<TextArea id="insertComment"/>
 						<View id="buttonView">
-							<Button id="submitButton" />
-							<Button id="cancelCommentButton" />
+							<Button id="submitButton" onClick="clickSubmitComment" />
+							<Button id="cancelCommentButton" onClick="clickCancelComment" />
 						</View>
 					</View>
-					<View id="thankYouMessageView">
+					<View id="thankYouMessageView" onClick="clickThankYouMessage">
 						<Label id = "thankYouMessageComment" class="thankYouMessageComment" top="30%"/>
 					</View>
 					<Label id="submitYourCommentLabel">Submit Your Comment</Label>
 				</View>
-			</ScrollView>
+			</View>
 		</View>
 	</Window>
 </Alloy>

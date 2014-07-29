@@ -77,33 +77,14 @@ function setPathForLibDirectory(libFile) {
 
 $.onEnterKioskMode = function() {
 	$.navBar.onEnterKioskMode();
+	hideAllSharingButtons();
 };
 
 $.onExitKioskMode = function() {
 	$.navBar.onExitKioskMode();
+	showAllSharingButtons();
+	turnOffAppropriateSharingButtons();
 };
-
-/**
- * Controller Functions
- */
-function createPlainRowWithHeight(rowHeight) {
-	var row = Ti.UI.createTableViewRow({
-		height : rowHeight,
-		width : '100%',
-		top : '15dip',
-		backgroundColor : '#FFFFFF'
-	});
-
-	return row;
-}
-
-function fixPageSpacing() {
-	if (OS_IOS) {
-		$.tableView.bottom = "48dip";
-	} else {
-		$.tableView.bottom = "10dip";
-	}
-}
 
 function setPageTitle(name) {
 	if (name === "") {
@@ -116,102 +97,6 @@ function setPageTitle(name) {
 function hideMenuBtnIfKioskMode(){
 	if (Alloy.Globals.adminModeController.isInKioskMode()){
 		$.navBar.hideMenuBtn();
-	}
-}
-
-/*
- * Adds sharing buttons
- */
-function displaySocialMediaButtons(json) {
-	var row = createPlainRowWithHeight(Ti.UI.SIZE);
-	
-	var iconList = [];
-	var objectArgs = {
-		height : "30dip",
-		width : "30dip",
-		top : "2%"
-	};
-	if (detectDevice.isTablet()) {
-		objectArgs["height"] = "40dip";
-		objectArgs["width"] = "40dip";
-	}
-	addCommentingButton(json, row, iconList, objectArgs);
-	addTextSharingButton(json, row, iconList, objectArgs);
-	addImageSharingButton(json, row, iconList, objectArgs);
-	spaceIconsAccordingToNumberAdded(iconList);
-	
-	return row;
-}
-
-function addCommentingButton(json, row, iconList, objectArgs) {
-	if (json.commenting) {
-		var commentButton = buttonService.createCustomButton(objectArgs);
-		setCommentIconReady(commentButton);
-		commentButton.addEventListener('click', function(e) {
-			setCommentIconBusy(commentButton);
-			$.addNewCommentContainer.visible = ($.addNewCommentContainer.visible) ? false : true;
-			$.whiteCommentBox.visible = ($.whiteCommentBox.visible) ? false : true;
-			$.submitCommentFormView.visible = true;
-			$.insertName.value = $.insertEmail.value = $.insertComment.value = "";
-			$.thankYouMessageView.visible = false;
-			$.scroller.scrollTo(0, 0);
-			$.scroller.scrollingEnabled = false;
-			$.submitYourCommentLabel.text = "Submit Your Comment";
-			formatCommentBoxForIpad();
-		});
-
-		$.thankYouMessageView.addEventListener('click', function(e) {
-			$.whiteCommentBox.visible = false;
-			$.addNewCommentContainer.visible = false;
-			$.scroller.scrollingEnabled = false;
-			setCommentIconReady(commentButton);
-		});
-
-		$.cancelCommentButton.addEventListener('click', function(e) {
-			setCommentIconReady(commentButton);
-			$.insertName.blur();
-			$.insertEmail.blur();
-			$.insertComment.blur();
-			$.addNewCommentContainer.visible = ($.addNewCommentContainer.visible) ? false : true;
-			$.whiteCommentBox.visible = ($.whiteCommentBox.visible) ? false : true;
-			$.scroller.scrollTo(0, 0);
-			$.scroller.scrollingEnabled = true;
-		});
-
-		$.submitButton.addEventListener('click', function(e) {
-			verifyData(commentButton);
-			$.scroller.scrollTo(0, 0);
-		});
-		iconList.push(commentButton);
-		row.add(commentButton);
-	}
-}
-
-function addTextSharingButton(json, row, iconList, objectArgs) {
-	if (json.text_sharing && !Alloy.Globals.adminModeController.isInKioskMode()) {
-		var shareTextButton = sharingTextService.initiateTextShareButton(json, objectArgs);
-		iconList.push(shareTextButton);
-		row.add(shareTextButton);
-	}
-}
-
-function addImageSharingButton(json, row, iconList, objectArgs) {
-	if (json.image_sharing && !Alloy.Globals.adminModeController.isInKioskMode()) {
-		var shareImageButton = sharingImageService.initiateImageShareButton(json, objectArgs, $.postLanding);
-		iconList.push(shareImageButton);
-		row.add(shareImageButton);
-	}
-}
-
-function spaceIconsAccordingToNumberAdded(iconList) {
-	var listLength = iconList.length;
-	var maxLeftSpacingAsPercent = 90;
-	var distanceBetweenIcons = maxLeftSpacingAsPercent / (listLength + 1);
-
-	Ti.API.info("between: " + distanceBetweenIcons);
-
-	for (var i = 0; i < listLength; i++) {
-		iconList[i].left = distanceBetweenIcons * (i + 1) + "%";
 	}
 }
 
@@ -233,141 +118,15 @@ function setCommentIconBusy(button) {
 	}
 }
 
-function getImageRowFromPart(part) {
-	var row = createPlainRowWithHeight('200dip');
-	if (detectDevice.isTablet()) {
-		row.height = "40%";
-	}
-	imageView = Ti.UI.createImageView({
-		image : part.get('image'),
-		width : "90%",
-		height : Ti.UI.SIZE
-	});
-
-	row.add(imageView);
-	return row;
-
-}
-
-function getVideoRowFromPart(part) {
-	if (OS_ANDROID) {
-		return getVideoRowFromPartAndroid(part);
-	}
-	if (OS_IOS) {
-		return getVideoRowFromPartiOS(part);
-	}
-}
-
-function getVideoRowFromPartAndroid(part) {
-	var row = createPlainRowWithHeight('200dip');
-	row.add(getVideoThumbnailViewFromPartAndroid(part));
-	return row;
-}
-
-function getVideoThumbnailViewFromPartAndroid(part) {
-	var thumbnailView = Ti.UI.createView({	});
-	var thumbnailImageView = Ti.UI.createImageView({
-		image : part.get('thumbnail'),
+function createPlainRowWithHeight(rowHeight) {
+	var row = Ti.UI.createTableViewRow({
+		height : rowHeight,
 		width : '100%',
-		height : '100%'
+		top : '15dip',
+		backgroundColor : '#FFFFFF'
 	});
-	var playTriangle = Ti.UI.createImageView({
-		image : "/images/icons_android/Video-Player-icon-simple.png",
-	});
-	thumbnailView.add(thumbnailImageView);
-	thumbnailView.add(playTriangle);
-	//Add event listener- when thumbnail is clicked, open fullscreen video
-	thumbnailView.addEventListener('click', function(e) {
-		var video = Titanium.Media.createVideoPlayer({
-			url : part.get('video'),
-			fullscreen : true,
-			autoplay : true
-		});
-		video.addEventListener('load', function(e) {
-			Alloy.Globals.analyticsController.trackEvent("Videos", "Play", part.get('name'), 1);
-		});
 
-		doneButton = Ti.UI.createButton({
-			title : "Done",
-			top : "0dip",
-			height : "40dip",
-			left : "10dip",
-		});
-
-		doneButton.addEventListener('click', function(e) {
-			video.hide();
-			video.release();
-			video = null;
-		});
-		video.add(doneButton);
-
-	});
-	return thumbnailView;
-}
-
-function getVideoRowFromPartiOS(part) {
-	var row = createPlainRowWithHeight('200dip');
-	if (detectDevice.isTablet()) {
-		row.height = "40%";
-	}
-	var video = Titanium.Media.createVideoPlayer({
-		url : part.get('video'),
-		fullscreen : false,
-		autoplay : false,
-	});
-	video.addEventListener('load', function(e) {
-		Alloy.Globals.analyticsController.trackEvent("Videos", "Play", part.get('name'), 1);
-	});
-	row.add(video);
 	return row;
-}
-
-function getTextRowFromPart(part) {
-	var row = createPlainRowWithHeight(Ti.UI.SIZE);
-	var objectArgs = {
-		width : '94%',
-		right : '3%',
-		left : '3%',
-		color : '#232226',
-		font : {
-			
-			fontSize : '15dip',
-			fontWeight : 'normal',
-		},
-		text : part.get('body'),
-	};
-	var textBody = labelService.createCustomLabel(objectArgs);
-	if (detectDevice.isTablet()) {
-		textBody.font = {
-			
-			fontSize : "25dip"
-		};
-	}
-	row.add(textBody);
-	return row;
-}
-
-function getRichTextRowFromPart(part) {
-	var row = createPlainRowWithHeight(Ti.UI.SIZE);
-	var richText = part.get("rich");
-	if (richText) {
-		var webView = Ti.UI.createWebView({
-			html : part.get('rich'),
-			width : "100%",
-			showScrollbars : false,
-			disableBounce : true,
-			height : Ti.UI.SIZE
-		});
-		row.add(webView);
-	}
-	return row;
-}
-
-function addTableDataToTheView(tableData) {
-	$.tableView.height = Ti.UI.FILL;
-	// some extra margin after comments are displayed
-	$.tableView.data = tableData;
-	fixPageSpacing();
 }
 
 function creatingCommentTextHeading() {
@@ -385,7 +144,6 @@ function creatingCommentTextHeading() {
 		left : '3%',
 		color : '#232226',
 		font : {
-			
 			fontSize : '16dip',
 			fontWeight : 'bold',
 		},
@@ -397,13 +155,12 @@ function creatingCommentTextHeading() {
 	var commentHeading = labelService.createCustomLabel(objectArgs);
 	if (detectDevice.isTablet()) {
 		commentHeading.font = {
-			
 			fontSize : "30dip"
 		};
 	}
 	row.addEventListener('click', function(e) {
-		$.addNewCommentContainer.visible = ($.addNewCommentContainer.visible) ? false : true;
-		$.whiteCommentBox.visible = ($.whiteCommentBox.visible) ? false : true;
+		$.addNewCommentContainer.visible = true;
+		$.whiteCommentBox.visible = true;
 		$.submitCommentFormView.visible = true;
 		$.insertName.value = $.insertEmail.value = $.insertComment.value = "";
 		$.thankYouMessageView.visible = false;
@@ -411,7 +168,7 @@ function creatingCommentTextHeading() {
 		$.scroller.scrollingEnabled = false;
 	});
 	row.add(commentHeading);
-	tableData.push(row);
+	$.tableView.appendRow(row);
 }
 
 function displayThereAreNoCommentsToDisplayText() {
@@ -423,7 +180,6 @@ function displayThereAreNoCommentsToDisplayText() {
 		left : '3%',
 		color : '#48464e',
 		font : {
-			
 			fontSize : '13dip',
 			fontWeight : 'normal',
 		},
@@ -432,18 +188,16 @@ function displayThereAreNoCommentsToDisplayText() {
 	var noCommentText = labelService.createCustomLabel(objectArgs);
 	if (detectDevice.isTablet()) {
 		noCommentText.font = {
-			
 			fontSize : "25dip"
 		};
 	}
 	row.add(noCommentText);
-	tableData.push(row);
+	$.tableView.appendRow(row);
 }
 
 function addCommentToView(commentText, commentDate) {
 	createCommentText(commentText);
 	createCommentDate(commentDate);
-	fixPageSpacing();
 }
 
 function createCommentText(commentText) {
@@ -458,7 +212,6 @@ function createCommentText(commentText) {
 		left : '3%',
 		color : '#232226',
 		font : {
-			
 			fontSize : '13dip',
 			fontWeight : 'normal',
 		},
@@ -472,7 +225,7 @@ function createCommentText(commentText) {
 		};
 	}
 	row.add(text);
-	tableData.push(row);
+	$.tableView.appendRow(row);
 }
 
 function createCommentDate(commentDate) {
@@ -483,7 +236,6 @@ function createCommentDate(commentDate) {
 		left : '3%',
 		color : '#48464e',
 		font : {
-			
 			fontSize : '8dip',
 			fontWeight : 'normal',
 		},
@@ -492,12 +244,11 @@ function createCommentDate(commentDate) {
 	var date = labelService.createCustomLabel(objectArgs);
 	if (detectDevice.isTablet()) {
 		date.font = {
-			
 			fontSize : "17dip"
 		};
 	}
 	row.add(date);
-	tableData.push(row);
+	$.tableView.appendRow(row);
 }
 
 function displayComments(comments) {
@@ -512,7 +263,7 @@ function displayComments(comments) {
 	}
 
 	if (comments.length > commentsLengthLimit) {
-		var row = createPlainRowWithHeight(Ti.UI.FILL);
+		var row = createPlainRowWithHeight(Ti.UI.SIZE);
 		var objectArgs = {
 			top : "10dip",
 			width : '94%',
@@ -520,7 +271,6 @@ function displayComments(comments) {
 			left : '3%',
 			color : '#005ab3',
 			font : {
-				
 				fontSize : '13dip',
 				fontWeight : 'normal',
 			},
@@ -530,7 +280,6 @@ function displayComments(comments) {
 		var text = labelService.createCustomLabel(objectArgs);
 		if (detectDevice.isTablet()) {
 			text.font = {
-				
 				fontSize : "20dip"
 			};
 		}
@@ -538,16 +287,14 @@ function displayComments(comments) {
 
 		// if clicked, hide it and show the other comments
 		row.addEventListener('click', function(e) {
-			tableData.pop();
+			$.tableView.deleteRow(row);
 			// remove the last element, which is the "show more comments" row in this case
 			for (var i = commentsLengthLimit; i < comments.length; i++) {
 				addCommentToView(comments[i].body, comments[i].date);
 			}
-			addTableDataToTheView(tableData);
 		});
 
-		tableData.push(row);
-
+		$.tableView.appendRow(row);
 	}
 }
 
@@ -650,7 +397,6 @@ function sendComment(commentButton) {
 		hideSpinner();
 	});
 	setCommentIconReady(commentButton);
-
 }
 
 function setCommentSubmittedMessage() {
@@ -663,33 +409,192 @@ function setCommentSubmittedMessage() {
 function initializePage() {
 	setPageTitle(post_content.name);
 	hideMenuBtnIfKioskMode();
-	if (post_content.parts) {
-		// var tableData = [];
 
-		for (var i = 0; i < post_content.parts.length; i++) {
-			var part = Alloy.createModel('part', post_content.parts[i]);
-			part.set({
-				'thumbnail' : post_content.image
-			});
-			tableData.push(getRowFromPart(part));
-			if (i === 0) {
-				tableData.push(displaySocialMediaButtons(post_content));
-			}
-		}
-		if (post_content.commenting){
-			creatingCommentTextHeading();
-			var comments = post.getAllComments();
-			if (comments != false) {
-				displayComments(comments);
-			} else {
-				displayThereAreNoCommentsToDisplayText();
-			}
+	switch (post_content.post_header_type) {
+		case "image":
+			$.headerRow.add(getRowContentsForImage(post_content.post_header_url));
+			break;
+		case "video":
+			$.headerRow.add(getRowContentsForVideo(post_content.post_header_url));
+			break;
+		default:
+			break;
+	}
+	
+	if (post_content.post_body) {
+		$.postBodyRow.add(getRowContentsForRichText(post_content.post_body));
+	}
+
+	showAllSharingButtons();
+	turnOffAppropriateSharingButtons();
+
+	if (post_content.commenting) {
+		creatingCommentTextHeading();
+		var comments = post.getAllComments();
+		if (comments != false) {
+			displayComments(comments);
+		} else {
+			displayThereAreNoCommentsToDisplayText();
 		}
 	}
 
-
-	addTableDataToTheView(tableData);
 	formatCommentBoxForIpad();
+}
+
+function turnOffAppropriateSharingButtons() {
+	if (!post_content.commenting) {
+		$.resetClass($.commentingButton, "socialMediaButtonHidden");
+	}
+	if (!post_content.text_sharing) {
+		$.resetClass($.shareTextButton, "socialMediaButtonHidden");
+	}
+	if (!post_content.image_sharing) {
+		$.resetClass($.sharePhotoButton, "socialMediaButtonHidden");
+	}
+	if ((!post_content.commenting && !post_content.text_sharing && !post_content.image_sharing) || Alloy.Globals.adminModeController.isInKioskMode()) {
+		hideAllSharingButtons();
+	}
+}
+
+function hideAllSharingButtons() {
+	$.resetClass($.socialMediaButtonsRow, "hidden");
+	$.resetClass($.commentingButton, "socialMediaButtonHidden");
+	$.resetClass($.shareTextButton, "socialMediaButtonHidden");
+	$.resetClass($.sharePhotoButton, "socialMediaButtonHidden");
+}
+
+function showAllSharingButtons() {
+	$.resetClass($.socialMediaButtonsRow, "postTableViewRow");
+	$.resetClass($.commentingButton, "socialMediaButtonShown");
+	$.resetClass($.shareTextButton, "socialMediaButtonShown");
+	$.resetClass($.sharePhotoButton, "socialMediaButtonShown");
+}
+
+function clickThankYouMessage(e) {
+	$.whiteCommentBox.visible = false;
+	$.addNewCommentContainer.visible = false;
+	$.scroller.scrollingEnabled = false;
+	setCommentIconReady($.commentingButton);
+}
+
+function clickSubmitComment(e) {
+	$.insertName.blur();
+	$.insertEmail.blur();
+	$.insertComment.blur();
+	verifyData($.commentingButton);
+	$.scroller.scrollTo(0, 0);
+}
+
+function clickCancelComment(e) {
+	setCommentIconReady($.commentingButton);
+	$.insertName.blur();
+	$.insertEmail.blur();
+	$.insertComment.blur();
+	$.addNewCommentContainer.visible = false;
+	$.whiteCommentBox.visible = false;
+	$.scroller.scrollTo(0, 0);
+	$.scroller.scrollingEnabled = true;
+}
+
+function comment(e) {
+	setCommentIconBusy($.commentingButton);
+	$.addNewCommentContainer.visible = true;
+	$.whiteCommentBox.visible = true;
+	$.submitCommentFormView.visible = true;
+	$.insertName.value = $.insertEmail.value = $.insertComment.value = "";
+	$.thankYouMessageView.visible = false;
+	$.scroller.scrollTo(0, 0);
+	$.scroller.scrollingEnabled = false;
+	$.submitYourCommentLabel.text = "Submit Your Comment";
+	formatCommentBoxForIpad();
+}
+
+function shareText(e) {
+	sharingTextService.setIconBusy($.shareTextButton);
+	postTags = sharingTextService.getPostTags(post_content);
+	sharingTextService.initiateIntentText(postTags, $.shareTextButton);
+}
+
+function sharePhoto(e) {
+	sharingImageService.setIconBusy($.sharePhotoButton);
+	postTags = sharingImageService.getPostTags(post_content);
+	cameraService.takePicture(postTags, e.source, $.postLanding);
+	sharingImageService.setIconReady($.sharePhotoButton);
+}
+
+function getRowContentsForVideo(url) {
+	if (OS_ANDROID) {
+		return getRowContentsForVideoAndroid(url);
+	}
+	if (OS_IOS) {
+		return getRowContentsForVideoiOS(url);
+	}
+}
+
+function getRowContentsForVideoAndroid(url) {
+	var thumbnailView = Ti.UI.createView({	});
+	var thumbnailImageView = Ti.UI.createImageView({
+		image : post_content.image,
+		width : '100%',
+		height : '100%'
+	});
+	var playTriangle = Ti.UI.createImageView({
+		image : "/images/icons_android/Video-Player-icon-simple.png",
+	});
+	thumbnailView.add(thumbnailImageView);
+	thumbnailView.add(playTriangle);
+	//Add event listener- when thumbnail is clicked, open fullscreen video
+	thumbnailView.addEventListener('click', function(e) {
+		var video = Titanium.Media.createVideoPlayer({
+			url : url,
+			fullscreen : true,
+			autoplay : true
+		});
+		
+		video.addEventListener('load', function(e) {
+			//Alloy.Globals.analyticsController.trackEvent("Videos", "Play", part.get('name'), 1);
+		});
+
+		doneButton = Ti.UI.createButton({
+			title : "Done",
+			top : "0dip",
+			height : "40dip",
+			left : "10dip",
+		});
+
+		doneButton.addEventListener('click', function(e) {
+			video.hide();
+			video.release();
+			video = null;
+		});
+		video.add(doneButton);
+
+	});
+	return thumbnailView;
+}
+
+function getRowContentsForVideoiOS(url) {
+	var video = Titanium.Media.createVideoPlayer({
+		url : url,
+		fullscreen : false,
+		autoplay : false,
+	});
+	video.addEventListener('load', function(e) {
+		//Alloy.Globals.analyticsController.trackEvent("Videos", "Play", part.get('name'), 1);
+	});
+	return video;
+}
+
+function getRowContentsForImage(url) {
+	imageView = Ti.UI.createImageView({ image : url });
+	$.addClass(imageView, "headerImage");
+	return imageView;
+}
+
+function getRowContentsForRichText(text) {
+	var webView = Ti.UI.createWebView({ html : text	});
+	$.addClass(webView, "postWebView");
+	return webView;
 }
 
 function formatCommentBoxForIpad() {
@@ -698,46 +603,22 @@ function formatCommentBoxForIpad() {
 		$.whiteCommentBox.width = "500dip";
 		$.buttonView.height = "75dip";
 		$.insertNameDisclaimer.font = {
-			
 			fontSize : "15dip"
 		};
 		$.insertEmailDisclaimer.font = {
-			
 			fontSize : "15dip"
 		};
 		$.insertName.height = "50dip";
 		$.insertEmail.height = "50dip";
 		$.insertComment.height = "300dip";
 		$.cancelCommentButton.font = {
-			
 			fontSize : '25dip',
 			fontWeight : 'bold'
 		};
 		$.submitButton.font = {
-			
 			fontSize : '25dip',
 			fontWeight : 'bold'
 		};
-	}
-}
-
-function getRowFromPart(part) {
-	switch (part.get('type')) {
-	case 'image':
-		return getImageRowFromPart(part);
-		break;
-	case 'text':
-		return getTextRowFromPart(part);
-		break;
-	case 'video':
-		return getVideoRowFromPart(part);
-		break;
-	case 'rich':
-		return getRichTextRowFromPart(part);
-		break;
-	default:
-		return null;
-		break;
 	}
 }
 

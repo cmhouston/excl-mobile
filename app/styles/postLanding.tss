@@ -2,23 +2,123 @@
 ".container": {
 	navBarHidden: true,
 	fullscreen: true,
-	height: '100%'
+	backgroundColor: "#ffffff"
+}
+
+"#postLandingView": {
+	height: Ti.UI.FILL,
+	width: Ti.UI.FILL,
+	layout: "vertical"
+}
+
+"postLandingViewBody": {
+	height: Ti.UI.FILL,
+	width: Ti.UI.FILL,
+	layout: "composite"
 }
 
 "#scroller": {
-	height: '100%',
-	contentHeight: 'auto',
-	bottom: '48dip'
+	top: "0",
+	height: Ti.UI.FILL,
+	width: Ti.UI.FILL,
+	scrollType: 'vertical',
+	layout: "vertical"
 }
 
 "#tableView":{
-	top: "0",
-	height: Ti.UI.AUTO,
+	height: Ti.UI.FILL,
 	separatorColor: "transparent"
 }
 
 "#tableView[platform=ios]":{
 	selectionStyle: Titanium.UI.iPhone.TableViewCellSelectionStyle.NONE
+}
+
+".postTableViewRow": {
+	height : Ti.UI.SIZE
+}
+
+".hidden": {
+	height: "0"
+}
+
+"#headerRow": {
+	height: "200dip"
+}
+
+"#headerRow[formFactor=tablet]": {
+	height: "300dip"
+}
+
+".headerImage": {
+	height: Ti.UI.SIZE
+}
+
+".socialMediaButtonShown": {
+	height : "40dip",
+	width : "40dip",
+	left : "20dip",
+	right: "20dip",
+	visible: true
+}
+
+".socialMediaButtonHidden": {
+	left: "0",
+	right: "0",
+	height: "0",
+	width: "0",
+	visible: false
+}
+
+"#socialMediaButtonsRow": {
+	layout: "composite",
+	width: "100%"
+}
+
+".centeredButtons": {
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	layout: "horizontal",
+	horizontalWrap: false
+}
+
+"#commentingButton": {
+	backgroundImage: "/images/icons_ios/comment_ready.png"
+}
+
+"#commentingButton[platform=android]": {
+	backgroundImage: "/images/icons_android/comment_ready.png"
+}
+
+"#shareTextButton": {
+	backgroundImage: "/images/icons_ios/share_ready.png"
+}
+
+"#shareTextButton[platform=android]": {
+	backgroundImage: "/images/icons_android/share_ready.png"
+}
+
+"#sharePhotoButton": {
+	backgroundImage: "/images/icons_ios/camera_ready.png"
+}
+
+"#sharePhotoButton[platform=android]": {
+	backgroundImage: "/images/icons_android/camera_ready.png"
+}
+
+".postWebView": {
+	height: Ti.UI.SIZE,
+	showScrollbars : false,
+	disableBounce : true,
+	width: Ti.UI.FILL
+}
+
+".postWebView[platform=ios]": {
+	scalesPageToFit: true
+}
+
+".postWebView[platform=android]": {
+	scalesPageToFit: false
 }
 
 "#addNewCommentContainer":{
@@ -35,10 +135,11 @@
 	backgroundColor: 'white',
 	height:'430dip',
 	width:'260dip',
-	top: '0%',
+	top: '15dip',
 	opacity: '1.0',
-	visible: false,
 	backgroundColor: '#FFFFFF',
+	zIndex: "15",
+	visible: false
 }
 
 "#submitYourCommentLabel":{
