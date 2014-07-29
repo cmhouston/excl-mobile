@@ -25,11 +25,11 @@
 						<Label id="insertEmailDisclaimer">*Optional and won't be shared</Label>
 						<TextArea id="insertComment"/>
 						<View id="buttonView">
-							<Button id="submitButton" />
-							<Button id="cancelCommentButton" />
+							<Button id="submitButton" onClick="clickSubmitComment" />
+							<Button id="cancelCommentButton" onClick="clickCancelComment" />
 						</View>
 					</View>
-					<View id="thankYouMessageView">
+					<View id="thankYouMessageView" onClick="clickThankYouMessage">
 						<Label id = "thankYouMessageComment" class="thankYouMessageComment" top="30%"/>
 					</View>
 					<Label id="submitYourCommentLabel">Submit Your Comment</Label>

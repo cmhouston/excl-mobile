@@ -124,7 +124,7 @@
 	backgroundColor: 'white',
 	height:'430dip',
 	width:'260dip',
-	top: '0',
+	top: '15dip',
 	opacity: '1.0',
 	backgroundColor: '#FFFFFF',
 	zIndex: "15",
