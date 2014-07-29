@@ -109,7 +109,8 @@
 ".postWebView": {
 	height: Ti.UI.SIZE,
 	showScrollbars : false,
-	disableBounce : true
+	disableBounce : true,
+	width: Ti.UI.FILL
 }
 
 ".postWebView[platform=ios]": {
