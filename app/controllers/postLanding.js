@@ -115,6 +115,17 @@ function setCommentIconBusy(button) {
 	}
 }
 
+function createPlainRowWithHeight(rowHeight) {
+	var row = Ti.UI.createTableViewRow({
+		height : rowHeight,
+		width : '100%',
+		top : '15dip',
+		backgroundColor : '#FFFFFF'
+	});
+
+	return row;
+}
+
 function creatingCommentTextHeading() {
 	var row = createPlainRowWithHeight('10%');
 	if (OS_IOS) {
@@ -156,7 +167,7 @@ function creatingCommentTextHeading() {
 		$.scroller.scrollingEnabled = false;
 	});
 	row.add(commentHeading);
-	tableData.push(row);
+	$.tableView.appendRow(row);
 }
 
 function displayThereAreNoCommentsToDisplayText() {
@@ -181,13 +192,12 @@ function displayThereAreNoCommentsToDisplayText() {
 		};
 	}
 	row.add(noCommentText);
-	tableData.push(row);
+	$.tableView.appendRow(row);
 }
 
 function addCommentToView(commentText, commentDate) {
 	createCommentText(commentText);
 	createCommentDate(commentDate);
-	fixPageSpacing();
 }
 
 function createCommentText(commentText) {
@@ -216,7 +226,7 @@ function createCommentText(commentText) {
 		};
 	}
 	row.add(text);
-	tableData.push(row);
+	$.tableView.appendRow(row);
 }
 
 function createCommentDate(commentDate) {
@@ -241,7 +251,7 @@ function createCommentDate(commentDate) {
 		};
 	}
 	row.add(date);
-	tableData.push(row);
+	$.tableView.appendRow(row);
 }
 
 function displayComments(comments) {
@@ -274,7 +284,6 @@ function displayComments(comments) {
 		var text = labelService.createCustomLabel(objectArgs);
 		if (detectDevice.isTablet()) {
 			text.font = {
-				
 				fontSize : "20dip"
 			};
 		}
@@ -282,15 +291,14 @@ function displayComments(comments) {
 
 		// if clicked, hide it and show the other comments
 		row.addEventListener('click', function(e) {
-			tableData.pop();
+			$.tableView.deleteRow(row);
 			// remove the last element, which is the "show more comments" row in this case
 			for (var i = commentsLengthLimit; i < comments.length; i++) {
 				addCommentToView(comments[i].body, comments[i].date);
 			}
-			addTableDataToTheView(tableData);
 		});
 
-		tableData.push(row);
+		$.tableView.appendRow(row);
 
 	}
 }
@@ -423,17 +431,20 @@ function initializePage() {
 	}
 	
 
-	// if (post_content.commenting) {
-		// creatingCommentTextHeading();
-		// var comments = post.getAllComments();
-		// if (comments != false) {
-			// displayComments(comments);
-		// } else {
-			// displayThereAreNoCommentsToDisplayText();
-		// }
-	// }
-// 
-	// formatCommentBoxForIpad(); 
+	if (post_content.commenting) {
+		Ti.API.info("commenting is enabled");
+		creatingCommentTextHeading();
+		var comments = post.getAllComments();
+		if (comments != false) {
+			Ti.API.info('Displaying comments...');
+			displayComments(comments);
+		} else {
+			Ti.API.info('No comments to display.');
+			displayThereAreNoCommentsToDisplayText();
+		}
+	}
+
+	formatCommentBoxForIpad(); 
 
 }
 
@@ -464,7 +475,6 @@ function clickCancelComment(e) {
 }
 
 function comment(e) {
-	Ti.API.info("clicked comment button");
 	setCommentIconBusy($.commentingButton);
 	$.addNewCommentContainer.visible = true;
 	$.whiteCommentBox.visible = true;
