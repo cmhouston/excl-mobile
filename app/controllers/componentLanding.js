@@ -152,6 +152,7 @@ function displaySectionList(orderedSectionList, rawJson) {
 			backgroundColor : gradientColors[gradientColorsCount],
 			layout : 'horizontal'
 		});
+		
 		addEvent(view, orderedSectionList[i].key, rawJson);
 
 		objectArgs = {

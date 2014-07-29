@@ -93,7 +93,7 @@ function setPathForLibDirectory(libFile) {
 		lib = require(libFile);
 	}
 	return lib;
-};
+}
 
 function addSpinner() {
 	loadingSpinnerView.add(spinner);
@@ -155,8 +155,12 @@ function populateWindow(json) {
 		}
 	}
 	createExhibitsCarousel(json.data.museum.exhibits);
-	createComponentsScrollView(json.data.museum.exhibits);
+	
 	addClickListenerToHeadingBar(json.data.museum.exhibits);
+	
+	setTimeout(function(){
+		createComponentsScrollView(json.data.museum.exhibits);
+	}, 500);
 }
 
 function createExhibitsCarousel(exhibits) {
@@ -282,11 +286,11 @@ function addPagingArrowsToView(view, pageNum, numOfPages){
 		var leftArrow = Ti.UI.createImageView({
 			id: "leftArrow",
 			left: 0,
-			bottom: "10%",
-			height: "20%",
+			bottom: "15%",
+			height: "15%",
 			width: "15%",
-			backgroundColor: "white",
-			image: iconService.getImageFilename("exhibit_next.png")
+			backgroundColor: "#AAF200",//orange#FF6600",
+			image: iconService.getImageFilename("triple_arrow_right.png")
 		});
 		
 		leftArrow.addEventListener('click', function(e){
@@ -301,11 +305,11 @@ function addPagingArrowsToView(view, pageNum, numOfPages){
 		var rightArrow = Ti.UI.createImageView({
 			id: "rightArrow",
 			right: 0,
-			top: "10%",
-			height: "20%",
+			top: "15%",
+			height: "15%",
 			width: "15%",
-			backgroundColor: "white",
-			image: iconService.getImageFilename("exhibit_previous.png")
+			backgroundColor: "#AAF200",//orange#FF6600",
+			image: iconService.getImageFilename("triple_arrow_left.png")
 		});
 		
 		rightArrow.addEventListener('click', function(e){
@@ -327,8 +331,8 @@ function createPagingArrows(pageNum, numOfPages){
 	if(pageNum != 0 && numOfPages != 1){
 		var leftArrow = Ti.UI.createImageView({
 			left: 0,
-			bottom: "10%",
-			height: "20%",
+			bottom: "15%",
+			height: "10%",
 			width: "15%",
 			backgroundColor: "white",
 			image: iconService.getImageFilename("exhibit_next.png")
@@ -357,7 +361,6 @@ function createPagingArrows(pageNum, numOfPages){
 function createExhibitTitleLabel(name) {
 	var titleLabelView = Ti.UI.createView({
 		top : 0,
-		height : Ti.UI.SIZE,
 		backgroundColor : '#000',
 		height: getExhibitTitleLabelHeight()
 	});
@@ -464,7 +467,6 @@ function onExhibitsClick(exhibits) {
 				fontSize : "25dip"
 			};
 		}
-		$.headingLabel.text = "Go Back";
 		if (detectDevice.isTablet()) {
 			$.headingLabel.font = {
 
@@ -472,33 +474,11 @@ function onExhibitsClick(exhibits) {
 				fontWeight : 'bold'
 			};
 		}
-
 		animateTopViewDown();
 
-		/*var slideOut = Ti.UI.createAnimation({
-			height : defaultComponentHeight,
-			duration : 300,
-			curve : Titanium.UI.ANIMATION_CURVE_EASE_IN_OUT
-		});
-		if (detectDevice.isTablet()) {
-			slideOut.height = ipadComponentHeight;
-		}
-
-		$.bottomView.height = defaultComponentHeight;
-		if (detectDevice.isTablet()) {
-			$.bottomView.height = ipadComponentHeight;
-		}
-		$.bottomView.animate(slideOut);//*/
 	} else {
 		$.headingLabel.text = "Explore This " + json.data.museum.exhibit_label;
 		animateTopViewUp();
-
-		/*var slideIn = Ti.UI.createAnimation({
-			height : '0dip',
-			duration : 300,
-			curve : Titanium.UI.ANIMATION_CURVE_EASE_IN_OUT
-		});
-		$.bottomView.animate(slideIn);//*/
 	}
 }
 
@@ -513,7 +493,7 @@ function animateTopViewDown(){
 	});
 	setTimeout(function(e){
 		$.topView.top = topMeasurement;
-		Ti.API.info("$.topView.top = " + $.topView.top);
+		$.headingLabel.text = "Go Back";
 	}, animationDuration);
 	
 }
@@ -526,7 +506,6 @@ function animateTopViewUp(){
 	});
 	setTimeout(function(e){
 		$.topView.top = 0;
-		Ti.API.info("$.topView.top = " + $.topView.top);
 	}, animationDuration);
 }
 
@@ -550,18 +529,15 @@ function makeDefaultUnitsFromDip(str){
 }
 
 function stripUnitsOffMeasurement(str){
-	//str = str + "";
-	Ti.API.info("stripUnits will return " + parseInt(str) + "from str " + str);
 	return parseInt(str);
 }
 
 function onExhibitsScroll(e, exhibits) {
-	animateTopViewUp();
-
 	var index = $.exhibitsCarousel.currentPage;
 	$.headingLabel.text = "Explore This " + json.data.museum.exhibit_label;
 	$.exhibitInfoLabel.text = exhibits[index].long_description;
 	
+	animateTopViewUp();
 	setTimeout(function(){
 		changeVisibleComponents(e);
 	}, 300);
@@ -579,6 +555,7 @@ function createComponentsScrollView(exhibits) {
 	currExhibitId = exhibits[0].id;
 
 	for (var i = 0; i < exhibits.length; i++) {
+		defaultComponentHeight = getComponentImageHeight();
 		componentsInExhibit[exhibits[i].id] = Ti.UI.createView({
 			layout : 'horizontal',
 			horizontalWrap : false,
@@ -586,7 +563,7 @@ function createComponentsScrollView(exhibits) {
 			height : defaultComponentHeight
 		});
 		if (detectDevice.isTablet()) {
-			componentsInExhibit[exhibits[i].id].height = ipadComponentHeight;
+			componentsInExhibit[exhibits[i].id].height = defaultComponentHeight;//ipadComponentHeight;
 		}
 		for (var j = 0; j < exhibits[i].components.length; j++) {
 			var component = createLabeledPicView(exhibits[i].components[j], '20dip');
@@ -608,6 +585,19 @@ function createComponentsScrollView(exhibits) {
 		componentsInExhibit[exhibits[i].id].width = 0;
 	}
 	componentsInExhibit[currExhibitId].width = Ti.UI.SIZE;
+}
+
+function getComponentImageHeight(){
+	var headingLabelViewHeight = stripUnitsOffMeasurement($.headingLabelView.height);
+	var componentScrollViewHeadingHeight = stripUnitsOffMeasurement($.componentScrollViewHeading.height);
+	var infoViewHeight = $.infoView.toImage().height;
+	Ti.API.info("headingLabelViewHeight: " + headingLabelViewHeight + " componentScrollViewHeadingHeight: " + componentScrollViewHeadingHeight + " infoViewHeight: " + infoViewHeight);
+	if(OS_ANDROID){
+		headingLabelViewHeight = detectDevice.dipToPx(headingLabelViewHeight);
+		componentScrollViewHeadingHeight = detectDevice.dipToPx(componentScrollViewHeadingHeight);
+	}
+	
+	return (infoViewHeight - headingLabelViewHeight - componentScrollViewHeadingHeight - 6);
 }
 
 function openComponent(e, componentImageUrl) {
