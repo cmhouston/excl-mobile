@@ -54,6 +54,7 @@ filterService.prototype.compileDictOfSections = function(post, dict, selectedSec
 				filterService.prototype.addItemArrayToDict(sectionArray[i], post, dict);
 			}
 		}
+		return dict;
 	}
 };
 
@@ -73,9 +74,13 @@ filterService.prototype.parseStringIntoArray = function(st, deliniator) {
 
 filterService.prototype.addItemArrayToDict = function(key, itemArray, dict) {
 	if (JSON.stringify(itemArray) != ["0"]) {
+
+		Ti.API.info("Section Name: " + key);
+
 		if (dict[key]) {
 			dict[key] = dict[key].concat(itemArray);
 		} else {
+			Ti.API.info("10100101010101");
 			dict[key] = [].concat(itemArray);
 		}
 	} else {
@@ -84,6 +89,10 @@ filterService.prototype.addItemArrayToDict = function(key, itemArray, dict) {
 };
 
 filterService.prototype.checkIfArrayInArray = function(arySmall, aryLarge) {
+	
+	Ti.API.info("arySmall: " + JSON.stringify(arySmall));
+	Ti.API.info("aryLarge: " + JSON.stringify(aryLarge));
+	
 	var lengthSmall = arySmall.length;
 	var lengthLarge = aryLarge.length;
 	var copySmall = [];
@@ -130,7 +139,7 @@ filterService.prototype.checkIfArrayHasOnlyZero = function(ary) {
 
 filterService.prototype.replaceEmptyArrayWithZero = function(ary) {
 	if (ary == "a:0:{}") {
-		return "0";
+		return ["0"];
 	} else {
 		return ary;
 	}
@@ -171,26 +180,38 @@ filterService.prototype.sortPostsIntoSections = function(dict, parentObjectArray
 	var dictKeys = filterService.prototype.returnDictKeys(dict);
 	var dictLength = dictKeys.length;
 
-	if (dictLength == 0) {
-		//No content found (no content that matches all filters). Throw Error.
-		parentObjectArray[0].add(filterService.prototype.generateErrorMessage(errorNoContent));
-	} else if (dictLength == 1 && dict[allInclusiveFilter] == "") {
-		//Only all inclusive category thrown and its empty. Throw Error.
-		parentObjectArray[0].add(filterService.prototype.generateErrorMessage(errorFilterSelectionHasNoResults));
-	} else {
-		//Content found. Build the posts. Cycle through the sections/dictKeys and the tab onto which it is added.
-		
-		Ti.API.info("All Sections: " + JSON.stringify(dictKeys));
-		
-		for (var i = 0; i < dictLength; i++) {
+	// if (dictLength == 0) {
+	// //No content found (no content that matches all filters). Throw Error.
+	// parentObjectArray[0].add(filterService.prototype.generateErrorMessage(errorNoContent));
+	// } else if (dictLength == 1 && dict[allInclusiveFilter] == "") {
+	// //Only all inclusive category thrown and its empty. Throw Error.
+	// parentObjectArray[0].add(filterService.prototype.generateErrorMessage(errorFilterSelectionHasNoResults));
+	// } else {
+	//Content found. Build the posts. Cycle through the sections/dictKeys and the tab onto which it is added.
 
-			Ti.API.info("Parent obj: " + JSON.stringify(parentObjectArray[i].id));
-			Ti.API.info("Section: " + JSON.stringify(dictKeys[i]));
+	Ti.API.info("All Sections 1: " + JSON.stringify(dictKeys));
 
-			var postCollection = filterService.prototype.retrievePostDetails(dict, dictKeys[i]);
-			filterService.prototype.addPostsToViewAccordingToSection(dictKeys[i], dict, parentObjectArray[i], postCollection);
-		}
+	// Ti.API.info("parentObjectArray: " + JSON.stringify(parentObjectArray));
+	//
+	// if (dictKeys.indexOf("0") != -1 && dictKeys.length > 1) {
+	// var tempAry = [];
+	// for (var i = 1; i < dictKeys.length; i++) {
+	// tempAry.push(dictKeys[i]);
+	// }
+	// dictKeys = tempAry;
+	// }
+	// Ti.API.info("All Sections 2: " + JSON.stringify(dictKeys));
+	//Ti.API.info("parentObjectArray 2 (no 0): " + JSON.stringify(parentObjectArray));
+
+	for (var i = 0; i < parentObjectArray.length; i++) {
+
+		Ti.API.info(">> Section: " + JSON.stringify(dictKeys[i]) + ", Parent obj: " + JSON.stringify(parentObjectArray[i].id));
+
+		var postCollection = filterService.prototype.retrievePostDetails(dict, dictKeys[i]);
+		filterService.prototype.addPostsToViewAccordingToSection(dictKeys[i], dict, parentObjectArray[i], postCollection);
+		//filterService.prototype.addPostsToViewAccordingToSection(dictKeys[0], dict, parentObjectArray[i], postCollection);
 	}
+	//}
 };
 
 filterService.prototype.generateErrorMessage = function(msg) {
@@ -259,8 +280,6 @@ filterService.prototype.formatActiveFiltersIntoArray = function(ary) {
 	var newAry = [];
 	ary = ary.toJSON();
 
-	Ti.API.info("Format this: " + JSON.stringify(ary));
-
 	for (var i = 0; i < ary.length; i++) {
 		if (ary[i].active == true) {
 			newAry.push(ary[i].name);
@@ -273,21 +292,19 @@ filterService.prototype.formatActiveFiltersIntoArray = function(ary) {
 filterService.prototype.sortFilteredContentIntoDict = function(selectedFilters, dictOrderedPostsByFilter, post) {
 	var postFilterCategories = filterService.prototype.replaceEmptyArrayWithZero(post.age_range);
 	postFilterCategories = filterService.prototype.parseStringIntoArray(String(postFilterCategories), ", ");
-	if (filterService.prototype.checkIfSelectedFiltersContainedInPostFilters(selectedFilters, postFilterCategories)) {
-		filterService.prototype.addItemArrayToDict("0", post, dictOrderedPostsByFilter);
+	if (filterService.prototype.checkIfArrayInArray(selectedFilters, postFilterCategories) && selectedFilters.length != 2) {
+		filterService.prototype.addItemArrayToDict("itshappening", post, dictOrderedPostsByFilter);
+	} else if (filterService.prototype.checkIfArrayHasOnlyZero(postFilterCategories) && selectedFilters.length != 2) {
+		filterService.prototype.addItemArrayToDict("itshappening101", post, dictOrderedPostsByFilter);
 	} else {
 		for (var i = 0; i < selectedFilters.length; i++) {
 			var itemArray = filterService.prototype.sortPostIntoApplicableSection(postFilterCategories, selectedFilters[i], post);
-			filterService.prototype.addItemArrayToDict(selectedFilters[i], itemArray, dictOrderedPostsByFilter);
+			if (Alloy.Models.app.get("customizeLearningEnabled")) {
+				filterService.prototype.addItemArrayToDict(selectedFilters[i], itemArray, dictOrderedPostsByFilter);
+			} else {
+				filterService.prototype.addItemArrayToDict("whyisthishappening", itemArray, dictOrderedPostsByFilter);
+			}
 		}
-	}
-};
-
-filterService.prototype.checkIfSelectedFiltersContainedInPostFilters = function(selectedFilters, postFilterCategories) {
-	if ((filterService.prototype.checkIfArrayInArray(selectedFilters, postFilterCategories) || filterService.prototype.checkIfArrayHasOnlyZero(postFilterCategories)) && selectedFilters.length != 2) {
-		return true;
-	} else {
-		return false;
 	}
 };
 
@@ -315,6 +332,9 @@ filterService.prototype.addPostsToViewAccordingToSection = function(section, dic
 };
 
 filterService.prototype.addPostPreview = function(postData, parentObject) {
+
+	Ti.API.info("postData added: " + JSON.stringify(postData) + ", Parent: " + JSON.stringify(parentObject));
+
 	var postPreview = Alloy.createController('postPreview', postData);
 	var view = postPreview.getView();
 	parentObject.add(view);

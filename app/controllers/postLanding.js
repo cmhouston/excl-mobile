@@ -97,50 +97,6 @@ function hideMenuBtnIfKioskMode(){
 	}
 }
 
-function addCommentingButton(json, row, iconList, objectArgs) {
-	if (json.commenting) {
-		var commentButton = buttonService.createCustomButton(objectArgs);
-		setCommentIconReady(commentButton);
-		commentButton.addEventListener('click', function(e) {
-			setCommentIconBusy(commentButton);
-			$.addNewCommentContainer.visible = ($.addNewCommentContainer.visible) ? false : true;
-			$.whiteCommentBox.visible = ($.whiteCommentBox.visible) ? false : true;
-			$.submitCommentFormView.visible = true;
-			$.insertName.value = $.insertEmail.value = $.insertComment.value = "";
-			$.thankYouMessageView.visible = false;
-			$.scroller.scrollTo(0, 0);
-			$.scroller.scrollingEnabled = false;
-			$.submitYourCommentLabel.text = "Submit Your Comment";
-			formatCommentBoxForIpad();
-		});
-
-		$.thankYouMessageView.addEventListener('click', function(e) {
-			$.whiteCommentBox.visible = false;
-			$.addNewCommentContainer.visible = false;
-			$.scroller.scrollingEnabled = false;
-			setCommentIconReady(commentButton);
-		});
-
-		$.cancelCommentButton.addEventListener('click', function(e) {
-			setCommentIconReady(commentButton);
-			$.insertName.blur();
-			$.insertEmail.blur();
-			$.insertComment.blur();
-			$.addNewCommentContainer.visible = ($.addNewCommentContainer.visible) ? false : true;
-			$.whiteCommentBox.visible = ($.whiteCommentBox.visible) ? false : true;
-			$.scroller.scrollTo(0, 0);
-			$.scroller.scrollingEnabled = true;
-		});
-
-		$.submitButton.addEventListener('click', function(e) {
-			verifyData(commentButton);
-			$.scroller.scrollTo(0, 0);
-		});
-		iconList.push(commentButton);
-		row.add(commentButton);
-	}
-}
-
 function setCommentIconReady(button) {
 	buttonIcon = "comment_ready.png";
 	if (OS_IOS) {
@@ -157,6 +113,17 @@ function setCommentIconBusy(button) {
 	} else if (OS_ANDROID) {
 		button.backgroundImage = imageFilePathAndroid + buttonIcon;
 	}
+}
+
+function createPlainRowWithHeight(rowHeight) {
+	var row = Ti.UI.createTableViewRow({
+		height : rowHeight,
+		width : '100%',
+		top : '15dip',
+		backgroundColor : '#FFFFFF'
+	});
+
+	return row;
 }
 
 function creatingCommentTextHeading() {
@@ -200,7 +167,7 @@ function creatingCommentTextHeading() {
 		$.scroller.scrollingEnabled = false;
 	});
 	row.add(commentHeading);
-	tableData.push(row);
+	$.tableView.appendRow(row);
 }
 
 function displayThereAreNoCommentsToDisplayText() {
@@ -225,13 +192,12 @@ function displayThereAreNoCommentsToDisplayText() {
 		};
 	}
 	row.add(noCommentText);
-	tableData.push(row);
+	$.tableView.appendRow(row);
 }
 
 function addCommentToView(commentText, commentDate) {
 	createCommentText(commentText);
 	createCommentDate(commentDate);
-	fixPageSpacing();
 }
 
 function createCommentText(commentText) {
@@ -260,7 +226,7 @@ function createCommentText(commentText) {
 		};
 	}
 	row.add(text);
-	tableData.push(row);
+	$.tableView.appendRow(row);
 }
 
 function createCommentDate(commentDate) {
@@ -285,7 +251,7 @@ function createCommentDate(commentDate) {
 		};
 	}
 	row.add(date);
-	tableData.push(row);
+	$.tableView.appendRow(row);
 }
 
 function displayComments(comments) {
@@ -318,7 +284,6 @@ function displayComments(comments) {
 		var text = labelService.createCustomLabel(objectArgs);
 		if (detectDevice.isTablet()) {
 			text.font = {
-				
 				fontSize : "20dip"
 			};
 		}
@@ -326,15 +291,14 @@ function displayComments(comments) {
 
 		// if clicked, hide it and show the other comments
 		row.addEventListener('click', function(e) {
-			tableData.pop();
+			$.tableView.deleteRow(row);
 			// remove the last element, which is the "show more comments" row in this case
 			for (var i = commentsLengthLimit; i < comments.length; i++) {
 				addCommentToView(comments[i].body, comments[i].date);
 			}
-			addTableDataToTheView(tableData);
 		});
 
-		tableData.push(row);
+		$.tableView.appendRow(row);
 
 	}
 }
@@ -467,23 +431,51 @@ function initializePage() {
 	}
 	
 
-	// if (post_content.commenting) {
-		// creatingCommentTextHeading();
-		// var comments = post.getAllComments();
-		// if (comments != false) {
-			// displayComments(comments);
-		// } else {
-			// displayThereAreNoCommentsToDisplayText();
-		// }
-	// }
-// 
-	// formatCommentBoxForIpad(); 
+	if (post_content.commenting) {
+		Ti.API.info("commenting is enabled");
+		creatingCommentTextHeading();
+		var comments = post.getAllComments();
+		if (comments != false) {
+			Ti.API.info('Displaying comments...');
+			displayComments(comments);
+		} else {
+			Ti.API.info('No comments to display.');
+			displayThereAreNoCommentsToDisplayText();
+		}
+	}
+
+	formatCommentBoxForIpad(); 
 
 }
 
+function clickThankYouMessage(e) {
+	$.whiteCommentBox.visible = false;
+	$.addNewCommentContainer.visible = false;
+	$.scroller.scrollingEnabled = false;
+	setCommentIconReady($.commentingButton);
+}
+
+function clickSubmitComment(e) {
+	$.insertName.blur();
+	$.insertEmail.blur();
+	$.insertComment.blur();
+	verifyData($.commentingButton);
+	$.scroller.scrollTo(0, 0);
+}
+
+function clickCancelComment(e) {
+	setCommentIconReady($.commentingButton);
+	$.insertName.blur();
+	$.insertEmail.blur();
+	$.insertComment.blur();
+	$.addNewCommentContainer.visible = false;
+	$.whiteCommentBox.visible = false;
+	$.scroller.scrollTo(0, 0);
+	$.scroller.scrollingEnabled = true;
+}
+
 function comment(e) {
-	Ti.API.info("clicked comment button");
-	setCommentIconBusy(e.source);
+	setCommentIconBusy($.commentingButton);
 	$.addNewCommentContainer.visible = true;
 	$.whiteCommentBox.visible = true;
 	$.submitCommentFormView.visible = true;
@@ -496,13 +488,13 @@ function comment(e) {
 }
 
 function shareText(e) {
-	sharingTextService.setIconBusy(e.source);
+	sharingTextService.setIconBusy($.shareTextButton);
 	postTags = sharingTextService.getPostTags(post_content);
 	sharingTextService.initiateIntentText(postTags, e.source);
 }
 
 function sharePhoto(e) {
-	sharingImageService.setIconBusy(e.source);
+	sharingImageService.setIconBusy($.sharePhotoButton);
 	postTags = sharingImageService.getPostTags(post_content);
 	cameraService.takePicture(postTags, e.source, $.postLanding);
 	sharingImageService.setIconReady(e.source);
