@@ -38,6 +38,10 @@
 	height : Ti.UI.SIZE
 }
 
+".hidden": {
+	height: "0"
+}
+
 "#headerRow": {
 	height: "200dip"
 }
@@ -54,10 +58,16 @@
 	height : "40dip",
 	width : "40dip",
 	left : "20dip",
-	right: "20dip"
+	right: "20dip",
+	visible: true
 }
 
 ".socialMediaButtonHidden": {
+	left: "0",
+	right: "0",
+	height: "0",
+	width: "0",
+	visible: false
 }
 
 "#socialMediaButtonsRow": {
@@ -107,7 +117,7 @@
 }
 
 ".postWebView[platform=android]": {
-	scalesPageToFit: true
+	scalesPageToFit: false
 }
 
 "#addNewCommentContainer":{
