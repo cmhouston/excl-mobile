@@ -49,7 +49,7 @@ filterService.prototype.compileDictOfSections = function(post, dict, selectedSec
 		sectionArray = filterService.prototype.parseStringIntoArray(post.section, ", ");
 		for (var i = 0; i < sectionArray.length; i++) {
 			//Accounts for multiple sections per post
-			Ti.API.info("Current section: " + sectionArray[i] + ", compared to: " + selectedSection + ", match: " + (sectionArray[i] == selectedSection));
+			//Ti.API.info("Current section: " + sectionArray[i] + ", compared to: " + selectedSection + ", match: " + (sectionArray[i] == selectedSection));
 			if (sectionArray[i] == selectedSection) {
 				filterService.prototype.addItemArrayToDict(sectionArray[i], post, dict);
 			}
@@ -89,8 +89,8 @@ filterService.prototype.addItemArrayToDict = function(key, itemArray, dict) {
 
 filterService.prototype.checkIfArrayInArray = function(arySmall, aryLarge) {
 
-	Ti.API.info("arySmall: " + JSON.stringify(arySmall));
-	Ti.API.info("aryLarge: " + JSON.stringify(aryLarge));
+	//Ti.API.info("arySmall: " + JSON.stringify(arySmall));
+	//Ti.API.info("aryLarge: " + JSON.stringify(aryLarge));
 
 	var lengthSmall = arySmall.length;
 	var lengthLarge = aryLarge.length;
@@ -190,19 +190,27 @@ filterService.prototype.sortPostsIntoSections = function(dict, parentObjectArray
 
 		Ti.API.info("All Sections: " + JSON.stringify(dictKeys));
 
-		for (var i = 0; i < parentObjectArray.length; i++) {
-			Ti.API.info(">> Section: " + JSON.stringify(dictKeys[i]) + ", Parent obj: " + JSON.stringify(parentObjectArray[i].id));
-			if (dictKeys[i]) {
-				var postCollection = filterService.prototype.retrievePostDetails(dict, dictKeys[i]);
-				if (parentObjectArray[i].id == dictKeys[i]) {
-					Ti.API.info("Section and object id match.");
-					filterService.prototype.addPostsToViewAccordingToSection(dictKeys[i], dict, parentObjectArray[i], postCollection);
+		for (var j = 0; j < parentObjectArray.length; j++) {
+			for (var i = 0; i < dictLength; i++) {
+
+				Ti.API.info("Tab " + j + "- Parent obj: " + JSON.stringify(parentObjectArray[j].id) + ", Section: " + JSON.stringify(dictKeys[i]));
+
+				if (dictKeys[i]) {
+					if (parentObjectArray[j].id == dictKeys[i]) {
+						var postCollection = filterService.prototype.retrievePostDetails(dict, dictKeys[i]);
+						Ti.API.info("--Section and object id match.");
+						filterService.prototype.addPostsToViewAccordingToSection(dictKeys[i], dict, parentObjectArray[j], postCollection);
+						break;
+					} else if (i == dictLength - 1) {
+						var postCollection = filterService.prototype.retrievePostDetails(dict, dictKeys[i]);
+						Ti.API.info("--Section and object id do not match for all pairs. Add to 0.");
+						filterService.prototype.addPostsToViewAccordingToSection(dictKeys[i], dict, parentObjectArray[0], postCollection);
+					} else {
+						Ti.API.info("--Section and objct id do not match. Skip.");
+					}
 				} else {
-					Ti.API.info("Section and object id do not match. Add to 0.");
-					filterService.prototype.addPostsToViewAccordingToSection(dictKeys[i], dict, parentObjectArray[0], postCollection);
+					Ti.API.info("--Error: section is undefined.");
 				}
-			} else {
-				Ti.API.info("Error: section is undefined.");
 			}
 		}
 	}

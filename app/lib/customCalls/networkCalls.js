@@ -45,7 +45,8 @@ function createNetworkErrorDialog(e){
 	
 	dialog.addEventListener('click', function(e){
 		if (e.index == 0){		
-			Alloy.Globals.navController.restart();
+			//Alloy.Globals.navController.restart();
+			Alloy.Models.app.retrieveMuseumData(true);
 		}
 		else if (e.index == e.source.cancel){
 			createNetworkErrorDialog(e);

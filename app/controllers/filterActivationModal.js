@@ -59,7 +59,7 @@ function createFilterView(filter, allChecked) {
 	Alloy.Models.app.trigger('change:active');
 	active = filter.get('active');
 
-	Ti.API.info("filter name: " + name + "(" + active + ")");
+	//Ti.API.info("filter name: " + name + "(" + active + ")");
 
 	var color = 'white';
 	if (OS_IOS) {

@@ -235,19 +235,23 @@ function resetPage() {
 	dictOrderedPosts = {};
 	$.scrollView.removeAllChildren();
 	filterTabIds = ["0"];
+	parentObjects = [];
 }
 
 function organizePosts(allPosts) {
-	updateFilterIdArray();
-
 	if (filterOn) {
+		updateFilterIdArray();
 		selectedFilters = filter.formatActiveFiltersIntoArray(Alloy.Collections.filter);
 		Ti.API.info("Filter list: " + JSON.stringify(selectedFilters));
 		for (var i = 0; i < allPosts.length; i++) {
 			filter.sortFilteredContentIntoDict(selectedFilters, dictOrderedPosts, allPosts[i]);
 		}
+	} else {
+		Ti.API.info("Filter status: " + filterOn);
 	}
 	$.scrollView.removeAllChildren();
+	Ti.API.info("Cleared Page");
+
 	insertXNumberOfButtons(filterTabIds.length);
 	openFirstView(firstView);
 	for (var i = 0; i < allPosts.length; i++) {
