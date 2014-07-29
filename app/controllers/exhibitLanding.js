@@ -156,8 +156,12 @@ function populateWindow(json) {
 		}
 	}
 	createExhibitsCarousel(json.data.museum.exhibits);
-	createComponentsScrollView(json.data.museum.exhibits);
+	
 	addClickListenerToHeadingBar(json.data.museum.exhibits);
+	
+	setTimeout(function(){
+		createComponentsScrollView(json.data.museum.exhibits);
+	}, 500);
 }
 
 function createExhibitsCarousel(exhibits) {
@@ -287,7 +291,7 @@ function addPagingArrowsToView(view, pageNum, numOfPages){
 			height: "20%",
 			width: "15%",
 			backgroundColor: "white",
-			image: iconService.getImageFilename("exhibit_next.png")
+			image: iconService.getImageFilename("triple_arrow_right.png")
 		});
 		
 		leftArrow.addEventListener('click', function(e){
@@ -306,7 +310,7 @@ function addPagingArrowsToView(view, pageNum, numOfPages){
 			height: "20%",
 			width: "15%",
 			backgroundColor: "white",
-			image: iconService.getImageFilename("exhibit_previous.png")
+			image: iconService.getImageFilename("triple_arrow_left.png")
 		});
 		
 		rightArrow.addEventListener('click', function(e){
@@ -464,7 +468,6 @@ function onExhibitsClick(exhibits) {
 				fontSize : "25dip"
 			};
 		}
-		$.headingLabel.text = "Go Back";
 		if (detectDevice.isTablet()) {
 			$.headingLabel.font = {
 
@@ -491,7 +494,7 @@ function animateTopViewDown(){
 	});
 	setTimeout(function(e){
 		$.topView.top = topMeasurement;
-		Ti.API.info("$.topView.top = " + $.topView.top);
+		$.headingLabel.text = "Go Back";
 	}, animationDuration);
 	
 }
@@ -504,7 +507,6 @@ function animateTopViewUp(){
 	});
 	setTimeout(function(e){
 		$.topView.top = 0;
-		Ti.API.info("$.topView.top = " + $.topView.top);
 	}, animationDuration);
 }
 
@@ -554,14 +556,15 @@ function createComponentsScrollView(exhibits) {
 	currExhibitId = exhibits[0].id;
 
 	for (var i = 0; i < exhibits.length; i++) {
+		defaultComponentHeight = getComponentImageHeight();
 		componentsInExhibit[exhibits[i].id] = Ti.UI.createView({
 			layout : 'horizontal',
 			horizontalWrap : false,
 			width : Ti.UI.SIZE,
-			height : getComponentImageHeight()//defaultComponentHeight
+			height : defaultComponentHeight
 		});
 		if (detectDevice.isTablet()) {
-			componentsInExhibit[exhibits[i].id].height = getComponentImageHeight();//ipadComponentHeight;
+			componentsInExhibit[exhibits[i].id].height = defaultComponentHeight;//ipadComponentHeight;
 		}
 		for (var j = 0; j < exhibits[i].components.length; j++) {
 			var component = createLabeledPicView(exhibits[i].components[j], '20dip');
@@ -586,13 +589,17 @@ function createComponentsScrollView(exhibits) {
 }
 
 function getComponentImageHeight(){
-	var headingLabelViewHeight = stripUnitsOffMeasurement($.headingLabelView);
-	var componentScrollViewHeadingHeight = stripUnitsOffMeasurement($.componentScrollViewHeading);
-	var infoViewHeight = stripUnitsOffMeasurement($.infoView);
+	var headingLabelViewHeight = stripUnitsOffMeasurement($.headingLabelView.height);
+	var componentScrollViewHeadingHeight = stripUnitsOffMeasurement($.componentScrollViewHeading.height);
+	var infoViewHeight = $.infoView.toImage().height;
+	Ti.API.info("headingLabelViewHeight: " + headingLabelViewHeight + " componentScrollViewHeadingHeight: " + componentScrollViewHeadingHeight + " infoViewHeight: " + infoViewHeight);
 	if(OS_ANDROID){
-		alert("fix dp interpretation on Android");
+		headingLabelViewHeight = detectDevice.dipToPx(headingLabelViewHeight);
+		componentScrollViewHeadingHeight = detectDevice.dipToPx(componentScrollViewHeadingHeight);
 	}
-	return infoViewHeight - headingLabelHeight - componentScrollViewHeadingHeight - 10;
+	
+	Ti.API.info("---000---\r\n"+(infoViewHeight - headingLabelViewHeight - componentScrollViewHeadingHeight - 6));
+	return (infoViewHeight - headingLabelViewHeight - componentScrollViewHeadingHeight - 6);
 }
 
 function openComponent(e, componentImageUrl) {
