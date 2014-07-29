@@ -175,16 +175,17 @@ filterService.prototype.sortPostsIntoSections = function(dict, parentObjectArray
 
 		for (var j = 0; j < parentObjectArray.length; j++) {
 			for (var i = 0; i < dictLength; i++) {
-
+var sectionMatchedToParent = false;
 				Ti.API.info("Tab " + j + "- Parent obj: " + JSON.stringify(parentObjectArray[j].id) + ", Section: " + JSON.stringify(dictKeys[i]));
 
 				if (dictKeys[i]) {
-					if (parentObjectArray[j].id == dictKeys[i]) {
+					if (parentObjectArray[j].id == dictKeys[i] && !sectionMatchedToParent) {
 						var postCollection = filterService.prototype.retrievePostDetails(dict, dictKeys[i]);
 						Ti.API.info("--Section and object id match.");
 						filterService.prototype.addPostsToViewAccordingToSection(dictKeys[i], dict, parentObjectArray[j], postCollection);
+						sectionMatchedToParent = true;
 						i = dictLength;
-					} else if (i == dictLength - 1) {
+					} else if (i == dictLength && !sectionMatchedToParent) {
 						var postCollection = filterService.prototype.retrievePostDetails(dict, dictKeys[i]);
 						Ti.API.info("--Section and object id do not match for all pairs. Add to 0.");
 						filterService.prototype.addPostsToViewAccordingToSection(dictKeys[i], dict, parentObjectArray[0], postCollection);
