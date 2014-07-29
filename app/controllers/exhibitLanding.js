@@ -111,7 +111,6 @@ function hideSpinner() {
 
 function init() {
 	addSpinner();
-	//$.navBar.setPageTitle("Exhibitions");
 	$.navBar.setPageTitle(json.data.museum.exhibit_label_plural);
 	initializeWithJSON(json);
 	hideSpinner();
