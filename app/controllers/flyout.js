@@ -85,9 +85,8 @@ function closeMenu(e) {
 }
 
 function openHomePage(e) {
-	Alloy.Models.app.retrieveMuseumData();
-	// Alloy.Globals.navController.home();
-	// closeMenu();
+	Alloy.Globals.navController.home();
+	closeMenu();
 }
 
 function openExhibitsPage(e) {
