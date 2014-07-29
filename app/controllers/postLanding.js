@@ -464,7 +464,7 @@ function hideAllSharingButtons() {
 }
 
 function showAllSharingButtons() {
-	$.resetClass($.socialMediaButtonsRow, "hidden");
+	$.resetClass($.socialMediaButtonsRow, "postTableViewRow");
 	$.resetClass($.commentingButton, "socialMediaButtonShown");
 	$.resetClass($.shareTextButton, "socialMediaButtonShown");
 	$.resetClass($.sharePhotoButton, "socialMediaButtonShown");
@@ -523,7 +523,6 @@ function sharePhoto(e) {
 }
 
 function getRowContentsForVideo(url) {
-	Ti.API.info(JSON.stringify(post_content));
 	if (OS_ANDROID) {
 		return getRowContentsForVideoAndroid(url);
 	}
