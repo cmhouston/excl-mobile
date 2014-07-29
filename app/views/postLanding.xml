@@ -2,12 +2,20 @@
 	<Window class="container">
 		<View id="postLandingView">
 			<Widget src="navigationBar" id="navBar"/>
-			<ScrollView id="scroller">
-				<TableView id="tableView">
-					<TableViewRow id="headerRow" class="postTableViewRow"></TableViewRow>
-					<TableViewRow id="socialMediaButtonsRow" class="postTableViewRow"></TableViewRow>
-					<TableViewRow id="postBodyRow" class="postTableViewRow"></TableViewRow>
-				</TableView>
+			<View id="postLandingViewBody">
+				<ScrollView id="scroller">
+					<TableView id="tableView">
+						<TableViewRow id="headerRow" class="postTableViewRow"></TableViewRow>
+						<TableViewRow id="socialMediaButtonsRow" class="postTableViewRow">
+							<View class="centeredButtons">
+								<Button id="commentingButton" class="socialMediaButtonShown" onClick="comment"></Button>
+								<Button id="shareTextButton" class="socialMediaButtonShown" onClick="shareText"></Button>
+								<Button id="sharePhotoButton" class="socialMediaButtonShown" onClick="sharePhoto"></Button>
+							</View>
+						</TableViewRow>
+						<TableViewRow id="postBodyRow" class="postTableViewRow"></TableViewRow>
+					</TableView>
+				</ScrollView>
 				<View id="addNewCommentContainer"></View>
 				<View id="whiteCommentBox">
 					<View id="submitCommentFormView">
@@ -26,7 +34,7 @@
 					</View>
 					<Label id="submitYourCommentLabel">Submit Your Comment</Label>
 				</View>
-			</ScrollView>
+			</View>
 		</View>
 	</Window>
 </Alloy>

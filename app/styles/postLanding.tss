@@ -11,11 +11,18 @@
 	layout: "vertical"
 }
 
+"postLandingViewBody": {
+	height: Ti.UI.FILL,
+	width: Ti.UI.FILL,
+	layout: "composite"
+}
+
 "#scroller": {
+	top: "0",
 	height: Ti.UI.FILL,
 	width: Ti.UI.FILL,
 	scrollType: 'vertical',
-	layout: "vertical",
+	layout: "vertical"
 }
 
 "#tableView":{
@@ -41,6 +48,52 @@
 
 ".headerImage": {
 	height: Ti.UI.SIZE
+}
+
+".socialMediaButtonShown": {
+	height : "40dip",
+	width : "40dip",
+	left : "20dip",
+	right: "20dip"
+}
+
+".socialMediaButtonHidden": {
+}
+
+"#socialMediaButtonsRow": {
+	layout: "composite",
+	width: "100%"
+}
+
+".centeredButtons": {
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	layout: "horizontal",
+	horizontalWrap: false
+}
+
+"#commentingButton": {
+	backgroundImage: "/images/icons_ios/comment_ready.png"
+}
+
+"#commentingButton[platform=android]": {
+	backgroundImage: "/images/icons_android/comment_ready.png"
+}
+
+"#shareTextButton": {
+	backgroundImage: "/images/icons_ios/share_ready.png"
+}
+
+"#shareTextButton[platform=android]": {
+	backgroundImage: "/images/icons_android/share_ready.png"
+}
+
+"#sharePhotoButton": {
+	backgroundImage: "/images/icons_ios/camera_ready.png"
+}
+
+"#sharePhotoButton[platform=android]": {
+	backgroundImage: "/images/icons_android/camera_ready.png"
 }
 
 ".postWebView": {
@@ -71,10 +124,11 @@
 	backgroundColor: 'white',
 	height:'430dip',
 	width:'260dip',
-	top: '0%',
+	top: '0',
 	opacity: '1.0',
-	visible: false,
 	backgroundColor: '#FFFFFF',
+	zIndex: "15",
+	visible: false
 }
 
 "#submitYourCommentLabel":{

@@ -250,6 +250,7 @@ function organizePosts(allPosts) {
 			filter.sortFilteredContentIntoDict(selectedFilters, dictOrderedPostsByFilter, allPosts[i]);
 		}
 	}
+	$.scrollView.removeAllChildren;
 	insertXNumberOfButtons(filterTabIds.length);
 	openFirstView(firstView);
 	for (var i = 0; i < allPosts.length; i++) {
@@ -257,7 +258,7 @@ function organizePosts(allPosts) {
 	}
 	
 	filter.sortPostsIntoSections(dictOrderedPostsByFilter, parentObjects);
-	$.scrollView.height = Ti.UI.SIZE;
+	$.scrollView.height = "100%";
 	Ti.API.info("Finished Sorting");
 }
 
@@ -269,39 +270,6 @@ function updateFilterIdArray() {
 	Ti.API.info("All tab ids: " + filterTabIds);
 }
 
-
-// function organizeBySection(allPosts) {
-// insertXNumberOfButtons(1);
-// //insertXNumberOfButtons(filterTabIds.length);
-//
-// openFirstView(firstView);
-// dictOrderedPostsBySection = {};
-// for (var i = 0; i < allPosts.length; i++) {
-// filter.compileDictOfSections(allPosts[i], dictOrderedPostsBySection, selectedSection);
-// }
-// $.scrollView.removeAllChildren();
-//
-// filter.sortPostsIntoSections(dictOrderedPostsBySection, parentObjects);
-// Ti.API.info("Finished Organizing by Section");
-// }
-//
-// function organizeByFilter(allPosts) {
-// dictOrderedPostsByFilter = {};
-// selectedFilters = filter.formatActiveFiltersIntoArray(Alloy.Collections.filter);
-// Ti.API.info("Filter: " + JSON.stringify(selectedFilters));
-// for (var i = 0; i < allPosts.length; i++) {
-// filter.sortFilteredContentIntoDict(selectedFilters, dictOrderedPostsByFilter, allPosts[i]);
-// }
-// // tabs will be using filter names, not user friendly ones// dictOrderedPostsByFilter = filter.replaceDictKeysWithFilterHeadings(dictOrderedPostsByFilter);
-//
-// insertXNumberOfButtons(filterTabIds.length);
-// //insertXNumberOfButtons(2);
-//
-// filter.sortPostsIntoSections(dictOrderedPostsByFilter, parentObjects);
-//
-// $.scrollView.height = Ti.UI.SIZE;
-// Ti.API.info("Finished Filtering");
-// }
 
 function changeTitleOfThePage(name, color) {
 	$.navBar.setPageTitle(name);
