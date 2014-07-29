@@ -107,18 +107,20 @@
 }
 
 ".postWebView": {
-	height: Ti.UI.SIZE,
-	showScrollbars : false,
-	disableBounce : true,
-	width: Ti.UI.FILL
+	
 }
 
 ".postWebView[platform=ios]": {
-	scalesPageToFit: true
+	scalesPageToFit: true,
+	height: Ti.UI.SIZE,
+	disableBounce : true,
+	showScrollbars : false
 }
 
 ".postWebView[platform=android]": {
-	scalesPageToFit: false
+	scalesPageToFit: true,
+	width: Ti.UI.SIZE,
+	enableZoomControls: false
 }
 
 "#addNewCommentContainer":{
