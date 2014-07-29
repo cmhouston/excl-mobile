@@ -358,7 +358,6 @@ function createPagingArrows(pageNum, numOfPages){
 function createExhibitTitleLabel(name) {
 	var titleLabelView = Ti.UI.createView({
 		top : 0,
-		height : Ti.UI.SIZE,
 		backgroundColor : '#000',
 		height: getExhibitTitleLabelHeight()
 	});
@@ -473,33 +472,11 @@ function onExhibitsClick(exhibits) {
 				fontWeight : 'bold'
 			};
 		}
-
 		animateTopViewDown();
 
-		/*var slideOut = Ti.UI.createAnimation({
-			height : defaultComponentHeight,
-			duration : 300,
-			curve : Titanium.UI.ANIMATION_CURVE_EASE_IN_OUT
-		});
-		if (detectDevice.isTablet()) {
-			slideOut.height = ipadComponentHeight;
-		}
-
-		$.bottomView.height = defaultComponentHeight;
-		if (detectDevice.isTablet()) {
-			$.bottomView.height = ipadComponentHeight;
-		}
-		$.bottomView.animate(slideOut);//*/
 	} else {
 		$.headingLabel.text = "Explore This " + json.data.museum.exhibit_label;
 		animateTopViewUp();
-
-		/*var slideIn = Ti.UI.createAnimation({
-			height : '0dip',
-			duration : 300,
-			curve : Titanium.UI.ANIMATION_CURVE_EASE_IN_OUT
-		});
-		$.bottomView.animate(slideIn);//*/
 	}
 }
 
@@ -551,18 +528,15 @@ function makeDefaultUnitsFromDip(str){
 }
 
 function stripUnitsOffMeasurement(str){
-	//str = str + "";
-	Ti.API.info("stripUnits will return " + parseInt(str) + "from str " + str);
 	return parseInt(str);
 }
 
 function onExhibitsScroll(e, exhibits) {
-	animateTopViewUp();
-
 	var index = $.exhibitsCarousel.currentPage;
 	$.headingLabel.text = "Explore This " + json.data.museum.exhibit_label;
 	$.exhibitInfoLabel.text = exhibits[index].long_description;
 	
+	animateTopViewUp();
 	setTimeout(function(){
 		changeVisibleComponents(e);
 	}, 300);
@@ -584,10 +558,10 @@ function createComponentsScrollView(exhibits) {
 			layout : 'horizontal',
 			horizontalWrap : false,
 			width : Ti.UI.SIZE,
-			height : defaultComponentHeight
+			height : getComponentImageHeight()//defaultComponentHeight
 		});
 		if (detectDevice.isTablet()) {
-			componentsInExhibit[exhibits[i].id].height = ipadComponentHeight;
+			componentsInExhibit[exhibits[i].id].height = getComponentImageHeight();//ipadComponentHeight;
 		}
 		for (var j = 0; j < exhibits[i].components.length; j++) {
 			var component = createLabeledPicView(exhibits[i].components[j], '20dip');
@@ -609,6 +583,16 @@ function createComponentsScrollView(exhibits) {
 		componentsInExhibit[exhibits[i].id].width = 0;
 	}
 	componentsInExhibit[currExhibitId].width = Ti.UI.SIZE;
+}
+
+function getComponentImageHeight(){
+	var headingLabelViewHeight = stripUnitsOffMeasurement($.headingLabelView);
+	var componentScrollViewHeadingHeight = stripUnitsOffMeasurement($.componentScrollViewHeading);
+	var infoViewHeight = stripUnitsOffMeasurement($.infoView);
+	if(OS_ANDROID){
+		alert("fix dp interpretation on Android");
+	}
+	return infoViewHeight - headingLabelHeight - componentScrollViewHeadingHeight - 10;
 }
 
 function openComponent(e, componentImageUrl) {
