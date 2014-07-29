@@ -160,7 +160,7 @@ function populateWindow(json) {
 	
 	setTimeout(function(){
 		createComponentsScrollView(json.data.museum.exhibits);
-	}, 500);
+	}, 300);
 }
 
 function createExhibitsCarousel(exhibits) {
@@ -286,10 +286,10 @@ function addPagingArrowsToView(view, pageNum, numOfPages){
 		var leftArrow = Ti.UI.createImageView({
 			id: "leftArrow",
 			left: 0,
-			bottom: "10%",
-			height: "20%",
+			bottom: "15%",
+			height: "15%",
 			width: "15%",
-			backgroundColor: "white",
+			backgroundColor: "AAF200",//orange#FF6600",
 			image: iconService.getImageFilename("triple_arrow_right.png")
 		});
 		
@@ -305,10 +305,10 @@ function addPagingArrowsToView(view, pageNum, numOfPages){
 		var rightArrow = Ti.UI.createImageView({
 			id: "rightArrow",
 			right: 0,
-			top: "10%",
-			height: "20%",
+			top: "15%",
+			height: "15%",
 			width: "15%",
-			backgroundColor: "white",
+			backgroundColor: "AAF200",//orange#FF6600",
 			image: iconService.getImageFilename("triple_arrow_left.png")
 		});
 		
@@ -331,8 +331,8 @@ function createPagingArrows(pageNum, numOfPages){
 	if(pageNum != 0 && numOfPages != 1){
 		var leftArrow = Ti.UI.createImageView({
 			left: 0,
-			bottom: "10%",
-			height: "20%",
+			bottom: "15%",
+			height: "10%",
 			width: "15%",
 			backgroundColor: "white",
 			image: iconService.getImageFilename("exhibit_next.png")
