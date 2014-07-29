@@ -523,6 +523,7 @@ function sharePhoto(e) {
 }
 
 function getRowContentsForVideo(url) {
+	Ti.API.info(JSON.stringify(post_content));
 	if (OS_ANDROID) {
 		return getRowContentsForVideoAndroid(url);
 	}
@@ -534,7 +535,7 @@ function getRowContentsForVideo(url) {
 function getRowContentsForVideoAndroid(url) {
 	var thumbnailView = Ti.UI.createView({	});
 	var thumbnailImageView = Ti.UI.createImageView({
-		//image : part.get('thumbnail'),
+		image : post_content.image,
 		width : '100%',
 		height : '100%'
 	});
