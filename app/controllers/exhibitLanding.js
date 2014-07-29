@@ -156,8 +156,8 @@ function populateWindow(json) {
 		}
 	}
 	createExhibitsCarousel(json.data.museum.exhibits);
-	createBottomView();
 	createComponentsScrollView(json.data.museum.exhibits);
+	addClickListenerToHeadingBar(json.data.museum.exhibits);
 }
 
 function createExhibitsCarousel(exhibits) {
@@ -189,13 +189,6 @@ function createExhibitsCarousel(exhibits) {
 			fontSize : "25dip"
 		};
 	}
-/*
-	if (OS_IOS) {
-		//Android doesn't respond to singletap event, so the Android event listener is added above
-		$.exhibitsCarousel.addEventListener("singletap", function(e) {
-			onExhibitsClick(exhibits);
-		});
-	}//*/
 	
 	if(OS_ANDROID){
 		resizeExhibitCarouselAndroid();
@@ -418,16 +411,10 @@ function getExhibitImageHeight(){
 }
 
 function resizeExhibitCarouselAndroid(){
-	var exhibitTitleHeightInPx = dipToPx(getExhibitTitleLabelHeight());
+	var exhibitTitleHeightInPx = detectDevice.dipToPx(getExhibitTitleLabelHeight());
 	var carouselHeight = getExhibitImageHeight() + exhibitTitleHeightInPx;
 	$.exhibitsCarousel.height = carouselHeight;
 }
-
-function dipToPx(dipSize){
-	var pxSize = dipSize * (detectDevice.getDpi() / 160);
-	return pxSize;
-}
-
 
 function createComponentTitleLabel(name, textSize) {
 	var titleLabel = Ti.UI.createView({
@@ -461,15 +448,15 @@ function createComponentTitleLabel(name, textSize) {
 	return titleLabel;
 }
 
-function createBottomView() {
-	$.bottomView.hidden = true;
-	$.bottomView.height = 0;
+function addClickListenerToHeadingBar(exhibits){
+	$.headingLabelView.addEventListener("click", function(e) {
+		onExhibitsClick(exhibits);
+	});
 }
 
 function onExhibitsClick(exhibits) {
 	$.exhibitInfoScrollView.scrollTo(0, 0);
-	if ($.bottomView.hidden == true) {
-		$.bottomView.hidden = false;
+	if (!isBottomViewShowing()) {
 		var pageIndex = $.exhibitsCarousel.currentPage;
 		$.exhibitInfoLabel.text = exhibits[pageIndex].long_description;
 		if (detectDevice.isTablet()) {
@@ -478,7 +465,7 @@ function onExhibitsClick(exhibits) {
 				fontSize : "25dip"
 			};
 		}
-		$.headingLabel.text = "Explore This " + json.data.museum.exhibit_label;
+		$.headingLabel.text = "Go Back";
 		if (detectDevice.isTablet()) {
 			$.headingLabel.font = {
 
@@ -487,12 +474,9 @@ function onExhibitsClick(exhibits) {
 			};
 		}
 
-		$.topView.animate({
-			opacity : 0,
-			duration : 300
-		});
+		animateTopViewDown();
 
-		var slideOut = Ti.UI.createAnimation({
+		/*var slideOut = Ti.UI.createAnimation({
 			height : defaultComponentHeight,
 			duration : 300,
 			curve : Titanium.UI.ANIMATION_CURVE_EASE_IN_OUT
@@ -505,47 +489,91 @@ function onExhibitsClick(exhibits) {
 		if (detectDevice.isTablet()) {
 			$.bottomView.height = ipadComponentHeight;
 		}
-		$.bottomView.animate(slideOut);
+		$.bottomView.animate(slideOut);//*/
 	} else {
-		$.bottomView.hidden = true;
-		$.headingLabel.text = exhibits[$.exhibitsCarousel.currentPage].name;
-		$.topView.animate({
-			opacity : 1,
-			duration : 300
-		});
-		$.topView.height = Ti.UI.SIZE;
+		$.headingLabel.text = "Explore This " + json.data.museum.exhibit_label;
+		animateTopViewUp();
 
-		var slideIn = Ti.UI.createAnimation({
+		/*var slideIn = Ti.UI.createAnimation({
 			height : '0dip',
 			duration : 300,
 			curve : Titanium.UI.ANIMATION_CURVE_EASE_IN_OUT
 		});
-		$.bottomView.animate(slideIn);
+		$.bottomView.animate(slideIn);//*/
 	}
 }
 
+function animateTopViewDown(){
+	var headingLabelHeight = makeDefaultUnitsFromDip($.headingLabelView.height);
+	var topMeasurement = $.infoView.toImage().height - headingLabelHeight;
+	
+	var animationDuration = 300;
+	$.topView.animate({
+		top: topMeasurement,
+		duration: animationDuration
+	});
+	setTimeout(function(e){
+		$.topView.top = topMeasurement;
+		Ti.API.info("$.topView.top = " + $.topView.top);
+	}, animationDuration);
+	
+}
+
+function animateTopViewUp(){
+	var animationDuration = 300;
+	$.topView.animate({
+		top: 0,
+		duration: animationDuration
+	});
+	setTimeout(function(e){
+		$.topView.top = 0;
+		Ti.API.info("$.topView.top = " + $.topView.top);
+	}, animationDuration);
+}
+
+function isBottomViewShowing(){
+	if (stripUnitsOffMeasurement($.topView.top) == 0 ){
+		return false;
+	}
+	else{
+		return true;
+	}
+}
+
+function makeDefaultUnitsFromDip(str){
+	//Strip units
+	num = stripUnitsOffMeasurement(str);
+	//Convert to px if necessary
+	if (OS_ANDROID){
+		num= detectDevice.dipToPx(num);
+	}
+	return num;
+}
+
+function stripUnitsOffMeasurement(str){
+	//str = str + "";
+	Ti.API.info("stripUnits will return " + parseInt(str) + "from str " + str);
+	return parseInt(str);
+}
+
 function onExhibitsScroll(e, exhibits) {
+	animateTopViewUp();
+
+	var index = $.exhibitsCarousel.currentPage;
+	$.headingLabel.text = "Explore This " + json.data.museum.exhibit_label;
+	$.exhibitInfoLabel.text = exhibits[index].long_description;
+	
+	setTimeout(function(){
+		changeVisibleComponents(e);
+	}, 300);
+	
+	$.exhibitInfoScrollView.scrollTo(0, 0);
+}
+
+function changeVisibleComponents(e){
 	componentsInExhibit[currExhibitId].width = 0;
 	componentsInExhibit[e.view.itemId].width = Ti.UI.SIZE;
-	$.bottomView.hidden = true;
 	currExhibitId = e.view.itemId;
-	var index = $.exhibitsCarousel.currentPage;
-	$.headingLabel.text = exhibits[index].name;
-	$.exhibitInfoLabel.text = exhibits[index].long_description;
-	$.topView.animate({
-		opacity : 1,
-		duration : 300
-	});
-	$.topView.height = Ti.UI.SIZE;
-
-	var slideIn = Ti.UI.createAnimation({
-		height : '0dip',
-		duration : 300,
-		curve : Titanium.UI.ANIMATION_CURVE_EASE_IN_OUT
-	});
-	$.bottomView.animate(slideIn);
-
-	$.exhibitInfoScrollView.scrollTo(0, 0);
 }
 
 function createComponentsScrollView(exhibits) {

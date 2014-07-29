@@ -58,4 +58,10 @@ deviceDetectionService.prototype.getWidth = function() {
 deviceDetectionService.prototype.getDpi = function() {
 	return Ti.Platform.displayCaps.getDpi();
 };
+
+deviceDetectionService.prototype.dipToPx = function(dipSize){
+	var pxSize = dipSize * (this.getDpi() / 160);
+	return pxSize;
+};
+
 module.exports = deviceDetectionService; 

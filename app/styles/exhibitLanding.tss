@@ -7,7 +7,7 @@
 "#mainView": {
 	layout: "vertical",
 	top:"0",
-	bottom: "10dip",
+	bottom: "0",
 }
 
 "#placeholder":{
@@ -27,12 +27,11 @@
 
 "#bottomView":{
 	layout: "vertical",
-	height: "0",
+	height: Ti.UI.FILL,
 	top:"0"
 }
 
 "#componentScrollViewHeading":{
-	height: "50dip",
 	backgroundColor: '#ECD078'
 }
 
@@ -58,16 +57,13 @@
 }
 
 "#topView": {
-	layout: "vertical"
-}
-
-"#headingLabelView":{
-	height: "50dip",
-	backgroundColor: '#ECD078'
+	layout: "vertical",
+	backgroundColor: "white",
+	top: 0
 }
 
 "#headingLabel":{
-	color: "#232226",
+	color: "white",
 	font: {
 		
 		fontWeight: 'bold',
@@ -84,5 +80,9 @@
 	layout: "vertical",
 	showVerticalScrollIndicator : true,
 	top:"0",
+	height: Ti.UI.FILL
+}
+
+"#infoView": {
 	height: Ti.UI.FILL
 }

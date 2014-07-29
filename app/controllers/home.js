@@ -31,6 +31,8 @@ var spinner = spinnerLib.getSpinner();
 var loadingSpinnerView = Ti.UI.createView();
 var loadingSpinnerDarkView = Ti.UI.createView({ backgroundColor: "#000000", opacity: 0.3 });
 loadingSpinnerView.add(loadingSpinnerDarkView);
+var iconService = setPathForLibDirectory('customCalls/iconService');
+iconService = new iconService();
 
 var detectDevice = setPathForLibDirectory('customCalls/deviceDetectionService');
 detectDevice = new detectDevice();
@@ -131,7 +133,7 @@ function retrieveJson(jsonURL) {
 			if(jsonIconUrl){
 				$.iconLink.image = jsonIconUrl;
 			}else{
-				$.iconLink.image = "Images/development.jpg";
+				$.iconLink.image = iconService.getImageFilename("development.jpg");
 			}
 			
 			doneLoading = true;
