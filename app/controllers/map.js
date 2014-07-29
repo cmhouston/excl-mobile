@@ -24,7 +24,6 @@ var analyticsPageLevel = "Information";
 
 var url = Alloy.Globals.rootWebServiceUrl;
 
-//var json = args[0];
 var json = Alloy.Globals.museumJSON;
 
 var setAnalyticsPageTitle = function(title) {
@@ -46,13 +45,6 @@ exports.setAnalyticsPageLevel = setAnalyticsPageLevel;
 exports.getAnalyticsPageLevel = getAnalyticsPageLevel;
 
 $.navBar.setPageTitle("Map");
-
-	var image = Ti.UI.createImageView({
-		image : json.data.museum.map,
-		backgroundColor:'transparent', 
-		width : Ti.UI.FILL,
-		height : Ti.UI.FILL
-	});
 
 $.Map.url=json.data.museum.map;
 	
