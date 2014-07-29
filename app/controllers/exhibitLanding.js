@@ -160,7 +160,7 @@ function populateWindow(json) {
 	
 	setTimeout(function(){
 		createComponentsScrollView(json.data.museum.exhibits);
-	}, 300);
+	}, 500);
 }
 
 function createExhibitsCarousel(exhibits) {
@@ -289,7 +289,7 @@ function addPagingArrowsToView(view, pageNum, numOfPages){
 			bottom: "15%",
 			height: "15%",
 			width: "15%",
-			backgroundColor: "AAF200",//orange#FF6600",
+			backgroundColor: "#AAF200",//orange#FF6600",
 			image: iconService.getImageFilename("triple_arrow_right.png")
 		});
 		
@@ -308,7 +308,7 @@ function addPagingArrowsToView(view, pageNum, numOfPages){
 			top: "15%",
 			height: "15%",
 			width: "15%",
-			backgroundColor: "AAF200",//orange#FF6600",
+			backgroundColor: "#AAF200",//orange#FF6600",
 			image: iconService.getImageFilename("triple_arrow_left.png")
 		});
 		
