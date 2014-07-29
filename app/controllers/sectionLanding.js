@@ -247,11 +247,11 @@ function organizePosts(allPosts) {
 	updateFilterIdArray();
 	
 	if (filterOn) {
-		// selectedFilters = filter.formatActiveFiltersIntoArray(Alloy.Collections.filter);
-		// Ti.API.info("Filter list: " + JSON.stringify(selectedFilters));
-		// for (var i = 0; i < allPosts.length; i++) {
-			// filter.sortFilteredContentIntoDict(selectedFilters, dictOrderedPosts, allPosts[i]);
-		// }
+		selectedFilters = filter.formatActiveFiltersIntoArray(Alloy.Collections.filter);
+		Ti.API.info("Filter list: " + JSON.stringify(selectedFilters));
+		for (var i = 0; i < allPosts.length; i++) {
+			filter.sortFilteredContentIntoDict(selectedFilters, dictOrderedPosts, allPosts[i]);
+		}
 	}
 	$.scrollView.removeAllChildren;
 	insertXNumberOfButtons(filterTabIds.length);
