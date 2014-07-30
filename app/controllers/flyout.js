@@ -1,19 +1,19 @@
 //======================================================================
-// ExCL is an open source mobile platform for museums that feature basic 
-// museum information and extends visitor engagement with museum exhibits. 
-// Copyright (C) 2014  Children's Museum of Houston and the Regents of the 
+// ExCL is an open source mobile platform for museums that feature basic
+// museum information and extends visitor engagement with museum exhibits.
+// Copyright (C) 2014  Children's Museum of Houston and the Regents of the
 // University of California.
-// 
+//
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
-// 
+//
 // This program is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //=====================================================================
@@ -95,9 +95,9 @@ function openExhibitsPage(e) {
 }
 
 function openMapPage(e) {
-		var controller = Alloy.createController("map", eval([json]));
-		Alloy.Globals.navController.open(controller);
-		closeMenu();
+	var controller = Alloy.createController("map", eval([json]));
+	Alloy.Globals.navController.open(controller);
+	closeMenu();
 }
 
 function openInfoPage(e) {
@@ -183,7 +183,7 @@ function tutorialToggler(e) {
 		var activityIndicator = Ti.UI.createActivityIndicator({
 			color : 'green',
 			font : {
-				
+
 				fontSize : 26,
 				fontWeight : 'bold'
 			},
@@ -251,6 +251,12 @@ function createInternationalizationMessageDialog() {
 }
 
 function detectFilterConditions() {
+	//Can't Ti.API.info variables here
+
+	//
+	ageFilterSet = Alloy.Models.app.get('customizeLearningSet');
+	ageFilterOn = Alloy.Models.app.get('customizeLearningEnabled');
+	Ti.API.info("Filters detecting: On=" + ageFilterOn);
 	if (ageFilterSet && ageFilterOn) {
 		disableAgeFilter();
 	} else if (ageFilterSet && !ageFilterOn) {
