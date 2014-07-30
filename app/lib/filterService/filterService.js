@@ -48,7 +48,11 @@ filterService.prototype.setAllInclusiveTabTitle = function(st) {
 
 filterService.prototype.parseStringIntoArray = function(st, deliniator) {
 	var output;
-	if (deliniator.length >= String(st).length) {
+	if ( st instanceof Array) {
+		return st;
+	}
+	st = String(st);
+	if (deliniator.length >= st.length) {
 		return st.split();
 	} else {
 		for (var i = 0; i < st.length - deliniator.length + 1; i++) {
@@ -58,6 +62,16 @@ filterService.prototype.parseStringIntoArray = function(st, deliniator) {
 		}
 		return st.split();
 	}
+};
+
+filterService.prototype.sortPostIntoApplicableSection = function(filterSectionsForPost, selectedSection, post) {
+	var itemArray = [];
+	for (var i = 0; i < filterSectionsForPost.length; i++) {
+		if (filterSectionsForPost[i] == selectedSection) {
+			itemArray.push(post);
+		}
+	}
+	return itemArray;
 };
 
 filterService.prototype.addItemArrayToDict = function(key, itemArray, dict) {
@@ -117,35 +131,15 @@ filterService.prototype.checkIfArrayHasOnlyZero = function(ary) {
 	return false;
 };
 
-filterService.prototype.replaceEmptyArrayWithZero = function(ary) {
+filterService.prototype.replaceEmptyArrayWithAllFilters = function(ary, postId) {
 	if (ary == "a:0:{}") {
-		return ["0"];
+		Ti.API.info("!!!Warning!!! Post ID " + postId + " has invalid filters. Replace with all filters.");
+		newAry = [];
+		newAry = filterService.prototype.formatAllFiltersIntoArray(Alloy.Collections.filter);
+		return newAry;
 	} else {
 		return ary;
 	}
-};
-
-filterService.prototype.sortPostIntoApplicableSection = function(filterSectionsForPost, selectedSection, post) {
-	var itemArray = [];
-	for (var i = 0; i < filterSectionsForPost.length; i++) {
-		if (filterSectionsForPost[i] == selectedSection) {
-			itemArray.push(post);
-		}
-	}
-	return itemArray;
-};
-
-filterService.prototype.replaceDictKeysWithFilterHeadings = function(oldDict) {
-	var oldKeys = filterService.prototype.returnDictKeys(oldDict);
-	var newKeys = [];
-	var newDict = {};
-	for (var i = 0; i < oldKeys.length; i++) {
-		newKeys.push(filterService.prototype.replaceStringWithFilterHeading(oldKeys[i]));
-	}
-	for (var i = 0; i < oldKeys.length; i++) {
-		newDict[newKeys[i]] = oldDict[oldKeys[i]];
-	}
-	return newDict;
 };
 
 filterService.prototype.returnDictKeys = function(dict) {
@@ -168,7 +162,6 @@ filterService.prototype.sortPostsIntoTabs = function(dict, parentObjectArray) {
 			//Cycle through sections. Match tab ID to section ID
 			var sectionMatchedToParent = false;
 			Ti.API.info("Tab " + j + "- Parent obj: " + JSON.stringify(parentObjectArray[j].id) + ", Section: " + JSON.stringify(dictKeys[i]));
-
 			if (parentObjectArray[j].id == dictKeys[i] && !sectionMatchedToParent) {
 				var postCollection = filterService.prototype.retrievePostDetails(dict, dictKeys[i]);
 				Ti.API.info("--Section and object id match.");
@@ -267,24 +260,35 @@ filterService.prototype.formatActiveFiltersIntoArray = function(ary) {
 	return newAry;
 };
 
-filterService.prototype.sortFilteredContentIntoDict = function(selectedFilters, dictOrderedPostsByFilter, post) {
-	var postFilterCategories = filterService.prototype.replaceEmptyArrayWithZero(post.age_range);
-	postFilterCategories = filterService.prototype.parseStringIntoArray(String(postFilterCategories), ", ");
-	if (filterService.prototype.checkIfArrayInArray(selectedFilters, postFilterCategories)) {
-		Ti.API.info("Post " + post.id + " has includes all of the selected filters. Add to 0.");
-		filterService.prototype.addItemArrayToDict("0", post, dictOrderedPostsByFilter);
-	} else if (filterService.prototype.checkIfArrayHasOnlyZero(postFilterCategories)) {
-		Ti.API.info("Post " + post.id + " has all possible filters. Add to 0.");
-		filterService.prototype.addItemArrayToDict("0", post, dictOrderedPostsByFilter);
-	} else {
-		for (var i = 0; i < selectedFilters.length; i++) {
-			var itemArray = filterService.prototype.sortPostIntoApplicableSection(postFilterCategories, selectedFilters[i], post);
-			if (Alloy.Models.app.get("customizeLearningEnabled")) {
-				Ti.API.info("Filtering enabled. Add post to filter section.");
-				filterService.prototype.addItemArrayToDict(selectedFilters[i], itemArray, dictOrderedPostsByFilter);
-			} else {
-				Ti.API.info("Filtering not set. Add to 0.");
-				filterService.prototype.addItemArrayToDict("0", itemArray, dictOrderedPostsByFilter);
+filterService.prototype.formatAllFiltersIntoArray = function(ary) {
+	var newAry = [];
+	ary = ary.toJSON();
+	for (var i = 0; i < ary.length; i++) {
+		newAry.push(ary[i].name);
+	}
+	return newAry;
+};
+
+filterService.prototype.sortFilteredContentIntoDict = function(selectedFilters, dictOrderedPosts, post) {
+	var postFilterCategories = filterService.prototype.replaceEmptyArrayWithAllFilters(post.age_range, post.id);
+	postFilterCategories = filterService.prototype.parseStringIntoArray(postFilterCategories, ", ");
+	if (JSON.stringify(selectedFilters) != "[]") {
+		if (filterService.prototype.checkIfArrayInArray(selectedFilters, postFilterCategories)) {
+			Ti.API.info("Post ID " + post.id + " has includes all of the selected filters. Add to 0.");
+			filterService.prototype.addItemArrayToDict("0", post, dictOrderedPosts);
+		} else if (filterService.prototype.checkIfArrayHasOnlyZero(postFilterCategories)) {
+			Ti.API.info("Post ID " + post.id + " has all possible filters. Add to 0.");
+			filterService.prototype.addItemArrayToDict("0", post, dictOrderedPosts);
+		} else {
+			for (var i = 0; i < selectedFilters.length; i++) {
+				var itemArray = filterService.prototype.sortPostIntoApplicableSection(postFilterCategories, selectedFilters[i], post);
+				if (Alloy.Models.app.get("customizeLearningEnabled")) {
+					Ti.API.info("Filtering enabled. Add post to filter section.");
+					filterService.prototype.addItemArrayToDict(selectedFilters[i], itemArray, dictOrderedPosts);
+				} else {
+					Ti.API.info("Filtering not set. Add to 0.");
+					filterService.prototype.addItemArrayToDict("0", itemArray, dictOrderedPosts);
+				}
 			}
 		}
 	}

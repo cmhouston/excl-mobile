@@ -64,4 +64,9 @@ deviceDetectionService.prototype.dipToPx = function(dipSize){
 	return pxSize;
 };
 
+deviceDetectionService.prototype.pxToDip = function(pxSize){
+	var dipSize = pxSize / (this.getDpi() / 160);
+	return dipSize;
+};
+
 module.exports = deviceDetectionService; 
