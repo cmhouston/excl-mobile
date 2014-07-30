@@ -60,6 +60,8 @@ exports.setAnalyticsPageLevel = setAnalyticsPageLevel;
 exports.getAnalyticsPageLevel = getAnalyticsPageLevel;
 // ----------------------------------------------------
 
+var horizontalBuffer = "10dip";
+
 $.onEnterKioskMode = function() {
 	$.navBar.onEnterKioskMode();
 };
@@ -79,25 +81,37 @@ function hideMenuBtnIfKioskMode() {
 }
 
 function insertComponentPicture(imageUrl) {
-	Ti.API.info("Picture to insert ===> " + imageUrl.toString());
-
-	var view = Titanium.UI.createView({
-		height : '40%',
-		left : '6dip',
-		right : '6dip',
-		top : '10dip',
-		bottom : '20dip',
-		layout : 'vertical'
-	});
-
+	var imageWidth = calculateImageWidth();
 	var image = Ti.UI.createImageView({
+		top : horizontalBuffer,
 		image : imageUrl,
-		width : '100%',
-		height : '100%'
+		width: imageWidth,
+		left : horizontalBuffer,
+		right : horizontalBuffer,
 	});
-	view.add(image);
-	$.scrollView.add(view);
+	$.scrollView.add(image);
 
+}
+
+function calculateImageWidth(){
+	var screenWidth = convertPxToDipIfNecessary(detectDevice.getWidth());
+	var horizBuffer = stripUnitsOffMeasurement(horizontalBuffer);
+	var imageWidth = screenWidth - 2*horizBuffer;
+	imageWidth += "dip";
+	return imageWidth;
+}
+
+function convertPxToDipIfNecessary(pxOrDip){
+	var dip = pxOrDip;
+	if (OS_ANDROID){
+		dip = detectDevice.pxToDip(pxOrDip);
+	}
+	return dip;
+}
+
+function stripUnitsOffMeasurement(str){
+	var num = parseInt(str);
+	return num;
 }
 
 function extractSectionNamesAndOrder(rawPostJson) {
@@ -144,14 +158,18 @@ function displaySectionList(orderedSectionList, rawJson) {
 		var objectArgs;
 
 		var view = Titanium.UI.createView({
-			height : '10%',
-			left : '12dip',
-			right : '12dip',
+			height : '55dip',
+			left : horizontalBuffer,
+			right : horizontalBuffer,
 			top : '5dip',
 			bottom : '5dip',
 			backgroundColor : gradientColors[gradientColorsCount],
 			layout : 'horizontal'
 		});
+		
+		if (i==0){
+			addExtraSpaceToFirstButton(view);
+		}
 		
 		addEvent(view, orderedSectionList[i].key, rawJson);
 
@@ -179,6 +197,10 @@ function displaySectionList(orderedSectionList, rawJson) {
 		gradientColorsCount++;
 		$.scrollView.add(view);
 	}
+}
+
+function addExtraSpaceToFirstButton(view){
+	view.top = horizontalBuffer;
 }
 
 function addEvent(view, title, rawJson) {
@@ -240,7 +262,7 @@ function fixBottomSpacing() {
 		//$.scrollView.bottom = "48dip";
 		//$.scrollView.top = "0";
 	}
-	$.scrollView.height = Ti.UI.FILL;
+	$.scrollView.height = Ti.UI.SIZE;
 
 }
 
