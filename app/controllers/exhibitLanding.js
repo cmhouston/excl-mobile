@@ -405,36 +405,37 @@ function resizeExhibitCarouselAndroid(){
 	$.exhibitsCarousel.height = carouselHeight;
 }
 
-function createComponentTitleLabel(name, textSize) {
-	var titleLabel = Ti.UI.createView({
-		backgroundColor : 'black',
-		opacity : 0.6,
-		height : Ti.UI.SIZE,
-		top : 0
-	});
-
-	var label = Ti.UI.createLabel({
-		text : name,
+function createComponentTitleLabel(name) {
+	var titleLabelView = Ti.UI.createView({
 		top : 0,
-		left : 10,
-		color : 'white',
+		backgroundColor : '#000',
+		height: getComponentTitleLabelHeight()
+	});
+	var label = Ti.UI.createLabel({
+		top : 0,
+		left : "3%",
+		text : name,
+		color : '#FFFFFF',
+		horizontalWrap : false,
 		font : {
 
-			fontSize : textSize,
+			fontSize : '20dip',
 			fontWeight : 'bold'
 		}
 	});
 	if (detectDevice.isTablet()) {
 		label.font = {
 
-			fontSize : "27dip",
-			fontWeight : "bold"
+			fontSize : "27dip"
 		};
-		titleLabel.height = Ti.UI.SIZE;
 	}
-	titleLabel.add(label);
+	titleLabelView.add(label);
 
-	return titleLabel;
+	return titleLabelView;
+}
+
+function getComponentTitleLabelHeight(){
+	return "27dip";
 }
 
 function addFunctionalityToHeadingBar(exhibits){
@@ -545,22 +546,16 @@ function createComponentsScrollView(exhibits) {
 	currExhibitId = exhibits[0].id;
 
 	for (var i = 0; i < exhibits.length; i++) {
-		defaultComponentHeight = getComponentImageHeight();
-		var componentWidth = getComponentImageWidth(defaultComponentHeight);
+		
 		componentsInExhibit[exhibits[i].id] = Ti.UI.createView({
 			layout : 'horizontal',
 			horizontalWrap : false,
-			width : Ti.UI.SIZE,
-			height : defaultComponentHeight
+			height: Ti.UI.SIZE,
 		});
-		if (detectDevice.isTablet()) {
-			componentsInExhibit[exhibits[i].id].height = defaultComponentHeight;//ipadComponentHeight;
-		}
+		
 		for (var j = 0; j < exhibits[i].components.length; j++) {
-			var component = createLabeledPicView(exhibits[i].components[j], '20dip');
+			var component = createLabeledPicView(exhibits[i].components[j]);
 			component.left = "3dip";
-			component.width = componentWidth;
-
 			component.id = exhibits[i].components[j].id;
 			component.addEventListener('click', (function(image) {
 				return function(e) {
@@ -580,14 +575,17 @@ function getComponentImageHeight(){
 	//Fits height to available space on screen
 	var headingLabelViewHeight = stripUnitsOffMeasurement($.headingLabelView.height);
 	var componentScrollViewHeadingHeight = stripUnitsOffMeasurement($.componentScrollViewHeading.height);
+	var componentTitleLabelHeight = stripUnitsOffMeasurement(getComponentTitleLabelHeight());
 	var infoViewHeight = $.infoView.toImage().height;
 	Ti.API.info("headingLabelViewHeight: " + headingLabelViewHeight + " componentScrollViewHeadingHeight: " + componentScrollViewHeadingHeight + " infoViewHeight: " + infoViewHeight);
+	
 	if(OS_ANDROID){
 		headingLabelViewHeight = detectDevice.dipToPx(headingLabelViewHeight);
 		componentScrollViewHeadingHeight = detectDevice.dipToPx(componentScrollViewHeadingHeight);
+		componentTitleLabelHeight = detectDevice.dipToPx(componentTitleLabelHeight);
 	}
 	
-	return (infoViewHeight - headingLabelViewHeight - componentScrollViewHeadingHeight - 6);
+	return (infoViewHeight - headingLabelViewHeight - componentScrollViewHeadingHeight - componentTitleLabelHeight - 6);
 }
 
 function getComponentImageWidth(height){
@@ -609,20 +607,27 @@ function openComponent(e, componentImageUrl) {
 	hideSpinner();
 }
 
-function createLabeledPicView(item, textSize) {
-	var itemContainer = Ti.UI.createView();
+function createLabeledPicView(item) {
+	
+	var imageHeight =  getComponentImageHeight();
+	
+	var itemContainer = Ti.UI.createView({
+		layout: "vertical",	
+		height : Ti.UI.SIZE,
+		width : getComponentImageWidth(imageHeight),
+	});
+	
 	var image = Ti.UI.createImageView({
-		height : '100%',
-		width : '100%'
+		height : imageHeight,
+		width : getComponentImageWidth(imageHeight),
+		itemId: item.id
 	});
-	var clickCatcher = Ti.UI.createView({
-		itemId : item.id
-	});
+	
 	image.image = item.image;
 
+	itemContainer.add(createComponentTitleLabel(item.name));
 	itemContainer.add(image);
-	itemContainer.add(createComponentTitleLabel(item.name, textSize));
-	itemContainer.add(clickCatcher);
+	
 	return itemContainer;
 }
 
