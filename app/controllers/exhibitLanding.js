@@ -422,7 +422,7 @@ function createComponentTitleLabel(name, textSize) {
 	var titleLabel = Ti.UI.createView({
 		backgroundColor : 'black',
 		opacity : 0.6,
-		height : '15%',
+		height : Ti.UI.SIZE,
 		top : 0
 	});
 
