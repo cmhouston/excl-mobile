@@ -14,7 +14,7 @@ For the WordPress developer documentation, please go [here]()
 
 For the Titanium developer documentation, please go [here]()
 
-## ExCL Wordpress Content Management System ##
+## ExCL Mobile Application ##
 
 ### Getting started ###
 
