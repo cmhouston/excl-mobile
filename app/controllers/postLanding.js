@@ -77,7 +77,7 @@ function setPathForLibDirectory(libFile) {
 
 $.onEnterKioskMode = function() {
 	$.navBar.onEnterKioskMode();
-	hideAllSharingButtons();
+	hideAllSharingButtonsForKiosk();
 };
 
 $.onExitKioskMode = function() {
@@ -451,14 +451,22 @@ function turnOffAppropriateSharingButtons() {
 	if (!post_content.image_sharing) {
 		$.resetClass($.sharePhotoButton, "socialMediaButtonHidden");
 	}
-	if ((!post_content.commenting && !post_content.text_sharing && !post_content.image_sharing) || Alloy.Globals.adminModeController.isInKioskMode()) {
+	if (!post_content.commenting && !post_content.text_sharing && !post_content.image_sharing) {
 		hideAllSharingButtons();
+	}
+	if (Alloy.Globals.adminModeController.isInKioskMode()) {
+		hideAllSharingButtonsForKiosk();
 	}
 }
 
 function hideAllSharingButtons() {
 	$.resetClass($.socialMediaButtonsRow, "hidden");
 	$.resetClass($.commentingButton, "socialMediaButtonHidden");
+	$.resetClass($.shareTextButton, "socialMediaButtonHidden");
+	$.resetClass($.sharePhotoButton, "socialMediaButtonHidden");
+}
+
+function hideAllSharingButtonsForKiosk() {
 	$.resetClass($.shareTextButton, "socialMediaButtonHidden");
 	$.resetClass($.sharePhotoButton, "socialMediaButtonHidden");
 }

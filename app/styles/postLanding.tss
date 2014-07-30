@@ -114,11 +114,16 @@
 }
 
 ".postWebView[platform=ios]": {
-	scalesPageToFit: true
+	scalesPageToFit: true,
+	height: Ti.UI.SIZE,
+	disableBounce : true
 }
 
 ".postWebView[platform=android]": {
-	scalesPageToFit: false
+	scalesPageToFit: true,
+	width: Ti.UI.SIZE,
+	enableZoomControls: true,
+	overScrollMode: Titanium.UI.Android.OVER_SCROLL_ALWAYS
 }
 
 "#addNewCommentContainer":{
