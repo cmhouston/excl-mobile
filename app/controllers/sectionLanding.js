@@ -135,11 +135,13 @@ function organizePosts(allPosts) {
 	} else {
 		dictOrderedPosts["0"] = allPosts;
 	}
-
+	if (Alloy.Globals.adminModeController.isInKioskMode()) {
+		Ti.API.info("Removing posts that are excluded for kiosk mode");
+		dictOrderedPosts = removePostsThatAreHiddenInKioskMode(dictOrderedPosts);
+	}
 	insertXNumberOfButtons(filterTabIds.length);
 	openFirstView(firstView);
 
-	Ti.API.info("Dict of Posts: " + JSON.stringify(dictOrderedPosts));
 	Ti.API.info("Parents: " + JSON.stringify(filterTabIds));
 
 	filter.sortPostsIntoTabs(dictOrderedPosts, parentObjects);
@@ -199,6 +201,22 @@ function openFilterModal(e) {
 	Alloy.Globals.navController.toggleMenu(false);
 }
 
+function removePostsThatAreHiddenInKioskMode(dictPosts) {
+	var sections = filter.returnDictKeys(dictPosts);
+	for (var i = 0; i < sections.length; i++) {
+		var posts = dictPosts[sections[i]];
+		var tempAry = [];
+		for (var j = 0; j < posts.length; j++) {
+			var post = posts[j];
+			if (!post.hide_in_kiosk_mode) {
+				tempAry.push(post);
+			}
+		}
+		dictPosts[sections[i]] = tempAry;
+	}
+	return dictPosts;
+}
+
 function insertXNumberOfButtons(numberOfButtons) {
 	parentObjects = [];
 	var objectArgs;
@@ -209,6 +227,8 @@ function insertXNumberOfButtons(numberOfButtons) {
 		top : "0",
 		height : "50dip",
 		layout : 'horizontal',
+		horizontalWrap: false,
+		scrollType: 'horizontal',
 		id : 'buttonHolderView'
 	};
 	var buttonHolderView = viewService.createCustomScrollView(objectArgs);

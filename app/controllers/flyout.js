@@ -256,7 +256,6 @@ function detectFilterConditions() {
 	//
 	ageFilterSet = Alloy.Models.app.get('customizeLearningSet');
 	ageFilterOn = Alloy.Models.app.get('customizeLearningEnabled');
-	Ti.API.info("Filters detecting: On=" + ageFilterOn);
 	if (ageFilterSet && ageFilterOn) {
 		disableAgeFilter();
 	} else if (ageFilterSet && !ageFilterOn) {
