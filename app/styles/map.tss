@@ -9,6 +9,6 @@
 }
 
 "#Map": {
-	top: "80dip",
+	//top: "80dip",
 	backgroundColor: "#000"
 }

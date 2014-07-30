@@ -2,3 +2,26 @@
 	navBarHidden: true,
 	fullscreen: true
 }
+
+"#scrollView":{
+	layout:"vertical",
+	id: "scrollView",
+	contentWidth: "100%",
+	height: "100%",
+	top:"50dip"
+}
+
+"#scrollView[formFactor=tablet]":{
+	top: "75dip"
+}
+
+"#topBar":{
+	layout: "vertical",
+	contentWidth: "100%",
+	height: "50dip",
+	top: "0dip"
+}
+
+"#topBar[formFactor=tablet]":{
+	height: "75dip"
+}
