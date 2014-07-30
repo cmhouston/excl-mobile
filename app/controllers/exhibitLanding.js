@@ -451,7 +451,7 @@ function addFunctionalityToHeadingBar(exhibits){
 		onExhibitsClick(exhibits);
 	});
 	
-	$.arrowIcon.image = iconService.getImageFilename("triple_arrow_right.png");		// TODO decide on Arrow
+	$.arrowIcon.image = iconService.getImageFilename("arrow.png");		// TODO decide on Arrow
 }
 
 function onExhibitsClick(exhibits) {
