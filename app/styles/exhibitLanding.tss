@@ -45,6 +45,10 @@
 	}
 }
 
+"#arrowIcon": {
+	right: 0
+}
+
 "#componentScrollView": {
 	layout: 'horizontal',
 	showHorizontalScrollIndicator: true,
