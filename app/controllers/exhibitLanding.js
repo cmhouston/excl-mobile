@@ -435,7 +435,7 @@ function createComponentTitleLabel(name) {
 }
 
 function getComponentTitleLabelHeight(){
-	return "25dip";
+	return "27dip";
 }
 
 function addFunctionalityToHeadingBar(exhibits){
