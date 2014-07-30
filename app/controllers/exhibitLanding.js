@@ -49,9 +49,7 @@ var exhibitText = [];
 var componentsInExhibit = [];
 var currExhibitId;
 var expanderButton;
-
-var defaultComponentHeight = "190dip";
-var ipadComponentHeight = "375dip";
+var componentsScrollerLoaded = false;
 
 //Analytics Specific Information -------------------
 var analyticsPageTitle = "Exhibit Landing";
@@ -153,10 +151,6 @@ function populateWindow(json) {
 	}
 	createExhibitsCarousel(json.data.museum.exhibits);
 	addFunctionalityToHeadingBar(json.data.museum.exhibits);
-	
-	setTimeout(function(){
-		createComponentsScrollView(json.data.museum.exhibits);
-	}, 500);
 }
 
 function createExhibitsCarousel(exhibits) {
@@ -447,6 +441,11 @@ function addFunctionalityToHeadingBar(exhibits){
 }
 
 function onExhibitsClick(exhibits) {
+	if(!componentsScrollerLoaded){
+		createComponentsScrollView(json.data.museum.exhibits);
+		componentsScrollerLoaded = true;
+	}
+	
 	$.exhibitInfoScrollView.scrollTo(0, 0);
 	if (!isBottomViewShowing()) {
 		var pageIndex = $.exhibitsCarousel.currentPage;
@@ -577,8 +576,6 @@ function getComponentImageHeight(){
 	var componentScrollViewHeadingHeight = stripUnitsOffMeasurement($.componentScrollViewHeading.height);
 	var componentTitleLabelHeight = stripUnitsOffMeasurement(getComponentTitleLabelHeight());
 	var infoViewHeight = $.infoView.toImage().height;
-	Ti.API.info("headingLabelViewHeight: " + headingLabelViewHeight + " componentScrollViewHeadingHeight: " + componentScrollViewHeadingHeight + " infoViewHeight: " + infoViewHeight);
-	
 	if(OS_ANDROID){
 		headingLabelViewHeight = detectDevice.dipToPx(headingLabelViewHeight);
 		componentScrollViewHeadingHeight = detectDevice.dipToPx(componentScrollViewHeadingHeight);
