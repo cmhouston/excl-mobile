@@ -25,8 +25,6 @@ viewService = new viewService();
 
 var allInclusiveTabTitle;
 var dictSortedPostsLength;
-var errorNoContent = "Sorry!\n\nLooks like we're still in the process of adding content here.\n\nCheck here later for new and exciting activities!";
-var errorFilterSelectionHasNoResults = "Your selected filters aren't returning any activities! Try selected some different ones.";
 var errorEmptyAllInclusive = "If you have more than one age selected, this tab will hold the content that matches all of the ages of your group members.";
 var errorEmptyTab = "";
 var sectionScreenName = "";
@@ -75,10 +73,6 @@ filterService.prototype.addItemArrayToDict = function(key, itemArray, dict) {
 };
 
 filterService.prototype.checkIfArrayInArray = function(arySmall, aryLarge) {
-
-	//Ti.API.info("arySmall: " + JSON.stringify(arySmall));
-	//Ti.API.info("aryLarge: " + JSON.stringify(aryLarge));
-
 	var lengthSmall = arySmall.length;
 	var lengthLarge = aryLarge.length;
 	var copySmall = [];
@@ -166,40 +160,31 @@ filterService.prototype.sortPostsIntoTabs = function(dict, parentObjectArray) {
 	var dictKeys = filterService.prototype.returnDictKeys(dict);
 	var dictLength = dictKeys.length;
 	dictSortedPostsLength = dictLength;
-	if (dictLength == 0) {
-		//No content found (no content that matches all filters). Throw Error.
-		parentObjectArray[0].add(filterService.prototype.generateErrorMessage(errorNoContent));
-	} else if (dictLength == 1 && dict["0"] == []) {
-		//Only all inclusive category thrown and its empty. Throw Error.
-		parentObjectArray[0].add(filterService.prototype.generateErrorMessage(errorFilterSelectionHasNoResults));
-	} else {
-		//Content found. Build the posts. Cycle through the sections/dictKeys and the tab onto which it is added.
 
-		Ti.API.info("All Sections: " + JSON.stringify(dictKeys));
+	Ti.API.info("All Sections: " + JSON.stringify(dictKeys));
+	for (var j = 0; j < parentObjectArray.length; j++) {
+		//Cycle through tabs
+		for (var i = 0; i < dictLength; i++) {
+			//Cycle through sections. Match tab ID to section ID
+			var sectionMatchedToParent = false;
+			Ti.API.info("Tab " + j + "- Parent obj: " + JSON.stringify(parentObjectArray[j].id) + ", Section: " + JSON.stringify(dictKeys[i]));
 
-		for (var j = 0; j < parentObjectArray.length; j++) {
-			//Cycle through tabs
-			for (var i = 0; i < dictLength; i++) {
-				//Cycle through sections. Match tab ID to section ID
-				var sectionMatchedToParent = false;
-				Ti.API.info("Tab " + j + "- Parent obj: " + JSON.stringify(parentObjectArray[j].id) + ", Section: " + JSON.stringify(dictKeys[i]));
-
-				if (parentObjectArray[j].id == dictKeys[i] && !sectionMatchedToParent) {
-					var postCollection = filterService.prototype.retrievePostDetails(dict, dictKeys[i]);
-					Ti.API.info("--Section and object id match.");
-					filterService.prototype.addPostsToViewAccordingToSection(dictKeys[i], dict, parentObjectArray[j], postCollection);
-					sectionMatchedToParent = true;
-					i = dictLength;
-				} else if (i == dictLength && !sectionMatchedToParent) {
-					var postCollection = filterService.prototype.retrievePostDetails(dict, dictKeys[i]);
-					Ti.API.info("--Section and object id do not match for all pairs. Add to 0.");
-					filterService.prototype.addPostsToViewAccordingToSection(dictKeys[i], dict, parentObjectArray[0], postCollection);
-				} else {
-					Ti.API.info("--Section and objct id do not match. Skip.");
-				}
+			if (parentObjectArray[j].id == dictKeys[i] && !sectionMatchedToParent) {
+				var postCollection = filterService.prototype.retrievePostDetails(dict, dictKeys[i]);
+				Ti.API.info("--Section and object id match.");
+				filterService.prototype.addPostsToViewAccordingToSection(dictKeys[i], dict, parentObjectArray[j], postCollection);
+				sectionMatchedToParent = true;
+				i = dictLength;
+			} else if (i == dictLength && !sectionMatchedToParent) {
+				var postCollection = filterService.prototype.retrievePostDetails(dict, dictKeys[i]);
+				Ti.API.info("--Section and object id do not match for all pairs. Add to 0.");
+				filterService.prototype.addPostsToViewAccordingToSection(dictKeys[i], dict, parentObjectArray[0], postCollection);
+			} else {
+				Ti.API.info("--Section and object id do not match. Skip.");
 			}
 		}
 	}
+
 };
 
 filterService.prototype.generateErrorMessage = function(msg) {
@@ -311,9 +296,6 @@ filterService.prototype.addPostsToViewAccordingToSection = function(section, dic
 		parentScreenName : sectionScreenName,
 		allInclusiveTabTitle : allInclusiveTabTitle
 	};
-
-	Ti.API.info("section: " + section + ", " + JSON.stringify(postData.posts));
-
 	if (section == "0") {
 		if (JSON.stringify(postData.posts) != "[]") {
 			Ti.API.info("--All inclusive tab found with content. Add content.");
