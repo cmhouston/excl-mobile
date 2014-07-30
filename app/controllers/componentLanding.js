@@ -36,6 +36,10 @@ labelService = new labelService();
 var detectDevice = require(rootDirPath + 'customCalls/deviceDetectionService');
 detectDevice = new detectDevice();
 
+Ti.App.addEventListener("kioskMode:kioskModeChanged", function(e){
+	Ti.API.info("Kiosk mode changed yo! => " + e.kioskMode);
+});
+
 /**
  * Analytics specific information
  */
@@ -109,6 +113,7 @@ function extractSectionNamesAndOrder(rawPostJson) {
 	}
 	return allSectionNames;
 }
+
 
 function convertSectionOrderToInteger(section_order) {
 	if (section_order == true) {
