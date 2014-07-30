@@ -45,12 +45,12 @@ KioskMode.prototype.updateKioskMode = function(){
     	this.kioskMode = true;
     	confirm.title = 'Activated Kiosk Mode';
     	Alloy.Globals.navController.enterKioskMode();
-    	
 	} else {
 		this.kioskMode = false;
 	    confirm.title = 'Deactivated Kiosk Mode';
     	Alloy.Globals.navController.exitKioskMode();
 	}
+	Ti.App.fireEvent("kioskMode:kioskModeChanged", {"kioskMode":this.kioskMode});
 	confirm.show();
 	setTimeout(function(){confirm.hide();}, 2000);
 };
