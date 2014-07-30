@@ -1,4 +1,3 @@
-
 "#container": {
 	navBarHidden: true,
 	fullscreen: true,
@@ -12,11 +11,19 @@
 	layout: "vertical"
 }
 
+"#topBar[formFactor=tablet]":{
+	height: "75dip"
+}
+
 "#scrollView":{
 	layout: "vertical",
 	contentWidth: "100%",
 	height: Ti.UI.SIZE,
 	top: "50dip"
+}
+
+"#scrollView[formFactor=tablet]":{
+	top: "75dip"
 }
 
 "#noContentView":{

@@ -5,6 +5,11 @@
 	left: "100%",
 	top: "50dip"
 },
+
+"#menuView[formFactor=tablet]":{
+	top: "75dip"	
+},
+
 "#menuContainer":{
 	separatorStyle: 'NONE',
 	separatorColor: 'transparent',
@@ -54,6 +59,12 @@
 	},
 	color: "#000"
 },
+
+".rowLabel[formFactor=tablet]":{
+	font:{
+		fontSize:"25dip"
+	}
+}
 
 ".rowLabelIndented":{
 	top: "6dip",

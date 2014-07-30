@@ -20,6 +20,8 @@
 
 var labelService = setPathForLibDirectory("customCalls/labelService");
 labelService = new labelService();
+var detectDevice = setPathForLibDirectory("customCalls/deviceDetectionService");
+detectDevice = new detectDevice();
 
 function setPathForLibDirectory(libFile) {
 	if ( typeof Titanium == 'undefined') {
@@ -58,13 +60,13 @@ exports.unHideMenuBtn = function() {
 
 exports.setPageTitle = function(title) {
 	$.pageTitle.text = title;
-	if (Titanium.Platform.osname == "ipad") {
+	if (detectDevice.isTablet()) {
 		$.pageTitle.font = {
-			fontSize : labelService.countCharInTitleAndReturnFontSize($.pageTitle.text, 30, 40, 5, 3)
+			fontSize : labelService.countCharInTitleAndReturnFontSize($.pageTitle.text, 40, 40, 5, 3)
 		};
 	} else {
 		$.pageTitle.font = {
-			fontSize : labelService.countCharInTitleAndReturnFontSize($.pageTitle.text, 16, 20, 5, 1)
+			fontSize : labelService.countCharInTitleAndReturnFontSize($.pageTitle.text, 22, 20, 5, 1)
 		};
 	}
 };
