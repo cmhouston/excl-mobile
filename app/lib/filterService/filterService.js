@@ -48,7 +48,11 @@ filterService.prototype.setAllInclusiveTabTitle = function(st) {
 
 filterService.prototype.parseStringIntoArray = function(st, deliniator) {
 	var output;
-	if (deliniator.length >= String(st).length) {
+	if ( st instanceof Array) {
+		return st;
+	}
+	st = String(st);
+	if (deliniator.length >= st.length) {
 		return st.split();
 	} else {
 		for (var i = 0; i < st.length - deliniator.length + 1; i++) {
@@ -129,7 +133,7 @@ filterService.prototype.checkIfArrayHasOnlyZero = function(ary) {
 
 filterService.prototype.replaceEmptyArrayWithAllFilters = function(ary, postId) {
 	if (ary == "a:0:{}") {
-		Ti.API.info("!!!Warning!!! Post ID " + postId + " has empty age range. Replace with all.");
+		Ti.API.info("!!!Warning!!! Post ID " + postId + " has invalid filters. Replace with all filters.");
 		newAry = [];
 		newAry = filterService.prototype.formatAllFiltersIntoArray(Alloy.Collections.filter);
 		return newAry;
@@ -267,9 +271,7 @@ filterService.prototype.formatAllFiltersIntoArray = function(ary) {
 
 filterService.prototype.sortFilteredContentIntoDict = function(selectedFilters, dictOrderedPosts, post) {
 	var postFilterCategories = filterService.prototype.replaceEmptyArrayWithAllFilters(post.age_range, post.id);
-	if (!( postFilterCategories instanceof Array)) {
-		postFilterCategories = filterService.prototype.parseStringIntoArray(String(postFilterCategories), ", ");
-	}
+	postFilterCategories = filterService.prototype.parseStringIntoArray(postFilterCategories, ", ");
 	if (JSON.stringify(selectedFilters) != "[]") {
 		if (filterService.prototype.checkIfArrayInArray(selectedFilters, postFilterCategories)) {
 			Ti.API.info("Post ID " + post.id + " has includes all of the selected filters. Add to 0.");
@@ -283,10 +285,6 @@ filterService.prototype.sortFilteredContentIntoDict = function(selectedFilters, 
 				if (Alloy.Models.app.get("customizeLearningEnabled")) {
 					Ti.API.info("Filtering enabled. Add post to filter section.");
 					filterService.prototype.addItemArrayToDict(selectedFilters[i], itemArray, dictOrderedPosts);
-
-					Ti.API.info("item array: " + JSON.stringify(itemArray));
-					Ti.API.info("selected filters: " + JSON.stringify(selectedFilters[i]));
-
 				} else {
 					Ti.API.info("Filtering not set. Add to 0.");
 					filterService.prototype.addItemArrayToDict("0", itemArray, dictOrderedPosts);
