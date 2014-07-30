@@ -209,6 +209,8 @@ function insertXNumberOfButtons(numberOfButtons) {
 		top : "0",
 		height : "50dip",
 		layout : 'horizontal',
+		horizontalWrap: false,
+		scrollType: 'horizontal',
 		id : 'buttonHolderView'
 	};
 	var buttonHolderView = viewService.createCustomScrollView(objectArgs);
