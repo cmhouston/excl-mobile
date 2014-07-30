@@ -1,8 +1,8 @@
 <Alloy>
 	<Window class="container">
 		<View id="mainView">
-		<Widget id="navBar" src="navigationBar"/>
-		<WebView id="Map"></WebView>
+			<Widget id="navBar" src="navigationBar"/>
+			<WebView id="Map"></WebView>
 		</View>
 	</Window>
 </Alloy>
