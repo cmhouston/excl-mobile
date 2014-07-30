@@ -166,7 +166,7 @@ function displayComments(comments) {
 	}
 
 	if (comments.length > commentsLengthLimit) {
-		$.showMoreComments.visible = true;
+		$.showMoreComments.height = Ti.UI.SIZE;
 		// if clicked, hide it and show the other comments
 		$.showMoreComments.addEventListener('click', function(e) {
 			for (var i = commentsLengthLimit; i < comments.length; i++) {
