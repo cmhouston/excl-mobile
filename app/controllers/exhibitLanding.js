@@ -451,7 +451,7 @@ function addFunctionalityToHeadingBar(exhibits){
 		onExhibitsClick(exhibits);
 	});
 	
-	$.arrowIcon.image = iconService.getImageFilename("arrow.png");		// TODO decide on Arrow
+	$.arrowIcon.image = iconService.getImageFilename("arrow3.png");		// TODO decide on Arrow
 }
 
 function onExhibitsClick(exhibits) {
@@ -485,15 +485,17 @@ function animateTopViewDown(){
 	var topMeasurement = $.infoView.toImage().height - headingLabelHeight;
 	
 	var animationDuration = 300;
-	$.topView.animate({
-		top: topMeasurement,
-		duration: animationDuration
-	});	
 	
 	$.arrowIcon.animate({
 		transform: Ti.UI.create2DMatrix().rotate(180),
 		duration: animationDuration
 	});
+	
+	$.topView.animate({
+		top: topMeasurement,
+		duration: animationDuration
+	});	
+
 	setTimeout(function(e){
 		$.topView.top = topMeasurement;
 		$.headingLabel.text = "Go Back";
@@ -503,14 +505,14 @@ function animateTopViewDown(){
 
 function animateTopViewUp(){
 	var animationDuration = 300;
-	$.topView.animate({
-		top: 0,
-		duration: animationDuration
-	});
-	
 	
 	$.arrowIcon.animate({
 		transform: Ti.UI.create2DMatrix().rotate(0),
+		duration: animationDuration
+	});
+	
+	$.topView.animate({
+		top: 0,
 		duration: animationDuration
 	});
 	
