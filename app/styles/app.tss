@@ -10,7 +10,11 @@
 ".windowHeader": {
 	width: Ti.UI.FILL,
 	height: "50dip",
-	backgroundColor: '#253342',
+	backgroundColor: '#FF6600',
+}
+
+".windowHeader[formFactor=tablet]":{
+	height: "75dip"
 }
 
 // Keep height sizing in dip. If that changes, change exhibitLanding makeDefaultUnitsFromDip() calls
