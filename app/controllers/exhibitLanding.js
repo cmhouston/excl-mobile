@@ -49,7 +49,6 @@ var exhibitText = [];
 var componentsInExhibit = [];
 var currExhibitId;
 var expanderButton;
-var componentsScrollerLoaded = false;
 
 //Analytics Specific Information -------------------
 var analyticsPageTitle = "Exhibit Landing";
@@ -151,6 +150,11 @@ function populateWindow(json) {
 	}
 	createExhibitsCarousel(json.data.museum.exhibits);
 	addFunctionalityToHeadingBar(json.data.museum.exhibits);
+	
+	// When the rest of the page is done loading initialize the component scroller. This is so we can reference the height of infoView
+	$.exhibitLanding.addEventListener("postlayout", function(e){
+		createComponentsScrollView(json.data.museum.exhibits);
+	});
 }
 
 function createExhibitsCarousel(exhibits) {
@@ -441,11 +445,6 @@ function addFunctionalityToHeadingBar(exhibits){
 }
 
 function onExhibitsClick(exhibits) {
-	if(!componentsScrollerLoaded){
-		createComponentsScrollView(json.data.museum.exhibits);
-		componentsScrollerLoaded = true;
-	}
-	
 	$.exhibitInfoScrollView.scrollTo(0, 0);
 	if (!isBottomViewShowing()) {
 		var pageIndex = $.exhibitsCarousel.currentPage;
@@ -542,6 +541,7 @@ function changeVisibleComponents(e){
 }
 
 function createComponentsScrollView(exhibits) {
+	
 	currExhibitId = exhibits[0].id;
 
 	for (var i = 0; i < exhibits.length; i++) {
