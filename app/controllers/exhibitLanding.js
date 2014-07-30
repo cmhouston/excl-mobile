@@ -49,6 +49,7 @@ var exhibitText = [];
 var componentsInExhibit = [];
 var currExhibitId;
 var expanderButton;
+var componentScrollViewLoaded = false;
 
 //Analytics Specific Information -------------------
 var analyticsPageTitle = "Exhibit Landing";
@@ -152,9 +153,13 @@ function populateWindow(json) {
 	addFunctionalityToHeadingBar(json.data.museum.exhibits);
 	
 	// When the rest of the page is done loading initialize the component scroller. This is so we can reference the height of infoView
-	$.exhibitLanding.addEventListener("postlayout", function(e){
-		createComponentsScrollView(json.data.museum.exhibits);
-	});
+	$.infoView.addEventListener("postlayout", handleInfoViewLoad);
+}
+
+function handleInfoViewLoad(e){	
+	Ti.API.info("hmmmmmmm");
+	createComponentsScrollView(json.data.museum.exhibits);
+	$.infoView.removeEventListener('postlayout', handleInfoViewLoad);
 }
 
 function createExhibitsCarousel(exhibits) {
