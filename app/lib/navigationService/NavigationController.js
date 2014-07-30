@@ -159,6 +159,11 @@ NavigationController.prototype.addCloseEventListenersToWindow = function(windowT
 			if(self.windowStack[self.windowStack.length-1] != self.lockedPage) {
 				self.close(1);
 			}
+			
+			// Close the app if you are on the home page and kiosk mode is disabled
+			if(self.windowStack.length == 1 && !Alloy.Globals.adminModeController.isInKioskMode()){
+				Titanium.Android.currentActivity.finish();
+			}
 		});
 	}
 
