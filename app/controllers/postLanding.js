@@ -77,7 +77,7 @@ function setPathForLibDirectory(libFile) {
 
 $.onEnterKioskMode = function() {
 	$.navBar.onEnterKioskMode();
-	hideAllSharingButtons();
+	hideAllSharingButtonsForKiosk();
 };
 
 $.onExitKioskMode = function() {
@@ -422,7 +422,9 @@ function initializePage() {
 	}
 	
 	if (post_content.post_body) {
-		$.postBodyRow.add(getRowContentsForRichText(post_content.post_body));
+		var postBody = getRowContentsForRichText(post_content.post_body);
+		$.postBodyRow.add(postBody);
+		//turnWebViewLinksToBrowserLinks(postBody);
 	}
 
 	showAllSharingButtons();
@@ -441,6 +443,13 @@ function initializePage() {
 	formatCommentBoxForIpad();
 }
 
+function openInBrowser(link) {
+	Ti.API.info("Link: " + JSON.stringify(link));
+	Ti.Platform.openURL(link.url);
+}
+
+Ti.App.addEventListener('app:openInBrowser', openInBrowser);
+
 function turnOffAppropriateSharingButtons() {
 	if (!post_content.commenting) {
 		$.resetClass($.commentingButton, "socialMediaButtonHidden");
@@ -451,14 +460,22 @@ function turnOffAppropriateSharingButtons() {
 	if (!post_content.image_sharing) {
 		$.resetClass($.sharePhotoButton, "socialMediaButtonHidden");
 	}
-	if ((!post_content.commenting && !post_content.text_sharing && !post_content.image_sharing) || Alloy.Globals.adminModeController.isInKioskMode()) {
+	if (!post_content.commenting && !post_content.text_sharing && !post_content.image_sharing) {
 		hideAllSharingButtons();
+	}
+	if (Alloy.Globals.adminModeController.isInKioskMode()) {
+		hideAllSharingButtonsForKiosk();
 	}
 }
 
 function hideAllSharingButtons() {
 	$.resetClass($.socialMediaButtonsRow, "hidden");
 	$.resetClass($.commentingButton, "socialMediaButtonHidden");
+	$.resetClass($.shareTextButton, "socialMediaButtonHidden");
+	$.resetClass($.sharePhotoButton, "socialMediaButtonHidden");
+}
+
+function hideAllSharingButtonsForKiosk() {
 	$.resetClass($.shareTextButton, "socialMediaButtonHidden");
 	$.resetClass($.sharePhotoButton, "socialMediaButtonHidden");
 }
@@ -592,9 +609,14 @@ function getRowContentsForImage(url) {
 }
 
 function getRowContentsForRichText(text) {
+	Ti.API.info("HTML: " + text);
 	var webView = Ti.UI.createWebView({ html : text	});
 	$.addClass(webView, "postWebView");
 	return webView;
+}
+
+function turnWebViewLinksToBrowserLinks(webView) {
+	webView.evalJS("function openInBrowser(link) { Ti.App.fireEvent('app:openInBrowser', {url: link}); } function changeLinksToOpenInBrowser() { alert('working'); var aTags = document.getElementsByTagName('a'); for (var i = 0; i < aTags.length; i++) { var tag = aTags[i]; var linkURL = tag.href; tag.setAttribute('href', '#'); tag.setAttribute('onclick', 'openInBrowser(\"' + linkURL + '\"); return false;'); } }; window.onload = changeLinksToOpenInBrowser;");
 }
 
 function formatCommentBoxForIpad() {

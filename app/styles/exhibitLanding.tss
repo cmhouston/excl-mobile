@@ -43,7 +43,6 @@
 	text: "Select an Activity!",
 	color: "black",
 	font: {
-		
 		fontWeight: 'bold',
 		fontSize: "20dip"
 	}
@@ -54,6 +53,12 @@
 		fontWeight: 'bold',
 		fontSize: "40dip"
 	}
+}
+
+"#arrowIcon": {
+	right: 0,
+	//height: "75%",
+	width: "10%"
 }
 
 "#componentScrollView": {
