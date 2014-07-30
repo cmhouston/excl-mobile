@@ -60,15 +60,6 @@ exports.unHideMenuBtn = function() {
 
 exports.setPageTitle = function(title) {
 	$.pageTitle.text = title;
-	if (detectDevice.isTablet()) {
-		$.pageTitle.font = {
-			fontSize : labelService.countCharInTitleAndReturnFontSize($.pageTitle.text, 40, 40, 5, 3)
-		};
-	} else {
-		$.pageTitle.font = {
-			fontSize : labelService.countCharInTitleAndReturnFontSize($.pageTitle.text, 22, 20, 5, 1)
-		};
-	}
 };
 
 exports.setBackgroundColor = function(color) {
