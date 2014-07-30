@@ -238,7 +238,6 @@ function insertXNumberOfButtons(numberOfButtons) {
 		if (button.title == "0") {
 			button.title = allInclusiveTabTitle;
 		}
-
 		objectArgs = {
 			// borderRadius : "30dip",
 			backgroundColor : '#FFFFFF',

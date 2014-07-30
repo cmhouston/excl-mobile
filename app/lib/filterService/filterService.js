@@ -28,7 +28,7 @@ var dictSortedPostsLength;
 var errorNoContent = "Sorry!\n\nLooks like we're still in the process of adding content here.\n\nCheck here later for new and exciting activities!";
 var errorFilterSelectionHasNoResults = "Your selected filters aren't returning any activities! Try selected some different ones.";
 var errorEmptyAllInclusive = "If you have more than one age selected, this tab will hold the content that matches all of the ages of your group members.";
-var errorEmptyTab = "Looks like there is no content specific for this filter. It may have been moved to the " + allInclusiveTabTitle + "tab above, check there!";
+var errorEmptyTab = "";
 var sectionScreenName = "";
 
 function setPathForLibDirectory(libFile) {
@@ -44,7 +44,8 @@ function filterService() {
 };
 
 filterService.prototype.setAllInclusiveTabTitle = function(st) {
-	var allInclusiveTabTitle = st;
+	allInclusiveTabTitle = st;
+	errorEmptyTab = 'Looks like there is no unique content for this filter. It may have been moved to the "' + allInclusiveTabTitle + '" tab above, check there!';
 };
 
 filterService.prototype.parseStringIntoArray = function(st, deliniator) {
@@ -214,7 +215,7 @@ filterService.prototype.generateErrorMessage = function(msg) {
 	objectArgs = {
 		top : "0",
 		height : "200dip",
-		width: "90%"
+		width : "90%"
 	};
 	var errorView = viewService.createCustomView(objectArgs);
 	errorView.add(error);
@@ -284,16 +285,17 @@ filterService.prototype.formatActiveFiltersIntoArray = function(ary) {
 filterService.prototype.sortFilteredContentIntoDict = function(selectedFilters, dictOrderedPostsByFilter, post) {
 	var postFilterCategories = filterService.prototype.replaceEmptyArrayWithZero(post.age_range);
 	postFilterCategories = filterService.prototype.parseStringIntoArray(String(postFilterCategories), ", ");
-	if (filterService.prototype.checkIfArrayInArray(selectedFilters, postFilterCategories) && selectedFilters.length != 2) {
+	if (filterService.prototype.checkIfArrayInArray(selectedFilters, postFilterCategories)) {
 		Ti.API.info("Post " + post.id + " has includes all of the selected filters. Add to 0.");
 		filterService.prototype.addItemArrayToDict("0", post, dictOrderedPostsByFilter);
-	} else if (filterService.prototype.checkIfArrayHasOnlyZero(postFilterCategories) && selectedFilters.length != 2) {
+	} else if (filterService.prototype.checkIfArrayHasOnlyZero(postFilterCategories)) {
 		Ti.API.info("Post " + post.id + " has all possible filters. Add to 0.");
 		filterService.prototype.addItemArrayToDict("0", post, dictOrderedPostsByFilter);
 	} else {
 		for (var i = 0; i < selectedFilters.length; i++) {
 			var itemArray = filterService.prototype.sortPostIntoApplicableSection(postFilterCategories, selectedFilters[i], post);
 			if (Alloy.Models.app.get("customizeLearningEnabled")) {
+				Ti.API.info("Filtering enabled. Add post to filter section.");
 				filterService.prototype.addItemArrayToDict(selectedFilters[i], itemArray, dictOrderedPostsByFilter);
 			} else {
 				Ti.API.info("Filtering not set. Add to 0.");
