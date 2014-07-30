@@ -35,14 +35,30 @@
 	backgroundColor: "white"
 }
 
+"#componentScrollViewHeading[formFactor=tablet]":{
+	height: "75dip",
+}
+
 "#componentScrollViewLabel":{
 	text: "Select an Activity!",
 	color: "black",
 	font: {
-		
 		fontWeight: 'bold',
 		fontSize: "20dip"
 	}
+}
+
+"#componentScrollViewLabel[formFactor=tablet]":{
+	font:{
+		fontWeight: 'bold',
+		fontSize: "40dip"
+	}
+}
+
+"#arrowIcon": {
+	right: 0,
+	//height: "75%",
+	width: "10%"
 }
 
 "#componentScrollView": {
@@ -62,6 +78,10 @@
 	top: 0
 }
 
+"#headingLabelView[formFactor=tablet]": {
+	height: "75dip",
+}
+
 "#headingLabel":{
 	color: "white",
 	font: {
@@ -71,9 +91,22 @@
 	}
 }
 
+"#headingLabel[formFactor=tablet]":{
+	font:{
+		fontWeight: 'bold',
+		fontSize: "40dip"
+	}
+}
+
 "#exhibitInfoLabel": {
 	color: '#000',
 	width: "90%"
+}
+
+"#exhibitInfoLabel[formFactor=tablet]":{
+	font : {
+		fontSize : "25dip"
+	}
 }
 
 "#exhibitInfoScrollView": {

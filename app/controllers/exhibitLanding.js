@@ -32,9 +32,6 @@ buttonService = new buttonService();
 var detectDevice = setPathForLibDirectory('customCalls/deviceDetectionService');
 detectDevice = new detectDevice();
 
-var iconService = setPathForLibDirectory('customCalls/iconService');
-iconService = new iconService();
-
 var loadingSpinner = setPathForLibDirectory('loadingSpinner/loadingSpinner');
 var addLoadingMessage = true;
 var loadingSpinnerLib = new loadingSpinner(addLoadingMessage);
@@ -155,8 +152,7 @@ function populateWindow(json) {
 		}
 	}
 	createExhibitsCarousel(json.data.museum.exhibits);
-	
-	addClickListenerToHeadingBar(json.data.museum.exhibits);
+	addFunctionalityToHeadingBar(json.data.museum.exhibits);
 	
 	setTimeout(function(){
 		createComponentsScrollView(json.data.museum.exhibits);
@@ -183,15 +179,6 @@ function createExhibitsCarousel(exhibits) {
 	
 	$.headingLabel.text = "Explore This " + json.data.museum.exhibit_label;
 	$.exhibitInfoLabel.text = exhibits[0].long_description;
-	if (detectDevice.isTablet()) {
-		$.headingLabel.font = {
-			fontSize : "30dip",
-			fontWeight : 'bold'
-		};
-		$.exhibitInfoLabel.font = {
-			fontSize : "25dip"
-		};
-	}
 	
 	if(OS_ANDROID){
 		resizeExhibitCarouselAndroid();
@@ -289,7 +276,7 @@ function addPagingArrowsToView(view, pageNum, numOfPages){
 			bottom: "15%",
 			height: "15%",
 			width: "15%",
-			backgroundColor: "#AAF200",//orange#FF6600",
+			backgroundColor: "#FF6600",
 			image: iconService.getImageFilename("triple_arrow_right.png")
 		});
 		
@@ -308,7 +295,7 @@ function addPagingArrowsToView(view, pageNum, numOfPages){
 			top: "15%",
 			height: "15%",
 			width: "15%",
-			backgroundColor: "#AAF200",//orange#FF6600",
+			backgroundColor: "#FF6600",
 			image: iconService.getImageFilename("triple_arrow_left.png")
 		});
 		
@@ -379,7 +366,7 @@ function createExhibitTitleLabel(name) {
 	if (detectDevice.isTablet()) {
 		label.font = {
 
-			fontSize : "30dip"
+			fontSize : "40dip"
 		};
 	}
 	titleLabelView.add(label);
@@ -390,7 +377,7 @@ function createExhibitTitleLabel(name) {
 function getExhibitTitleLabelHeight(){
 	if(detectDevice.isTablet())
 	{
-		return 40;
+		return 60;
 	}
 	return 34;
 }
@@ -422,7 +409,7 @@ function createComponentTitleLabel(name, textSize) {
 	var titleLabel = Ti.UI.createView({
 		backgroundColor : 'black',
 		opacity : 0.6,
-		height : '15%',
+		height : Ti.UI.SIZE,
 		top : 0
 	});
 
@@ -450,10 +437,12 @@ function createComponentTitleLabel(name, textSize) {
 	return titleLabel;
 }
 
-function addClickListenerToHeadingBar(exhibits){
+function addFunctionalityToHeadingBar(exhibits){
 	$.headingLabelView.addEventListener("click", function(e) {
 		onExhibitsClick(exhibits);
 	});
+	
+	$.arrowIcon.image = iconService.getImageFilename("arrow3.png");		// TODO decide on Arrow
 }
 
 function onExhibitsClick(exhibits) {
@@ -461,19 +450,6 @@ function onExhibitsClick(exhibits) {
 	if (!isBottomViewShowing()) {
 		var pageIndex = $.exhibitsCarousel.currentPage;
 		$.exhibitInfoLabel.text = exhibits[pageIndex].long_description;
-		if (detectDevice.isTablet()) {
-			$.exhibitInfoLabel.font = {
-
-				fontSize : "25dip"
-			};
-		}
-		if (detectDevice.isTablet()) {
-			$.headingLabel.font = {
-
-				fontSize : "30dip",
-				fontWeight : 'bold'
-			};
-		}
 		animateTopViewDown();
 
 	} else {
@@ -487,10 +463,17 @@ function animateTopViewDown(){
 	var topMeasurement = $.infoView.toImage().height - headingLabelHeight;
 	
 	var animationDuration = 300;
+	
+	$.arrowIcon.animate({
+		transform: Ti.UI.create2DMatrix().rotate(180),
+		duration: animationDuration
+	});
+	
 	$.topView.animate({
 		top: topMeasurement,
 		duration: animationDuration
-	});
+	});	
+
 	setTimeout(function(e){
 		$.topView.top = topMeasurement;
 		$.headingLabel.text = "Go Back";
@@ -500,10 +483,17 @@ function animateTopViewDown(){
 
 function animateTopViewUp(){
 	var animationDuration = 300;
+	
+	$.arrowIcon.animate({
+		transform: Ti.UI.create2DMatrix().rotate(0),
+		duration: animationDuration
+	});
+	
 	$.topView.animate({
 		top: 0,
 		duration: animationDuration
 	});
+	
 	setTimeout(function(e){
 		$.topView.top = 0;
 	}, animationDuration);
@@ -556,6 +546,7 @@ function createComponentsScrollView(exhibits) {
 
 	for (var i = 0; i < exhibits.length; i++) {
 		defaultComponentHeight = getComponentImageHeight();
+		var componentWidth = getComponentImageWidth(defaultComponentHeight);
 		componentsInExhibit[exhibits[i].id] = Ti.UI.createView({
 			layout : 'horizontal',
 			horizontalWrap : false,
@@ -568,10 +559,8 @@ function createComponentsScrollView(exhibits) {
 		for (var j = 0; j < exhibits[i].components.length; j++) {
 			var component = createLabeledPicView(exhibits[i].components[j], '20dip');
 			component.left = "3dip";
-			component.width = '275dip';
-			if (detectDevice.isTablet()) {
-				component.width = "500dip";
-			}
+			component.width = componentWidth;
+
 			component.id = exhibits[i].components[j].id;
 			component.addEventListener('click', (function(image) {
 				return function(e) {
@@ -588,6 +577,7 @@ function createComponentsScrollView(exhibits) {
 }
 
 function getComponentImageHeight(){
+	//Fits height to available space on screen
 	var headingLabelViewHeight = stripUnitsOffMeasurement($.headingLabelView.height);
 	var componentScrollViewHeadingHeight = stripUnitsOffMeasurement($.componentScrollViewHeading.height);
 	var infoViewHeight = $.infoView.toImage().height;
@@ -598,6 +588,12 @@ function getComponentImageHeight(){
 	}
 	
 	return (infoViewHeight - headingLabelViewHeight - componentScrollViewHeadingHeight - 6);
+}
+
+function getComponentImageWidth(height){
+	//Fits width based on component image height and desired aspect ratio
+	var width = height*7.0/4;
+	return width;
 }
 
 function openComponent(e, componentImageUrl) {

@@ -77,7 +77,7 @@ function setPathForLibDirectory(libFile) {
 
 $.onEnterKioskMode = function() {
 	$.navBar.onEnterKioskMode();
-	hideAllSharingButtons();
+	hideAllSharingButtonsForKiosk();
 };
 
 $.onExitKioskMode = function() {
@@ -422,7 +422,8 @@ function initializePage() {
 	}
 	
 	if (post_content.post_body) {
-		$.postBodyRow.add(getRowContentsForRichText(post_content.post_body));
+		var postBody = getRowContentsForRichText(post_content.post_body);
+		$.postBodyRow.add(postBody);
 	}
 
 	showAllSharingButtons();
@@ -441,6 +442,12 @@ function initializePage() {
 	formatCommentBoxForIpad();
 }
 
+function openInBrowser(e) {
+	Ti.Platform.openURL(e.url);
+}
+
+Ti.App.addEventListener('app:openInBrowser', openInBrowser);
+
 function turnOffAppropriateSharingButtons() {
 	if (!post_content.commenting) {
 		$.resetClass($.commentingButton, "socialMediaButtonHidden");
@@ -451,14 +458,22 @@ function turnOffAppropriateSharingButtons() {
 	if (!post_content.image_sharing) {
 		$.resetClass($.sharePhotoButton, "socialMediaButtonHidden");
 	}
-	if ((!post_content.commenting && !post_content.text_sharing && !post_content.image_sharing) || Alloy.Globals.adminModeController.isInKioskMode()) {
+	if (!post_content.commenting && !post_content.text_sharing && !post_content.image_sharing) {
 		hideAllSharingButtons();
+	}
+	if (Alloy.Globals.adminModeController.isInKioskMode()) {
+		hideAllSharingButtonsForKiosk();
 	}
 }
 
 function hideAllSharingButtons() {
 	$.resetClass($.socialMediaButtonsRow, "hidden");
 	$.resetClass($.commentingButton, "socialMediaButtonHidden");
+	$.resetClass($.shareTextButton, "socialMediaButtonHidden");
+	$.resetClass($.sharePhotoButton, "socialMediaButtonHidden");
+}
+
+function hideAllSharingButtonsForKiosk() {
 	$.resetClass($.shareTextButton, "socialMediaButtonHidden");
 	$.resetClass($.sharePhotoButton, "socialMediaButtonHidden");
 }
@@ -592,7 +607,15 @@ function getRowContentsForImage(url) {
 }
 
 function getRowContentsForRichText(text) {
-	var webView = Ti.UI.createWebView({ html : text	});
+	Ti.API.info("HTML: " + text);
+	var html = '<html><head><title></title><script type="text/javascript">';
+	html += "function openInBrowser(link) { Ti.App.fireEvent('app:openInBrowser', {url: link}) } function changeLinksToOpenInBrowser() { alert('working'); var aTags = document.getElementsByTagName('a'); for (var i = 0; i < aTags.length; i++) { var tag = aTags[i]; var linkURL = tag.href; tag.setAttribute('href', '#'); tag.setAttribute('onclick', 'openInBrowser(\"' + linkURL + '\"); return false;'); } }; window.onload = changeLinksToOpenInBrowser;";
+	html += '</script>';
+	html += '<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">';
+	html += '</head><body>';
+	html += text;
+	html += '</body></html>';
+	var webView = Ti.UI.createWebView({ html : html	});
 	$.addClass(webView, "postWebView");
 	return webView;
 }
