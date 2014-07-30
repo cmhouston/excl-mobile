@@ -32,9 +32,6 @@ buttonService = new buttonService();
 var detectDevice = setPathForLibDirectory('customCalls/deviceDetectionService');
 detectDevice = new detectDevice();
 
-var iconService = setPathForLibDirectory('customCalls/iconService');
-iconService = new iconService();
-
 var loadingSpinner = setPathForLibDirectory('loadingSpinner/loadingSpinner');
 var addLoadingMessage = true;
 var loadingSpinnerLib = new loadingSpinner(addLoadingMessage);
@@ -155,8 +152,7 @@ function populateWindow(json) {
 		}
 	}
 	createExhibitsCarousel(json.data.museum.exhibits);
-	
-	addClickListenerToHeadingBar(json.data.museum.exhibits);
+	addFunctionalityToHeadingBar(json.data.museum.exhibits);
 	
 	setTimeout(function(){
 		createComponentsScrollView(json.data.museum.exhibits);
@@ -450,10 +446,12 @@ function createComponentTitleLabel(name, textSize) {
 	return titleLabel;
 }
 
-function addClickListenerToHeadingBar(exhibits){
+function addFunctionalityToHeadingBar(exhibits){
 	$.headingLabelView.addEventListener("click", function(e) {
 		onExhibitsClick(exhibits);
 	});
+	
+	$.arrowIcon.image = iconService.getImageFilename("triple_arrow_right.png");		// TODO decide on Arrow
 }
 
 function onExhibitsClick(exhibits) {
@@ -490,6 +488,11 @@ function animateTopViewDown(){
 	$.topView.animate({
 		top: topMeasurement,
 		duration: animationDuration
+	});	
+	
+	$.arrowIcon.animate({
+		transform: Ti.UI.create2DMatrix().rotate(180),
+		duration: animationDuration
 	});
 	setTimeout(function(e){
 		$.topView.top = topMeasurement;
@@ -504,6 +507,13 @@ function animateTopViewUp(){
 		top: 0,
 		duration: animationDuration
 	});
+	
+	
+	$.arrowIcon.animate({
+		transform: Ti.UI.create2DMatrix().rotate(0),
+		duration: animationDuration
+	});
+	
 	setTimeout(function(e){
 		$.topView.top = 0;
 	}, animationDuration);

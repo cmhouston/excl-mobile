@@ -16,7 +16,6 @@
 // Keep height sizing in dip. If that changes, change exhibitLanding makeDefaultUnitsFromDip() calls
 ".headingRow": {
 	backgroundColor: '#2382ff',
-	layout: "horizontal",
 	width: Ti.UI.FILL,
 	height: '50 dip'
 }
