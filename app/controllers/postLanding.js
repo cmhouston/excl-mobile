@@ -424,7 +424,6 @@ function initializePage() {
 	if (post_content.post_body) {
 		var postBody = getRowContentsForRichText(post_content.post_body);
 		$.postBodyRow.add(postBody);
-		//turnWebViewLinksToBrowserLinks(postBody);
 	}
 
 	showAllSharingButtons();
@@ -443,9 +442,8 @@ function initializePage() {
 	formatCommentBoxForIpad();
 }
 
-function openInBrowser(link) {
-	Ti.API.info("Link: " + JSON.stringify(link));
-	Ti.Platform.openURL(link.url);
+function openInBrowser(e) {
+	Ti.Platform.openURL(e.url);
 }
 
 Ti.App.addEventListener('app:openInBrowser', openInBrowser);
@@ -610,13 +608,16 @@ function getRowContentsForImage(url) {
 
 function getRowContentsForRichText(text) {
 	Ti.API.info("HTML: " + text);
-	var webView = Ti.UI.createWebView({ html : text	});
+	var html = '<html><head><title></title><script type="text/javascript">';
+	html += "function openInBrowser(link) { Ti.App.fireEvent('app:openInBrowser', {url: link}) } function changeLinksToOpenInBrowser() { alert('working'); var aTags = document.getElementsByTagName('a'); for (var i = 0; i < aTags.length; i++) { var tag = aTags[i]; var linkURL = tag.href; tag.setAttribute('href', '#'); tag.setAttribute('onclick', 'openInBrowser(\"' + linkURL + '\"); return false;'); } }; window.onload = changeLinksToOpenInBrowser;";
+	html += '</script>';
+	html += '<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">';
+	html += '</head><body>';
+	html += text;
+	html += '</body></html>';
+	var webView = Ti.UI.createWebView({ html : html	});
 	$.addClass(webView, "postWebView");
 	return webView;
-}
-
-function turnWebViewLinksToBrowserLinks(webView) {
-	webView.evalJS("function openInBrowser(link) { Ti.App.fireEvent('app:openInBrowser', {url: link}); } function changeLinksToOpenInBrowser() { alert('working'); var aTags = document.getElementsByTagName('a'); for (var i = 0; i < aTags.length; i++) { var tag = aTags[i]; var linkURL = tag.href; tag.setAttribute('href', '#'); tag.setAttribute('onclick', 'openInBrowser(\"' + linkURL + '\"); return false;'); } }; window.onload = changeLinksToOpenInBrowser;");
 }
 
 function formatCommentBoxForIpad() {

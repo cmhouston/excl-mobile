@@ -19,7 +19,8 @@
 //=====================================================================
 
 var args = arguments[0] || {};
-var postArgs = args.posts;
+var postArgs = args[0].posts;
+var allInclusiveTabTitle = args[1];
 
 var parentScreenName = args.parentScreenName;
 var viewService = setPathForLibDirectory("customCalls/viewService");
@@ -53,7 +54,7 @@ function init() {
 		$.placeholderContainer.height = "0";
 	} else {
 		Ti.API.info("--Invalid post args found. Throwing Error.");
-		post = createErrorView("There's no content specific for this age. Check above or change your filter!");
+		post = createErrorView("101 Looks like there is no content specific for this filter. It may have been moved to the " + allInclusiveTabTitle + "tab above, check there!");
 		$.backgroundContainer.add(post);
 		$.backgroundContainer.height = Ti.UI.SIZE;
 		$.placeholderContainer.height = "0";
@@ -79,52 +80,29 @@ function createErrorView(msg) {
 		layout : "vertical",
 		width : "95%",
 		backgroundColor : "#F8F8F8",
-		left : "2%"
+		left : "2%",
+		height : Ti.UI.SIZE
 	};
 	var postContainer = viewService.createCustomView(args);
-	if (detectDevice.isTablet()) {
-		postContainer.height = "300dip";
-	} else {
-		postContainer.height = "200dip";
-	}
-
-	args = {
-		height : "50dip",
-		width : "100%",
-		backgroundColor : "#D8D8D8"
-	};
-	var header = viewService.createCustomView(args);
-
-	args = {
-		height : "50dip",
-		width : "99%",
-		backgroundColor : "#D8D8D8",
-		top : "1%",
-		bottom : "1%",
-		left : "1%"
-	};
-	var headerWrap = viewService.createCustomView(args);
 
 	args = {
 		color : "#000000",
 		text : msg,
 		textAlign : "center",
+		color : "black",
 		font : {
-
-			fontSize : labelService.countCharInTitleAndReturnFontSize(msg, 20, 30, 5, 2),
-			fontWeight : 'bold'
+			color : "black",
+			fontSize : "20dip"
 		}
 	};
 	var headerText = labelService.createCustomLabel(args);
 	if (detectDevice.isTablet()) {
 		headerText.font = {
-			fontSize : labelService.countCharInTitleAndReturnFontSize(headerText.text, 30, 40, 10, 2)
+			fontSize : "25dip"
 		};
 	}
 
-	postContainer.add(header);
-	header.add(headerWrap);
-	headerWrap.add(headerText);
+	postContainer.add(headerText);
 	container.add(postContainer);
 
 	if (OS_IOS) {
@@ -181,8 +159,9 @@ function createPostView(post) {
 		color : "#000000",
 		text : post.get("name"),
 		textAlign : "center",
+		color : "black",
 		font : {
-
+			color : "black",
 			fontSize : labelService.countCharInTitleAndReturnFontSize(post.get("name"), 20, 30, 5, 2),
 			fontWeight : 'bold'
 		}
@@ -242,7 +221,6 @@ function createPostView(post) {
 		text : post.get("text"),
 		color : "#000000",
 		font : {
-
 			fontSize : "16dip",
 			color : "#000000"
 		},
