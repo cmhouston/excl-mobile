@@ -8,7 +8,6 @@
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
-// 
 // This program is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
@@ -17,6 +16,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //=====================================================================
+
 var args = arguments[0] || {};
 var post = args[0];
 var sectionColor = args[1] || $.navBar.backgroundColor;
@@ -303,6 +303,9 @@ function initializePage() {
 	
 	if (post_content.post_body) {
 		Ti.App.addEventListener('app:openInBrowser', openInBrowser);
+		
+		
+		
 		$.webView.setHtml(wrapRichTextInHTML(post_content.post_body));
 	} else {
 		$.webView.height = "0dip";
@@ -486,7 +489,34 @@ function getRowContentsForImage(url) {
 function wrapRichTextInHTML(text) {
 	var file = Ti.Filesystem.getFile(Ti.Filesystem.resourcesDirectory, "webViewInjectableHTML.html");
 	html = file.read().text.replace("${RICH_TEXT}", text);
+	
+	html = setHtmlFonts(html);
+	
+	Ti.API.info("Replaced HTML: " + html);
+	//html += "function openInBrowser(link) { Ti.App.fireEvent('app:openInBrowser', {url: link}) } function changeLinksToOpenInBrowser() { alert('working'); var aTags = document.getElementsByTagName('a'); for (var i = 0; i < aTags.length; i++) { var tag = aTags[i]; var linkURL = tag.href; tag.setAttribute('href', '#'); tag.setAttribute('onclick', 'openInBrowser(\"' + linkURL + '\"); return false;'); } }; window.onload = changeLinksToOpenInBrowser;";
 	return html;
+}
+
+function setHtmlFonts(html){
+	var font = getDeviceDefaultFont();
+	
+	html = html.split("${FONT}").join(font);
+	html = html.replace("${H1_FONT_SIZE}", "2.5em");
+	html = html.replace("${H2_FONT_SIZE}", "2.25em");
+	html = html.replace("${H3_FONT_SIZE}", "2em");
+	html = html.replace("${H4_FONT_SIZE}", "1.75em");
+	html = html.replace("${H5_FONT_SIZE}", "1.5em");
+	html = html.replace("${H6_FONT_SIZE}", "1.2em");
+	
+	html = html.replace("${NORMAL_FONT_SIZE}", "1em");
+	html = html.replace("${PRE_FONT_SIZE}", "0.8em");
+	
+	return html;
+}
+
+// Set up a global variable for device fonts. This will change the font to native Android and iOS font types
+function getDeviceDefaultFont(){
+	return Alloy.CFG.font;
 }
 
 initializePage();

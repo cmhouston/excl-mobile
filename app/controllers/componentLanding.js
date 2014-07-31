@@ -182,10 +182,11 @@ function displaySectionList(orderedSectionList, rawJson) {
 
 		objectArgs = {
 			color : 'white',
-			textAlign : 'center',
+			textAlign : 'left',
 			height : Ti.UI.FILL,
 			text : orderedSectionList[i].key,
 			left : "5%",
+			width : Ti.UI.FILL,
 			font : {
 
 				fontSize : labelService.countCharInTitleAndReturnFontSize(orderedSectionList[i].key, 26, 20, 5, 3),

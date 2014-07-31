@@ -197,11 +197,7 @@ function languageHandler(e) {
 
 function onLanguageChange() {
 	setMuseumJSONWithLanguageDialog();
-	refreshPage();
-}
-
-function refreshPage() {
-	Alloy.Globals.navController.restart();
+	Alloy.Models.app.forceRestartWithFreshData();
 }
 
 function setMuseumJSONWithLanguageDialog() {
@@ -225,8 +221,6 @@ function createInternationalizationMessageDialog() {
 
 function detectFilterConditions() {
 	//Can't Ti.API.info variables here
-
-	//
 	ageFilterSet = Alloy.Models.app.get('customizeLearningSet');
 	ageFilterOn = Alloy.Models.app.get('customizeLearningEnabled');
 	if (ageFilterSet && ageFilterOn) {
@@ -241,4 +235,9 @@ function detectFilterConditions() {
 	Ti.API.info("Filter StartUp (fly): set: " + ageFilterSet + ", on: " + ageFilterOn);
 }
 
-detectFilterConditions();
+function initialize() {
+	detectFilterConditions();
+	updateTutorialUI();
+}
+
+initialize();
