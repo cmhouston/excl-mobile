@@ -24,7 +24,7 @@
 					</View>
 				</ScrollView>
 				<View id="addNewCommentContainer"></View>
-				<View id="commentsModal">
+				<ScrollView id="commentsModal">				
 					<View id="submitCommentFormView">
 						<TextField id="insertName" />
 						<Label id="insertNameDisclaimer">*Optional and won't be shared</Label>
@@ -40,7 +40,7 @@
 						<Label id = "thankYouMessageComment" class="thankYouMessageComment" top="30%"/>
 					</View>
 					<Label id="submitYourCommentLabel">Submit Your Comment</Label>
-				</View>
+				</ScrollView>
 			</View>
 		</View>
 	</Window>
