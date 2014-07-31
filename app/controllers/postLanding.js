@@ -422,11 +422,12 @@ function getRowContentsForVideo(url) {
 }
 
 function getRowContentsForVideoAndroid(url) {
-	var thumbnailView = Ti.UI.createView({	});
+	var thumbnailView = Ti.UI.createView({ height: Ti.UI.SIZE	});
+	$.addClass(thumbnailView, "headerImage");
 	var thumbnailImageView = Ti.UI.createImageView({
 		image : post_content.image,
 		width : '100%',
-		height : '100%'
+		height : Ti.UI.SIZE
 	});
 	var playTriangle = Ti.UI.createImageView({
 		image : "/images/icons_android/Video-Player-icon-simple.png",
@@ -469,6 +470,7 @@ function getRowContentsForVideoiOS(url) {
 		fullscreen : false,
 		autoplay : false,
 	});
+	$.addClass(video, "headerVideo");
 	video.addEventListener('load', function(e) {
 		//Alloy.Globals.analyticsController.trackEvent("Videos", "Play", part.get('name'), 1);
 	});
@@ -484,8 +486,6 @@ function getRowContentsForImage(url) {
 function wrapRichTextInHTML(text) {
 	var file = Ti.Filesystem.getFile(Ti.Filesystem.resourcesDirectory, "webViewInjectableHTML.html");
 	html = file.read().text.replace("${RICH_TEXT}", text);
-	Ti.API.info("Replaced HTML: " + html);
-	//html += "function openInBrowser(link) { Ti.App.fireEvent('app:openInBrowser', {url: link}) } function changeLinksToOpenInBrowser() { alert('working'); var aTags = document.getElementsByTagName('a'); for (var i = 0; i < aTags.length; i++) { var tag = aTags[i]; var linkURL = tag.href; tag.setAttribute('href', '#'); tag.setAttribute('onclick', 'openInBrowser(\"' + linkURL + '\"); return false;'); } }; window.onload = changeLinksToOpenInBrowser;";
 	return html;
 }
 

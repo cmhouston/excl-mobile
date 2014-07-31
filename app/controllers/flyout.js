@@ -165,47 +165,20 @@ function rowFilterEventListener() {
 
 function tutorialToggler(e) {
 	if (!Alloy.Models.app.get("tutorialOn")) {
-		tutorialService.resetTutorialMode();
-		Alloy.Models.app.set("tutorialOn", true);
-		Alloy.Models.app.trigger("change:tutorialOn");
 		var dialog = Ti.UI.createAlertDialog({
 			cancel : 1,
-			buttonNames : ['Yes', 'No'],
-			message : 'Tutorial mode activated! Would you like to start at the beginning?',
+			buttonNames : ['Yes', 'Nevermind'],
+			message : 'Would you like to begin the tutorial again? This will start you at the home screen of the app.',
 			title : 'Tutorial Mode'
-		});
-		var style;
-		if (Ti.Platform.name === 'iPhone OS') {
-			style = Ti.UI.iPhone.ActivityIndicatorStyle.DARK;
-		} else {
-			style = Ti.UI.ActivityIndicatorStyle.DARK;
-		}
-		var activityIndicator = Ti.UI.createActivityIndicator({
-			color : 'green',
-			font : {
-
-				fontSize : 26,
-				fontWeight : 'bold'
-			},
-			message : 'Loading...',
-			style : style,
-			top : 10,
-			left : 10,
-			height : Ti.UI.SIZE,
-			width : Ti.UI.SIZE
 		});
 		dialog.addEventListener('click', function(e) {
 			if (e.index !== e.source.cancel) {
-				Alloy.Globals.navController.restart();
+				tutorialService.resetTutorialMode();
 			}
-			$.getView().add(activityIndicator);
-			activityIndicator.show();
 		});
 		dialog.show();
 	} else {
 		tutorialService.endTutorialMode();
-		Alloy.Models.app.set("tutorialOn", false);
-		Alloy.Models.app.trigger("change:tutorialOn");
 	}
 	updateTutorialUI();
 }

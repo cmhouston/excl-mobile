@@ -94,5 +94,5 @@ Alloy.Globals.rotate90 = Ti.UI.create2DMatrix().rotate(90);
 // do not remove: initialization of global backbone models
 Alloy.Models.app = Alloy.Models.instance('app');
 Alloy.Collections.filter = Alloy.Collections.instance('filter');
-Alloy.Models.app.retrieveMuseumData(true);
+Alloy.Models.app.forceRestartWithFreshData();
 
