@@ -67,13 +67,14 @@ TutorialService.prototype.initializePagesToShowTutorial = function(force) {
 		this.setAllPagesTo(true);
 		storage.setBoolProperty("tutorialInitialized", true);
 	}
+	this.updateIsTutorialOn();
 };
 
 TutorialService.prototype.resetTutorialMode = function() {
 	this.setAllPagesTo(true);
-	Alloy.Models.app.forceRestartWithFreshData();
 	Alloy.Models.app.set("tutorialOn", true);
 	Alloy.Models.app.trigger("change:tutorialOn");
+	Alloy.Models.app.forceRestartWithFreshData();
 };
 
 TutorialService.prototype.endTutorialMode = function() {

@@ -235,4 +235,9 @@ function detectFilterConditions() {
 	Ti.API.info("Filter StartUp (fly): set: " + ageFilterSet + ", on: " + ageFilterOn);
 }
 
-detectFilterConditions();
+function initialize() {
+	detectFilterConditions();
+	updateTutorialUI();
+}
+
+initialize();
