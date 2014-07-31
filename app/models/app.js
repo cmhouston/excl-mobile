@@ -84,7 +84,9 @@ exports.definition = {
 						Alloy.Models.app.trigger('museumJsonRetrieved');
 						Alloy.Models.app.parseFiltersFromJson(response);
 						
-						callbackWhenDone(response);
+						if (callbackWhenDone && typeof(callbackWhenDone) == 'function') {
+							callbackWhenDone(response);
+						}
 					}
 				});
 			}
