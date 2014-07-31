@@ -3,9 +3,13 @@
     "env:development": {},
     "env:test": {},
     "env:production": {},
-    "os:android": {},
+    "os:android": {
+    	"font": "roboto" 
+    },
     "os:blackberry": {},
-    "os:ios": {},
+    "os:ios": {
+    	"font": "helvetica"
+    },
     "os:mobileweb": {},
     "dependencies": {
         "excl.platform-logo": "1.0",
