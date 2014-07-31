@@ -147,7 +147,7 @@ function organizePosts(allPosts) {
 	Ti.API.info("Parents: " + JSON.stringify(filterTabIds));
 
 	var buttonHolderViewChildren = buttonHolderView.children.length;
-	filter.sortPostsIntoTabs(dictOrderedPosts, parentObjects);
+	filter.sortPostsIntoTabs(dictOrderedPosts, parentObjects, sectionColor);
 	if (buttonHolderViewChildren != buttonHolderView.children.length) {
 		keepFirstViewOpen(secondView, secondButton);
 	}
@@ -371,7 +371,7 @@ function goToPostLandingPage(e) {
 	Ti.API.info("---000---\r\n" + analyticsTitle);
 	var analyticsLevel = "Post Landing";
 	//currentTabGroup.remove();
-	var controller = Alloy.createController('postLanding', post);
+	var controller = Alloy.createController('postLanding', eval([post, color]));
 	controller.setAnalyticsPageTitle(analyticsTitle);
 	controller.setAnalyticsPageLevel(analyticsLevel);
 	Alloy.Globals.navController.open(controller);

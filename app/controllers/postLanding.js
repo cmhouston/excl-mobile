@@ -17,8 +17,9 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //=====================================================================
-
-var post = arguments[0] || {};
+var args = arguments[0] || {};
+var post = args[0];
+var navBarColor = args[1] || $.navBar.backgroundColor;
 var post_content = post.get('rawJson');
 
 var tableData = [];
@@ -86,12 +87,14 @@ $.onExitKioskMode = function() {
 	turnOffAppropriateSharingButtons();
 };
 
-function setPageTitle(name) {
+function setPageTitle(name, navBarColor) {
 	if (name === "") {
 		$.navBar.setPageTitle("[Title]");
 	} else {
 		$.navBar.setPageTitle(name);
 	}
+	
+	$.navBar.setBackgroundColor(navBarColor);
 }
 
 function hideMenuBtnIfKioskMode(){
@@ -286,7 +289,7 @@ function setCommentSubmittedMessage() {
 }
 
 function initializePage() {
-	setPageTitle(post_content.name);
+	setPageTitle(post_content.section, navBarColor);
 	hideMenuBtnIfKioskMode();
 
 	switch (post_content.post_header_type) {
@@ -304,7 +307,7 @@ function initializePage() {
 		Ti.App.addEventListener('app:openInBrowser', openInBrowser);
 		$.webView.setHtml(wrapRichTextInHTML(post_content.post_body));
 	} else {
-		$.webView.height = "0dip"
+		$.webView.height = "0dip";
 	}
 
 	showAllSharingButtons();

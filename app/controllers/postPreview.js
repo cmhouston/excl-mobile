@@ -21,6 +21,7 @@
 var args = arguments[0] || {};
 var postArgs = args[0].posts;
 var allInclusiveTabTitle = args[1];
+var navBarColor = args[2];
 
 var parentScreenName = args.parentScreenName;
 var viewService = setPathForLibDirectory("customCalls/viewService");
@@ -129,7 +130,9 @@ function createPostView(post) {
 		layout : "vertical",
 		width : "95%",
 		left : "2%",
-		backgroundColor : "#DAF8F2"//"#EAFBF7"
+		backgroundColor: "#DAF3E7" //emerald
+		//backgroundColor : "#EFF7DC"//lime
+		//backgroundColor: "#EAFBF7" //turquoise
 	};
 	var postContainer = viewService.createCustomView(args);
 	if (detectDevice.isTablet()) {
@@ -141,7 +144,9 @@ function createPostView(post) {
 	args = {
 		height : "50dip",
 		width : "100%",
-		backgroundColor : "#36D7B7",
+		backgroundColor: "#3FC380" //emerald
+		//backgroundColor : "#97C12D" //lime
+		//backgroundColor: "#36D7B7",//turquoise
 	};
 	var header = viewService.createCustomView(args);
 
@@ -249,7 +254,8 @@ function createPostView(post) {
 	}
 
 	container.addEventListener('click', function(e) {
-		var args = post;
+		var args = [post, navBarColor];
+		Ti.API.info("______________Nav bar color: " + navBarColor);
 		postController = Alloy.createController('postLanding', args);
 		postController.setAnalyticsPageTitle(parentScreenName + '/' + post.get("name"));
 		postController.setAnalyticsPageLevel("Post Landing");
