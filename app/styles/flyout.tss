@@ -58,6 +58,7 @@
 	top: "6dip",
 	left: '12dp',
 	height: "20dip",
+	width: Ti.UI.FILL,
 	font:{
 		fontSize: "15dip"
 	},
