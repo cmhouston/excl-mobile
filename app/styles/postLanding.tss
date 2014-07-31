@@ -11,30 +11,28 @@
 	layout: "vertical"
 }
 
-"postLandingViewBody": {
+"#postLandingViewBody": {
 	height: Ti.UI.FILL,
-	width: Ti.UI.FILL,
+	width: '100%',
 	layout: "composite"
 }
 
 "#scroller": {
 	top: "0",
 	height: Ti.UI.FILL,
-	width: Ti.UI.FILL,
+	width: '100%',
 	scrollType: 'vertical',
 	layout: "vertical"
 }
 
 "#tableView":{
-	height: Ti.UI.FILL,
-	separatorColor: "transparent"
+	height: Ti.UI.SIZE,
+	width: '100%',
+	layout: "vertical",
+	bottom: "50dip"
 }
 
-"#tableView[platform=ios]":{
-	selectionStyle: Titanium.UI.iPhone.TableViewCellSelectionStyle.NONE
-}
-
-".postTableViewRow": {
+".autoHeight": {
 	height : Ti.UI.SIZE
 }
 
@@ -43,7 +41,8 @@
 }
 
 "#headerRow": {
-	height: "200dip"
+	height: "200dip",
+	width: '100%'
 }
 
 "#headerRow[formFactor=tablet]": {
@@ -58,16 +57,14 @@
 	height : "40dip",
 	width : "40dip",
 	left : "20dip",
-	right: "20dip",
-	visible: true
+	right: "20dip"
 }
 
 ".socialMediaButtonHidden": {
 	left: "0",
 	right: "0",
 	height: "0",
-	width: "0",
-	visible: false
+	width: "0"
 }
 
 "#socialMediaButtonsRow": {
@@ -106,20 +103,103 @@
 	backgroundImage: "/images/icons_android/camera_ready.png"
 }
 
-".postWebView": {
-	
-}
-
-".postWebView[platform=ios]": {
-	scalesPageToFit: true,
+"#webView": {
 	height: Ti.UI.SIZE
 }
 
-".postWebView[platform=android]": {
+"#webView[platform=ios]": {
+	disableBounce : true,
+	willHandleTouches: false
+}
+
+"#webView[platform=android]": {
 	scalesPageToFit: true,
 	width: Ti.UI.SIZE,
 	enableZoomControls: true,
 	overScrollMode: Titanium.UI.Android.OVER_SCROLL_ALWAYS
+}
+
+"#commentsHeading": {
+	height: "0dip"
+}
+
+".commentsHeadingText": {
+	top : "20dip",
+	width : '90%',
+	right : '3%',
+	left : '3%',
+	color : '#232226',
+	font : {
+		fontSize : '16dip',
+		fontWeight : 'bold',
+	},
+	textAlign : 'center',
+	borderWidth : '1',
+	borderColor : '#aaa'
+}
+
+".commentsHeadingText[formFactor=tablet]": {
+	font: {
+		fontSize: '30dip'
+	}
+}
+
+"#showMoreComments": {
+	color : '#005ab3',
+	height: "0dip"
+}
+
+"#noComments": {
+	color : '#48464e',
+	height: "0dip"
+}
+
+"#commentsView": {
+	layout: "vertical"
+}
+
+".commentsInfo": {
+	top : "10dip",
+	width : '90%',
+	right : '3%',
+	left : '3%',
+	font : {
+		fontSize : '13dip',
+		fontWeight : 'normal',
+	},
+	textAlign : 'center'
+}
+
+".commentsInfo[formFactor=tablet]": {
+	font: {
+		fontSize: '25dip'
+	}
+}
+
+".commentBody": {
+	color : '#232226',
+	textAlign: 'left'
+}
+
+".commentBody[formFactor=tablet]": {
+	font: {
+		fontSize : "25dip"
+	}
+}
+
+".commentDate": {
+	color : '#48464e',
+	font : {
+		fontSize : '8dip',
+		fontWeight : 'normal',
+	},
+	textAlign: 'left'
+}
+
+".commentDate[formFactor=tablet]": {
+	font: {
+		fontSize : "17dip"
+	}
 }
 
 "#addNewCommentContainer":{
@@ -132,7 +212,7 @@
 	visible: false
 }
 
-"#whiteCommentBox":{
+"#commentsModal":{
 	backgroundColor: 'white',
 	height:'430dip',
 	width:'260dip',
@@ -141,6 +221,11 @@
 	backgroundColor: '#FFFFFF',
 	zIndex: "15",
 	visible: false
+}
+
+"#commentsModal[formFactor=tablet]": {
+	height: "700dip",
+	width: "500dip"
 }
 
 "#submitYourCommentLabel":{
@@ -178,6 +263,10 @@
 	tintColor: "black"
 }
 
+"#insertName[formFactor=tablet]": {
+	height:  "50dip"
+}
+
 "#insertNameDisclaimer":{
 	font: {
 		
@@ -186,6 +275,12 @@
 	},
 	color: 'black',
 	left: '7%',
+}
+
+"#insertNameDisclaimer[formFactor=tablet]": {
+	font: {
+		fontSize : "15dip"
+	}
 }
 
 "#insertEmail":{
@@ -211,6 +306,10 @@
 	tintColor: "black"
 }
 
+"#insertEmail[formFactor=tablet]": {
+	height:  "50dip"
+}
+
 "#insertEmailDisclaimer":{
 	font: {
 		
@@ -219,6 +318,12 @@
 	},
 	color: 'black',
 	left: '7%',
+}
+
+"#insertEmailDisclaimer[formFactor=tablet]": {
+	font: {
+		fontSize : "15dip"
+	}
 }
 
 "#submitCommentFormView":{
@@ -248,6 +353,10 @@
 	tintColor: "black"
 }
 
+"#insertComment[formFactor=tablet]": {
+	height:  "300dip"
+}
+
 "#submitButton":{
 	title: 'Submit',
 	opacity: '1.0',
@@ -261,6 +370,13 @@
 	height: '100%',
 	color: '#FFFFFF',
 	backgroundColor: '#2ECC71'
+}
+
+"#submitButton[formFactor=tablet]": {
+	font:  {
+		fontSize : '25dip',
+		fontWeight : 'bold'
+	}
 }
 
 "#cancelCommentButton":{
@@ -278,11 +394,22 @@
 	backgroundColor: '#E74C3C'
 }
 
+"#cancelCommentButton[formFactor=tablet]": {
+	font:  {
+		fontSize : '25dip',
+		fontWeight : 'bold'
+	}
+}
+
 "#buttonView":{
 	layout: "horizontal",
 	top: "3%",
 	height: "10%",
 	width: "85%"
+}
+
+"#buttonView[formFactor=tablet]": {
+	height: "75dip"
 }
 
 ".thankYouMessageComment":{

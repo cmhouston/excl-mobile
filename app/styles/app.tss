@@ -1,12 +1,5 @@
 // Global styles
 
-".full-view": {
-	width: "auto",
-	height: "auto",
-	backgroundColor: "#FFF",
-	fullscreen: true
-}
-
 ".windowHeader": {
 	width: Ti.UI.FILL,
 	height: "50dip",
@@ -31,7 +24,20 @@
 		fontSize: '22dip',
 		fontWeight: 'bold'
 	},
-	textAlign: 'center'
+	textAlign: 'center',
+	wordWrap: false,
+	ellipsize: true,
+}
+
+".headingText[formFactor=tablet]":{
+	color: 'white',
+	font:{
+		fontWeight: 'bold',
+		fontSize: "40dip"
+	},
+	textAlign: 'center',
+	wordWrap: false,
+	ellipsize: true,
 }
 
 

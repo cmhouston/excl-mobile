@@ -3,7 +3,7 @@
 	<title></title>
 	<script type="text/javascript">
 		function openInBrowser(link) {
-			Ti.App.fireEvent('app:openInBrowser', link);
+			Ti.App.fireEvent('app:openInBrowser', {url: link});
 		}
 		
 		function changeLinksToOpenInBrowser() {
@@ -11,15 +11,14 @@
 			for (var i = 0; i < aTags.length; i++) {
 				var tag = aTags[i];
 				var linkURL = tag.href;
-				tag.setAttribute('href', '#');
 				tag.setAttribute('onclick', 'openInBrowser("' + linkURL + '"); return false;');
 			}
 		}
 		window.onload = changeLinksToOpenInBrowser;
 	</script>
-	<meta>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 </head>
 <body>
-	
+	<div id="rich_text">${RICH_TEXT}</div>
 </body>
 </html>
