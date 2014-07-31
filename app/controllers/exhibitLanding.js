@@ -50,6 +50,7 @@ var componentsInExhibit = [];
 var currExhibitId;
 var expanderButton;
 var componentScrollViewLoaded = false;
+var addPagingArrowsFunction;
 
 //Analytics Specific Information -------------------
 var analyticsPageTitle = "Exhibit Landing";
@@ -157,7 +158,6 @@ function populateWindow(json) {
 }
 
 function handleInfoViewLoad(e){	
-	Ti.API.info("hmmmmmmm");
 	createComponentsScrollView(json.data.museum.exhibits);
 	$.infoView.removeEventListener('postlayout', handleInfoViewLoad);
 }
@@ -226,7 +226,11 @@ function createExhibitsImageIOS(exhibits, index) {
 		}
 	});
 	
-	addPagingArrowsToView(exhibitView, index, numOfExhibits);
+	addPagingArrowsFunction = function(){
+		addPagingArrowsToView(exhibitView, index, numOfExhibits);
+	};
+	exhibitView.addEventListener("load", addPagingArrowsFunction);
+	
 	exhibitViewWithTitle.add(exhibitView);
 	return exhibitViewWithTitle;
 }
@@ -272,6 +276,7 @@ function createExhibitsImageAndroid(exhibits, index) {
 	return itemContainer;
 }
 function addPagingArrowsToView(view, pageNum, numOfPages){
+	Ti.API.info("________Adding paging arrows");
 	if(pageNum != 0 && numOfPages != 1){
 		var leftArrow = Ti.UI.createImageView({
 			id: "leftArrow",
@@ -310,7 +315,7 @@ function addPagingArrowsToView(view, pageNum, numOfPages){
 		
 		view.add(rightArrow);
 	}
-	
+	view.removeEventListener("load", addPagingArrowsFunction);
 	return view;
 }
 

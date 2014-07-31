@@ -149,10 +149,30 @@ function createCommentText(commentText) {
 
 function createCommentDate(commentDate) {
 	var row = createPlainRowWithHeight(Ti.UI.SIZE);
-	var date = labelService.createCustomLabel({text: commentDate});
+	var dateString = "Commented ";
+	try {
+		dateString += convertDateStringToDate(commentDate).toLocaleDateString();
+	} catch (e) {
+		dateString += "not long ago";
+	}
+	var date = labelService.createCustomLabel({text: dateString});
 	$.addClass(date, "commentDate commentsInfo");
 	row.add(date);
 	$.commentsView.add(row);
+}
+
+function convertDateStringToDate(dateString) {
+	var reggie = /(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})/;
+	var dateArray = reggie.exec(dateString); 
+	var dateObject = new Date(
+	    (+dateArray[1]),
+	    (+dateArray[2])-1, // Careful, month starts at 0!
+	    (+dateArray[3]),
+	    (+dateArray[4]),
+	    (+dateArray[5]),
+	    (+dateArray[6])
+	);
+	return dateObject;
 }
 
 function displayComments(comments) {
