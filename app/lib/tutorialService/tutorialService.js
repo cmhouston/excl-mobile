@@ -74,7 +74,7 @@ TutorialService.prototype.resetTutorialMode = function() {
 	this.setAllPagesTo(true);
 	Alloy.Models.app.set("tutorialOn", true);
 	Alloy.Models.app.trigger("change:tutorialOn");
-	Alloy.Models.app.forceRestartWithFreshData();
+	Alloy.Globals.navController.restart();
 };
 
 TutorialService.prototype.endTutorialMode = function() {

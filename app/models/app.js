@@ -35,12 +35,19 @@ exports.definition = {
 		_.extend(Model.prototype, {
 			// extended functions and properties go here
 			
-			forceOpenHome: function() {
-				var NavigationController = Alloy.Globals.setPathForLibDirectory('navigationService/NavigationController');
-				Alloy.Globals.navController = new NavigationController();
-				
-				var home = Alloy.createController('home');
-				Alloy.Globals.navController.open(home);
+			start: function() {
+				Alloy.Models.app.retrieveMuseumData( function() {
+					var NavigationController = require('navigationService/NavigationController');
+					Alloy.Globals.navController = new NavigationController();
+					var home = Alloy.createController('home');
+					Alloy.Globals.navController.open(home);
+				});
+			},
+			
+			restart: function(callback) {
+				Alloy.Models.app.retrieveMuseumData(function() {
+					Alloy.Globals.navController.restart(callback);
+				});
 			},
 			
 			parseFiltersFromJson: function(json) {
@@ -68,12 +75,6 @@ exports.definition = {
 				Alloy.Collections.filter.ready = true;
 			},
 			
-			forceRestartWithFreshData: function() {
-				Alloy.Models.app.retrieveMuseumData(function() {
-					Alloy.Models.app.forceOpenHome();
-				});
-			},
-			
 			retrieveMuseumData: function(callbackWhenDone) {
 				var retriever = Alloy.Globals.setPathForLibDirectory('dataRetriever/dataRetriever');
 				var url = Alloy.Globals.rootWebServiceUrl;
@@ -85,7 +86,7 @@ exports.definition = {
 						Alloy.Models.app.parseFiltersFromJson(response);
 						
 						if (callbackWhenDone && typeof(callbackWhenDone) == 'function') {
-							callbackWhenDone(response);
+							callbackWhenDone();
 						}
 					}
 				});

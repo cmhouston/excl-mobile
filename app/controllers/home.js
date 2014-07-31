@@ -174,10 +174,11 @@ function init(){
 	enableMenuButtons(); 
 }
 
-var reload = function(){
+var reload = function(callback){
 	doneLoading = false;
 	url = Alloy.Globals.rootWebServiceUrl;
 	retrieveJson(url);
+	if(callback && typeof callback === 'function') callback();
 };
 
 init();

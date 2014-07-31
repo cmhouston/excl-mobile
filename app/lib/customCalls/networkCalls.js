@@ -45,7 +45,7 @@ function createNetworkErrorDialog(e){
 	
 	dialog.addEventListener('click', function(e){
 		if (e.index == 0){
-			Alloy.Models.app.forceRestartWithFreshData();
+			Alloy.Models.app.restart();
 		}
 		else if (e.index == e.source.cancel){
 			createNetworkErrorDialog(e);

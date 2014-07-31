@@ -39,10 +39,10 @@ function NavigationController() {
 	var pageLevelList = [];
 }
 
-NavigationController.prototype.restart = function(){
+NavigationController.prototype.restart = function(callback){
 	Alloy.Globals.adminModeController.disableKioskMode();
 	this.home();
-	this.windowStack[0].reload();
+	this.windowStack[0].reload(callback);
 };
 
 NavigationController.prototype.enterKioskMode = function(){

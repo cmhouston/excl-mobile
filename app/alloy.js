@@ -30,8 +30,8 @@
 //
 // Alloy.Globals.someGlobalFunction = function(){};
 
-//var NavigationController = require('navigationService/NavigationController');
-//Alloy.Globals.navController = new NavigationController();
+var NavigationController = require('navigationService/NavigationController');
+Alloy.Globals.navController = new NavigationController();
 
 var AnalyticsController = require('analyticService/analyticService');
 Alloy.Globals.analyticsController = new AnalyticsController();
@@ -93,6 +93,20 @@ Alloy.Globals.rotate90 = Ti.UI.create2DMatrix().rotate(90);
 
 // do not remove: initialization of global backbone models
 Alloy.Models.app = Alloy.Models.instance('app');
+
+Alloy.Models.app.on('change:currentLanguage', function() {
+	Alloy.Models.app.restart( function() {
+		var message = Alloy.Globals.museumJSON.data.museum.internationalization_message;
+		if (message != '') {
+			var dialogService = Alloy.Globals.setPathForLibDirectory('customCalls/dialogService');
+			dialogService = new dialogService();
+			alertDialog = dialogService.createAlertDialog(message);
+			alertDialog.buttonNames = ["Ok"];
+			alertDialog.show();
+		}
+	});
+});
+
 Alloy.Collections.filter = Alloy.Collections.instance('filter');
-Alloy.Models.app.forceRestartWithFreshData();
+Alloy.Models.app.start();
 

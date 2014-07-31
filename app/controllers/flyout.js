@@ -38,7 +38,6 @@ var retriever = Alloy.Globals.setPathForLibDirectory('dataRetriever/dataRetrieve
 Alloy.Models.app.on('change:tutorialOn', updateTutorialUI);
 Alloy.Models.app.on('change:customizeLearningSet', activateFiltersWithSet);
 Alloy.Models.app.on('change:customizeLearningEnabled', activateFiltersWithEnable);
-Alloy.Models.app.on('change:currentLanguage', onLanguageChange);
 
 function setPathForLibDirectory(libFile) {
 	if ( typeof Titanium == 'undefined') {
@@ -196,28 +195,10 @@ function languageHandler(e) {
 }
 
 function onLanguageChange() {
-	setMuseumJSONWithLanguageDialog();
-	Alloy.Models.app.forceRestartWithFreshData();
+	Alloy.Models.app.restart(createInternationalizationMessageDialog);
 }
 
-function setMuseumJSONWithLanguageDialog() {
-	var url = Alloy.Globals.rootWebServiceUrl;
-	retriever.fetchDataFromUrl(url, function(response) {
-		if (!retriever.checkIfDataRetrieverNull(response)) {
-			Alloy.Globals.museumJSON = response;
-			createInternationalizationMessageDialog();
-		}
-	});
-}
 
-function createInternationalizationMessageDialog() {
-	var message = Alloy.Globals.museumJSON.data.museum.internationalization_message;
-	if (message != '') {
-		alertDialog = dialogService.createAlertDialog(message);
-		alertDialog.buttonNames = ["Ok"];
-		alertDialog.show();
-	}
-}
 
 function detectFilterConditions() {
 	//Can't Ti.API.info variables here
