@@ -25,9 +25,6 @@ var allPosts = eval(args[1]);
 var selectedSection = args[2];
 var sectionColor = args[3];
 var sectionScreenName = args[4];
-var filterTabIds = [];
-var parentObjects = [];
-var firstView;
 
 var dataRetriever = setPathForLibDirectory('dataRetriever/dataRetriever');
 var loadingSpinner = setPathForLibDirectory('loadingSpinner/loadingSpinner');
@@ -43,6 +40,12 @@ labelService = new labelService();
 
 filter.setSectionScreenName(sectionScreenName);
 
+var filterTabIds = [];
+var parentObjects = [];
+var firstView;
+var secondView;
+var secondButton;
+var buttonHolderView;
 var dictOrderedPosts = {};
 var selectedFilters;
 var allInclusiveTabTitle = "All";
@@ -140,12 +143,14 @@ function organizePosts(allPosts) {
 		dictOrderedPosts = removePostsThatAreHiddenInKioskMode(dictOrderedPosts);
 	}
 	insertXNumberOfButtons(filterTabIds.length);
-	openFirstView(firstView);
-
 	Ti.API.info("Section Dict: " + JSON.stringify(dictOrderedPosts));
 	Ti.API.info("Parents: " + JSON.stringify(filterTabIds));
 
-	filter.sortPostsIntoTabs(dictOrderedPosts, parentObjects);
+	var buttonHolderViewChildren = buttonHolderView.children.length;
+	filter.sortPostsIntoTabs(dictOrderedPosts, parentObjects, sectionColor);
+	if (buttonHolderViewChildren != buttonHolderView.children.length) {
+		keepFirstViewOpen(secondView, secondButton);
+	}
 	$.scrollView.height = Ti.UI.SIZE;
 	Ti.API.info("Finished Sorting");
 }
@@ -223,7 +228,7 @@ function insertXNumberOfButtons(numberOfButtons) {
 	var objectArgs;
 	objectArgs = {
 		borderRadius : 0,
-		borderColor: "white",
+		borderColor : "white",
 		backgroundColor : '#343434 ',
 		width : '100%',
 		top : "0",
@@ -233,7 +238,7 @@ function insertXNumberOfButtons(numberOfButtons) {
 		scrollType : 'horizontal',
 		id : 'buttonHolderView'
 	};
-	var buttonHolderView = viewService.createCustomScrollView(objectArgs);
+	buttonHolderView = viewService.createCustomScrollView(objectArgs);
 	$.scrollView.add(buttonHolderView);
 
 	if (numberOfButtons <= buttonLimit) {
@@ -242,7 +247,8 @@ function insertXNumberOfButtons(numberOfButtons) {
 	} else {
 		each_button_width = buttonMaxWidth;
 	}
-
+	var firstTabCreated = false;
+	var sectionLandingObjectsToSendToService = [$.scrollView, buttonHolderView];
 	for (var i = 0; i < numberOfButtons; i++) {
 		objectArgs = {
 			title : filterTabIds[i],
@@ -257,9 +263,6 @@ function insertXNumberOfButtons(numberOfButtons) {
 			viewAssociatedId : filterTabIds[i]
 		};
 		var button = buttonService.createCustomButton(objectArgs);
-		if (button.title == "0") {
-			button.title = allInclusiveTabTitle;
-		}
 		objectArgs = {
 			// borderRadius : "30dip",
 			backgroundColor : '#FFFFFF',
@@ -270,7 +273,22 @@ function insertXNumberOfButtons(numberOfButtons) {
 			id : filterTabIds[i]
 		};
 		var view = viewService.createCustomView(objectArgs);
-		keepFirstViewOpen(view, button, i);
+		if (firstTabCreated == true) {
+			//Send second tab created
+			secondView = view;
+			secondButton = button;
+			firstTabCreated = "";
+		}
+		if (button.title == "0") {
+			//send first tab created
+			button.title = allInclusiveTabTitle;
+			sectionLandingObjectsToSendToService.push(view);
+			sectionLandingObjectsToSendToService.push(button);
+			firstTabCreated = true;
+		}
+		if (i == 0) {
+			keepFirstViewOpen(view, button);
+		}
 		parentObjects.push(view);
 		$.scrollView.add(view);
 
@@ -281,6 +299,7 @@ function insertXNumberOfButtons(numberOfButtons) {
 		});
 		buttonHolderView.add(button);
 	}
+	filter.setSectionLandingObjects(sectionLandingObjectsToSendToService);
 	hideButtonViewIfOnlyOneButton(buttonHolderView, numberOfButtons);
 
 	for (var i = 0; i < parentObjects.length; i++) {
@@ -304,15 +323,13 @@ function showRespectiveView(buttonSource) {
 	}
 }
 
-function keepFirstViewOpen(view, button, i) {
-	if (i == 0) {
-		openFirstView(view);
-		button.backgroundColor = '#FFFFFF';
-		button.color = '#747474';
-		lastSelectedButton = button;
-		firstView = view;
-		lastSelectedView = 1;
-	}
+function keepFirstViewOpen(view, button) {
+	openFirstView(view);
+	button.backgroundColor = '#FFFFFF';
+	button.color = '#747474';
+	lastSelectedButton = button;
+	firstView = view;
+	lastSelectedView = 1;
 }
 
 function changeButtonColor(buttonId) {
@@ -354,7 +371,7 @@ function goToPostLandingPage(e) {
 	Ti.API.info("---000---\r\n" + analyticsTitle);
 	var analyticsLevel = "Post Landing";
 	//currentTabGroup.remove();
-	var controller = Alloy.createController('postLanding', post);
+	var controller = Alloy.createController('postLanding', eval([post, color]));
 	controller.setAnalyticsPageTitle(analyticsTitle);
 	controller.setAnalyticsPageLevel(analyticsLevel);
 	Alloy.Globals.navController.open(controller);

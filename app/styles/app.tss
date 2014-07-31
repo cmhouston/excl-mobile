@@ -3,7 +3,7 @@
 ".windowHeader": {
 	width: Ti.UI.FILL,
 	height: "50dip",
-	backgroundColor: '#CF5300',
+	backgroundColor: '#CF5300'//'#E74C3C',
 }
 
 ".windowHeader[formFactor=tablet]":{

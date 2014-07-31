@@ -28,6 +28,7 @@ var dictSortedPostsLength;
 var errorEmptyAllInclusive = "If you have more than one age selected, this tab will hold the content that matches all of the ages of your group members.";
 var errorEmptyTab = "";
 var sectionScreenName = "";
+var sectionLandingObjects;
 
 function setPathForLibDirectory(libFile) {
 	if ( typeof Titanium == 'undefined') {
@@ -44,6 +45,10 @@ function filterService() {
 filterService.prototype.setAllInclusiveTabTitle = function(st) {
 	allInclusiveTabTitle = st;
 	errorEmptyTab = 'Looks like there is no unique content for this filter. It may have been moved to the "' + allInclusiveTabTitle + '" tab above, check there!';
+};
+
+filterService.prototype.setSectionLandingObjects = function(ary) {
+	sectionLandingObjects = ary;
 };
 
 filterService.prototype.parseStringIntoArray = function(st, deliniator) {
@@ -150,7 +155,7 @@ filterService.prototype.returnDictKeys = function(dict) {
 	return listKeys;
 };
 
-filterService.prototype.sortPostsIntoTabs = function(dict, parentObjectArray) {
+filterService.prototype.sortPostsIntoTabs = function(dict, parentObjectArray, navBarColor) {
 	var dictKeys = filterService.prototype.returnDictKeys(dict);
 	var dictLength = dictKeys.length;
 	dictSortedPostsLength = dictLength;
@@ -165,13 +170,13 @@ filterService.prototype.sortPostsIntoTabs = function(dict, parentObjectArray) {
 			if (parentObjectArray[j].id == dictKeys[i] && !sectionMatchedToParent) {
 				var postCollection = filterService.prototype.retrievePostDetails(dict, dictKeys[i]);
 				Ti.API.info("--Section and object id match.");
-				filterService.prototype.addPostsToViewAccordingToSection(dictKeys[i], dict, parentObjectArray[j], postCollection);
+				filterService.prototype.addPostsToViewAccordingToSection(dictKeys[i], dict, parentObjectArray[j], postCollection, navBarColor);
 				sectionMatchedToParent = true;
 				i = dictLength;
 			} else if (i == dictLength && !sectionMatchedToParent) {
 				var postCollection = filterService.prototype.retrievePostDetails(dict, dictKeys[i]);
 				Ti.API.info("--Section and object id do not match for all pairs. Add to 0.");
-				filterService.prototype.addPostsToViewAccordingToSection(dictKeys[i], dict, parentObjectArray[0], postCollection);
+				filterService.prototype.addPostsToViewAccordingToSection(dictKeys[i], dict, parentObjectArray[0], postCollection, navBarColor);
 			} else {
 				Ti.API.info("--Section and object id do not match. Skip.");
 			}
@@ -294,7 +299,11 @@ filterService.prototype.sortFilteredContentIntoDict = function(selectedFilters, 
 	}
 };
 
-filterService.prototype.addPostsToViewAccordingToSection = function(section, dict, parentObject, collectionOfPosts) {
+filterService.prototype.addPostsToViewAccordingToSection = function(section, dict, parentObject, collectionOfPosts, navBarColor) {
+	var scrollView = sectionLandingObjects[0];
+	var buttonHolderView = sectionLandingObjects[1];
+	var allTabView = sectionLandingObjects[2];
+	var allTabButton = sectionLandingObjects[3];
 	var postData = {
 		posts : collectionOfPosts,
 		parentScreenName : sectionScreenName,
@@ -303,17 +312,19 @@ filterService.prototype.addPostsToViewAccordingToSection = function(section, dic
 	if (section == "0") {
 		if (JSON.stringify(postData.posts) != "[]") {
 			Ti.API.info("--All inclusive tab found with content. Add content.");
-			filterService.prototype.addPostPreview(postData, parentObject);
+			filterService.prototype.addPostPreview(postData, navBarColor, parentObject);
 		} else {
-			Ti.API.info("--All inclusive tab empty. Throw message if all inclusive is not the only section in dict.");
+			Ti.API.info("--All inclusive tab empty. Remove Tab.");
 			if (dictSortedPostsLength > 1) {
-				parentObject.add(filterService.prototype.generateErrorMessage(errorEmptyAllInclusive));
+				//parentObject.add(filterService.prototype.generateErrorMessage(errorEmptyAllInclusive));
+				buttonHolderView.remove(allTabButton);
+				scrollView.remove(allTabView);
 			}
 		}
 	} else {
 		if (JSON.stringify(postData.posts) != "[]") {
 			Ti.API.info("--Other tab found with content. Add content.");
-			filterService.prototype.addPostPreview(postData, parentObject);
+			filterService.prototype.addPostPreview(postData, navBarColor, parentObject);
 		} else {
 			Ti.API.info("--Other tab found without content. Throw message.");
 			parentObject.add(filterService.prototype.generateErrorMessage(errorEmptyTab));
@@ -321,8 +332,8 @@ filterService.prototype.addPostsToViewAccordingToSection = function(section, dic
 	}
 };
 
-filterService.prototype.addPostPreview = function(postData, parentObject) {
-	var postPreview = Alloy.createController('postPreview', eval([postData, allInclusiveTabTitle]));
+filterService.prototype.addPostPreview = function(postData, navBarColor, parentObject) {
+	var postPreview = Alloy.createController('postPreview', eval([postData, allInclusiveTabTitle, navBarColor]));
 	var view = postPreview.getView();
 	parentObject.add(view);
 };

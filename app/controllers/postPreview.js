@@ -21,6 +21,7 @@
 var args = arguments[0] || {};
 var postArgs = args[0].posts;
 var allInclusiveTabTitle = args[1];
+var navBarColor = args[2];
 
 var parentScreenName = args.parentScreenName;
 var viewService = setPathForLibDirectory("customCalls/viewService");
@@ -128,8 +129,10 @@ function createPostView(post) {
 	args = {
 		layout : "vertical",
 		width : "95%",
-		backgroundColor : "#F8F8F8",
-		left : "2%"
+		left : "2%",
+		backgroundColor: "#DAF3E7" //emerald
+		//backgroundColor : "#EFF7DC"//lime
+		//backgroundColor: "#EAFBF7" //turquoise
 	};
 	var postContainer = viewService.createCustomView(args);
 	if (detectDevice.isTablet()) {
@@ -141,14 +144,15 @@ function createPostView(post) {
 	args = {
 		height : "50dip",
 		width : "100%",
-		backgroundColor : "#D8D8D8"
+		backgroundColor: "#3FC380" //emerald
+		//backgroundColor : "#97C12D" //lime
+		//backgroundColor: "#36D7B7",//turquoise
 	};
 	var header = viewService.createCustomView(args);
 
 	args = {
 		height : "50dip",
 		width : "99%",
-		backgroundColor : "#D8D8D8",
 		top : "1%",
 		bottom : "1%",
 		left : "1%"
@@ -156,12 +160,11 @@ function createPostView(post) {
 	var headerWrap = viewService.createCustomView(args);
 
 	args = {
-		color : "#000000",
+		color : "#FFFFFF",
 		text : post.get("name"),
 		textAlign : "center",
-		color : "black",
 		font : {
-			color : "black",
+			color : "#FFFFFF",
 			fontSize : labelService.countCharInTitleAndReturnFontSize(post.get("name"), 20, 30, 5, 2),
 			fontWeight : 'bold'
 		}
@@ -176,7 +179,6 @@ function createPostView(post) {
 
 	args = {
 		layout : "horizonal",
-		backgroundColor : "#F8F8F8",
 		width : "95%",
 		top : "2%",
 		bottom : "10%"
@@ -252,7 +254,8 @@ function createPostView(post) {
 	}
 
 	container.addEventListener('click', function(e) {
-		var args = post;
+		var args = [post, navBarColor];
+		Ti.API.info("______________Nav bar color: " + navBarColor);
 		postController = Alloy.createController('postLanding', args);
 		postController.setAnalyticsPageTitle(parentScreenName + '/' + post.get("name"));
 		postController.setAnalyticsPageLevel("Post Landing");

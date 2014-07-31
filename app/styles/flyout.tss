@@ -25,6 +25,10 @@
 	//layout: 'horizontal'
 },
 
+".viewRow[formFactor=tablet]":{
+	height: '75dip',
+},
+
 ".rowContainer": {
 	layout: 'horizontal',
 	height: Ti.UI.FILL
