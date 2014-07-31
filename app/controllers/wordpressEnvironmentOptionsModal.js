@@ -51,21 +51,21 @@ function cancel(e) {
 function enterProductionMode(e) {
 	Alloy.Globals.setRootWebServiceFromUrls("prod");
 	addUnpublishedPostsFunctionality();
-	Alloy.Globals.navController.restart();
+	Alloy.Models.app.retrieveMuseumData();
 	alert("Entered Production Wordpress Environment");
 }
 
 function enterDevelopmentMode(e) {
 	Alloy.Globals.setRootWebServiceFromUrls("dev");
 	addUnpublishedPostsFunctionality();
-	Alloy.Globals.navController.restart();
+	Alloy.Models.app.retrieveMuseumData();
 	alert("Entered Development Wordpress Environment");
 }
 
 function enterQualityAssuranceMode(e) {
 	Alloy.Globals.setRootWebServiceFromUrls("qa");
 	addUnpublishedPostsFunctionality();
-	Alloy.Globals.navController.restart();
+	Alloy.Models.app.retrieveMuseumData();
 	alert("Entered Quality Assurance Wordpress Environment");
 }
 

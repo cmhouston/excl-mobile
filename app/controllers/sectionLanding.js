@@ -225,6 +225,7 @@ function insertXNumberOfButtons(numberOfButtons) {
 	var objectArgs;
 	objectArgs = {
 		borderRadius : 0,
+		borderColor: "white",
 		backgroundColor : '#343434 ',
 		width : '100%',
 		top : "0",

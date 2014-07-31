@@ -13,20 +13,21 @@
 
 "#postLandingViewBody": {
 	height: Ti.UI.FILL,
-	width: Ti.UI.FILL,
+	width: '100%',
 	layout: "composite"
 }
 
 "#scroller": {
 	top: "0",
 	height: Ti.UI.FILL,
-	width: Ti.UI.FILL,
+	width: '100%',
 	scrollType: 'vertical',
 	layout: "vertical"
 }
 
 "#tableView":{
 	height: Ti.UI.SIZE,
+	width: '100%',
 	layout: "vertical",
 	bottom: "50dip"
 }
@@ -40,7 +41,8 @@
 }
 
 "#headerRow": {
-	height: "200dip"
+	height: "200dip",
+	width: '100%'
 }
 
 "#headerRow[formFactor=tablet]": {
