@@ -28,6 +28,8 @@ var sectionScreenName = args[4];
 var filterTabIds = [];
 var parentObjects = [];
 var firstView;
+var allTabObject;
+var allTabButton;
 
 var dataRetriever = setPathForLibDirectory('dataRetriever/dataRetriever');
 var loadingSpinner = setPathForLibDirectory('loadingSpinner/loadingSpinner');
