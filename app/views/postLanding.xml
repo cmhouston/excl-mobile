@@ -13,6 +13,9 @@
 								<Button id="sharePhotoButton" class="socialMediaButtonShown" onClick="sharePhoto" autoStyle="true"></Button>
 							</View>
 						</View>
+						<View id="postTitleView">
+							<Label id="postTitleLabel" class="autoHeight"></Label>
+						</View>
 						<WebView id="webView"></WebView>
 						<View id="commentsHeading" onClick="comment" class="autoHeight"><Label class="commentsHeadingText">Add Comment</Label></View>
 						<View id="commentsView" class="autoHeight"></View>

@@ -103,7 +103,7 @@ function setPathForLibDirectory(libFile) {
 function detectEventEnabled() {
 	filterOn = Alloy.Models.app.get("customizeLearningEnabled");
 	setUpPage();
-	changeTitleOfThePage(selectedSection, sectionColor);
+	changeTitleOfThePage(selectedSection);
 	hideMenuBtnIfKioskMode();
 }
 
@@ -354,9 +354,8 @@ function openFirstView(view) {
 	view.height = Ti.UI.SIZE;
 }
 
-function changeTitleOfThePage(name, color) {
+function changeTitleOfThePage(name) {
 	$.navBar.setPageTitle(name);
-	$.navBar.setBackgroundColor(color);
 }
 
 function hideMenuBtnIfKioskMode() {

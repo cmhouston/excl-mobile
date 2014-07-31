@@ -39,7 +39,7 @@ var spinner = loadingSpinnerLib.getSpinner();
 var loadingSpinnerView = viewService.createCustomView("");
 var loadingSpinnerDarkView = viewService.createCustomView({
 	backgroundColor : "#000000",
-	opacity : 0.3
+	opacity : 0.5
 });
 loadingSpinnerView.add(loadingSpinnerDarkView);
 
@@ -237,7 +237,7 @@ function createExhibitsImageAndroid(exhibits, index) {
 	var numOfExhibits = exhibits.length;
 	
 	var	viewConfig = {
-		backgroundColor : "#253342",
+		backgroundColor : "#253342", //Navy blue
 		width : Ti.UI.FILL,
 		image : '/images/700x400.png',
 		itemId : exhibit.id
@@ -279,8 +279,9 @@ function addPagingArrowsToView(view, pageNum, numOfPages){
 			bottom: "15%",
 			height: "15%",
 			width: "15%",
-			backgroundColor: "#FF6600",
-			image: iconService.getImageFilename("triple_arrow_left.png")
+			backgroundColor: "#CF5300", //Burnt orange
+			image: iconService.getImageFilename("triple_arrow_left.png"),
+			zIndex: 1
 		});
 		
 		leftArrow.addEventListener('click', function(e){
@@ -298,8 +299,9 @@ function addPagingArrowsToView(view, pageNum, numOfPages){
 			top: "15%",
 			height: "15%",
 			width: "15%",
-			backgroundColor: "#FF6600",
-			image: iconService.getImageFilename("triple_arrow_right.png")
+			backgroundColor: "#CF5300",
+			image: iconService.getImageFilename("triple_arrow_right.png"),
+			zIndex: 1
 		});
 		
 		rightArrow.addEventListener('click', function(e){
@@ -408,23 +410,25 @@ function resizeExhibitCarouselAndroid(){
 	$.exhibitsCarousel.height = carouselHeight;
 }
 
-function createComponentTitleLabel(name) {
+function createComponentTitleLabel(item) {
 	var titleLabelView = Ti.UI.createView({
 		top : 0,
 		backgroundColor : '#000',
-		height: getComponentTitleLabelHeight()
+		height: getComponentTitleLabelHeight(),
+		itemId : item.id
 	});
 	var label = Ti.UI.createLabel({
 		top : 0,
 		left : "3%",
-		text : name,
+		text : item.name,
 		color : '#FFFFFF',
 		horizontalWrap : false,
 		font : {
 
 			fontSize : '20dip',
 			fontWeight : 'bold'
-		}
+		},
+		itemId : item.id
 	});
 	if (detectDevice.isTablet()) {
 		label.font = {
@@ -617,6 +621,7 @@ function createLabeledPicView(item) {
 		layout: "vertical",	
 		height : Ti.UI.SIZE,
 		width : getComponentImageWidth(imageHeight),
+		itemId: item.id
 	});
 	
 	var image = Ti.UI.createImageView({
@@ -627,7 +632,7 @@ function createLabeledPicView(item) {
 	
 	image.image = item.image;
 
-	itemContainer.add(createComponentTitleLabel(item.name));
+	itemContainer.add(createComponentTitleLabel(item));
 	itemContainer.add(image);
 	
 	return itemContainer;

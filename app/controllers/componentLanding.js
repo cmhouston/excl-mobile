@@ -24,7 +24,9 @@
 var args = arguments[0] || {};
 var gradientColors = ["#2382ff", "#005CD5", "#004092", "#002257", "#00142D", "#000914"];
 var gradientColorsCount = 0;
-var url = Alloy.Globals.rootWebServiceUrl + "/component/" + args[0].get('id');
+if (args[0]){
+	var url = Alloy.Globals.rootWebServiceUrl + "/component/" + args[0].get('id');
+}
 
 var rootDirPath = ( typeof Titanium == 'undefined') ? '../../lib/' : '';
 var dataRetriever = require(rootDirPath + 'dataRetriever/dataRetriever');

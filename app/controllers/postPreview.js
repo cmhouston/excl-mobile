@@ -21,7 +21,7 @@
 var args = arguments[0] || {};
 var postArgs = args[0].posts;
 var allInclusiveTabTitle = args[1];
-var navBarColor = args[2];
+var sectionColor = args[2];
 
 var parentScreenName = args.parentScreenName;
 var viewService = setPathForLibDirectory("customCalls/viewService");
@@ -70,17 +70,17 @@ function createErrorView(msg) {
 	};
 	var container = viewService.createCustomView(args);
 	if (detectDevice.isTablet()) {
-		container.top = "50dip";
+		container.top = "25dip";
 		container.height = "300dip";
 	} else {
-		container.top = "30dip";
+		container.top = "15dip";
 		container.height = "200dip";
 	}
 
 	args = {
 		layout : "vertical",
 		width : "95%",
-		backgroundColor : "#F8F8F8",
+		backgroundColor : "#C6C6C6",
 		left : "2%",
 		height : Ti.UI.SIZE
 	};
@@ -119,10 +119,10 @@ function createPostView(post) {
 	};
 	var container = viewService.createCustomView(args);
 	if (detectDevice.isTablet()) {
-		container.top = "50dip";
+		container.top = "25dip";
 		container.height = "300dip";
 	} else {
-		container.top = "30dip";
+		container.top = "15dip";
 		container.height = "200dip";
 	}
 
@@ -130,7 +130,8 @@ function createPostView(post) {
 		layout : "vertical",
 		width : "95%",
 		left : "2%",
-		backgroundColor: "#DAF3E7" //emerald
+		backgroundColor : "#DFDFDF"
+		//backgroundColor: "#DAF3E7" //emerald
 		//backgroundColor : "#EFF7DC"//lime
 		//backgroundColor: "#EAFBF7" //turquoise
 	};
@@ -144,7 +145,8 @@ function createPostView(post) {
 	args = {
 		height : "50dip",
 		width : "100%",
-		backgroundColor: "#3FC380" //emerald
+		backgroundColor : sectionColor
+		//backgroundColor : "#3FC380" //emerald
 		//backgroundColor : "#97C12D" //lime
 		//backgroundColor: "#36D7B7",//turquoise
 	};
@@ -254,8 +256,8 @@ function createPostView(post) {
 	}
 
 	container.addEventListener('click', function(e) {
-		var args = [post, navBarColor];
-		Ti.API.info("______________Nav bar color: " + navBarColor);
+		var args = [post, sectionColor];
+		Ti.API.info("______________Nav bar color: " + sectionColor);
 		postController = Alloy.createController('postLanding', args);
 		postController.setAnalyticsPageTitle(parentScreenName + '/' + post.get("name"));
 		postController.setAnalyticsPageLevel("Post Landing");

@@ -45,7 +45,10 @@ function LoadingSpinner(addMessage) {
 		width : Ti.UI.SIZE,
 		message : message,
 		color : color,
-		top : top
+		top : top,
+		font : {
+			fontSize: "20dip"
+		}
 	});
 }
 

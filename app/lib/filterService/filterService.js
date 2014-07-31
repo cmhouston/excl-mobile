@@ -155,7 +155,7 @@ filterService.prototype.returnDictKeys = function(dict) {
 	return listKeys;
 };
 
-filterService.prototype.sortPostsIntoTabs = function(dict, parentObjectArray, navBarColor) {
+filterService.prototype.sortPostsIntoTabs = function(dict, parentObjectArray, sectionColor) {
 	var dictKeys = filterService.prototype.returnDictKeys(dict);
 	var dictLength = dictKeys.length;
 	dictSortedPostsLength = dictLength;
@@ -170,13 +170,13 @@ filterService.prototype.sortPostsIntoTabs = function(dict, parentObjectArray, na
 			if (parentObjectArray[j].id == dictKeys[i] && !sectionMatchedToParent) {
 				var postCollection = filterService.prototype.retrievePostDetails(dict, dictKeys[i]);
 				Ti.API.info("--Section and object id match.");
-				filterService.prototype.addPostsToViewAccordingToSection(dictKeys[i], dict, parentObjectArray[j], postCollection, navBarColor);
+				filterService.prototype.addPostsToViewAccordingToSection(dictKeys[i], dict, parentObjectArray[j], postCollection, sectionColor);
 				sectionMatchedToParent = true;
 				i = dictLength;
 			} else if (i == dictLength && !sectionMatchedToParent) {
 				var postCollection = filterService.prototype.retrievePostDetails(dict, dictKeys[i]);
 				Ti.API.info("--Section and object id do not match for all pairs. Add to 0.");
-				filterService.prototype.addPostsToViewAccordingToSection(dictKeys[i], dict, parentObjectArray[0], postCollection, navBarColor);
+				filterService.prototype.addPostsToViewAccordingToSection(dictKeys[i], dict, parentObjectArray[0], postCollection, sectionColor);
 			} else {
 				Ti.API.info("--Section and object id do not match. Skip.");
 			}
@@ -299,7 +299,7 @@ filterService.prototype.sortFilteredContentIntoDict = function(selectedFilters, 
 	}
 };
 
-filterService.prototype.addPostsToViewAccordingToSection = function(section, dict, parentObject, collectionOfPosts, navBarColor) {
+filterService.prototype.addPostsToViewAccordingToSection = function(section, dict, parentObject, collectionOfPosts, sectionColor) {
 	var scrollView = sectionLandingObjects[0];
 	var buttonHolderView = sectionLandingObjects[1];
 	var allTabView = sectionLandingObjects[2];
@@ -312,7 +312,7 @@ filterService.prototype.addPostsToViewAccordingToSection = function(section, dic
 	if (section == "0") {
 		if (JSON.stringify(postData.posts) != "[]") {
 			Ti.API.info("--All inclusive tab found with content. Add content.");
-			filterService.prototype.addPostPreview(postData, navBarColor, parentObject);
+			filterService.prototype.addPostPreview(postData, sectionColor, parentObject);
 		} else {
 			Ti.API.info("--All inclusive tab empty. Remove Tab.");
 			if (dictSortedPostsLength > 1) {
@@ -324,7 +324,7 @@ filterService.prototype.addPostsToViewAccordingToSection = function(section, dic
 	} else {
 		if (JSON.stringify(postData.posts) != "[]") {
 			Ti.API.info("--Other tab found with content. Add content.");
-			filterService.prototype.addPostPreview(postData, navBarColor, parentObject);
+			filterService.prototype.addPostPreview(postData, sectionColor, parentObject);
 		} else {
 			Ti.API.info("--Other tab found without content. Throw message.");
 			parentObject.add(filterService.prototype.generateErrorMessage(errorEmptyTab));
@@ -332,8 +332,8 @@ filterService.prototype.addPostsToViewAccordingToSection = function(section, dic
 	}
 };
 
-filterService.prototype.addPostPreview = function(postData, navBarColor, parentObject) {
-	var postPreview = Alloy.createController('postPreview', eval([postData, allInclusiveTabTitle, navBarColor]));
+filterService.prototype.addPostPreview = function(postData, sectionColor, parentObject) {
+	var postPreview = Alloy.createController('postPreview', eval([postData, allInclusiveTabTitle, sectionColor]));
 	var view = postPreview.getView();
 	parentObject.add(view);
 };

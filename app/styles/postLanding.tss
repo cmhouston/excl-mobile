@@ -91,6 +91,19 @@
 	horizontalWrap: false
 }
 
+"#postTitleView":{
+	height: Ti.UI.SIZE
+}
+
+"#postTitleLabel":{
+	top: "10dip",
+	font: {
+		fontSize: "20dip",
+		fontWeight: 'bold'
+	},
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER
+}
+
 "#commentingButton": {
 	backgroundImage: "/images/icons_ios/comment_ready.png"
 }
@@ -438,4 +451,6 @@
 	width: '85%',
 	height: 'auto',
 }
+
+
 
