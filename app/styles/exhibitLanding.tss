@@ -56,7 +56,7 @@
 }
 
 "#arrowIcon": {
-	right: 0,
+	right: "5dip",
 	//height: "75%",
 	width: "10%"
 }
