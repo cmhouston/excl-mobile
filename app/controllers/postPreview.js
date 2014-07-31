@@ -234,7 +234,6 @@ function createPostView(post) {
 	var postText = labelService.createCustomLabel(args);
 	if (detectDevice.isTablet()) {
 		postText.font = {
-
 			fontSize : "25dip"
 		};
 	}

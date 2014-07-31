@@ -227,7 +227,7 @@ filterService.prototype.explorePost = function(dict, postCollection) {
 	post.set({
 		name : filterService.prototype.retrieveKeyValue(dict, "name"),
 		image : filterService.prototype.retrieveKeyValue(dict, "image"),
-		text : filterService.prototype.retrieveTextPart(dict["parts"]),
+		text : filterService.prototype.retrieveKeyValue(dict, "post_preview_text"),
 		rawJson : dict
 	});
 	postCollection.add(post);
@@ -238,19 +238,6 @@ filterService.prototype.retrieveKeyValue = function(dict, key) {
 		return dict[key];
 	} else {
 		return "";
-	}
-};
-
-filterService.prototype.retrieveTextPart = function(partsList) {
-	var length = partsList.length;
-	var previewText;
-	for (var i = 0; i < length; i++) {
-		//single part
-		partDict = partsList[i];
-		if (partDict["type"] == "text") {
-			previewText = partDict["body"];
-			return previewText;
-		}
 	}
 };
 
