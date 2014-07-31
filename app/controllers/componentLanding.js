@@ -22,7 +22,7 @@
 // component id is provided
 // picture is provided
 var args = arguments[0] || {};
-var gradientColors = ["#2382ff", "#005CD5", "#004092", "#002257", "#00142D", "#000914"];
+var gradientColors = ["#2382ff", "#005CD5", "#004092", "#002257", "#00142D", "#000914", "#000", "#000", "#000", "#000", "#000", "#000"];
 var gradientColorsCount = 0;
 var url = Alloy.Globals.rootWebServiceUrl + "/component/" + args[0].get('id');
 
@@ -82,7 +82,7 @@ function insertComponentPicture(imageUrl) {
 	Ti.API.info("Picture to insert ===> " + imageUrl.toString());
 	var image = Ti.UI.createImageView({
 		image : imageUrl,
-		width : Ti.UI.FILL,
+		width : Ti.UI.FILL
 	});
 	$.componentImageView.add(image);
 }
@@ -131,7 +131,7 @@ function displaySectionList(orderedSectionList, rawJson) {
 		var objectArgs;
 
 		var view = Titanium.UI.createView({
-			height : '20%',
+			height : '50dip',
 			left : '12dip',
 			right : '12dip',
 			top : '5dip',

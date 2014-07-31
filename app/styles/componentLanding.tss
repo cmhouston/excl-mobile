@@ -7,19 +7,19 @@
 "#mainView": {
 	layout: "vertical",
 	top:"0",
-	bottom: "10dip",
 }
 
 "#scrollView": {
-	backgroundColor: "#FFF",
 	layout: "vertical",
 	contentWidth: Ti.UI.FILL,
 	height: Ti.UI.FILL,
 }
 
 "#componentImageView": {
-	layout : 'vertical',
-	height : Ti.UI.SIZE,
-	bottom : '5dip'
+	backgroundColor: "#000",
+	layout: 'vertical',
+	width: Ti.UI.FILL,
+	contentWidth: Ti.UI.FILL,
+	height: Ti.UI.SIZE
 }
 
