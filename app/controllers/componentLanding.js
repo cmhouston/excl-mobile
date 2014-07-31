@@ -180,7 +180,7 @@ function displaySectionList(orderedSectionList, rawJson) {
 
 		objectArgs = {
 			color : 'white',
-			textAlign : 'center',
+			textAlign : 'left',
 			height : Ti.UI.FILL,
 			text : orderedSectionList[i].key,
 			left : "5%",
