@@ -80,24 +80,11 @@ function hideMenuBtnIfKioskMode(){
 
 function insertComponentPicture(imageUrl) {
 	Ti.API.info("Picture to insert ===> " + imageUrl.toString());
-
-	var view = Titanium.UI.createView({
-		height : '40%',
-		left : '6dip',
-		right : '6dip',
-		top : '10dip',
-		bottom : '20dip',
-		layout : 'vertical'
-	});
-
 	var image = Ti.UI.createImageView({
 		image : imageUrl,
-		width : '100%',
-		height : '100%'
+		width : Ti.UI.FILL,
 	});
-	view.add(image);
-	$.scrollView.add(view);
-
+	$.componentImageView.add(image);
 }
 
 function extractSectionNamesAndOrder(rawPostJson) {
@@ -144,7 +131,7 @@ function displaySectionList(orderedSectionList, rawJson) {
 		var objectArgs;
 
 		var view = Titanium.UI.createView({
-			height : '10%',
+			height : '20%',
 			left : '12dip',
 			right : '12dip',
 			top : '5dip',
@@ -204,7 +191,7 @@ function hideSpinner() {
 	spinner.hide();
 }
 
-function jackOfAllTrades() {
+function init() {
 	addSpinner();
 	dataRetriever.fetchDataFromUrl(url, function(returnedData) {
 
@@ -232,4 +219,4 @@ function fixBottomSpacing() {
 
 }
 
-jackOfAllTrades();
+init();

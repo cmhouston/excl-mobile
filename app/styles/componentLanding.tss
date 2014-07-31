@@ -1,4 +1,25 @@
-".container": {
+"#container": {
+	backgroundColor: "#FFF",
 	navBarHidden: true,
 	fullscreen: true
 }
+
+"#mainView": {
+	layout: "vertical",
+	top:"0",
+	bottom: "10dip",
+}
+
+"#scrollView": {
+	backgroundColor: "#FFF",
+	layout: "vertical",
+	contentWidth: Ti.UI.FILL,
+	height: Ti.UI.FILL,
+}
+
+"#componentImageView": {
+	layout : 'vertical',
+	height : Ti.UI.SIZE,
+	bottom : '5dip'
+}
+
