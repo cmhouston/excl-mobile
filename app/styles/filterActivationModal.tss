@@ -16,7 +16,6 @@
 ".title": {
 	color: '#FFFFFF',
 	font: {
-		
 		fontSize: '22dp',
 		fontWeight: 'bold'
 	},

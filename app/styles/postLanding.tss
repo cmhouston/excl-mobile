@@ -130,6 +130,7 @@
 	left : '3%',
 	color : '#232226',
 	font : {
+		fontFamily: Alloy.CFG.font,
 		fontSize : '16dip',
 		fontWeight : 'bold',
 	},
@@ -140,6 +141,7 @@
 
 ".commentsHeadingText[formFactor=tablet]": {
 	font: {
+		fontFamily: Alloy.CFG.font,
 		fontSize: '30dip'
 	}
 }
@@ -164,6 +166,7 @@
 	right : '3%',
 	left : '3%',
 	font : {
+		fontFamily: Alloy.CFG.font,
 		fontSize : '13dip',
 		fontWeight : 'normal',
 	},
@@ -172,6 +175,7 @@
 
 ".commentsInfo[formFactor=tablet]": {
 	font: {
+		fontFamily: Alloy.CFG.font,
 		fontSize: '25dip'
 	}
 }
@@ -183,6 +187,7 @@
 
 ".commentBody[formFactor=tablet]": {
 	font: {
+		fontFamily: Alloy.CFG.font,
 		fontSize : "25dip"
 	}
 }
@@ -190,6 +195,7 @@
 ".commentDate": {
 	color : '#48464e',
 	font : {
+		fontFamily: Alloy.CFG.font,
 		fontSize : '8dip',
 		fontWeight : 'normal',
 	},
@@ -198,6 +204,7 @@
 
 ".commentDate[formFactor=tablet]": {
 	font: {
+		fontFamily: Alloy.CFG.font,
 		fontSize : "17dip"
 	}
 }
@@ -232,7 +239,7 @@
 	opacity: '1.0',
 	color: 'black',
 	font: {
-		
+		fontFamily: Alloy.CFG.font,
 		fontSize: '21dp',
 		fontWeight: 'bold'
 	},
@@ -246,7 +253,7 @@
 	returnKeyType:Titanium.UI.RETURNKEY_NEXT,
 	opacity: '1.0',
 	font: {
-		
+		fontFamily: Alloy.CFG.font,
 		fontSize: '18dp',
 		fontWeight: 'normal'
 	},
@@ -269,7 +276,7 @@
 
 "#insertNameDisclaimer":{
 	font: {
-		
+		fontFamily: Alloy.CFG.font,
 		fontSize: '12dip',
 		fontWeight: 'normal'
 	},
@@ -279,6 +286,7 @@
 
 "#insertNameDisclaimer[formFactor=tablet]": {
 	font: {
+		fontFamily: Alloy.CFG.font,
 		fontSize : "15dip"
 	}
 }
@@ -289,7 +297,7 @@
 	returnKeyType:Titanium.UI.RETURNKEY_NEXT,
 	opacity: '1.0',
 	font: {
-		
+		fontFamily: Alloy.CFG.font,
 		fontSize: '18dp',
 		fontWeight: 'normal'
 	},
@@ -312,7 +320,7 @@
 
 "#insertEmailDisclaimer":{
 	font: {
-		
+		fontFamily: Alloy.CFG.font,
 		fontSize: '12dip',
 		fontWeight: 'normal'
 	},
@@ -322,6 +330,7 @@
 
 "#insertEmailDisclaimer[formFactor=tablet]": {
 	font: {
+		fontFamily: Alloy.CFG.font,
 		fontSize : "15dip"
 	}
 }
@@ -336,7 +345,7 @@
 	returnKeyType:Titanium.UI.RETURNKEY_DONE,
 	opacity: '1.0',
 	font: {
-		
+		fontFamily: Alloy.CFG.font,	
 		fontSize: '18dp',
 		fontWeight: 'normal'
 	},
@@ -361,7 +370,7 @@
 	title: 'Submit',
 	opacity: '1.0',
 	font: {
-		
+		fontFamily: Alloy.CFG.font,	
 		fontSize: '18dp',
 		fontWeight: 'bold'
 	},
@@ -374,6 +383,7 @@
 
 "#submitButton[formFactor=tablet]": {
 	font:  {
+		fontFamily: Alloy.CFG.font,
 		fontSize : '25dip',
 		fontWeight : 'bold'
 	}
@@ -383,7 +393,7 @@
 	title: 'Cancel',
 	opacity: '1.0',
 	font: {
-		
+		fontFamily: Alloy.CFG.font,
 		fontSize: '16dp',
 		fontWeight: 'bold'
 	},
@@ -396,6 +406,7 @@
 
 "#cancelCommentButton[formFactor=tablet]": {
 	font:  {
+		fontFamily: Alloy.CFG.font,
 		fontSize : '25dip',
 		fontWeight : 'bold'
 	}
@@ -415,7 +426,7 @@
 ".thankYouMessageComment":{
 	opacity: '1.0',
 	font: {
-		
+		fontFamily: Alloy.CFG.font,
 		fontSize: '16dp',
 		fontWeight: 'normal'
 	},
