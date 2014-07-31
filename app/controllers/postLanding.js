@@ -303,11 +303,8 @@ function initializePage() {
 	if (post_content.post_body) {
 		Ti.App.addEventListener('app:openInBrowser', openInBrowser);
 		$.webView.setHtml(wrapRichTextInHTML(post_content.post_body));
-		$.webView.addEventListener("load", function(e) {
-			actualHeight    = e.source.evalJS("document.getElementById('rich_text').clientHeight;");
-			Ti.API.info("Actual height: " + actualHeight);
-			//e.source.height = parseInt(actualHeight) + 20 + "dip";
-		});
+	} else {
+		$.webView.height = "0dip"
 	}
 
 	showAllSharingButtons();
