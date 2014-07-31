@@ -59,10 +59,12 @@ NavigationController.prototype.exitKioskMode = function(){
 };
 
 NavigationController.prototype.open = function(controller) {
-	if (this.checkPageLevel(controller) == false){
-		return false;
+	if (this.windowStack.length > 0){
+		if (this.checkPageLevel(controller) == false){
+			return false;
+		}
 	}
-	//this.setPageLevel(controller);
+	
 	var windowToOpen = this.getWindowFromController(controller);
 	try {	
 		var win = this.openWindow(windowToOpen);
@@ -74,11 +76,10 @@ NavigationController.prototype.open = function(controller) {
 
 NavigationController.prototype.checkPageLevel = function(controllerToBeOpened) {
 	pageLevelToBeOpened = _.isFunction(controllerToBeOpened.getAnalyticsPageLevel) ? controllerToBeOpened.getAnalyticsPageLevel() : "[Unnamed Level]";
-	for (i = 0; i<this.windowStack.length; i++){
-		if (this.windowStack[i].analyticsPageLevel == pageLevelToBeOpened){
-			return false;
-		}
+	if (this.windowStack[this.windowStack.length-1].analyticsPageLevel == pageLevelToBeOpened){
+		return false;
 	}
+
 	return true;	
 };
 
