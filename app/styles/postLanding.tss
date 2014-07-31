@@ -41,16 +41,28 @@
 }
 
 "#headerRow": {
-	height: "200dip",
+	height: Ti.UI.SIZE, //"200dip",
 	width: '100%'
 }
 
 "#headerRow[formFactor=tablet]": {
-	height: "300dip"
+	height: Ti.UI.SIZE //height: "300dip"
 }
 
 ".headerImage": {
-	height: Ti.UI.SIZE
+	width: Ti.UI.FILL,
+}
+
+".headerImage[formFactor=tablet]": {
+}
+
+".headerVideo": { 
+	width: Ti.UI.FILL,
+	height: "190dip" // Have to hard code video height, but not image height
+}
+
+".headerVideo[formFactor=tablet]": {
+	height: "375dip"
 }
 
 ".socialMediaButtonShown": {
