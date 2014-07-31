@@ -1,79 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ti:app xmlns:ti="http://ti.appcelerator.org">
-	<id>com.parivedasolutions.excl</id>
-	<name>ExCL</name>
-	<version>1.0.0</version>
-	<publisher>Children's Museum of Houston and the Regents of the University of California</publisher>
-	<url>http://</url>
-	<description>not specified</description>
-	<copyright>2014 by Children's Museum of Houston and the Regents of the University of California</copyright>
-	<icon>appicon.png</icon>
-	<fullscreen>false</fullscreen>
-	<navbar-hidden>false</navbar-hidden>
-	<analytics>true</analytics>
-	<guid>b7ecc89e-dcbc-41dc-9f5a-801689b537fe</guid>
-	<property name="ti.ui.defaultunit" type="string">dp</property>
-	<ios>
-		<plist>
-			<dict>
-				<key>UISupportedInterfaceOrientations~iphone</key>
-				<array>
-					<string>UIInterfaceOrientationPortrait</string>
-				</array>
-				<key>UISupportedInterfaceOrientations~ipad</key>
-				<array>
-					<string>UIInterfaceOrientationPortrait</string>
-					<string>UIInterfaceOrientationPortraitUpsideDown</string>
-				</array>
-				<key>UIRequiresPersistentWiFi</key>
-				<false/>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-				<key>UIStatusBarHidden</key>
-				<false/>
-				<key>UIStatusBarStyle</key>
-				<string>UIStatusBarStyleDefault</string>
-			</dict>
-		</plist>
-	</ios>
-	<android xmlns:android="http://schemas.android.com/apk/res/android">
-		<manifest android:versionCode="1" android:versionName="1.0.0">
-			<uses-sdk android:minSdkVersion="16" android:targetSdkVersion="19"/> 
-			<supports-screens android:resizeable="true"
-			android:smallScreens="false"
-			android:normalScreens="true"
-			android:largeScreens="true"
-			android:xlargeScreens="false"
-			android:anyDensity="false"/>
-			<application>
-				<activity android:configChanges="keyboardHidden"
-				android:name="org.appcelerator.titanium.TiActivity" android:screenOrientation="portrait"/>
-			</application>
-		</manifest>
-	</android>
-	<mobileweb>
-		<precache/>
-		<splash>
-			<enabled>true</enabled>
-			<inline-css-images>true</inline-css-images>
-		</splash>
-		<theme>default</theme>
-	</mobileweb>
-	<modules>
-		<module platform="iphone">dk.napp.social</module>
-		<module platform="android">analytics.google</module>
-		<module platform="iphone">analytics.google</module>
-	</modules>
-	<deployment-targets>
-		<target device="iphone">true</target>
-		<target device="ipad">true</target>
-		<target device="android">true</target>
-		<target device="blackberry">false</target>
-		<target device="mobileweb">false</target>
-		<target device="tizen">false</target>
-	</deployment-targets>
-	<sdk-version>3.2.3.GA</sdk-version>
-	<plugins>
-		<plugin version="1.0">ti.alloy</plugin>
-	</plugins>
+    <id>org.cmhouston.morecmh</id>
+    <name>More CMH</name>
+    <version>1.0.0</version>
+    <publisher>Children's Museum of Houston and the Regents of the University of California</publisher>
+    <url>http://</url>
+    <description>not specified</description>
+    <copyright>2014 by Children's Museum of Houston and the Regents of the University of California</copyright>
+    <icon>appicon.png</icon>
+    <fullscreen>false</fullscreen>
+    <navbar-hidden>false</navbar-hidden>
+    <analytics>true</analytics>
+    <guid>b7ecc89e-dcbc-41dc-9f5a-801689b537fe</guid>
+    <property name="ti.ui.defaultunit" type="string">dp</property>
+    <ios>
+        <plist>
+            <dict>
+                <key>UISupportedInterfaceOrientations~iphone</key>
+                <array>
+                    <string>UIInterfaceOrientationPortrait</string>
+                </array>
+                <key>UISupportedInterfaceOrientations~ipad</key>
+                <array>
+                    <string>UIInterfaceOrientationPortrait</string>
+                    <string>UIInterfaceOrientationPortraitUpsideDown</string>
+                </array>
+                <key>UIRequiresPersistentWiFi</key>
+                <false/>
+                <key>UIPrerenderedIcon</key>
+                <false/>
+                <key>UIStatusBarHidden</key>
+                <false/>
+                <key>UIStatusBarStyle</key>
+                <string>UIStatusBarStyleDefault</string>
+            </dict>
+        </plist>
+    </ios>
+    <android xmlns:android="http://schemas.android.com/apk/res/android">
+        <manifest android:versionCode="1" android:versionName="1.0.0">
+            <uses-sdk android:minSdkVersion="16" android:targetSdkVersion="19"/>
+            <supports-screens android:anyDensity="false"
+                android:largeScreens="true" android:normalScreens="true"
+                android:resizeable="true" android:smallScreens="false" android:xlargeScreens="false"/>
+            <application>
+                <activity android:configChanges="keyboardHidden"
+                    android:name="org.appcelerator.titanium.TiActivity" android:screenOrientation="portrait"/>
+            </application>
+        </manifest>
+    </android>
+    <mobileweb>
+        <precache/>
+        <splash>
+            <enabled>true</enabled>
+            <inline-css-images>true</inline-css-images>
+        </splash>
+        <theme>default</theme>
+    </mobileweb>
+    <modules>
+        <module platform="iphone">dk.napp.social</module>
+        <module platform="android">analytics.google</module>
+        <module platform="iphone">analytics.google</module>
+    </modules>
+    <deployment-targets>
+        <target device="iphone">true</target>
+        <target device="ipad">true</target>
+        <target device="android">true</target>
+        <target device="blackberry">false</target>
+        <target device="mobileweb">false</target>
+        <target device="tizen">false</target>
+    </deployment-targets>
+    <sdk-version>3.2.3.GA</sdk-version>
+    <plugins>
+        <plugin version="1.0">ti.alloy</plugin>
+    </plugins>
 </ti:app>
