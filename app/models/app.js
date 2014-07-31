@@ -68,7 +68,13 @@ exports.definition = {
 				Alloy.Collections.filter.ready = true;
 			},
 			
-			retrieveMuseumData: function() {
+			forceRestartWithFreshData: function() {
+				Alloy.Models.app.retrieveMuseumData(function() {
+					Alloy.Models.app.forceOpenHome();
+				});
+			},
+			
+			retrieveMuseumData: function(callbackWhenDone) {
 				var retriever = Alloy.Globals.setPathForLibDirectory('dataRetriever/dataRetriever');
 				var url = Alloy.Globals.rootWebServiceUrl;
 	
@@ -76,10 +82,9 @@ exports.definition = {
 					if(response) {
 						Alloy.Globals.museumJSON = response;
 						Alloy.Models.app.trigger('museumJsonRetrieved');
-												
 						Alloy.Models.app.parseFiltersFromJson(response);
 						
-						Alloy.Models.app.forceOpenHome();
+						callbackWhenDone(response);
 					}
 				});
 			}

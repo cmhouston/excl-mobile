@@ -71,10 +71,15 @@ TutorialService.prototype.initializePagesToShowTutorial = function(force) {
 
 TutorialService.prototype.resetTutorialMode = function() {
 	this.setAllPagesTo(true);
+	Alloy.Models.app.forceRestartWithFreshData();
+	Alloy.Models.app.set("tutorialOn", true);
+	Alloy.Models.app.trigger("change:tutorialOn");
 };
 
 TutorialService.prototype.endTutorialMode = function() {
 	this.setAllPagesTo(false);
+	Alloy.Models.app.set("tutorialOn", false);
+	Alloy.Models.app.trigger("change:tutorialOn");
 };
 
 TutorialService.prototype.setAllPagesTo = function(trueOrFalse) {
@@ -87,7 +92,6 @@ TutorialService.prototype.setAllPagesTo = function(trueOrFalse) {
 };
 
 TutorialService.prototype.checkTutorialForPage = function(page) {
-	
 	var pageName = this.getPageNameFromWindow(page);
 	var storage = this.getStorageService();
 	var showTutorial = storage.getBoolProperty(pageName);
@@ -113,6 +117,7 @@ TutorialService.prototype.setTutorialOn = function() {
 	storage.setBoolProperty("tutorialOn", true);
 	if (this.getAlloyService().Models.app) {
 		this.getAlloyService().Models.app.set("tutorialOn", true);
+		this.getAlloyService().Models.app.trigger("change:tutorialOn");
 	}
 };
 
@@ -121,6 +126,7 @@ TutorialService.prototype.setTutorialOff = function() {
 	storage.setBoolProperty("tutorialOn", false);
 	if (this.getAlloyService().Models.app) {
 		this.getAlloyService().Models.app.set("tutorialOn", false);
+		this.getAlloyService().Models.app.trigger("change:tutorialOn");
 	}
 };
 
