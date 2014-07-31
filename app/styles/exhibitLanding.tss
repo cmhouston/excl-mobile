@@ -56,7 +56,7 @@
 }
 
 "#arrowIcon": {
-	right: 0,
+	right: "5dip",
 	//height: "75%",
 	width: "10%"
 }
@@ -80,22 +80,6 @@
 
 "#headingLabelView[formFactor=tablet]": {
 	height: "75dip",
-}
-
-"#headingLabel":{
-	color: "white",
-	font: {
-		
-		fontWeight: 'bold',
-		fontSize: "20dip"
-	}
-}
-
-"#headingLabel[formFactor=tablet]":{
-	font:{
-		fontWeight: 'bold',
-		fontSize: "40dip"
-	}
 }
 
 "#exhibitInfoLabel": {

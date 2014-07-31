@@ -8,6 +8,6 @@
 			<ImageView class="flyoutIcon" image="/images/icons_android/drawer.png" platform="android"></ImageView>
 			<ImageView class="flyoutIcon" image="/images/icons_ios/drawer.png" platform="ios"></ImageView>
 		</View>
-		<Label id="pageTitle" class="pageTitleStyle"></Label>
+		<Label id="pageTitle" class="headingText"></Label>
 	</View>
 </Alloy>

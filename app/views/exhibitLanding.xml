@@ -14,7 +14,7 @@
 				</View>
 				<View id="topView">
 					<View id="headingLabelView" class="headingRow">
-						<Label id="headingLabel"/>
+						<Label id="headingLabel" class="headingText"/>
 						<ImageView id="arrowIcon"/>
 					</View>
 					<ScrollView id="exhibitInfoScrollView">

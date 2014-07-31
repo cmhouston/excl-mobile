@@ -180,7 +180,7 @@ function createExhibitsCarousel(exhibits) {
 	
 	$.exhibitsCarousel.setCurrentPage(0);
 	
-	$.headingLabel.text = "Explore This " + json.data.museum.exhibit_label;
+	$.headingLabel.text = "Tap to Explore!";//"Explore This " + json.data.museum.exhibit_label;
 	$.exhibitInfoLabel.text = exhibits[0].long_description;
 	
 	if(OS_ANDROID){
@@ -280,7 +280,7 @@ function addPagingArrowsToView(view, pageNum, numOfPages){
 			height: "15%",
 			width: "15%",
 			backgroundColor: "#FF6600",
-			image: iconService.getImageFilename("triple_arrow_right.png")
+			image: iconService.getImageFilename("triple_arrow_left.png")
 		});
 		
 		leftArrow.addEventListener('click', function(e){
@@ -299,7 +299,7 @@ function addPagingArrowsToView(view, pageNum, numOfPages){
 			height: "15%",
 			width: "15%",
 			backgroundColor: "#FF6600",
-			image: iconService.getImageFilename("triple_arrow_left.png")
+			image: iconService.getImageFilename("triple_arrow_right.png")
 		});
 		
 		rightArrow.addEventListener('click', function(e){
@@ -457,7 +457,7 @@ function onExhibitsClick(exhibits) {
 		animateTopViewDown();
 
 	} else {
-		$.headingLabel.text = "Explore This " + json.data.museum.exhibit_label;
+		$.headingLabel.text = "Tap to Explore!";//"Explore This " + json.data.museum.exhibit_label;
 		animateTopViewUp();
 	}
 }
@@ -528,7 +528,7 @@ function stripUnitsOffMeasurement(str){
 
 function onExhibitsScroll(e, exhibits) {
 	var index = $.exhibitsCarousel.currentPage;
-	$.headingLabel.text = "Explore This " + json.data.museum.exhibit_label;
+	$.headingLabel.text = "Tap to Explore!";//"Explore This " + json.data.museum.exhibit_label;
 	$.exhibitInfoLabel.text = exhibits[index].long_description;
 	
 	animateTopViewUp();

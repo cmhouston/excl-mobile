@@ -119,7 +119,7 @@ function setCommentIconBusy(button) {
 }
 
 function createPlainRowWithHeight(rowHeight) {
-	var row = Ti.UI.createTableViewRow({
+	var row = Ti.UI.createView({
 		height : rowHeight,
 		width : '100%',
 		top : '15dip',
@@ -129,70 +129,8 @@ function createPlainRowWithHeight(rowHeight) {
 	return row;
 }
 
-function creatingCommentTextHeading() {
-	var row = createPlainRowWithHeight('10%');
-	if (OS_IOS) {
-		row.bottom = "48dip";
-		row.height = "10%";
-	} else {
-		row.height = "50dip";
-	}
-	var objectArgs = {
-		top : "20dip",
-		width : '94%',
-		right : '3%',
-		left : '3%',
-		color : '#232226',
-		font : {
-			fontSize : '16dip',
-			fontWeight : 'bold',
-		},
-		text : "Add Comment",
-		textAlign : 'center',
-		borderWidth : '1',
-		borderColor : '#aaa'
-	};
-	var commentHeading = labelService.createCustomLabel(objectArgs);
-	if (detectDevice.isTablet()) {
-		commentHeading.font = {
-			fontSize : "30dip"
-		};
-	}
-	row.addEventListener('click', function(e) {
-		$.addNewCommentContainer.visible = true;
-		$.whiteCommentBox.visible = true;
-		$.submitCommentFormView.visible = true;
-		$.insertName.value = $.insertEmail.value = $.insertComment.value = "";
-		$.thankYouMessageView.visible = false;
-		$.scroller.scrollTo(0, 0);
-		$.scroller.scrollingEnabled = false;
-	});
-	row.add(commentHeading);
-	$.tableView.appendRow(row);
-}
-
 function displayThereAreNoCommentsToDisplayText() {
-	var row = createPlainRowWithHeight(Ti.UI.SIZE);
-	var objectArgs = {
-		top : "10dip",
-		width : '94%',
-		right : '3%',
-		left : '3%',
-		color : '#48464e',
-		font : {
-			fontSize : '13dip',
-			fontWeight : 'normal',
-		},
-		text : "There are no comments for this post"
-	};
-	var noCommentText = labelService.createCustomLabel(objectArgs);
-	if (detectDevice.isTablet()) {
-		noCommentText.font = {
-			fontSize : "25dip"
-		};
-	}
-	row.add(noCommentText);
-	$.tableView.appendRow(row);
+	$.noComments.height = Ti.UI.SIZE;
 }
 
 function addCommentToView(commentText, commentDate) {
@@ -202,53 +140,18 @@ function addCommentToView(commentText, commentDate) {
 
 function createCommentText(commentText) {
 	var row = createPlainRowWithHeight(Ti.UI.SIZE);
-	if (OS_ANDROID) {
-		row.top = "10%";
-	}
-	var objectArgs = {
-		top : "10dip",
-		width : '94%',
-		right : '3%',
-		left : '3%',
-		color : '#232226',
-		font : {
-			fontSize : '13dip',
-			fontWeight : 'normal',
-		},
-		text : commentText
-	};
-	var text = labelService.createCustomLabel(objectArgs);
-	if (detectDevice.isTablet()) {
-		text.font = {
-			
-			fontSize : "25dip"
-		};
-	}
+	var text = labelService.createCustomLabel({text: commentText});
+	$.addClass(text, "commentBody commentsInfo");
 	row.add(text);
-	$.tableView.appendRow(row);
+	$.commentsView.add(row);
 }
 
 function createCommentDate(commentDate) {
 	var row = createPlainRowWithHeight(Ti.UI.SIZE);
-	var objectArgs = {
-		width : '94%',
-		right : '3%',
-		left : '3%',
-		color : '#48464e',
-		font : {
-			fontSize : '8dip',
-			fontWeight : 'normal',
-		},
-		text : commentDate
-	};
-	var date = labelService.createCustomLabel(objectArgs);
-	if (detectDevice.isTablet()) {
-		date.font = {
-			fontSize : "17dip"
-		};
-	}
+	var date = labelService.createCustomLabel({text: commentDate});
+	$.addClass(date, "commentDate commentsInfo");
 	row.add(date);
-	$.tableView.appendRow(row);
+	$.commentsView.add(row);
 }
 
 function displayComments(comments) {
@@ -263,38 +166,14 @@ function displayComments(comments) {
 	}
 
 	if (comments.length > commentsLengthLimit) {
-		var row = createPlainRowWithHeight(Ti.UI.SIZE);
-		var objectArgs = {
-			top : "10dip",
-			width : '94%',
-			right : '3%',
-			left : '3%',
-			color : '#005ab3',
-			font : {
-				fontSize : '13dip',
-				fontWeight : 'normal',
-			},
-			text : "Show more comments",
-			textAlign : 'center'
-		};
-		var text = labelService.createCustomLabel(objectArgs);
-		if (detectDevice.isTablet()) {
-			text.font = {
-				fontSize : "20dip"
-			};
-		}
-		row.add(text);
-
+		$.showMoreComments.height = Ti.UI.SIZE;
 		// if clicked, hide it and show the other comments
-		row.addEventListener('click', function(e) {
-			$.tableView.deleteRow(row);
-			// remove the last element, which is the "show more comments" row in this case
+		$.showMoreComments.addEventListener('click', function(e) {
 			for (var i = commentsLengthLimit; i < comments.length; i++) {
 				addCommentToView(comments[i].body, comments[i].date);
 			}
+			$.tableView.remove($.showMoreComments);
 		});
-
-		$.tableView.appendRow(row);
 	}
 }
 
@@ -422,15 +301,17 @@ function initializePage() {
 	}
 	
 	if (post_content.post_body) {
-		var postBody = getRowContentsForRichText(post_content.post_body);
-		$.postBodyRow.add(postBody);
+		Ti.App.addEventListener('app:openInBrowser', openInBrowser);
+		$.webView.setHtml(wrapRichTextInHTML(post_content.post_body));
+	} else {
+		$.webView.height = "0dip"
 	}
 
 	showAllSharingButtons();
 	turnOffAppropriateSharingButtons();
 
 	if (post_content.commenting) {
-		creatingCommentTextHeading();
+		$.commentsHeading.height = Ti.UI.SIZE;
 		var comments = post.getAllComments();
 		if (comments != false) {
 			displayComments(comments);
@@ -438,15 +319,11 @@ function initializePage() {
 			displayThereAreNoCommentsToDisplayText();
 		}
 	}
-
-	formatCommentBoxForIpad();
 }
 
 function openInBrowser(e) {
 	Ti.Platform.openURL(e.url);
 }
-
-Ti.App.addEventListener('app:openInBrowser', openInBrowser);
 
 function turnOffAppropriateSharingButtons() {
 	if (!post_content.commenting) {
@@ -479,14 +356,14 @@ function hideAllSharingButtonsForKiosk() {
 }
 
 function showAllSharingButtons() {
-	$.resetClass($.socialMediaButtonsRow, "postTableViewRow");
+	$.resetClass($.socialMediaButtonsRow, "autoHeight");
 	$.resetClass($.commentingButton, "socialMediaButtonShown");
 	$.resetClass($.shareTextButton, "socialMediaButtonShown");
 	$.resetClass($.sharePhotoButton, "socialMediaButtonShown");
 }
 
 function clickThankYouMessage(e) {
-	$.whiteCommentBox.visible = false;
+	$.commentsModal.visible = false;
 	$.addNewCommentContainer.visible = false;
 	$.scroller.scrollingEnabled = false;
 	setCommentIconReady($.commentingButton);
@@ -497,7 +374,6 @@ function clickSubmitComment(e) {
 	$.insertEmail.blur();
 	$.insertComment.blur();
 	verifyData($.commentingButton);
-	$.scroller.scrollTo(0, 0);
 }
 
 function clickCancelComment(e) {
@@ -506,22 +382,18 @@ function clickCancelComment(e) {
 	$.insertEmail.blur();
 	$.insertComment.blur();
 	$.addNewCommentContainer.visible = false;
-	$.whiteCommentBox.visible = false;
-	$.scroller.scrollTo(0, 0);
+	$.commentsModal.visible = false;
 	$.scroller.scrollingEnabled = true;
 }
 
 function comment(e) {
 	setCommentIconBusy($.commentingButton);
 	$.addNewCommentContainer.visible = true;
-	$.whiteCommentBox.visible = true;
+	$.commentsModal.visible = true;
 	$.submitCommentFormView.visible = true;
 	$.insertName.value = $.insertEmail.value = $.insertComment.value = "";
 	$.thankYouMessageView.visible = false;
-	$.scroller.scrollTo(0, 0);
 	$.scroller.scrollingEnabled = false;
-	$.submitYourCommentLabel.text = "Submit Your Comment";
-	formatCommentBoxForIpad();
 }
 
 function shareText(e) {
@@ -606,43 +478,12 @@ function getRowContentsForImage(url) {
 	return imageView;
 }
 
-function getRowContentsForRichText(text) {
-	Ti.API.info("HTML: " + text);
-	var html = '<html><head><title></title><script type="text/javascript">';
-	html += "function openInBrowser(link) { Ti.App.fireEvent('app:openInBrowser', {url: link}) } function changeLinksToOpenInBrowser() { alert('working'); var aTags = document.getElementsByTagName('a'); for (var i = 0; i < aTags.length; i++) { var tag = aTags[i]; var linkURL = tag.href; tag.setAttribute('href', '#'); tag.setAttribute('onclick', 'openInBrowser(\"' + linkURL + '\"); return false;'); } }; window.onload = changeLinksToOpenInBrowser;";
-	html += '</script>';
-	html += '<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">';
-	html += '</head><body>';
-	html += text;
-	html += '</body></html>';
-	var webView = Ti.UI.createWebView({ html : html	});
-	$.addClass(webView, "postWebView");
-	return webView;
-}
-
-function formatCommentBoxForIpad() {
-	if (detectDevice.isTablet()) {
-		$.whiteCommentBox.height = "700dip";
-		$.whiteCommentBox.width = "500dip";
-		$.buttonView.height = "75dip";
-		$.insertNameDisclaimer.font = {
-			fontSize : "15dip"
-		};
-		$.insertEmailDisclaimer.font = {
-			fontSize : "15dip"
-		};
-		$.insertName.height = "50dip";
-		$.insertEmail.height = "50dip";
-		$.insertComment.height = "300dip";
-		$.cancelCommentButton.font = {
-			fontSize : '25dip',
-			fontWeight : 'bold'
-		};
-		$.submitButton.font = {
-			fontSize : '25dip',
-			fontWeight : 'bold'
-		};
-	}
+function wrapRichTextInHTML(text) {
+	var file = Ti.Filesystem.getFile(Ti.Filesystem.resourcesDirectory, "webViewInjectableHTML.html");
+	html = file.read().text.replace("${RICH_TEXT}", text);
+	Ti.API.info("Replaced HTML: " + html);
+	//html += "function openInBrowser(link) { Ti.App.fireEvent('app:openInBrowser', {url: link}) } function changeLinksToOpenInBrowser() { alert('working'); var aTags = document.getElementsByTagName('a'); for (var i = 0; i < aTags.length; i++) { var tag = aTags[i]; var linkURL = tag.href; tag.setAttribute('href', '#'); tag.setAttribute('onclick', 'openInBrowser(\"' + linkURL + '\"); return false;'); } }; window.onload = changeLinksToOpenInBrowser;";
+	return html;
 }
 
 initializePage();
