@@ -30,9 +30,6 @@
 //
 // Alloy.Globals.someGlobalFunction = function(){};
 
-var NavigationController = require('navigationService/NavigationController');
-Alloy.Globals.navController = new NavigationController();
-
 var AnalyticsController = require('analyticService/analyticService');
 Alloy.Globals.analyticsController = new AnalyticsController();
 

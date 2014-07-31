@@ -194,12 +194,6 @@ function languageHandler(e) {
 	languageService.displayDialog();
 }
 
-function onLanguageChange() {
-	Alloy.Models.app.restart(createInternationalizationMessageDialog);
-}
-
-
-
 function detectFilterConditions() {
 	//Can't Ti.API.info variables here
 	ageFilterSet = Alloy.Models.app.get('customizeLearningSet');
