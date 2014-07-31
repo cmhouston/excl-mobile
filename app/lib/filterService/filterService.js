@@ -28,6 +28,7 @@ var dictSortedPostsLength;
 var errorEmptyAllInclusive = "If you have more than one age selected, this tab will hold the content that matches all of the ages of your group members.";
 var errorEmptyTab = "";
 var sectionScreenName = "";
+var sectionLandingObjects;
 
 function setPathForLibDirectory(libFile) {
 	if ( typeof Titanium == 'undefined') {
@@ -44,6 +45,10 @@ function filterService() {
 filterService.prototype.setAllInclusiveTabTitle = function(st) {
 	allInclusiveTabTitle = st;
 	errorEmptyTab = 'Looks like there is no unique content for this filter. It may have been moved to the "' + allInclusiveTabTitle + '" tab above, check there!';
+};
+
+filterService.prototype.setSectionLandingObjects = function(ary) {
+	sectionLandingObjects = ary;
 };
 
 filterService.prototype.parseStringIntoArray = function(st, deliniator) {
@@ -295,6 +300,10 @@ filterService.prototype.sortFilteredContentIntoDict = function(selectedFilters, 
 };
 
 filterService.prototype.addPostsToViewAccordingToSection = function(section, dict, parentObject, collectionOfPosts) {
+	var scrollView = sectionLandingObjects[0];
+	var buttonHolderView = sectionLandingObjects[1];
+	var allTabView = sectionLandingObjects[2];
+	var allTabButton = sectionLandingObjects[3];
 	var postData = {
 		posts : collectionOfPosts,
 		parentScreenName : sectionScreenName,
@@ -305,9 +314,11 @@ filterService.prototype.addPostsToViewAccordingToSection = function(section, dic
 			Ti.API.info("--All inclusive tab found with content. Add content.");
 			filterService.prototype.addPostPreview(postData, parentObject);
 		} else {
-			Ti.API.info("--All inclusive tab empty. Throw message if all inclusive is not the only section in dict.");
+			Ti.API.info("--All inclusive tab empty. Remove Tab.");
 			if (dictSortedPostsLength > 1) {
-				parentObject.add(filterService.prototype.generateErrorMessage(errorEmptyAllInclusive));
+				//parentObject.add(filterService.prototype.generateErrorMessage(errorEmptyAllInclusive));
+				buttonHolderView.remove(allTabButton);
+				scrollView.remove(allTabView);
 			}
 		}
 	} else {
