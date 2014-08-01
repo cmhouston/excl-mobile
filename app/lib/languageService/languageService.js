@@ -107,7 +107,8 @@ languageService.prototype.displayDialog = function(){
 
 languageService.prototype.languageDialogClickListener = function(e, languageOptionsFourLetterCode){
 	var newLanguage = languageOptionsFourLetterCode[e.index];	
-	if (newLanguage != 'CANCEL' && newLanguage.substr(0,1) !=  Alloy.Models.app.get('currentLanguage').substr(0,1)){
+	if (newLanguage != 'CANCEL' /*&& newLanguage.substr(0,1) !=  Alloy.Models.app.get('currentLanguage').substr(0,1)*/){
+		Ti.API.info("________________Setting language to " + newLanguage);
 		Alloy.Models.app.set('currentLanguage', newLanguage);
 	}
 	else{
