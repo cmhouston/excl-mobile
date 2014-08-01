@@ -5,7 +5,7 @@ staff, and visitors will download the customized ExCL app, written using [Appcel
 to their mobile device. ExCL is also intended to be used by museums on kiosk devices and provides 
 a kiosk mode for this purpose.
 
-ExCL is divided into two parts: the content management system and the Appcelerator Titanium mobile application. This repository is for the Titanium mobile application. [Click here to go to the Titanium project](https://github.com/cmhouston/excl-mobile).
+ExCL is divided into two parts: the content management system and the Appcelerator Titanium mobile application. This repository is for the Titanium mobile application. [Click here to go to the Wordpress project](https://github.com/cmhouston/excl-cms).
 
 This documentation is intended for ExCL developers and details the steps to setup and enhance the mobile application. We will describe the Titanium technical details, followed by tips on using a continuous integration build server and 
 deploying to the app stores.
