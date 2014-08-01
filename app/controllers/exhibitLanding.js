@@ -298,12 +298,10 @@ function addPagingArrowsToView(view, pageNum, numOfPages){
 			borderRadius: "10dip"
 		});
 		
-		leftArrow.addEventListener('click', function(e){
-			$.exhibitsCarousel.scrollToView($.exhibitsCarousel.getCurrentPage() -1 );
-		});
 		leftArrowView.addEventListener('click', function(e){
 			$.exhibitsCarousel.scrollToView($.exhibitsCarousel.getCurrentPage() -1 );
 		});
+		
 		leftArrowView.add(leftArrow);
 		view.add(leftArrowView);
 	}
@@ -330,13 +328,11 @@ function addPagingArrowsToView(view, pageNum, numOfPages){
 			backgroundColor: "#CF5300",
 			borderRadius: "10dip"
 		});
-		
-		rightArrow.addEventListener('click', function(e){
-			$.exhibitsCarousel.scrollToView($.exhibitsCarousel.getCurrentPage() + 1 );
-		});
+
 		rightArrowView.addEventListener('click', function(e){
 			$.exhibitsCarousel.scrollToView($.exhibitsCarousel.getCurrentPage() + 1 );
 		});
+		
 		rightArrowView.add(rightArrow);
 		view.add(rightArrowView);
 	}
