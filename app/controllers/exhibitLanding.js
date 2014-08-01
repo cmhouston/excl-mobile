@@ -276,82 +276,71 @@ function createExhibitsImageAndroid(exhibits, index) {
 	return itemContainer;
 }
 function addPagingArrowsToView(view, pageNum, numOfPages){
-	Ti.API.info("________Adding paging arrows");
 	if(pageNum != 0 && numOfPages != 1){
 		var leftArrow = Ti.UI.createImageView({
 			id: "leftArrow",
-			left: 0,
+			left: "10dip",
+			//bottom: "15%",
+			//height: "15%",
+			//width: "15%",
+			//backgroundColor: "#CF5300", //Burnt orange
+			image: iconService.getImageFilename("triple_arrow_left_white.png"),
+			zIndex: 1
+		});
+		
+		var leftArrowView = Ti.UI.createView({
+			id: "leftArrowView",
+			left: "-10dip",
 			bottom: "15%",
 			height: "15%",
-			width: "15%",
-			backgroundColor: "#CF5300", //Burnt orange
-			image: iconService.getImageFilename("triple_arrow_left.png"),
-			zIndex: 1
+			width: "17%",
+			backgroundColor: "#CF5300",
+			borderRadius: "10dip"
 		});
 		
 		leftArrow.addEventListener('click', function(e){
 			$.exhibitsCarousel.scrollToView($.exhibitsCarousel.getCurrentPage() -1 );
 		});
-		
-		view.add(leftArrow);
+		leftArrowView.addEventListener('click', function(e){
+			$.exhibitsCarousel.scrollToView($.exhibitsCarousel.getCurrentPage() -1 );
+		});
+		leftArrowView.add(leftArrow);
+		view.add(leftArrowView);
 	}
 
 	if(pageNum != numOfPages-1){
 		
 		var rightArrow = Ti.UI.createImageView({
 			id: "rightArrow",
-			right: 0,
+			right: "10dip",
+			//top: "15%",
+			//height: "15%",
+			//width: "15%",
+			//backgroundColor: "#CF5300",
+			image: iconService.getImageFilename("triple_arrow_right_white.png"),
+			zIndex: 1
+		});
+		
+		var rightArrowView = Ti.UI.createView({
+			id: "rightArrowView",
+			right: "-10dip",
 			top: "15%",
 			height: "15%",
-			width: "15%",
+			width: "17%",
 			backgroundColor: "#CF5300",
-			image: iconService.getImageFilename("triple_arrow_right.png"),
-			zIndex: 1
+			borderRadius: "10dip"
 		});
 		
 		rightArrow.addEventListener('click', function(e){
 			$.exhibitsCarousel.scrollToView($.exhibitsCarousel.getCurrentPage() + 1 );
 		});
-		
-		view.add(rightArrow);
+		rightArrowView.addEventListener('click', function(e){
+			$.exhibitsCarousel.scrollToView($.exhibitsCarousel.getCurrentPage() + 1 );
+		});
+		rightArrowView.add(rightArrow);
+		view.add(rightArrowView);
 	}
 	//view.removeEventListener("load", addPagingArrowsFunction);
-	return view;
-}
-
-function createPagingArrows(pageNum, numOfPages){
-	var view = Ti.UI.createView({
-		backgroundColor: "transparent",
-		height: Ti.UI.FILL
-	});
-	
-	if(pageNum != 0 && numOfPages != 1){
-		var leftArrow = Ti.UI.createImageView({
-			left: 0,
-			bottom: "15%",
-			height: "10%",
-			width: "15%",
-			backgroundColor: "white",
-			image: iconService.getImageFilename("exhibit_next.png")
-		});
-		
-		view.add(leftArrow);
-	}
-
-	if(pageNum != numOfPages-1){
-		
-		var rightArrow = Ti.UI.createImageView({
-			right: 0,
-			top: "10%",
-			height: "20%",
-			width: "15%",
-			backgroundColor: "white",
-			image: iconService.getImageFilename("exhibit_previous.png")
-		});
-		
-		view.add(rightArrow);
-	}
-	
 	return view;
 }
 
