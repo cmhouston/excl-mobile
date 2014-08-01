@@ -323,12 +323,11 @@ function initializePage() {
 	
 	if (post_content.post_body) {
 		Ti.App.addEventListener('app:openInBrowser', openInBrowser);
-		
-		
-		
 		$.webView.setHtml(wrapRichTextInHTML(post_content.post_body));
 	} else {
 		$.webView.height = "0dip";
+		$.webView.loading = false;
+		$.webView.hide();
 	}
 
 	showAllSharingButtons();
