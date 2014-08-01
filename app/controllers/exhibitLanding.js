@@ -315,7 +315,7 @@ function addPagingArrowsToView(view, pageNum, numOfPages){
 		
 		view.add(rightArrow);
 	}
-	view.removeEventListener("load", addPagingArrowsFunction);
+	//view.removeEventListener("load", addPagingArrowsFunction);
 	return view;
 }
 
