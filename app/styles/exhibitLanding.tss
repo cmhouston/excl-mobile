@@ -1,7 +1,7 @@
 ".container": {
 	navBarHidden: true,
 	fullscreen: true,
-	backgroundColor: "#FFF"
+	backgroundColor: Alloy.Globals.colors.pageBackgroundColor
 }
 
 "#mainView": {
@@ -15,7 +15,7 @@
 }
 
 "#exhibitsCarousel": {
-	backgroundColor: "#253342",
+	backgroundColor: Alloy.Globals.colors.exhibitsCarouselBackgroundColor,
 	height: Ti.UI.SIZE,
 	overlayEnabled: true
 }
@@ -32,7 +32,7 @@
 }
 
 "#componentScrollViewHeading":{
-	backgroundColor: "white"
+	backgroundColor: Alloy.Globals.colors.pageBackgroundColor
 }
 
 "#componentScrollViewHeading[formFactor=tablet]":{
@@ -41,7 +41,7 @@
 
 "#componentScrollViewLabel":{
 	text: "Select an Activity!",
-	color: "black",
+	color: Alloy.Globals.colors.darkFontColor,
 	font: {
 		fontWeight: 'bold',
 		fontSize: "20dip",
@@ -76,7 +76,7 @@
 
 "#topView": {
 	layout: "vertical",
-	backgroundColor: "white",
+	backgroundColor: Alloy.Globals.colors.pageBackgroundColor,
 	top: 0
 }
 
@@ -89,7 +89,7 @@
 }
 
 "#exhibitInfoLabel": {
-	color: '#000',
+	color: Alloy.Globals.colors.darkFontColor,
 	width: "90%",
 	font: {
 		fontFamily: Alloy.Globals.defaultGlobalFontFamily

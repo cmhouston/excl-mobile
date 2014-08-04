@@ -38,7 +38,7 @@ var loadingSpinnerLib = new loadingSpinner(addLoadingMessage);
 var spinner = loadingSpinnerLib.getSpinner();
 var loadingSpinnerView = viewService.createCustomView("");
 var loadingSpinnerDarkView = viewService.createCustomView({
-	backgroundColor : "#000000",
+	backgroundColor : Alloy.Globals.colors.loadingSpinnerTintColor,
 	opacity : 0.5
 });
 loadingSpinnerView.add(loadingSpinnerDarkView);
@@ -197,7 +197,7 @@ function createExhibitsImageIOS(exhibits, index) {
 	var numOfExhibits = exhibits.length;
 
 	var viewConfig = {
-		backgroundColor : "#253342",
+		backgroundColor : Alloy.Globals.colors.exhibitsCarouselBackgroundColor,
 		width : Ti.UI.FILL,
 		image : '/images/700x400.png',
 		itemId : exhibit.id
@@ -241,7 +241,7 @@ function createExhibitsImageAndroid(exhibits, index) {
 	var numOfExhibits = exhibits.length;
 
 	var viewConfig = {
-		backgroundColor : "#253342", //Navy blue
+		backgroundColor : Alloy.Globals.colors.exhibitsCarouselBackgroundColor, //Navy blue
 		width : Ti.UI.FILL,
 		image : '/images/700x400.png',
 		itemId : exhibit.id
@@ -281,10 +281,6 @@ function addPagingArrowsToView(view, pageNum, numOfPages) {
 		var leftArrow = Ti.UI.createImageView({
 			id : "leftArrow",
 			left : "10dip",
-			//bottom: "15%",
-			//height: "15%",
-			//width: "15%",
-			//backgroundColor: "#CF5300", //Burnt orange
 			image : iconService.getImageFilename("triple_arrow_left_white.png"),
 			zIndex : 1
 		});
@@ -312,10 +308,6 @@ function addPagingArrowsToView(view, pageNum, numOfPages) {
 		var rightArrow = Ti.UI.createImageView({
 			id : "rightArrow",
 			right : "10dip",
-			//top: "15%",
-			//height: "15%",
-			//width: "15%",
-			//backgroundColor: "#CF5300",
 			image : iconService.getImageFilename("triple_arrow_right_white.png"),
 			zIndex : 1
 		});
@@ -351,7 +343,7 @@ function createExhibitTitleLabel(name) {
 		top : 0,
 		left : "3%",
 		text : name,
-		color : '#FFFFFF',
+		color : Alloy.Globals.colors.lightFontColor,
 		horizontalWrap : false,
 		font : {
 
@@ -383,7 +375,7 @@ function createExhibitImageViewConfig(exhibit) {
 
 	var imageHeight = detectDevice.getWidth() * 4 / 7;
 	return {
-		backgroundColor : "#253342",
+		backgroundColor : Alloy.Globals.colors.exhibitsCarouselBackgroundColor,
 		width : Ti.UI.FILL,
 		height : imageHeight,
 		image : '/images/700x400.png',
@@ -413,7 +405,7 @@ function createComponentTitleLabel(item) {
 		top : 0,
 		left : "3%",
 		text : item.name,
-		color : '#FFFFFF',
+		color : Alloy.Globals.colors.lightFontColor,
 		horizontalWrap : false,
 		font : {
 
