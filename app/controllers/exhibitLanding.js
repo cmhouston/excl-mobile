@@ -166,7 +166,7 @@ function createExhibitsCarousel(exhibits) {
 	$.exhibitsCarousel.removeView($.placeholder);
 
 	for ( i = 0; i < exhibits.length; i++) {
-		exhibitText[i] = exhibits[i].long_description;
+		exhibitText[i] = exhibits[i].description;
 		var exhibitView;
 
 		if (OS_IOS) {
@@ -178,12 +178,20 @@ function createExhibitsCarousel(exhibits) {
 	}
 
 	$.exhibitsCarousel.setCurrentPage(0);
+<<<<<<< HEAD
 
 	$.headingLabel.text = "Tap to Explore!";
 	//"Explore This " + json.data.museum.exhibit_label;
 	$.exhibitInfoLabel.text = exhibits[0].long_description;
 
 	if (OS_ANDROID) {
+=======
+	
+	$.headingLabel.text = "Tap to Explore!";//"Explore This " + json.data.museum.exhibit_label;
+	$.exhibitInfoLabel.text = exhibits[0].description;
+	
+	if(OS_ANDROID){
+>>>>>>> Changed exhibit long-description to description
 		resizeExhibitCarouselAndroid();
 	}//*/
 
@@ -444,7 +452,7 @@ function onExhibitsClick(exhibits) {
 	$.exhibitInfoScrollView.scrollTo(0, 0);
 	if (!isBottomViewShowing()) {
 		var pageIndex = $.exhibitsCarousel.currentPage;
-		$.exhibitInfoLabel.text = exhibits[pageIndex].long_description;
+		$.exhibitInfoLabel.text = exhibits[pageIndex].description;
 		animateTopViewDown();
 
 	} else {
@@ -521,8 +529,7 @@ function onExhibitsScroll(e, exhibits) {
 	var index = $.exhibitsCarousel.currentPage;
 	$.headingLabel.text = "Tap to Explore!";
 	//"Explore This " + json.data.museum.exhibit_label;
-	$.exhibitInfoLabel.text = exhibits[index].long_description;
-
+	$.exhibitInfoLabel.text = exhibits[index].description;
 	animateTopViewUp();
 	setTimeout(function() {
 		changeVisibleComponents(e);
