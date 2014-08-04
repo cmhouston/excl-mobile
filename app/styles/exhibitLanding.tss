@@ -78,6 +78,10 @@
 	top: 0
 }
 
+"#headingLabelView":{
+	backgroundColor: "#006DB7"
+}
+
 "#headingLabelView[formFactor=tablet]": {
 	height: "75dip",
 }

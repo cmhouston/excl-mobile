@@ -238,7 +238,7 @@ function createPostView(post) {
 		};
 	}
 	if (!postText.text) {
-		postText.text = "Click here to dive in to this activity!";
+		postText.text = "Click here to dive into this activity!";
 	}
 
 	postContainer.add(header);

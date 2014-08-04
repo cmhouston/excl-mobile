@@ -31,13 +31,13 @@ function LoadingSpinner(addMessage) {
 	var top;
 	if (OS_IOS) {
 		style = Ti.UI.iPhone.ActivityIndicatorStyle.BIG;
-		if (addMessage) {
-			message = this.loadingMessages[Math.floor(Math.random() * (this.loadingMessages.length))];
-		}
-		color = '#FFFFFF'; //Text color
-		top = "30%";
 	} else if (OS_ANDROID) {
 		style = Ti.UI.ActivityIndicatorStyle.BIG_DARK;
+	}		
+	color = '#FFFFFF'; //Text color
+	top = "30%";		
+	if (addMessage) {
+		message = this.loadingMessages[Math.floor(Math.random() * (this.loadingMessages.length))];
 	}
 	this.spinner = Ti.UI.createActivityIndicator({
 		style : style,
@@ -75,7 +75,7 @@ LoadingSpinner.prototype.addTo = function(element) {
 
 LoadingSpinner.prototype.show = function(addMessage) {
 	addMessage = addMessage || false;
-	if (addMessage && OS_IOS){	
+	if (addMessage){	
 		LoadingSpinner.prototype.scrambleMessage();
 	}
 	this.spinner.show();
