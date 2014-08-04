@@ -9,7 +9,8 @@
 ".environmentOption": {
 	width: "70%",
 	font: {
-		fontSize: "20dip"
+		fontSize: "20dip",
+		fontFamily: Alloy.Globals.defaultGlobalFontFamily
 	}
 }
 
@@ -19,7 +20,8 @@
 	font:
 	{
 		fontWeight: "bold",
-		color: "#000000"
+		color: "#000000",
+		fontFamily: Alloy.Globals.defaultGlobalFontFamily
 	}
 }
 
@@ -28,7 +30,8 @@
 	color: "#000000",
 	font: {
 		fontSize: "15dip",
-		color: "#000000"
+		color: "#000000",
+		fontFamily: Alloy.Globals.defaultGlobalFontFamily
 	}
 }
 
@@ -50,7 +53,8 @@
 	{		
 		fontSize: "15dip",
 		fontWeight: "bold",
-		color: "#000000"
+		color: "#000000",
+		fontFamily: Alloy.Globals.defaultGlobalFontFamily
 	},
 	height: Ti.UI.SIZE
 }

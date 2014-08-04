@@ -17,7 +17,8 @@
 	color: '#FFFFFF',
 	font: {
 		fontSize: '22dp',
-		fontWeight: 'bold'
+		fontWeight: 'bold',
+		fontFamily: Alloy.Globals.defaultGlobalFontFamily
 	},
 	left: "10dip",
 	height: Ti.UI.FILL
