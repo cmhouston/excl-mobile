@@ -104,6 +104,8 @@ Alloy.Models.app.on('change:currentLanguage', function() {
 	});
 });
 
+
+Alloy.Globals.defaultGlobalFontFamily = "texgyreheros-regular";
 Alloy.Globals.colors = {
 	navBarColor: "#F58220", //Burnt orange
 	exhibitsCarouselArrowColor: "#F58220", //Burnt orange
@@ -120,7 +122,6 @@ Alloy.Globals.colors = {
 	lightFontColor: "#FFFFFF", //White
 	darkFontColor: "#000000" //Black
 };
-Alloy.Globals.defaultGlobalFontFamily = "Helvetica";
 
 Alloy.Collections.filter = Alloy.Collections.instance('filter');
 Alloy.Models.app.start();
