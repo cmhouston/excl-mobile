@@ -22,9 +22,8 @@
 // component id is provided
 // picture is provided
 var args = arguments[0] || {};
-var gradientColors = ["#2382ff", "#005CD5", "#004092", "#002257", "#00142D", "#000914"];
-// var gradientColors = ["#ECD078", "#D95B43", "#C02942", "#542437", "#53777A", "#031634"];
-// var gradientColors = ["#A70267", "#F10C49", "#FB6B41", "#F6D86B", "#339194", "#031634"];
+var gradientColors = Alloy.Globals.colors.sectionColors;
+
 var gradientColorsCount = 0;
 if (args[0]) {
 	var url = Alloy.Globals.rootWebServiceUrl + "/component/" + args[0].get('id');
@@ -89,16 +88,38 @@ function hideMenuBtnIfKioskMode() {
 }
 
 function insertComponentPicture(imageUrl) {
-	var image = Ti.UI.createImageView({
-		top : 0,
-		image : imageUrl,
-		width : Ti.UI.FILL,
-		left : 0,
-		right : 0
-	});
-	$.scrollView.add(image);
-
+       var imageWidth = calculateImageWidth();
+       var image = Ti.UI.createImageView({
+             top : horizontalBuffer,
+             image : imageUrl,
+             width : imageWidth,
+             left : horizontalBuffer,
+             right : horizontalBuffer,
+       });
+       $.scrollView.add(image);
 }
+
+function calculateImageWidth() {
+       var screenWidth = convertPxToDipIfNecessary(detectDevice.getWidth());
+       var horizBuffer = stripUnitsOffMeasurement(horizontalBuffer);
+       var imageWidth = screenWidth - 2 * horizBuffer;
+       imageWidth += "dip";
+       return imageWidth;
+}
+
+function convertPxToDipIfNecessary(pxOrDip) {
+       var dip = pxOrDip;
+       if (OS_ANDROID) {
+             dip = detectDevice.pxToDip(pxOrDip);
+       }
+       return dip;
+}
+
+function stripUnitsOffMeasurement(str) {
+       var num = parseInt(str);
+       return num;
+}
+
 
 function extractSectionNamesAndOrder(rawPostJson) {
 	var allSectionNames = {};

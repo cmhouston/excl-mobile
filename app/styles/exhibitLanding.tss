@@ -81,7 +81,7 @@
 }
 
 "#headingLabelView":{
-	backgroundColor: "#006DB7"
+	backgroundColor: Alloy.Globals.colors.exhibitPageSliderButtonColor
 }
 
 "#headingLabelView[formFactor=tablet]": {

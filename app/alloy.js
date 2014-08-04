@@ -104,7 +104,22 @@ Alloy.Models.app.on('change:currentLanguage', function() {
 	});
 });
 
+
 Alloy.Globals.defaultGlobalFontFamily = "texgyreheros-regular";
+Alloy.Globals.colors = {
+	navBarColor: "#F58220", //Burnt orange
+	exhibitsCarouselArrowColor: "#CF5300", //Burnt orange
+	exhibitsCarouselBackgroundColor: "#253342", //Navy blue/gray
+	exhibitTitleColor: "#000000", //Black
+	componentTitleColor: "#000000", //Black
+	exhibitPageSliderButtonColor: "#006DB7", //Blue
+	sectionColors: ["#006DB7", "#652D90", "#EB008B", "#FCAF17", "#98C21F", "#009345"], //Multicolored
+	postPreviewBackgroundColor: "#DFDFDF",
+	filterByAgeTabColor: "#009345",
+	filterByAgeTabAccentColor: "#98C21F",
+	lightFontColor: "#FFFFFF", //White
+	darkFontColor: "#000000" //Black
+};
 
 Alloy.Collections.filter = Alloy.Collections.instance('filter');
 Alloy.Models.app.start();

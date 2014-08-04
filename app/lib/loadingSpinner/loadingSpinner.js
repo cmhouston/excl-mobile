@@ -35,9 +35,9 @@ function LoadingSpinner(addMessage) {
 		style = Ti.UI.ActivityIndicatorStyle.BIG_DARK;
 	}		
 	color = '#FFFFFF'; //Text color
-	top = "30%";		
 	if (addMessage) {
 		message = this.loadingMessages[Math.floor(Math.random() * (this.loadingMessages.length))];
+		top = "30%";
 	}
 	this.spinner = Ti.UI.createActivityIndicator({
 		style : style,

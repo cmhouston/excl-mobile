@@ -100,10 +100,13 @@
 "#postTitleLabel":{
 	top: "10dip",
 	font: {
-		fontSize: "20dip",
+		fontFamily: Alloy.Globals.defaultGlobalFontFamily,
+		fontSize: "25dip",
 		fontWeight: 'bold',
-		fontFamily: Alloy.Globals.defaultGlobalFontFamily
+		fontColor: "#FFFFFF"
 	},
+	left: "5dip",
+	right: "5dip",
 	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER
 }
 

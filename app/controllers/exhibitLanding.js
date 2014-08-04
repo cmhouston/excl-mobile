@@ -51,8 +51,6 @@ var currExhibitId;
 var expanderButton;
 var componentScrollViewLoaded = false;
 
-var pagingArrowsColor = "#CF5300";
-
 //Analytics Specific Information -------------------
 var analyticsPageTitle = "Exhibit Landing";
 var analyticsPageLevel = "Exhibit Landing";
@@ -292,13 +290,13 @@ function addPagingArrowsToView(view, pageNum, numOfPages) {
 		});
 
 		var leftArrowView = Ti.UI.createView({
-			id : "leftArrowView",
-			left : "-10dip",
-			bottom : "15%",
-			height : "15%",
-			width : "17%",
-			backgroundColor : pagingArrowsColor,
-			borderRadius : "10dip"
+			id: "leftArrowView",
+			left: "-10dip",
+			bottom: "15%",
+			height: "15%",
+			width: "17%",
+			backgroundColor: Alloy.Globals.colors.exhibitsCarouselArrowColor,
+			borderRadius: "10dip"
 		});
 
 		leftArrowView.addEventListener('click', function(e) {
@@ -323,13 +321,13 @@ function addPagingArrowsToView(view, pageNum, numOfPages) {
 		});
 
 		var rightArrowView = Ti.UI.createView({
-			id : "rightArrowView",
-			right : "-10dip",
-			top : "15%",
-			height : "15%",
-			width : "17%",
-			backgroundColor : pagingArrowsColor,
-			borderRadius : "10dip"
+			id: "rightArrowView",
+			right: "-10dip",
+			top: "15%",
+			height: "15%",
+			width: "17%",
+			backgroundColor: Alloy.Globals.colors.exhibitsCarouselArrowColor,
+			borderRadius: "10dip"
 		});
 
 		rightArrowView.addEventListener('click', function(e) {
@@ -346,8 +344,8 @@ function addPagingArrowsToView(view, pageNum, numOfPages) {
 function createExhibitTitleLabel(name) {
 	var titleLabelView = Ti.UI.createView({
 		top : 0,
-		backgroundColor : '#000',
-		height : getExhibitTitleLabelHeight()
+		backgroundColor : Alloy.Globals.colors.exhibitTitleColor,
+		height: getExhibitTitleLabelHeight()
 	});
 	var label = Ti.UI.createLabel({
 		top : 0,
@@ -407,8 +405,8 @@ function resizeExhibitCarouselAndroid() {
 function createComponentTitleLabel(item) {
 	var titleLabelView = Ti.UI.createView({
 		top : 0,
-		backgroundColor : '#000',
-		height : getComponentTitleLabelHeight(),
+		backgroundColor : Alloy.Globals.colors.componentTitleColor,
+		height: getComponentTitleLabelHeight(),
 		itemId : item.id
 	});
 	var label = Ti.UI.createLabel({
