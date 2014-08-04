@@ -38,7 +38,7 @@ var loadingSpinnerLib = new loadingSpinner(addLoadingMessage);
 var spinner = loadingSpinnerLib.getSpinner();
 var loadingSpinnerView = viewService.createCustomView("");
 var loadingSpinnerDarkView = viewService.createCustomView({
-	backgroundColor : "#000000",
+	backgroundColor : Alloy.Globals.colors.loadingSpinnerTintColor,
 	opacity : 0.5
 });
 loadingSpinnerView.add(loadingSpinnerDarkView);
@@ -50,8 +50,6 @@ var componentsInExhibit = [];
 var currExhibitId;
 var expanderButton;
 var componentScrollViewLoaded = false;
-
-var pagingArrowsColor = "#CF5300";
 
 //Analytics Specific Information -------------------
 var analyticsPageTitle = "Exhibit Landing";
@@ -168,7 +166,7 @@ function createExhibitsCarousel(exhibits) {
 	$.exhibitsCarousel.removeView($.placeholder);
 
 	for ( i = 0; i < exhibits.length; i++) {
-		exhibitText[i] = exhibits[i].long_description;
+		exhibitText[i] = exhibits[i].description;
 		var exhibitView;
 
 		if (OS_IOS) {
@@ -180,14 +178,13 @@ function createExhibitsCarousel(exhibits) {
 	}
 
 	$.exhibitsCarousel.setCurrentPage(0);
-
 	$.headingLabel.text = "Tap to Explore!";
 	//"Explore This " + json.data.museum.exhibit_label;
-	$.exhibitInfoLabel.text = exhibits[0].long_description;
-
-	if (OS_ANDROID) {
+	$.exhibitInfoLabel.text = exhibits[0].description;
+	
+	if(OS_ANDROID){
 		resizeExhibitCarouselAndroid();
-	}//*/
+	}
 
 	$.exhibitsCarousel.addEventListener("scrollend", function(e) {
 		onExhibitsScroll(e, exhibits);
@@ -199,7 +196,7 @@ function createExhibitsImageIOS(exhibits, index) {
 	var numOfExhibits = exhibits.length;
 
 	var viewConfig = {
-		backgroundColor : "#253342",
+		backgroundColor : Alloy.Globals.colors.exhibitsCarouselBackgroundColor,
 		width : Ti.UI.FILL,
 		image : '/images/700x400.png',
 		itemId : exhibit.id
@@ -243,7 +240,7 @@ function createExhibitsImageAndroid(exhibits, index) {
 	var numOfExhibits = exhibits.length;
 
 	var viewConfig = {
-		backgroundColor : "#253342", //Navy blue
+		backgroundColor : Alloy.Globals.colors.exhibitsCarouselBackgroundColor, //Navy blue
 		width : Ti.UI.FILL,
 		image : '/images/700x400.png',
 		itemId : exhibit.id
@@ -283,22 +280,18 @@ function addPagingArrowsToView(view, pageNum, numOfPages) {
 		var leftArrow = Ti.UI.createImageView({
 			id : "leftArrow",
 			left : "10dip",
-			//bottom: "15%",
-			//height: "15%",
-			//width: "15%",
-			//backgroundColor: "#CF5300", //Burnt orange
 			image : iconService.getImageFilename("triple_arrow_left_white.png"),
 			zIndex : 1
 		});
 
 		var leftArrowView = Ti.UI.createView({
-			id : "leftArrowView",
-			left : "-10dip",
-			bottom : "15%",
-			height : "15%",
-			width : "17%",
-			backgroundColor : pagingArrowsColor,
-			borderRadius : "10dip"
+			id: "leftArrowView",
+			left: "-10dip",
+			bottom: "15%",
+			height: "15%",
+			width: "17%",
+			backgroundColor: Alloy.Globals.colors.exhibitsCarouselArrowColor,
+			borderRadius: "10dip"
 		});
 
 		leftArrowView.addEventListener('click', function(e) {
@@ -314,22 +307,18 @@ function addPagingArrowsToView(view, pageNum, numOfPages) {
 		var rightArrow = Ti.UI.createImageView({
 			id : "rightArrow",
 			right : "10dip",
-			//top: "15%",
-			//height: "15%",
-			//width: "15%",
-			//backgroundColor: "#CF5300",
 			image : iconService.getImageFilename("triple_arrow_right_white.png"),
 			zIndex : 1
 		});
 
 		var rightArrowView = Ti.UI.createView({
-			id : "rightArrowView",
-			right : "-10dip",
-			top : "15%",
-			height : "15%",
-			width : "17%",
-			backgroundColor : pagingArrowsColor,
-			borderRadius : "10dip"
+			id: "rightArrowView",
+			right: "-10dip",
+			top: "15%",
+			height: "15%",
+			width: "17%",
+			backgroundColor: Alloy.Globals.colors.exhibitsCarouselArrowColor,
+			borderRadius: "10dip"
 		});
 
 		rightArrowView.addEventListener('click', function(e) {
@@ -346,14 +335,14 @@ function addPagingArrowsToView(view, pageNum, numOfPages) {
 function createExhibitTitleLabel(name) {
 	var titleLabelView = Ti.UI.createView({
 		top : 0,
-		backgroundColor : '#000',
-		height : getExhibitTitleLabelHeight()
+		backgroundColor : Alloy.Globals.colors.exhibitTitleColor,
+		height: getExhibitTitleLabelHeight()
 	});
 	var label = Ti.UI.createLabel({
 		top : 0,
 		left : "3%",
 		text : name,
-		color : '#FFFFFF',
+		color : Alloy.Globals.colors.lightFontColor,
 		horizontalWrap : false,
 		font : {
 
@@ -385,7 +374,7 @@ function createExhibitImageViewConfig(exhibit) {
 
 	var imageHeight = detectDevice.getWidth() * 4 / 7;
 	return {
-		backgroundColor : "#253342",
+		backgroundColor : Alloy.Globals.colors.exhibitsCarouselBackgroundColor,
 		width : Ti.UI.FILL,
 		height : imageHeight,
 		image : '/images/700x400.png',
@@ -407,15 +396,15 @@ function resizeExhibitCarouselAndroid() {
 function createComponentTitleLabel(item) {
 	var titleLabelView = Ti.UI.createView({
 		top : 0,
-		backgroundColor : '#000',
-		height : getComponentTitleLabelHeight(),
+		backgroundColor : Alloy.Globals.colors.componentTitleColor,
+		height: getComponentTitleLabelHeight(),
 		itemId : item.id
 	});
 	var label = Ti.UI.createLabel({
 		top : 0,
 		left : "3%",
 		text : item.name,
-		color : '#FFFFFF',
+		color : Alloy.Globals.colors.lightFontColor,
 		horizontalWrap : false,
 		font : {
 
@@ -454,7 +443,7 @@ function onExhibitsClick(exhibits) {
 	$.exhibitInfoScrollView.scrollTo(0, 0);
 	if (!isBottomViewShowing()) {
 		var pageIndex = $.exhibitsCarousel.currentPage;
-		$.exhibitInfoLabel.text = exhibits[pageIndex].long_description;
+		$.exhibitInfoLabel.text = exhibits[pageIndex].description;
 		animateTopViewDown();
 
 	} else {
@@ -531,8 +520,7 @@ function onExhibitsScroll(e, exhibits) {
 	var index = $.exhibitsCarousel.currentPage;
 	$.headingLabel.text = "Tap to Explore!";
 	//"Explore This " + json.data.museum.exhibit_label;
-	$.exhibitInfoLabel.text = exhibits[index].long_description;
-
+	$.exhibitInfoLabel.text = exhibits[index].description;
 	animateTopViewUp();
 	setTimeout(function() {
 		changeVisibleComponents(e);

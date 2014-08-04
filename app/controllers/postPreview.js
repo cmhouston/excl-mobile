@@ -80,7 +80,7 @@ function createErrorView(msg) {
 	args = {
 		layout : "vertical",
 		width : "95%",
-		backgroundColor : "#C6C6C6",
+		backgroundColor : Alloy.Globals.colors.postPreviewBackgroundColor,
 		left : "2%",
 		height : Ti.UI.SIZE
 	};
@@ -132,7 +132,7 @@ function createPostView(post) {
 		layout : "vertical",
 		width : "95%",
 		left : "2%",
-		backgroundColor : "#DFDFDF"
+		backgroundColor : Alloy.Globals.colors.postPreviewBackgroundColor,
 		//backgroundColor: "#DAF3E7" //emerald
 		//backgroundColor : "#EFF7DC"//lime
 		//backgroundColor: "#EAFBF7" //turquoise

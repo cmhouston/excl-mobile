@@ -4,7 +4,8 @@
 	width: Ti.UI.FILL,
 	height: "50dip",
 	//backgroundColor: '#98C21F'//green//'#FFC908'//yellow-orange
-	backgroundColor: '#CF5300' //Burnt orange //'#E74C3C'//Coral orange,
+	//backgroundColor: '#CF5300' //Burnt orange //'#E74C3C'//Coral orange,
+	backgroundColor: Alloy.Globals.colors.navBarColor
 }
 
 ".windowHeader[formFactor=tablet]":{
@@ -13,7 +14,6 @@
 
 // Keep height sizing in dip. If that changes, change exhibitLanding makeDefaultUnitsFromDip() calls
 ".headingRow": {
-	backgroundColor: '#2382ff', //Blue
 	width: Ti.UI.FILL,
 	height: '50 dip'
 }

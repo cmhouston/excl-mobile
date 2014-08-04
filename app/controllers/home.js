@@ -29,7 +29,7 @@ var loadingSpinner = setPathForLibDirectory('loadingSpinner/loadingSpinner');
 var spinnerLib = new loadingSpinner();
 var spinner = spinnerLib.getSpinner();
 var loadingSpinnerView = Ti.UI.createView();
-var loadingSpinnerDarkView = Ti.UI.createView({ backgroundColor: "#000000", opacity: 0.3 });
+var loadingSpinnerDarkView = Ti.UI.createView({ backgroundColor: Alloy.Globals.colors.loadingSpinnerTintColor, opacity: 0.5 });
 loadingSpinnerView.add(loadingSpinnerDarkView);
 var iconService = setPathForLibDirectory('customCalls/iconService');
 iconService = new iconService();
