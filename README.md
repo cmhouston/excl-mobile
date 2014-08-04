@@ -3,9 +3,9 @@
 ### Contents ###
 
 1. [Introduction to ExCL](#exclIntro)
-- [WordPress](https://github.com/cmhouston/excl-cms)
+- [WordPress](https://github.com/cmhouston/excl-cms#wordpress)
 - [Titanium](#titanium)
-	1. Introduction to Titanium
+	1. [Introduction to Titanium](#introToTitanium)
 	- Installing Titanium Studio
 	- Build Process
 		1. Walkthrough
@@ -31,7 +31,7 @@ This documentation is intended for ExCL developers and details the steps to setu
 
 # <a name="titanium"></a>Titanium #
 
-## <a name="introToTitanium'/> Introduction to Titanium #
+## <a name="introToTitanium"></a> Introduction to Titanium ##
 
 ### Getting started ###
 
