@@ -6,19 +6,21 @@
 - [WordPress](https://github.com/cmhouston/excl-cms#wordpress)
 - [Titanium](#titanium)
 	1. [Introduction to Titanium](#introToTitanium)
-	- [Getting Started](#gettingStarted)
-	- Build Process
-		1. Walkthrough
-		- Issues We've Run Into
-	- Running the Unit Tests
-	- Running the ExCL App
-	- Code Overview
-		1. Navigation Controller
-		- Analytics
-	- Enhancing the ExCL App
-	- TiShadow
-- Buildbox for Continuous Integration
-- Deploying to the App Store
+	- Running the Unit Tests 				(MN)
+	- [Running the ExCL App](#runningExCL)
+		1. Android
+		- iOS
+	- [Debugging](#debugging)				(KC/GK/SF)
+		1. Android
+		- iOS 
+	- [Code Overview](#codeOverview)
+		1. Navigation Controller 			(??)
+		- Analytics 						(KC)
+	- Enhancing the ExCL App 				(GD)
+	- TiShadow 								(JY)
+	- TroubleShooting						(All)
+- Buildbox for Continuous Integration 		(SF)
+- [Deploying to the App Store](#appStore)	(AP)
 	1. Apple
 	- Google Play
 
@@ -37,14 +39,64 @@ Titanium is a tool that allows developers to create applications for multiple pl
 
 Appcelerator provides many useful features and examples, which can be found under the [Titanium SDK Documentation](http://docs.appcelerator.com/titanium/3.0/) 
 
-### <a name="gettingStarted"></a> Getting started ###
+## <a name="gettingStarted"></a> Getting started ##
 
-1. Clone the repository to your computer
-2. Open up Titanium Studio and Import the existing project into your workspace
-3. Start your development!
+### Install Titanium Studio ###
+
+Titanium Studio is an Eclipse base IDE used for developing Titanium projects. Appcelerator allows developers to [download Titanium Studio](http://www.appcelerator.com/titanium/) for free after setting  up an account.
+
+### Import ExCL to Titanium Studio ###
+
+In order to view and edit the ExCL project using Titanium studio the project must be retrieved from github. Open a command prompt, navigate to a desired folder run the following command:
+
+	$ git clone https://github.com/cmhouston/excl-mobile.git
+
+After the project has been downloaded to your local system execute the following steps to access it through your IDE
+
+1. Open Titanium Studio and go to File->Import
+2. Select Titanium->Existing Mobile Project and click next
+3. Browse your local file system and choose the folder you cloned from github
+4. Set your desired project name and click finish
+
+The run option at the top left of the screen is by default unavailable. To enable this button execute the following steps:
+
+1. Right click on the project in your Project Explorer and open up the Properties
+- Click on Project Natures
+- Select Mobile and make it the Primary nature
+- Click OK
+
+## Running The Unit Tests ##
+
+## <a name="#runningExCL"></a> Running the ExCL Application ##
+
+### Android ###
+
+#### GenyMotion Emulator ####
+
+#### Android Device ####
+
+### iOS ###
+
+#### iOS Emulator ####
+
+#### iOS Device ####
+
+## <a name="debugging"></a> Debugging ##
+
+## <a name="codeOverview"></a> Code Overview ##
+
+## Enhancing the ExCL App ##
+
+## Ti Shadow ##
+
+## TroubleShooting ##
+
+# BuildBox for Continuous Integration #
+
+# <a name="appStore"></a> Deploying to the App Store #
 
 
-
+_______
 ### Lib Docs ###
 
 * [Navigation Controller](/docs/NavigationController.md)

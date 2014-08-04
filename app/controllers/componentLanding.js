@@ -24,7 +24,7 @@
 var args = arguments[0] || {};
 var gradientColors = Alloy.Globals.colors.sectionColors;
 var gradientColorsCount = 0;
-if (args[0]){
+if (args[0]) {
 	var url = Alloy.Globals.rootWebServiceUrl + "/component/" + args[0].get('id');
 }
 
@@ -38,7 +38,7 @@ labelService = new labelService();
 var detectDevice = require(rootDirPath + 'customCalls/deviceDetectionService');
 detectDevice = new detectDevice();
 
-Ti.App.addEventListener("kioskMode:kioskModeChanged", function(e){
+Ti.App.addEventListener("kioskMode:kioskModeChanged", function(e) {
 	Ti.API.info("Kiosk mode changed yo! => " + e.kioskMode);
 });
 
@@ -130,7 +130,6 @@ function extractSectionNamesAndOrder(rawPostJson) {
 	return allSectionNames;
 }
 
-
 function convertSectionOrderToInteger(section_order) {
 	if (section_order == true) {
 		return 1;
@@ -173,11 +172,11 @@ function displaySectionList(orderedSectionList, rawJson) {
 			backgroundColor : gradientColors[gradientColorsCount],
 			layout : 'horizontal'
 		});
-		
-		if (i==0){
+
+		if (i == 0) {
 			addExtraSpaceToFirstButton(view);
 		}
-		
+
 		addEvent(view, orderedSectionList[i].key, rawJson);
 
 		objectArgs = {
@@ -190,7 +189,8 @@ function displaySectionList(orderedSectionList, rawJson) {
 			font : {
 
 				fontSize : labelService.countCharInTitleAndReturnFontSize(orderedSectionList[i].key, 26, 20, 5, 3),
-				fontWeight : "bold"
+				fontWeight : "bold",
+				fontFamily : Alloy.Globals.defaultGlobalFontFamily
 			}
 		};
 		var label = labelService.createCustomLabel(objectArgs);
@@ -198,7 +198,8 @@ function displaySectionList(orderedSectionList, rawJson) {
 			label.font = {
 
 				fontSize : labelService.countCharInTitleAndReturnFontSize(orderedSectionList[i].key, 35, 30, 5, 3),
-				fontWeight : "bold"
+				fontWeight : "bold",
+				fontFamily : Alloy.Globals.defaultGlobalFontFamily
 			};
 		}
 		view.add(label);
@@ -207,7 +208,7 @@ function displaySectionList(orderedSectionList, rawJson) {
 	}
 }
 
-function addExtraSpaceToFirstButton(view){
+function addExtraSpaceToFirstButton(view) {
 	view.top = horizontalBuffer;
 }
 
@@ -230,7 +231,7 @@ function openSection(view, title, rawJson) {
 function getAllPostsForGivenSectionName(sectionName, rawJson) {
 	var jsonToReturn = [];
 	for (var i = 0; i < rawJson.posts.length; i++) {
-		if (rawJson.posts[i].section == sectionName){
+		if (rawJson.posts[i].section == sectionName) {
 			jsonToReturn.push(rawJson.posts[i]);
 		}
 	}

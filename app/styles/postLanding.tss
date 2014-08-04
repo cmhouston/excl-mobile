@@ -101,7 +101,8 @@
 	top: "10dip",
 	font: {
 		fontSize: "20dip",
-		fontWeight: 'bold'
+		fontWeight: 'bold',
+		fontFamily: Alloy.Globals.defaultGlobalFontFamily
 	},
 	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER
 }
@@ -157,9 +158,10 @@
 	left : '3%',
 	color : '#232226',
 	font : {
-		fontFamily: Alloy.CFG.font,
+		// fontFamily: Alloy.CFG.font,
 		fontSize : '16dip',
-		fontWeight : 'bold',
+		fontWeight : 'bold',,
+		fontFamily: Alloy.Globals.defaultGlobalFontFamily
 	},
 	textAlign : 'center',
 	borderWidth : '1',
@@ -168,8 +170,9 @@
 
 ".commentsHeadingText[formFactor=tablet]": {
 	font: {
-		fontFamily: Alloy.CFG.font,
-		fontSize: '30dip'
+		// fontFamily: Alloy.CFG.font,
+		fontSize: '30dip',
+		fontFamily: Alloy.Globals.defaultGlobalFontFamily
 	}
 }
 
@@ -193,17 +196,19 @@
 	right : '3%',
 	left : '3%',
 	font : {
-		fontFamily: Alloy.CFG.font,
+		// fontFamily: Alloy.CFG.font,
 		fontSize : '13dip',
 		fontWeight : 'normal',
+		fontFamily: Alloy.Globals.defaultGlobalFontFamily
 	},
 	textAlign : 'center'
 }
 
 ".commentsInfo[formFactor=tablet]": {
 	font: {
-		fontFamily: Alloy.CFG.font,
-		fontSize: '25dip'
+		// fontFamily: Alloy.CFG.font,
+		fontSize: '25dip',
+		fontFamily: Alloy.Globals.defaultGlobalFontFamily
 	}
 }
 
@@ -214,25 +219,28 @@
 
 ".commentBody[formFactor=tablet]": {
 	font: {
-		fontFamily: Alloy.CFG.font,
-		fontSize : "25dip"
+		// fontFamily: Alloy.CFG.font,
+		fontSize : "25dip",
+		fontFamily: Alloy.Globals.defaultGlobalFontFamily
 	}
 }
 
 ".commentDate": {
 	color : '#48464e',
 	font : {
-		fontFamily: Alloy.CFG.font,
+		// fontFamily: Alloy.CFG.font,
 		fontSize : '8dip',
 		fontWeight : 'normal',
+		fontFamily: Alloy.Globals.defaultGlobalFontFamily
 	},
 	textAlign: 'left'
 }
 
 ".commentDate[formFactor=tablet]": {
 	font: {
-		fontFamily: Alloy.CFG.font,
-		fontSize : "17dip"
+		// fontFamily: Alloy.CFG.font,
+		fontSize : "17dip",
+		fontFamily: Alloy.Globals.defaultGlobalFontFamily
 	}
 }
 
@@ -266,9 +274,10 @@
 	opacity: '1.0',
 	color: 'black',
 	font: {
-		fontFamily: Alloy.CFG.font,
+		// fontFamily: Alloy.CFG.font,
 		fontSize: '21dp',
-		fontWeight: 'bold'
+		fontWeight: 'bold',
+		fontFamily: Alloy.Globals.defaultGlobalFontFamily
 	},
 	top: '4%',
 	textAlign: 'center',
@@ -280,9 +289,10 @@
 	returnKeyType:Titanium.UI.RETURNKEY_NEXT,
 	opacity: '1.0',
 	font: {
-		fontFamily: Alloy.CFG.font,
+		// fontFamily: Alloy.CFG.font,
 		fontSize: '18dp',
-		fontWeight: 'normal'
+		fontWeight: 'normal',
+		fontFamily: Alloy.Globals.defaultGlobalFontFamily
 	},
 	color: 'black',
 	top: '15%',
@@ -303,9 +313,10 @@
 
 "#insertNameDisclaimer":{
 	font: {
-		fontFamily: Alloy.CFG.font,
+		// fontFamily: Alloy.CFG.font,
 		fontSize: '12dip',
-		fontWeight: 'normal'
+		fontWeight: 'normal',
+		fontFamily: Alloy.Globals.defaultGlobalFontFamily
 	},
 	color: 'black',
 	left: '7%',
@@ -313,8 +324,9 @@
 
 "#insertNameDisclaimer[formFactor=tablet]": {
 	font: {
-		fontFamily: Alloy.CFG.font,
-		fontSize : "15dip"
+		// fontFamily: Alloy.CFG.font,
+		fontSize : "15dip",
+		fontFamily: Alloy.Globals.defaultGlobalFontFamily
 	}
 }
 
@@ -324,9 +336,10 @@
 	returnKeyType:Titanium.UI.RETURNKEY_NEXT,
 	opacity: '1.0',
 	font: {
-		fontFamily: Alloy.CFG.font,
+		// fontFamily: Alloy.CFG.font,
 		fontSize: '18dp',
-		fontWeight: 'normal'
+		fontWeight: 'normal',
+		fontFamily: Alloy.Globals.defaultGlobalFontFamily
 	},
 	color: 'black',
 	left: '7%',
@@ -347,9 +360,10 @@
 
 "#insertEmailDisclaimer":{
 	font: {
-		fontFamily: Alloy.CFG.font,
+		// fontFamily: Alloy.CFG.font,
 		fontSize: '12dip',
-		fontWeight: 'normal'
+		fontWeight: 'normal',
+		fontFamily: Alloy.Globals.defaultGlobalFontFamily
 	},
 	color: 'black',
 	left: '7%',
@@ -357,8 +371,9 @@
 
 "#insertEmailDisclaimer[formFactor=tablet]": {
 	font: {
-		fontFamily: Alloy.CFG.font,
-		fontSize : "15dip"
+		// fontFamily: Alloy.CFG.font,
+		fontSize : "15dip",
+		fontFamily: Alloy.Globals.defaultGlobalFontFamily
 	}
 }
 
@@ -372,9 +387,10 @@
 	returnKeyType:Titanium.UI.RETURNKEY_DONE,
 	opacity: '1.0',
 	font: {
-		fontFamily: Alloy.CFG.font,	
+		// fontFamily: Alloy.CFG.font,	
 		fontSize: '18dp',
-		fontWeight: 'normal'
+		fontWeight: 'normal',
+		fontFamily: Alloy.Globals.defaultGlobalFontFamily
 	},
 	color: 'black',
 	backgroundColor: '#f2f2f2',
@@ -397,9 +413,10 @@
 	title: 'Submit',
 	opacity: '1.0',
 	font: {
-		fontFamily: Alloy.CFG.font,	
+		// fontFamily: Alloy.CFG.font,	
 		fontSize: '18dp',
-		fontWeight: 'bold'
+		fontWeight: 'bold',
+		fontFamily: Alloy.Globals.defaultGlobalFontFamily
 	},
 	left: '0',
 	width: '49%',
@@ -410,9 +427,10 @@
 
 "#submitButton[formFactor=tablet]": {
 	font:  {
-		fontFamily: Alloy.CFG.font,
+		// fontFamily: Alloy.CFG.font,
 		fontSize : '25dip',
-		fontWeight : 'bold'
+		fontWeight : 'bold',
+		fontFamily: Alloy.Globals.defaultGlobalFontFamily
 	}
 }
 
@@ -420,9 +438,10 @@
 	title: 'Cancel',
 	opacity: '1.0',
 	font: {
-		fontFamily: Alloy.CFG.font,
+		// fontFamily: Alloy.CFG.font,
 		fontSize: '16dp',
-		fontWeight: 'bold'
+		fontWeight: 'bold',
+		fontFamily: Alloy.Globals.defaultGlobalFontFamily
 	},
 	left: "2%",
 	width: '49%',
@@ -433,9 +452,10 @@
 
 "#cancelCommentButton[formFactor=tablet]": {
 	font:  {
-		fontFamily: Alloy.CFG.font,
+		// fontFamily: Alloy.CFG.font,
 		fontSize : '25dip',
-		fontWeight : 'bold'
+		fontWeight : 'bold',
+		fontFamily: Alloy.Globals.defaultGlobalFontFamily
 	}
 }
 
@@ -453,9 +473,10 @@
 ".thankYouMessageComment":{
 	opacity: '1.0',
 	font: {
-		fontFamily: Alloy.CFG.font,
+		// fontFamily: Alloy.CFG.font,
 		fontSize: '16dp',
-		fontWeight: 'normal'
+		fontWeight: 'normal',
+		fontFamily: Alloy.Globals.defaultGlobalFontFamily
 	},
 	textAlign: 'center',
 	color: 'black',

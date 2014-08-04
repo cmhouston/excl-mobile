@@ -118,6 +118,7 @@ Alloy.Globals.colors = {
 	lightFontColor: "#FFFFFF", //White
 	darkFontColor: "#000000" //Black
 };
+Alloy.Globals.defaultGlobalFontFamily = "Helvetica";
 
 Alloy.Collections.filter = Alloy.Collections.instance('filter');
 Alloy.Models.app.start();
