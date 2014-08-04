@@ -104,7 +104,7 @@ Alloy.Models.app.on('change:currentLanguage', function() {
 	});
 });
 
-Alloy.Globals.defaultGlobalFontFamily = "timeburner_regular";
+Alloy.Globals.defaultGlobalFontFamily = "Helvetica";
 
 Alloy.Collections.filter = Alloy.Collections.instance('filter');
 Alloy.Models.app.start();
