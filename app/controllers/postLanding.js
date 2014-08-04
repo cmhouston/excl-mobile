@@ -535,7 +535,8 @@ function setHtmlFonts(html){
 
 // Set up a global variable for device fonts. This will change the font to native Android and iOS font types
 function getDeviceDefaultFont(){
-	return Alloy.CFG.font;
+	// return Alloy.CFG.font;
+	return Alloy.Globals.defaultGlobalFontFamily;
 }
 
 initializePage();

@@ -26,7 +26,7 @@ var gradientColors = ["#2382ff", "#005CD5", "#004092", "#002257", "#00142D", "#0
 // var gradientColors = ["#ECD078", "#D95B43", "#C02942", "#542437", "#53777A", "#031634"];
 // var gradientColors = ["#A70267", "#F10C49", "#FB6B41", "#F6D86B", "#339194", "#031634"];
 var gradientColorsCount = 0;
-if (args[0]){
+if (args[0]) {
 	var url = Alloy.Globals.rootWebServiceUrl + "/component/" + args[0].get('id');
 }
 
@@ -40,7 +40,7 @@ labelService = new labelService();
 var detectDevice = require(rootDirPath + 'customCalls/deviceDetectionService');
 detectDevice = new detectDevice();
 
-Ti.App.addEventListener("kioskMode:kioskModeChanged", function(e){
+Ti.App.addEventListener("kioskMode:kioskModeChanged", function(e) {
 	Ti.API.info("Kiosk mode changed yo! => " + e.kioskMode);
 });
 
@@ -92,7 +92,7 @@ function insertComponentPicture(imageUrl) {
 	var image = Ti.UI.createImageView({
 		top : 0,
 		image : imageUrl,
-		width: Ti.UI.FILL,
+		width : Ti.UI.FILL,
 		left : 0,
 		right : 0
 	});
@@ -109,7 +109,6 @@ function extractSectionNamesAndOrder(rawPostJson) {
 	}
 	return allSectionNames;
 }
-
 
 function convertSectionOrderToInteger(section_order) {
 	if (section_order == true) {
@@ -153,11 +152,11 @@ function displaySectionList(orderedSectionList, rawJson) {
 			backgroundColor : gradientColors[gradientColorsCount],
 			layout : 'horizontal'
 		});
-		
-		if (i==0){
+
+		if (i == 0) {
 			addExtraSpaceToFirstButton(view);
 		}
-		
+
 		addEvent(view, orderedSectionList[i].key, rawJson);
 
 		objectArgs = {
@@ -170,7 +169,8 @@ function displaySectionList(orderedSectionList, rawJson) {
 			font : {
 
 				fontSize : labelService.countCharInTitleAndReturnFontSize(orderedSectionList[i].key, 26, 20, 5, 3),
-				fontWeight : "bold"
+				fontWeight : "bold",
+				fontFamily : Alloy.Globals.defaultGlobalFontFamily
 			}
 		};
 		var label = labelService.createCustomLabel(objectArgs);
@@ -178,7 +178,8 @@ function displaySectionList(orderedSectionList, rawJson) {
 			label.font = {
 
 				fontSize : labelService.countCharInTitleAndReturnFontSize(orderedSectionList[i].key, 35, 30, 5, 3),
-				fontWeight : "bold"
+				fontWeight : "bold",
+				fontFamily : Alloy.Globals.defaultGlobalFontFamily
 			};
 		}
 		view.add(label);
@@ -187,7 +188,7 @@ function displaySectionList(orderedSectionList, rawJson) {
 	}
 }
 
-function addExtraSpaceToFirstButton(view){
+function addExtraSpaceToFirstButton(view) {
 	view.top = horizontalBuffer;
 }
 
@@ -210,7 +211,7 @@ function openSection(view, title, rawJson) {
 function getAllPostsForGivenSectionName(sectionName, rawJson) {
 	var jsonToReturn = [];
 	for (var i = 0; i < rawJson.posts.length; i++) {
-		if (rawJson.posts[i].section == sectionName){
+		if (rawJson.posts[i].section == sectionName) {
 			jsonToReturn.push(rawJson.posts[i]);
 		}
 	}
