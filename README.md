@@ -1,4 +1,29 @@
-# Introduction to ExCL #
+# ExCL Developer Documentation #
+
+### Contents ###
+
+1. [Introduction to ExCL](#exclIntro)
+- [WordPress]()
+- [Titanium](#titanium)
+	1. Introduction to Titanium
+	- Installing Titanium Studio
+	- Build Process
+		1. Walkthrough
+		- Issues We've Run Into
+	- Running the Unit Tests
+	- Running the ExCL App
+	- Code Overview
+		1. Navigation Controller
+		- Analytics
+	- Enhancing the ExCL App
+	- TiShadow
+- Buildbox for Continuous Integration
+- Deploying to the App Store
+	1. Apple
+	- Google Play
+
+
+# <a name="exclIntro"></a>Introduction to ExCL #
 ExCL is a platform that enables museums to engage visitors at museum activities through the use of 
 a mobile application. Content is managed through a WordPress content management system by museum 
 staff, and visitors will download the customized ExCL app, written using Appcelerator’s Titanium, 
@@ -14,15 +39,13 @@ For the WordPress developer documentation, please go [here]()
 
 For the Titanium developer documentation, please go [here]()
 
-## ExCL Mobile Application ##
+## <a name="titanium"></a>Titanium ##
 
 ### Getting started ###
 
 1. Clone the repository to your computer
 2. Open up Titanium Studio and Import the existing project into your workspace
 3. Develop
-
-[Push Checklist](/docs/Checkin%20Checklist.md)
 
 ### Lib Docs ###
 
