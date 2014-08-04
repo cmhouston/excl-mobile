@@ -6,21 +6,21 @@
 - [WordPress](https://github.com/cmhouston/excl-cms#wordpress)
 - [Titanium](#titanium)
 	1. [Introduction to Titanium](#introToTitanium)
-	- [Getting Started](#gettingStarted)
-	- Build Process
-		1. Walkthrough 					(KC)
-		- Troubleshooting 				(All)
-	- Running the Unit Tests 			(MN)
-	- Running the ExCL App
-		1. GenyMotion Emulator 			(AP/GK)
-		- Devices (KC)
-	- Code Overview
-		1. Navigation Controller 		(??)
-		- Analytics 					(KC)
-	- Enhancing the ExCL App 			(GD)
-	- TiShadow 							(JY)
-- Buildbox for Continuous Integration 	(SF)
-- Deploying to the App Store 			(AP)
+	- Running the Unit Tests 				(MN)
+	- [Running the ExCL App](#runningExCL)
+		1. Android
+		- iOS
+	- [Debugging](#debugging)				(KC/GK/SF)
+		1. Android
+		- iOS 
+	- [Code Overview](#codeOverview)
+		1. Navigation Controller 			(??)
+		- Analytics 						(KC)
+	- Enhancing the ExCL App 				(GD)
+	- TiShadow 								(JY)
+	- TroubleShooting						(All)
+- Buildbox for Continuous Integration 		(SF)
+- [Deploying to the App Store](#appStore)	(AP)
 	1. Apple
 	- Google Play
 
@@ -64,6 +64,37 @@ The run option at the top left of the screen is by default unavailable. To enabl
 - Click on Project Natures
 - Select Mobile and make it the Primary nature
 - Click OK
+
+## Running The Unit Tests ##
+
+## <a name="#runningExCL"></a> Running the ExCL Application ##
+
+### Android ###
+
+#### GenyMotion Emulator ####
+
+#### Android Device ####
+
+### iOS ###
+
+#### iOS Emulator ####
+
+#### iOS Device ####
+
+## <a name="debugging"></a> Debugging ##
+
+## <a name="codeOverview"></a> Code Overview ##
+
+## Enhancing the ExCL App ##
+
+## Ti Shadow ##
+
+## TroubleShooting ##
+
+# BuildBox for Continuous Integration #
+
+# <a name="appStore"></a> Deploying to the App Store #
+
 
 _______
 ### Lib Docs ###
