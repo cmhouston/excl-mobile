@@ -6,7 +6,7 @@
 - [WordPress](https://github.com/cmhouston/excl-cms#wordpress)
 - [Titanium](#titanium)
 	1. [Introduction to Titanium](#introToTitanium)
-	- Installing Titanium Studio
+	- [Getting Started](#gettingStarted)
 	- Build Process
 		1. Walkthrough
 		- Issues We've Run Into
@@ -33,10 +33,17 @@ This documentation is intended for ExCL developers and details the steps to setu
 
 ## <a name="introToTitanium"></a> Introduction to Titanium ##
 
-### Getting started ###
+Titanium is a tool that allows developers to create applications for multiple platforms using a single project. For this project we are using Titanium in order to support both iOS and Android operating systems. 
+
+Appcelerator provides many useful features and examples, which can be found under the [Titanium SDK Documentation](http://docs.appcelerator.com/titanium/3.0/) 
+
+### <a name="gettingStarted"></a> Getting started ###
 
 1. Clone the repository to your computer
 2. Open up Titanium Studio and Import the existing project into your workspace
+3. Start your development!
+
+
 
 ### Lib Docs ###
 
