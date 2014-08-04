@@ -178,22 +178,13 @@ function createExhibitsCarousel(exhibits) {
 	}
 
 	$.exhibitsCarousel.setCurrentPage(0);
-<<<<<<< HEAD
-
 	$.headingLabel.text = "Tap to Explore!";
 	//"Explore This " + json.data.museum.exhibit_label;
-	$.exhibitInfoLabel.text = exhibits[0].long_description;
-
-	if (OS_ANDROID) {
-=======
-	
-	$.headingLabel.text = "Tap to Explore!";//"Explore This " + json.data.museum.exhibit_label;
 	$.exhibitInfoLabel.text = exhibits[0].description;
 	
 	if(OS_ANDROID){
->>>>>>> Changed exhibit long-description to description
 		resizeExhibitCarouselAndroid();
-	}//*/
+	}
 
 	$.exhibitsCarousel.addEventListener("scrollend", function(e) {
 		onExhibitsScroll(e, exhibits);
