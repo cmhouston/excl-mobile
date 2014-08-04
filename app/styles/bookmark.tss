@@ -1,0 +1,5 @@
+".container": {}
+
+"#label":{
+	height:'20%'
+}

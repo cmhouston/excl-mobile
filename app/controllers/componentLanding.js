@@ -87,37 +87,15 @@ function hideMenuBtnIfKioskMode() {
 }
 
 function insertComponentPicture(imageUrl) {
-	var imageWidth = calculateImageWidth();
 	var image = Ti.UI.createImageView({
-		top : horizontalBuffer,
+		top : 0,
 		image : imageUrl,
-		width: imageWidth,
-		left : horizontalBuffer,
-		right : horizontalBuffer,
+		width: Ti.UI.FILL,
+		left : 0,
+		right : 0
 	});
 	$.scrollView.add(image);
 
-}
-
-function calculateImageWidth(){
-	var screenWidth = convertPxToDipIfNecessary(detectDevice.getWidth());
-	var horizBuffer = stripUnitsOffMeasurement(horizontalBuffer);
-	var imageWidth = screenWidth - 2*horizBuffer;
-	imageWidth += "dip";
-	return imageWidth;
-}
-
-function convertPxToDipIfNecessary(pxOrDip){
-	var dip = pxOrDip;
-	if (OS_ANDROID){
-		dip = detectDevice.pxToDip(pxOrDip);
-	}
-	return dip;
-}
-
-function stripUnitsOffMeasurement(str){
-	var num = parseInt(str);
-	return num;
 }
 
 function extractSectionNamesAndOrder(rawPostJson) {

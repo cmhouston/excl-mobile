@@ -38,12 +38,12 @@
 					<Label class="rowLabelIndented" id="toggleLabel">Edit Filter</Label>
 				</View>
 			</View>
-			<View class="viewRow">
+			<!-- <View class="viewRow">
 				<View class="rowContainer">
 					<View backgroundImage="/flyoutMenuIcons/favorites.png" class="rowIcon"/>
 					<Label id="favoritesLabel" color="#C0C0C0" class="rowLabel">My Favorites</Label>
 				</View>
-			</View>
+			</View> -->
 			<View class="viewRow" onClick="tutorialToggler">
 				<View class="rowContainer">
 					<View backgroundImage="/flyoutMenuIcons/tutorial.png" class="rowIcon"/>

@@ -96,6 +96,12 @@ function handleAdminModeDialog(self) {
     		Alloy.Globals.navController.closeMenu();
     		Alloy.Globals.navController.open(options);
     	}
+    	else if (e.text == "bookmark" || e.source.androidView.value == "bookmark") {
+    		var egg = Alloy.createController("bookmark");
+    		self.kioskMode.exitKioskMode();
+    		Alloy.Globals.navController.closeMenu();
+    		Alloy.Globals.navController.open(egg);
+    	}
     	else {
 	    	var errorMsg = Ti.UI.createAlertDialog({
 			    title: 'incorrect code',
