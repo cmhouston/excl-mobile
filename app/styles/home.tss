@@ -46,7 +46,8 @@
 
 ".homepageLabel": {
 	font: {
-		fontWeight: 'bold'
+		fontWeight: 'bold',
+		fontFamily: Alloy.Globals.defaultGlobalFontFamily
 	},
 	color: 'white',
 	width: Ti.UI.FILL,

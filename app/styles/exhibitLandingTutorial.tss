@@ -18,13 +18,15 @@
 	font: {
 		textStyle: Titanium.UI.TEXT_STYLE_HEADLINE,
 		fontWeight: "bold",
-		fontSize: "24dp"
+		fontSize: "24dp",
+		fontFamily: Alloy.Globals.defaultGlobalFontFamily
 	}
 }
 ".fullScreenOverlayText[formFactor=tablet]": {
 	font: {
 		fontWeight: "bold",
-		fontSize: "35dip"
+		fontSize: "35dip",
+		fontFamily: Alloy.Globals.defaultGlobalFontFamily
 	}
 }
 ".GotItButton": {
@@ -37,7 +39,8 @@
 	color: "black",
 	font: {
 		textStyle: Titanium.UI.TEXT_STYLE_HEADLINE,
-		fontSize: "24dp"
+		fontSize: "24dp",
+		fontFamily: Alloy.Globals.defaultGlobalFontFamily
 	}
 }
 
@@ -51,7 +54,8 @@
 	color: "#fff",
 	font: {
 		textStyle: Titanium.UI.TEXT_STYLE_HEADLINE,
-		fontSize: "24dp"
+		fontSize: "24dp",
+		fontFamily: Alloy.Globals.defaultGlobalFontFamily
 	}
 }
 "#flyoutMenuArrow": {
