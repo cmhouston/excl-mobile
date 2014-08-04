@@ -29,7 +29,9 @@ ExCL is divided into two parts: the content management system and the Appcelerat
 
 This documentation is intended for ExCL developers and details the steps to setup and enhance the mobile application. We will describe the Titanium technical details, followed by tips on using a continuous integration build server and deploying to the app stores.
 
-## <a name="titanium"></a>Titanium ##
+# <a name="titanium"></a>Titanium #
+
+## <a name="introToTitanium'/> Introduction to Titanium #
 
 ### Getting started ###
 
