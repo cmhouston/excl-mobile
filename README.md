@@ -8,17 +8,19 @@
 	1. [Introduction to Titanium](#introToTitanium)
 	- [Getting Started](#gettingStarted)
 	- Build Process
-		1. Walkthrough
-		- Issues We've Run Into
-	- Running the Unit Tests
+		1. Walkthrough 					(KC)
+		- Troubleshooting 				(All)
+	- Running the Unit Tests 			(MN)
 	- Running the ExCL App
+		1. GenyMotion Emulator 			(AP/GK)
+		- Devices (KC)
 	- Code Overview
-		1. Navigation Controller
-		- Analytics
-	- Enhancing the ExCL App
-	- TiShadow
-- Buildbox for Continuous Integration
-- Deploying to the App Store
+		1. Navigation Controller 		(??)
+		- Analytics 					(KC)
+	- Enhancing the ExCL App 			(GD)
+	- TiShadow 							(JY)
+- Buildbox for Continuous Integration 	(SF)
+- Deploying to the App Store 			(AP)
 	1. Apple
 	- Google Play
 
@@ -60,7 +62,7 @@ The run option at the top left of the screen is by default unavailable. To enabl
 
 1. Right click on the project in your Project Explorer and open up the Properties
 - Click on Project Natures
-- Select Mobile and make it Primary
+- Select Mobile and make it the Primary nature
 - Click OK
 
 _______
