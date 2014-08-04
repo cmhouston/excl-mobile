@@ -1,4 +1,4 @@
-We will be using Mocha for unit testing, Istanbul for code coverage and Sinon for mocking. 
+We use Mocha for unit testing, Istanbul for code coverage and Sinon for mocking. 
 
 
 Installing these tools is easy. The root directory of the project contains a `package.json` file which will install all these tools, 
