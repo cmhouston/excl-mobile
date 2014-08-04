@@ -90,10 +90,10 @@
 
 "#exhibitInfoLabel": {
 	color: '#000',
-	width: "90%",
+	width: "94%",
 	font: {
 		fontFamily: Alloy.Globals.defaultGlobalFontFamily
-	}
+	},
 }
 
 "#exhibitInfoLabel[formFactor=tablet]":{
