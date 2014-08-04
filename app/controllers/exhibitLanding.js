@@ -51,8 +51,6 @@ var currExhibitId;
 var expanderButton;
 var componentScrollViewLoaded = false;
 
-var pagingArrowsColor = "#CF5300";
-
 //Analytics Specific Information -------------------
 var analyticsPageTitle = "Exhibit Landing";
 var analyticsPageLevel = "Exhibit Landing";
@@ -295,7 +293,7 @@ function addPagingArrowsToView(view, pageNum, numOfPages){
 			bottom: "15%",
 			height: "15%",
 			width: "17%",
-			backgroundColor: pagingArrowsColor,
+			backgroundColor: Alloy.Globals.colors.exhibitsCarouselArrowColor,
 			borderRadius: "10dip"
 		});
 		
@@ -326,7 +324,7 @@ function addPagingArrowsToView(view, pageNum, numOfPages){
 			top: "15%",
 			height: "15%",
 			width: "17%",
-			backgroundColor: pagingArrowsColor,
+			backgroundColor: Alloy.Globals.colors.exhibitsCarouselArrowColor,
 			borderRadius: "10dip"
 		});
 
@@ -344,7 +342,7 @@ function addPagingArrowsToView(view, pageNum, numOfPages){
 function createExhibitTitleLabel(name) {
 	var titleLabelView = Ti.UI.createView({
 		top : 0,
-		backgroundColor : '#000',
+		backgroundColor : Alloy.Globals.colors.exhibitTitleColor,
 		height: getExhibitTitleLabelHeight()
 	});
 	var label = Ti.UI.createLabel({
@@ -404,7 +402,7 @@ function resizeExhibitCarouselAndroid(){
 function createComponentTitleLabel(item) {
 	var titleLabelView = Ti.UI.createView({
 		top : 0,
-		backgroundColor : '#000',
+		backgroundColor : Alloy.Globals.colors.componentTitleColor,
 		height: getComponentTitleLabelHeight(),
 		itemId : item.id
 	});

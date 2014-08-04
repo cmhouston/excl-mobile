@@ -229,7 +229,7 @@ function insertXNumberOfButtons(numberOfButtons) {
 	objectArgs = {
 		borderRadius : 0,
 		borderColor : "white",
-		backgroundColor : '#343434 ',
+		backgroundColor : Alloy.Globals.colors.filterByAgeTabAccentColor,
 		width : '100%',
 		top : "0",
 		height : "50dip",
@@ -254,9 +254,8 @@ function insertXNumberOfButtons(numberOfButtons) {
 			title : filterTabIds[i],
 			width : each_button_width,
 			height : "50dip",
-			borderColor : '#5a5a5a',
 			// borderRadius : "10dip",
-			backgroundColor : '#747474',
+			backgroundColor : Alloy.Globals.colors.filterByAgeTabColor,
 			color : '#FFFFFF',
 			id : "button" + i,
 			left : '1%',
@@ -326,7 +325,7 @@ function showRespectiveView(buttonSource) {
 function keepFirstViewOpen(view, button) {
 	openFirstView(view);
 	button.backgroundColor = '#FFFFFF';
-	button.color = '#747474';
+	button.color = Alloy.Globals.colors.filterByAgeTabColor;
 	lastSelectedButton = button;
 	firstView = view;
 	lastSelectedView = 1;
@@ -334,11 +333,11 @@ function keepFirstViewOpen(view, button) {
 
 function changeButtonColor(buttonId) {
 	if (lastSelectedButton) {
-		lastSelectedButton.backgroundColor = '#747474';
+		lastSelectedButton.backgroundColor = Alloy.Globals.colors.filterByAgeTabColor;
 		lastSelectedButton.color = '#FFFFFF';
 	}
 	buttonId.backgroundColor = '#FFFFFF';
-	buttonId.color = '#747474';
+	buttonId.color = Alloy.Globals.colors.filterByAgeTabColor;
 	lastSelectedButton = buttonId;
 }
 
