@@ -3,6 +3,7 @@
 ".windowHeader": {
 	width: Ti.UI.FILL,
 	height: "50dip",
+	//backgroundColor: '#98C21F'//green//'#FFC908'//yellow-orange
 	backgroundColor: '#CF5300' //Burnt orange //'#E74C3C'//Coral orange,
 }
 

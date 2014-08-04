@@ -50,7 +50,8 @@ var componentsInExhibit = [];
 var currExhibitId;
 var expanderButton;
 var componentScrollViewLoaded = false;
-var addPagingArrowsFunction;
+
+var pagingArrowsColor = "#CF5300";
 
 //Analytics Specific Information -------------------
 var analyticsPageTitle = "Exhibit Landing";
@@ -93,7 +94,7 @@ function setPathForLibDirectory(libFile) {
 
 function addSpinner() {
 	loadingSpinnerView.add(spinner);
-	if (addLoadingMessage && OS_IOS) {
+	if (addLoadingMessage) {
 		loadingSpinnerLib.scrambleMessage();
 	}
 	spinner.show();
@@ -227,7 +228,7 @@ function createExhibitsImageIOS(exhibits, index) {
 		}
 	});
 
-	addPagingArrowsFunction = function() {
+	var addPagingArrowsFunction = function() {
 		addPagingArrowsToView(exhibitView, index, numOfExhibits);
 	};
 	exhibitView.addEventListener("load", addPagingArrowsFunction);
@@ -296,7 +297,7 @@ function addPagingArrowsToView(view, pageNum, numOfPages) {
 			bottom : "15%",
 			height : "15%",
 			width : "17%",
-			backgroundColor : "#CF5300",
+			backgroundColor : pagingArrowsColor,
 			borderRadius : "10dip"
 		});
 
@@ -327,7 +328,7 @@ function addPagingArrowsToView(view, pageNum, numOfPages) {
 			top : "15%",
 			height : "15%",
 			width : "17%",
-			backgroundColor : "#CF5300",
+			backgroundColor : pagingArrowsColor,
 			borderRadius : "10dip"
 		});
 
@@ -635,4 +636,4 @@ function createLabeledPicView(item) {
 	return itemContainer;
 }
 
-init();
+init(); 
