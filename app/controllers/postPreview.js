@@ -93,13 +93,15 @@ function createErrorView(msg) {
 		color : "black",
 		font : {
 			color : "black",
-			fontSize : "20dip"
+			fontSize : "20dip",
+			fontFamily : Alloy.Globals.defaultGlobalFontFamily
 		}
 	};
 	var headerText = labelService.createCustomLabel(args);
 	if (detectDevice.isTablet()) {
 		headerText.font = {
-			fontSize : "25dip"
+			fontSize : "25dip",
+			fontFamily : Alloy.Globals.defaultGlobalFontFamily
 		};
 	}
 
@@ -168,14 +170,16 @@ function createPostView(post) {
 		font : {
 			color : "#FFFFFF",
 			fontSize : labelService.countCharInTitleAndReturnFontSize(post.get("name"), 20, 30, 5, 2),
-			fontWeight : 'bold'
+			fontWeight : 'bold',
+			fontFamily : Alloy.Globals.defaultGlobalFontFamily
 		}
 	};
 	var headerText = labelService.createCustomLabel(args);
 	if (detectDevice.isTablet()) {
 		headerText.font = {
 
-			fontSize : labelService.countCharInTitleAndReturnFontSize(headerText.text, 30, 40, 10, 2)
+			fontSize : labelService.countCharInTitleAndReturnFontSize(headerText.text, 30, 40, 10, 2),
+			fontFamily : Alloy.Globals.defaultGlobalFontFamily
 		};
 	}
 
@@ -226,7 +230,8 @@ function createPostView(post) {
 		color : "#000000",
 		font : {
 			fontSize : "16dip",
-			color : "#000000"
+			color : "#000000",
+			fontFamily : Alloy.Globals.defaultGlobalFontFamily
 		},
 		top : "10%",
 		height : "70%"
@@ -234,7 +239,8 @@ function createPostView(post) {
 	var postText = labelService.createCustomLabel(args);
 	if (detectDevice.isTablet()) {
 		postText.font = {
-			fontSize : "25dip"
+			fontSize : "25dip",
+			fontFamily : Alloy.Globals.defaultGlobalFontFamily
 		};
 	}
 	if (!postText.text) {

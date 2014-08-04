@@ -60,14 +60,16 @@
 	height: "20dip",
 	width: Ti.UI.FILL,
 	font:{
-		fontSize: "15dip"
+		fontSize: "15dip",
+		fontFamily: Alloy.Globals.defaultGlobalFontFamily
 	},
 	color: "#000"
 },
 
 ".rowLabel[formFactor=tablet]":{
 	font:{
-		fontSize:"25dip"
+		fontSize:"25dip",
+		fontFamily: Alloy.Globals.defaultGlobalFontFamily
 	}
 }
 
@@ -76,7 +78,8 @@
 	left: "12dip",
 	height: "20dip",
 	font:{
-		fontSize: "15dip"
+		fontSize: "15dip",
+		fontFamily: Alloy.Globals.defaultGlobalFontFamily
 	},
 	color: "#000"
 }

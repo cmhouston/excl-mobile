@@ -150,7 +150,8 @@ function enableMenuButtons() {
 function formatObjectSizes() {
 	var font = {
 		//"fontFamily" : 'KGSummerSunshineShadow'
-		fontWeight : "bold"
+		fontWeight : "bold",
+		fontFamily: Alloy.Globals.defaultGlobalFontFamily
 	};
 	
 

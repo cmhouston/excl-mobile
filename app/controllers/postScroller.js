@@ -1,19 +1,19 @@
 //======================================================================
-// ExCL is an open source mobile platform for museums that feature basic 
-// museum information and extends visitor engagement with museum exhibits. 
-// Copyright (C) 2014  Children's Museum of Houston and the Regents of the 
+// ExCL is an open source mobile platform for museums that feature basic
+// museum information and extends visitor engagement with museum exhibits.
+// Copyright (C) 2014  Children's Museum of Houston and the Regents of the
 // University of California.
-// 
+//
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
-// 
+//
 // This program is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //=====================================================================
@@ -31,11 +31,13 @@ if (posts) {
 		var post = posts.at(i);
 		post = createPostView(post);
 		$.scroller.addView(post);
-		$.scroller.currentPage = i;		// Change to current page to froce android arrows to appear
+		$.scroller.currentPage = i;
+		// Change to current page to froce android arrows to appear
 	};
 	$.scroller.removeView($.placeholder);
-	$.scroller.currentPage = 0;			// Set current page back to the initial page
-	
+	$.scroller.currentPage = 0;
+	// Set current page back to the initial page
+
 } else {
 	$.placeholderLabel.text = "There's no content specific for this age. Check above or change your filter!";
 }
@@ -62,9 +64,10 @@ function createPostView(post) {
 		color : 'white',
 		horizontalWrap : false,
 		font : {
-			fontFamily : 'Arial',
+			// fontFamily : 'Arial',
 			fontSize : '25dip',
-			fontWeight : 'bold'
+			fontWeight : 'bold',
+			fontFamily : Alloy.Globals.defaultGlobalFontFamily
 		},
 		//backgroundColor: "black",
 		text : post.get('name')

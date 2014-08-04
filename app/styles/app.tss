@@ -22,7 +22,8 @@
 	color: 'white',
 	font: {
 		fontSize: '22dip',
-		fontWeight: 'bold'
+		fontWeight: 'bold',
+		fontFamily: Alloy.Globals.defaultGlobalFontFamily
 	},
 	textAlign: 'center',
 	wordWrap: false,
@@ -33,7 +34,8 @@
 	color: 'white',
 	font:{
 		fontWeight: 'bold',
-		fontSize: "40dip"
+		fontSize: "40dip",
+		fontFamily: Alloy.Globals.defaultGlobalFontFamily
 	},
 	textAlign: 'center',
 	wordWrap: false,
@@ -42,5 +44,6 @@
 
 "Label": {
 	font: {
+		fontFamily: Alloy.Globals.defaultGlobalFontFamily
 	},
 }
