@@ -6,8 +6,8 @@
 
 "#mainView": {
 	layout: "vertical",
-	top:"0",
-	bottom: "0",
+	top: "0",
+	bottom: "0"
 }
 
 "#placeholder":{
@@ -16,8 +16,8 @@
 
 "#exhibitsCarousel": {
 	backgroundColor: "#253342",
-	height: Ti.UI.SIZE, 
-	overlayEnabled: true,
+	height: Ti.UI.SIZE,
+	overlayEnabled: true
 }
 
 "#exhibitsCarousel[platform=ios]": {
@@ -28,7 +28,7 @@
 "#bottomView":{
 	layout: "vertical",
 	height: Ti.UI.FILL,
-	top:"0"
+	top: "0"
 }
 
 "#componentScrollViewHeading":{
@@ -36,7 +36,7 @@
 }
 
 "#componentScrollViewHeading[formFactor=tablet]":{
-	height: "75dip",
+	height: "75dip"
 }
 
 "#componentScrollViewLabel":{
@@ -44,14 +44,16 @@
 	color: "black",
 	font: {
 		fontWeight: 'bold',
-		fontSize: "20dip"
+		fontSize: "20dip",
+		fontFamily: Alloy.Globals.defaultGlobalFontFamily
 	}
 }
 
 "#componentScrollViewLabel[formFactor=tablet]":{
 	font:{
 		fontWeight: 'bold',
-		fontSize: "40dip"
+		fontSize: "40dip",
+		fontFamily: Alloy.Globals.defaultGlobalFontFamily
 	}
 }
 
@@ -79,24 +81,28 @@
 }
 
 "#headingLabelView[formFactor=tablet]": {
-	height: "75dip",
+	height: "75dip"
 }
 
 "#exhibitInfoLabel": {
 	color: '#000',
 	width: "90%",
+	font: {
+		fontFamily: Alloy.Globals.defaultGlobalFontFamily
+	}
 }
 
 "#exhibitInfoLabel[formFactor=tablet]":{
-	font : {
-		fontSize : "25dip"
+	font: {
+		fontSize: "25dip",
+		fontFamily: Alloy.Globals.defaultGlobalFontFamily
 	}
 }
 
 "#exhibitInfoScrollView": {
 	layout: "vertical",
-	showVerticalScrollIndicator : true,
-	top:"0",
+	showVerticalScrollIndicator: true,
+	top: "0",
 	height: Ti.UI.FILL,
 	width: Ti.UI.FILL
 }
