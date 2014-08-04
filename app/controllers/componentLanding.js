@@ -23,6 +23,7 @@
 // picture is provided
 var args = arguments[0] || {};
 var gradientColors = Alloy.Globals.colors.sectionColors;
+
 var gradientColorsCount = 0;
 if (args[0]) {
 	var url = Alloy.Globals.rootWebServiceUrl + "/component/" + args[0].get('id');
