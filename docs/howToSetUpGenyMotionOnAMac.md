@@ -4,7 +4,7 @@ When using Titanium 3.2 there are a few extra steps necessary to set up GenyMoti
 
 ## Installing Primary Tools ##
 
-1. Install Genymotion and register
+1. [Install Genymotion](http://www.genymotion.com/) and complete registration
 - Install your Genymotion emulator
 	1. If there is an error associated with the ova file while you're downloading/installing
 	   the emulator, navigate to:
@@ -24,12 +24,12 @@ When using Titanium 3.2 there are a few extra steps necessary to set up GenyMoti
 ## Set The Machine's Path to the Android Tools ##
 
 1. Show invisible folders
-	- Easy way to do this is to install the app inVisible by [NorthernSpy Software](http://www.northernspysoftware.com/)
 	- The app runs a set of commands to show and hide invisible files. This can also be done via command line:
 		
 			$ defaults write com.apple.finder AppleShowAllFiles TRUE 
 			$ killall Finder
-		
+	
+	- Alternately, you can install the inVisible tool by [NorthernSpy Software](http://www.northernspysoftware.com/)
 - Navigate to: Finder > Go > Go To Folder > ~/.bash_profile
   And add the following:
 	
