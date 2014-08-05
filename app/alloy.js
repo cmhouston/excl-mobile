@@ -114,7 +114,7 @@ Alloy.Globals.colors = {
 	componentTitleColor: "#000000", //Black
 	exhibitPageSliderButtonColor: "#006DB7", //Blue
 	sectionPrimaryColors: ["#006DB7", "#652D90", "#EB008B", "#FCAF17", "#98C21F", "#009345"], //Multicolored
-	sectionSecondaryColors: ["#d8d8d8", "#d8d8d8", "#d8d8d8", "#d8d8d8", "#d8d8d8", "#d8d8d8"], //Multicolored; lighter shades of primary colors
+	sectionSecondaryColors: ["#d8d8d8", "#d8d8d8", "#d8d8d8", "#d8d8d8", "#d8d8d8", "#d8d8d8"], //All gray
 	postPreviewBackgroundColor: "#DFDFDF", //Gray
 	filterByAgeTabColor: "#009345",
 	filterByAgeTabAccentColor: "#98C21F",
@@ -132,7 +132,7 @@ Alloy.Globals.colors = {
 	modalTintColor: "#000000", //Black
 	tutorialTintColor: "#000000", //Black
 	tutorialGotItButtonColor: "green", //Green
-	tutorialEndButtonColor: "ED1C24", //red
+	tutorialEndButtonColor: "#ED1C24", //red
 	tutorialButtonBorderColor: "#FFFFFF", //white
 	lightFontColor: "#FFFFFF", //White
 	darkFontColor: "#000000" //Black

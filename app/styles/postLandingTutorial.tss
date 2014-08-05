@@ -31,7 +31,7 @@
 	}
 }
 ".tutorialButton": {
-	backgroundColor: Alloy.Globals.colors.tutorialGotItButtonColor,
+	backgroundColor: Alloy.Globals.colors.tutorialEndButtonColor,
 	width: "50%",
 	height: "50dip",
 	borderColor: Alloy.Globals.colors.tutorialButtonBorderColor,
