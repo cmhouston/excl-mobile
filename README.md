@@ -65,6 +65,7 @@ The run option at the top left of the screen is by default unavailable. To enabl
 
 In this project, we are using Mocha for unit testing, Istanbul for code coverage and Sinon for mocking.
 
+#### Installation ####
 The root directory of the project contains a `package.json` file which will install all these tools, and run the unit tests as well.
 
 * Open command prompt, and make sure you are in the root directory of the project folder. Type `npm install` and hit enter. This will install all the tools and will create a folder called `node_modules`. 
@@ -75,8 +76,8 @@ The root directory of the project contains a `package.json` file which will inst
 
 By default the `coverage` and `node_modules` folders won't be committed to the git repo when ever you commit something.
 
+#### Further reading ####
 [Mocha Docs](http://visionmedia.github.io/mocha/#assertions)
-
 [Sinon Docs (For Mocking)](http://sinonjs.org/docs/)
 
 ## <a name="runningExCL"></a> Running the ExCL Application ##
