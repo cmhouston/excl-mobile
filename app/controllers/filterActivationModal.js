@@ -98,7 +98,7 @@ function createFilterView(filter, allChecked) {
 	rowView.add(label);
 	rowView.add(_switch);
 
-	var row = viewService.createTableRow("35dip");
+	var row = viewService.createTableRow("40dip");
 	row.add(rowView);
 
 	return row;
@@ -125,24 +125,6 @@ function resetFilters(newAllCheckedValue) {
 	$.filterTable.data = [];
 	addFilters(allChecked);
 	removeSpinner();
-}
-
-function formatCheckAllOnButton(button) {
-	icon.setIcon(button, "checkbox_checked.png");
-	button.left = "70%";
-
-	button.addEventListener('click', function(e) {
-		resetFilters("enable");
-	});
-}
-
-function formatCheckAllOffButton(button) {
-	icon.setIcon(button, "checkbox_unchecked.png");
-	button.left = "7%";
-
-	button.addEventListener('click', function(e) {
-		resetFilters("disable");
-	});
 }
 
 function setTableBackgroundColor() {
@@ -194,8 +176,6 @@ function init() {
 	addViewBehindModalInIOS();
 	setTableBackgroundColor();
 	formatCloseButtonColor();
-	formatCheckAllOnButton($.toggleAllOn);
-	formatCheckAllOffButton($.toggleAllOff);
 	addFilters(allChecked);
 	removeSpinner();
 }

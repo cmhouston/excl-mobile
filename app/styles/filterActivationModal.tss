@@ -3,7 +3,7 @@
 	top: "10%",
 	width: "90%",
 	borderColor: Alloy.Globals.colors.filterByAgeMenuColor,
-	borderRadius: "20",
+	borderRadius: "0",
 	borderWidth: "3dip",
 	backgroundColor: Alloy.Globals.colors.filterByAgeMenuColor,
 }
@@ -31,21 +31,8 @@
 ".hint":{
 	textAlign: "left",
 	backgroundColor: Alloy.Globals.colors.filterByAgeMenuColor,
-	left: "10dip",
-	width: "98%"
+	width: "94%"
 }
 ".closeButton":{
 	right: "5%"
-}
-".toggleButton":{
-	height: "30dip",
-	width: "30dip",
-	borderColor: "white",
-	borderWidth: "3",
-	borderRadius: "10"
-}
-".horizontalView":{
-	layout: "horizontal",
-	height: "40dip",
-	backgroundColor: "black"
 }
