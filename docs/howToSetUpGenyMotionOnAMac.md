@@ -76,7 +76,7 @@ Run this in Terminal as a point of reference:
 	
 	ti info -t android -o json
 
-For the following steps, try and Find the appropriate file. If "null" appears for any of them, this is most likely the problem.
+For the following steps, try and find the appropriate file. If "null" appears for any of them, this is most likely the problem.
 
 ### Common Issues ###
 #### ZipAlign = "null" ####
