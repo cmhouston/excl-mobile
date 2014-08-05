@@ -71,7 +71,6 @@
 	horizontalWrap: false,
 	top: "3dip",
 	bottom: "3dip",
-	height: Ti.UI.SIZE
 }
 
 "#topView": {

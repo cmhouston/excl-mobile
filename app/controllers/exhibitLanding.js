@@ -547,7 +547,8 @@ function createComponentsScrollView(exhibits) {
 		componentsInExhibit[exhibits[i].id] = Ti.UI.createView({
 			layout : 'horizontal',
 			horizontalWrap : false,
-			height : Ti.UI.SIZE,
+			height : getComponentImageHeight() + stripUnitsOffMeasurement(getComponentTitleLabelHeight()),
+			top: 0
 		});
 
 		for (var j = 0; j < exhibits[i].components.length; j++) {
