@@ -97,7 +97,7 @@ If your computer does not recognize your Android device it is also possible to m
 
 ## <a name="debugging"></a> Debugging ##
 
-When using the built in Emulators debugging is very simple. Refer to Appcelerator's documentation for [Debugging on the Emulator or Simulator](http://docs.appcelerator.com/titanium/3.0/#!/guide/Debugging_on_the_Emulator_or_Simulator)
+When using the built in Emulators debugging is very simple. Refer to Appcelerator's documentation for [Debugging on the Emulator or Simulator](http://docs.appcelerator.com/titanium/3.0/#!/guide/Debugging_on_the_Emulator_or_Simulator). When you debug an Alloy project like this one, put your breakpoints in the generated Resources folder's files for best success.
 
 ### Debugging on GenyMotion ###
 
