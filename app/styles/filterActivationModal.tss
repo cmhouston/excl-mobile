@@ -31,21 +31,8 @@
 ".hint":{
 	textAlign: "left",
 	backgroundColor: "black",
-	left: "10dip",
-	width: "98%"
+	width: "94%"
 }
 ".closeButton":{
 	right: "5%"
-}
-".toggleButton":{
-	height: "30dip",
-	width: "30dip",
-	borderColor: "white",
-	borderWidth: "3",
-	borderRadius: "10"
-}
-".horizontalView":{
-	layout: "horizontal",
-	height: "40dip",
-	backgroundColor: "black"
 }
