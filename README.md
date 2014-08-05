@@ -9,14 +9,12 @@
 	- Running the Unit Tests 				(MN)
 	- [Running the ExCL App](#runningExCL)
 	- [Debugging](#debugging)
-	- [Code Overview](#codeOverview)
-		1. Navigation Controller 			(??)
-		- Analytics 						(KC)
-	- Enhancing the ExCL App 				(GD)
-	- TiShadow 								(JY)
-	- TroubleShooting						(All)
-- Buildbox for Continuous Integration 		(SF)
-- [Deploying to the App Store](#appStore)	(AP)
+	- Code Overview (#codeOverview)			(KC)
+	- Enhancing the ExCL App 				(JL)
+	- TiShadow 						(LI<JY)
+	- TroubleShooting					(All)
+- Buildbox for Continuous Integration 				(SF)
+- [Deploying to the App Store](#appStore)			(AP)
 	1. Apple
 	- Google Play
 
@@ -114,15 +112,33 @@ Now try debugging again and the error should be gone
 
 ## <a name="codeOverview"></a> Code Overview ##
 
+(KC)
+
 ## Enhancing the ExCL App ##
+
+(JL)
 
 ## Ti Shadow ##
 
+(LI,JY)
+
 ## TroubleShooting ##
+
+STANDUP
 
 # BuildBox for Continuous Integration #
 
+(SF)
+
 # <a name="appStore"></a> Deploying to the App Store #
+
+## Android ##
+
+INSERT LINK HERE (AP)
+
+## iOS ##
+
+INSERT LINK HERE (AP)
 
 
 _______
