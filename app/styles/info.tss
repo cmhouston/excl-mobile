@@ -2,7 +2,7 @@
 ".container" : {
 	navBarHidden: true,
 	fullscreen: true,
-	backgroundColor: "#FFF"
+	backgroundColor: Alloy.Globals.colors.pageBackgroundColor
 }
 
 "#mainView": {

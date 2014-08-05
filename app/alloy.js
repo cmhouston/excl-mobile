@@ -123,12 +123,17 @@ Alloy.Globals.colors = {
 	cancelButtonColor: "#E74C3C", //Red
 	loadingSpinnerTintColor: "#000000", //Black
 	pageBackgroundColor: "#FFFFFF", //White
+	mapBackgroundColor: "#000000", //Black
 	accentBorderColor: "#AAAAAA", //Gray
 	accentButtonColor: "#005ab3", //Blue
 	commentFormTextBoxColor: "#F2F2F2", //Light gray
 	flyoutColor: "#F2F2F2", //Light gray
 	flyoutAccentColor: "#C0C0C0", //Lighter gray
 	modalTintColor: "#000000", //Black
+	tutorialTintColor: "#000000", //Black
+	tutorialGotItButtonColor: "green", //Green
+	tutorialEndButtonColor: "ED1C24", //red
+	tutorialButtonBorderColor: "#FFFFFF", //white
 	lightFontColor: "#FFFFFF", //White
 	darkFontColor: "#000000" //Black
 };
