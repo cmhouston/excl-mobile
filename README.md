@@ -120,7 +120,7 @@ Titanium uses an [MVC Architecture](https://developer.chrome.com/apps/app_framew
 
 ExCL uses an adapted version of the MVC architecture, where much of the logic is found within service files rather than within models. The service files can be can be found within the [lib](app/lib) folder. A couple examples of services used are the [dataRetriever](app/lib/dataRetreiver/dataRetriever.js) and the [sharingImageService](app/lib/sharing/sharingImageService.js).
 
-Alloy provides two areas where you can store global information. in ExCL all global variables are created and exported from [Alloy.js](app/Alloy.js).
+Alloy allows developers to store global information. in ExCL all global variables are created and exported from [Alloy.js](app/Alloy.js).
 
 Unit testing is another important part of ExCL, and the unit tests can be found in two places.
  
@@ -148,7 +148,7 @@ Please report all bugs to our [JIRA account]()
 
 (LI,JY)
 
-## TroubleShooting ##
+## Troubleshooting ##
 
 STANDUP
 
