@@ -67,7 +67,7 @@ function createPostView(post) {
 			// fontFamily : 'Arial',
 			fontSize : '25dip',
 			fontWeight : 'bold',
-			fontFamily : Alloy.Globals.defaultGlobalFontFamily
+			fontFamily : Alloy.CFG.excl.defaultGlobalFontFamily
 		},
 		//backgroundColor: "black",
 		text : post.get('name')

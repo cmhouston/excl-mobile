@@ -20,14 +20,14 @@
 		textStyle: Titanium.UI.TEXT_STYLE_HEADLINE,
 		fontWeight: "bold",
 		fontSize: "24dp",
-		fontFamily: Alloy.Globals.defaultGlobalFontFamily
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	}
 }
 ".fullScreenOverlayText[formFactor=tablet]": {
 	font: {
 		fontWeight: "bold",
 		fontSize: "35dip",
-		fontFamily: Alloy.Globals.defaultGlobalFontFamily
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	}
 }
 ".tutorialButton": {
@@ -40,7 +40,7 @@
 	color: "#fff",
 	font: {
 		fontSize: "24dp",
-		fontFamily: Alloy.Globals.defaultGlobalFontFamily
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	}
 }
 ".tutorialButton[platform=ios]": {

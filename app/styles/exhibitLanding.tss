@@ -1,7 +1,7 @@
 ".container": {
 	navBarHidden: true,
 	fullscreen: true,
-	backgroundColor: Alloy.Globals.colors.pageBackgroundColor
+	backgroundColor: Alloy.CFG.excl.colors.pageBackgroundColor
 }
 
 "#mainView": {
@@ -15,7 +15,7 @@
 }
 
 "#exhibitsCarousel": {
-	backgroundColor: Alloy.Globals.colors.exhibitsCarouselBackgroundColor,
+	backgroundColor: Alloy.CFG.excl.colors.exhibitsCarouselBackgroundColor,
 	height: Ti.UI.SIZE,
 	overlayEnabled: true
 }
@@ -32,7 +32,7 @@
 }
 
 "#componentScrollViewHeading":{
-	backgroundColor: Alloy.Globals.colors.pageBackgroundColor
+	backgroundColor: Alloy.CFG.excl.colors.pageBackgroundColor
 }
 
 "#componentScrollViewHeading[formFactor=tablet]":{
@@ -41,11 +41,11 @@
 
 "#componentScrollViewLabel":{
 	text: "Select an Activity!",
-	color: Alloy.Globals.colors.darkFontColor,
+	color: Alloy.CFG.excl.colors.darkFontColor,
 	font: {
 		fontWeight: 'bold',
 		fontSize: "20dip",
-		fontFamily: Alloy.Globals.defaultGlobalFontFamily
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	}
 }
 
@@ -53,7 +53,7 @@
 	font:{
 		fontWeight: 'bold',
 		fontSize: "40dip",
-		fontFamily: Alloy.Globals.defaultGlobalFontFamily
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	}
 }
 
@@ -76,12 +76,12 @@
 
 "#topView": {
 	layout: "vertical",
-	backgroundColor: Alloy.Globals.colors.pageBackgroundColor,
+	backgroundColor: Alloy.CFG.excl.colors.pageBackgroundColor,
 	top: 0
 }
 
 "#headingLabelView":{
-	backgroundColor: Alloy.Globals.colors.exhibitPageSliderButtonColor
+	backgroundColor: Alloy.CFG.excl.colors.exhibitPageSliderButtonColor
 }
 
 "#headingLabelView[formFactor=tablet]": {
@@ -90,16 +90,16 @@
 
 "#exhibitInfoLabel": {
 	width: "94%",
-	color: Alloy.Globals.colors.darkFontColor,
+	color: Alloy.CFG.excl.colors.darkFontColor,
 	font: {
-		fontFamily: Alloy.Globals.defaultGlobalFontFamily
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	},
 }
 
 "#exhibitInfoLabel[formFactor=tablet]":{
 	font: {
 		fontSize: "25dip",
-		fontFamily: Alloy.Globals.defaultGlobalFontFamily
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	}
 }
 

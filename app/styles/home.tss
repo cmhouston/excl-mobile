@@ -13,7 +13,7 @@
 }
 
 "#homeImage": {
-	backgroundColor: Alloy.Globals.colors.pageBackgroundColor,
+	backgroundColor: Alloy.CFG.excl.colors.pageBackgroundColor,
 	width: Ti.UI.FILL,
 	height: Ti.UI.FILL,
 	image: "/images/HomePageDesign4.png"
@@ -47,9 +47,9 @@
 ".homepageLabel": {
 	font: {
 		fontWeight: 'bold',
-		fontFamily: Alloy.Globals.defaultGlobalFontFamily
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	},
-	color: Alloy.Globals.colors.lightFontColor,
+	color: Alloy.CFG.excl.colors.lightFontColor,
 	width: Ti.UI.FILL,
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
 }

@@ -10,7 +10,7 @@
 	width: "70%",
 	font: {
 		fontSize: "20dip",
-		fontFamily: Alloy.Globals.defaultGlobalFontFamily
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	}
 }
 
@@ -21,7 +21,7 @@
 	{
 		fontWeight: "bold",
 		color: "#000000",
-		fontFamily: Alloy.Globals.defaultGlobalFontFamily
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	}
 }
 
@@ -31,7 +31,7 @@
 	font: {
 		fontSize: "15dip",
 		color: "#000000",
-		fontFamily: Alloy.Globals.defaultGlobalFontFamily
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	}
 }
 
@@ -54,7 +54,7 @@
 		fontSize: "15dip",
 		fontWeight: "bold",
 		color: "#000000",
-		fontFamily: Alloy.Globals.defaultGlobalFontFamily
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	},
 	height: Ti.UI.SIZE
 }

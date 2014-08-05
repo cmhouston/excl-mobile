@@ -29,7 +29,7 @@ var loadingSpinner = setPathForLibDirectory('loadingSpinner/loadingSpinner');
 var spinnerLib = new loadingSpinner();
 var spinner = spinnerLib.getSpinner();
 var loadingSpinnerView = Ti.UI.createView();
-var loadingSpinnerDarkView = Ti.UI.createView({ backgroundColor: Alloy.Globals.colors.loadingSpinnerTintColor, opacity: 0.5 });
+var loadingSpinnerDarkView = Ti.UI.createView({ backgroundColor: Alloy.CFG.excl.colors.loadingSpinnerTintColor, opacity: 0.5 });
 loadingSpinnerView.add(loadingSpinnerDarkView);
 var iconService = setPathForLibDirectory('customCalls/iconService');
 iconService = new iconService();
@@ -151,7 +151,7 @@ function formatObjectSizes() {
 	var font = {
 		//"fontFamily" : 'KGSummerSunshineShadow'
 		fontWeight : "bold",
-		fontFamily: Alloy.Globals.defaultGlobalFontFamily
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	};
 	
 

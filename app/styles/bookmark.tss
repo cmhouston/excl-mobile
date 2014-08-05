@@ -2,5 +2,5 @@
 
 "#label":{
 	height: '20%',
-	fontFamily: Alloy.Globals.defaultGlobalFontFamily
+	fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 }

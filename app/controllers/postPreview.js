@@ -80,7 +80,7 @@ function createErrorView(msg) {
 	args = {
 		layout : "vertical",
 		width : "95%",
-		backgroundColor : Alloy.Globals.colors.sectionSecondaryColors[sectionIndex],
+		backgroundColor : Alloy.CFG.excl.colors.sectionSecondaryColors[sectionIndex],
 		left : "2%",
 		height : Ti.UI.SIZE
 	};
@@ -94,14 +94,14 @@ function createErrorView(msg) {
 		font : {
 			color : "black",
 			fontSize : "20dip",
-			fontFamily : Alloy.Globals.defaultGlobalFontFamily
+			fontFamily : Alloy.CFG.excl.defaultGlobalFontFamily
 		}
 	};
 	var headerText = labelService.createCustomLabel(args);
 	if (detectDevice.isTablet()) {
 		headerText.font = {
 			fontSize : "25dip",
-			fontFamily : Alloy.Globals.defaultGlobalFontFamily
+			fontFamily : Alloy.CFG.excl.defaultGlobalFontFamily
 		};
 	}
 
@@ -132,7 +132,7 @@ function createPostView(post) {
 		layout : "vertical",
 		width : "95%",
 		left : "2%",
-		backgroundColor : Alloy.Globals.colors.sectionSecondaryColors[sectionIndex],
+		backgroundColor : Alloy.CFG.excl.colors.sectionSecondaryColors[sectionIndex],
 		//backgroundColor: "#DAF3E7" //emerald
 		//backgroundColor : "#EFF7DC"//lime
 		//backgroundColor: "#EAFBF7" //turquoise
@@ -147,7 +147,7 @@ function createPostView(post) {
 	args = {
 		height : "50dip",
 		width : "100%",
-		backgroundColor : Alloy.Globals.colors.sectionPrimaryColors[sectionIndex]
+		backgroundColor : Alloy.CFG.excl.colors.sectionPrimaryColors[sectionIndex]
 		//backgroundColor : "#3FC380" //emerald
 		//backgroundColor : "#97C12D" //lime
 		//backgroundColor: "#36D7B7",//turquoise
@@ -171,7 +171,7 @@ function createPostView(post) {
 			color : "#FFFFFF",
 			fontSize : labelService.countCharInTitleAndReturnFontSize(post.get("name"), 20, 30, 5, 2),
 			fontWeight : 'bold',
-			fontFamily : Alloy.Globals.defaultGlobalFontFamily
+			fontFamily : Alloy.CFG.excl.defaultGlobalFontFamily
 		}
 	};
 	var headerText = labelService.createCustomLabel(args);
@@ -179,7 +179,7 @@ function createPostView(post) {
 		headerText.font = {
 
 			fontSize : labelService.countCharInTitleAndReturnFontSize(headerText.text, 30, 40, 10, 2),
-			fontFamily : Alloy.Globals.defaultGlobalFontFamily
+			fontFamily : Alloy.CFG.excl.defaultGlobalFontFamily
 		};
 	}
 
@@ -231,7 +231,7 @@ function createPostView(post) {
 		font : {
 			fontSize : "16dip",
 			color : "#000000",
-			fontFamily : Alloy.Globals.defaultGlobalFontFamily
+			fontFamily : Alloy.CFG.excl.defaultGlobalFontFamily
 		},
 		top : "10%",
 		height : "70%"
@@ -240,7 +240,7 @@ function createPostView(post) {
 	if (detectDevice.isTablet()) {
 		postText.font = {
 			fontSize : "25dip",
-			fontFamily : Alloy.Globals.defaultGlobalFontFamily
+			fontFamily : Alloy.CFG.excl.defaultGlobalFontFamily
 		};
 	}
 	if (!postText.text) {
@@ -261,8 +261,8 @@ function createPostView(post) {
 	}
 
 	container.addEventListener('click', function(e) {
-		var args = [post, Alloy.Globals.colors.sectionPrimaryColors[sectionIndex]];
-		Ti.API.info("______________Nav bar color: " + Alloy.Globals.colors.sectionPrimaryColors[sectionIndex]);
+		var args = [post, Alloy.CFG.excl.colors.sectionPrimaryColors[sectionIndex]];
+		Ti.API.info("______________Nav bar color: " + Alloy.CFG.excl.colors.sectionPrimaryColors[sectionIndex]);
 		postController = Alloy.createController('postLanding', args);
 		postController.setAnalyticsPageTitle(parentScreenName + '/' + post.get("name"));
 		postController.setAnalyticsPageLevel("Post Landing");

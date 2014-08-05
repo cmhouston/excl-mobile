@@ -99,9 +99,9 @@
 
 "#postTitleLabel":{
 	top: "10dip",
-	color: Alloy.Globals.colors.darkFontColor,
+	color: Alloy.CFG.excl.colors.darkFontColor,
 	font: {
-		fontFamily: Alloy.Globals.defaultGlobalFontFamily,
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily,
 		fontSize: "25dip",
 		fontWeight: 'bold',	
 	},
@@ -164,7 +164,7 @@
 		// fontFamily: Alloy.CFG.font,
 		fontSize : '16dip',
 		fontWeight : 'bold',,
-		fontFamily: Alloy.Globals.defaultGlobalFontFamily
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	},
 	textAlign : 'center',
 	borderWidth : '1',
@@ -175,7 +175,7 @@
 	font: {
 		// fontFamily: Alloy.CFG.font,
 		fontSize: '30dip',
-		fontFamily: Alloy.Globals.defaultGlobalFontFamily
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	}
 }
 
@@ -202,7 +202,7 @@
 		// fontFamily: Alloy.CFG.font,
 		fontSize : '13dip',
 		fontWeight : 'normal',
-		fontFamily: Alloy.Globals.defaultGlobalFontFamily
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	},
 	textAlign : 'center'
 }
@@ -211,7 +211,7 @@
 	font: {
 		// fontFamily: Alloy.CFG.font,
 		fontSize: '25dip',
-		fontFamily: Alloy.Globals.defaultGlobalFontFamily
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	}
 }
 
@@ -224,7 +224,7 @@
 	font: {
 		// fontFamily: Alloy.CFG.font,
 		fontSize : "25dip",
-		fontFamily: Alloy.Globals.defaultGlobalFontFamily
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	}
 }
 
@@ -234,7 +234,7 @@
 		// fontFamily: Alloy.CFG.font,
 		fontSize : '8dip',
 		fontWeight : 'normal',
-		fontFamily: Alloy.Globals.defaultGlobalFontFamily
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	},
 	textAlign: 'left'
 }
@@ -243,7 +243,7 @@
 	font: {
 		// fontFamily: Alloy.CFG.font,
 		fontSize : "17dip",
-		fontFamily: Alloy.Globals.defaultGlobalFontFamily
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	}
 }
 
@@ -280,7 +280,7 @@
 		// fontFamily: Alloy.CFG.font,
 		fontSize: '21dp',
 		fontWeight: 'bold',
-		fontFamily: Alloy.Globals.defaultGlobalFontFamily
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	},
 	top: '4%',
 	textAlign: 'center',
@@ -295,7 +295,7 @@
 		// fontFamily: Alloy.CFG.font,
 		fontSize: '18dp',
 		fontWeight: 'normal',
-		fontFamily: Alloy.Globals.defaultGlobalFontFamily
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	},
 	color: 'black',
 	top: '15%',
@@ -319,7 +319,7 @@
 		// fontFamily: Alloy.CFG.font,
 		fontSize: '12dip',
 		fontWeight: 'normal',
-		fontFamily: Alloy.Globals.defaultGlobalFontFamily
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	},
 	color: 'black',
 	left: '7%',
@@ -329,7 +329,7 @@
 	font: {
 		// fontFamily: Alloy.CFG.font,
 		fontSize : "15dip",
-		fontFamily: Alloy.Globals.defaultGlobalFontFamily
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	}
 }
 
@@ -342,7 +342,7 @@
 		// fontFamily: Alloy.CFG.font,
 		fontSize: '18dp',
 		fontWeight: 'normal',
-		fontFamily: Alloy.Globals.defaultGlobalFontFamily
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	},
 	color: 'black',
 	left: '7%',
@@ -366,7 +366,7 @@
 		// fontFamily: Alloy.CFG.font,
 		fontSize: '12dip',
 		fontWeight: 'normal',
-		fontFamily: Alloy.Globals.defaultGlobalFontFamily
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	},
 	color: 'black',
 	left: '7%',
@@ -376,7 +376,7 @@
 	font: {
 		// fontFamily: Alloy.CFG.font,
 		fontSize : "15dip",
-		fontFamily: Alloy.Globals.defaultGlobalFontFamily
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	}
 }
 
@@ -393,7 +393,7 @@
 		// fontFamily: Alloy.CFG.font,	
 		fontSize: '18dp',
 		fontWeight: 'normal',
-		fontFamily: Alloy.Globals.defaultGlobalFontFamily
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	},
 	color: 'black',
 	backgroundColor: '#f2f2f2',
@@ -419,7 +419,7 @@
 		// fontFamily: Alloy.CFG.font,	
 		fontSize: '18dp',
 		fontWeight: 'bold',
-		fontFamily: Alloy.Globals.defaultGlobalFontFamily
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	},
 	left: '0',
 	width: '49%',
@@ -433,7 +433,7 @@
 		// fontFamily: Alloy.CFG.font,
 		fontSize : '25dip',
 		fontWeight : 'bold',
-		fontFamily: Alloy.Globals.defaultGlobalFontFamily
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	}
 }
 
@@ -444,7 +444,7 @@
 		// fontFamily: Alloy.CFG.font,
 		fontSize: '16dp',
 		fontWeight: 'bold',
-		fontFamily: Alloy.Globals.defaultGlobalFontFamily
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	},
 	left: "2%",
 	width: '49%',
@@ -458,7 +458,7 @@
 		// fontFamily: Alloy.CFG.font,
 		fontSize : '25dip',
 		fontWeight : 'bold',
-		fontFamily: Alloy.Globals.defaultGlobalFontFamily
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	}
 }
 
@@ -479,7 +479,7 @@
 		// fontFamily: Alloy.CFG.font,
 		fontSize: '16dp',
 		fontWeight: 'normal',
-		fontFamily: Alloy.Globals.defaultGlobalFontFamily
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	},
 	textAlign: 'center',
 	color: 'black',

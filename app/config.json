@@ -1,5 +1,31 @@
 {
-    "global": {},
+    "global": {
+    	"excl": {
+	    	"rootWebServiceUrls": {
+				"dev": "http://excl.dreamhosters.com/dev/wp-json/v01/excl/museum/81",
+				"qa": "http://excl.dreamhosters.com/qa/wp-json/v01/excl/museum/81",
+				"prod": "http://excl.dreamhosters.com/prod/wp-json/v01/excl/museum/81"
+			},
+			"defaultGlobalFontFamily": "texgyreheros-regular",
+    		"colors": {
+    			"navBarColor": "#F58220",
+				"exhibitsCarouselArrowColor": "#F58220",
+				"exhibitsCarouselBackgroundColor": "#253342",
+				"exhibitTitleColor": "#000000",
+				"componentTitleColor": "#000000",
+				"exhibitPageSliderButtonColor": "#006DB7",
+				"sectionPrimaryColors": ["#006DB7", "#652D90", "#EB008B", "#FCAF17", "#98C21F", "#009345"],
+				"sectionSecondaryColors": ["#0BA0FF", "#A34CE6", "#E874B7", "#FCBE3F", "#9CC06A", "#2DB36E"],
+				"postPreviewBackgroundColor": "#DFDFDF",
+				"filterByAgeTabColor": "#009345",
+				"filterByAgeTabAccentColor": "#98C21F",
+				"loadingSpinnerTintColor": "#000000",
+				"pageBackgroundColor": "#FFFFFF",
+				"lightFontColor": "#FFFFFF",
+				"darkFontColor": "#000000"
+    		}
+    	}
+    },
     "env:development": {},
     "env:test": {},
     "env:production": {},

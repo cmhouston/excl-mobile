@@ -137,7 +137,7 @@ function formatObjects() {
 		$.title.font = {
 			fontSize : "30dip",
 			fontWeight : "bold",
-			fontFamily : Alloy.Globals.defaultGlobalFontFamily
+			fontFamily : Alloy.CFG.excl.defaultGlobalFontFamily
 		};
 	}
 }

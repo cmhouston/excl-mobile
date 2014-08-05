@@ -5,7 +5,7 @@
 	height: "50dip",
 	//backgroundColor: '#98C21F'//green//'#FFC908'//yellow-orange
 	//backgroundColor: '#CF5300' //Burnt orange //'#E74C3C'//Coral orange,
-	backgroundColor: Alloy.Globals.colors.navBarColor
+	backgroundColor: Alloy.CFG.excl.colors.navBarColor
 }
 
 ".windowHeader[formFactor=tablet]":{
@@ -23,7 +23,7 @@
 	font: {
 		fontSize: '22dip',
 		fontWeight: 'bold',
-		fontFamily: Alloy.Globals.defaultGlobalFontFamily
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	},
 	textAlign: 'center',
 	wordWrap: false,
@@ -35,7 +35,7 @@
 	font:{
 		fontWeight: 'bold',
 		fontSize: "40dip",
-		fontFamily: Alloy.Globals.defaultGlobalFontFamily
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	},
 	textAlign: 'center',
 	wordWrap: false,
@@ -44,6 +44,6 @@
 
 "Label": {
 	font: {
-		fontFamily: Alloy.Globals.defaultGlobalFontFamily
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	},
 }

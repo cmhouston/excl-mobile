@@ -74,7 +74,7 @@ function createFilterView(filter, allChecked) {
 
 			fontSize : '22dp',
 			fontWeight : 'bold',
-			fontFamily : Alloy.Globals.defaultGlobalFontFamily
+			fontFamily : Alloy.CFG.excl.defaultGlobalFontFamily
 		},
 		left : '20%',
 		text : name

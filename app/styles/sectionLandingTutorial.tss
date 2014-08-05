@@ -19,7 +19,7 @@
 		textStyle: Titanium.UI.TEXT_STYLE_HEADLINE,
 		fontWeight: "bold",
 		fontSize: "24dp",
-		fontFamily: Alloy.Globals.defaultGlobalFontFamily
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	}
 }
 ".GotItButton": {
@@ -33,7 +33,7 @@
 	font: {
 		textStyle: Titanium.UI.TEXT_STYLE_HEADLINE,
 		fontSize: "24dp",
-		fontFamily: Alloy.Globals.defaultGlobalFontFamily
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	}
 }
 
@@ -48,7 +48,7 @@
 	font: {
 		textStyle: Titanium.UI.TEXT_STYLE_HEADLINE,
 		fontSize: "24dp",
-		fontFamily: Alloy.Globals.defaultGlobalFontFamily
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	}
 }
 

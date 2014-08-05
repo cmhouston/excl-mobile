@@ -38,7 +38,7 @@ var loadingSpinnerLib = new loadingSpinner(addLoadingMessage);
 var spinner = loadingSpinnerLib.getSpinner();
 var loadingSpinnerView = viewService.createCustomView("");
 var loadingSpinnerDarkView = viewService.createCustomView({
-	backgroundColor : Alloy.Globals.colors.loadingSpinnerTintColor,
+	backgroundColor : Alloy.CFG.excl.colors.loadingSpinnerTintColor,
 	opacity : 0.5
 });
 loadingSpinnerView.add(loadingSpinnerDarkView);
@@ -196,7 +196,7 @@ function createExhibitsImageIOS(exhibits, index) {
 	var numOfExhibits = exhibits.length;
 
 	var viewConfig = {
-		backgroundColor : Alloy.Globals.colors.exhibitsCarouselBackgroundColor,
+		backgroundColor : Alloy.CFG.excl.colors.exhibitsCarouselBackgroundColor,
 		width : Ti.UI.FILL,
 		image : '/images/700x400.png',
 		itemId : exhibit.id
@@ -242,7 +242,7 @@ function createExhibitsImageAndroid(exhibits, index) {
 	var numOfExhibits = exhibits.length;
 
 	var viewConfig = {
-		backgroundColor : Alloy.Globals.colors.exhibitsCarouselBackgroundColor, //Navy blue
+		backgroundColor : Alloy.CFG.excl.colors.exhibitsCarouselBackgroundColor, //Navy blue
 		width : Ti.UI.FILL,
 		image : '/images/700x400.png',
 		itemId : exhibit.id
@@ -292,7 +292,7 @@ function addPagingArrowsToView(view, pageNum, numOfPages) {
 			bottom: "15%",
 			height: "15%",
 			width: "17%",
-			backgroundColor: Alloy.Globals.colors.exhibitsCarouselArrowColor,
+			backgroundColor: Alloy.CFG.excl.colors.exhibitsCarouselArrowColor,
 			borderRadius: "10dip"
 		});
 
@@ -319,7 +319,7 @@ function addPagingArrowsToView(view, pageNum, numOfPages) {
 			top: "15%",
 			height: "15%",
 			width: "17%",
-			backgroundColor: Alloy.Globals.colors.exhibitsCarouselArrowColor,
+			backgroundColor: Alloy.CFG.excl.colors.exhibitsCarouselArrowColor,
 			borderRadius: "10dip"
 		});
 
@@ -337,27 +337,27 @@ function addPagingArrowsToView(view, pageNum, numOfPages) {
 function createExhibitTitleLabel(name) {
 	var titleLabelView = Ti.UI.createView({
 		top : 0,
-		backgroundColor : Alloy.Globals.colors.exhibitTitleColor,
+		backgroundColor : Alloy.CFG.excl.colors.exhibitTitleColor,
 		height: getExhibitTitleLabelHeight()
 	});
 	var label = Ti.UI.createLabel({
 		top : 0,
 		left : "3%",
 		text : name,
-		color : Alloy.Globals.colors.lightFontColor,
+		color : Alloy.CFG.excl.colors.lightFontColor,
 		horizontalWrap : false,
 		font : {
 
 			fontSize : '24dip',
 			fontWeight : 'bold',
-			fontFamily : Alloy.Globals.defaultGlobalFontFamily
+			fontFamily : Alloy.CFG.excl.defaultGlobalFontFamily
 		}
 	});
 	if (detectDevice.isTablet()) {
 		label.font = {
 
 			fontSize : "40dip",
-			fontFamily : Alloy.Globals.defaultGlobalFontFamily
+			fontFamily : Alloy.CFG.excl.defaultGlobalFontFamily
 		};
 	}
 	titleLabelView.add(label);
@@ -376,7 +376,7 @@ function createExhibitImageViewConfig(exhibit) {
 
 	var imageHeight = detectDevice.getWidth() * 4 / 7;
 	return {
-		backgroundColor : Alloy.Globals.colors.exhibitsCarouselBackgroundColor,
+		backgroundColor : Alloy.CFG.excl.colors.exhibitsCarouselBackgroundColor,
 		width : Ti.UI.FILL,
 		height : imageHeight,
 		image : '/images/700x400.png',
@@ -398,7 +398,7 @@ function resizeExhibitCarouselAndroid() {
 function createComponentTitleLabel(item) {
 	var titleLabelView = Ti.UI.createView({
 		top : 0,
-		backgroundColor : Alloy.Globals.colors.componentTitleColor,
+		backgroundColor : Alloy.CFG.excl.colors.componentTitleColor,
 		height: getComponentTitleLabelHeight(),
 		itemId : item.id
 	});
@@ -406,13 +406,13 @@ function createComponentTitleLabel(item) {
 		top : 0,
 		left : "3%",
 		text : item.name,
-		color : Alloy.Globals.colors.lightFontColor,
+		color : Alloy.CFG.excl.colors.lightFontColor,
 		horizontalWrap : false,
 		font : {
 
 			fontSize : '20dip',
 			fontWeight : 'bold',
-			fontFamily : Alloy.Globals.defaultGlobalFontFamily
+			fontFamily : Alloy.CFG.excl.defaultGlobalFontFamily
 		},
 		itemId : item.id
 	});
@@ -420,7 +420,7 @@ function createComponentTitleLabel(item) {
 		label.font = {
 
 			fontSize : "27dip",
-			fontFamily : Alloy.Globals.defaultGlobalFontFamily
+			fontFamily : Alloy.CFG.excl.defaultGlobalFontFamily
 		};
 	}
 	titleLabelView.add(label);

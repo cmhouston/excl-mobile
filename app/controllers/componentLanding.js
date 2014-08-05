@@ -22,7 +22,7 @@
 // component id is provided
 // picture is provided
 var args = arguments[0] || {};
-var gradientColors = Alloy.Globals.colors.sectionPrimaryColors;
+var gradientColors = Alloy.CFG.excl.colors.sectionPrimaryColors;
 
 var gradientColorsCount = 0;
 if (args[0]) {
@@ -192,7 +192,7 @@ function displaySectionList(orderedSectionList, rawJson) {
 
 				fontSize : labelService.countCharInTitleAndReturnFontSize(orderedSectionList[i].key, 26, 20, 5, 3),
 				fontWeight : "bold",
-				fontFamily : Alloy.Globals.defaultGlobalFontFamily
+				fontFamily : Alloy.CFG.excl.defaultGlobalFontFamily
 			}
 		};
 		var label = labelService.createCustomLabel(objectArgs);
@@ -201,7 +201,7 @@ function displaySectionList(orderedSectionList, rawJson) {
 
 				fontSize : labelService.countCharInTitleAndReturnFontSize(orderedSectionList[i].key, 35, 30, 5, 3),
 				fontWeight : "bold",
-				fontFamily : Alloy.Globals.defaultGlobalFontFamily
+				fontFamily : Alloy.CFG.excl.defaultGlobalFontFamily
 			};
 		}
 		view.add(label);

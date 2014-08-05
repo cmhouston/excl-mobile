@@ -18,7 +18,7 @@
 	font: {
 		fontSize: '22dp',
 		fontWeight: 'bold',
-		fontFamily: Alloy.Globals.defaultGlobalFontFamily
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	},
 	left: "10dip",
 	height: Ti.UI.FILL

@@ -30,6 +30,12 @@
 //
 // Alloy.Globals.someGlobalFunction = function(){};
 
+
+Ti.API.info("Start exclConfig output\n");
+Ti.API.info(Alloy.CFG.excl.colors.exhibitsCarouselBackgroundColor);
+Ti.API.info("End output\n");
+
+
 var AnalyticsController = require('analyticService/analyticService');
 Alloy.Globals.analyticsController = new AnalyticsController();
 
@@ -39,20 +45,13 @@ Alloy.Globals.adminModeController = new AdminModeController();
 var StorageService = require('storageService/storageService');
 Alloy.Globals.storageService = new StorageService();
 
-// The urls for Development, Quality Assurance, and Production
-var rootWebServiceUrls = {
-	"dev": 		"http://excl.dreamhosters.com/dev/wp-json/v01/excl/museum/81",
-	"qa": 		"http://excl.dreamhosters.com/qa/wp-json/v01/excl/museum/81",
-	"prod": 	"http://excl.dreamhosters.com/prod/wp-json/v01/excl/museum/81"
-};
-
 Alloy.Globals.isInDefaultWordpressEnviroment = function(){
-	return this.rootWebServiceUrl == rootWebServiceUrls["prod"];
+	return this.rootWebServiceUrl == Alloy.CFG.excl.rootWebServiceUrls["prod"];
 };
 
 Alloy.Globals.setRootWebServiceFromUrls = function(key){
-	if( rootWebServiceUrls[key] )
-		Alloy.Globals.setRootWebServiceUrl(rootWebServiceUrls[key]);
+	if( Alloy.CFG.excl.rootWebServiceUrls[key] )
+		Alloy.Globals.setRootWebServiceUrl(Alloy.CFG.excl.rootWebServiceUrls[key]);
 };
 
 Alloy.Globals.setRootWebServiceUrl = function(url){
@@ -103,26 +102,6 @@ Alloy.Models.app.on('change:currentLanguage', function() {
 		}
 	});
 });
-
-
-Alloy.Globals.defaultGlobalFontFamily = "texgyreheros-regular";
-Alloy.Globals.colors = {
-	navBarColor: "#F58220", //Burnt orange
-	exhibitsCarouselArrowColor: "#F58220", //Burnt orange
-	exhibitsCarouselBackgroundColor: "#253342", //Navy blue/gray
-	exhibitTitleColor: "#000000", //Black
-	componentTitleColor: "#000000", //Black
-	exhibitPageSliderButtonColor: "#006DB7", //Blue
-	sectionPrimaryColors: ["#006DB7", "#652D90", "#EB008B", "#FCAF17", "#98C21F", "#009345"], //Multicolored
-	sectionSecondaryColors: ["#0BA0FF", "#A34CE6", "#E874B7", "#FCBE3F", "#9CC06A", "#2DB36E"], //Multicolored; lighter shades of primary colors
-	postPreviewBackgroundColor: "#DFDFDF", //Gray
-	filterByAgeTabColor: "#009345",
-	filterByAgeTabAccentColor: "#98C21F",
-	loadingSpinnerTintColor: "#000000", //Black
-	pageBackgroundColor: "#FFFFFF", //White
-	lightFontColor: "#FFFFFF", //White
-	darkFontColor: "#000000" //Black
-};
 
 Alloy.Collections.filter = Alloy.Collections.instance('filter');
 Alloy.Models.app.start();
