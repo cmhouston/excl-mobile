@@ -3,7 +3,7 @@
 	top: "10%",
 	width: "90%",
 	borderColor: "#000000",
-	borderRadius: "20",
+	borderRadius: "0",
 	borderWidth: "3dip",
 	backgroundColor: "#000000",
 }

@@ -127,24 +127,6 @@ function resetFilters(newAllCheckedValue) {
 	removeSpinner();
 }
 
-function formatCheckAllOnButton(button) {
-	icon.setIcon(button, "checkbox_checked.png");
-	button.left = "70%";
-
-	button.addEventListener('click', function(e) {
-		resetFilters("enable");
-	});
-}
-
-function formatCheckAllOffButton(button) {
-	icon.setIcon(button, "checkbox_unchecked.png");
-	button.left = "7%";
-
-	button.addEventListener('click', function(e) {
-		resetFilters("disable");
-	});
-}
-
 function setTableBackgroundColor() {
 	if (OS_ANDROID) {
 		$.filterTable.backgroundColor = "black";
@@ -194,8 +176,6 @@ function init() {
 	addViewBehindModalInIOS();
 	setTableBackgroundColor();
 	formatCloseButtonColor();
-	formatCheckAllOnButton($.toggleAllOn);
-	formatCheckAllOffButton($.toggleAllOff);
 	addFilters(allChecked);
 	removeSpinner();
 }
