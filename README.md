@@ -14,7 +14,7 @@
 		- Reporting Bugs
 	- TiShadow 										(LI<JY)
 	- Distribution									(DH)
-	- TroubleShooting								(All)
+	- Troubleshooting								(All)
 - Buildbox for Continuous Integration 				(SF)
 - [Deploying to the App Store](#appStore)			(AP)
 	1. Apple
