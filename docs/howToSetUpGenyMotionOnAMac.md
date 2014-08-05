@@ -39,7 +39,7 @@ When using Titanium 3.2 there are a few extra steps necessary to set up GenyMoti
 		export ANDROID_SDK=/usr/local/Cellar/android-sdk/23.0.2
 		export ANDROID_NDK=/usr/local/Cellar/android-ndk/r7b
 
-	1. You may need to change the above paths depending on the current version of the SDK/NDK.
+	1. You may need to change the above paths depending on the current version of the SDK/NDK. The above code uses SDK Version 23.0.2 and NDK version r7b
 	- As new Android SDK and NDK's are released, run this in Terminal:
 		
 			$ brew upgrade
@@ -51,7 +51,7 @@ When using Titanium 3.2 there are a few extra steps necessary to set up GenyMoti
 	1. Run this in Terminal: 
 
 			$ android
-	- Install the appropriate files based on platform
+	- Install the appropriate files based on platform **Alex
 	- To install required SDK components refer to this [Appcelerator Wiki](https://wiki.appcelerator.org/display/guides2/Installing+and+Updating+Android+SDK)
 
 ## Set Titanium Paths for Android Tools##
@@ -61,8 +61,6 @@ When using Titanium 3.2 there are a few extra steps necessary to set up GenyMoti
 
 - Set "Android SDK Home" to the version folder of your android sdk, which lives in:
 	/usr/local/Cellar/android-sdk/
-	- You can confirm this by navigating there yourself with invisible folders being shown
-
 - Set "Android NDK Home" to the version folder of your android ndk, which lives in:
 	/usr/local/Cellar/android-ndk/
 	- NOTE: just selecting the "android-sdk" or "android-ndk" folders will not work, you must highlight the version folder within these
