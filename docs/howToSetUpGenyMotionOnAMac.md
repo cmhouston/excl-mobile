@@ -71,7 +71,7 @@ At this point you should be done!
 
 ## Troubleshooting ##
 
-### General TroubleShooting ###
+### General Troubleshooting ###
 Run this in Terminal as a point of reference:
 	
 	ti info -t android -o json
