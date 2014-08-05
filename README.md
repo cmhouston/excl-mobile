@@ -71,11 +71,23 @@ MN
 
 Titanium is designed to easily deploy and simulate projects for multiple platforms. 
 
-### Testing and Device Deployment ###
+### iOS Device Deployment ###
 
 To deploy to an iOS device refer to Appcelerator's documentation on [Deploying to iOS Devices](http://docs.appcelerator.com/titanium/3.0/#!/guide/Deploying_to_iOS_devices)
 
-To deploy to an Android device refer to Appcelerator's documentation on [Deploying to Android Devices](http://docs.appcelerator.com/titanium/3.0/#!/guide/Deploying_to_Android_devices)
+### Android Device Deployment ###
+
+To deploy to an Android device refer to Appcelerator's documentation on [Deploying to Android Devices](http://docs.appcelerator.com/titanium/3.0/#!/guide/Deploying_to_Android_devices).
+
+If your computer does not recognize your Android device it is also possible to manually install the app.
+
+1. Enable Unknown Sources in the Device's settings app
+- Connect the device to the computer via USB
+- Build the Application by running it on an Android Emulator
+- Navigate to (Project Folder)/build/android/bin and retrieve the APK file
+- Copy this file to the Downloads folder on the device
+- Disconnect your device and navigate to the APK file to install
+
 
 ### Android GenyMotion Emulator ###
 
@@ -83,7 +95,7 @@ Titanium's built in android emulator is slow and has limited functionality. In o
 
 #### Setting Up GenyMotion on a Mac ####
 
-There are a few more changes that need to be made in order to make GenyMotion compatible with a Mac. Follow these instructions for [How to Set Up GenyMotion on a Mac](docs/howToSetUpGenyMotionOnAMac.md)
+There are a few more changes that need to be made in order to make GenyMotion compatible with a Mac. Follow these instructions for [How to Set Up GenyMotion on a Mac](blob/master/docs/howToSetUpGenyMotionOnAMac.md)
 
 ## <a name="debugging"></a> Debugging ##
 
