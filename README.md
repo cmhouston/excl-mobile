@@ -65,7 +65,7 @@ The run option at the top left of the screen is by default unavailable. To enabl
 
 MN
 
-## <a name="#runningExCL"></a> Running the ExCL Application ##
+## <a name="runningExCL"></a> Running the ExCL Application ##
 
 Titanium is designed to easily deploy and simulate projects for multiple platforms. 
 
