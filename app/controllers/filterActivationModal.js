@@ -98,7 +98,7 @@ function createFilterView(filter, allChecked) {
 	rowView.add(label);
 	rowView.add(_switch);
 
-	var row = viewService.createTableRow("35dip");
+	var row = viewService.createTableRow("40dip");
 	row.add(rowView);
 
 	return row;
