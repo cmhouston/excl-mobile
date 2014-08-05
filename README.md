@@ -6,7 +6,7 @@
 - [WordPress](https://github.com/cmhouston/excl-cms#wordpress)
 - [Titanium](#titanium)
 	1. [Introduction to Titanium](#introToTitanium)
-	- Running the Unit Tests 						(MN)
+	- [Running the Unit Tests](#runningUnitTests)						(MN)
 	- [Running the ExCL App](#runningExCL)
 	- [Debugging](#debugging)
 	- Code Overview (#codeOverview)					(KC)
