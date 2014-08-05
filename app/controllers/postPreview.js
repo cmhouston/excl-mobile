@@ -66,7 +66,7 @@ function init() {
 function createErrorView(msg) {
 	args = {
 		width : "100%",
-		backgroundColor : "white",
+		backgroundColor : Alloy.Globals.colors.pageBackgroundColor,
 	};
 	var container = viewService.createCustomView(args);
 	if (detectDevice.isTablet()) {
@@ -87,12 +87,10 @@ function createErrorView(msg) {
 	var postContainer = viewService.createCustomView(args);
 
 	args = {
-		color : "#000000",
+		color : Alloy.Globals.colors.darkFontColor,
 		text : msg,
 		textAlign : "center",
-		color : "black",
 		font : {
-			color : "black",
 			fontSize : "20dip",
 			fontFamily : Alloy.CFG.excl.defaultGlobalFontFamily
 		}
@@ -117,7 +115,7 @@ function createErrorView(msg) {
 function createPostView(post) {
 	args = {
 		width : "100%",
-		backgroundColor : "white",
+		backgroundColor : Alloy.Globals.colors.pageBackgroundColor,
 	};
 	var container = viewService.createCustomView(args);
 	if (detectDevice.isTablet()) {
@@ -127,15 +125,13 @@ function createPostView(post) {
 		container.top = "15dip";
 		container.height = "200dip";
 	}
-
+	
+	sectionIndexSecondary = sectionIndex % Alloy.Globals.colors.sectionSecondaryColors.length;
 	args = {
 		layout : "vertical",
 		width : "95%",
 		left : "2%",
-		backgroundColor : Alloy.CFG.excl.colors.sectionSecondaryColors[sectionIndex],
-		//backgroundColor: "#DAF3E7" //emerald
-		//backgroundColor : "#EFF7DC"//lime
-		//backgroundColor: "#EAFBF7" //turquoise
+		backgroundColor : Alloy.CFG.excl.colors.sectionSecondaryColors[sectionIndexSecondary],
 	};
 	var postContainer = viewService.createCustomView(args);
 	if (detectDevice.isTablet()) {
@@ -143,14 +139,12 @@ function createPostView(post) {
 	} else {
 		postContainer.height = "200dip";
 	}
-
+	
+	sectionIndexPrimary = sectionIndex % Alloy.Globals.colors.sectionPrimaryColors.length;
 	args = {
 		height : "50dip",
 		width : "100%",
-		backgroundColor : Alloy.CFG.excl.colors.sectionPrimaryColors[sectionIndex]
-		//backgroundColor : "#3FC380" //emerald
-		//backgroundColor : "#97C12D" //lime
-		//backgroundColor: "#36D7B7",//turquoise
+		backgroundColor : Alloy.CFG.excl.colors.sectionPrimaryColors[sectionIndexPrimary]
 	};
 	var header = viewService.createCustomView(args);
 
@@ -164,11 +158,10 @@ function createPostView(post) {
 	var headerWrap = viewService.createCustomView(args);
 
 	args = {
-		color : "#FFFFFF",
+		color : Alloy.Globals.colors.lightFontColor,
 		text : post.get("name"),
 		textAlign : "center",
 		font : {
-			color : "#FFFFFF",
 			fontSize : labelService.countCharInTitleAndReturnFontSize(post.get("name"), 20, 30, 5, 2),
 			fontWeight : 'bold',
 			fontFamily : Alloy.CFG.excl.defaultGlobalFontFamily
@@ -227,10 +220,9 @@ function createPostView(post) {
 	args = {
 		left : "46%",
 		text : post.get("text"),
-		color : "#000000",
+		color : Alloy.Globals.colors.darkFontColor,
 		font : {
 			fontSize : "16dip",
-			color : "#000000",
 			fontFamily : Alloy.CFG.excl.defaultGlobalFontFamily
 		},
 		top : "10%",
@@ -261,8 +253,8 @@ function createPostView(post) {
 	}
 
 	container.addEventListener('click', function(e) {
-		var args = [post, Alloy.CFG.excl.colors.sectionPrimaryColors[sectionIndex]];
-		Ti.API.info("______________Nav bar color: " + Alloy.CFG.excl.colors.sectionPrimaryColors[sectionIndex]);
+		sectionIndexPrimary = sectionIndex % Alloy.CFG.excl.colors.sectionPrimaryColors.length;
+		var args = [post, Alloy.CFG.excl.colors.sectionPrimaryColors[sectionIndexPrimary]];
 		postController = Alloy.createController('postLanding', args);
 		postController.setAnalyticsPageTitle(parentScreenName + '/' + post.get("name"));
 		postController.setAnalyticsPageLevel("Post Landing");

@@ -119,13 +119,13 @@ function setCustomLearn(e) {
 
 function enableAgeFilter() {
 	$.agesLabel.text = "Turn Filter Off";
-	$.customLearnRow.backgroundColor = "C0C0C0";
+	$.customLearnRow.backgroundColor = Alloy.Globals.colors.flyoutAccentColor;
 	showEditAgeOption();
 }
 
 function disableAgeFilter() {
 	$.agesLabel.text = "Turn Filter On";
-	$.customLearnRow.backgroundColor = "F2F2F2";
+	$.customLearnRow.backgroundColor = Alloy.Globals.colors.flyoutColor;
 	hideEditAgeOption();
 }
 

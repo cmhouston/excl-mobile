@@ -1,6 +1,7 @@
 ".container": {
 	navBarHidden: true,
-	fullscreen: true
+	fullscreen: true,
+	backgroundColor: Alloy.Globals.colors.pageBackgroundColor
 }
 
 "#scrollView":{

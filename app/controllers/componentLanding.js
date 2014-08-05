@@ -164,13 +164,14 @@ function displaySectionList(orderedSectionList, rawJson) {
 	for (var i = 0; i < orderedSectionList.length; i++) {
 		var objectArgs;
 
+		gradientColorsIndex = gradientColorsCount % gradientColors.length;
 		var view = Titanium.UI.createView({
 			height : '55dip',
 			left : horizontalBuffer,
 			right : horizontalBuffer,
 			top : '5dip',
 			bottom : '5dip',
-			backgroundColor : gradientColors[gradientColorsCount],
+			backgroundColor : gradientColors[gradientColorsIndex],
 			sectionIndex : gradientColorsCount,
 			layout : 'horizontal'
 		});

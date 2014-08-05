@@ -6,17 +6,17 @@
 - [WordPress](https://github.com/cmhouston/excl-cms#wordpress)
 - [Titanium](#titanium)
 	1. [Introduction to Titanium](#introToTitanium)
-	- Running the Unit Tests 				(MN)
-	- Running the ExCL App <#runningExCL>
+	- Running the Unit Tests 						(MN)
+	- [Running the ExCL App](#runningExCL)
 	- [Debugging](#debugging)
-	- [Code Overview](#codeOverview)
-		1. Navigation Controller 			(??)
-		- Analytics 						(KC)
-	- Enhancing the ExCL App 				(GD)
-	- TiShadow 								(JY)
-	- TroubleShooting						(All)
-- Buildbox for Continuous Integration 		(SF)
-- [Deploying to the App Store](#appStore)	(AP)
+	- Code Overview (#codeOverview)					(KC)
+	- Enhancing the ExCL App 						(JL)
+		- Reporting Bugs
+	- TiShadow 										(LI<JY)
+	- Distribution									(DH)
+	- Troubleshooting								(All)
+- Buildbox for Continuous Integration 				(SF)
+- [Deploying to the App Store](#appStore)			(AP)
 	1. Apple
 	- Google Play
 
@@ -61,11 +61,11 @@ The run option at the top left of the screen is by default unavailable. To enabl
 - Select Mobile and make it the Primary nature
 - Click OK
 
-## Running The Unit Tests ##
+## <a name="runningUnitTests"><a/> Running The Unit Tests ##
 
 MN
 
-## <a name="#runningExCL"></a> Running the ExCL Application ##
+## <a name="runningExCL"></a> Running the ExCL Application ##
 
 Titanium is designed to easily deploy and simulate projects for multiple platforms. 
 
@@ -114,15 +114,57 @@ Now try debugging again and the error should be gone
 
 ## <a name="codeOverview"></a> Code Overview ##
 
+### Framework ##
+
+Titanium uses an [MVC Architecture](https://developer.chrome.com/apps/app_frameworks). The Alloy framework holds these files within three separate folders: [models](app/models),  [views](app/views), [controllers](app/controllers). 
+
+ExCL uses an adapted version of the MVC architecture, where much of the logic is found within service files rather than within models. The service files can be can be found within the [lib](app/lib) folder. A couple examples of services used are the [dataRetriever](app/lib/dataRetreiver/dataRetriever.js) and the [sharingImageService](app/lib/sharing/sharingImageService.js).
+
+Alloy allows developers to store global information. in ExCL all global variables are created and exported from [Alloy.js](app/Alloy.js).
+
+Unit testing is another important part of ExCL, and the unit tests can be found in two places.
+ 
+- Mocha unit tests can be found within the [mochaTests](app/spec/mochaTests) folder, and can be run without compiling the application. (See [Running The Unit Tests](#runningUnitTests) )
+- Integration tests can be found withing the [spec](spec) folder and can only be run on a compiled version of the Application. See [Running The Unit Tests](#runningUnitTests)
+
+For more in depth information, refer to Appcelerator's documentation on [Alloy Framework](http://docs.appcelerator.com/titanium/3.0/#!/guide/Alloy_Framework)
+
+
+
+### Considerations while using ExCL ###
+
+- All Window Navigation must be done using the [Navigation Controller](/docs/NavigationController.md)
+- All fonts and colors are defined Globally within [Alloy.js]()
+
 ## Enhancing the ExCL App ##
+
+(JL)
+
+### Reporting Bugs ###
+
+Please report all bugs to our [JIRA account]()
 
 ## Ti Shadow ##
 
-## TroubleShooting ##
+(LI,JY)
+
+## Troubleshooting ##
+
+STANDUP
 
 # BuildBox for Continuous Integration #
 
+(SF)
+
 # <a name="appStore"></a> Deploying to the App Store #
+
+## Android ##
+
+INSERT LINK HERE (AP)
+
+## iOS ##
+
+INSERT LINK HERE (AP)
 
 
 _______

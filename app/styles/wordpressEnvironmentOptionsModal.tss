@@ -3,7 +3,7 @@
 
 ".verticalContainer": {
 	layout: "vertical",
-	backgroundColor: "white"
+	backgroundColor: Alloy.Globals.colors.pageBackgroundColor
 }
 
 ".environmentOption": {
@@ -16,21 +16,19 @@
 
 ".boldLabel":{
 	left: "5%",
-	color: "#000000",
+	color: Alloy.Globals.colors.darkFontColor,
 	font:
 	{
 		fontWeight: "bold",
-		color: "#000000",
 		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	}
 }
 
 "#currentEnvironLabel":{
 	left: "5%",
-	color: "#000000",
+	color: Alloy.Globals.colors.darkFontColor,
 	font: {
 		fontSize: "15dip",
-		color: "#000000",
 		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	}
 }
@@ -48,12 +46,11 @@
 ".title":{
 	top: "5%",
 	bottom: "5%",
-	color: "#000000",
+	color: Alloy.Globals.colors.darkFontColor,
 	font:
 	{		
 		fontSize: "15dip",
 		fontWeight: "bold",
-		color: "#000000",
 		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	},
 	height: Ti.UI.SIZE

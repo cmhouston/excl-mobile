@@ -8,12 +8,12 @@
   width: Titanium.UI.FILL
 }
 ".fullScreenOverlay": {
-	backgroundColor: "black",
+	backgroundColor: Alloy.Globals.colors.tutorialTintColor,
 	opacity: ".75",
 }
 ".fullScreenOverlayText": {
-	color: "white",
-	shadowColor: '#000',
+	color: Alloy.Globals.colors.lightFontColor,
+	shadowColor: Alloy.Globals.colors.darkFontColor,
 	shadowOffset: {x:3, y:3},
 	shadowRadius: 5,
 	font: {
@@ -31,41 +31,16 @@
 	}
 }
 ".tutorialButton": {
-	backgroundColor: "#ED1C24",
+	backgroundColor: Alloy.Globals.colors.tutorialEndButtonColor,
 	width: "50%",
 	height: "50dip",
-	borderColor: "white",
+	borderColor: Alloy.Globals.colors.tutorialButtonBorderColor,
 	borderRadius: "7dip",
 	borderWidth: "1dip",
-	color: "#fff",
+	color: Alloy.Globals.colors.darkFontColor,
 	font: {
 		fontSize: "24dp",
 		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
-	}
-}
-".tutorialButton[platform=ios]": {
-	borderWidth: "0dip",
-	backgroundColor: null,
-	backgroundGradient: {
-		type: 'linear',
-		startPoint: {
-			x: '50%',
-			y: '0%'
-		},
-		endPoint: {
-			x: '50%',
-			y: '100%'
-		},
-		colors: [
-			{
-				color: '#FF5B37',
-				offset: 0.0
-			},
-			{
-				color: '#FB2B69',
-				offset: 1.0
-			}
-		]
 	}
 }
 

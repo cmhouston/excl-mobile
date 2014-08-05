@@ -61,11 +61,11 @@ function createFilterView(filter, allChecked) {
 
 	//Ti.API.info("filter name: " + name + "(" + active + ")");
 
-	var color = 'white';
+	var color = Alloy.Globals.colors.lightFontColor;
 	if (OS_IOS) {
-		color = 'black';
+		color = Alloy.Globals.colors.accentButtonColor;
 		$.titleBar.top = '10dip';
-		$.hint.color = 'white';
+		$.hint.color = Alloy.Globals.colors.lightFontColor;
 	}
 
 	var args = {
@@ -98,7 +98,7 @@ function createFilterView(filter, allChecked) {
 	rowView.add(label);
 	rowView.add(_switch);
 
-	var row = viewService.createTableRow("35dip");
+	var row = viewService.createTableRow("40dip");
 	row.add(rowView);
 
 	return row;
@@ -127,27 +127,9 @@ function resetFilters(newAllCheckedValue) {
 	removeSpinner();
 }
 
-function formatCheckAllOnButton(button) {
-	icon.setIcon(button, "checkbox_checked.png");
-	button.left = "70%";
-
-	button.addEventListener('click', function(e) {
-		resetFilters("enable");
-	});
-}
-
-function formatCheckAllOffButton(button) {
-	icon.setIcon(button, "checkbox_unchecked.png");
-	button.left = "7%";
-
-	button.addEventListener('click', function(e) {
-		resetFilters("disable");
-	});
-}
-
 function setTableBackgroundColor() {
 	if (OS_ANDROID) {
-		$.filterTable.backgroundColor = "black";
+		$.filterTable.backgroundColor = Alloy.Globals.colors.filterByAgeMenuColor;
 	}
 }
 
@@ -178,13 +160,13 @@ function addViewBehindModalInIOS() {
 
 function formatCloseButtonColor() {
 	if (OS_ANDROID) {
-		$.close.color = "white";
-		$.close.backgroundColor = "#303030";
-		$.close.borderColor = "white";
+		$.close.color = Alloy.Globals.colors.lightFontColor;
+		$.close.backgroundColor = Alloy.Globals.colors.accentBorderColor;
+		$.close.borderColor = Alloy.Globals.colors.lightFontColor;
 		$.close.borderRadius = "3";
 		$.close.borderWidth = "1";
 	} else {
-		$.close.color = "#00FFFF";
+		$.close.color = Alloy.Globals.colors.accentButtonColor;
 	}
 }
 
@@ -194,8 +176,6 @@ function init() {
 	addViewBehindModalInIOS();
 	setTableBackgroundColor();
 	formatCloseButtonColor();
-	formatCheckAllOnButton($.toggleAllOn);
-	formatCheckAllOffButton($.toggleAllOff);
 	addFilters(allChecked);
 	removeSpinner();
 }
