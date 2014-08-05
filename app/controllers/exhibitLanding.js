@@ -50,6 +50,7 @@ var componentsInExhibit = [];
 var currExhibitId;
 var expanderButton;
 var componentScrollViewLoaded = false;
+var componentImageWidthToHeight = 7.0/4;
 
 //Analytics Specific Information -------------------
 var analyticsPageTitle = "Exhibit Landing";
@@ -568,7 +569,7 @@ function createComponentsScrollView(exhibits) {
 }
 
 function getComponentImageHeight() {
-	//Fits height to available space on screen
+	//Fits height to available space on screen, unless pic would be more than a certain fraction (desiredMaxWidthProportion) of device width
 	var headingLabelViewHeight = stripUnitsOffMeasurement($.headingLabelView.height);
 	var componentScrollViewHeadingHeight = stripUnitsOffMeasurement($.componentScrollViewHeading.height);
 	var componentTitleLabelHeight = stripUnitsOffMeasurement(getComponentTitleLabelHeight());
@@ -579,13 +580,27 @@ function getComponentImageHeight() {
 		componentTitleLabelHeight = detectDevice.dipToPx(componentTitleLabelHeight);
 	}
 
-	return (infoViewHeight - headingLabelViewHeight - componentScrollViewHeadingHeight - componentTitleLabelHeight - 6);
+	var componentImageHeight = (infoViewHeight - headingLabelViewHeight - componentScrollViewHeadingHeight - componentTitleLabelHeight - 6);
+	
+	var desiredMaxWidthProportion = 0.8; 
+	var desiredMaxWidth = desiredMaxWidthProportion * detectDevice.getWidth();
+	//Each component image can take up no more than this fraction of the screen width (adjust to ensure that multiple components can be seen in scroller)
+	if (getComponentImageWidth(componentImageHeight) > desiredMaxWidth){
+		Ti.API.info("------------Too wide :(");
+		componentImageHeight = getComponentImageHeightFromWidth(desiredMaxWidth);
+	}
+	return componentImageHeight;
 }
 
 function getComponentImageWidth(height) {
 	//Fits width based on component image height and desired aspect ratio
-	var width = height * 7.0 / 4;
+	var width = height * componentImageWidthToHeight;
 	return width;
+}
+
+function getComponentImageHeightFromWidth(width){
+	var height = width * 1.0/componentImageWidthToHeight;
+	return height;
 }
 
 function openComponent(e, componentImageUrl) {
