@@ -22,7 +22,7 @@
 // component id is provided
 // picture is provided
 var args = arguments[0] || {};
-var gradientColors = Alloy.Globals.colors.sectionColors;
+var gradientColors = Alloy.Globals.colors.sectionPrimaryColors;
 
 var gradientColorsCount = 0;
 if (args[0]) {
@@ -171,6 +171,7 @@ function displaySectionList(orderedSectionList, rawJson) {
 			top : '5dip',
 			bottom : '5dip',
 			backgroundColor : gradientColors[gradientColorsCount],
+			sectionIndex : gradientColorsCount,
 			layout : 'horizontal'
 		});
 
@@ -223,7 +224,7 @@ function openSection(view, title, rawJson) {
 	var analyticsTitle = getAnalyticsPageTitle() + '/' + title;
 	var analyticsLevel = "Section Landing";
 	var sectionPosts = getAllPostsForGivenSectionName(title, rawJson);
-	var controller = Alloy.createController('sectionLanding', eval([args[0], sectionPosts, title, view.backgroundColor, analyticsTitle]));
+	var controller = Alloy.createController('sectionLanding', eval([args[0], sectionPosts, title, view.sectionIndex, analyticsTitle]));
 	controller.setAnalyticsPageTitle(analyticsTitle);
 	controller.setAnalyticsPageLevel(analyticsLevel);
 	Alloy.Globals.navController.open(controller);

@@ -99,11 +99,11 @@
 
 "#postTitleLabel":{
 	top: "10dip",
+	color: Alloy.Globals.colors.darkFontColor,
 	font: {
 		fontFamily: Alloy.Globals.defaultGlobalFontFamily,
 		fontSize: "25dip",
-		fontWeight: 'bold',
-		fontColor: "#FFFFFF"
+		fontWeight: 'bold',	
 	},
 	left: "5dip",
 	right: "5dip",

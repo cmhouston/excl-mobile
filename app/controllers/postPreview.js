@@ -21,7 +21,7 @@
 var args = arguments[0] || {};
 var postArgs = args[0].posts;
 var allInclusiveTabTitle = args[1];
-var sectionColor = args[2];
+var sectionIndex = args[2];
 
 var parentScreenName = args.parentScreenName;
 var viewService = setPathForLibDirectory("customCalls/viewService");
@@ -80,7 +80,7 @@ function createErrorView(msg) {
 	args = {
 		layout : "vertical",
 		width : "95%",
-		backgroundColor : Alloy.Globals.colors.postPreviewBackgroundColor,
+		backgroundColor : Alloy.Globals.colors.sectionSecondaryColors[sectionIndex],
 		left : "2%",
 		height : Ti.UI.SIZE
 	};
@@ -132,7 +132,7 @@ function createPostView(post) {
 		layout : "vertical",
 		width : "95%",
 		left : "2%",
-		backgroundColor : Alloy.Globals.colors.postPreviewBackgroundColor,
+		backgroundColor : Alloy.Globals.colors.sectionSecondaryColors[sectionIndex],
 		//backgroundColor: "#DAF3E7" //emerald
 		//backgroundColor : "#EFF7DC"//lime
 		//backgroundColor: "#EAFBF7" //turquoise
@@ -147,7 +147,7 @@ function createPostView(post) {
 	args = {
 		height : "50dip",
 		width : "100%",
-		backgroundColor : sectionColor
+		backgroundColor : Alloy.Globals.colors.sectionPrimaryColors[sectionIndex]
 		//backgroundColor : "#3FC380" //emerald
 		//backgroundColor : "#97C12D" //lime
 		//backgroundColor: "#36D7B7",//turquoise
@@ -261,8 +261,8 @@ function createPostView(post) {
 	}
 
 	container.addEventListener('click', function(e) {
-		var args = [post, sectionColor];
-		Ti.API.info("______________Nav bar color: " + sectionColor);
+		var args = [post, Alloy.Globals.colors.sectionPrimaryColors[sectionIndex]];
+		Ti.API.info("______________Nav bar color: " + Alloy.Globals.colors.sectionPrimaryColors[sectionIndex]);
 		postController = Alloy.createController('postLanding', args);
 		postController.setAnalyticsPageTitle(parentScreenName + '/' + post.get("name"));
 		postController.setAnalyticsPageLevel("Post Landing");

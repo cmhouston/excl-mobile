@@ -113,7 +113,8 @@ Alloy.Globals.colors = {
 	exhibitTitleColor: "#000000", //Black
 	componentTitleColor: "#000000", //Black
 	exhibitPageSliderButtonColor: "#006DB7", //Blue
-	sectionColors: ["#006DB7", "#652D90", "#EB008B", "#FCAF17", "#98C21F", "#009345"], //Multicolored
+	sectionPrimaryColors: ["#006DB7", "#652D90", "#EB008B", "#FCAF17", "#98C21F", "#009345"], //Multicolored
+	sectionSecondaryColors: ["#0BA0FF", "#A34CE6", "#E874B7", "#FCBE3F", "#9CC06A", "#2DB36E"], //Multicolored; lighter shades of primary colors
 	postPreviewBackgroundColor: "#DFDFDF", //Gray
 	filterByAgeTabColor: "#009345",
 	filterByAgeTabAccentColor: "#98C21F",
