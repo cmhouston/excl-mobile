@@ -224,12 +224,14 @@ function createExhibitsImageIOS(exhibits, index) {
 			onExhibitsClick(exhibits);
 		}
 	});
-
+/*
 	var addPagingArrowsFunction = function() {
 		addPagingArrowsToView(exhibitView, index, numOfExhibits);
+		Ti.API.info("_______Adding paging arrows to view");
 	};
 	exhibitView.addEventListener("load", addPagingArrowsFunction);
-
+	*/
+	addPagingArrowsToView(exhibitView, index, numOfExhibits);
 	exhibitViewWithTitle.add(exhibitView);
 	return exhibitViewWithTitle;
 }

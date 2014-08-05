@@ -23,7 +23,7 @@ var args = arguments[0] || {};
 var component = args[0];
 var allPosts = eval(args[1]);
 var selectedSection = args[2];
-var sectionColor = args[3];
+var sectionIndex = args[3];
 var sectionScreenName = args[4];
 
 var dataRetriever = setPathForLibDirectory('dataRetriever/dataRetriever');
@@ -151,7 +151,7 @@ function organizePosts(allPosts) {
 	Ti.API.info("Parents: " + JSON.stringify(filterTabIds));
 
 	var buttonHolderViewChildren = buttonHolderView.children.length;
-	filter.sortPostsIntoTabs(dictOrderedPosts, parentObjects, sectionColor);
+	filter.sortPostsIntoTabs(dictOrderedPosts, parentObjects, sectionIndex);
 	if (buttonHolderViewChildren != buttonHolderView.children.length) {
 		keepFirstViewOpen(secondView, secondButton);
 	}
