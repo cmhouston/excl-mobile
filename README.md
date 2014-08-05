@@ -6,7 +6,6 @@
 - [WordPress](https://github.com/cmhouston/excl-cms#wordpress)
 - [Titanium](#titanium)
 	1. [Introduction to Titanium](#introToTitanium)
-	- [Running the Unit Tests](#runningUnitTests)						(MN)
 	- [Running the ExCL App](#runningExCL)
 	- [Debugging](#debugging)
 	- Code Overview (#codeOverview)					(KC)
@@ -15,7 +14,8 @@
 	- TiShadow 										(LI<JY)
 	- Distribution									(DH)
 	- Troubleshooting								(All)
-- Buildbox for Continuous Integration 				(SF)
+- Unit Testing and Continuous Integration
+	- [Running the Unit Tests](#runningUnitTests)
 - [Deploying to the App Store](#appStore)			(AP)
 	1. Apple
 	- Google Play
@@ -60,25 +60,6 @@ The run option at the top left of the screen is by default unavailable. To enabl
 - Click on Project Natures
 - Select Mobile and make it the Primary nature
 - Click OK
-
-## <a name="runningUnitTests"><a/> Running The Unit Tests ##
-
-In this project, we are using Mocha for unit testing, Istanbul for code coverage and Sinon for mocking.
-
-#### Installation ####
-The root directory of the project contains a `package.json` file which will install all these tools, and run the unit tests as well.
-
-* Open command prompt, and make sure you are in the root directory of the project folder. Type `npm install` and hit enter. This will install all the tools and will create a folder called `node_modules`. 
-* To run the unit tests, you would run `npm test` in the root directory. 
-* To add more unit tests, place unit tests .js files under `app/spec/MochaTests`. 
-* Istanbul will provide metrics on the command line when you run `npm test`
-* A `coverage` folder will be created by Istanbul in the root directory where you will be able to view a html version of the code coverage as well. The html file will be under `coverage/Icov-report`, and once there you can open `index.html`. 
-
-By default the `coverage` and `node_modules` folders won't be committed to the git repo when ever you commit something.
-
-#### Further reading ####
-* [Mocha Docs](http://visionmedia.github.io/mocha/#assertions) 
-* [Sinon Docs (For Mocking)](http://sinonjs.org/docs/)
 
 ## <a name="runningExCL"></a> Running the ExCL Application ##
 
@@ -159,7 +140,7 @@ For more in depth information, refer to Appcelerator's documentation on [Alloy F
 
 Please report all bugs to our [JIRA account]()
 
-## Ti Shadow ##
+## <a name="tiShadow"></a>Ti Shadow ##
 
 (LI,JY)
 
@@ -167,11 +148,23 @@ Please report all bugs to our [JIRA account]()
 
 STANDUP
 
-# BuildBox for Continuous Integration #
+# Unit Testing and Continuous Integration #
 
-(SF)
+We recommend using continuous integration to maintain the quality of the product. This repository has several unit tests written using [Mocha](http://visionmedia.github.io/mocha/) and several integration tests using TiShadow's spec format.
 
-# <a name="appStore"></a> Deploying to the App Store #
+## <a name="runningUnitTests"><a/>Running the Unit Tests ##
+
+(MN)
+
+## Using Buildbox for Continuous Integration ##
+
+The code was designed to use continuous integration. We recommend using [Buildbox](https://buildbox.io) to run a build agent on your local server. Buildbox integrates well with Github or Bitbucket, using hooks to allow Buildbox to automatically trigger builds on your local server. Follow Buildbox's [getting started instructions](https://buildbox.io/docs/guides/getting-started) and create two pipeline tasks to run (1) the unit tests and (2) the integration tests. In the "Script to Run" field, put `scripts/unit.sh` to run the unit tests and `scripts/integration.sh` to run the integration tests. The integration tests do require [TI Shadow](#tiShadow) to be set up.
+
+### Troubleshooting Buildbox ###
+
+Occasionally you will need to change the permissions of the `scripts/unit.sh` and `scripts/integration.sh` scripts to make them executable. These can be found in the `~/.buildbox/{NAME_OF_BUILDBOX_AGENT}/excl-mobile/excl-mobile` directory. You will need to `chmod` those to be executable if you have any problems.
+
+# <a name="appStore"></a> Deploying to the App Stores #
 
 ## Android ##
 
