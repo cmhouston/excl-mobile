@@ -95,7 +95,7 @@ Titanium's built in android emulator is slow and has limited functionality. In o
 
 #### Setting Up GenyMotion on a Mac ####
 
-There are a few more changes that need to be made in order to make GenyMotion compatible with a Mac. Follow these instructions for [How to Set Up GenyMotion on a Mac](blob/master/docs/howToSetUpGenyMotionOnAMac.md)
+There are a few more changes that need to be made in order to make GenyMotion compatible with a Mac. Follow these instructions for [How to Set Up GenyMotion on a Mac](docs/howToSetUpGenyMotionOnAMac.md)
 
 ## <a name="debugging"></a> Debugging ##
 
