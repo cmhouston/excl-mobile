@@ -7,7 +7,7 @@
 - [Titanium](#titanium)
 	1. [Introduction to Titanium](#introToTitanium)
 	- Running the Unit Tests 				(MN)
-	- Running the ExCL App <#runningExCL>
+	- [Running the ExCL App](#runningExCL)
 	- [Debugging](#debugging)
 	- [Code Overview](#codeOverview)
 		1. Navigation Controller 			(??)
