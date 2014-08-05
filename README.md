@@ -77,9 +77,8 @@ The root directory of the project contains a `package.json` file which will inst
 By default the `coverage` and `node_modules` folders won't be committed to the git repo when ever you commit something.
 
 #### Further reading ####
-[Mocha Docs](http://visionmedia.github.io/mocha/#assertions)
-
-[Sinon Docs (For Mocking)](http://sinonjs.org/docs/)
+* [Mocha Docs](http://visionmedia.github.io/mocha/#assertions) 
+* [Sinon Docs (For Mocking)](http://sinonjs.org/docs/)
 
 ## <a name="runningExCL"></a> Running the ExCL Application ##
 
