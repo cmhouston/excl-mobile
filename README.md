@@ -78,6 +78,7 @@ By default the `coverage` and `node_modules` folders won't be committed to the g
 
 #### Further reading ####
 [Mocha Docs](http://visionmedia.github.io/mocha/#assertions)
+
 [Sinon Docs (For Mocking)](http://sinonjs.org/docs/)
 
 ## <a name="runningExCL"></a> Running the ExCL Application ##
