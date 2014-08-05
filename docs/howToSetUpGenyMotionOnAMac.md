@@ -2,7 +2,7 @@
 
 When using Titanium 3.2 there are a few extra steps necessary to set up GenyMotion on a Mac
 
-## Install GenyMotion ##
+## Installing Primary Tools ##
 
 1. Install Genymotion and register
 - Install your Genymotion emulator
@@ -11,69 +11,69 @@ When using Titanium 3.2 there are a few extra steps necessary to set up GenyMoti
 	   Finder > Go > Go To Folder > ~/.Genymobile/Genymotion/
 	- Remove the contents of the "ova" folder and the folder from "deployed"
 	    with the same name as the emulator you were trying to install
+- Install [Homebrew](http://brew.sh/)
+	1. Run the following command in the terminal and follow the prompts to complete the installation.
+	  	
+			$ ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 
-- Install Homebrew (reference: http://brew.sh/)
-	1. run this in Terminal:
-	  $ ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
-  and follow the prompts to complete the installation.
-
-- Run this in Terminal:
-  $ brew install android-sdk
-
-- Run this in Terminal:
-  $ brew install android-ndk
-
-[STOP]()
-
-7) Show invisible folders [OPTIONAL BUT HIGHLY RECOMMENDED]
-	a) Easy way to do this is to install the app inVisible by NorthernSpy Software (http://www.northernspysoftware.com/)
-	b) The app runs a set of commands to show and hide invisible files. This can also be done via command line:
-		i) Run these 2 lines in Terminal to show invisible files:
-			defaults write com.apple.finder AppleShowAllFiles TRUE 
- 			killall Finder
+- Install the Android SDK and NDK using the following commands: 
 		
-		ii) Run these 2 lines in Terminal to hide invisible files:
-			defaults write com.apple.finder AppleShowAllFiles FALSE 
- 			killall Finder
-8) Navigate to:
-	Finder > Go > Go To Folder > ~/.bash_profile
-	(If you can't find this file then you probably didn't do step 7)
+		$ brew install android-sdk
+ 		$ brew install android-ndk
+
+## Set The Machine's Path to the Android Tools ##
+
+1. Show invisible folders
+	- Easy way to do this is to install the app inVisible by [NorthernSpy Software](http://www.northernspysoftware.com/)
+	- The app runs a set of commands to show and hide invisible files. This can also be done via command line:
+		
+			$ defaults write com.apple.finder AppleShowAllFiles TRUE 
+			$ killall Finder
+		
+- Navigate to: Finder > Go > Go To Folder > ~/.bash_profile
   And add the following:
-	##
-	## Android SDK
-	##
-	export ANDROID_SDK=/usr/local/Cellar/android-sdk/23.0.2
-	export ANDROID_NDK=/usr/local/Cellar/android-ndk/r7b
-	a) You may need to change the above paths depending on the current version of the SDK/NDK.
-	b) As new Android SDK and NDK's are released, run this in Terminal:
-		brew upgrade
-	   and edit your ".bash_profile" and Titanium Studio settings for each release.
+	
+		##
+		## Android SDK
+		##
+		export ANDROID_SDK=/usr/local/Cellar/android-sdk/23.0.2
+		export ANDROID_NDK=/usr/local/Cellar/android-ndk/r7b
 
+	1. You may need to change the above paths depending on the current version of the SDK/NDK.
+	- As new Android SDK and NDK's are released, run this in Terminal:
+		
+			$ brew upgrade
+	- Edit your ".bash_profile" and Titanium Studio settings for each release.
 
-9) Start the Android SDK Manager
-	a) Run this in Terminal: 
-		android
-	b) Install the appropriate files based on platform
-	c) You may need to follow the Appcelerator wiki for installing required SDK components
-	   (https://wiki.appcelerator.org/display/guides2/Installing+and+Updating+Android+SDK)
+## Install Remaining SDK Components ##
 
-10) Open Titanium Studio and navigate to:
+- Start the Android SDK Manager
+	1. Run this in Terminal: 
+
+			$ android
+	- Install the appropriate files based on platform
+	- To install required SDK components refer to this [Appcelerator Wiki](https://wiki.appcelerator.org/display/guides2/Installing+and+Updating+Android+SDK)
+
+## Set Titanium Paths for Android Tools##
+
+1. Open Titanium Studio and navigate to:
 	Titanium Studio > Preferences > Studio > Platforms > Android
-	a) set "Android SDK Home" to the version folder of your android sdk, which lives in:
-		/usr/local/Cellar/android-sdk/
-	   You can confirm this by navigating there yourself with invisible folders being shown
-	b) set "Android NDK Home" to the version folder of your android ndk, which lives in:
-		/usr/local/Cellar/android-ndk/
-	c) NOTE: just selecting the "android-sdk" or "android-ndk" folders will not work, you
-	   must highlight the version folder within these
-	d) Select your default Emulator
+
+- Set "Android SDK Home" to the version folder of your android sdk, which lives in:
+	/usr/local/Cellar/android-sdk/
+	- You can confirm this by navigating there yourself with invisible folders being shown
+
+- Set "Android NDK Home" to the version folder of your android ndk, which lives in:
+	/usr/local/Cellar/android-ndk/
+	- NOTE: just selecting the "android-sdk" or "android-ndk" folders will not work, you must highlight the version folder within these
+	
+- Select your default Emulator
 
 At this point you should be done!
 
+## Troubleshooting ##
 
-
-
-<< Additional Errors >>
+[STOP]()
 
 Run this in Terminal as a point of reference:
 	ti info -t android -o json
