@@ -2,10 +2,10 @@
 	layout: "vertical",
 	top: "10%",
 	width: "90%",
-	borderColor: "#000000",
+	borderColor: Alloy.Globals.colors.filterByAgeMenuColor,
 	borderRadius: "20",
 	borderWidth: "3dip",
-	backgroundColor: "#000000",
+	backgroundColor: Alloy.Globals.colors.filterByAgeMenuColor,
 }
 
 ".win": {
@@ -14,7 +14,7 @@
 }
 
 ".title": {
-	color: '#FFFFFF',
+	color: Alloy.Globals.colors.lightFontColor,
 	font: {
 		fontSize: '22dp',
 		fontWeight: 'bold',
@@ -26,11 +26,11 @@
 
 ".titleBar": {
 	height: "35dip",
-	backgroundColor: "black"
+	backgroundColor: Alloy.Globals.colors.filterByAgeMenuColor
 }
 ".hint":{
 	textAlign: "left",
-	backgroundColor: "black",
+	backgroundColor: Alloy.Globals.colors.filterByAgeMenuColor,
 	left: "10dip",
 	width: "98%"
 }

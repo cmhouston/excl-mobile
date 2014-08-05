@@ -124,7 +124,7 @@ function createPlainRowWithHeight(rowHeight) {
 		height : rowHeight,
 		width : '100%',
 		top : '15dip',
-		backgroundColor : '#FFFFFF'
+		backgroundColor : Alloy.Globals.colors.pageBackgroundColor
 	});
 
 	return row;

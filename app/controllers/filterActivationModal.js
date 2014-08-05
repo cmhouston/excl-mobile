@@ -61,11 +61,11 @@ function createFilterView(filter, allChecked) {
 
 	//Ti.API.info("filter name: " + name + "(" + active + ")");
 
-	var color = 'white';
+	var color = Alloy.Globals.colors.lightFontColor;
 	if (OS_IOS) {
-		color = 'black';
+		color = Alloy.Globals.colors.accentButtonColor;
 		$.titleBar.top = '10dip';
-		$.hint.color = 'white';
+		$.hint.color = Alloy.Globals.colors.lightFontColor;
 	}
 
 	var args = {
@@ -147,7 +147,7 @@ function formatCheckAllOffButton(button) {
 
 function setTableBackgroundColor() {
 	if (OS_ANDROID) {
-		$.filterTable.backgroundColor = "black";
+		$.filterTable.backgroundColor = Alloy.Globals.colors.filterByAgeMenuColor;
 	}
 }
 
@@ -178,13 +178,13 @@ function addViewBehindModalInIOS() {
 
 function formatCloseButtonColor() {
 	if (OS_ANDROID) {
-		$.close.color = "white";
-		$.close.backgroundColor = "#303030";
-		$.close.borderColor = "white";
+		$.close.color = Alloy.Globals.colors.lightFontColor;
+		$.close.backgroundColor = Alloy.Globals.colors.accentBorderColor;
+		$.close.borderColor = Alloy.Globals.colors.lightFontColor;
 		$.close.borderRadius = "3";
 		$.close.borderWidth = "1";
 	} else {
-		$.close.color = "#00FFFF";
+		$.close.color = Alloy.Globals.colors.accentButtonColor;
 	}
 }
 

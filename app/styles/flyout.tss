@@ -13,16 +13,14 @@
 "#menuContainer":{
 	separatorStyle: 'NONE',
 	separatorColor: 'transparent',
-	backgroundColor: '#F2F2F2',
+	backgroundColor: Alloy.Globals.colors.flyoutColor,
 	width: "50%",
 	layout: "vertical"
-	//left: "50%"
 },
 
 // Delete if unneeded
 ".viewRow":{
 	height: '50dip',
-	//layout: 'horizontal'
 },
 
 ".viewRow[formFactor=tablet]":{
@@ -63,7 +61,7 @@
 		fontSize: "15dip",
 		fontFamily: Alloy.Globals.defaultGlobalFontFamily
 	},
-	color: "#000"
+	color: Alloy.Globals.colors.darkFontColor
 },
 
 ".rowLabel[formFactor=tablet]":{
@@ -81,5 +79,5 @@
 		fontSize: "15dip",
 		fontFamily: Alloy.Globals.defaultGlobalFontFamily
 	},
-	color: "#000"
+	color: Alloy.Globals.colors.darkFontColor
 }

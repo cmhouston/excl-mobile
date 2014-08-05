@@ -228,7 +228,6 @@ function insertXNumberOfButtons(numberOfButtons) {
 	var objectArgs;
 	objectArgs = {
 		borderRadius : 0,
-		borderColor : "white",
 		backgroundColor : Alloy.Globals.colors.filterByAgeTabAccentColor,
 		width : '100%',
 		top : "0",
@@ -256,7 +255,7 @@ function insertXNumberOfButtons(numberOfButtons) {
 			height : "50dip",
 			// borderRadius : "10dip",
 			backgroundColor : Alloy.Globals.colors.filterByAgeTabColor,
-			color : '#FFFFFF',
+			color : Alloy.Globals.colors.lightFontColor,
 			id : "button" + i,
 			left : '1%',
 			viewAssociatedId : filterTabIds[i]
@@ -264,7 +263,7 @@ function insertXNumberOfButtons(numberOfButtons) {
 		var button = buttonService.createCustomButton(objectArgs);
 		objectArgs = {
 			// borderRadius : "30dip",
-			backgroundColor : '#FFFFFF',
+			backgroundColor : Alloy.Globals.colors.lightFontColor,
 			width : '100%',
 			height : '0',
 			visible : false,
@@ -324,7 +323,7 @@ function showRespectiveView(buttonSource) {
 
 function keepFirstViewOpen(view, button) {
 	openFirstView(view);
-	button.backgroundColor = '#FFFFFF';
+	button.backgroundColor = Alloy.Globals.colors.pageBackgroundColor;
 	button.color = Alloy.Globals.colors.filterByAgeTabColor;
 	lastSelectedButton = button;
 	firstView = view;
@@ -334,9 +333,9 @@ function keepFirstViewOpen(view, button) {
 function changeButtonColor(buttonId) {
 	if (lastSelectedButton) {
 		lastSelectedButton.backgroundColor = Alloy.Globals.colors.filterByAgeTabColor;
-		lastSelectedButton.color = '#FFFFFF';
+		lastSelectedButton.color = Alloy.Globals.colors.lightFontColor;
 	}
-	buttonId.backgroundColor = '#FFFFFF';
+	buttonId.backgroundColor = Alloy.Globals.colors.pageBackgroundColor;
 	buttonId.color = Alloy.Globals.colors.filterByAgeTabColor;
 	lastSelectedButton = buttonId;
 }
@@ -361,18 +360,6 @@ function hideMenuBtnIfKioskMode() {
 	if (Alloy.Globals.adminModeController.isInKioskMode()) {
 		$.navBar.hideMenuBtn();
 	}
-}
-
-function goToPostLandingPage(e) {
-	var post = fetchPostById(e.source.itemId);
-	var analyticsTitle = getAnalyticsPageTitle() + '/' + post.name;
-	Ti.API.info("---000---\r\n" + analyticsTitle);
-	var analyticsLevel = "Post Landing";
-	//currentTabGroup.remove();
-	var controller = Alloy.createController('postLanding', eval([post, color]));
-	controller.setAnalyticsPageTitle(analyticsTitle);
-	controller.setAnalyticsPageLevel(analyticsLevel);
-	Alloy.Globals.navController.open(controller);
 }
 
 detectEventEnabled();
