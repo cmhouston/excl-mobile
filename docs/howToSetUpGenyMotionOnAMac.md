@@ -73,7 +73,6 @@ At this point you should be done!
 
 ## Troubleshooting ##
 
-[STOP]()
 ### General TroubleShooting ###
 Run this in Terminal as a point of reference:
 	
