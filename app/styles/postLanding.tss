@@ -260,7 +260,7 @@
 	top: '15dip',
 	opacity: '1.0',
 	zIndex: "15",
-	visible: false
+	visible: false,
 }
 
 "#commentsModal[formFactor=tablet]": {
@@ -277,7 +277,8 @@
 		fontFamily: Alloy.Globals.defaultGlobalFontFamily
 	},
 	top: '4%',
-	textAlign: 'center'
+	width: Ti.UI.FILL,
+	left: '7%'
 }
 
 "#insertName":{
@@ -315,6 +316,7 @@
 		fontFamily: Alloy.Globals.defaultGlobalFontFamily
 	},
 	color: Alloy.Globals.colors.darkFontColor,
+	width: Ti.UI.FILL,
 	left: '7%'
 }
 
@@ -360,6 +362,7 @@
 		fontFamily: Alloy.Globals.defaultGlobalFontFamily
 	},
 	color: Alloy.Globals.colors.darkFontColor,
+	width: Ti.UI.FILL,
 	left: '7%'
 }
 
