@@ -11,6 +11,7 @@
 	- [Debugging](#debugging)
 	- Code Overview (#codeOverview)					(KC)
 	- Enhancing the ExCL App 						(JL)
+		- Reporting Bugs
 	- TiShadow 										(LI<JY)
 	- Distribution									(DH)
 	- TroubleShooting								(All)
@@ -138,6 +139,10 @@ For more in depth information, refer to Appcelerator's documentation on [Alloy F
 ## Enhancing the ExCL App ##
 
 (JL)
+
+### Reporting Bugs ###
+
+Please report all bugs to our [JIRA account]()
 
 ## Ti Shadow ##
 
