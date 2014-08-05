@@ -125,15 +125,19 @@ function organizePosts(allPosts) {
 		updateFilterIdArray();
 		selectedFilters = filter.formatActiveFiltersIntoArray(Alloy.Collections.filter);
 		Ti.API.info("Filter list: " + JSON.stringify(selectedFilters));
-		dictOrderedPosts = createEmptyFilterKeysInOrderedPostsDict(dictOrderedPosts, selectedFilters);
-		for (var i = 0; i < allPosts.length; i++) {
-			filter.sortFilteredContentIntoDict(selectedFilters, dictOrderedPosts, allPosts[i]);
-		}
-		if (JSON.stringify(dictOrderedPosts) == "{}") {
-			showDefaultError();
-		}
-		if (!dictOrderedPosts["0"]) {
-			dictOrderedPosts["0"] = [];
+		if (JSON.stringify(selectedFilters) != "[]") {
+			dictOrderedPosts = createEmptyFilterKeysInOrderedPostsDict(dictOrderedPosts, selectedFilters);
+			for (var i = 0; i < allPosts.length; i++) {
+				filter.sortFilteredContentIntoDict(selectedFilters, dictOrderedPosts, allPosts[i]);
+			}
+			if (JSON.stringify(dictOrderedPosts) == "{}") {
+				showDefaultError();
+			}
+			if (!dictOrderedPosts["0"]) {
+				dictOrderedPosts["0"] = [];
+			}
+		} else {
+			dictOrderedPosts["0"] = allPosts;
 		}
 	} else {
 		dictOrderedPosts["0"] = allPosts;
