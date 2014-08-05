@@ -166,7 +166,7 @@ function createExhibitsCarousel(exhibits) {
 	$.exhibitsCarousel.removeView($.placeholder);
 
 	for ( i = 0; i < exhibits.length; i++) {
-		exhibitText[i] = exhibits[i].long_description;
+		exhibitText[i] = exhibits[i].description;
 		var exhibitView;
 
 		if (OS_IOS) {
@@ -178,14 +178,13 @@ function createExhibitsCarousel(exhibits) {
 	}
 
 	$.exhibitsCarousel.setCurrentPage(0);
-
 	$.headingLabel.text = "Tap to Explore!";
 	//"Explore This " + json.data.museum.exhibit_label;
-	$.exhibitInfoLabel.text = exhibits[0].long_description;
-
-	if (OS_ANDROID) {
+	$.exhibitInfoLabel.text = exhibits[0].description;
+	
+	if(OS_ANDROID){
 		resizeExhibitCarouselAndroid();
-	}//*/
+	}
 
 	$.exhibitsCarousel.addEventListener("scrollend", function(e) {
 		onExhibitsScroll(e, exhibits);
@@ -225,12 +224,14 @@ function createExhibitsImageIOS(exhibits, index) {
 			onExhibitsClick(exhibits);
 		}
 	});
-
+/*
 	var addPagingArrowsFunction = function() {
 		addPagingArrowsToView(exhibitView, index, numOfExhibits);
+		Ti.API.info("_______Adding paging arrows to view");
 	};
 	exhibitView.addEventListener("load", addPagingArrowsFunction);
-
+	*/
+	addPagingArrowsToView(exhibitView, index, numOfExhibits);
 	exhibitViewWithTitle.add(exhibitView);
 	return exhibitViewWithTitle;
 }
@@ -444,7 +445,7 @@ function onExhibitsClick(exhibits) {
 	$.exhibitInfoScrollView.scrollTo(0, 0);
 	if (!isBottomViewShowing()) {
 		var pageIndex = $.exhibitsCarousel.currentPage;
-		$.exhibitInfoLabel.text = exhibits[pageIndex].long_description;
+		$.exhibitInfoLabel.text = exhibits[pageIndex].description;
 		animateTopViewDown();
 
 	} else {
@@ -521,8 +522,7 @@ function onExhibitsScroll(e, exhibits) {
 	var index = $.exhibitsCarousel.currentPage;
 	$.headingLabel.text = "Tap to Explore!";
 	//"Explore This " + json.data.museum.exhibit_label;
-	$.exhibitInfoLabel.text = exhibits[index].long_description;
-
+	$.exhibitInfoLabel.text = exhibits[index].description;
 	animateTopViewUp();
 	setTimeout(function() {
 		changeVisibleComponents(e);

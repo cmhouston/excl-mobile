@@ -10,9 +10,7 @@
 	- [Running the ExCL App](#runningExCL)
 		1. Android
 		- iOS
-	- [Debugging](#debugging)				(KC/GK/SF)
-		1. Android
-		- iOS 
+	- [Debugging](#debugging)
 	- [Code Overview](#codeOverview)
 		1. Navigation Controller 			(??)
 		- Analytics 						(KC)
@@ -67,21 +65,42 @@ The run option at the top left of the screen is by default unavailable. To enabl
 
 ## Running The Unit Tests ##
 
+MN
+
 ## <a name="#runningExCL"></a> Running the ExCL Application ##
 
-### Android ###
+Titanium is designed to easily deploy and simulate projects for multiple platforms. 
 
-#### GenyMotion Emulator ####
+### Testing and Device Deployment ###
 
-#### Android Device ####
+To deploy to an iOS device refer to Appcelerator's documentation on [Deploying to iOS Devices](http://docs.appcelerator.com/titanium/3.0/#!/guide/Deploying_to_iOS_devices)
 
-### iOS ###
+To deploy to an Android device refer to Appcelerator's documentation on [Deploying to Android Devices](http://docs.appcelerator.com/titanium/3.0/#!/guide/Deploying_to_Android_devices)
 
-#### iOS Emulator ####
+### Android GenyMotion Emulator ###
 
-#### iOS Device ####
+Titanium's built in android emulator is slow and has limited functionality. In order to avoid this issue the ExCL team chose to use the GenyMotion  emulator. Appcelerator provides an article regarding [Using GenyMotion with Titanium 3.2](http://www.appcelerator.com/blog/2013/12/using-genymotion-with-titanium-3-2/)
+
+#### Setting Up GenyMotion on a Mac ####
+
+There are a few more changes that need to be made in order to make GenyMotion compatible with a Mac. Follow these instructions for [How to Set Up GenyMotion on a Mac](docs/howToSetUpGenyMotionOnAMac.md)
 
 ## <a name="debugging"></a> Debugging ##
+
+When using the built in Emulators debugging is very simple. Refer to Appcelerator's documentation for [Debugging on the Emulator or Simulator](http://docs.appcelerator.com/titanium/3.0/#!/guide/Debugging_on_the_Emulator_or_Simulator)
+
+### Debugging on GenyMotion ###
+
+There are a few settings that need to be changed in order to debug on GenyMotion. If you are getting a "no SD card error" then follow these steps in order to resolve the issue:
+
+1. Go to C:\Users\<username>\AppData\Roaming\Titanium\mobilesdk\win32\3.2.3.GA\android\cli\commands
+	if on iOS, go to /Users/parivedadeveloper/Library/Application Support/Titanium/mobilesdk/osx/3.2.3.GA/android/cli/commands
+- Edit "_build.js"
+- Change line 1344 to `} else if (!emu.sdcard && (emu.type !== 'genymotion')) {`
+
+Now try debugging again and the error should be gone
+
+* Adapted from http://stackoverflow.com/questions/21449970/titanium-studio-3-2-0-cannot-debug-using-genymotion-2-0-3e
 
 ## <a name="codeOverview"></a> Code Overview ##
 

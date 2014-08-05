@@ -89,11 +89,11 @@
 }
 
 "#exhibitInfoLabel": {
+	width: "94%",
 	color: Alloy.Globals.colors.darkFontColor,
-	width: "90%",
 	font: {
 		fontFamily: Alloy.Globals.defaultGlobalFontFamily
-	}
+	},
 }
 
 "#exhibitInfoLabel[formFactor=tablet]":{
