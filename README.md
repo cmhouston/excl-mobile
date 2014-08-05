@@ -7,9 +7,7 @@
 - [Titanium](#titanium)
 	1. [Introduction to Titanium](#introToTitanium)
 	- Running the Unit Tests 				(MN)
-	- [Running the ExCL App](#runningExCL)
-		1. Android
-		- iOS
+	- Running the ExCL App <#runningExCL>
 	- [Debugging](#debugging)
 	- [Code Overview](#codeOverview)
 		1. Navigation Controller 			(??)
@@ -52,9 +50,9 @@ In order to view and edit the ExCL project using Titanium studio the project mus
 After the project has been downloaded to your local system execute the following steps to access it through your IDE
 
 1. Open Titanium Studio and go to File->Import
-2. Select Titanium->Existing Mobile Project and click next
-3. Browse your local file system and choose the folder you cloned from github
-4. Set your desired project name and click finish
+- Select Titanium->Existing Mobile Project and click next
+- Browse your local file system and choose the folder you cloned from github
+- Set your desired project name and click finish
 
 The run option at the top left of the screen is by default unavailable. To enable this button execute the following steps:
 
@@ -71,6 +69,15 @@ MN
 
 Titanium is designed to easily deploy and simulate projects for multiple platforms. 
 
+
+### Android GenyMotion Emulator ###
+
+Titanium's built in android emulator is slow and has limited functionality. In order to avoid this issue the ExCL team chose to use the GenyMotion  emulator. Appcelerator provides an article regarding [Using GenyMotion with Titanium 3.2](http://www.appcelerator.com/blog/2013/12/using-genymotion-with-titanium-3-2/)
+
+#### Setting Up GenyMotion on a Mac ####
+
+There are a few more changes that need to be made in order to make GenyMotion compatible with a Mac. Follow these instructions for [How to Set Up GenyMotion on a Mac](docs/howToSetUpGenyMotionOnAMac.md)
+
 ### iOS Device Deployment ###
 
 To deploy to an iOS device refer to Appcelerator's documentation on [Deploying to iOS Devices](http://docs.appcelerator.com/titanium/3.0/#!/guide/Deploying_to_iOS_devices)
@@ -84,18 +91,9 @@ If your computer does not recognize your Android device it is also possible to m
 1. Enable Unknown Sources in the Device's settings app
 - Connect the device to the computer via USB
 - Build the Application by running it on an Android Emulator
-- Navigate to (Project Folder)/build/android/bin and retrieve the APK file
+- Navigate to (Project Folder)/build/android/bin on the computer and retrieve the APK file
 - Copy this file to the Downloads folder on the device
 - Disconnect your device and navigate to the APK file to install
-
-
-### Android GenyMotion Emulator ###
-
-Titanium's built in android emulator is slow and has limited functionality. In order to avoid this issue the ExCL team chose to use the GenyMotion  emulator. Appcelerator provides an article regarding [Using GenyMotion with Titanium 3.2](http://www.appcelerator.com/blog/2013/12/using-genymotion-with-titanium-3-2/)
-
-#### Setting Up GenyMotion on a Mac ####
-
-There are a few more changes that need to be made in order to make GenyMotion compatible with a Mac. Follow these instructions for [How to Set Up GenyMotion on a Mac](docs/howToSetUpGenyMotionOnAMac.md)
 
 ## <a name="debugging"></a> Debugging ##
 
