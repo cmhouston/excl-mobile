@@ -30,12 +30,6 @@
 //
 // Alloy.Globals.someGlobalFunction = function(){};
 
-
-Ti.API.info("Start exclConfig output\n");
-Ti.API.info(Alloy.CFG.excl.colors.exhibitsCarouselBackgroundColor);
-Ti.API.info("End output\n");
-
-
 var AnalyticsController = require('analyticService/analyticService');
 Alloy.Globals.analyticsController = new AnalyticsController();
 
@@ -47,15 +41,14 @@ Alloy.Globals.storageService = new StorageService();
 
 Alloy.Globals.isInDefaultWordpressEnviroment = function(){
 	if(this.rootWebServiceUrl != Alloy.CFG.excl.wordpressEnvironments["prod"]){
-		Ti.API.info("Global: "+this.rootWebServiceUrl+"   cfg: "+ Alloy.CFG.excl["prod"]);
+		Ti.API.info("Global: "+this.rootWebServiceUrl+"   cfg: "+ Alloy.CFG.excl.wordpressEnvironments["prod"]);
 	}
-	return this.rootWebServiceUrl == Alloy.CFG.excl["prod"];
+	return this.rootWebServiceUrl == Alloy.CFG.excl.wordpressEnvironments["prod"];
 };
 
 Alloy.Globals.setRootWebServiceFromUrls = function(key){
-	if( Alloy.CFG.excl[key] ){
-		Alloy.Globals.setRootWebServiceUrl(Alloy.CFG.excl[key]);
-		Ti.API.info("---000---" +Alloy.CFG.excl[key]);
+	if( Alloy.CFG.excl.wordpressEnvironments[key] ){
+		Alloy.Globals.setRootWebServiceUrl(Alloy.CFG.excl.wordpressEnvironments[key]);
 	}
 };
 
