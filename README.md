@@ -176,18 +176,6 @@ Please report all bugs to our [JIRA account](https://cmhexcl.atlassian.net)
 
 STANDUP
 
-### Reporting Bugs ###
-
-Please report all bugs to our [JIRA account](https://cmhexcl.atlassian.net)
-
-## Ti Shadow ##
-
-(LI,JY)
-
-## Troubleshooting ##
-
-STANDUP
-
 # <a name="unitTestingAndCI"></a> Unit Testing and Continuous Integration #
 
 We recommend using continuous integration to maintain the quality of the product. This repository has several unit tests written using [Mocha](http://visionmedia.github.io/mocha/) and several integration tests using TiShadow's spec format.
