@@ -87,10 +87,12 @@ function handleAdminModeDialog(self) {
 	}
 	
 	dialog.addEventListener('click', function(e) {
-	    if (e.text == "friend" || e.source.androidView.value == "friend") {
+	    if (e.text == Alloy.CFG.excl.kioskModePassword ||
+	    	e.source.androidView.value == Alloy.CFG.excl.kioskModePassword) {
 			self.kioskMode.updateKioskMode();
 	    } 
-    	else if (e.text == "wordpress" || e.source.androidView.value == "wordpress") {
+    	else if (e.text == Alloy.CFG.excl.adminPassword || 
+    		     e.source.androidView.value == Alloy.CFG.excl.adminPassword) {
     		var options = Alloy.createController("wordpressEnvironmentOptionsModal");
     		self.kioskMode.exitKioskMode();
     		Alloy.Globals.navController.closeMenu();

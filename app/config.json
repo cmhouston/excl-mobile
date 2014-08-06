@@ -6,6 +6,8 @@
 				"qa": "http://excl.dreamhosters.com/qa/wp-json/v01/excl/museum/81",
 				"prod": "http://excl.dreamhosters.com/prod/wp-json/v01/excl/museum/81"
 			},
+			"adminPassword": "wordpress",
+			"kioskModePassword": "kiosk",
 			"defaultGlobalFontFamily": "texgyreheros-regular",
     		"colors": {
 				"navBarColor": "#F58220",
