@@ -8,13 +8,14 @@
 	1. [Introduction to Titanium](#introToTitanium)
 	- [Running the ExCL App](#runningExCL)
 	- [Debugging](#debugging)
-	- Code Overview (#codeOverview)					(KC)
+	- [Code Overview](#codeOverview)			
+		- uml (KC)
 	- Enhancing the ExCL App 						(JL)
 		- Reporting Bugs
 	- TiShadow 										(LI<JY)
 	- Distribution									(DH)
 	- Troubleshooting								(All)
-- Unit Testing and Continuous Integration
+- [Unit Testing and Continuous Integration](#unitTestingAndCI)
 	- [Running the Unit Tests](#runningUnitTests)
 - [Deploying to the App Store](#appStore)			(AP)
 	1. Apple
@@ -23,7 +24,7 @@
 # <a name="exclIntro"></a> Introduction to ExCL #
 ExCL is a platform that enables museums to engage visitors at museum activities through the use of a mobile application. Content is managed through a WordPress content management system by museum staff, and visitors will download the customized ExCL app, written using [Appcelerator Titanium](http://www.appcelerator.com/titanium/), to their mobile device. ExCL is also intended to be used by museums on kiosk devices and provides a kiosk mode for this purpose.
 
-ExCL is divided into two parts: the content management system and the Appcelerator Titanium mobile application. This repository is for the Titanium mobile application. If you're interested in the content management side, click here to go to the [Wordpress project](https://github.com/cmhouston/excl-cms).
+ExCL is divided into two parts: the content management system and the Appcelerator Titanium mobile application. This repository is for the Titanium mobile application. If you're interested in the content management side, click here to go to the [Wordpress project on Github](https://github.com/cmhouston/excl-cms).
 
 This documentation is intended for ExCL developers and details the steps to setup and enhance the mobile application. We will describe the Titanium technical details, followed by tips on using a continuous integration build server and deploying to the app stores.
 
@@ -31,7 +32,7 @@ This documentation is intended for ExCL developers and details the steps to setu
 
 ## <a name="introToTitanium"></a> Introduction to Titanium ##
 
-Titanium is a tool that allows developers to create applications for multiple platforms using a single project. For this project we are using Titanium in order to support both iOS and Android operating systems. 
+Titanium is a tool that allows developers to create mobile applications for multiple platforms using a single project. For this project we are using Titanium in order to support both iOS and Android operating systems. 
 
 Appcelerator provides many useful features and examples, which can be found under the [Titanium SDK Documentation](http://docs.appcelerator.com/titanium/3.0/) 
 
@@ -148,11 +149,11 @@ Please report all bugs to our [JIRA account]()
 
 STANDUP
 
-# Unit Testing and Continuous Integration #
+# <a name="unitTestingAndCI"></a> Unit Testing and Continuous Integration #
 
 We recommend using continuous integration to maintain the quality of the product. This repository has several unit tests written using [Mocha](http://visionmedia.github.io/mocha/) and several integration tests using TiShadow's spec format.
 
-## <a name="runningUnitTests"><a/>Running the Unit Tests ##
+## <a name="runningUnitTests"></a>Running the Unit Tests ##
 
 In this project, we are using Mocha for unit testing, Istanbul for code coverage and Sinon for mocking.
 

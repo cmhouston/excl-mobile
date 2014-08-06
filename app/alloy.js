@@ -46,12 +46,17 @@ var StorageService = require('storageService/storageService');
 Alloy.Globals.storageService = new StorageService();
 
 Alloy.Globals.isInDefaultWordpressEnviroment = function(){
+	if(this.rootWebServiceUrl != Alloy.CFG.excl.wordpressEnvironments["prod"]){
+		Ti.API.info("Global: "+this.rootWebServiceUrl+"   cfg: "+ Alloy.CFG.excl["prod"]);
+	}
 	return this.rootWebServiceUrl == Alloy.CFG.excl["prod"];
 };
 
 Alloy.Globals.setRootWebServiceFromUrls = function(key){
-	if( Alloy.CFG.excl[key] )
+	if( Alloy.CFG.excl[key] ){
 		Alloy.Globals.setRootWebServiceUrl(Alloy.CFG.excl[key]);
+		Ti.API.info("---000---" +Alloy.CFG.excl[key]);
+	}
 };
 
 Alloy.Globals.setRootWebServiceUrl = function(url){
