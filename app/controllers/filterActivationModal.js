@@ -61,12 +61,12 @@ function createFilterView(filter, allChecked) {
 
 	//Ti.API.info("filter name: " + name + "(" + active + ")");
 
-	var color = Alloy.CFG.excl.colors.lightFontColor;
-	if (OS_IOS) {
-		color = Alloy.CFG.excl.colors.accentButtonColor;
-		$.titleBar.top = '10dip';
-		$.hint.color = Alloy.CFG.excl.colors.lightFontColor;
-	}
+	var color = Alloy.CFG.excl.colors.darkFontColor;
+	// if (OS_IOS) {
+		// color = Alloy.CFG.excl.colors.accentButtonColor;
+		// $.titleBar.top = '10dip';
+		// $.hint.color = Alloy.CFG.excl.colors.lightFontColor;
+	// }
 
 	var args = {
 		color : color,
@@ -181,7 +181,7 @@ function init() {
 	setSizeOfWindow();
 	addViewBehindModalInIOS();
 	setTableBackgroundColor();
-	formatCloseButtonColor();
+	// formatCloseButtonColor();
 	addFilters(allChecked);
 	removeSpinner();
 }
