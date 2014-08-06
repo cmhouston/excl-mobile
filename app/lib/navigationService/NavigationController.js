@@ -70,7 +70,7 @@ NavigationController.prototype.open = function(controller) {
 		var win = this.openWindow(windowToOpen);
 		return win;
 	} catch(e) {
-		Ti.API.info("Failed to open window: " + e);
+		Ti.API.error("Failed to open window: " + e);
 		return false;
 	}
 };
