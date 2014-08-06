@@ -46,25 +46,26 @@
 
 // Post landing tutorial styles
 
-"#sharingText": {
-	top: "120dip",
-	width: Ti.UI.FILL,
-	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
-}
-"#sharingText[formFactor=handheld]": {
-	top: "90dip"
-}
-
-"#commentingText": {
-	top: "305dip",
+"#viewCommentsText": {
+	bottom: "75dip",
+	left: "10dip",
+	right: "60dip",
 	width: Ti.UI.FILL,
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
 }
 
-"#commentingText[formFactor=tablet]": {
+"#viewCommentsText[formFactor=tablet]": {
 	top: "640dip",
 	width: Ti.UI.FILL,
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+}
+
+"#viewCommentsArrow": {
+	transform: Alloy.Globals.rotate270,
+	height: "30dip",
+	left: "5dip",
+	bottom: "50dip",
+	width: "55dip"
 }
 
 "#ExitButton": {
@@ -84,11 +85,11 @@
 }
 
 "#iconHighlight[formFactor=handheld]": {
-	width: "80%",
-	top: "140dip"
+	width: "85%",
+	top: "250dip"
 }
 
-".sharingIcon[formFactor=handheld]": {
+".sharingIcon": {
 	width: "40dip",
 	height: "40dip"
 }
@@ -100,54 +101,100 @@
 "#commentIcon[platform=android]": {
 	image: "/images/icons_android/comment_ready.png",
 	center: {
-		x: "27%"
+		x: "20%"
 	},
-	height: "55dip",
-	width: "55dip"
-}
-
-"#photoIcon[platform=android]": {
-	image: "/images/icons_android/camera_ready.png",
-	center: {
-		x: "50%"
-	}
 }
 
 "#shareIcon[platform=android]": {
 	image: "/images/icons_android/share_ready.png",
 	center: {
-		x: "72%"
+		x: "50%"
+	}
+}
+
+"#photoIcon[platform=android]": {
+	image: "/images/icons_android/camera_ready.png",
+	center: {
+		x: "80%"
 	}
 }
 
 "#commentIcon[platform=ios]": {
 	image: "/images/icons_ios/comment_ready.png",
 	center: {
-		x: "27%"
+		x: "20%"
 	},
-	height: "55dip",
-	width: "55dip"
-}
-
-"#commentIcon[platform=ios formFactor=tablet]": {
-	image: "/images/icons_ios/comment_ready.png",
-	center: {
-		x: "27%"
-	},
-	height: "85dip",
-	width: "85dip"
-}
-
-"#photoIcon[platform=ios]": {
-	image: "/images/icons_ios/camera_ready.png",
-	center: {
-		x: "50%"
-	}
 }
 
 "#shareIcon[platform=ios]": {
 	image: "/images/icons_ios/share_ready.png",
 	center: {
-		x: "72%"
+		x: "50%"
 	}
+}
+
+"#photoIcon[platform=ios]": {
+	image: "/images/icons_ios/camera_ready.png",
+	center: {
+		x: "80%"
+	}
+}
+
+"#commentArrow": {
+	top: "240dip",
+	center:{
+		x: "20%"
+	},
+	transform: Alloy.Globals.rotate90, 
+	height: "30dip",
+	width: "50dip"
+}
+
+"#commentText": {
+	top: "140dip",
+	width: Ti.UI.FILL,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+}
+"#commentText[formFactor=handheld]": {
+	top: "185dip",
+	left: "3dip",
+	width: "100dip"
+}
+
+"#shareArrow": {
+	top: "210dip",
+	transform: Alloy.Globals.rotate90, 
+	height: "30dip",
+	width: "120dip",
+	left: "30%"
+}
+
+"#shareText": {
+	top: "120dip",
+	width: Ti.UI.FILL,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+}
+"#shareText[formFactor=handheld]": {
+	top: "130dip",
+	left: "50dip",
+	width: "125dip"
+}
+
+"#photoArrow": {
+	top: "245dip",
+	left: "69%",
+	transform: Alloy.Globals.rotate270, 
+	height: "30dip",
+	width: "45dip"
+}
+
+"#photoText": {
+	top: "145dip",
+	width: Ti.UI.FILL,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+}
+"#photoText[formFactor=handheld]": {
+	top: "145dip",
+	right: "3dip",
+	width: "100dip"
 }

@@ -6,6 +6,8 @@
 				"qa": "http://excl.dreamhosters.com/qa/wp-json/v01/excl/museum/81",
 				"prod": "http://excl.dreamhosters.com/prod/wp-json/v01/excl/museum/81"
 			},
+			"adminPassword": "wordpress",
+			"kioskModePassword": "kiosk",
 			"defaultGlobalFontFamily": "texgyreheros-regular",
     		"colors": {
 				"navBarColor": "#F58220",
@@ -19,7 +21,7 @@
 				"postPreviewBackgroundColor": "#DFDFDF",
 				"filterByAgeTabColor": "#009345",
 				"filterByAgeTabAccentColor": "#98C21F",
-				"filterByAgeMenuColor": "#000000",
+				"filterByAgeMenuColor": "#E5E5E5",
 				"submitButtonColor": "#2ECC71",
 				"cancelButtonColor": "#E74C3C",
 				"loadingSpinnerTintColor": "#000000",
