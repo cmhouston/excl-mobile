@@ -76,12 +76,16 @@ function setPathForLibDirectory(libFile) {
 
 function openExhibits() {
 	if(doneLoading){
-		addSpinner();
-		var controller = Alloy.createController("exhibitLanding", eval([json]));
-		controller.setAnalyticsPageTitle("Exhibit Landing");
-		Alloy.Globals.navController.open(controller);
-		hideSpinner();
-	}		
+		if (json.data.museum.exhibits !== false) {
+			addSpinner();
+			var controller = Alloy.createController("exhibitLanding", eval([json]));
+			controller.setAnalyticsPageTitle("Exhibit Landing");
+			Alloy.Globals.navController.open(controller);
+			hideSpinner();
+		} else {
+			alert("There isn't any content yet! We'll be adding some soon.");
+		}
+	}
 }
 
 function openMap() {
