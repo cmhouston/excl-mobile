@@ -6,14 +6,14 @@
 - [WordPress](https://github.com/cmhouston/excl-cms#wordpress)
 - [Titanium](#titanium)
      1. [Introduction to Titanium](#introToTitanium)
-     2. [Getting Started](#gettingStarted)
+     - [Getting Started](#gettingStarted)
      - [Running the ExCL App](#runningExCL)
      - [Debugging](#debugging)
-     - [Code Overview](#codeOverview)                        
-     - [Enhancing the ExCL App](#enhancingExCL)            
-     - TiShadow                                              (LI<JY)
-     - Distribution                                             (DH)
-     - Troubleshooting                                        (All)
+     - [Code Overview](#codeOverview)         
+	 - Troubleshooting                                        (All)               
+- [Enhancing the ExCL App](#enhancingExCL)            
+- TiShadow                                              (LI<JY)
+- Distribution For Testing                                 (DH)
 - [Unit Testing and Continuous Integration](#unitTestingAndCI)  
 - [Deploying to the App Store](#appStore)
 
@@ -122,18 +122,29 @@ Unit testing is another important part of ExCL, and the unit tests can be found 
 
 For more in depth information, refer to Appcelerator's documentation on [Alloy Framework](http://docs.appcelerator.com/titanium/3.0/#!/guide/Alloy_Framework)
 
-
-
 ### Considerations while using ExCL ###
 
 - All Window Navigation must be done using the [Navigation Controller](/docs/NavigationController.md)
 - All fonts and colors are defined Globally within [Alloy.js]()
 
-## Enhancing the ExCL App ##
+## Troubleshooting ##
+
+STANDUP
+
+
+
+
+
+
+
+
+
+
+# Enhancing the ExCL App #
 
 At the beginning of the design process, the joint Pariveda and CMH team held a user story workshop, which generated many desired features for the app. The user stories that we didn't get to are listed under the "Could Haves" sprint in our [JIRA account](https://cmhexcl.atlassian.net). There are many other enhancements that are not new features, but instead changes to the current app. Below is a short description of each major area of suggested enhancements.
 
-### UX Enhancements to Current Features ###
+## UX Enhancements to Current Features ##
 
 - Tutorial for age filtering
 - Screen timeout for kiosk mode that resets to the desired home screen
@@ -143,12 +154,12 @@ At the beginning of the design process, the joint Pariveda and CMH team held a u
 - Make all labels in the app fully customizable from Wordpress
 - Allow users to e-mail content to themselves from kiosk mode
 
-### Technical Enhancements ###
+## Technical Enhancements ##
 
 - Better error handling for network connection errors
 - Refactor the Navigation Controller, as it is complicated and sometimes buggy
 
-### New Features ###
+## New Features ##
 
 A complete list of user stories that we did not get to can be found in this [Google Drive document](https://docs.google.com/spreadsheets/d/1iPPVocjjprG7frXPwPh00Mrh02YqDmYqOXqxRYbju2Q/edit?usp=sharing). The user stories that we decided were possibilities for this summer (everything other than stories rated as "won't") are in [JIRA](https://cmhexcl.atlassian.net), and the stories that haven't been completed yet can be found in the "Could Haves" sprint.
 
@@ -162,7 +173,7 @@ A complete list of user stories that we did not get to can be found in this [Goo
 - Grade-specific recommendations for teachers
 - Museum administrators can create surveys and polls to place in the app
 
-### Reporting Bugs ###
+## Reporting Bugs ##
 
 Please report all bugs to our [JIRA account](https://cmhexcl.atlassian.net)
 
@@ -170,9 +181,19 @@ Please report all bugs to our [JIRA account](https://cmhexcl.atlassian.net)
 
 (LI,JY)
 
-## Troubleshooting ##
 
-STANDUP
+
+
+
+
+
+
+
+
+
+
+
+
 
 # <a name="unitTestingAndCI"></a> Unit Testing and Continuous Integration #
 
