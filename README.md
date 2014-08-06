@@ -148,6 +148,7 @@ At the beginning of the design process, the joint Pariveda and CMH team held a u
 - Save name and e-mail on comment form to device so that users only enter it once
 - Make the restart function smoother visually. This function is used for language switching, refreshing the in case of a lost network connection, and restarting the tutorial.
 - Make all labels in the app fully customizable from Wordpress
+- Allow users to e-mail content to themselves from kiosk mode
 
 # Technical Enhancements #
 
@@ -156,13 +157,17 @@ At the beginning of the design process, the joint Pariveda and CMH team held a u
 
 # New Features #
 
-A complete list of user stories that we did not get to can be found in the "Could Haves" sprint in JIRA.
+A complete list of user stories that we did not get to can be found in this [Google Drive document](https://docs.google.com/spreadsheets/d/1iPPVocjjprG7frXPwPh00Mrh02YqDmYqOXqxRYbju2Q/edit?usp=sharing). The user stories that we decided were possibilities for this summer (everything other than stories rated as "won't") are in [JIRA](https://cmhexcl.atlassian.net), and the stories that haven't been completed yet can be found in the "Could Haves" sprint.
 
+- Location tracking using low-energy Bluetooth beacons
 - Bookmarking: Users can save suggested activities and view them later
-- Activating tool apps: Allow users to activate built-in tool apps in their phone (stopwatch, calculator, etc.) from the app for relevant activities
+- Allow users to activate built-in tool apps in their phone (stopwatch, calculator, etc.) from the app for relevant activities
 - "You May Also Like...": Give users recommendations for other activities to try based on which activity they are currently viewing
 - Questions and Results: Ask users questions about the activity they tried, and then display the results of this poll to the user
 - Visitor-Generated Content: Allow users to provide content, such as activity recommendations for other users or questions for museum educators
+- Allow visitors to earn badges
+- Grade-specific recommendations for teachers
+- Museum administrators can create surveys and polls to place in the app
 
 ### Reporting Bugs ###
 
