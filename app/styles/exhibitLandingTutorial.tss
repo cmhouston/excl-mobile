@@ -22,6 +22,15 @@
 		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	}
 }
+
+".fullScreenOverlayText[platform=android]": {
+	font:{
+		textStyle: Titanium.UI.TEXT_STYLE_HEADLINE,
+		fontWeight: "bold",
+		fontSize: "20dp",
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	}
+}
 ".fullScreenOverlayText[formFactor=tablet]": {
 	font: {
 		fontWeight: "bold",
