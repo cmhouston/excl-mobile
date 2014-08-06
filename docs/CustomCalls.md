@@ -10,7 +10,7 @@ Example:
 var apiLib = Alloy.Globals.setPathForLibDirectory('../lib/customCalls/apiCalls');
 var apiCalls = new apiLib();
 var networkLib = require('../lib/customCalls/networkCalls');
-var networkCalls = new apiLib();
+var networkCalls = new networkLib();
 var parseLib = require('../lib/customCalls/parseCalls');
 var parseCalls = new parseLib();
 ```
