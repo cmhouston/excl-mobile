@@ -5,16 +5,16 @@
 	borderColor: Alloy.CFG.excl.colors.filterByAgeMenuColor,
 	borderRadius: "0",
 	borderWidth: "3dip",
-	backgroundColor: Alloy.CFG.excl.colors.filterByAgeMenuColor,
+	backgroundColor: Alloy.CFG.excl.colors.filterByAgeMenuColor
 }
 
 ".win": {
-	navBarHidden:true,
+	navBarHidden: true,
 	fullscreen: true
 }
 
 ".title": {
-	color: Alloy.CFG.excl.colors.lightFontColor,
+	color: Alloy.CFG.excl.colors.darkFontColor,
 	font: {
 		fontSize: '22dp',
 		fontWeight: 'bold',
@@ -31,8 +31,20 @@
 ".hint":{
 	textAlign: "left",
 	backgroundColor: Alloy.CFG.excl.colors.filterByAgeMenuColor,
-	width: "94%"
+	width: "94%",
+	color: Alloy.CFG.excl.colors.darkFontColor
 }
 ".closeButton":{
-	right: "5%"
+	right: "2%",
+	top: "2%",
+	width: "16%",
+	height: "100%",
+	backgroundColor: Alloy.CFG.excl.colors.exhibitPageSliderButtonColor,
+	color: Alloy.CFG.excl.colors.lightFontColor,
+	font: {
+		fontSize: '14dp',
+		fontWeight: 'bold',
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	},
+	textAlign: "Center"
 }

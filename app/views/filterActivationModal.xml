@@ -2,8 +2,8 @@
 	<Window id="win" class="win">
 		<View id="container" class="container">
 			<View id="titleBar" class="titleBar">
-				<Label class="title">Filter My Content!</Label>
-				<Button id="close" onClick="closeWindow" class="closeButton">Done</Button>
+				<Label class="title">Customize my content</Label>
+				<Button id="close" onClick="closeWindow" class="closeButton"> Done </Button>
 			</View>
 			<Label id="hint" class="hint" >Check off the ages of your group members to filter the component's content by age.</Label>
 			<TableView id="filterTable"/>
