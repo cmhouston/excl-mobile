@@ -14,7 +14,7 @@
 	- TiShadow 										(LI<JY)
 	- Distribution									(DH)
 	- Troubleshooting								(All)
-- Unit Testing and Continuous Integration
+- [Unit Testing and Continuous Integration](#unitTestingAndCI)
 	- [Running the Unit Tests](#runningUnitTests)
 - [Deploying to the App Store](#appStore)			(AP)
 	1. Apple
@@ -148,7 +148,7 @@ Please report all bugs to our [JIRA account]()
 
 STANDUP
 
-# Unit Testing and Continuous Integration #
+# <a name="unitTestingAndCI"></a> Unit Testing and Continuous Integration #
 
 We recommend using continuous integration to maintain the quality of the product. This repository has several unit tests written using [Mocha](http://visionmedia.github.io/mocha/) and several integration tests using TiShadow's spec format.
 
