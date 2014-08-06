@@ -9,13 +9,12 @@
      2. [Getting Started](#gettingStarted)
      - [Running the ExCL App](#runningExCL)
      - [Debugging](#debugging)
-     - Code Overview (#codeOverview)                         (KC)
-     - Enhancing the ExCL App                               (JL)
-          - Reporting Bugs
-     - TiShadow                                                   (LI<JY)
+     - [Code Overview](#codeOverview)                        
+     - [Enhancing the ExCL App](#enhancingExCL)            
+     - TiShadow                                              (LI<JY)
      - Distribution                                             (DH)
      - Troubleshooting                                        (All)
-- Buildbox for Continuous Integration                     (SF)
+- [Unit Testing and Continuous Integration](#unitTestingAndCI)  
 - [Deploying to the App Store](#appStore)               (AP)
      1. Apple
      - Google Play
@@ -193,9 +192,9 @@ STANDUP
 
 We recommend using continuous integration to maintain the quality of the product. This repository has several unit tests written using [Mocha](http://visionmedia.github.io/mocha/) and several integration tests using TiShadow's spec format.
 
-Examples of ExCL's unit tests can be found within this [spec](app/spec) folder
+Examples of ExCL's unit tests can be found within the project's [spec](app/spec) folder
 
-## <a name="runningUnitTests"></a>Running the Unit Tests ##
+## Running the Unit Tests ##
 
 In this project, we are using Mocha for unit testing, Istanbul for code coverage and Sinon for mocking.
 
