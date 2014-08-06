@@ -15,9 +15,7 @@
      - Distribution                                             (DH)
      - Troubleshooting                                        (All)
 - [Unit Testing and Continuous Integration](#unitTestingAndCI)  
-- [Deploying to the App Store](#appStore)               (AP)
-     1. Apple
-     - Google Play
+- [Deploying to the App Store](#appStore)
 
 # <a name="exclIntro"></a> Introduction to ExCL #
 ExCL is a platform that enables museums to engage visitors at museum activities through the use of a mobile application. Content is managed through a WordPress content management system by museum staff, and visitors will download the customized ExCL app, written using [Appcelerator Titanium](http://www.appcelerator.com/titanium/), to their mobile device. ExCL is also intended to be used by museums on kiosk devices and provides a kiosk mode for this purpose.
@@ -211,14 +209,10 @@ Occasionally you will need to change the permissions of the `scripts/unit.sh` an
 
 # <a name="appStore"></a> Deploying to the App Store #
 
-## Android ##
+Both Google and Apple provide documentation about their app store requirements. These can be found at their developer sites:
 
-INSERT LINK HERE (AP)
-
-## iOS ##
-
-INSERT LINK HERE (AP)
-
+- [Android Launch Checklist](http://developer.android.com/distribute/tools/launch-checklist.html)
+- [iOS App Store Guidelines](https://developer.apple.com/appstore/resources/approval/guidelines.html)
 
 _______
 ### Lib Docs ###
