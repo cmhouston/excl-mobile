@@ -105,6 +105,12 @@ function createFilterView(filter, allChecked) {
 }
 
 function closeWindow(e) {
+	Titanium.UI.createAlertDialog({
+		title : '',
+		message : "The app content has been reorganized for the ages selected",
+		ok : 'Got it!'
+	}).show();
+	
 	$.getView().close();
 }
 
