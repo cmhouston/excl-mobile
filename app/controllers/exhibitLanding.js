@@ -587,7 +587,6 @@ function getComponentImageHeight() {
 	var desiredMaxWidth = desiredMaxWidthProportion * detectDevice.getWidth();
 	//Each component image can take up no more than this fraction of the screen width (adjust to ensure that multiple components can be seen in scroller)
 	if (getComponentImageWidth(componentImageHeight) > desiredMaxWidth){
-		Ti.API.info("------------Too wide :(");
 		componentImageHeight = getComponentImageHeightFromWidth(desiredMaxWidth);
 	}
 	return componentImageHeight;

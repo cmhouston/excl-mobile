@@ -86,6 +86,8 @@ Alloy.Globals.isAlpha = function(ch){
 
 Alloy.Globals.rotate180 = Ti.UI.create2DMatrix().rotate(-180);
 Alloy.Globals.rotate90 = Ti.UI.create2DMatrix().rotate(90);
+Alloy.Globals.rotate270 = Ti.UI.create2DMatrix().rotate(270);
+Alloy.Globals.flipVert = Ti.UI.create3DMatrix().rotate(180, 0, 0, 1);
 
 // do not remove: initialization of global backbone models
 Alloy.Models.app = Alloy.Models.instance('app');

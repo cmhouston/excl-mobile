@@ -62,13 +62,28 @@
 	top: "37dip",
 	right: "30dip",
 	//height: "110dip"
-	height: "70dip"
+	height: "50dip"
 }
 
 "#flyoutMenuArrow[formFactor=tablet]": {
-	right: "75dip",
-	height: "130dip",
+	right: "40dip",
+	height: "90dip",
 	top: "45dip"
+}
+
+"#backArrow": {
+	transform: Alloy.Globals.rotate270,
+	height: "30dip",
+	left: "15dip",
+	top: "30dip",
+	width: "45dip"
+}
+
+"#backArrow[formFactor=tablet]":{
+	height: "50dip",
+	width: "70dip",
+	top: "40dip",
+	
 }
 
 "#ComponentsArrow": {
@@ -76,58 +91,72 @@
 	// height: "140dip",
 	// right: "35dip",
 	// bottom: "20dip"
-	transform: Alloy.Globals.rotate180,
-	height: "70dip",
-	right: "35dip",
-	bottom: "20dip",
-	visible: false
+	transform: Alloy.Globals.rotate270,
+	height: "50dip",
+	left: "15dip",
+	top: "275dip",
+	width: "25dip"
 }
 "#ComponentsArrow[formFactor=tablet]": {
 	bottom: "75dip",
-	right: "100dip",
-	visible: false
+	height: "75dip",
+	width: "60dip",
+	top: "615dip",
+	left: "50dip"
 }
 
 "#flyoutMenuText": {
-	top: "105dip",
+	top: "80dip",
+	right: "25dip",
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_RIGHT
 }
-"#flyoutMenuText[formFactor=handheld]": {
-	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
-}
+
 "#flyoutMenuText[formFactor=tablet]": {
-	top: "173dip",
-	right: "160dip"
+	top: "120dip"
 }
 
 "#ScrollText": {
-	top: "210dip",
+	top: "200dip",
+	left: "10dip",
+	right: "10dip",
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
 }
 
 "#ScrollText[formFactor=tablet]": {
-	top: "320dip",
-	right: "100dip"
+	top: "450dip",
+	left: "20dip",
+	right: "20dip"
+}
+
+"#backText":{
+	top: "50dip",
+	left: "50dip"
+}
+
+"#backText[formFactor=tablet]":{
+	top: "70dip",
+	left: "75dip"
 }
 
 "#ComponentsText": {
-	top: "250dip",
-	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+	top: "300dip",
+	left: "60dip",
 }
 
 "#ComponentsText[formFactor=tablet]": {
-	top: "450dip",
-	width: "80%",
+	top: "650dip",
+	right: "60dip",
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
 }
 
 "#fingerSwipe[formFactor=handheld]": {
-	top: "150dip",
+	top: "140dip",
 	height: "50dip"
 }
 
 "#fingerSwipe[formFactor=tablet]": {
 	center: {
-		x: "25%",
+		//x: "25%",
 		y: "320dip"
 	}
 }
