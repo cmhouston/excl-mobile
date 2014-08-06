@@ -5,26 +5,25 @@
 1. [Introduction to ExCL](#exclIntro)
 - [WordPress](https://github.com/cmhouston/excl-cms#wordpress)
 - [Titanium](#titanium)
-	1. [Introduction to Titanium](#introToTitanium)
-	- [Running the ExCL App](#runningExCL)
-	- [Debugging](#debugging)
-	- [Code Overview](#codeOverview)			
-		- uml (KC)
-	- Enhancing the ExCL App 						(JL)
-		- Reporting Bugs
-	- TiShadow 										(LI<JY)
-	- Distribution									(DH)
-	- Troubleshooting								(All)
-- [Unit Testing and Continuous Integration](#unitTestingAndCI)
-	- [Running the Unit Tests](#runningUnitTests)
-- [Deploying to the App Store](#appStore)			(AP)
-	1. Apple
-	- Google Play
+     1. [Introduction to Titanium](#introToTitanium)
+     - Running the Unit Tests                               (MN)
+     - [Running the ExCL App](#runningExCL)
+     - [Debugging](#debugging)
+     - Code Overview (#codeOverview)                         (KC)
+     - Enhancing the ExCL App                               (JL)
+          - Reporting Bugs
+     - TiShadow                                                   (LI<JY)
+     - Distribution                                             (DH)
+     - Troubleshooting                                        (All)
+- Buildbox for Continuous Integration                     (SF)
+- [Deploying to the App Store](#appStore)               (AP)
+     1. Apple
+     - Google Play
 
 # <a name="exclIntro"></a> Introduction to ExCL #
 ExCL is a platform that enables museums to engage visitors at museum activities through the use of a mobile application. Content is managed through a WordPress content management system by museum staff, and visitors will download the customized ExCL app, written using [Appcelerator Titanium](http://www.appcelerator.com/titanium/), to their mobile device. ExCL is also intended to be used by museums on kiosk devices and provides a kiosk mode for this purpose.
 
-ExCL is divided into two parts: the content management system and the Appcelerator Titanium mobile application. This repository is for the Titanium mobile application. If you're interested in the content management side, click here to go to the [Wordpress project on Github](https://github.com/cmhouston/excl-cms).
+ExCL is divided into two parts: the content management system and the Appcelerator Titanium mobile application. This repository is for the Titanium mobile application. If you're interested in the content management side, click here to go to the [Wordpress project](https://github.com/cmhouston/excl-cms).
 
 This documentation is intended for ExCL developers and details the steps to setup and enhance the mobile application. We will describe the Titanium technical details, followed by tips on using a continuous integration build server and deploying to the app stores.
 
@@ -32,7 +31,7 @@ This documentation is intended for ExCL developers and details the steps to setu
 
 ## <a name="introToTitanium"></a> Introduction to Titanium ##
 
-Titanium is a tool that allows developers to create mobile applications for multiple platforms using a single project. For this project we are using Titanium in order to support both iOS and Android operating systems. 
+Titanium is a tool that allows developers to create applications for multiple platforms using a single project. For this project we are using Titanium in order to support both iOS and Android operating systems. 
 
 Appcelerator provides many useful features and examples, which can be found under the [Titanium SDK Documentation](http://docs.appcelerator.com/titanium/3.0/) 
 
@@ -46,7 +45,7 @@ Titanium Studio is an Eclipse base IDE used for developing Titanium projects. Ap
 
 In order to view and edit the ExCL project using Titanium studio the project must be retrieved from github. Open a command prompt, navigate to a desired folder run the following command:
 
-	$ git clone https://github.com/cmhouston/excl-mobile.git
+     $ git clone https://github.com/cmhouston/excl-mobile.git
 
 After the project has been downloaded to your local system execute the following steps to access it through your IDE
 
@@ -61,6 +60,10 @@ The run option at the top left of the screen is by default unavailable. To enabl
 - Click on Project Natures
 - Select Mobile and make it the Primary nature
 - Click OK
+
+## <a name="runningUnitTests"><a/> Running The Unit Tests ##
+
+MN
 
 ## <a name="runningExCL"></a> Running the ExCL Application ##
 
@@ -101,7 +104,7 @@ When using the built in Emulators debugging is very simple. Refer to Appcelerato
 There are a few settings that need to be changed in order to debug on GenyMotion. If you are getting a "no SD card error" then follow these steps in order to resolve the issue:
 
 1. Go to C:\Users\<username>\AppData\Roaming\Titanium\mobilesdk\win32\3.2.3.GA\android\cli\commands
-	if on iOS, go to /Users/parivedadeveloper/Library/Application Support/Titanium/mobilesdk/osx/3.2.3.GA/android/cli/commands
+     if on iOS, go to /Users/parivedadeveloper/Library/Application Support/Titanium/mobilesdk/osx/3.2.3.GA/android/cli/commands
 - Edit "_build.js"
 - Change line 1344 to `} else if (!emu.sdcard && (emu.type !== 'genymotion')) {`
 
@@ -120,7 +123,7 @@ ExCL uses an adapted version of the MVC architecture, where much of the logic is
 Alloy allows developers to store global information. in ExCL all global variables are created and exported from [Alloy.js](app/Alloy.js).
 
 Unit testing is another important part of ExCL, and the unit tests can be found in two places.
- 
+
 - Mocha unit tests can be found within the [mochaTests](app/spec/mochaTests) folder, and can be run without compiling the application. (See [Running The Unit Tests](#runningUnitTests) )
 - Integration tests can be found withing the [spec](spec) folder and can only be run on a compiled version of the Application. See [Running The Unit Tests](#runningUnitTests)
 
@@ -135,13 +138,42 @@ For more in depth information, refer to Appcelerator's documentation on [Alloy F
 
 ## Enhancing the ExCL App ##
 
-(JL)
+At the beginning of the design process, the joint Pariveda and CMH team held a user story workshop, which generated many desired features for the app. The user stories that we didn't get to are listed under the "Could Haves" sprint in our [JIRA account](https://cmhexcl.atlassian.net). There are many other enhancements that are not new features, but instead changes to the current app. Below is a short description of each major area of suggested enhancements.
+
+# UX Enhancements to Current Features #
+
+- Tutorial for age filtering
+- Screen timeout for kiosk mode that resets to the desired home screen
+- Allow users to click on images to make them fullscreen, particularly the images on the component landing page and the post landing page
+- Save name and e-mail on comment form to device so that users only enter it once
+- Make the restart function smoother visually. This function is used for language switching, refreshing the in case of a lost network connection, and restarting the tutorial.
+- Make all labels in the app fully customizable from Wordpress
+- Allow users to e-mail content to themselves from kiosk mode
+
+# Technical Enhancements #
+
+- Better error handling for network connection errors
+- Refactor the Navigation Controller, as it is complicated and sometimes buggy
+
+# New Features #
+
+A complete list of user stories that we did not get to can be found in this [Google Drive document](https://docs.google.com/spreadsheets/d/1iPPVocjjprG7frXPwPh00Mrh02YqDmYqOXqxRYbju2Q/edit?usp=sharing). The user stories that we decided were possibilities for this summer (everything other than stories rated as "won't") are in [JIRA](https://cmhexcl.atlassian.net), and the stories that haven't been completed yet can be found in the "Could Haves" sprint.
+
+- Location tracking using low-energy Bluetooth beacons
+- Bookmarking: Users can save suggested activities and view them later
+- Allow users to activate built-in tool apps in their phone (stopwatch, calculator, etc.) from the app for relevant activities
+- "You May Also Like...": Give users recommendations for other activities to try based on which activity they are currently viewing
+- Questions and Results: Ask users questions about the activity they tried, and then display the results of this poll to the user
+- Visitor-Generated Content: Allow users to provide content, such as activity recommendations for other users or questions for museum educators
+- Allow visitors to earn badges
+- Grade-specific recommendations for teachers
+- Museum administrators can create surveys and polls to place in the app
 
 ### Reporting Bugs ###
 
-Please report all bugs to our [JIRA account]()
+Please report all bugs to our [JIRA account](https://cmhexcl.atlassian.net)
 
-## <a name="tiShadow"></a>Ti Shadow ##
+## Ti Shadow ##
 
 (LI,JY)
 
@@ -149,38 +181,11 @@ Please report all bugs to our [JIRA account]()
 
 STANDUP
 
-# <a name="unitTestingAndCI"></a> Unit Testing and Continuous Integration #
+# BuildBox for Continuous Integration #
 
-We recommend using continuous integration to maintain the quality of the product. This repository has several unit tests written using [Mocha](http://visionmedia.github.io/mocha/) and several integration tests using TiShadow's spec format.
+(SF)
 
-## <a name="runningUnitTests"></a>Running the Unit Tests ##
-
-In this project, we are using Mocha for unit testing, Istanbul for code coverage and Sinon for mocking.
-
-### Installation ###
-The root directory of the project contains a `package.json` file which will install all these tools, and run the unit tests as well.
-
-* Open command prompt, and make sure you are in the root directory of the project folder. Type `npm install` and hit enter. This will install all the tools and will create a folder called `node_modules`. 
-* To run the unit tests, you would run `npm test` in the root directory. 
-* To add more unit tests, place unit tests .js files under `app/spec/MochaTests`. 
-* Istanbul will provide metrics on the command line when you run `npm test`
-* A `coverage` folder will be created by Istanbul in the root directory where you will be able to view a html version of the code coverage as well. The html file will be under `coverage/Icov-report`, and once there you can open `index.html`. 
-
-By default the `coverage` and `node_modules` folders won't be committed to the git repo when ever you commit something.
-
-### Further reading ###
-* [Mocha Docs](http://visionmedia.github.io/mocha/#assertions) 
-* [Sinon Docs (For Mocking)](http://sinonjs.org/docs/)
-
-## Using Buildbox for Continuous Integration ##
-
-The code was designed to use continuous integration. We recommend using [Buildbox](https://buildbox.io) to run a build agent on your local server. Buildbox integrates well with Github or Bitbucket, using hooks to allow Buildbox to automatically trigger builds on your local server. Follow Buildbox's [getting started instructions](https://buildbox.io/docs/guides/getting-started) and create two pipeline tasks to run (1) the unit tests and (2) the integration tests. In the "Script to Run" field, put `scripts/unit.sh` to run the unit tests and `scripts/integration.sh` to run the integration tests. The integration tests do require [TI Shadow](#tiShadow) to be set up.
-
-### Troubleshooting Buildbox ###
-
-Occasionally you will need to change the permissions of the `scripts/unit.sh` and `scripts/integration.sh` scripts to make them executable. These can be found in the `~/.buildbox/{NAME_OF_BUILDBOX_AGENT}/excl-mobile/excl-mobile` directory. You will need to `chmod` those to be executable if you have any problems.
-
-# <a name="appStore"></a> Deploying to the App Stores #
+# <a name="appStore"></a> Deploying to the App Store #
 
 ## Android ##
 
