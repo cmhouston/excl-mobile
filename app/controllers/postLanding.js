@@ -465,7 +465,7 @@ function getRowContentsForVideoAndroid(url) {
 		});
 		
 		video.addEventListener('load', function(e) {
-			//Alloy.Globals.analyticsController.trackEvent("Videos", "Play", part.get('name'), 1);
+			Alloy.Globals.analyticsController.trackEvent("Videos", "Play", url, 1);
 		});
 
 		doneButton = Ti.UI.createButton({
@@ -494,7 +494,7 @@ function getRowContentsForVideoiOS(url) {
 	});
 	$.addClass(video, "headerVideo");
 	video.addEventListener('load', function(e) {
-		//Alloy.Globals.analyticsController.trackEvent("Videos", "Play", part.get('name'), 1);
+		Alloy.Globals.analyticsController.trackEvent("Videos", "Play", url, 1);
 	});
 	return video;
 }
