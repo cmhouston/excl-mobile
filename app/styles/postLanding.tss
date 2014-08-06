@@ -2,7 +2,7 @@
 ".container": {
 	navBarHidden: true,
 	fullscreen: true,
-	backgroundColor: Alloy.Globals.colors.pageBackgroundColor
+	backgroundColor: Alloy.CFG.excl.colors.pageBackgroundColor
 }
 
 "#postLandingView": {
@@ -158,7 +158,7 @@
 	width: '90%',
 	right: '3%',
 	left: '3%',
-	color: Alloy.Globals.colors.darkFontColor,
+	color: Alloy.CFG.excl.colors.darkFontColor,
 	font: {
 		// fontFamily: Alloy.CFG.font,
 		fontSize : '16dip',
@@ -167,7 +167,7 @@
 	},
 	textAlign: 'center',
 	borderWidth: '1',
-	borderColor: Alloy.Globals.colors.accentBorderColor
+	borderColor: Alloy.CFG.excl.colors.accentBorderColor
 }
 
 ".commentsHeadingText[formFactor=tablet]": {
@@ -179,12 +179,12 @@
 }
 
 "#showMoreComments": {
-	color: Alloy.Globals.colors.accentButtonColor,
+	color: Alloy.CFG.excl.colors.accentButtonColor,
 	height: "0dip"
 }
 
 "#noComments": {
-	color: Alloy.Globals.colors.accentBorderColor,
+	color: Alloy.CFG.excl.colors.accentBorderColor,
 	height: "0dip"
 }
 
@@ -214,7 +214,7 @@
 }
 
 ".commentBody": {
-	color: Alloy.Globals.colors.darkFontColor,
+	color: Alloy.CFG.excl.colors.darkFontColor,
 	textAlign: 'left'
 }
 
@@ -244,7 +244,7 @@
 }
 
 "#addNewCommentContainer":{
-	backgroundColor: Alloy.Globals.colors.modalTintColor,
+	backgroundColor: Alloy.CFG.excl.colors.modalTintColor,
 	opacity: '0.75',
 	height: '100%',
 	width: '100%',
@@ -254,7 +254,7 @@
 }
 
 "#commentsModal":{
-	backgroundColor: Alloy.Globals.colors.pageBackgroundColor,
+	backgroundColor: Alloy.CFG.excl.colors.pageBackgroundColor,
 	height: '430dip',
 	width: '260dip',
 	top: '15dip',
@@ -270,7 +270,7 @@
 
 "#submitYourCommentLabel":{
 	opacity: '1.0',
-	color: Alloy.Globals.colors.darkFontColor,
+	color: Alloy.CFG.excl.colors.darkFontColor,
 	font: {
 		fontSize: '21dp',
 		fontWeight: 'bold',
@@ -292,17 +292,17 @@
 		fontWeight: 'normal',
 		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	},
-	color: Alloy.Globals.colors.darkFontColor,
+	color: Alloy.CFG.excl.colors.darkFontColor,
 	top: '15%',
 	left: '7%',
 	width: '85%',
 	height: '10%',
-	backgroundColor: Alloy.Globals.colors.commentFormTextBoxColor,
+	backgroundColor: Alloy.CFG.excl.colors.commentFormTextBoxColor,
 	borderWidth: '1',
-	borderColor: Alloy.Globals.colors.darkFontColor,
+	borderColor: Alloy.CFG.excl.colors.darkFontColor,
 	clearOnEdit: false,
 	paddingLeft: "5dip",
-	tintColor: Alloy.Globals.colors.darkFontColor
+	tintColor: Alloy.CFG.excl.colors.darkFontColor
 }
 
 "#insertName[formFactor=tablet]": {
@@ -315,7 +315,7 @@
 		fontWeight: 'normal',
 		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	},
-	color: Alloy.Globals.colors.darkFontColor,
+	color: Alloy.CFG.excl.colors.darkFontColor,
 	width: Ti.UI.FILL,
 	left: '7%'
 }
@@ -338,17 +338,17 @@
 		fontWeight: 'normal',
 		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	},
-	color: Alloy.Globals.colors.darkFontColor,
+	color: Alloy.CFG.excl.colors.darkFontColor,
 	left: '7%',
 	width: '85%',
 	height: '10%',
-	backgroundColor: Alloy.Globals.colors.commentFormTextBoxColor,
+	backgroundColor: Alloy.CFG.excl.colors.commentFormTextBoxColor,
 	borderWidth: '1',
-	borderColor: Alloy.Globals.colors.darkFontColor,
+	borderColor: Alloy.CFG.excl.colors.darkFontColor,
 	clearOnEdit: false,
 	paddingLeft: "5dip",
 	top: '3%',
-	tintColor: Alloy.Globals.colors.darkFontColor
+	tintColor: Alloy.CFG.excl.colors.darkFontColor
 }
 
 "#insertEmail[formFactor=tablet]": {
@@ -361,7 +361,7 @@
 		fontWeight: 'normal',
 		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	},
-	color: Alloy.Globals.colors.darkFontColor,
+	color: Alloy.CFG.excl.colors.darkFontColor,
 	width: Ti.UI.FILL,
 	left: '7%'
 }
@@ -387,17 +387,17 @@
 		fontWeight: 'normal',
 		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	},
-	color: Alloy.Globals.colors.darkFontColor,
-	backgroundColor: Alloy.Globals.colors.commentFormTextBoxColor,
+	color: Alloy.CFG.excl.colors.darkFontColor,
+	backgroundColor: Alloy.CFG.excl.colors.commentFormTextBoxColor,
 	left: '7%',
 	width: '85%',
 	height: '35%',
 	borderWidth: '1',
-	borderColor: Alloy.Globals.colors.darkFontColor,
+	borderColor: Alloy.CFG.excl.colors.darkFontColor,
 	clearOnEdit: false,
 	paddingLeft: "5dip",
 	top: '3%',
-	tintColor: Alloy.Globals.colors.darkFontColor
+	tintColor: Alloy.CFG.excl.colors.darkFontColor
 }
 
 "#insertComment[formFactor=tablet]": {
@@ -415,8 +415,8 @@
 	left: '0',
 	width: '49%',
 	height: '100%',
-	color: Alloy.Globals.colors.lightFontColor,
-	backgroundColor: Alloy.Globals.colors.submitButtonColor
+	color: Alloy.CFG.excl.colors.lightFontColor,
+	backgroundColor: Alloy.CFG.excl.colors.submitButtonColor
 }
 
 "#submitButton[formFactor=tablet]": {
@@ -438,8 +438,8 @@
 	left: "2%",
 	width: '49%',
 	height: '100%',
-	color: Alloy.Globals.colors.lightFontColor,
-	backgroundColor: Alloy.Globals.colors.cancelButtonColor
+	color: Alloy.CFG.excl.colors.lightFontColor,
+	backgroundColor: Alloy.CFG.excl.colors.cancelButtonColor
 }
 
 "#cancelCommentButton[formFactor=tablet]": {
@@ -471,7 +471,7 @@
 		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	},
 	textAlign: 'center',
-	color: Alloy.Globals.colors.darkFontColor,
+	color: Alloy.CFG.excl.colors.darkFontColor,
 	top: '35%',
 	left: '7%',
 	width: '85%',

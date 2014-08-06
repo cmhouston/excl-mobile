@@ -267,7 +267,7 @@ function insertXNumberOfButtons(numberOfButtons) {
 		var button = buttonService.createCustomButton(objectArgs);
 		objectArgs = {
 			// borderRadius : "30dip",
-			backgroundColor : Alloy.Globals.colors.lightFontColor,
+			backgroundColor : Alloy.CFG.excl.colors.lightFontColor,
 			width : '100%',
 			height : '0',
 			visible : false,

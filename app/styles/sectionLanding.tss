@@ -1,7 +1,7 @@
 "#container": {
 	navBarHidden: true,
 	fullscreen: true,
-	backgroundColor: Alloy.Globals.colors.pageBackgroundColor
+	backgroundColor: Alloy.CFG.excl.colors.pageBackgroundColor
 }
 
 "#topBar":{

@@ -2,10 +2,10 @@
 	layout: "vertical",
 	top: "10%",
 	width: "90%",
-	borderColor: Alloy.Globals.colors.filterByAgeMenuColor,
+	borderColor: Alloy.CFG.excl.colors.filterByAgeMenuColor,
 	borderRadius: "0",
 	borderWidth: "3dip",
-	backgroundColor: Alloy.Globals.colors.filterByAgeMenuColor,
+	backgroundColor: Alloy.CFG.excl.colors.filterByAgeMenuColor,
 }
 
 ".win": {
@@ -14,7 +14,7 @@
 }
 
 ".title": {
-	color: Alloy.Globals.colors.lightFontColor,
+	color: Alloy.CFG.excl.colors.lightFontColor,
 	font: {
 		fontSize: '22dp',
 		fontWeight: 'bold',
@@ -26,11 +26,11 @@
 
 ".titleBar": {
 	height: "35dip",
-	backgroundColor: Alloy.Globals.colors.filterByAgeMenuColor
+	backgroundColor: Alloy.CFG.excl.colors.filterByAgeMenuColor
 }
 ".hint":{
 	textAlign: "left",
-	backgroundColor: Alloy.Globals.colors.filterByAgeMenuColor,
+	backgroundColor: Alloy.CFG.excl.colors.filterByAgeMenuColor,
 	width: "94%"
 }
 ".closeButton":{

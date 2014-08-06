@@ -1,7 +1,7 @@
 ".container" : {
 	navBarHidden: true,
 	fullscreen: true,
-	backgroundColor: Alloy.Globals.colors.pageBackgroundColor
+	backgroundColor: Alloy.CFG.excl.colors.pageBackgroundColor
 }
 
 "#mainView": {
@@ -10,5 +10,5 @@
 
 "#Map": {
 	//top: "80dip",
-	backgroundColor: Alloy.Globals.colors.mapBackgroundColor
+	backgroundColor: Alloy.CFG.excl.colors.mapBackgroundColor
 }

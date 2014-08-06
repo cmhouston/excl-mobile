@@ -66,7 +66,7 @@ function init() {
 function createErrorView(msg) {
 	args = {
 		width : "100%",
-		backgroundColor : Alloy.Globals.colors.pageBackgroundColor,
+		backgroundColor : Alloy.CFG.excl.colors.pageBackgroundColor,
 	};
 	var container = viewService.createCustomView(args);
 	if (detectDevice.isTablet()) {
@@ -87,7 +87,7 @@ function createErrorView(msg) {
 	var postContainer = viewService.createCustomView(args);
 
 	args = {
-		color : Alloy.Globals.colors.darkFontColor,
+		color : Alloy.CFG.excl.colors.darkFontColor,
 		text : msg,
 		textAlign : "center",
 		font : {
@@ -115,7 +115,7 @@ function createErrorView(msg) {
 function createPostView(post) {
 	args = {
 		width : "100%",
-		backgroundColor : Alloy.Globals.colors.pageBackgroundColor,
+		backgroundColor : Alloy.CFG.excl.colors.pageBackgroundColor,
 	};
 	var container = viewService.createCustomView(args);
 	if (detectDevice.isTablet()) {
@@ -126,7 +126,7 @@ function createPostView(post) {
 		container.height = "200dip";
 	}
 	
-	sectionIndexSecondary = sectionIndex % Alloy.Globals.colors.sectionSecondaryColors.length;
+	sectionIndexSecondary = sectionIndex % Alloy.CFG.excl.colors.sectionSecondaryColors.length;
 	args = {
 		layout : "vertical",
 		width : "95%",
@@ -140,7 +140,7 @@ function createPostView(post) {
 		postContainer.height = "200dip";
 	}
 	
-	sectionIndexPrimary = sectionIndex % Alloy.Globals.colors.sectionPrimaryColors.length;
+	sectionIndexPrimary = sectionIndex % Alloy.CFG.excl.colors.sectionPrimaryColors.length;
 	args = {
 		height : "50dip",
 		width : "100%",
@@ -158,7 +158,7 @@ function createPostView(post) {
 	var headerWrap = viewService.createCustomView(args);
 
 	args = {
-		color : Alloy.Globals.colors.lightFontColor,
+		color : Alloy.CFG.excl.colors.lightFontColor,
 		text : post.get("name"),
 		textAlign : "center",
 		font : {
@@ -220,7 +220,7 @@ function createPostView(post) {
 	args = {
 		left : "46%",
 		text : post.get("text"),
-		color : Alloy.Globals.colors.darkFontColor,
+		color : Alloy.CFG.excl.colors.darkFontColor,
 		font : {
 			fontSize : "16dip",
 			fontFamily : Alloy.CFG.excl.defaultGlobalFontFamily

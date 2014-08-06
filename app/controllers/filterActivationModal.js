@@ -61,11 +61,11 @@ function createFilterView(filter, allChecked) {
 
 	//Ti.API.info("filter name: " + name + "(" + active + ")");
 
-	var color = Alloy.Globals.colors.lightFontColor;
+	var color = Alloy.CFG.excl.colors.lightFontColor;
 	if (OS_IOS) {
-		color = Alloy.Globals.colors.accentButtonColor;
+		color = Alloy.CFG.excl.colors.accentButtonColor;
 		$.titleBar.top = '10dip';
-		$.hint.color = Alloy.Globals.colors.lightFontColor;
+		$.hint.color = Alloy.CFG.excl.colors.lightFontColor;
 	}
 
 	var args = {
@@ -129,7 +129,7 @@ function resetFilters(newAllCheckedValue) {
 
 function setTableBackgroundColor() {
 	if (OS_ANDROID) {
-		$.filterTable.backgroundColor = Alloy.Globals.colors.filterByAgeMenuColor;
+		$.filterTable.backgroundColor = Alloy.CFG.excl.colors.filterByAgeMenuColor;
 	}
 }
 
@@ -160,13 +160,13 @@ function addViewBehindModalInIOS() {
 
 function formatCloseButtonColor() {
 	if (OS_ANDROID) {
-		$.close.color = Alloy.Globals.colors.lightFontColor;
-		$.close.backgroundColor = Alloy.Globals.colors.accentBorderColor;
-		$.close.borderColor = Alloy.Globals.colors.lightFontColor;
+		$.close.color = Alloy.CFG.excl.colors.lightFontColor;
+		$.close.backgroundColor = Alloy.CFG.excl.colors.accentBorderColor;
+		$.close.borderColor = Alloy.CFG.excl.colors.lightFontColor;
 		$.close.borderRadius = "3";
 		$.close.borderWidth = "1";
 	} else {
-		$.close.color = Alloy.Globals.colors.accentButtonColor;
+		$.close.color = Alloy.CFG.excl.colors.accentButtonColor;
 	}
 }
 

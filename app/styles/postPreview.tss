@@ -17,7 +17,7 @@
 }
 
 "#headerText":{
-	color: Alloy.Globals.colors.darkFontColor,
+	color: Alloy.CFG.excl.colors.darkFontColor,
 	textAlign: "center"
 }
 
