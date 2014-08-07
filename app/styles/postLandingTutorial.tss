@@ -30,6 +30,15 @@
 		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	}
 }
+
+".fullScreenOverlayText[formFactor=android]": {
+	font: {
+		fontWeight: "bold",
+		fontSize: "18dip",
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	}
+}
+
 ".tutorialButton": {
 	backgroundColor: Alloy.CFG.excl.colors.tutorialEndButtonColor,
 	width: "50%",
@@ -52,6 +61,10 @@
 	right: "60dip",
 	width: Ti.UI.FILL,
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+}
+
+"#viewCommentsText[platform=android]": {
+	right: "100dip"
 }
 
 "#viewCommentsText[formFactor=tablet]": {
