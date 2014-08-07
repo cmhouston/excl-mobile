@@ -85,11 +85,11 @@ Titanium's built in android emulator is slow and has limited functionality. In o
 
 There are a few more changes that need to be made in order to make GenyMotion compatible with a Mac. Follow these instructions for [How to Set Up GenyMotion on a Mac](docs/howToSetUpGenyMotionOnAMac.md)
 
-### iOS Device Deployment ###
+### <a name="iosdeployment"></a> iOS Device Deployment ###
 
 To deploy to an iOS device refer to Appcelerator's documentation on [Deploying to iOS Devices](http://docs.appcelerator.com/titanium/3.0/#!/guide/Deploying_to_iOS_devices)
 
-### Android Device Deployment ###
+### <a name="androiddeployment"></a> Android Device Deployment ###
 
 To deploy to an Android device refer to Appcelerator's documentation on [Deploying to Android Devices](http://docs.appcelerator.com/titanium/3.0/#!/guide/Deploying_to_Android_devices).
 
@@ -239,16 +239,14 @@ The code was designed to use continuous integration. We recommend using [Buildbo
 Occasionally you will need to change the permissions of the `scripts/unit.sh` and `scripts/integration.sh` scripts to make them executable. These can be found in the `~/.buildbox/{NAME_OF_BUILDBOX_AGENT}/excl-mobile/excl-mobile` directory. You will need to `chmod` those to be executable if you have any problems.
 
 # <a name="addhoc"></a> Distribution For Testing #
-For an app development project of any size, you will probably want to have a way to distribute alpha (pre release) 
-versions of the app to testers and other interested parties (like your mom!). There are many cloud services out there
-that make it easy for even nontechnical people to install ad hoc builds of your app that you upload to the service. An 
-added benefit is that it can be a convenient place to keep track of all your various builds, versions, sub-versions etc.
-Some of these services are free others are not. Some are iOS or Android only while others support both. Most have API's 
-that allow you to programmatically upload your build right from your build script. 
+For an app development project of any size, you will probably want to have a way to distribute alpha (pre release) versions of the app to testers and other interested parties (like your mom!). There are many cloud services out there that make it easy for even nontechnical people to install ad hoc builds of your app that you upload to the service. An added benefit is that it can be a convenient place to keep track of all your various builds, versions, sub-versions etc. Some of these services are free others are not. Some are iOS or Android only while others support both. Most have API's that allow you to programmatically upload your build right from your build script. 
 
-Regardless of which service you use (if any at all), 
+Some example services include:
+-[example1]()
 
-
+Regardless of which service you use (if any at all), instructions for building for device deployment can be found here:
+- [iOS Device Deployment](#iosdeployment)
+- [Android Device Deployment](#androiddeployment)
 
 # <a name="appStore"></a> Deploying to the App Store #
 
