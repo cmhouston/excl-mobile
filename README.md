@@ -133,6 +133,8 @@ STANDUP
 
 # <a name="enhancingExCL"></a> Enhancing the ExCL App #
 
+EDIT
+
 At the beginning of the design process, the joint Pariveda and CMH team held a user story workshop, which generated many desired features for the app. The user stories that we didn't get to are listed under the "Could Haves" sprint in our [JIRA account](https://cmhexcl.atlassian.net). There are many other enhancements that are not new features, but instead changes to the current app. Below is a short description of each major area of suggested enhancements.
 
 ## UX Enhancements to Current Features ##
@@ -156,6 +158,7 @@ A complete list of user stories that we did not get to can be found in this [Goo
 - Allow visitors to earn badges
 - Grade-specific recommendations for teachers
 - Museum administrators can create surveys and polls to place in the app
+- Upgrading Google Analytics to support custom dimensions for Screens
 
 ## Technical Enhancements ##
 
