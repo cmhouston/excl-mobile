@@ -86,6 +86,7 @@ Alloy.Globals.rotate180 = Ti.UI.create2DMatrix().rotate(-180);
 Alloy.Globals.rotate90 = Ti.UI.create2DMatrix().rotate(90);
 Alloy.Globals.rotate270 = Ti.UI.create2DMatrix().rotate(270);
 Alloy.Globals.rotate60 = Ti.UI.create2DMatrix().rotate(60);
+Alloy.Globals.rotate130 = Ti.UI.create2DMatrix().rotate(130);
 
 // do not remove: initialization of global backbone models
 Alloy.Models.app = Alloy.Models.instance('app');

@@ -456,7 +456,13 @@ function createComponentTitleLabel(item) {
 }
 
 function getComponentTitleLabelHeight() {
-	return "27dip";
+	if (detectDevice.isTablet()){
+		return "34dip";
+	}
+	else{
+		return "27dip";
+	}
+	
 }
 
 function addFunctionalityToHeadingBar(exhibits) {

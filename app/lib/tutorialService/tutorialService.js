@@ -21,7 +21,7 @@
 var rootPath = (typeof Titanium == 'undefined')? '../../lib/' : '';
 
 var TutorialService = function() {
-	this.pages = ["exhibitLandingTutorial", "sectionLandingTutorial", "postLandingTutorial"];
+	this.pages = ["exhibitLandingTutorial", "componentLandingTutorial", "sectionLandingTutorial", "postLandingTutorial"];
 	this.initializePagesToShowTutorial();
 };
 
