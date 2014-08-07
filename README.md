@@ -125,7 +125,13 @@ For more in depth information, refer to Appcelerator's documentation on [Alloy F
 ### Considerations while using ExCL ###
 
 - All Window Navigation must be done using the [Navigation Controller](/docs/NavigationController.md)
-- All fonts and colors are defined Globally within [Alloy.js]()
+- All fonts and colors are defined within the configuration file: [config.json](app/config.json)
+
+### Library Documentation ###
+Much of the ExCL code is split into various libraries which take control of specific functions of the app. The following libraries have corresponding documentation:
+
+* [Navigation Controller](/docs/NavigationController.md)
+* [Custom Calls API](/docs/CustomCalls.md)
 
 ## Troubleshooting ##
 
@@ -240,9 +246,3 @@ Both Google and Apple provide documentation about their app store requirements. 
 - [iOS App Store Guidelines](https://developer.apple.com/appstore/resources/approval/guidelines.html)
 
 _______
-### Lib Docs ###
-
-* [Navigation Controller](/docs/NavigationController.md)
-* [Custom Calls API](/docs/CustomCalls.md)
-* [Installing Unit Testing & Code Coverage Tools](/docs/installingUnitTestingAndCodeCoverageTools.md)
-* [How to Debug on Genymotion](/docs/debuggingOnGenymotion.md)
