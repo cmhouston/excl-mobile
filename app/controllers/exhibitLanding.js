@@ -225,16 +225,18 @@ function createExhibitsImageIOS(exhibits, index) {
 			onExhibitsClick(exhibits);
 		}
 	});
-/*
-	var addPagingArrowsFunction = function() {
-		addPagingArrowsToView(exhibitView, index, numOfExhibits);
-		Ti.API.info("_______Adding paging arrows to view");
-	};
-	exhibitView.addEventListener("load", addPagingArrowsFunction);
-	*/
-	addPagingArrowsToView(exhibitView, index, numOfExhibits);
+	
+	var itemContainer = Ti.UI.createView({
+		height : Ti.UI.SIZE,
+		itemId : exhibit.id,
+		width : Ti.UI.FILL
+	});
+	
 	exhibitViewWithTitle.add(exhibitView);
-	return exhibitViewWithTitle;
+	itemContainer.add(exhibitViewWithTitle);
+	addPagingArrowsToView(itemContainer, index, numOfExhibits);
+	
+	return itemContainer;
 }
 
 function createExhibitsImageAndroid(exhibits, index) {
@@ -282,26 +284,38 @@ function addPagingArrowsToView(view, pageNum, numOfPages) {
 	if (pageNum != 0 && numOfPages != 1) {
 		var leftArrow = Ti.UI.createImageView({
 			id : "leftArrow",
-			left : "10dip",
+			left : "0dip",
 			image : iconService.getImageFilename("triple_arrow_left_white.png"),
 			zIndex : 1
 		});
 
 		var leftArrowView = Ti.UI.createView({
 			id: "leftArrowView",
-			left: "-10dip",
+			left: "0dip",
 			bottom: "15%",
 			height: "15%",
 			width: "17%",
 			backgroundColor: Alloy.CFG.excl.colors.exhibitsCarouselArrowColor,
 			borderRadius: "10dip"
 		});
+		var leftArrowStub = Ti.UI.createView({
+			id: "leftArrowStub",
+			left: "0dip",
+			width: "10%",
+			bottom: "15%",
+			height: "15%",
+			backgroundColor: Alloy.CFG.excl.colors.exhibitsCarouselArrowColor
+		});
 
 		leftArrowView.addEventListener('click', function(e) {
 			$.exhibitsCarousel.scrollToView($.exhibitsCarousel.getCurrentPage() - 1);
 		});
+		leftArrowStub.addEventListener('click', function(e){
+			$.exhibitsCarousel.scrollToView($.exhibitsCarousel.getCurrentPage() - 1);
+		});
 
 		leftArrowView.add(leftArrow);
+		view.add(leftArrowStub);
 		view.add(leftArrowView);
 	}
 
@@ -309,26 +323,38 @@ function addPagingArrowsToView(view, pageNum, numOfPages) {
 
 		var rightArrow = Ti.UI.createImageView({
 			id : "rightArrow",
-			right : "10dip",
+			right : "0dip",
 			image : iconService.getImageFilename("triple_arrow_right_white.png"),
 			zIndex : 1
 		});
 
 		var rightArrowView = Ti.UI.createView({
 			id: "rightArrowView",
-			right: "-10dip",
-			top: "15%",
+			right: "0dip",
+			top: "20%",
 			height: "15%",
 			width: "17%",
 			backgroundColor: Alloy.CFG.excl.colors.exhibitsCarouselArrowColor,
 			borderRadius: "10dip"
 		});
+		var rightArrowStub = Ti.UI.createView({
+			id: "rightArrowStub",
+			right: "0dip",
+			width: "10%",
+			top: "20%",
+			height: "15%",
+			backgroundColor: Alloy.CFG.excl.colors.exhibitsCarouselArrowColor
+		});
 
 		rightArrowView.addEventListener('click', function(e) {
 			$.exhibitsCarousel.scrollToView($.exhibitsCarousel.getCurrentPage() + 1);
 		});
+		rightArrowStub.addEventListener('click', function(e) {
+			$.exhibitsCarousel.scrollToView($.exhibitsCarousel.getCurrentPage() + 1);
+		});
 
 		rightArrowView.add(rightArrow);
+		view.add(rightArrowStub);
 		view.add(rightArrowView);
 	}
 	//view.removeEventListener("load", addPagingArrowsFunction);
