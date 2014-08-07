@@ -52,29 +52,18 @@
 	}
 }
 
-"#flyoutMenuArrow": {
-	top: "37dip",
-	right: "30dip",
-	//height: "110dip"
-	height: "70dip"
+"#postArrow": {
+	top: "210dip",
+	right: "55dip",
+	height: "50dip",
+	transform: Alloy.Globals.rotate60
 }
 
-"#ComponentsArrow": {
-	transform: Alloy.Globals.rotate180,
-	height: "70dip"
-}
-
-"#flyoutMenuText": {
+"#postText": {
 	//top: "150dip",
-	top: "105dip",
-	right: "75dip",
+	top: "250dip",
+	right: "90dip",
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_RIGHT
-}
-
-"#ComponentsText": {
-	top: "220dip",
-	right: "75dip",
-	textAlign: Titanium.UI.TEXT_AlIGNMENT_RIGHT
 }
 
 "#ExitButton": {
