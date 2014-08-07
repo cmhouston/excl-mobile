@@ -125,13 +125,21 @@ For more in depth information, refer to Appcelerator's documentation on [Alloy F
 ### Considerations while using ExCL ###
 
 - All Window Navigation must be done using the [Navigation Controller](/docs/NavigationController.md)
-- All fonts and colors are defined Globally within [Alloy.js]()
+- All fonts and colors are defined within the configuration file: [config.json](app/config.json)
+
+### Library Documentation ###
+Much of the ExCL code is split into various libraries which take control of specific functions of the app. The following libraries have corresponding documentation:
+
+* [Navigation Controller](/docs/NavigationController.md)
+* [Custom Calls API](/docs/CustomCalls.md)
 
 ## Troubleshooting ##
 
 STANDUP
 
 # <a name="enhancingExCL"></a> Enhancing the ExCL App #
+
+EDIT
 
 At the beginning of the design process, the joint Pariveda and CMH team held a user story workshop, which generated many desired features for the app. The user stories that we didn't get to are listed under the "Could Haves" sprint in our [JIRA account](https://cmhexcl.atlassian.net). There are many other enhancements that are not new features, but instead changes to the current app. Below is a short description of each major area of suggested enhancements.
 
@@ -156,6 +164,7 @@ A complete list of user stories that we did not get to can be found in this [Goo
 - Allow visitors to earn badges
 - Grade-specific recommendations for teachers
 - Museum administrators can create surveys and polls to place in the app
+- Upgrading Google Analytics to support custom dimensions for Screens
 
 ## Technical Enhancements ##
 
@@ -235,9 +244,3 @@ Both Google and Apple provide documentation about their app store requirements. 
 - [iOS App Store Guidelines](https://developer.apple.com/appstore/resources/approval/guidelines.html)
 
 _______
-### Lib Docs ###
-
-* [Navigation Controller](/docs/NavigationController.md)
-* [Custom Calls API](/docs/CustomCalls.md)
-* [Installing Unit Testing & Code Coverage Tools](/docs/installingUnitTestingAndCodeCoverageTools.md)
-* [How to Debug on Genymotion](/docs/debuggingOnGenymotion.md)
