@@ -70,29 +70,87 @@
 	}
 }
 
-"#sectionArrow": {
-	top: "230dip",
-	right: "55dip",
+"#exhibitsArrow": {
+	top: "50dip",
+	left: "160dip",
 	height: "50dip",
-	transform: Alloy.Globals.rotate130
+	transform: Alloy.Globals.rotate145
 }
 
-"#sectionArrow[formFactor=tablet]": {
-	top: "490dip",
-	right: "180dip",
-	height: "80dip",
-	transform: Alloy.Globals.rotate130
+"#exhibitsArrow[formFactor=tablet]": {
+	top: "100dip",
+	left: "370dip",
+	height: "100dip",
+	transform: Alloy.Globals.rotate145
 }
 
-"#sectionText": {
-	top: "190dip",
-	right: "60dip",
+"#exhibitsText": {
+	top: "30dip",
+	left: "15dip",
+	width: "170dip",
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
 }
 
-"#sectionText[formFactor=tablet]": {
-	top: "420dip",
-	right: "200dip",
+"#exhibitsText[formFactor=tablet]": {
+	top: "60dip",
+	left: "80dip",
+	width: "340dip",
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+}
+
+"#infoArrow": {
+	top: "290dip",
+	left: "15dip",
+	height: "50dip",
+	transform: Alloy.Globals.rotate245
+}
+
+"#infoArrow[formFactor=tablet]": {
+	top: "630dip",
+	left: "45dip",
+	height: "100dip",
+	transform: Alloy.Globals.rotate220
+}
+
+"#infoText": {
+	top: "210dip",
+	left: "5dip",
+	width: "150dip",
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+}
+
+"#infoText[formFactor=tablet]": {
+	top: "460dip",
+	left: "10dip",
+	width: "300dip",
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+}
+
+"#mapArrow": {
+	top: "230dip",
+	right: "15dip",
+	height: "50dip",
+	transform: Alloy.Globals.rotate145
+}
+
+"#mapArrow[formFactor=tablet]": {
+	top: "620dip",
+	right: "45dip",
+	height: "100dip",
+	transform: Alloy.Globals.rotate145
+}
+
+"#mapText": {
+	top: "180dip",
+	right: "5dip",
+	width: "150dip",
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+}
+
+"#mapText[formFactor=tablet]": {
+	top: "500dip",
+	right: "15dip",
+	width: "300dip",
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
 }
 
