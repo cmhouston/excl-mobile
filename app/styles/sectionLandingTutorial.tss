@@ -22,6 +22,20 @@
 		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	}
 }
+
+".fullScreenOverlayText[platform=android]": {
+	color: Alloy.CFG.excl.colors.lightFontColor,
+	shadowColor: Alloy.CFG.excl.colors.darkFontColor,
+	shadowOffset: {x:3, y:3},
+	shadowRadius: 5,
+	font: {
+		textStyle: Titanium.UI.TEXT_STYLE_HEADLINE,
+		fontWeight: "bold",
+		fontSize: "20dp",
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	}
+}
+
 ".GotItButton": {
 	backgroundColor: Alloy.CFG.excl.colors.tutorialGotItButtonColor,
 	width: "200dip",
