@@ -40,11 +40,25 @@ Titanium Studio is an Eclipse base IDE used for developing Titanium projects. Ap
 
 ### Import ExCL to Titanium Studio ###
 
-In order to view and edit the ExCL project using Titanium studio the project must be retrieved from github. Open a command prompt, navigate to a desired folder run the following command:
+
+#### Clone the repository ####
+In order to view and edit the ExCL project using Titanium studio the project must be retrieved from github.
+
+##### Using Command Line #####
+
+If you are using a Mac or Linux computer, you go ahead and clone the repository. If you are using a windows machine, make sure you install git first. Here is a site that explains the process for [Installing Git](http://git-scm.com/book/en/Getting-Started-Installing-Git).
+
+Open a command prompt, navigate to a desired folder run the following command:
 
      $ git clone https://github.com/cmhouston/excl-mobile.git
 
-After the project has been downloaded to your local system execute the following steps to access it through your IDE
+##### Using SourceTree #####
+
+A different tool for handling repositories and source control is [SourceTree](https://www.atlassian.com/software/sourcetree/overview?_mid=36679bc382faa46de63d9de67e0aca61&gclid=Cj0KEQjwx4yfBRCt2rrAs-P5vtkBEiQAOdFXbXiQRjxGbz923Us5QtTmaahoNHqrzWUEB3eMWQsJnfwaAlkA8P8HAQ). Install SourceTree and clone the repository into your local file system.
+
+#### Import Project Into Titanium ####
+
+After the project has been cloned to your local system execute the following steps to access it through your IDE
 
 1. Open Titanium Studio and go to File->Import
 - Select Titanium->Existing Mobile Project and click next
@@ -139,9 +153,7 @@ STANDUP
 
 # <a name="enhancingExCL"></a> Enhancing the ExCL App #
 
-EDIT
-
-At the beginning of the design process, the joint Pariveda and CMH team held a user story workshop, which generated many desired features for the app. The user stories that we didn't get to are listed under the "Could Haves" sprint in our [JIRA account](https://cmhexcl.atlassian.net). There are many other enhancements that are not new features, but instead changes to the current app. Below is a short description of each major area of suggested enhancements.
+ExCL was created from a list of user stories involving enhancing the experience of a museum user. Many of these user stories have not yet been implemented. The user stories that we didn't get to are listed under the "Could Haves" sprint in our [JIRA account](https://cmhexcl.atlassian.net). There are many other enhancements that are not new features, but instead changes to the current app. Below is a short description of each major area of suggested enhancements.
 
 ## UX Enhancements to Current Features ##
 
