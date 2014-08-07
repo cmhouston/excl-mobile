@@ -23,7 +23,7 @@ var postArgs = args[0].posts;
 var allInclusiveTabTitle = args[1];
 var sectionIndex = args[2];
 
-var parentScreenName = args.parentScreenName;
+var parentScreenName = args[0].parentScreenName;
 var viewService = setPathForLibDirectory("customCalls/viewService");
 viewService = new viewService();
 var labelService = setPathForLibDirectory("customCalls/labelService");

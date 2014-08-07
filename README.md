@@ -131,38 +131,22 @@ For more in depth information, refer to Appcelerator's documentation on [Alloy F
 
 STANDUP
 
-
-
-
-
-
-
-
-
-
-# Enhancing the ExCL App #
+# <a name="enhancingExCL"></a> Enhancing the ExCL App #
 
 At the beginning of the design process, the joint Pariveda and CMH team held a user story workshop, which generated many desired features for the app. The user stories that we didn't get to are listed under the "Could Haves" sprint in our [JIRA account](https://cmhexcl.atlassian.net). There are many other enhancements that are not new features, but instead changes to the current app. Below is a short description of each major area of suggested enhancements.
 
 ## UX Enhancements to Current Features ##
 
-- Tutorial for age filtering
+
+A complete list of user stories that we did not get to can be found in this [Google Drive document](https://docs.google.com/spreadsheets/d/1iPPVocjjprG7frXPwPh00Mrh02YqDmYqOXqxRYbju2Q/edit?usp=sharing). The user stories that we decided were possibilities for this summer (everything other than stories rated as "won't") are in [JIRA](https://cmhexcl.atlassian.net), and the stories that haven't been completed yet can be found in the "Could Haves" sprint.
+
+- Extend Tutorial to cover age filtering
 - Screen timeout for kiosk mode that resets to the desired home screen
 - Allow users to click on images to make them fullscreen, particularly the images on the component landing page and the post landing page
 - Save name and e-mail on comment form to device so that users only enter it once
 - Make the restart function smoother visually. This function is used for language switching, refreshing the in case of a lost network connection, and restarting the tutorial.
 - Make all labels in the app fully customizable from Wordpress
 - Allow users to e-mail content to themselves from kiosk mode
-
-## Technical Enhancements ##
-
-- Better error handling for network connection errors
-- Refactor the Navigation Controller, as it is complicated and sometimes buggy
-
-## New Features ##
-
-A complete list of user stories that we did not get to can be found in this [Google Drive document](https://docs.google.com/spreadsheets/d/1iPPVocjjprG7frXPwPh00Mrh02YqDmYqOXqxRYbju2Q/edit?usp=sharing). The user stories that we decided were possibilities for this summer (everything other than stories rated as "won't") are in [JIRA](https://cmhexcl.atlassian.net), and the stories that haven't been completed yet can be found in the "Could Haves" sprint.
-
 - Location tracking using low-energy Bluetooth beacons
 - Bookmarking: Users can save suggested activities and view them later
 - Allow users to activate built-in tool apps in their phone (stopwatch, calculator, etc.) from the app for relevant activities
@@ -172,6 +156,11 @@ A complete list of user stories that we did not get to can be found in this [Goo
 - Allow visitors to earn badges
 - Grade-specific recommendations for teachers
 - Museum administrators can create surveys and polls to place in the app
+
+## Technical Enhancements ##
+
+- Better error handling for network connection errors
+- Refactor the Navigation Controller, as it is complicated and sometimes buggy
 
 ## Reporting Bugs ##
 

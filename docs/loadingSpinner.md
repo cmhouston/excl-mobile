@@ -3,9 +3,8 @@
 
 Require with:
 
-`var LoadingSpinner = require('loadingSpinner/loadingSpinner');`
-
-`var spinner = new LoadingSpinner();`
+	var LoadingSpinner = require('loadingSpinner/loadingSpinner');
+	var spinner = new LoadingSpinner();
 
 Add to desired element with:
 
