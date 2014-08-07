@@ -106,7 +106,7 @@ function handleAdminModeDialog(self) {
     	}
     	else {
 	    	var errorMsg = Ti.UI.createAlertDialog({
-			    title: 'incorrect code',
+			    title: 'Incorrect code',
 			    buttonNames: ['OK']
 			});
 			errorMsg.show();

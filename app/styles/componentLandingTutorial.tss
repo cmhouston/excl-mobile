@@ -70,32 +70,30 @@
 	}
 }
 
-"#postArrow": {
-	top: "210dip",
+"#sectionArrow": {
+	top: "230dip",
 	right: "55dip",
 	height: "50dip",
-	transform: Alloy.Globals.rotate60
+	transform: Alloy.Globals.rotate130
 }
 
-"#postArrow[formFactor=tablet]": {
-	top: "370dip",
-	right: "85dip",
+"#sectionArrow[formFactor=tablet]": {
+	top: "490dip",
+	right: "180dip",
 	height: "80dip",
-	transform: Alloy.Globals.rotate60
+	transform: Alloy.Globals.rotate130
 }
 
-"#postText": {
-	//top: "150dip",
-	top: "250dip",
-	right: "90dip",
-	textAlign: Titanium.UI.TEXT_ALIGNMENT_RIGHT
+"#sectionText": {
+	top: "190dip",
+	right: "60dip",
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
 }
 
-"#postText[formFactor=tablet]": {
-	//top: "150dip",
-	top: "430dip",
-	right: "150dip",
-	textAlign: Titanium.UI.TEXT_ALIGNMENT_RIGHT
+"#sectionText[formFactor=tablet]": {
+	top: "420dip",
+	right: "200dip",
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
 }
 
 "#ExitButton": {
