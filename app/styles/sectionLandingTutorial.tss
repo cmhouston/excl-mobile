@@ -32,6 +32,13 @@
 		textStyle: Titanium.UI.TEXT_STYLE_HEADLINE,
 		fontWeight: "bold",
 		fontSize: "20dp",
+	}
+}
+
+".fullScreenOverlayText[formFactor=tablet]": {
+	font: {
+		fontWeight: "bold",
+		fontSize: "35dip",
 		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	}
 }
@@ -73,10 +80,24 @@
 	transform: Alloy.Globals.rotate60
 }
 
+"#postArrow[formFactor=tablet]": {
+	top: "370dip",
+	right: "85dip",
+	height: "80dip",
+	transform: Alloy.Globals.rotate60
+}
+
 "#postText": {
 	//top: "150dip",
 	top: "250dip",
 	right: "90dip",
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_RIGHT
+}
+
+"#postText[formFactor=tablet]": {
+	//top: "150dip",
+	top: "430dip",
+	right: "150dip",
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_RIGHT
 }
 

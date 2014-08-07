@@ -31,7 +31,7 @@
 	}
 }
 
-".fullScreenOverlayText[formFactor=android]": {
+".fullScreenOverlayText[platform=android]": {
 	font: {
 		fontWeight: "bold",
 		fontSize: "18dip",
