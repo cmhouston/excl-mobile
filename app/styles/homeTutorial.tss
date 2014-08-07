@@ -1,0 +1,107 @@
+".fullScreenWindow": {
+  fullscreen: true,
+  navBarHidden: true,
+  backgroundColor: "transparent",
+  opacity: "1",
+  height: Titanium.UI.FILL,
+  width: Titanium.UI.FILL
+}
+".fullScreenOverlay": {
+	backgroundColor: Alloy.CFG.excl.colors.tutorialTintColor,
+	opacity: ".75",
+}
+".fullScreenOverlayText": {
+	color: Alloy.CFG.excl.colors.lightFontColor,
+	shadowColor: Alloy.CFG.excl.colors.darkFontColor,
+	shadowOffset: {x:3, y:3},
+	shadowRadius: 5,
+	font: {
+		textStyle: Titanium.UI.TEXT_STYLE_HEADLINE,
+		fontWeight: "bold",
+		fontSize: "24dp",
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	}
+}
+
+".fullScreenOverlayText[platform=android]": {
+	font: {
+		textStyle: Titanium.UI.TEXT_STYLE_HEADLINE,
+		fontWeight: "bold",
+		fontSize: "20dp",
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	}
+}
+
+".fullScreenOverlayText[formFactor=tablet]": {
+	font: {
+		fontWeight: "bold",
+		fontSize: "35dip",
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	}
+}
+
+".GotItButton": {
+	backgroundColor: Alloy.CFG.excl.colors.tutorialGotItButtonColor,
+	width: "200dip",
+	height: "50dip",
+	borderColor: Alloy.CFG.excl.colors.tutorialButtonBorderColor,
+	borderRadius: "7dip",
+	borderWidth: "1dip",
+	color: Alloy.CFG.excl.colors.darkFontColor,
+	font: {
+		textStyle: Titanium.UI.TEXT_STYLE_HEADLINE,
+		fontSize: "24dp",
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	}
+}
+
+".tutorialButton": {
+	backgroundColor: Alloy.CFG.excl.colors.tutorialEndButtonColor,
+	width: "200dip",
+	height: "50dip",
+	borderColor: Alloy.CFG.excl.colors.tutorialButtonBorderColor,
+	borderRadius: "7dip",
+	borderWidth: "1dip",
+	color: Alloy.CFG.excl.colors.darkFontColor,
+	font: {
+		textStyle: Titanium.UI.TEXT_STYLE_HEADLINE,
+		fontSize: "24dp",
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	}
+}
+
+"#sectionArrow": {
+	top: "230dip",
+	right: "55dip",
+	height: "50dip",
+	transform: Alloy.Globals.rotate130
+}
+
+"#sectionArrow[formFactor=tablet]": {
+	top: "490dip",
+	right: "180dip",
+	height: "80dip",
+	transform: Alloy.Globals.rotate130
+}
+
+"#sectionText": {
+	top: "190dip",
+	right: "60dip",
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+}
+
+"#sectionText[formFactor=tablet]": {
+	top: "420dip",
+	right: "200dip",
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+}
+
+"#ExitButton": {
+	//bottom: "150dip"
+	bottom: "20dip"
+}
+
+"#NextButton": {
+	//bottom: "150dip"
+	bottom: "80dip"
+}
