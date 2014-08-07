@@ -1,18 +1,13 @@
 exports.definition = {
 	config: {
-		defaults: {
-			source: null,
-			text: null,
-			accessed: null
-		},
 		columns: {
-		    "source": "UNIQUE TEXT",
-		    "text": "TEXT",
-		    "accessed": "INTEGER"
+		    "url": "string",
+		    "text": "string",
+		    "timeRetrieved": "int"
 		},
 		adapter: {
 			type: "sql",
-			collection_name: "rdcResponse"
+			collection_name: "rdcResponseText"
 		}
 	},
 	extendModel: function(Model) {
