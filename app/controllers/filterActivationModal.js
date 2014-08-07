@@ -51,22 +51,12 @@ function createFilterView(filter, allChecked) {
 	var name = filter.get('name');
 	var active;
 
-	if (allChecked == "enable") {
-		filter.set('active', "true");
-	} else if (allChecked == "disable") {
-		filter.set('active', "false");
-	}
 	Alloy.Models.app.trigger('change:active');
 	active = filter.get('active');
 
 	//Ti.API.info("filter name: " + name + "(" + active + ")");
 
 	var color = Alloy.CFG.excl.colors.darkFontColor;
-	// if (OS_IOS) {
-		// color = Alloy.CFG.excl.colors.accentButtonColor;
-		// $.titleBar.top = '10dip';
-		// $.hint.color = Alloy.CFG.excl.colors.lightFontColor;
-	// }
 
 	var args = {
 		color : color,
@@ -91,7 +81,6 @@ function createFilterView(filter, allChecked) {
 	var _switch = Ti.UI.createSwitch(args);
 
 	_switch.addEventListener('change', function(e) {
-		allChecked = "none";
 		filter.set('active', _switch.value);
 	});
 

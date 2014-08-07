@@ -13,8 +13,8 @@
 	 - Troubleshooting                                        (All)               
 - [Enhancing the ExCL App](#enhancingExCL)            
 - TiShadow                                              (LI<JY)
-- Distribution For Testing                                 (DH)
 - [Unit Testing and Continuous Integration](#unitTestingAndCI)  
+- [Distribution For Testing](#addhoc)
 - [Deploying to the App Store](#appStore)
 
 # <a name="exclIntro"></a> Introduction to ExCL #
@@ -216,6 +216,10 @@ The code was designed to use continuous integration. We recommend using [Buildbo
 ### Troubleshooting Buildbox ###
 
 Occasionally you will need to change the permissions of the `scripts/unit.sh` and `scripts/integration.sh` scripts to make them executable. These can be found in the `~/.buildbox/{NAME_OF_BUILDBOX_AGENT}/excl-mobile/excl-mobile` directory. You will need to `chmod` those to be executable if you have any problems.
+
+# <a name="addhoc"></a> Distribution For Testing #
+TODO (DH)
+
 
 # <a name="appStore"></a> Deploying to the App Store #
 
