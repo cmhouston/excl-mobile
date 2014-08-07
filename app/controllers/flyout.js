@@ -184,9 +184,9 @@ function tutorialToggler(e) {
 
 function updateTutorialUI() {
 	if (Alloy.Models.app.get("tutorialOn")) {
-		$.tutorialLabel.text = "Tutorial is On";
+		$.tutorialLabel.text = "Turn Tutorial Off";
 	} else {
-		$.tutorialLabel.text = "Tutorial is Off";
+		$.tutorialLabel.text = "Turn Tutorial On";
 	}
 }
 
