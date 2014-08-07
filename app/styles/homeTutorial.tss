@@ -27,7 +27,7 @@
 	font: {
 		textStyle: Titanium.UI.TEXT_STYLE_HEADLINE,
 		fontWeight: "bold",
-		fontSize: "20dp",
+		fontSize: "18dp",
 		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	}
 }
