@@ -1,9 +1,8 @@
 <Alloy>
 	<View id="sectionTutorialPage" class="fullScreenWindow" autoStyle="true">
 		<View class="fullScreenOverlay" autoStyle="true" />
-		<ImageView id="flyoutMenuArrow" image="/images/tutorial/long-arrow.png"></ImageView>
-		<ImageView id="ComponentsArrow" image="/images/tutorial/long-arrow.png"></ImageView>
-		<Label id="flyoutMenuText" class="fullScreenOverlayText">Section Tutorial!</Label>
+		<ImageView id="postArrow" image="/images/tutorial/long-arrow-flipped.png"></ImageView>
+		<Label id="postText" class="fullScreenOverlayText">Tap to see a detailed view.</Label>
 		<Button id="ExitButton" onClick="tutorialExit" class="tutorialButton">End Tutorial</Button>
 		<Button id="NextButton" onClick="gotIt" class="GotItButton">Got it!</Button>
 	</View>

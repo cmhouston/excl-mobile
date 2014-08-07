@@ -30,6 +30,15 @@
 		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	}
 }
+
+".fullScreenOverlayText[platform=android]": {
+	font: {
+		fontWeight: "bold",
+		fontSize: "18dip",
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	}
+}
+
 ".tutorialButton": {
 	backgroundColor: Alloy.CFG.excl.colors.tutorialEndButtonColor,
 	width: "50%",
@@ -54,9 +63,14 @@
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
 }
 
+"#viewCommentsText[platform=android]": {
+	right: "100dip"
+}
+
 "#viewCommentsText[formFactor=tablet]": {
-	top: "640dip",
-	width: Ti.UI.FILL,
+	bottom: "100dip",
+	left: "30dip",
+	right: "350dip",
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
 }
 
@@ -66,6 +80,14 @@
 	left: "5dip",
 	bottom: "50dip",
 	width: "55dip"
+}
+
+"#viewCommentsArrow[formFactor=tablet]": {
+	transform: Alloy.Globals.rotate270,
+	height: "50dip",
+	left: "5dip",
+	bottom: "70dip",
+	width: "80dip"
 }
 
 "#ExitButton": {
@@ -79,8 +101,8 @@
 }
 
 "#iconHighlight": {
-	width: "60%",
-	top: "160dip",
+	width: "40%",
+	top: "525dip",
 	height: Ti.UI.SIZE
 }
 
@@ -150,11 +172,22 @@
 	width: "50dip"
 }
 
+"#commentArrow[formFactor=tablet]": {
+	top: "500dip",
+	center:{
+		x: "35%"
+	},
+	height: "60dip",
+	width: "50dip"
+}
+
 "#commentText": {
-	top: "140dip",
-	width: Ti.UI.FILL,
+	top: "450dip",
+	width: "200dip",
+	left: "25dip",
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
 }
+
 "#commentText[formFactor=handheld]": {
 	top: "185dip",
 	left: "3dip",
@@ -169,9 +202,17 @@
 	left: "30%"
 }
 
+"#shareArrow[formFactor=tablet]": {
+	top: "480dip", 
+	height: "30dip",
+	width: "120dip",
+	left: "40%"
+}
+
 "#shareText": {
-	top: "120dip",
-	width: Ti.UI.FILL,
+	top: "350dip",
+	width: "250dip",
+	left: "30%",
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
 }
 "#shareText[formFactor=handheld]": {
@@ -188,9 +229,17 @@
 	width: "45dip"
 }
 
+"#photoArrow[formFactor=tablet]": {
+	top: "500dip",
+	left: "62%", 
+	height: "45dip",
+	width: "75dip"
+}
+
 "#photoText": {
-	top: "145dip",
-	width: Ti.UI.FILL,
+	top: "400dip",
+	right: "20dip",
+	width: "250dip",
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
 }
 "#photoText[formFactor=handheld]": {

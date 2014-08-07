@@ -20,10 +20,14 @@
 
 
 
-function LoadingSpinner(addMessage) {
+function LoadingSpinner(addMessage, typeOfMessage) {
 	addMessage = addMessage || false;
+	typeOfMessage = typeOfMessage || 'default';
 	
 	this.loadingMessages = ["Cooking up some fun...", "Activities are on their way!", "Get excited!", "Firing up!", "Turning on the engines...", "Finding some fun...", "Sounding the horn!", "Getting pumped...", "Diving in...", "Preparing to launch..." ];
+	if (typeOfMessage == 'map'){
+		this.loadingMessages = ["Mapping out some fun!", "Creating your roadmap...", "You must be lost...", "Mapping it out!", "Dropping the pin...", "Finding your way!", "Recalculating..."];
+	}
 	
 	var style;
 	var message;

@@ -28,6 +28,8 @@ var viewServicePath = setPathForLibDirectory('customCalls/viewService');
 var viewService = new viewServicePath();
 var loadingSpinner = setPathForLibDirectory('loadingSpinner/loadingSpinner');
 var spinner = new loadingSpinner();
+var filterService = setPathForLibDirectory('filterService/filterService');
+var filter = new filterService();
 
 function addSpinner() {
 	spinner.addTo($.win);
@@ -51,22 +53,12 @@ function createFilterView(filter, allChecked) {
 	var name = filter.get('name');
 	var active;
 
-	if (allChecked == "enable") {
-		filter.set('active', "true");
-	} else if (allChecked == "disable") {
-		filter.set('active', "false");
-	}
 	Alloy.Models.app.trigger('change:active');
 	active = filter.get('active');
 
 	//Ti.API.info("filter name: " + name + "(" + active + ")");
 
 	var color = Alloy.CFG.excl.colors.darkFontColor;
-	// if (OS_IOS) {
-		// color = Alloy.CFG.excl.colors.accentButtonColor;
-		// $.titleBar.top = '10dip';
-		// $.hint.color = Alloy.CFG.excl.colors.lightFontColor;
-	// }
 
 	var args = {
 		color : color,
@@ -86,12 +78,11 @@ function createFilterView(filter, allChecked) {
 		right : '15%',
 		titleOn : " ",
 		titleOff : " ",
-		height: "80%"
+		height : "80%"
 	};
 	var _switch = Ti.UI.createSwitch(args);
 
 	_switch.addEventListener('change', function(e) {
-		allChecked = "none";
 		filter.set('active', _switch.value);
 	});
 
@@ -106,13 +97,23 @@ function createFilterView(filter, allChecked) {
 }
 
 function closeWindow(e) {
+	displayMessageOnceDoneButtonIsClicked();
+	$.getView().close();
+}
+
+function displayMessageOnceDoneButtonIsClicked() {
+	// default message
+	var messageToDisplay = "The app content has been reorganized for the ages selected.";
+	selectedFilters = filter.formatActiveFiltersIntoArray(Alloy.Collections.filter);
+	if (JSON.stringify(selectedFilters) == "[]") {
+		messageToDisplay = "Customize by age will remain disabled because no age filters were selected.";
+	}
+
 	Titanium.UI.createAlertDialog({
 		title : '',
-		message : "The app content has been reorganized for the ages selected",
+		message : messageToDisplay,
 		ok : 'Got it!'
 	}).show();
-	
-	$.getView().close();
 }
 
 function addFilters(allChecked) {

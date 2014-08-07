@@ -23,6 +23,22 @@ var analyticsPageLevel = "Information";
 var url = Alloy.Globals.rootWebServiceUrl;
 var json = Alloy.Globals.museumJSON;
 
+function setPathForLibDirectory(libFile) {
+	if ( typeof Titanium == 'undefined') {
+		lib = require("../../lib/" + libFile);
+	} else {
+		lib = require(libFile);
+	}
+	return lib;
+};
+
+var loadingSpinner = setPathForLibDirectory('loadingSpinner/loadingSpinner');
+var addLoadingMessage = true;
+var messageType = 'map';
+var spinner = new loadingSpinner(true, 'map');
+spinner.addTo($.map);
+spinner.show();
+
 var setAnalyticsPageTitle = function(title) {
 	analyticsPageTitle = title;
 };
@@ -44,7 +60,11 @@ exports.getAnalyticsPageLevel = getAnalyticsPageLevel;
 $.navBar.setPageTitle("Map");
 
 $.Map.url=json.data.museum.map;
-	
+
+function hideSpinner(){
+	spinner.hide();
+}
+
 $.onEnterKioskMode = function() {
 	$.navBar.onEnterKioskMode();
 };

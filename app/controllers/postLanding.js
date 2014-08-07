@@ -508,11 +508,7 @@ function getRowContentsForImage(url) {
 function wrapRichTextInHTML(text) {
 	var file = Ti.Filesystem.getFile(Ti.Filesystem.resourcesDirectory, "webViewInjectableHTML.html");
 	html = file.read().text.replace("${RICH_TEXT}", text);
-	
 	html = setHtmlFonts(html);
-	
-	Ti.API.info("Replaced HTML: " + html);
-	//html += "function openInBrowser(link) { Ti.App.fireEvent('app:openInBrowser', {url: link}) } function changeLinksToOpenInBrowser() { alert('working'); var aTags = document.getElementsByTagName('a'); for (var i = 0; i < aTags.length; i++) { var tag = aTags[i]; var linkURL = tag.href; tag.setAttribute('href', '#'); tag.setAttribute('onclick', 'openInBrowser(\"' + linkURL + '\"); return false;'); } }; window.onload = changeLinksToOpenInBrowser;";
 	return html;
 }
 

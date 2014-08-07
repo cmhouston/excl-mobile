@@ -13,8 +13,8 @@
 	 - Troubleshooting                                        (All)               
 - [Enhancing the ExCL App](#enhancingExCL)            
 - TiShadow                                              (LI<JY)
-- Distribution For Testing                                 (DH)
 - [Unit Testing and Continuous Integration](#unitTestingAndCI)  
+- [Distribution For Testing](#addhoc)
 - [Deploying to the App Store](#appStore)
 
 # <a name="exclIntro"></a> Introduction to ExCL #
@@ -219,6 +219,18 @@ The code was designed to use continuous integration. We recommend using [Buildbo
 ### Troubleshooting Buildbox ###
 
 Occasionally you will need to change the permissions of the `scripts/unit.sh` and `scripts/integration.sh` scripts to make them executable. These can be found in the `~/.buildbox/{NAME_OF_BUILDBOX_AGENT}/excl-mobile/excl-mobile` directory. You will need to `chmod` those to be executable if you have any problems.
+
+# <a name="addhoc"></a> Distribution For Testing #
+For an app development project of any size, you will probably want to have a way to distribute alpha (pre release) 
+versions of the app to testers and other interested parties (like your mom!). There are many cloud services out there
+that make it easy for even nontechnical people to install ad hoc builds of your app that you upload to the service. An 
+added benefit is that it can be a convenient place to keep track of all your various builds, versions, sub-versions etc.
+Some of these services are free others are not. Some are iOS or Android only while others support both. Most have API's 
+that allow you to programmatically upload your build right from your build script. 
+
+Regardless of which service you use (if any at all), 
+
+
 
 # <a name="appStore"></a> Deploying to the App Store #
 
