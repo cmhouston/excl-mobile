@@ -1,3 +1,5 @@
+var rdc = require('remoteDataCache');
+
 exports.cacheMuseum = function (museumJSON) {
 	cacheAllMediaInJSON(museumJSON);
 	cacheComponentsJSONFromMuseumJSON(museumJSON);
@@ -7,9 +9,9 @@ function cacheComponentsJSONFromMuseumJSON(museumJSON) {
 	_.each(museumJSON.data.museum.exhibits, function(exhibitJSON, index, list) {
 		_.each(exhibitJSON.components, function(componentJSON, index, list) {
 			var url = getComponentURLFromComponentJSON(componentJSON);
-			//rdc.getText({url: url, callback: function(json) {
-				//cacheAllMediaInJSON(json);
-			//}});
+			rdc.getText({url: url, onsuccess: function(text, request) {
+				cacheAllMediaInJSON(text);
+			}});
 		});
 	});
 }
@@ -25,6 +27,14 @@ function cacheAllMediaInJSON(json) {
 	var mediaArray;
 	while ((mediaArray = urlExtractor.exec(json)) !== null)
 	{
-	  Ti.API.info("Caching url: " + mediaArray[0]);
+		var url = mediaArray[0];
+		Ti.API.info("Caching url: " + url);
+		rdc.getFile({
+			url: url,
+			onsuccess: function(path, request) {
+			},
+			onerror: function(request) {
+			}}
+		);
 	}
 }
