@@ -1,6 +1,6 @@
 <Alloy>
 	<Window class="container">
-		<View class="verticalContainer" >
+		<ScrollView class="verticalContainer" >
 			<Label id="title" class="title">
 				Choose your Wordpress Environment
 			</Label>
@@ -27,6 +27,12 @@
 				</Label>
 				<Switch id="toggleUnpublishedPostsSwitch"/>
 			</View>
-		</View>
+			<Label id="title" class="title">
+				Choose your Wordpress Environment
+			</Label>
+			<Button class="environmentOption" onClick="resetCache">
+				Reset Offline Cache
+			</Button>
+		</ScrollView>
 	</Window>
 </Alloy>
