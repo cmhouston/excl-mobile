@@ -97,7 +97,7 @@
 	// bottom: "20dip"
 	transform: Alloy.Globals.rotate60,
 	height: "50dip",
-	right: "63dip",
+	right: "58dip",
 	top: "275dip",
 	width: "25dip"
 }
