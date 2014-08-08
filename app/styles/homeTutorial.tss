@@ -93,14 +93,14 @@
 }
 
 "#infoArrow": {
-	top: "310dip",
+	top: "305dip",
 	left: "15dip",
 	height: "50dip",
 	transform: Alloy.Globals.rotate245
 }
 
 "#infoArrow[formFactor=tablet]": {
-	top: "630dip",
+	top: "580dip",
 	left: "45dip",
 	height: "100dip",
 	transform: Alloy.Globals.rotate220
