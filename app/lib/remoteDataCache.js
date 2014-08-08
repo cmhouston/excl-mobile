@@ -28,7 +28,7 @@ var requestStack, downloading, expiration;
 function init() {
 	requestStack = [];
 	downloading = false;
-	expiration = DAY_IN_MILLISECONDS / 3;
+	expiration = 2 * (DAY_IN_MILLISECONDS / 3);	// 16 hours
 };
 
 function constructRequest(type, url, onsuccess, onerror, onstream) {
