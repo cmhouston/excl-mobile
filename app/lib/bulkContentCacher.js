@@ -24,7 +24,7 @@ function getComponentURLFromComponentJSON(componentJSON) {
 
 function cacheAllMediaInJSON(json) {
 	json = prepareJSONForRegEx(json);
-	var urlExtractor = /https?:\/\/([-\w\.]+)+(:\d+)?(\/([\w\/_\.-]*(\?\S+)?)?)?\.(jpg|png|mp4).*?\"/gmi;
+	var urlExtractor = /https?:\/\/([-\w\.]+)+(:\d+)?(\/([\w\/_\.-]*(\?\S+)?)?)?\.(jpg|png|mp4)[^\"]*/gmi;
 	var mediaArray;
 	while ((mediaArray = urlExtractor.exec(json)) !== null)
 	{
