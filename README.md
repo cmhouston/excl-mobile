@@ -75,9 +75,10 @@ The run option at the top left of the screen is by default unavailable. To enabl
 
 ### First time setup ###
 
-After importing the project into Titanium Studio, open up the `app/config.json` file. You will need to put in the endpoint URLs that point to the [ExCL Wordpress instance](https://github.com/cmhouston/excl-cms) that you have already set up. The endpoints should look like:
-    http://myserver.com/wp-json/v01/excl/museum/25
+After importing the project into Titanium Studio, open up the `app/config.json` file. You will need to put in the endpoint URLs that point to the [ExCL Wordpress instance](https://github.com/cmhouston/excl-cms) that you have already set up. The endpoints should look like `http://myserver.com/wp-json/v01/excl/museum/25`.
+
 You get the ID number on the end of the URL from the ID of the museum in the Wordpress instance. This can be easily seen in the URL bar when editing the museum page in Wordpress.
+
 Additionally, the app should be customized to fit your organization. Update the images in the `app/assets` folders and update `tiapp.xml` to reflect your own organization's information.
 
 ## <a name="runningExCL"></a> Running the ExCL Application ##
