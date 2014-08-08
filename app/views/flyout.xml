@@ -25,8 +25,8 @@
 					<View backgroundImage="/flyoutMenuIcons/info.png" class="rowIcon"/>
 					<Label id="museumInfoLabel" class="rowLabel">Info</Label>
 				</View>
-			</View> -->
-			<View id="customLearnRow" class="viewRow" onClick="rowFilterEventListener">
+			</View>
+			<!-- <View id="customLearnRow" class="viewRow" onClick="rowFilterEventListener">
 				<View class="rowContainer">
 					<View backgroundImage="/flyoutMenuIcons/ages.png" class="rowIcon"/>
 					<Label id="agesLabel" class="rowLabel">Filter by Age</Label>
@@ -37,7 +37,7 @@
 					<View backgroundImage="/flyoutMenuIcons/edit.png" class="rowIcon"/>
 					<Label class="rowLabelIndented" id="toggleLabel">Edit Filter</Label>
 				</View>
-			</View>
+			</View> -->
 			<View class="viewRow" onClick="tutorialToggler">
 				<View class="rowContainer">
 					<View backgroundImage="/flyoutMenuIcons/tutorial.png" class="rowIcon"/>
