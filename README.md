@@ -1,4 +1,5 @@
 # ExCL Developer Documentation #
+A guide for setting up Titanium and beginning mobile development with ExCL
 
 ### Contents ###
 

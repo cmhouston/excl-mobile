@@ -41,13 +41,10 @@
 }
 
 ".GotItButton": {
-	backgroundColor: Alloy.CFG.excl.colors.tutorialGotItButtonColor,
+	backgroundColor: Alloy.CFG.excl.colors.submitButtonColor,
 	width: "200dip",
 	height: "50dip",
-	borderColor: Alloy.CFG.excl.colors.tutorialButtonBorderColor,
-	borderRadius: "7dip",
-	borderWidth: "1dip",
-	color: Alloy.CFG.excl.colors.darkFontColor,
+	color: Alloy.CFG.excl.colors.lightFontColor,
 	font: {
 		textStyle: Titanium.UI.TEXT_STYLE_HEADLINE,
 		fontSize: "24dp",
@@ -56,13 +53,10 @@
 }
 
 ".tutorialButton": {
-	backgroundColor: Alloy.CFG.excl.colors.tutorialEndButtonColor,
+	backgroundColor: Alloy.CFG.excl.colors.cancelButtonColor,
 	width: "200dip",
 	height: "50dip",
-	borderColor: Alloy.CFG.excl.colors.tutorialButtonBorderColor,
-	borderRadius: "7dip",
-	borderWidth: "1dip",
-	color: Alloy.CFG.excl.colors.darkFontColor,
+	color: Alloy.CFG.excl.colors.lightFontColor,
 	font: {
 		textStyle: Titanium.UI.TEXT_STYLE_HEADLINE,
 		fontSize: "24dp",
@@ -71,7 +65,7 @@
 }
 
 "#sectionArrow": {
-	top: "230dip",
+	top: "270dip",
 	right: "55dip",
 	height: "50dip",
 	transform: Alloy.Globals.rotate130
@@ -85,7 +79,7 @@
 }
 
 "#sectionText": {
-	top: "190dip",
+	top: "230dip",
 	right: "60dip",
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
 }
