@@ -1,4 +1,4 @@
-var rdc = require('remoteDataCache');
+var cache = require('remoteDataCache');
 
 exports.cacheMuseum = function (museumJSON) {
 	cacheAllMediaInJSON(museumJSON);
@@ -9,7 +9,8 @@ function cacheComponentsJSONFromMuseumJSON(museumJSON) {
 	_.each(museumJSON.data.museum.exhibits, function(exhibitJSON, index, list) {
 		_.each(exhibitJSON.components, function(componentJSON, index, list) {
 			var url = getComponentURLFromComponentJSON(componentJSON);
-			rdc.getText({url: url, onsuccess: function(text, request) {
+			cache.getText({url: url, onsuccess: function(text, request) {
+				Ti.API.info("Success function: " + text);
 				cacheAllMediaInJSON(text);
 			}});
 		});
@@ -22,19 +23,28 @@ function getComponentURLFromComponentJSON(componentJSON) {
 }
 
 function cacheAllMediaInJSON(json) {
-	json = JSON.stringify(json);
-	var urlExtractor = /https?:\/\/([-\w\.]+)+(:\d+)?(\/([\w/_\.-]*(\?\S+)?)?)?\.(jpg|png|mp4)/gmi;
+	json = prepareJSONForRegEx(json);
+	var urlExtractor = /https?:\/\/([-\w\.]+)+(:\d+)?(\/([\w/_\.-]*(\?\S+)?)?)?\.(jpg|png|mp4)(\/([\w/_\.-]*(\?\S+)?)?)?/gmi;
 	var mediaArray;
 	while ((mediaArray = urlExtractor.exec(json)) !== null)
 	{
 		var url = mediaArray[0];
 		Ti.API.info("Caching url: " + url);
-		rdc.getFile({
+		cache.getFile({
 			url: url,
-			onsuccess: function(path, request) {
-			},
-			onerror: function(request) {
-			}}
-		);
+			onsuccess: function(path, request) {},
+			onerror: function(request) {}
+		});
 	}
+}
+
+function prepareJSONForRegEx(json) {
+	if(_.isString(json)) {
+		try {
+			json = JSON.parse(json);
+		} catch(e) {
+			json = "";
+		}
+	}
+	return JSON.stringify(json);
 }
