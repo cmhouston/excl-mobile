@@ -19,6 +19,7 @@
 //=====================================================================
 
 var apiCalls, networkCalls, parseCalls, alloyCalls;
+var cache = require('remoteDataCache');
 
 function setPathForLibDirectory(rootPath) {
 	apiCalls = require(rootPath + 'apiCalls');
@@ -36,12 +37,12 @@ function fetchDataFromUrl(url, onSuccess) {
 	url = addLanguageToURL(url);
 	url = addViewUnpublishedPostsToURL(url);
 	
-	var client = networkCalls.network(url, onSuccess);
-	apiCalls.info("url: " + url);
-	if (client) {
-		client.open("GET", url, false);
-		client.send();
-	}
+	cache.getText({
+		url: url,
+		onsuccess: function(responseText, request) {
+			if(onSuccess && typeof onSuccess === 'function') onSuccess(JSON.parse(responseText));
+		}
+	});
 }
 
 function checkIfDataRetrieverNull(returnedData){
