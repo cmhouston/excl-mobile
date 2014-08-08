@@ -1,8 +1,8 @@
-#appname:More CMH
+#appname:ExCL
 #publisher:Children's Museum of Houston and the Regents of the University of California
 #url:http://
 #image:appicon.png
-#appid:org.cmhouston.morecmh
-#desc:not specified
-#type:mobile
+#appid:org.cmhouston.excl
+#desc:ExCL is a platform that enables museums to engage visitors at museum activities through the use of a mobile application.
+#type:ipad
 #guid:363a0d4f-97e6-42e9-b09c-d2ccc4ac0533
