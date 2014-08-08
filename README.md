@@ -186,21 +186,7 @@ Please report all bugs to our [JIRA account](https://cmhexcl.atlassian.net)
 
 ## Ti Shadow ##
 
-(LI,JY)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+For information on Ti Shadow, how to set it up, and how to use it, refer to the [Ti Shadow](docs/TiShadow.md) documentation
 
 # <a name="unitTestingAndCI"></a> Unit Testing and Continuous Integration #
 
