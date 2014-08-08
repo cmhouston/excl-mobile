@@ -17,6 +17,7 @@ A guide for setting up Titanium and beginning mobile development with ExCL
 - [Unit Testing and Continuous Integration](#unitTestingAndCI)  
 - [Distribution For Testing](#addhoc)
 - [Deploying to the App Store](#appStore)
+- [Known Issues](#knownIssues)
 
 # <a name="exclIntro"></a> Introduction to ExCL #
 ExCL is a global initiative to change the way people learn.  It seeks to empower museums to create their own mobile applications that they can use to inspire, educate, and connect with their visitors. Content is managed through a WordPress content management system by museum staff, and visitors will download the customized ExCL app, written using [Appcelerator Titanium](http://www.appcelerator.com/titanium/), to their mobile device. ExCL is also intended to be used by museums on kiosk devices and provides a kiosk mode for this purpose.
@@ -242,5 +243,9 @@ Both Google and Apple provide documentation about their app store requirements. 
 
 - [Android Launch Checklist](http://developer.android.com/distribute/tools/launch-checklist.html)
 - [iOS App Store Guidelines](https://developer.apple.com/appstore/resources/approval/guidelines.html)
+
+# <a name="knownIssues"></a> Known Issues #
+
+- Images and videos included in a rich text field on the wordpress will not be cached on the device in or out of kiosk mode
 
 _______
