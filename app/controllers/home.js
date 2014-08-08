@@ -24,6 +24,7 @@ var json;
 var doneLoading = false;
 
 var url = Alloy.Globals.rootWebServiceUrl;
+var cache = require('remoteDataCache');
 var dataRetriever = setPathForLibDirectory('dataRetriever/dataRetriever');
 var loadingSpinner = setPathForLibDirectory('loadingSpinner/loadingSpinner');
 var spinnerLib = new loadingSpinner();
@@ -131,11 +132,15 @@ function retrieveJson(jsonURL) {
 	if(jsonInfoLabel) $.infoLabel.text = jsonInfoLabel;
 	
 	var jsonIconUrl = museum.homepage_icon;
-	if(jsonIconUrl){
-		$.iconLink.image = jsonIconUrl;
-	}else{
-		$.iconLink.image = iconService.getImageFilename("development.jpg");
-	}
+	cache.getFile({
+		url: jsonIconUrl,
+		onsuccess: function(filePath, request) {
+			$.iconLink.image = filePath;
+		},
+		onerror: function(request) {
+			$.iconLink.image = iconService.getImageFilename("development.jpg");
+		}
+	});
 	doneLoading = true;
 }
 

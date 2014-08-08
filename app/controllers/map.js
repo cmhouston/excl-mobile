@@ -32,6 +32,7 @@ function setPathForLibDirectory(libFile) {
 	return lib;
 };
 
+var cache = require('remoteDataCache');
 var loadingSpinner = setPathForLibDirectory('loadingSpinner/loadingSpinner');
 var addLoadingMessage = true;
 var messageType = 'map';
@@ -60,6 +61,13 @@ exports.getAnalyticsPageLevel = getAnalyticsPageLevel;
 $.navBar.setPageTitle("Map");
 
 $.Map.url=json.data.museum.map;
+
+// cache.getFile({
+	// url: json.data.museum.map,
+	// onsuccess: function(filePath, request) {
+		// // wrap filePath (image) in html and assign to webview url
+	// }
+// });
 
 function hideSpinner(){
 	spinner.hide();
