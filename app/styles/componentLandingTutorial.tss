@@ -65,7 +65,7 @@
 }
 
 "#sectionArrow": {
-	top: "230dip",
+	top: "270dip",
 	right: "55dip",
 	height: "50dip",
 	transform: Alloy.Globals.rotate130
@@ -79,7 +79,7 @@
 }
 
 "#sectionText": {
-	top: "190dip",
+	top: "230dip",
 	right: "60dip",
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
 }
