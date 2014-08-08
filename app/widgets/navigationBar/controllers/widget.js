@@ -66,6 +66,10 @@ exports.setBackgroundColor = function(color) {
 	$.navBar.backgroundColor = color;
 };
 
+exports.setTop = function(top){
+	$.navBar.top = top;
+};
+
 exports.onEnterKioskMode = function() {
 	this.hideBackBtn();
 	this.hideMenuBtn();

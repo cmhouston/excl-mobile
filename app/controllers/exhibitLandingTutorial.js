@@ -23,6 +23,9 @@ var args = arguments[0] || {};
 var TutorialService = require('tutorialService/tutorialService');
 var tutorialService = new TutorialService();
 
+$.navBar.setBackgroundColor("transparent");
+$.navBar.setTop("0dip");
+
 function tutorialExit(e) {
 	tutorialService.endTutorialMode();
 	$.exhibitTutorialPage.hide();
