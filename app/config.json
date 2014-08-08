@@ -2,9 +2,9 @@
     "global": {
     	"excl": {
 	    	"wordpressEnvironments": {
-				"dev": "http://excl.dreamhosters.com/dev/wp-json/v01/excl/museum/81",
-				"qa": "http://excl.dreamhosters.com/qa/wp-json/v01/excl/museum/81",
-				"prod": "http://excl.dreamhosters.com/prod/wp-json/v01/excl/museum/81"
+				"dev": "",
+				"qa": "",
+				"prod": ""
 			},
 			"adminPassword": "wordpress",
 			"kioskModePassword": "kiosk",
