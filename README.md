@@ -1,4 +1,5 @@
 # ExCL Developer Documentation #
+A guide for setting up Titanium and beginning mobile development with ExCL
 
 ### Contents ###
 
@@ -18,7 +19,7 @@
 - [Deploying to the App Store](#appStore)
 
 # <a name="exclIntro"></a> Introduction to ExCL #
-ExCL is a platform that enables museums to engage visitors at museum activities through the use of a mobile application. Content is managed through a WordPress content management system by museum staff, and visitors will download the customized ExCL app, written using [Appcelerator Titanium](http://www.appcelerator.com/titanium/), to their mobile device. ExCL is also intended to be used by museums on kiosk devices and provides a kiosk mode for this purpose.
+ExCL is a global initiative to change the way people learn.  It seeks to empower museums to create their own mobile applications that they can use to inspire, educate, and connect with their visitors. Content is managed through a WordPress content management system by museum staff, and visitors will download the customized ExCL app, written using [Appcelerator Titanium](http://www.appcelerator.com/titanium/), to their mobile device. ExCL is also intended to be used by museums on kiosk devices and provides a kiosk mode for this purpose.
 
 ExCL is divided into two parts: the content management system and the Appcelerator Titanium mobile application. This repository is for the Titanium mobile application. If you're interested in the content management side, click here to go to the [Wordpress project](https://github.com/cmhouston/excl-cms).
 
@@ -242,9 +243,14 @@ Occasionally you will need to change the permissions of the `scripts/unit.sh` an
 For an app development project of any size, you will probably want to have a way to distribute alpha (pre release) versions of the app to testers and other interested parties (like your mom!). There are many cloud services out there that make it easy for even nontechnical people to install ad hoc builds of your app that you upload to the service. An added benefit is that it can be a convenient place to keep track of all your various builds, versions, sub-versions etc. Some of these services are free others are not. Some are iOS or Android only while others support both. Most have API's that allow you to programmatically upload your build right from your build script. 
 
 Some example services include:
--[example1]()
+
+- [TestFlight](https://testflightapp.com/)
+- [Google Play Store](https://testfairy.com/)
+- [TestFairy](https://testfairy.com/)
+- [HockeyApp](http://hockeyapp.net/features/)
 
 Regardless of which service you use (if any at all), instructions for building for device deployment can be found here:
+
 - [iOS Device Deployment](#iosdeployment)
 - [Android Device Deployment](#androiddeployment)
 

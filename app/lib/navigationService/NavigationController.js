@@ -37,6 +37,7 @@ function NavigationController() {
 	var TutorialController = require(rootPath + "tutorialService/tutorialService");
 	this.tutorialController = new TutorialController();
 	var pageLevelList = [];
+	this.bulkContentCacher = require('bulkContentCacher');
 }
 
 NavigationController.prototype.restart = function(callback){
@@ -49,13 +50,14 @@ NavigationController.prototype.enterKioskMode = function(){
 		var window = this.windowStack[this.windowStack.length - 1];
 	    this.setLocked();
  		this.menu.closeMenu();
-		window.onEnterKioskMode(window);	
+ 		this.bulkContentCacher.cacheMuseum(Alloy.Globals.museumJSON);
+		window.onEnterKioskMode(window);
 };
 
 NavigationController.prototype.exitKioskMode = function(){
 		var window = this.windowStack[this.windowStack.length - 1];
 		this.reset();
-		window.onExitKioskMode(window);	
+		window.onExitKioskMode(window);
 };
 
 NavigationController.prototype.open = function(controller) {

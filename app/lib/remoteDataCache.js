@@ -9,60 +9,58 @@ init();
 // -- named values --
 var FILE = 'rdc.FILE';
 var TEXT = 'rdc.TEXT';
-var DOWNLOADING_EVENT = 'remoteDataCache:downloading';
 var FILE_MODEL = 'rdcResponseData';
 var TEXT_MODEL = 'rdcResponseText';
 var DAY_IN_MILLISECONDS = 86400000;
 var CACHE = 'rdc.CACHE';
+var CACHE_VIA_REMOTE_ERROR = 'rdc.CACHE_VIA_REMOTE_ERROR';
 var REMOTE_HOST = 'rdc.REMOTE_HOST';
 
-var REQUEST_COMPLETED_EVENT = 'remoteDataCache:requestCompleted';
-
-
-
 // -- private attributes --
-var downloadStack;
+var requestStack, downloading;
 
 // -- public attributes (exports) --
 
 // -- private functions --
 function init() {
-	downloadStack = [];
+	requestStack = [];
+	downloading = false;
 };
 
-function constructRequest(type, url, onload, onerror) {
+function constructRequest(type, url, onsuccess, onerror, onstream) {
 	var request = {
 		type: type,
 		made: (new Date()).getTime(),
 		url: url,
 		responder: null,
 		responseTime: null,
-		onload: onload,
+		onsuccess: onsuccess,
 		onerror: onerror,
+		onstream: onstream,
 		response: null
 	};
 	return request;
 };
 
 function error(request) {
-	Ti.API.error('remoteDataCache.error: ' + JSON.stringify(request));
-	if(request.onerror && typeof request.onerror === 'function') request.onerror();
+	Ti.API.error('remoteDataCache.error ' + JSON.stringify(request));
+	if(request.onerror && typeof request.onerror === 'function') request.onerror(request);
 };
 
 function submit(request) {
 	var cachedResponses = getCachedResponses(request);
 	if(isCached(request, cachedResponses)) {
 		var cachedResponse = cachedResponses.at(0);
-		if(isRecent(cachedResponse) || !Ti.Network.online) {
-			request.response = cachedResponse;
+		request.response = cachedResponse;
+		if(isRecent(cachedResponse)) {
 			var now = new Date();
 			request.responseTime = now.getTime() - request.made;
 			request.responder = CACHE;
 			success(request);
 		}
-		else download(request);
+		else stack(request);
 	}
-	else download(request);
+	else stack(request);
 };
 
 function getCachedResponses(request) {
@@ -96,11 +94,75 @@ function isRecent(response) {
 };
 
 function success(request) {
-	Ti.API.info('success ' + JSON.stringify(request));
+	Ti.API.info('remoteDataCache.success ' + JSON.stringify(request));
+	var e = request.type === FILE ? request.response.get('localPath') : request.response.get('text');
+	if(request.onsuccess && typeof request.onsuccess === 'function') request.onsuccess(e, request);
+};
+
+function stack(request) {
+	if(!downloading) {
+		downloading = true;
+		download(request);
+	}
+	else requestStack.push(request);
 };
 
 function download(request) {
-	Ti.API.info('download ' + JSON.stringify(request));
+	var cachedResponse = request.response;
+	if(!cachedResponse) {
+		var modelType = request.type === FILE ? FILE_MODEL : TEXT_MODEL;
+		request.response = Alloy.createModel(modelType);
+	}
+	var client = Ti.Network.createHTTPClient({
+		onload: function(e) {
+			var now = new Date();
+			request.response.save({
+				url: request.url,
+				timeRetrieved: now.getTime()
+			});
+			if(request.type === FILE) {
+				var file = Ti.Filesystem.createTempFile();
+				file.write(this.responseData);
+				request.response.save({
+					localPath: file.nativePath
+				});
+			}
+			else {
+				request.response.save({
+					text: this.responseText
+				});
+			}
+			request.responseTime = now.getTime() - request.made;
+			request.responder = REMOTE_HOST;
+			success(request);
+			if(requestStack.length > 0) download(requestStack.pop());
+			else downloading = false;
+		},
+		onerror: function(e) {
+			if(cachedResponse) {
+				var now = new Date();
+				request.responseTime = now.getTime() - request.made;
+				request.responder = CACHE_VIA_REMOTE_ERROR;
+				success(request);
+			}
+			else error(request);
+			if(requestStack.length > 0) download(requestStack.pop());
+			else downloading = false;
+		},
+		ondatastream: function(e) {
+			stream(request, e.progress);
+		}
+	});
+	client.open('GET', request.url);
+	client.send();
+};
+
+function stream(request, progress) {
+	Ti.API.debug('remoteDataCache.stream ' + JSON.stringify({
+		progress: progress,
+		request: request
+	}));
+	if(request.onstream && typeof request.onstream === 'function') request.onstream(progress, request);
 };
 
 function clearCachedResponses(requestType) {
@@ -126,11 +188,11 @@ function getFile(args) {
 	}
 	else if(!args.url) {
 		Ti.API.error('remoteDataCache.getFile: url argument expected');
-		var request = constructRequest(null, null, null, args.onerror);
+		var request = constructRequest(null, null, null, args.onerror, null);
 		error(request);
 	}
 	else {
-		var request = constructRequest(FILE, args.url, args.onload, args.onerror);
+		var request = constructRequest(FILE, args.url, args.onsuccess, args.onerror, args.onstream);
 		submit(request);
 	}
 };
@@ -141,23 +203,23 @@ function getText(args) {
 	}
 	else if(!args.url) {
 		Ti.API.error('remoteDataCache.getText: url argument expected');
-		var request = constructRequest(null, null, null, args.onerror);
+		var request = constructRequest(null, null, null, args.onerror, null);
 		error(request);
 	}
 	else {
-		var request = constructRequest(TEXT, args.url, args.onload, args.onerror);
+		var request = constructRequest(TEXT, args.url, args.onsuccess, args.onerror, args.onstream);
 		submit(request);
 	}
 };
 
 function isFileCached(url) {
-	var request = constructRequest(FILE, url, null, null);
+	var request = constructRequest(FILE, url, null, null, null);
 	var cachedResponses = getCachedResponses(request);
 	return isCached(request, cachedResponses);
 };
 
 function isTextCached(url) {
-	var request = constructRequest(TEXT, url, null, null);
+	var request = constructRequest(TEXT, url, null, null, null);
 	var cachedResponses = getCachedResponses(request);
 	return isCached(request, cachedResponses);
 };
