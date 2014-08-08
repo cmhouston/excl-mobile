@@ -3,9 +3,6 @@ module.exports.getFile = getFile;
 module.exports.getText = getText;
 module.exports.clear = clear;
 
-// -- exec --
-init();
-
 // -- named values --
 var FILE = 'rdc.FILE';
 var TEXT = 'rdc.TEXT';
@@ -18,6 +15,9 @@ var REMOTE_HOST = 'rdc.REMOTE_HOST';
 var MIN_PER_HR = 60;
 var SEC_PER_MIN = 60;
 var MS_PER_SEC = 1000;
+
+// -- exec --
+init();
 
 // -- private attributes --
 var requestStack, downloading, expiration;
