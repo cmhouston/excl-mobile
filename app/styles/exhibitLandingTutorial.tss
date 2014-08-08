@@ -39,13 +39,10 @@
 	}
 }
 ".GotItButton": {
-	backgroundColor: Alloy.CFG.excl.colors.tutorialGotItButtonColor,
+	backgroundColor: Alloy.CFG.excl.colors.submitButtonColor,
 	width: "200dip",
 	height: "50dip",
-	borderColor: Alloy.CFG.excl.colors.tutorialButtonBorderColor,
-	borderRadius: "7dip",
-	borderWidth: "1dip",
-	color: Alloy.CFG.excl.colors.darkFontColor,
+	color: Alloy.CFG.excl.colors.lightFontColor,
 	font: {
 		textStyle: Titanium.UI.TEXT_STYLE_HEADLINE,
 		fontSize: "24dp",
@@ -54,24 +51,22 @@
 }
 
 ".tutorialButton": {
-	backgroundColor: Alloy.CFG.excl.colors.tutorialEndButtonColor,
+	backgroundColor: Alloy.CFG.excl.colors.cancelButtonColor,
 	width: "200dip",
 	height: "50dip",
-	borderColor: Alloy.CFG.excl.colors.tutorialButtonBorderColor,
-	borderRadius: "7dip",
-	borderWidth: "1dip",
-	color: Alloy.CFG.excl.colors.darkFontColor,
+	color: Alloy.CFG.excl.colors.lightFontColor,
 	font: {
 		textStyle: Titanium.UI.TEXT_STYLE_HEADLINE,
 		fontSize: "24dp",
 		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
 	}
 }
+
 "#flyoutMenuArrow": {
 	top: "37dip",
 	right: "30dip",
 	//height: "110dip"
-	height: "50dip"
+	height: "45dip"
 }
 
 "#flyoutMenuArrow[formFactor=tablet]": {
@@ -84,8 +79,8 @@
 	transform: Alloy.Globals.rotate270,
 	height: "30dip",
 	left: "15dip",
-	top: "30dip",
-	width: "45dip"
+	top: "40dip",
+	width: "40dip"
 }
 
 "#backArrow[formFactor=tablet]":{
@@ -120,9 +115,11 @@
 }
 
 "#flyoutMenuText": {
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_RIGHT,
+	width: Ti.UI.FILL,
 	top: "80dip",
 	right: "25dip",
-	textAlign: Titanium.UI.TEXT_ALIGNMENT_RIGHT
+	
 }
 
 "#flyoutMenuText[formFactor=tablet]": {
@@ -153,8 +150,9 @@
 }
 
 "#ComponentsText": {
+	width: Ti.UI.FILL,
 	top: "300dip",
-	left: "60dip",
+	left: "60dip"
 }
 
 "#ComponentsText[platform=android]":{
