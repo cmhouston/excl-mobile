@@ -10,10 +10,9 @@ A guide for setting up Titanium and beginning mobile development with ExCL
      - [Getting Started](#gettingStarted)
      - [Running the ExCL App](#runningExCL)
      - [Debugging](#debugging)
-     - [Code Overview](#codeOverview)         
-	 - Troubleshooting                                        (All)               
+     - [Code Overview](#codeOverview)                       
 - [Enhancing the ExCL App](#enhancingExCL)            
-- TiShadow                                              (LI<JY)
+- [TiShadow](#tishadow)                                             
 - [Unit Testing and Continuous Integration](#unitTestingAndCI)  
 - [Distribution For Testing](#addhoc)
 - [Deploying to the App Store](#appStore)
@@ -185,7 +184,7 @@ A complete list of user stories that we did not get to can be found in this [Goo
 
 Please report all bugs to our [JIRA account](https://cmhexcl.atlassian.net)
 
-## Ti Shadow ##
+# <a name="tishadow"></a> Ti Shadow  #
 
 For information on Ti Shadow, how to set it up, and how to use it, refer to the [Ti Shadow](docs/TiShadow.md) documentation
 
