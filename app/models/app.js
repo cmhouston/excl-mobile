@@ -78,18 +78,22 @@ exports.definition = {
 			retrieveMuseumData: function(callbackWhenDone) {
 				var retriever = Alloy.Globals.setPathForLibDirectory('dataRetriever/dataRetriever');
 				var url = Alloy.Globals.rootWebServiceUrl;
-	
-				retriever.fetchDataFromUrl(url, function(response) {
-					if(response) {
-						Alloy.Globals.museumJSON = response;
-						Alloy.Models.app.trigger('museumJsonRetrieved');
-						Alloy.Models.app.parseFiltersFromJson(response);
-						
-						if (callbackWhenDone && typeof(callbackWhenDone) == 'function') {
-							callbackWhenDone();
+				
+				if (url) {
+					retriever.fetchDataFromUrl(url, function(response) {
+						if(response) {
+							Alloy.Globals.museumJSON = response;
+							Alloy.Models.app.trigger('museumJsonRetrieved');
+							Alloy.Models.app.parseFiltersFromJson(response);
+							
+							if (callbackWhenDone && typeof(callbackWhenDone) == 'function') {
+								callbackWhenDone();
+							}
 						}
-					}
-				});
+					});
+				} else {
+					alert("You haven't set up any Wordpress sites to use with this application."); // Please see https://github.com/cmhouston/excl-cms for instructions on how to set this up
+				}
 			}
 
 			// more app member functions go here

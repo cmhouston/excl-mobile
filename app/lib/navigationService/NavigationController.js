@@ -115,7 +115,6 @@ NavigationController.prototype.openWindow = function(windowToOpen) {
 	return windowToOpen;
 };
 
-
 NavigationController.prototype.prepWindowsWithFlyout = function(windowToOpen) {
 	windowToOpen.add(this.menu.getNewMenu());
 	//removeMenuFromWindow(this.windowStack, this.menu);

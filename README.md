@@ -57,7 +57,7 @@ Open a command prompt, navigate to a desired folder run the following command:
 
 A different tool for handling repositories and source control is [SourceTree](https://www.atlassian.com/software/sourcetree/overview?_mid=36679bc382faa46de63d9de67e0aca61&gclid=Cj0KEQjwx4yfBRCt2rrAs-P5vtkBEiQAOdFXbXiQRjxGbz923Us5QtTmaahoNHqrzWUEB3eMWQsJnfwaAlkA8P8HAQ). Install SourceTree and clone the repository into your local file system.
 
-#### Import Project Into Titanium ####
+#### Import Project Into Titanium Studio ####
 
 After the project has been cloned to your local system execute the following steps to access it through your IDE
 
@@ -72,6 +72,13 @@ The run option at the top left of the screen is by default unavailable. To enabl
 - Click on Project Natures
 - Select Mobile and make it the Primary nature
 - Click OK
+
+### First time setup ###
+
+After importing the project into Titanium Studio, open up the `app/config.json` file. You will need to put in the endpoint URLs that point to the [ExCL Wordpress instance](https://github.com/cmhouston/excl-cms) that you have already set up. The endpoints should look like:
+    http://myserver.com/wp-json/v01/excl/museum/25
+You get the ID number on the end of the URL from the ID of the museum in the Wordpress instance. This can be easily seen in the URL bar when editing the museum page in Wordpress.
+Additionally, the app should be customized to fit your organization. Update the images in the `app/assets` folders and update `tiapp.xml` to reflect your own organization's information.
 
 ## <a name="runningExCL"></a> Running the ExCL Application ##
 

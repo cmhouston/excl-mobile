@@ -18,18 +18,6 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //=====================================================================
 
-// The contents of this file will be executed before any of
-// your view controllers are ever executed, including the index.
-// You have access to all functionality on the `Alloy` namespace.
-//
-// This is a great place to do any initialization for your app
-// or create any global variables/functions that you'd like to
-// make available throughout your app. You can easily make things
-// accessible globally by attaching them to the `Alloy.Globals`
-// object. For example:
-//
-// Alloy.Globals.someGlobalFunction = function(){};
-
 var AnalyticsController = require('analyticService/analyticService');
 Alloy.Globals.analyticsController = new AnalyticsController();
 
@@ -40,9 +28,6 @@ var StorageService = require('storageService/storageService');
 Alloy.Globals.storageService = new StorageService();
 
 Alloy.Globals.isInDefaultWordpressEnviroment = function(){
-	if(this.rootWebServiceUrl != Alloy.CFG.excl.wordpressEnvironments["prod"]){
-		Ti.API.info("Global: "+this.rootWebServiceUrl+"   cfg: "+ Alloy.CFG.excl.wordpressEnvironments["prod"]);
-	}
 	return this.rootWebServiceUrl == Alloy.CFG.excl.wordpressEnvironments["prod"];
 };
 
