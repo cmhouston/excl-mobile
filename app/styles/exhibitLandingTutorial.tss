@@ -95,15 +95,15 @@
 	// height: "140dip",
 	// right: "35dip",
 	// bottom: "20dip"
-	transform: Alloy.Globals.rotate270,
+	transform: Alloy.Globals.rotate60,
 	height: "50dip",
-	left: "15dip",
+	right: "63dip",
 	top: "275dip",
 	width: "25dip"
 }
 
 "#ComponentsArrow[platform=android]":{
-	top: "300dip"
+	top: "310dip"
 }
 
 "#ComponentsArrow[formFactor=tablet]": {
@@ -152,7 +152,7 @@
 "#ComponentsText": {
 	width: Ti.UI.FILL,
 	top: "300dip",
-	left: "60dip"
+	left: "10dip"
 }
 
 "#ComponentsText[platform=android]":{
