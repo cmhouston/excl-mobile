@@ -242,9 +242,11 @@ Occasionally you will need to change the permissions of the `scripts/unit.sh` an
 For an app development project of any size, you will probably want to have a way to distribute alpha (pre release) versions of the app to testers and other interested parties (like your mom!). There are many cloud services out there that make it easy for even nontechnical people to install ad hoc builds of your app that you upload to the service. An added benefit is that it can be a convenient place to keep track of all your various builds, versions, sub-versions etc. Some of these services are free others are not. Some are iOS or Android only while others support both. Most have API's that allow you to programmatically upload your build right from your build script. 
 
 Some example services include:
--[example1]()
+
+- [example1]()
 
 Regardless of which service you use (if any at all), instructions for building for device deployment can be found here:
+
 - [iOS Device Deployment](#iosdeployment)
 - [Android Device Deployment](#androiddeployment)
 
