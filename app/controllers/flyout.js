@@ -199,9 +199,9 @@ function detectFilterConditions() {
 	ageFilterSet = Alloy.Models.app.get('customizeLearningSet');
 	ageFilterOn = Alloy.Models.app.get('customizeLearningEnabled');
 	if (ageFilterSet && ageFilterOn) {
-		disableAgeFilter();
-	} else if (ageFilterSet && !ageFilterOn) {
 		enableAgeFilter();
+	} else if (ageFilterSet && !ageFilterOn) {
+		disableAgeFilter();
 	} else if (!ageFilterSet && !ageFilterOn) {
 		//setCustomLearn();
 	} else {
