@@ -49,13 +49,13 @@ NavigationController.prototype.enterKioskMode = function(){
 		var window = this.windowStack[this.windowStack.length - 1];
 	    this.setLocked();
  		this.menu.closeMenu();
-		window.onEnterKioskMode(window);	
+		window.onEnterKioskMode(window);
 };
 
 NavigationController.prototype.exitKioskMode = function(){
 		var window = this.windowStack[this.windowStack.length - 1];
 		this.reset();
-		window.onExitKioskMode(window);	
+		window.onExitKioskMode(window);
 };
 
 NavigationController.prototype.open = function(controller) {
