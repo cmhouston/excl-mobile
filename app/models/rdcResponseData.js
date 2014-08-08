@@ -1,9 +1,9 @@
 exports.definition = {
 	config: {
 		columns: {
-		    "url": "string",
-		    "localPath": "string",
-		    "timeRetrieved": "int"
+		    "url": "text",
+		    "localPath": "text",
+		    "timeRetrieved": "integer"
 		},
 		adapter: {
 			type: "sql",

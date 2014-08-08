@@ -3,7 +3,8 @@
 
 ".verticalContainer": {
 	layout: "vertical",
-	backgroundColor: Alloy.CFG.excl.colors.pageBackgroundColor
+	backgroundColor: Alloy.CFG.excl.colors.pageBackgroundColor,
+	scrollType: "vertical"
 }
 
 ".environmentOption": {

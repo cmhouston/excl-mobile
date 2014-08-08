@@ -132,6 +132,13 @@ function addUnpublishedPostsFunctionality() {
 	}
 }
 
+function resetCache(e) {
+	var cache = require('remoteDataCache');
+	cache.clear();
+	alert("The offline cache was cleared.");
+	//$.getView().close();
+}
+
 function formatObjects() {
 	if (detectDevice.isTablet()) {
 		$.title.font = {
