@@ -55,7 +55,8 @@
 ".rowLabel":{
 	top: "6dip",
 	left: '12dp',
-	height: "20dip",
+	height: "25dip",
+	///height: Ti.UI.FILL,
 	width: Ti.UI.FILL,
 	font:{
 		fontSize: "15dip",
