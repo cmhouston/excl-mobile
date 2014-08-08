@@ -32,6 +32,7 @@ sharingTextService = setPathForLibDirectory('sharing/sharingTextService');
 var sharingTextService = new sharingTextService();
 sharingImageService = setPathForLibDirectory('sharing/sharingImageService');
 var sharingImageService = new sharingImageService();
+var cache = require('remoteDataCache');
 
 var detectDevice = setPathForLibDirectory('customCalls/deviceDetectionService');
 detectDevice = new detectDevice();
@@ -309,18 +310,21 @@ function setCommentSubmittedMessage() {
 function initializePage() {
 	setPageTitle(post_content.section);
 	hideMenuBtnIfKioskMode();
-
-	switch (post_content.post_header_type) {
-		case "image":
-			$.headerRow.add(getRowContentsForImage(post_content.post_header_url));
-			break;
-		case "video":
-			$.headerRow.add(getRowContentsForVideo(post_content.post_header_url));
-			break;
-		default:
-			break;
-	}
 	
+	var post_header_url = post_content.post_header_url;
+	cache.getFile({url: post_header_url, onsuccess: function(url, request) {
+		switch (post_content.post_header_type) {
+			case "image":
+				$.headerRow.add(getRowContentsForImage(url));
+				break;
+			case "video":
+				$.headerRow.add(getRowContentsForVideo(url));
+				break;
+			default:
+				break;
+		}
+	}});
+
 	if (post_content.post_body) {
 		Ti.App.addEventListener('app:openInBrowser', openInBrowser);
 		$.webView.setHtml(wrapRichTextInHTML(post_content.post_body));

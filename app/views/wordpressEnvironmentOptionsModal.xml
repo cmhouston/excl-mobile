@@ -27,7 +27,7 @@
 				</Label>
 				<Switch id="toggleUnpublishedPostsSwitch"/>
 			</View>
-			<Label id="title" class="title">
+			<Label class="boldLabel">
 				Choose your Wordpress Environment
 			</Label>
 			<Button class="environmentOption" onClick="resetCache">

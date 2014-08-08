@@ -24,11 +24,11 @@ function getComponentURLFromComponentJSON(componentJSON) {
 
 function cacheAllMediaInJSON(json) {
 	json = prepareJSONForRegEx(json);
-	var urlExtractor = /https?:\/\/([-\w\.]+)+(:\d+)?(\/([\w\/_\.-]*(\?\S+)?)?)?\.(jpg|png|mp4)(\/([\w\/_\.-]*)?)?/gmi;
+	var urlExtractor = /(https?:\/\/([-\w\.]+)+(:\d+)?(\/([\w\/_\.-]*(\?\S+)?)?)?\.(jpg|png|mp4)[^\"]*?)\"/gmi;
 	var mediaArray;
 	while ((mediaArray = urlExtractor.exec(json)) !== null)
 	{
-		var url = mediaArray[0];
+		var url = mediaArray[1];
 		Ti.API.info("Caching url: " + url);
 		cache.getFile({
 			url: url,
