@@ -4,7 +4,7 @@
 		<ImageView id="exhibitsArrow" image="/images/tutorial/long-arrow.png"></ImageView>
 		<Label id="exhibitsText" class="fullScreenOverlayText">Tap to see museum activities.</Label>
 		<ImageView id="infoArrow" image="/images/tutorial/long-arrow-flipped.png"></ImageView>
-		<Label id="infoText" class="fullScreenOverlayText">Tap for hours, directions, and general museum info.</Label>
+		<Label id="infoText" class="fullScreenOverlayText">Tap for general museum info.</Label>
 		<ImageView id="mapArrow" image="/images/tutorial/long-arrow.png"></ImageView>
 		<Label id="mapText" class="fullScreenOverlayText">Tap for the museum map.</Label>
 		<Button id="ExitButton" onClick="tutorialExit" class="tutorialButton">End Tutorial</Button>
