@@ -94,15 +94,15 @@ function openExhibitsPage(e) {
 }
 
 function openMapPage(e) {
+	closeMenu();
 	var controller = Alloy.createController("map", eval([json]));
 	Alloy.Globals.navController.open(controller);
-	closeMenu();
 }
 
 function openInfoPage(e) {
+	closeMenu();
 	var controller = Alloy.createController("info", eval([json]));
 	Alloy.Globals.navController.open(controller);
-	closeMenu();
 }
 
 function setCustomLearn(e) {
