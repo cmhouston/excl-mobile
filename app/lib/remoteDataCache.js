@@ -15,9 +15,12 @@ var DAY_IN_MILLISECONDS = 86400000;
 var CACHE = 'rdc.CACHE';
 var CACHE_VIA_REMOTE_ERROR = 'rdc.CACHE_VIA_REMOTE_ERROR';
 var REMOTE_HOST = 'rdc.REMOTE_HOST';
+var MIN_PER_HR = 60;
+var SEC_PER_MIN = 60;
+var MS_PER_SEC = 1000;
 
 // -- private attributes --
-var requestStack, downloading;
+var requestStack, downloading, expiration;
 
 // -- public attributes (exports) --
 
@@ -25,6 +28,7 @@ var requestStack, downloading;
 function init() {
 	requestStack = [];
 	downloading = false;
+	expiration = DAY_IN_MILLISECONDS / 3;
 };
 
 function constructRequest(type, url, onsuccess, onerror, onstream) {
@@ -90,7 +94,7 @@ function isCached(request, cachedResponses) {
 function isRecent(response) {
 	var now = new Date();
 	var delta = now.getTime() - response.get('timeRetrieved');
-	return delta < (DAY_IN_MILLISECONDS / 3) ? true : false;
+	return delta < expiration ? true : false;
 };
 
 function success(request) {
@@ -227,4 +231,9 @@ function isTextCached(url) {
 function clear() {
 	clearCachedResponses(FILE);
 	clearCachedResponses(TEXT);
+};
+
+function setExpiration(hours) {
+	if(hours < 0) Ti.API.error('remoteDataCache.setExpiration: argument must be non-negative');
+	else expiration = hours * MIN_PER_HR * SEC_PER_MIN * MS_PER_SEC;
 };
