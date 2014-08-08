@@ -314,15 +314,15 @@ function initializePage() {
 	var post_header_url = post_content.post_header_url;
 	cache.getFile({url: post_header_url, onsuccess: function(url, request) {
 		switch (post_content.post_header_type) {
-		case "image":
-			$.headerRow.add(getRowContentsForImage(url));
-			break;
-		case "video":
-			$.headerRow.add(getRowContentsForVideo(url));
-			break;
-		default:
-			break;
-	}
+			case "image":
+				$.headerRow.add(getRowContentsForImage(url));
+				break;
+			case "video":
+				$.headerRow.add(getRowContentsForVideo(url));
+				break;
+			default:
+				break;
+		}
 	}});
 
 	if (post_content.post_body) {

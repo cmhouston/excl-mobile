@@ -28,7 +28,7 @@ function cacheAllMediaInJSON(json) {
 	var mediaArray;
 	while ((mediaArray = urlExtractor.exec(json)) !== null)
 	{
-		var url = mediaArray[0];
+		var url = mediaArray[1];
 		Ti.API.info("Caching url: " + url);
 		cache.getFile({
 			url: url,
