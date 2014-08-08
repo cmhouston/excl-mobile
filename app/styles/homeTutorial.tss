@@ -93,7 +93,7 @@
 }
 
 "#infoArrow": {
-	top: "290dip",
+	top: "310dip",
 	left: "15dip",
 	height: "50dip",
 	transform: Alloy.Globals.rotate245
@@ -107,7 +107,7 @@
 }
 
 "#infoText": {
-	top: "210dip",
+	top: "250dip",
 	left: "5dip",
 	width: "150dip",
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
@@ -121,7 +121,7 @@
 }
 
 "#mapArrow": {
-	top: "230dip",
+	top: "235dip",
 	right: "15dip",
 	height: "50dip",
 	transform: Alloy.Globals.rotate145
