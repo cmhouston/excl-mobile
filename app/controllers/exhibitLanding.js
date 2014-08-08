@@ -331,7 +331,7 @@ function addPagingArrowsToView(view, pageNum, numOfPages) {
 		var rightArrowView = Ti.UI.createView({
 			id: "rightArrowView",
 			right: "0dip",
-			top: "20%",
+			top: "15%",
 			height: "15%",
 			width: "17%",
 			backgroundColor: Alloy.CFG.excl.colors.exhibitsCarouselArrowColor,
@@ -341,10 +341,14 @@ function addPagingArrowsToView(view, pageNum, numOfPages) {
 			id: "rightArrowStub",
 			right: "0dip",
 			width: "10%",
-			top: "20%",
+			top: "15%",
 			height: "15%",
 			backgroundColor: Alloy.CFG.excl.colors.exhibitsCarouselArrowColor
 		});
+		if (OS_IOS){
+			rightArrowView.top = "20%";
+			rightArrowStub.top = "20%";
+		}
 
 		rightArrowView.addEventListener('click', function(e) {
 			$.exhibitsCarousel.scrollToView($.exhibitsCarousel.getCurrentPage() + 1);
