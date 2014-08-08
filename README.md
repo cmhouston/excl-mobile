@@ -43,7 +43,7 @@ Titanium Studio is an Eclipse base IDE used for developing Titanium projects. Ap
 
 
 #### Clone the repository ####
-In order to view and edit the ExCL project using Titanium studio the project must be retrieved from github.
+In order to view and edit the ExCL project using Titanium studio the project must be retrieved from github. We recommend that if you want to customize ExCL to your own museum extensively, that you consider [forking the project](https://help.github.com/articles/fork-a-repo) and then cloning the fork. The master ExCL project contains generalized icons and will need to be customized before released as your own application.
 
 ##### Using Command Line #####
 
@@ -153,7 +153,6 @@ Much of the ExCL code is split into various libraries which take control of spec
 ExCL was created from a list of user stories involving enhancing the experience of a museum user. Many of these user stories have not yet been implemented. The user stories that we didn't get to are listed under the "Could Haves" sprint in our [JIRA account](https://cmhexcl.atlassian.net). There are many other enhancements that are not new features, but instead changes to the current app. Below is a short description of each major area of suggested enhancements.
 
 ## UX Enhancements to Current Features ##
-
 
 A complete list of user stories that we did not get to can be found in this [Google Drive document](https://docs.google.com/spreadsheets/d/1iPPVocjjprG7frXPwPh00Mrh02YqDmYqOXqxRYbju2Q/edit?usp=sharing). The user stories that we decided were possibilities for this summer (everything other than stories rated as "won't") are in [JIRA](https://cmhexcl.atlassian.net), and the stories that haven't been completed yet can be found in the "Could Haves" sprint.
 
