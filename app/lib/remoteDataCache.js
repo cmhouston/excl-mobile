@@ -1,7 +1,10 @@
 // -- exports --
 module.exports.getFile = getFile;
 module.exports.getText = getText;
+module.exports.isFileCached = isFileCached;
+module.exports.isTextCached = isTextCached;
 module.exports.clear = clear;
+moudle.exports.setExpiration = setExpiration;
 
 // -- named values --
 var FILE = 'rdc.FILE';
