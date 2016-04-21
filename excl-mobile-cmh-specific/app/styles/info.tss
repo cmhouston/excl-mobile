@@ -1,0 +1,15 @@
+
+".container" : {
+	navBarHidden: true,
+	fullscreen: true,
+	backgroundColor: Alloy.CFG.excl.colors.pageBackgroundColor
+}
+
+"#mainView": {
+	layout: "vertical",
+	bottom: "20dip",
+}
+
+"#InfoText":{
+
+}

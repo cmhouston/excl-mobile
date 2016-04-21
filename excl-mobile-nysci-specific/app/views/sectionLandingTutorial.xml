@@ -1,0 +1,9 @@
+<Alloy>
+	<View id="sectionTutorialPage" class="fullScreenWindow" autoStyle="true">
+		<View class="fullScreenOverlay" autoStyle="true" />
+		<ImageView id="postArrow" image="/images/tutorial/long-arrow-flipped.png"></ImageView>
+		<Label id="postText" class="fullScreenOverlayText">Tap to see a detailed view.</Label>
+		<Button id="ExitButton" onClick="tutorialExit" class="tutorialButton">End Tutorial</Button>
+		<Button id="NextButton" onClick="gotIt" class="GotItButton">Got it!</Button>
+	</View>
+</Alloy>

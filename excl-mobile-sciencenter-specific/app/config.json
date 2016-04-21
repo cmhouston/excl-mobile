@@ -1,0 +1,60 @@
+{
+    "global": {
+    	"excl": {
+	    	"wordpressEnvironments": {
+				"dev": "",
+				"qa": "",
+				"prod": ""
+			},
+			"adminPassword": "",
+			"kioskModePassword": "",
+			"defaultGlobalFontFamily": "texgyreheros-regular",
+    		"colors": {
+				"navBarColor": "#0063be",
+				"exhibitsCarouselArrowColor": "#0063be",
+				"exhibitsCarouselBackgroundColor": "#580f8b",
+				"exhibitTitleColor": "#000000",
+				"componentTitleColor": "#000000",
+				"exhibitPageSliderButtonColor": "#007836",
+				"sectionPrimaryColors": ["#0063be", "#007836", "#ff6f20", "#580f8b", "#fed900"],
+				"sectionSecondaryColors": ["#ECECEC", "#ECECEC", "#ECECEC", "#ECECEC", "#ECECEC", "#ECECEC"],
+				"postPreviewBackgroundColor": "##fed900",
+				"filterByAgeTabColor": "#007836",
+				"filterByAgeTabAccentColor": "#fed900",
+				"filterByAgeMenuColor": "#007836",
+				"submitButtonColor": "#580f8b",
+				"cancelButtonColor": "#ff6f20",
+				"loadingSpinnerTintColor": "#000000",
+				"pageBackgroundColor": "#FFFFFF",
+				"mapBackgroundColor": "#000000",
+				"accentBorderColor": "#AAAAAA",
+				"accentButtonColor": "#005ab3",
+				"commentFormTextBoxColor": "#580f8b",
+				"flyoutColor": "#0063be",
+				"flyoutAccentColor": "#580f8b",
+				"modalTintColor": "#000000",
+				"tutorialTintColor": "#000000",
+				"tutorialGotItButtonColor": "#007836",
+				"tutorialEndButtonColor": "#0063be",
+				"tutorialButtonBorderColor": "#FFFFFF",
+				"lightFontColor": "#FFFFFF",
+				"darkFontColor": "#000000"
+    		}
+    	}
+    },
+    "env:development": {},
+    "env:test": {},
+    "env:production": {},
+    "os:android": {
+    	"font": "roboto" 
+    },
+    "os:blackberry": {},
+    "os:ios": {
+    	"font": "helvetica"
+    },
+    "os:mobileweb": {},
+    "dependencies": {
+        "excl.platform-logo": "1.0",
+        "navigationBar": "1.0"
+    }
+}

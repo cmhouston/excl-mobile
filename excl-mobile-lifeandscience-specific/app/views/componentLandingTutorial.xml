@@ -1,0 +1,9 @@
+<Alloy>
+	<View id="componentTutorialPage" class="fullScreenWindow" autoStyle="true">
+		<View class="fullScreenOverlay" autoStyle="true" />
+		<ImageView id="sectionArrow" image="/images/tutorial/long-arrow.png"></ImageView>
+		<Label id="sectionText" class="fullScreenOverlayText">Tap each title to learn more.</Label>
+		<Button id="ExitButton" onClick="tutorialExit" class="tutorialButton">End Tutorial</Button>
+		<Button id="NextButton" onClick="gotIt" class="GotItButton">Got it!</Button>
+	</View>
+</Alloy>

@@ -1,0 +1,19 @@
+{
+  "name": "TitaniumUnitTesting",
+  "version": "0.0.0",
+  "description": "This will install all the node dependencies to run titanium unit tests",
+  "main": "alloy.js",
+  "dependencies": {
+    "istanbul": "^0.2.11",
+    "mocha": "^1.20.1",
+    "sinon": "^1.10.2"
+  },
+  "devDependencies": {
+    "mocha": "^1.20.1"
+  },
+  "scripts": {
+    "test": "istanbul cover node_modules/mocha/bin/_mocha app/spec/mochaTests -x app/lib/customCalls/apiCalls.js -x app/lib/customCalls/networkCalls.js -x app/lib/customCalls/parseCalls.js"
+  },
+  "author": "Muhammad Naviwala",
+  "license": "ISC"
+}

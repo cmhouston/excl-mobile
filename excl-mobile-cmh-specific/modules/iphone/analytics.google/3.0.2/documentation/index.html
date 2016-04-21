@@ -1,0 +1,93 @@
+<h1>Google Analytics Module</h1>
+<h2>Description</h2>
+<p>Connects to Google Analytics for app event tracking.</p>
+<h2>Set up Google Analytics</h2>
+<p>First step: you have to create a new app property in your Google Analytics-account.</p>
+<p>For more information see: http://support.google.com/analytics/bin/answer.py?hl=en&amp;answer=2587086&amp;topic=2587085&amp;ctx=topic</p>
+<h2>Accessing the Analytics Module</h2>
+<p>To access this module from JavaScript, you would do the following:</p>
+<p><code>javascript
+var GA = require("analytics.google");</code></p>
+<p>The GA variable is a reference to the Module object. To interact with the tracker, create a tracker instance using the <code>getTracker</code> method.</p>
+<p><code>javascript
+var tracker = GA.getTracker("UA-1234567-8");
+tracker.trackEvent({
+  category: "Loading",
+  action: "cancelled"
+});</code></p>
+<h2>Reference</h2>
+<h3>getTracker(id)</h3>
+<p>Retrieve an analytics tracker object. Must pass the "UA-XXXXXXX-X" id string that you get from Google Analytics.</p>
+<h3>Tracker.setUser(params)</h3>
+<p>Tracks a user sign in with an 'anonymous' identifier. You will be breaking Google's terms of service if you use any of the user's personal information (including email address).</p>
+<ul>
+<li>userId : String (required)</li>
+<li>category : String (required)</li>
+<li>action : String (required)</li>
+</ul>
+<h3>Tracker.trackEvent(params)</h3>
+<p>Tracks an event taking the following parameters:</p>
+<ul>
+<li>category : String (required)</li>
+<li>action : String (required)</li>
+<li>label : String</li>
+<li>value : Integer</li>
+</ul>
+<h3>Tracker.trackSocial(params)</h3>
+<p>Tracks social interactions taking the following parameters:</p>
+<ul>
+<li>network : String (e.g. facebook, pinterest, twitter) (required)</li>
+<li>action : String (required)</li>
+<li>target : String</li>
+</ul>
+<h3>Tracker.trackTiming(params)</h3>
+<p>Tracks a timing taking the following parameters:</p>
+<ul>
+<li>category : String (required)</li>
+<li>time : Integer (in milliseconds) (required)</li>
+<li>name : String</li>
+<li>label : String</li>
+</ul>
+<h3>Tracker.trackScreen(params)</h3>
+<p>Tracks a screen change using the screen's name.</p>
+<ul>
+<li>screenName : String (required)</li>
+</ul>
+<h3>Tracker.trackTransaction(params)</h3>
+<p>Tracks an ecommerce transaction.</p>
+<ul>
+<li>transactionId : String (required)</li>
+<li>affiliation : String (required)</li>
+<li>revenue : Number (required)</li>
+<li>tax : Number (required)</li>
+<li>shipping : Number (required)</li>
+<li>currency : String (e.g. USD, CAD)</li>
+</ul>
+<h3>Tracker.trackTransactionItem(params)</h3>
+<p>Tracks an ecommerce transaction's item.</p>
+<ul>
+<li>transactionId : String - should match transactionId in <code>trackTransaction</code> method. (required)</li>
+<li>name : String (required)</li>
+<li>sku : String (required)</li>
+<li>category : String</li>
+<li>price : Number (required)</li>
+<li>quantity : Number (required)</li>
+<li>currency : String (e.g. USD, CAD)</li>
+</ul>
+<h2>Usage</h2>
+<p><code>javascript
+var GA = require('analytics.google');
+var tracker = GA.getTracker("UA-XXXXXXX-X");
+tracker.trackEvent({
+    category: "my event category",
+    action: "clicked",
+    label: "how many (c)licks?",
+    value: 3
+});</code></p>
+<h2>Authors</h2>
+<p><a href="https://github.com/MattTuttle" title="Matt Tuttle">Matt Tuttle</a>
+<a href="https://github.com/astjohn" title="Adam St. John">Adam St. John</a></p>
+<h2>License</h2>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>

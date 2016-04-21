@@ -1,0 +1,20 @@
+<Alloy>
+	<View id="postTutorialPage" class="fullScreenWindow">
+		<View class="fullScreenOverlay" />
+		<View id="iconHighlight">
+			<ImageView id="highlightBackground" />
+			<ImageView id="commentIcon" class="sharingIcon" />
+			<ImageView id="shareIcon" class="sharingIcon" />
+			<ImageView id="photoIcon" class="sharingIcon" />
+		</View>
+		<ImageView id="commentArrow" image="/images/tutorial/long-arrow.png"></ImageView>
+		<ImageView id="shareArrow" image="/images/tutorial/long-arrow.png"></ImageView>
+		<ImageView id="photoArrow" image="/images/tutorial/long-arrow-flipped.png"></ImageView>
+		<Label id="commentText" class="fullScreenOverlayText">Tap to leave a comment.</Label>
+		<Label id="shareText" class="fullScreenOverlayText">Tap to share this page.</Label>
+		<Label id="photoText" class="fullScreenOverlayText">Tap to take a photo and share with others.</Label>
+		<Label id="viewCommentsText" class="fullScreenOverlayText">See what others have commented below.</Label>
+		<ImageView id="viewCommentsArrow" image="/images/tutorial/long-arrow-flipped.png"></ImageView>
+		<Button id="ExitButton" onClick="tutorialExit" class="tutorialButton">End Tutorial</Button>
+	</View>
+</Alloy>

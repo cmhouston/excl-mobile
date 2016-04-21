@@ -1,0 +1,87 @@
+"#menuView":{
+	layout: 'horizontal',
+	opacity: "1",
+	width: "100%",
+	left: "100%",
+	top: "50dip"
+},
+
+"#menuView[formFactor=tablet]":{
+	top: "75dip"	
+},
+
+"#menuContainer":{
+	separatorStyle: 'NONE',
+	separatorColor: 'transparent',
+	backgroundColor: Alloy.CFG.excl.colors.flyoutColor,
+	width: Titanium.UI.FILL,
+	layout: "vertical"
+},
+
+// Delete if unneeded
+".viewRow":{
+	height: '50dip',
+},
+
+".viewRow[formFactor=tablet]":{
+	height: '75dip',
+},
+
+".rowContainer": {
+	layout: 'horizontal',
+}
+
+"#viewRowCollapsible":{
+	height: '0',
+	visible: false
+},
+
+".viewRowIndented":{
+	left: '10%',
+	height: "0"
+}
+".rowIcon":{
+	left: '10%',
+	top: "7dip",
+	width: "20dip",
+	height: "20dip"
+},
+
+".rowIcon[formFactor=tablet]":{
+	top:"14dip"
+}
+
+".clearPageProtecterView": {
+	left: 0,
+	width: "50%",
+}
+
+".rowLabel":{
+	top: "6dip",
+	left: '12dp',
+	height: Ti.UI.SIZE,
+	width: Ti.UI.FILL,
+	font:{
+		fontSize: "15dip",
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	},
+	color: Alloy.CFG.excl.colors.darkFontColor
+},
+
+".rowLabel[formFactor=tablet]":{
+	font:{
+		fontSize:"25dip",
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	}
+}
+
+".rowLabelIndented":{
+	top: "6dip",
+	left: "12dip",
+	height: Titanium.UI.SIZE,
+	font:{
+		fontSize: "15dip",
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	},
+	color: Alloy.CFG.excl.colors.darkFontColor
+}

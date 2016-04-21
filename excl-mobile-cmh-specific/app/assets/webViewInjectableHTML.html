@@ -1,0 +1,42 @@
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+		function openInBrowser(link) {
+			Ti.App.fireEvent('app:openInBrowser', {url: link});
+		}
+		
+		function changeLinksToOpenInBrowser() {
+			var aTags = document.getElementsByTagName('a');
+			for (var i = 0; i < aTags.length; i++) {
+				var tag = aTags[i];
+				var linkURL = tag.href;
+				tag.setAttribute('onclick', 'openInBrowser("' + linkURL + '"); return false;');
+			}
+		}
+		//window.onload = changeLinksToOpenInBrowser;
+	</script>
+	<style type="text/css">
+	    body    { font-size: 93%;}
+		h1      { font-size: ${H1_FONT_SIZE};}
+		h2      { font-size: ${H2_FONT_SIZE};}
+		h3      { font-size: ${H3_FONT_SIZE};}
+		h4      { font-size: ${H4_FONT_SIZE};}
+		h5      { font-size: ${H5_FONT_SIZE};}
+		h6      { font-size: ${H6_FONT_SIZE};}
+		
+		pre { 
+			font-family: "${FONT}";
+			font-size:   ${PRE_FONT_SIZE};
+		}
+		div { 
+			font-family: "${FONT}";
+			font-size:   ${NORMAL_FONT_SIZE};
+		}
+	</style>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+</head>
+<body>
+	<div id="rich_text">${RICH_TEXT}</div>
+</body>
+</html>

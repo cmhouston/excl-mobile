@@ -1,0 +1,19 @@
+<Alloy>
+	<Window class="container">
+		<View id="mainView">
+			<Widget id="navBar" src="navigationBar"/>
+			<ScrollableView id="exhibitsCarousel">
+				<View id="placeholder"/>
+			</ScrollableView>
+			<View id="infoView">
+				<View id="bottomView">
+					<View id="componentScrollViewHeading" class="exhibitInfoRow">
+						<Label id="componentScrollViewLabel"/>
+					</View>
+					<ScrollView id="componentScrollView"/>
+				</View>
+
+			</View>
+		</View>
+	</Window>
+</Alloy>

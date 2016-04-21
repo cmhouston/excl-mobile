@@ -1,0 +1,218 @@
+".fullScreenWindow": {
+  fullscreen: true,
+  navBarHidden: true,
+  backgroundColor: "transparent",
+  opacity: "1",
+  height: Titanium.UI.FILL,
+  width: Titanium.UI.FILL
+}
+".fullScreenOverlay": {
+	backgroundColor: Alloy.CFG.excl.colors.tutorialTintColor,
+	opacity: ".75",
+}
+".fullScreenOverlayText": {
+	color: Alloy.CFG.excl.colors.lightFontColor,
+	shadowColor: Alloy.CFG.excl.colors.darkFontColor,
+	shadowOffset: {x:3, y:3},
+	shadowRadius: 5,
+	font: {
+		textStyle: Titanium.UI.TEXT_STYLE_HEADLINE,
+		fontWeight: "bold",
+		fontSize: "24dp",
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	}
+}
+
+".fullScreenOverlayText[platform=android]": {
+	font:{
+		textStyle: Titanium.UI.TEXT_STYLE_HEADLINE,
+		fontWeight: "bold",
+		fontSize: "20dp",
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	}
+}
+".fullScreenOverlayText[formFactor=tablet]": {
+	font: {
+		fontWeight: "bold",
+		fontSize: "35dip",
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	}
+}
+".GotItButton": {
+	backgroundColor: Alloy.CFG.excl.colors.submitButtonColor,
+	width: "200dip",
+	height: "50dip",
+	color: Alloy.CFG.excl.colors.lightFontColor,
+	font: {
+		textStyle: Titanium.UI.TEXT_STYLE_HEADLINE,
+		fontSize: "24dp",
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	}
+}
+
+".tutorialButton": {
+	backgroundColor: Alloy.CFG.excl.colors.cancelButtonColor,
+	width: "200dip",
+	height: "50dip",
+	color: Alloy.CFG.excl.colors.lightFontColor,
+	font: {
+		textStyle: Titanium.UI.TEXT_STYLE_HEADLINE,
+		fontSize: "24dp",
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	}
+}
+
+"#flyoutMenuArrow": {
+	top: "37dip",
+	right: "30dip",
+	//height: "110dip"
+	height: "45dip"
+}
+
+"#flyoutMenuArrow[formFactor=tablet]": {
+	right: "40dip",
+	height: "90dip",
+	top: "45dip"
+}
+
+"#backArrow": {
+	transform: Alloy.Globals.rotate270,
+	height: "30dip",
+	left: "15dip",
+	top: "40dip",
+	width: "40dip"
+}
+
+"#backArrow[formFactor=tablet]":{
+	height: "50dip",
+	width: "70dip",
+	top: "40dip",
+	
+}
+
+"#ComponentsArrow": {
+	// transform: Alloy.Globals.rotate180,
+	// height: "140dip",
+	// right: "35dip",
+	// bottom: "20dip"
+	transform: Alloy.Globals.rotate270,
+	height: "50dip",
+	left: "30dip", //"15dip",
+	top: "375dip", // "275dip",
+	width: "25dip"
+}
+
+"#ComponentsArrow[platform=android]":{
+	top: "325dip"
+}
+
+"#ComponentsArrow[platform=ios formFactor=tablet]": {
+	bottom: "75dip",
+	height: "75dip",
+	width: "60dip",
+	top: "660dip",
+	left: "50dip"
+}
+
+"#ComponentsArrow[platform=android formFactor=tablet]": {
+	height: "75dip",
+	width: "60dip",
+	top: "560dip",
+	left: "50dip"
+}
+
+"#flyoutMenuText": {
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_RIGHT,
+	width: Ti.UI.FILL,
+	top: "80dip",
+	right: "25dip",
+	
+}
+
+"#flyoutMenuText[formFactor=tablet]": {
+	top: "120dip"
+}
+
+"#ScrollText": {
+	top: "200dip",
+	left: "10dip",
+	right: "10dip",
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+}
+
+"#ScrollText[formFactor=tablet]": {
+	top: "450dip",
+	left: "20dip",
+	right: "20dip"
+}
+
+"#backText":{
+	top: "50dip",
+	left: "50dip"
+}
+
+"#backText[formFactor=tablet]":{
+	top: "70dip",
+	left: "75dip"
+}
+
+"#ComponentsText": {
+	width: Ti.UI.FILL,
+	top: "375dip",
+	left: "75dip"
+}
+
+"#ComponentsText[platform=android]":{
+	top: "325dip"
+}
+
+"#ComponentsText[platform=ios formFactor=tablet]": {
+	top: "650dip",
+	right: "60dip",
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+}
+
+"#ComponentsText[platform=android formFactor=tablet]": {
+	top: "550dip",
+	right: "60dip",
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+}
+
+"#fingerSwipe[formFactor=handheld]": {
+	top: "140dip",
+	height: "50dip"
+}
+
+"#fingerSwipe[formFactor=tablet]": {
+	center: {
+		//x: "25%",
+		y: "320dip"
+	}
+}
+
+"#ExitButton": {
+	bottom: "40dip",
+	width: "50%"
+}
+/*
+"#ExitButton[formFactor=tablet]": {
+	bottom: "150dip"
+}
+*/
+"#ExitButton[formFactor=handheld platform=android]": {
+	bottom: "50dip"
+}
+
+"#NextButton": {
+	bottom: "100dip",
+	width: "50%"
+}
+/*
+"#NextButton[formFactor=tablet]": {
+	top: null,
+	bottom: "210dip"
+}
+*/
+"#NextButton[formFactor=handheld platform=android]": {
+	bottom: "110dip"
+}

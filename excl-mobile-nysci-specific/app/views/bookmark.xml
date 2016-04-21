@@ -1,0 +1,10 @@
+<Alloy>
+	<Window class="container">
+		<View class="verticalContainer" >
+			<Label id="title" class="title">
+				Welcome fintern.
+			</Label>
+			<ImageView id="image" image="/images/fins.JPG" />
+		</View>
+	</Window>
+</Alloy>

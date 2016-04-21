@@ -1,0 +1,14 @@
+".container" : {
+	navBarHidden: true,
+	fullscreen: true,
+	backgroundColor: Alloy.CFG.excl.colors.pageBackgroundColor
+}
+
+"#mainView": {
+	layout: "vertical",
+}
+
+"#Map": {
+	//top: "80dip",
+	backgroundColor: Alloy.CFG.excl.colors.mapBackgroundColor
+}

@@ -1,0 +1,19 @@
+<Alloy>
+	<Window class="container">
+		<View id="mainView">
+			<View id="homeContent">
+				<ImageView id="homeImage"/>
+				<ImageView id="iconLink"/>
+				<View id="exhibitsLink">
+					<Label id="exhibitsLabel" class="homepageLabel"/>
+				</View>
+				<View id="mapLink">
+					<Label id="mapLabel" class="homepageLabel"/>
+				</View>
+				<View id="infoLink">
+					<Label id="infoLabel" class="homepageLabel"/>
+				</View>			
+			</View>
+		</View>
+	</Window>
+</Alloy>

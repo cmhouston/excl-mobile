@@ -1,0 +1,14 @@
+{
+	"id": "excl.platform-logo",
+	"name": "Platform Logo",
+	"description" : "Shows a logo based on the platform",
+	"author": "Pariveda Solutions",
+	"version": "1.0",
+	"min-alloy-version": "1.0",
+	"min-titanium-version":"2.1",
+	"platforms":"android,ios",
+	"copyright": "",
+	"license": "",
+	"tags": "",
+	"dependencies": {}
+}

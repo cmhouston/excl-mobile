@@ -1,0 +1,117 @@
+".container": {
+	navBarHidden: true,
+	fullscreen: true,
+	backgroundColor: Alloy.CFG.excl.colors.pageBackgroundColor
+}
+
+"#mainView": {
+	layout: "vertical",
+	top: "0",
+	bottom: "0"
+}
+
+"#placeholder":{
+	height: '10dip'
+}
+
+"#exhibitsCarousel": {
+	backgroundColor: Alloy.CFG.excl.colors.exhibitsCarouselBackgroundColor,
+	height: Ti.UI.SIZE,
+	overlayEnabled: true
+}
+
+"#exhibitsCarousel[platform=ios]": {
+	showPagingControl: true,
+	pagingControlAlpha: 0.6
+}
+
+"#bottomView":{
+	layout: "vertical",
+	height: Ti.UI.FILL,
+	top: "0"
+}
+
+"#componentScrollViewHeading":{
+	backgroundColor: Alloy.CFG.excl.colors.pageBackgroundColor
+}
+
+"#componentScrollViewHeading[formFactor=tablet]":{
+	height: "150dip"
+}
+
+"#componentScrollViewLabel":{
+	text: "Select an Activity!",
+	color: Alloy.CFG.excl.colors.darkFontColor,
+    left: "5dip",
+	font: {
+		//fontWeight: 'bold',
+		fontSize: "14dip",
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	}
+}
+
+"#componentScrollViewLabel[formFactor=tablet]":{
+	font:{
+		//fontWeight: 'bold',
+		fontSize: "24dip",
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	}
+}
+
+"#arrowIcon": {
+	right: "5dip",
+	//height: "75%",
+	width: "10%"
+}
+
+"#componentScrollView": {
+	layout: 'horizontal',
+	showHorizontalScrollIndicator: true,
+	width: '100%',
+	scrollType: 'horizontal',
+	horizontalWrap: false,
+	top: "3dip",
+	bottom: "3dip",
+}
+
+"#topView": {
+	layout: "vertical",
+	backgroundColor: Alloy.CFG.excl.colors.pageBackgroundColor,
+	top: 0
+}
+
+"#headingLabelView":{
+	backgroundColor: Alloy.CFG.excl.colors.exhibitPageSliderButtonColor
+}
+
+"#headingLabelView[formFactor=tablet]": {
+	height: "75dip"
+}
+
+"#exhibitInfoLabel": {
+	width: "94%",
+	color: Alloy.CFG.excl.colors.darkFontColor,
+	font: {
+		fontSize: "18dip",
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	},
+}
+
+"#exhibitInfoLabel[formFactor=tablet]":{
+	font: {
+		fontSize: "25dip",
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	}
+}
+
+"#exhibitInfoScrollView": {
+	layout: "vertical",
+	showVerticalScrollIndicator: true,
+	top: "0",
+	height: Ti.UI.FILL,
+	width: Ti.UI.FILL
+}
+
+"#infoView": {
+	height: Ti.UI.FILL
+}

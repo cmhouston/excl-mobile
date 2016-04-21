@@ -1,0 +1,159 @@
+".fullScreenWindow": {
+  fullscreen: true,
+  navBarHidden: true,
+  backgroundColor: "transparent",
+  opacity: "1",
+  height: Titanium.UI.FILL,
+  width: Titanium.UI.FILL
+}
+".fullScreenOverlay": {
+	backgroundColor: Alloy.CFG.excl.colors.tutorialTintColor,
+	opacity: ".75",
+}
+".fullScreenOverlayText": {
+	color: Alloy.CFG.excl.colors.lightFontColor,
+	shadowColor: Alloy.CFG.excl.colors.darkFontColor,
+	shadowOffset: {x:3, y:3},
+	shadowRadius: 5,
+	font: {
+		textStyle: Titanium.UI.TEXT_STYLE_HEADLINE,
+		fontWeight: "bold",
+		fontSize: "24dp",
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	}
+}
+
+".fullScreenOverlayText[platform=android]": {
+	font: {
+		textStyle: Titanium.UI.TEXT_STYLE_HEADLINE,
+		fontWeight: "bold",
+		fontSize: "18dp",
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	}
+}
+
+".fullScreenOverlayText[formFactor=tablet]": {
+	font: {
+		fontWeight: "bold",
+		fontSize: "35dip",
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	}
+}
+
+".GotItButton": {
+	backgroundColor: Alloy.CFG.excl.colors.submitButtonColor,
+	width: "200dip",
+	height: "50dip",
+	color: Alloy.CFG.excl.colors.lightFontColor,
+	font: {
+		textStyle: Titanium.UI.TEXT_STYLE_HEADLINE,
+		fontSize: "24dp",
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	}
+}
+
+".tutorialButton": {
+	backgroundColor: Alloy.CFG.excl.colors.cancelButtonColor,
+	width: "200dip",
+	height: "50dip",
+	color: Alloy.CFG.excl.colors.lightFontColor,
+	font: {
+		textStyle: Titanium.UI.TEXT_STYLE_HEADLINE,
+		fontSize: "24dp",
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	}
+}
+
+"#exhibitsArrow": {
+	top: "50dip",
+	left: "160dip",
+	height: "50dip",
+	transform: Alloy.Globals.rotate145
+}
+
+"#exhibitsArrow[formFactor=tablet]": {
+	top: "100dip",
+	left: "370dip",
+	height: "100dip",
+	transform: Alloy.Globals.rotate145
+}
+
+"#exhibitsText": {
+	top: "30dip",
+	left: "15dip",
+	width: "170dip",
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+}
+
+"#exhibitsText[formFactor=tablet]": {
+	top: "60dip",
+	left: "80dip",
+	width: "340dip",
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+}
+
+"#infoArrow": {
+	top: "305dip",
+	left: "15dip",
+	height: "50dip",
+	transform: Alloy.Globals.rotate245
+}
+
+"#infoArrow[formFactor=tablet]": {
+	top: "580dip",
+	left: "45dip",
+	height: "100dip",
+	transform: Alloy.Globals.rotate220
+}
+
+"#infoText": {
+	top: "250dip",
+	left: "5dip",
+	width: "150dip",
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+}
+
+"#infoText[formFactor=tablet]": {
+	top: "460dip",
+	left: "10dip",
+	width: "300dip",
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+}
+
+"#mapArrow": {
+	top: "235dip",
+	right: "15dip",
+	height: "50dip",
+	transform: Alloy.Globals.rotate145
+}
+
+"#mapArrow[formFactor=tablet]": {
+	top: "620dip",
+	right: "45dip",
+	height: "100dip",
+	transform: Alloy.Globals.rotate145
+}
+
+"#mapText": {
+	top: "180dip",
+	right: "5dip",
+	width: "150dip",
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+}
+
+"#mapText[formFactor=tablet]": {
+	top: "500dip",
+	right: "15dip",
+	width: "300dip",
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+}
+
+"#ExitButton": {
+	//bottom: "150dip"
+	bottom: "20dip"
+}
+
+"#NextButton": {
+	//bottom: "150dip"
+	bottom: "80dip"
+}

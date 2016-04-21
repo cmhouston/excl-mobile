@@ -1,0 +1,58 @@
+
+".container": {}
+
+".verticalContainer": {
+	layout: "vertical",
+	backgroundColor: Alloy.CFG.excl.colors.pageBackgroundColor,
+	scrollType: "vertical"
+}
+
+".environmentOption": {
+	width: "70%",
+	font: {
+		fontSize: "20dip",
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	}
+}
+
+".boldLabel":{
+	left: "5%",
+	color: Alloy.CFG.excl.colors.darkFontColor,
+	font:
+	{
+		fontWeight: "bold",
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	}
+}
+
+"#currentEnvironLabel":{
+	left: "5%",
+	color: Alloy.CFG.excl.colors.darkFontColor,
+	font: {
+		fontSize: "15dip",
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	}
+}
+
+"#toggleUnpublishedPostsSwitch":{
+	left: "5%"
+}
+
+".horizontalContainer": {
+	top: "5%",
+	layout: "horizontal",
+	height: Ti.UI.SIZE
+}
+
+".title":{
+	top: "5%",
+	bottom: "5%",
+	color: Alloy.CFG.excl.colors.darkFontColor,
+	font:
+	{		
+		fontSize: "15dip",
+		fontWeight: "bold",
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	},
+	height: Ti.UI.SIZE
+}

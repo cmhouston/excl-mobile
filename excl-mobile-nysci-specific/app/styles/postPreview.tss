@@ -1,0 +1,31 @@
+
+"#backgroundContainer": {
+	layout: "vertical"
+}
+
+"#placeholderContainer": {
+	layout: "vertical"
+}
+
+"#previewContainer": {
+	layout: "horizonal"
+}
+
+"#header":{
+	height: "50dip",
+	width: "100%"
+}
+
+"#headerText":{
+	color: Alloy.CFG.excl.colors.darkFontColor,
+	textAlign: "center"
+}
+
+"#placeholderImage":{
+	left: "0",
+	width: "40%"
+}
+
+"#placeholderLabel":{
+	left: "40%"
+}

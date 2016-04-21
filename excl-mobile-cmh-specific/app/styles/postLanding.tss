@@ -1,0 +1,487 @@
+
+".container": {
+	navBarHidden: true,
+	fullscreen: true,
+	backgroundColor: Alloy.CFG.excl.colors.pageBackgroundColor,
+	height: Titanium.UI.FILL
+}
+
+"#postLandingView": {
+	layout: "vertical",
+	height: Titanium.UI.FILL,
+	width: Titanium.UI.FILL
+}
+
+"#postLandingViewBody": {
+	height: Ti.UI.FILL,
+	width: '100%',
+	layout: "composite"
+}
+
+"#scroller": {
+	top: "0",
+	height: Ti.UI.FILL,
+	width: '100%',
+	scrollType: 'vertical',
+	layout: "vertical"
+}
+
+"#tableView":{
+	height: Ti.UI.SIZE,
+	width: '100%',
+	layout: "vertical",
+	bottom: "50dip"
+}
+
+".autoHeight": {
+	height: Ti.UI.SIZE
+}
+
+".hidden": {
+	height: "0"
+}
+
+"#headerRow": {
+	height: Ti.UI.SIZE, //"200dip",
+	width: '100%'
+}
+
+"#headerRow[formFactor=tablet]": {
+	height: Ti.UI.SIZE
+}
+
+".headerImage": {
+	width: Ti.UI.FILL,
+	//height: "200dip"
+}
+
+".headerImage[formFactor=tablet]": {}
+
+".headerVideo": {
+	width: Ti.UI.FILL,
+	height: "190dip"
+}
+
+".headerVideo[formFactor=tablet]": {
+	height: "375dip"
+}
+
+".socialMediaButtonShown": {
+	height: "40dip",
+	width: "40dip",
+	left: "20dip",
+	right: "20dip"
+}
+
+".socialMediaButtonHidden": {
+	left: "0",
+	right: "0",
+	height: "0",
+	width: "0"
+}
+
+"#socialMediaButtonsRow": {
+	layout: "composite",
+	width: "100%",
+	top: "10dip",
+	bottom: "10dip"
+}
+
+".centeredButtons": {
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	layout: "horizontal",
+	horizontalWrap: false
+}
+
+"#postTitleView":{
+	height: Ti.UI.SIZE
+}
+
+"#postTitleLabel":{
+	top: "10dip",
+	color: Alloy.CFG.excl.colors.darkFontColor,
+	font: {
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily,
+		fontSize: "25dip",
+		fontWeight: 'bold'
+	},
+	left: "5dip",
+	right: "5dip",
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER
+}
+
+"#commentingButton": {
+	backgroundImage: "/images/icons_ios/comment_ready.png"
+}
+
+"#commentingButton[platform=android]": {
+	backgroundImage: "/images/icons_android/comment_ready.png"
+}
+
+"#shareTextButton": {
+	backgroundImage: "/images/icons_ios/share_ready.png"
+}
+
+"#shareTextButton[platform=android]": {
+	backgroundImage: "/images/icons_android/share_ready.png"
+}
+
+"#sharePhotoButton": {
+	backgroundImage: "/images/icons_ios/camera_ready.png"
+}
+
+"#sharePhotoButton[platform=android]": {
+	backgroundImage: "/images/icons_android/camera_ready.png"
+}
+
+"#webView": {
+	height: Ti.UI.SIZE
+}
+
+"#webView[platform=ios]": {
+	scalesPageToFit: true,
+	disableBounce: true,
+	willHandleTouches: false
+}
+
+"#webView[platform=android]": {
+	scalesPageToFit: true,
+	width: Ti.UI.SIZE,
+	enableZoomControls: true,
+	overScrollMode: Titanium.UI.Android.OVER_SCROLL_ALWAYS
+}
+
+"#commentsHeading": {
+	height: "0dip"
+}
+
+".commentsHeadingText": {
+	top: "20dip",
+	width: '90%',
+	right: '3%',
+	left: '3%',
+	color: Alloy.CFG.excl.colors.darkFontColor,
+	font: {
+		// fontFamily: Alloy.CFG.font,
+		fontSize : '16dip',
+		fontWeight : 'bold',,
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	},
+	textAlign: 'center',
+	borderWidth: '1',
+	borderColor: Alloy.CFG.excl.colors.accentBorderColor
+}
+
+".commentsHeadingText[formFactor=tablet]": {
+	font: {
+		// fontFamily: Alloy.CFG.font,
+		fontSize: '30dip',
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	}
+}
+
+"#showMoreComments": {
+	color: Alloy.CFG.excl.colors.accentButtonColor,
+	height: "0dip",
+	visible: false
+}
+
+"#noComments": {
+	color: Alloy.CFG.excl.colors.accentBorderColor,
+	height: "0dip",
+	visible: false
+}
+
+"#commentsView": {
+	layout: "vertical"
+}
+
+".commentsInfo": {
+	top : "10dip",
+	width : '90%',
+	right : '3%',
+	left : '3%',
+	font : {
+		fontSize : '13dip',
+		fontWeight : 'normal',
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	},
+	textAlign: 'center'
+}
+
+".commentsInfo[formFactor=tablet]": {
+	font: {
+		// fontFamily: Alloy.CFG.font,
+		fontSize: '25dip',
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	}
+}
+
+".commentBody": {
+	color: Alloy.CFG.excl.colors.darkFontColor,
+	textAlign: 'left'
+}
+
+".commentBody[formFactor=tablet]": {
+	font: {
+		fontSize : "25dip",
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	}
+}
+
+".commentDate": {
+	color: Alloy.CFG.excl.colors.accentBorderColor,
+	font: {
+		fontSize: '8dip',
+		fontWeight: 'normal',
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	},
+	textAlign: 'left'
+}
+
+".commentDate[formFactor=tablet]": {
+	font: {
+		// fontFamily: Alloy.CFG.font,
+		fontSize : "17dip",
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	}
+}
+
+"#addNewCommentContainer":{
+	backgroundColor: Alloy.CFG.excl.colors.modalTintColor,
+	opacity: '0.75',
+	height: '100%',
+	width: '100%',
+	top: 0,
+	left: 0,
+	visible: false
+}
+
+"#commentsModal":{
+	backgroundColor: Alloy.CFG.excl.colors.pageBackgroundColor,
+	height: '430dip',
+	width: '260dip',
+	top: '15dip',
+	opacity: '1.0',
+	zIndex: "15",
+	visible: false,
+}
+
+"#commentsModal[formFactor=tablet]": {
+	height: "700dip",
+	width: "500dip"
+}
+
+"#submitYourCommentLabel":{
+	opacity: '1.0',
+	color: Alloy.CFG.excl.colors.darkFontColor,
+	font: {
+		fontSize: '21dp',
+		fontWeight: 'bold',
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	},
+	top: '4%',
+	width: Ti.UI.FILL,
+	left: '7%'
+}
+
+"#insertName":{
+	hintText: 'Name',
+	keyboardType: Titanium.UI.KEYBOARD_DEFAULT,
+	returnKeyType: Titanium.UI.RETURNKEY_NEXT,
+	opacity: '1.0',
+	font: {
+		// fontFamily: Alloy.CFG.font,
+		fontSize: '18dp',
+		fontWeight: 'normal',
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	},
+	color: Alloy.CFG.excl.colors.darkFontColor,
+	top: '15%',
+	left: '7%',
+	width: '85%',
+	height: '10%',
+	backgroundColor: Alloy.CFG.excl.colors.commentFormTextBoxColor,
+	borderWidth: '1',
+	borderColor: Alloy.CFG.excl.colors.darkFontColor,
+	clearOnEdit: false,
+	paddingLeft: "5dip",
+	tintColor: Alloy.CFG.excl.colors.darkFontColor
+}
+
+"#insertName[formFactor=tablet]": {
+	height: "50dip"
+}
+
+"#insertNameDisclaimer":{
+	font: {
+		fontSize: '12dip',
+		fontWeight: 'normal',
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	},
+	color: Alloy.CFG.excl.colors.darkFontColor,
+	width: Ti.UI.FILL,
+	left: '7%'
+}
+
+"#insertNameDisclaimer[formFactor=tablet]": {
+	font: {
+		fontSize : "15dip",
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	}
+}
+
+"#insertEmail":{
+	hintText: 'Email',
+	keyboardType: Titanium.UI.KEYBOARD_EMAIL,
+	returnKeyType: Titanium.UI.RETURNKEY_NEXT,
+	opacity: '1.0',
+	font: {
+		// fontFamily: Alloy.CFG.font,
+		fontSize: '18dp',
+		fontWeight: 'normal',
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	},
+	color: Alloy.CFG.excl.colors.darkFontColor,
+	left: '7%',
+	width: '85%',
+	height: '10%',
+	backgroundColor: Alloy.CFG.excl.colors.commentFormTextBoxColor,
+	borderWidth: '1',
+	borderColor: Alloy.CFG.excl.colors.darkFontColor,
+	clearOnEdit: false,
+	paddingLeft: "5dip",
+	top: '3%',
+	tintColor: Alloy.CFG.excl.colors.darkFontColor
+}
+
+"#insertEmail[formFactor=tablet]": {
+	height: "50dip"
+}
+
+"#insertEmailDisclaimer":{
+	font: {
+		fontSize: '12dip',
+		fontWeight: 'normal',
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	},
+	color: Alloy.CFG.excl.colors.darkFontColor,
+	width: Ti.UI.FILL,
+	left: '7%'
+}
+
+"#insertEmailDisclaimer[formFactor=tablet]": {
+	font: {
+		fontSize : "15dip",
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	}
+}
+
+"#submitCommentFormView":{
+	layout: "vertical"
+}
+
+"#insertComment":{
+	hintText: 'Comment',
+	keyboardType: Titanium.UI.KEYBOARD_DEFAULT,
+	returnKeyType: Titanium.UI.RETURNKEY_DONE,
+	opacity: '1.0',
+	font: {
+		fontSize: '18dp',
+		fontWeight: 'normal',
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	},
+	color: Alloy.CFG.excl.colors.darkFontColor,
+	backgroundColor: Alloy.CFG.excl.colors.commentFormTextBoxColor,
+	left: '7%',
+	width: '85%',
+	height: '35%',
+	borderWidth: '1',
+	borderColor: Alloy.CFG.excl.colors.darkFontColor,
+	clearOnEdit: false,
+	paddingLeft: "5dip",
+	top: '3%',
+	tintColor: Alloy.CFG.excl.colors.darkFontColor
+}
+
+"#insertComment[formFactor=tablet]": {
+	height: "300dip"
+}
+
+"#submitButton":{
+	title: 'Submit',
+	opacity: '1.0',
+	font: {
+		fontSize: '18dp',
+		fontWeight: 'bold',
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	},
+	left: '0',
+	width: '49%',
+	height: '100%',
+	color: Alloy.CFG.excl.colors.lightFontColor,
+	backgroundColor: Alloy.CFG.excl.colors.submitButtonColor
+}
+
+"#submitButton[formFactor=tablet]": {
+	font:  {
+		fontSize : '25dip',
+		fontWeight : 'bold',
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	}
+}
+
+"#cancelCommentButton":{
+	title: 'Cancel',
+	opacity: '1.0',
+	font: {
+		fontSize: '16dp',
+		fontWeight: 'bold',
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	},
+	left: "2%",
+	width: '49%',
+	height: '100%',
+	color: Alloy.CFG.excl.colors.lightFontColor,
+	backgroundColor: Alloy.CFG.excl.colors.cancelButtonColor
+}
+
+"#cancelCommentButton[formFactor=tablet]": {
+	font:  {
+		// fontFamily: Alloy.CFG.font,
+		fontSize : '25dip',
+		fontWeight : 'bold',
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	}
+}
+
+"#buttonView":{
+	layout: "horizontal",
+	top: "3%",
+	height: "10%",
+	width: "85%"
+}
+
+"#buttonView[formFactor=tablet]": {
+	height: "75dip"
+}
+
+".thankYouMessageComment":{
+	opacity: '1.0',
+	font: {
+		// fontFamily: Alloy.CFG.font,
+		fontSize: '16dp',
+		fontWeight: 'normal',
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	},
+	textAlign: 'center',
+	color: Alloy.CFG.excl.colors.darkFontColor,
+	top: '35%',
+	left: '7%',
+	width: '85%',
+	height: 'auto'
+}
+
+
+

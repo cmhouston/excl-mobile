@@ -1,0 +1,23 @@
+
+".container" : {
+  navBarHidden:true,
+  fullscreen: true
+}
+".sortBar":{
+	height: "50dip",
+	backgroundColor: "#232226",
+	top: "0"
+}
+".switch":{
+	left: "80%",
+	titleOn: " ",
+	titleOff: " ",
+	height: "20dip",
+	backgroundDisabledColor: "#FFFFFF"
+}
+".indicator":{
+	font:{
+		size: "9dip",
+	},
+	color: "#FFFFFF"
+}

@@ -1,0 +1,102 @@
+{
+    "global": {
+    	"excl": {
+	    	"wordpressEnvironments": {
+				"dev": "",
+				"qa": "",
+				"prod": ""
+			},
+			"adminPassword": "",
+			"kioskModePassword": "",
+			"defaultGlobalFontFamily": "texgyreheros-regular",
+    		"colors": {
+				"navBarColor": "#F58220",
+
+"exhibitsCarouselArrowColor": "#F58220",
+
+"exhibitsCarouselBackgroundColor": "#253342",
+
+"exhibitTitleColor": "#000000",
+
+"componentTitleColor": "#000000",
+
+"exhibitPageSliderButtonColor": "#006DB7",
+
+"sectionPrimaryColors": 
+
+["#006DB7",
+
+"#652D90",
+
+"#EB008B",
+
+"#FCAF17",
+
+"#98C21F",
+
+"#009345"],
+
+"sectionSecondaryColors": ["#ECECEC", "#ECECEC", "#ECECEC", "#ECECEC", 
+
+"#ECECEC", "#ECECEC"],
+
+"postPreviewBackgroundColor": "#D8D8D8",
+
+"filterByAgeTabColor": "#737373",
+
+"filterByAgeTabAccentColor": "#D8D8D8",
+
+"filterByAgeMenuColor": "#E5E5E5",
+
+"submitButtonColor": "#2ECC71",
+
+"cancelButtonColor": "#E74C3C",
+
+"loadingSpinnerTintColor": "#000000",
+
+"pageBackgroundColor": "#FFFFFF",
+
+"mapBackgroundColor": "#000000",
+
+"accentBorderColor": "#AAAAAA",
+
+"accentButtonColor": "#005ab3",
+
+"commentFormTextBoxColor": "#F2F2F2",
+
+"flyoutColor": "#F2F2F2",
+
+"flyoutAccentColor": "#C0C0C0",
+
+"modalTintColor": "#000000",
+
+"tutorialTintColor": "#000000",
+
+"tutorialGotItButtonColor": "green",
+
+"tutorialEndButtonColor": "#ED1C24",
+
+"tutorialButtonBorderColor": "#FFFFFF",
+
+"lightFontColor": "#FFFFFF",
+
+"darkFontColor": "#000000"
+    		}
+    	}
+    },
+    "env:development": {},
+    "env:test": {},
+    "env:production": {},
+    "os:android": {
+    	"font": "roboto" 
+    },
+    "os:blackberry": {},
+    "os:ios": {
+    	"font": "helvetica"
+    },
+    "os:mobileweb": {},
+    "dependencies": {
+        "excl.platform-logo": "1.0",
+        "navigationBar": "1.0"
+    }
+}

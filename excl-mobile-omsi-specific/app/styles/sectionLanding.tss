@@ -1,0 +1,33 @@
+"#container": {
+	navBarHidden: true,
+	fullscreen: true,
+	backgroundColor: Alloy.CFG.excl.colors.pageBackgroundColor
+}
+
+"#topBar":{
+	contentWidth: "100%",
+	height: "50dip",
+	top: "0dip",
+	layout: "vertical"
+}
+
+"#topBar[formFactor=tablet]":{
+	height: "75dip"
+}
+
+"#scrollView":{
+	layout: "vertical",
+	contentWidth: "100%",
+	height: Ti.UI.SIZE,
+	top: "50dip"
+}
+
+"#scrollView[formFactor=tablet]":{
+	top: "75dip"
+}
+
+"#noContentView":{
+	visible : false,
+	height: "0",
+	top: "0"
+}

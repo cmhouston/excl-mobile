@@ -1,0 +1,49 @@
+<Alloy>
+	<Window class="container">
+		<View id="postLandingView">
+			<Widget src="navigationBar" id="navBar"/>
+			<View id="postLandingViewBody">
+				<ScrollView id="scroller">
+					<View id="tableView">
+						<View id="headerRow" class="autoHeight">
+							<ImageView id="placeholderHeaderImage" class="headerImage"/>
+						</View>
+						<View id="socialMediaButtonsRow" class="autoHeight" autoStyle="true">
+							<View id="centeredButtons" class="centeredButtons">
+								<Button id="commentingButton" class="socialMediaButtonShown" onClick="comment" autoStyle="true"></Button>
+								<Button id="shareTextButton" class="socialMediaButtonShown" onClick="shareText" autoStyle="true"></Button>
+								<Button id="sharePhotoButton" class="socialMediaButtonShown" onClick="sharePhoto" autoStyle="true"></Button>
+							</View>
+						</View>
+						<View id="postTitleView">
+							<Label id="postTitleLabel" class="autoHeight"></Label>
+						</View>
+						<WebView id="webView"></WebView>
+						<View id="commentsHeading" onClick="comment" class="autoHeight"><Label class="commentsHeadingText">Add Comment</Label></View>
+						<View id="commentsView" class="autoHeight"></View>
+						<View id="showMoreComments" class="autoHeight"><Label class="commentsInfo">Show more comments</Label></View>
+						<View id="noComments" class="autoHeight"><Label class="commentsInfo">There are no comments for this post</Label></View>
+					</View>
+				</ScrollView>
+				<View id="addNewCommentContainer"></View>
+				<ScrollView id="commentsModal">				
+					<View id="submitCommentFormView">
+						<TextField id="insertName" />
+						<Label id="insertNameDisclaimer">*Optional and won't be shared</Label>
+						<TextField id="insertEmail" />
+						<Label id="insertEmailDisclaimer">*Optional and won't be shared</Label>
+						<TextArea id="insertComment"/>
+						<View id="buttonView">
+							<Button id="submitButton" onClick="clickSubmitComment" />
+							<Button id="cancelCommentButton" onClick="clickCancelComment" />
+						</View>
+					</View>
+					<View id="thankYouMessageView" onClick="clickThankYouMessage">
+						<Label id = "thankYouMessageComment" class="thankYouMessageComment" top="30%"/>
+					</View>
+					<Label id="submitYourCommentLabel">Submit Your Comment</Label>
+				</ScrollView>
+			</View>
+		</View>
+	</Window>
+</Alloy>

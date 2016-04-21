@@ -1,0 +1,8 @@
+<Alloy>
+	<Window class="container">
+		<View id="mainView">
+			<Widget id="navBar" src="navigationBar"/>	
+			<WebView id="InfoText"></WebView>
+		</View>
+	</Window>
+</Alloy>

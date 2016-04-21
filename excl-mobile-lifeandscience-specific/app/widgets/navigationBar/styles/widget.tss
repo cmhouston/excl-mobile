@@ -1,0 +1,32 @@
+".flyoutIcon":{
+	top: "20%",
+	bottom: "20%",
+	right: "10dip",
+	width: "25dip",
+	//height: "25dip"
+}
+
+".backIcon":{
+	top: "20%",
+	bottom: "20%",
+	left: "10dip",
+	width: "25dip",
+	//height: "25dip"
+}
+
+".flyoutView":{
+	width: "40%",
+	right: "0",
+	zIndex: "99"
+}
+
+".backView":{
+	width: "40%",
+	left: "0",
+	zIndex: "99"
+}
+
+"#pageTitle": {
+	right: "40dip",
+	left: "40dip"
+}

@@ -1,0 +1,253 @@
+// Every tutorial styles
+".fullScreenWindow": {
+  fullscreen: true,
+  navBarHidden: true,
+  backgroundColor: "transparent",
+  opacity: "1",
+  height: Titanium.UI.FILL,
+  width: Titanium.UI.FILL
+}
+".fullScreenOverlay": {
+	backgroundColor: Alloy.CFG.excl.colors.tutorialTintColor,
+	opacity: ".75",
+}
+".fullScreenOverlayText": {
+	color: Alloy.CFG.excl.colors.lightFontColor,
+	shadowColor: Alloy.CFG.excl.colors.darkFontColor,
+	shadowOffset: {x:3, y:3},
+	shadowRadius: 5,
+	font: {
+		textStyle: Titanium.UI.TEXT_STYLE_HEADLINE,
+		fontWeight: "bold",
+		fontSize: "24dp",
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	}
+}
+".fullScreenOverlayText[formFactor=tablet]": {
+	font: {
+		fontWeight: "bold",
+		fontSize: "35dip",
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	}
+}
+
+".fullScreenOverlayText[platform=android]": {
+	font: {
+		fontWeight: "bold",
+		fontSize: "18dip",
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	}
+}
+
+".tutorialButton": {
+	backgroundColor: Alloy.CFG.excl.colors.cancelButtonColor,
+	width: "200dip",
+	height: "50dip",
+	color: Alloy.CFG.excl.colors.lightFontColor,
+	font: {
+		textStyle: Titanium.UI.TEXT_STYLE_HEADLINE,
+		fontSize: "24dp",
+		fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+	}
+}
+
+// Post landing tutorial styles
+
+"#viewCommentsText": {
+	bottom: "75dip",
+	left: "10dip",
+	right: "60dip",
+	width: Ti.UI.FILL,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+}
+
+"#viewCommentsText[platform=android]": {
+	right: "100dip"
+}
+
+"#viewCommentsText[formFactor=tablet]": {
+	bottom: "100dip",
+	left: "30dip",
+	right: "350dip",
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+}
+
+"#viewCommentsArrow": {
+	transform: Alloy.Globals.rotate270,
+	height: "30dip",
+	left: "5dip",
+	bottom: "50dip",
+	width: "55dip"
+}
+
+"#viewCommentsArrow[formFactor=tablet]": {
+	transform: Alloy.Globals.rotate270,
+	height: "50dip",
+	left: "5dip",
+	bottom: "70dip",
+	width: "80dip"
+}
+
+"#ExitButton": {
+	//bottom: "150dip"
+	bottom: "20dip"
+}
+
+"#NextButton": {
+	//bottom: "150dip"
+	bottom: "80dip"
+}
+
+"#iconHighlight": {
+	width: "40%",
+	top: "525dip",
+	height: Ti.UI.SIZE
+}
+
+"#iconHighlight[formFactor=handheld]": {
+	width: "85%",
+	top: "250dip"
+}
+
+".sharingIcon": {
+	width: "40dip",
+	height: "40dip"
+}
+
+"#highlightBackground": {
+	image: "/images/tutorial/highlight.png"
+}
+
+"#commentIcon[platform=android]": {
+	image: "/images/icons_android/comment_ready.png",
+	center: {
+		x: "25%"
+	},
+}
+
+"#shareIcon[platform=android]": {
+	image: "/images/icons_android/share_ready.png",
+	center: {
+		x: "50%"
+	}
+}
+
+"#photoIcon[platform=android]": {
+	image: "/images/icons_android/camera_ready.png",
+	center: {
+		x: "75%"
+	}
+}
+
+"#commentIcon[platform=ios]": {
+	image: "/images/icons_ios/comment_ready.png",
+	center: {
+		x: "20%"
+	},
+}
+
+"#shareIcon[platform=ios]": {
+	image: "/images/icons_ios/share_ready.png",
+	center: {
+		x: "50%"
+	}
+}
+
+"#photoIcon[platform=ios]": {
+	image: "/images/icons_ios/camera_ready.png",
+	center: {
+		x: "80%"
+	}
+}
+
+"#commentArrow": {
+	top: "240dip",
+	center:{
+		x: "20%"
+	},
+	transform: Alloy.Globals.rotate90, 
+	height: "30dip",
+	width: "50dip"
+}
+
+"#commentArrow[platform=android]":{
+	center:{
+		x: "25%"
+	}
+}
+
+"#commentArrow[formFactor=tablet]": {
+	top: "500dip",
+	center:{
+		x: "35%"
+	},
+	height: "60dip",
+	width: "50dip"
+}
+
+"#commentText": {
+	top: "450dip",
+	width: "200dip",
+	left: "25dip",
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+}
+
+"#commentText[formFactor=handheld]": {
+	top: "185dip",
+	left: "3dip",
+	width: "100dip"
+}
+
+"#shareArrow": {
+	top: "210dip",
+	transform: Alloy.Globals.rotate90, 
+	height: "30dip",
+	width: "120dip",
+	left: "30%"
+}
+
+"#shareArrow[formFactor=tablet]": {
+	top: "480dip", 
+	height: "30dip",
+	width: "120dip",
+	left: "40%"
+}
+
+"#shareText": {
+	top: "350dip",
+	width: "250dip",
+	left: "30%",
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+}
+"#shareText[formFactor=handheld]": {
+	top: "130dip",
+	left: "50dip",
+	width: "125dip"
+}
+
+"#photoArrow": {
+	top: "245dip",
+	left: "69%",
+	transform: Alloy.Globals.rotate270, 
+	height: "30dip",
+	width: "45dip"
+}
+
+"#photoArrow[formFactor=tablet]": {
+	top: "500dip",
+	left: "62%", 
+	height: "45dip",
+	width: "75dip"
+}
+
+"#photoText": {
+	top: "400dip",
+	right: "20dip",
+	width: "250dip",
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+}
+"#photoText[formFactor=handheld]": {
+	top: "145dip",
+	right: "3dip",
+	width: "100dip"
+}

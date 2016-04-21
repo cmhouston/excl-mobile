@@ -1,0 +1,5 @@
+".container" : {
+	backgroundColor: Alloy.CFG.excl.colors.pageBackgroundColor,
+	navBarHidden: true
+}
+

@@ -1,0 +1,6 @@
+".container": {}
+
+"#label":{
+	height: '20%',
+	fontFamily: Alloy.CFG.excl.defaultGlobalFontFamily
+}

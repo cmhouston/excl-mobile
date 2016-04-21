@@ -1,0 +1,16 @@
+<Alloy>
+	<View id="exhibitTutorialPage" class="fullScreenWindow" zIndex="100" autoStyle="true">
+		<View class="fullScreenOverlay" autoStyle="true" />
+		<Widget id="navBar" src="navigationBar"/>
+		<Label id="flyoutMenuText" class="fullScreenOverlayText">Tap for more menu items.</Label>
+		<Label id="ComponentsText" class="fullScreenOverlayText">Tap button to select an activity.</Label>
+		<Label id="ScrollText" class="fullScreenOverlayText">Swipe to see more.</Label>
+		<Label id="backText" class="fullScreenOverlayText">Here's the way back.</Label>
+		<ImageView id="backArrow" image="/images/tutorial/long-arrow.png"></ImageView>
+		<ImageView id="flyoutMenuArrow" image="/images/tutorial/long-arrow.png"></ImageView>
+		<ImageView id="ComponentsArrow" image="/images/tutorial/long-arrow-flipped.png"></ImageView>
+		<ImageView id="fingerSwipe" image="/images/tutorial/swipe_right.png"></ImageView>
+		<Button id="ExitButton" onClick="tutorialExit" class="tutorialButton">End Tutorial</Button>
+		<Button id="NextButton" onClick="gotIt" class="GotItButton">Got it!</Button>
+	</View>
+</Alloy>
