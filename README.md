@@ -198,7 +198,7 @@ For information on Ti Shadow, how to set it up, and how to use it, refer to the 
 
 # <a name="unitTestingAndCI"></a> Unit Testing and Continuous Integration #
 
-We recommend using continuous integration to maintain the quality of the product. This repository has several unit tests written using [Mocha](http://visionmedia.github.io/mocha/) and several integration tests using TiShadow's spec format.
+We recommend using continuous integration to maintain the quality of the product. This repository has several unit tests written using [Mocha](http://mochajs.org/) and several integration tests using TiShadow's spec format.
 
 Examples of ExCL's unit tests can be found within the project's [spec](app/spec) folder
 
@@ -218,7 +218,7 @@ The root directory of the project contains a `package.json` file which will inst
 By default the `coverage` and `node_modules` folders won't be committed to the git repo when ever you commit something.
 
 ### Further reading ###
-* [Mocha Docs](http://visionmedia.github.io/mocha/#assertions) 
+* [Mocha Docs](http://mochajs.org/#assertions) 
 * [Sinon Docs (For Mocking)](http://sinonjs.org/docs/)
 
 ## Using Buildbox for Continuous Integration ##
